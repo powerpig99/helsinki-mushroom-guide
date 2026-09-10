@@ -162,7 +162,8 @@ function navigateToCatalog() {
 
 function showMushroomDetail(id) {
   currentMushroomId = id;
-  const siteHeader = document.querySelector("header");
+  document.body.classList.add("viewing-detail");
+  const siteHeader = document.getElementById("site-header") || document.querySelector("header");
   const viewMain = document.getElementById("view-main");
   const viewDetail = document.getElementById("view-mushroom-detail");
   if (siteHeader) siteHeader.style.display = "none";
@@ -171,12 +172,15 @@ function showMushroomDetail(id) {
     viewDetail.style.display = "block";
     renderMushroomDetail(id);
   }
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 }
 
 function showMainCatalog() {
   currentMushroomId = null;
-  const siteHeader = document.querySelector("header");
+  document.body.classList.remove("viewing-detail");
+  const siteHeader = document.getElementById("site-header") || document.querySelector("header");
   const viewMain = document.getElementById("view-main");
   const viewDetail = document.getElementById("view-mushroom-detail");
   if (siteHeader) siteHeader.style.display = "block";
@@ -293,7 +297,7 @@ function renderCatalog() {
     const photoCount = (m.gallery && m.gallery.length) ? m.gallery.length : 4;
 
     return `
-      <div class="mushroom-card" onclick="navigateToMushroom('${m.id}')" style="cursor: pointer;" title="${t.viewDetails}">
+      <a href="#/mushroom/${m.id}" class="mushroom-card" onclick="navigateToMushroom('${m.id}')" style="cursor: pointer; text-decoration: none; color: inherit;" title="${t.viewDetails}: ${nameData.primary}">
         <div class="card-image-wrap">
           <img src="${m.image}" alt="${nameData.primary}" loading="lazy">
           <div class="card-badges">
@@ -340,13 +344,13 @@ function renderCatalog() {
           ${m.lookalikeAlert && m.lookalikeAlert[lang] ? `<div style="background:#fef3c7; color:#92400e; padding:0.5rem; border-radius:6px; font-size:0.8rem; margin-bottom:0.75rem;">🔍 ${m.lookalikeAlert[lang]}</div>` : ""}
 
           <div class="card-footer">
-            <button onclick="event.stopPropagation(); navigateToMushroom('${m.id}')" style="background: var(--primary); color: #ffffff; border: none; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; border-radius: 6px;">
-              📖 ${t.viewDetails}
-            </button>
+            <span class="btn-card-details" style="background: var(--primary); color: #ffffff; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; border-radius: 6px;">
+              📖 ${t.viewDetails} →
+            </span>
             <span>${t.refId} ${m.id}</span>
           </div>
         </div>
-      </div>
+      </a>
     `;
   }).join("");
 }
@@ -437,7 +441,7 @@ function renderMushroomDetail(speciesId) {
         else if (lk.edibility === "inedible") { lkBadgeClass = "badge-inedible"; lkBadgeText = t.badgeInedible; }
 
         return `
-          <div class="lookalike-interactive-card" onclick="navigateToMushroom('${lk.id}')" title="${t.viewDetails}: ${lkName.primary}">
+          <a href="#/mushroom/${lk.id}" class="lookalike-interactive-card" onclick="navigateToMushroom('${lk.id}')" title="${t.viewDetails}: ${lkName.primary}">
             <div class="lookalike-img-container">
               <img src="${lk.image}" alt="${lkName.primary}" loading="lazy">
               <span class="badge ${lkBadgeClass}">${lkBadgeText}</span>
@@ -459,7 +463,7 @@ function renderMushroomDetail(speciesId) {
                 <span>📖 ${lang === 'zh' ? '点击查看该物种专属指南与多图对比' : (lang === 'fi' ? 'Avaa tämän lajin täysi opas ja kuvat' : 'Read full field guide & photos')} →</span>
               </div>
             </div>
-          </div>
+          </a>
         `;
       }).join("")}
     </div>

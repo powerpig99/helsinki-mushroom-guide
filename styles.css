@@ -874,6 +874,28 @@ main {
    Dedicated Mushroom Field Guide Detail View & Horizontal Swipe Carousel
    ========================================================================== */
 
+body.viewing-detail header,
+body.viewing-detail #site-header {
+  display: none !important;
+}
+
+body.viewing-detail main {
+  padding-top: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  body.viewing-detail main {
+    padding: 0.35rem 0.5rem 3rem;
+  }
+
+  body.viewing-detail .detail-top-bar {
+    top: 0;
+    margin-bottom: 0.5rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: 8px;
+  }
+}
+
 .mushroom-detail-view {
   display: flex;
   flex-direction: column;
