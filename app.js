@@ -95,6 +95,41 @@ function renderBilingualText(obj, lang1, lang2) {
   `;
 }
 
+// Render Prime Foraging Location Card with Popular Trail & Trailhead Link
+function renderPrimeLocationCard(sp, lang, lang2, t) {
+  const locKey = sp.primeLocationKey || (I18N.speciesLocations && I18N.speciesLocations[sp.id]);
+  if (!locKey || !I18N.foragingLocations || !I18N.foragingLocations[locKey]) return "";
+  const loc = I18N.foragingLocations[locKey];
+
+  return `
+    <div class="prime-location-card">
+      <div class="prime-location-header">
+        <div class="prime-location-area-box">
+          <div class="prime-location-badge">${t.primeLocationTitle || "Prime Foraging Trailhead"}</div>
+          <div class="prime-location-area">📍 ${loc.areaName[lang] || loc.areaName.en}</div>
+          ${lang2 && loc.areaName[lang2] ? `<div class="prime-location-area-secondary">${loc.areaName[lang2]}</div>` : ""}
+        </div>
+        <a href="${loc.mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-location-map" title="${loc.startingPoint[lang] || loc.startingPoint.en}">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+          <span>${t.openMapBtn || "Directions"}</span>
+        </a>
+      </div>
+      <div class="prime-location-details">
+        <div class="prime-location-row">
+          <span class="prime-item-label">${t.popularTrailLabel || "Popular Trail"}:</span>
+          <span class="prime-item-value">${loc.popularTrail[lang] || loc.popularTrail.en}</span>
+          ${lang2 && loc.popularTrail[lang2] ? `<div class="prime-item-secondary">${loc.popularTrail[lang2]}</div>` : ""}
+        </div>
+        <div class="prime-location-row" style="margin-top: 0.35rem;">
+          <span class="prime-item-label">${t.startingPointLabel || "Starting Point"}:</span>
+          <span class="prime-item-value">${loc.startingPoint[lang] || loc.startingPoint.en}</span>
+          ${lang2 && loc.startingPoint[lang2] ? `<div class="prime-item-secondary">${loc.startingPoint[lang2]}</div>` : ""}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 // Apply selected language across the entire application
 function applyLanguage(lang) {
   const t = I18N.ui[lang];
@@ -650,9 +685,10 @@ function renderMushroomDetail(speciesId) {
     <!-- SECTION 1: When & Where to Find (Helsinki & Uusimaa Specific) -->
     <div class="detail-section-card">
       <h2 class="detail-section-title">${t.whereWhenTitle}</h2>
-      <div class="detail-section-body">
+      <div class="detail-section-body" style="margin-bottom: 0.85rem;">
         ${renderBilingualText(sp.whereWhen, lang, lang2)}
       </div>
+      ${renderPrimeLocationCard(sp, lang, lang2, t)}
     </div>
 
     <!-- SECTION 2: Hunter's Search Tactics & Eye-Training -->
@@ -1187,6 +1223,7 @@ function renderSpots() {
 
   const lang = I18N.currentLang;
   const lang2 = I18N.secondaryLang;
+  const t = I18N.ui[lang] || I18N.ui.en;
 
   container.innerHTML = I18N.spots.map(s => `
     <div class="spot-card">
@@ -1204,6 +1241,27 @@ function renderSpots() {
         ${lang2 ? `<p style="color: #64748b; font-size: 0.82rem; margin-top: 0.2rem;">${s.transit[lang2]}</p>` : ""}
         <p style="margin-top: 0.35rem;"><strong>⏱️ Duration:</strong> ~${s.time}</p>
       </div>
+
+      ${s.popularTrail ? `
+      <div class="spot-trailhead-box">
+        <div class="spot-trailhead-row">
+          <span class="prime-item-label">🥾 ${t.popularTrailLabel || 'Popular Trail'}:</span>
+          <span class="prime-item-value">${s.popularTrail[lang]}</span>
+          ${lang2 ? `<div class="prime-item-secondary">${s.popularTrail[lang2]}</div>` : ""}
+        </div>
+        <div class="spot-trailhead-row" style="margin-top: 0.35rem;">
+          <span class="prime-item-label">📍 ${t.startingPointLabel || 'Starting Point'}:</span>
+          <span class="prime-item-value">${s.startingPoint[lang]}</span>
+          ${lang2 ? `<div class="prime-item-secondary">${s.startingPoint[lang2]}</div>` : ""}
+        </div>
+        <div style="margin-top: 0.6rem;">
+          <a href="${s.mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-location-map" title="${s.startingPoint[lang]}">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+            <span>${t.openMapBtn || 'Directions'}</span>
+          </a>
+        </div>
+      </div>
+      ` : ""}
 
       <div style="font-size: 0.85rem; color: #334155; margin-bottom: 0.5rem;">
         <strong>Terrain:</strong> ${s.terrain[lang]}

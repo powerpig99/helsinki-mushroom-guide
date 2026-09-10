@@ -55,6 +55,10 @@ const I18N = {
       swipeHint: "Swipe photo left / right for more angles",
       viewDetails: "Read Full Field Guide →",
       readRecipe: "View Recipe & Steps",
+      popularTrailLabel: "Popular Trail",
+      startingPointLabel: "Starting Point",
+      openMapBtn: "Directions",
+      primeLocationTitle: "Prime Foraging Trailhead",
       prepTime: "Prep:",
       cookTime: "Cook:",
       servings: "Servings:",
@@ -107,6 +111,10 @@ const I18N = {
       swipeHint: "左右滑动图片查看不同角度与解剖细节",
       viewDetails: "阅读专属详细指南 →",
       readRecipe: "查看烹饪步骤",
+      popularTrailLabel: "热门步道",
+      startingPointLabel: "出发起点",
+      openMapBtn: "地图导航",
+      primeLocationTitle: "推荐采摘路线与起点",
       prepTime: "准备时间:",
       cookTime: "烹饪时间:",
       servings: "分量:",
@@ -159,6 +167,10 @@ const I18N = {
       swipeHint: "Pyyhkäise kuvaa vasemmalle tai oikealle",
       viewDetails: "Avaa lajin oma kenttäopas →",
       readRecipe: "Katso valmistusohje",
+      popularTrailLabel: "Suositeltu reitti",
+      startingPointLabel: "Lähtöpiste",
+      openMapBtn: "Avaa kartta",
+      primeLocationTitle: "Paras maastoreitti & lähtöpiste",
       prepTime: "Esivalmistelu:",
       cookTime: "Kypsennys:",
       servings: "Annosmäärä:",
@@ -198,6 +210,207 @@ const I18N = {
     gyromitra_esculenta: ["craterellus_cornucopioides"],
     paxillus_involutus: ["lactarius_rufus", "lactarius_torminosus"],
     amanita_muscaria: ["amanita_virosa"]
+  },
+
+  // Recommended Foraging Locations, Popular Trails, and Starting Point Trailheads
+  foragingLocations: {
+    nuuksio_haukkalampi: {
+      id: "nuuksio_haukkalampi",
+      areaName: {
+        en: "Nuuksio National Park (Haukkalampi)",
+        zh: "努克西奥国家公园（豪卡湖区）",
+        fi: "Nuuksion kansallispuisto (Haukkalampi)"
+      },
+      popularTrail: {
+        en: "Korpinkierros Trail (Raven Loop, 7.2 km)",
+        zh: "Korpinkierros 乌鸦环线步道（7.2公里）",
+        fi: "Korpinkierros (7,2 km)"
+      },
+      startingPoint: {
+        en: "Haukkalammen luontotupa / Parking (Haukkalammentie 32, Espoo)",
+        zh: "Haukkalammen luontotupa 自然小屋与停车场（Haukkalammentie 32, Espoo）",
+        fi: "Haukkalammen luontotupa / P-alue (Haukkalammentie 32, Espoo)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo"
+    },
+    nuuksio_kattila: {
+      id: "nuuksio_kattila",
+      areaName: {
+        en: "Nuuksio National Park (Kattila)",
+        zh: "努克西奥国家公园（卡蒂拉林区）",
+        fi: "Nuuksion kansallispuisto (Kattila)"
+      },
+      popularTrail: {
+        en: "Kattilanjärvi Wilderness Trail",
+        zh: "Kattilanjärvi 湖畔荒野步道",
+        fi: "Kattilanjärven polkuverkosto"
+      },
+      startingPoint: {
+        en: "Kattila Parking / Bus 245A Terminus (Kattilantie 424, Espoo)",
+        zh: "Kattila 停车场 / 245A公交车终点站（Kattilantie 424, Espoo）",
+        fi: "Kattilan P-alue / Bussi 245A päätepysäkki (Kattilantie 424, Espoo)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Kattila+Nuuksio"
+    },
+    sipoonkorpi_kuusijarvi: {
+      id: "sipoonkorpi_kuusijarvi",
+      areaName: {
+        en: "Sipoonkorpi National Park (Kuusijärvi)",
+        zh: "西波国家森林公园（库西湖林区）",
+        fi: "Sipoonkorven kansallispuisto (Kuusijärvi)"
+      },
+      popularTrail: {
+        en: "Kuusijärvi–Bisajärvi Trail via Sudentassu Bridge (Kalkkiruukki Loop)",
+        zh: "经狼爪桥（Sudentassu）前往Bisajärvi湖畔林区步道",
+        fi: "Kuusijärvi–Bisajärvi-reitti Sudentassu-sillan kautta (Kalkkiruukin kierros)"
+      },
+      startingPoint: {
+        en: "Kuusijärvi Outdoor Center / Parking (Kuusijärventie 3, Vantaa)",
+        zh: "Kuusijärvi 户外活动中心与停车场（Kuusijärventie 3, Vantaa）",
+        fi: "Kuusijärven ulkoilualue / P-alue (Kuusijärventie 3, Vantaa)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue"
+    },
+    sipoonkorpi_bakunkarr: {
+      id: "sipoonkorpi_bakunkarr",
+      areaName: {
+        en: "Sipoonkorpi National Park (Bakunkärr)",
+        zh: "西波国家森林公园（巴昆克尔林区）",
+        fi: "Sipoonkorven kansallispuisto (Bakunkärr)"
+      },
+      popularTrail: {
+        en: "Bakunkärr Old Spruce Trail (2 km)",
+        zh: "Bakunkärr 老龄云杉环线步道（2公里）",
+        fi: "Bakunkärrin kierros (2 km)"
+      },
+      startingPoint: {
+        en: "Knutersintie Parking Area (Knutersintie 256, Sipoo)",
+        zh: "Knutersintie 森林停车场（Knutersintie 256, Sipoo）",
+        fi: "Knutersintien P-alue (Knutersintie 256, Sipoo)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Knutersintie+256+Sipoo"
+    },
+    keskuspuisto_paloheina: {
+      id: "keskuspuisto_paloheina",
+      areaName: {
+        en: "Central Park (Paloheinä)",
+        zh: "赫尔辛基中央公园（帕罗黑奈）",
+        fi: "Helsingin Keskuspuisto (Paloheinä)"
+      },
+      popularTrail: {
+        en: "Paloheinä Nature Trail & Forest Loop",
+        zh: "Paloheinä 自然森林环线步道与榛树小径",
+        fi: "Paloheinän luontopolku & ulkoilureitti"
+      },
+      startingPoint: {
+        en: "Paloheinän maja / Parking (Pakilantie 124, Helsinki)",
+        zh: "Paloheinän maja 森林小筑与停车场（Pakilantie 124, Helsinki）",
+        fi: "Paloheinän maja / P-alue (Pakilantie 124, Helsinki)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Palohein%C3%A4n+maja+Helsinki"
+    },
+    keskuspuisto_pitkakoski: {
+      id: "keskuspuisto_pitkakoski",
+      areaName: {
+        en: "Central Park (Pitkäkoski Ravine)",
+        zh: "赫尔辛基中央公园（皮特凯考斯基峡谷）",
+        fi: "Helsingin Keskuspuisto (Pitkäkoski)"
+      },
+      popularTrail: {
+        en: "Pitkäkoski River Ravine & Nature Reserve Trail",
+        zh: "Pitkäkoski 河畔峡谷自然步道",
+        fi: "Pitkäkosken rantarinteiden ulkoilureitti"
+      },
+      startingPoint: {
+        en: "Pitkäkosken ulkoilumaja / Parking (Kuninkaantammentie 19, Helsinki)",
+        zh: "Pitkäkosken ulkoilumaja 户外小屋与停车场（Kuninkaantammentie 19, Helsinki）",
+        fi: "Pitkäkosken ulkoilumaja / P-alue (Kuninkaantammentie 19, Helsinki)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Pitk%C3%A4kosken+ulkoilumaja"
+    },
+    luukki: {
+      id: "luukki",
+      areaName: {
+        en: "Luukki Outdoor Area (North Espoo)",
+        zh: "北埃斯波卢基自然森林区",
+        fi: "Luukin ulkoilualue (Pohjois-Espoo)"
+      },
+      popularTrail: {
+        en: "Seitsemän lammen reitti (Seven Ponds Trail, 8.6 km)",
+        zh: "Seitsemän lammen reitti 七湖环线步道（8.6公里）",
+        fi: "Seitsemän lammen reitti (8,6 km)"
+      },
+      startingPoint: {
+        en: "Luukin kartano / Parking (Luukintie 33, Espoo)",
+        zh: "Luukin kartano 庄园主停车场（Luukintie 33, Espoo）",
+        fi: "Luukin kartanon P-alue (Luukintie 33, Espoo)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Luukin+kartano+Espoo"
+    },
+    petikko: {
+      id: "petikko",
+      areaName: {
+        en: "Petikko & Vestra Woodlands",
+        zh: "万塔佩蒂克与韦斯特拉林区",
+        fi: "Petikon ulkoilualue (Vantaa)"
+      },
+      popularTrail: {
+        en: "Petikko Nature Trail & Hazel Groves Path",
+        zh: "Petikko 榛树阔叶林自然步道",
+        fi: "Petikon luontopolku & ulkoilureitti"
+      },
+      startingPoint: {
+        en: "Petikon ulkoilualue / Parking (Tallimäentie 2, Vantaa)",
+        zh: "Petikon ulkoilualue 停车场（Tallimäentie 2, Vantaa）",
+        fi: "Petikon ulkoilualue / P-alue (Tallimäentie 2, Vantaa)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Petikon+ulkoilualue+Vantaa"
+    },
+    uutela: {
+      id: "uutela",
+      areaName: {
+        en: "Uutela Coastal Forest",
+        zh: "东赫尔辛基乌特拉海滨森林公园",
+        fi: "Uutelan rantametsä (Vuosaari)"
+      },
+      popularTrail: {
+        en: "Uutela Nature Trail (Kluuvit ja rantaniityt Loop, 3.8 km)",
+        zh: "Uutela 海滨自然步道环线（3.8公里）",
+        fi: "Uutelan luontopolku (3,8 km)"
+      },
+      startingPoint: {
+        en: "Kahvila Kampela / Uutela Parking (Pursilahdenranta 1, Helsinki)",
+        zh: "Kahvila Kampela / Uutela 入口停车场（Pursilahdenranta 1, Helsinki）",
+        fi: "Kahvila Kampela / Uutelan P-alue (Pursilahdenranta 1, Helsinki)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Kahvila+Kampela+Helsinki"
+    }
+  },
+
+  // Map each catalog species to its prime foraging trailhead
+  speciesLocations: {
+    cantharellus_cibarius: "nuuksio_haukkalampi",
+    craterellus_tubaeformis: "sipoonkorpi_kuusijarvi",
+    hydnum_repandum: "luukki",
+    craterellus_cornucopioides: "keskuspuisto_paloheina",
+    boletus_edulis: "sipoonkorpi_kuusijarvi",
+    boletus_pinophilus: "uutela",
+    amanita_virosa: "nuuksio_haukkalampi",
+    cortinarius_rubellus: "sipoonkorpi_kuusijarvi",
+    galerina_marginata: "keskuspuisto_pitkakoski",
+    gyromitra_esculenta: "sipoonkorpi_kuusijarvi",
+    paxillus_involutus: "keskuspuisto_paloheina",
+    lactarius_torminosus: "keskuspuisto_paloheina",
+    lactarius_rufus: "nuuksio_kattila",
+    lactarius_deliciosus: "uutela",
+    russula_decolorans: "luukki",
+    russula_emetica: "luukki",
+    cortinarius_caperatus: "nuuksio_haukkalampi",
+    albatrellus_ovinus: "sipoonkorpi_bakunkarr",
+    leccinum_versipelle: "petikko",
+    hygrophoropsis_aurantiaca: "nuuksio_haukkalampi",
+    tylopilus_felleus: "nuuksio_haukkalampi",
+    amanita_muscaria: "keskuspuisto_paloheina"
   },
 
   // Species Data (Trilingual Content)
@@ -1619,6 +1832,17 @@ const I18N = {
       },
       municipality: "Helsinki",
       zone: "Zone AB",
+      popularTrail: {
+        en: "Paloheinä Forest Loop & Pitkäkoski River Ravine Trail",
+        zh: "Paloheinä 森林环线与 Pitkäkoski 河畔峡谷自然步道",
+        fi: "Paloheinän ulkoilureitti & Pitkäkosken luontopolku"
+      },
+      startingPoint: {
+        en: "Paloheinän maja / Parking (Pakilantie 124, Helsinki)",
+        zh: "Paloheinän maja 森林小筑与停车场（Pakilantie 124, Helsinki）",
+        fi: "Paloheinän maja / P-alue (Pakilantie 124, Helsinki)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Palohein%C3%A4n+maja+Helsinki",
       transit: {
         en: "Bus 66 (Paloheinän maja) or Bus 67 / 560 (Pitkäkoski) from Helsinki Central Station",
         zh: "从中央火车站乘66路直达Paloheinän maja，或乘67/560路至Pitkäkoski林缘",
@@ -1645,6 +1869,17 @@ const I18N = {
       },
       municipality: "Vantaa / Sipoo",
       zone: "Zone B / C",
+      popularTrail: {
+        en: "Kuusijärvi–Bisajärvi Trail via Sudentassu Bridge (Kalkkiruukki Loop)",
+        zh: "经狼爪桥（Sudentassu）前往 Bisajärvi 湖畔林区步道",
+        fi: "Kuusijärvi–Bisajärvi-reitti Sudentassu-sillan kautta (Kalkkiruukin kierros)"
+      },
+      startingPoint: {
+        en: "Kuusijärvi Outdoor Center / Parking (Kuusijärventie 3, Vantaa)",
+        zh: "Kuusijärvi 户外活动中心与停车场（Kuusijärventie 3, Vantaa）",
+        fi: "Kuusijärven ulkoilualue / P-alue (Kuusijärventie 3, Vantaa)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue",
       transit: {
         en: "Train K/P to Tikkurila + Bus 736/739 to Kuusijärvi; cross the suspension bridge",
         zh: "城际火车K/P线至Tikkurila车站，转乘公交736/739直达Kuusijärvi，穿过木制悬索吊桥入林",
@@ -1671,6 +1906,17 @@ const I18N = {
       },
       municipality: "Espoo",
       zone: "Zone C",
+      popularTrail: {
+        en: "Korpinkierros Trail (Raven Loop, 7.2 km) & Kattila Wilderness Paths",
+        zh: "Korpinkierros 乌鸦环线步道（7.2公里）与 Kattila 原始冷杉荒野",
+        fi: "Korpinkierros (7,2 km) & Kattilan maastoreitit"
+      },
+      startingPoint: {
+        en: "Haukkalammen luontotupa / Parking (Haukkalammentie 32, Espoo)",
+        zh: "Haukkalammen luontotupa 自然小屋与主停车场（Haukkalammentie 32, Espoo）",
+        fi: "Haukkalammen luontotupa / P-alue (Haukkalammentie 32, Espoo)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo",
       transit: {
         en: "Commuter Train U/E/X to Espoon keskus + Bus 245/245A to Haukkalammentie / Kattila",
         zh: "中央车站乘通勤火车U/E线至Espoon keskus，站台转乘245/245A至Haukkalammentie或终点Kattila",
@@ -1697,6 +1943,17 @@ const I18N = {
       },
       municipality: "North Espoo",
       zone: "Zone C",
+      popularTrail: {
+        en: "Seitsemän lammen reitti (Seven Ponds Trail, 8.6 km)",
+        zh: "Seitsemän lammen reitti 七湖环线步道（8.6公里）",
+        fi: "Seitsemän lammen reitti (8,6 km)"
+      },
+      startingPoint: {
+        en: "Luukin kartano Parking (Luukintie 33, Espoo)",
+        zh: "Luukin kartano 庄园主停车场（Luukintie 33, Espoo）",
+        fi: "Luukin kartanon P-alue (Luukintie 33, Espoo)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Luukin+kartano+Espoo",
       transit: {
         en: "Bus 345 direct from Elielinaukio (Helsinki Central Station)",
         zh: "中央车站西侧Elielinaukio广场乘坐345路大巴直达Luukki或Vaakkoi站",
@@ -1723,6 +1980,17 @@ const I18N = {
       },
       municipality: "Vantaa",
       zone: "Zone B / C",
+      popularTrail: {
+        en: "Petikko Nature Trail & Hazel Groves Path",
+        zh: "Petikko 榛树阔叶林自然步道",
+        fi: "Petikon luontopolku & ulkoilureitti"
+      },
+      startingPoint: {
+        en: "Petikon ulkoilualue Parking (Tallimäentie 2, Vantaa)",
+        zh: "Petikon ulkoilualue 停车场（Tallimäentie 2, Vantaa）",
+        fi: "Petikon ulkoilualue / P-alue (Tallimäentie 2, Vantaa)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Petikon+ulkoilualue+Vantaa",
       transit: {
         en: "Bus 321 from Elielinaukio or Bus 345 to Askisto edge",
         zh: "中央车站乘321路至Petikko，或乘345至Askisto林缘",
@@ -1749,6 +2017,17 @@ const I18N = {
       },
       municipality: "East Helsinki",
       zone: "Zone B",
+      popularTrail: {
+        en: "Uutela Nature Trail (Kluuvit ja rantaniityt Loop, 3.8 km)",
+        zh: "Uutela 海滨自然步道环线（3.8公里）",
+        fi: "Uutelan luontopolku (3,8 km)"
+      },
+      startingPoint: {
+        en: "Kahvila Kampela / Uutela Parking (Pursilahdenranta 1, Helsinki)",
+        zh: "Kahvila Kampela / Uutela 入口停车场（Pursilahdenranta 1, Helsinki）",
+        fi: "Kahvila Kampela / Uutelan P-alue (Pursilahdenranta 1, Helsinki)"
+      },
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Kahvila+Kampela+Helsinki",
       transit: {
         en: "Metro to Vuosaari station + 15 min walk through park or Bus 560 to Aurinkolahti",
         zh: "地铁红线坐到终点站Vuosaari，穿过公园步行15分钟或转乘560路至Aurinkolahti海湾",

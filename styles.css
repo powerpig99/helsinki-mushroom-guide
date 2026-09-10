@@ -1577,3 +1577,120 @@ body.viewing-detail main {
     height: 180px;
   }
 }
+
+/* ==========================================================================
+   Foraging Location & Trailhead Navigation Cards
+   ========================================================================== */
+
+.prime-location-card {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  margin-top: 0.85rem;
+}
+
+.prime-location-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.prime-location-area-box {
+  flex: 1;
+  min-width: 180px;
+}
+
+.prime-location-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #166534;
+  margin-bottom: 0.2rem;
+}
+
+.prime-location-area {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.prime-location-area-secondary {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 0.1rem;
+}
+
+.btn-location-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #ffffff;
+  color: #1e3a2b;
+  border: 1px solid #cbd5e1;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.btn-location-map:hover {
+  background: #1e3a2b;
+  color: #ffffff;
+  border-color: #1e3a2b;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.btn-location-map:active {
+  transform: scale(0.97);
+}
+
+.prime-location-details {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 0.55rem;
+}
+
+.prime-location-row {
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.prime-item-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-right: 0.3rem;
+}
+
+.prime-item-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.prime-item-secondary {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 0.1rem;
+}
+
+.spot-trailhead-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.75rem 0.85rem;
+  margin: 0.75rem 0;
+}
+
+.spot-trailhead-row {
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
