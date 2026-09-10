@@ -172,6 +172,32 @@ const I18N = {
     fi: ["Touko", "Kesä", "Heinä", "Elo", "Syys", "Loka", "Marras"]
   },
 
+  // Direct Lookalike Relationships between Catalog Species
+  lookalikeMap: {
+    cantharellus_cibarius: ["hygrophoropsis_aurantiaca"],
+    craterellus_tubaeformis: ["cortinarius_rubellus"],
+    craterellus_cornucopioides: ["craterellus_tubaeformis"],
+    hydnum_repandum: ["albatrellus_ovinus"],
+    boletus_edulis: ["tylopilus_felleus", "boletus_pinophilus"],
+    boletus_pinophilus: ["tylopilus_felleus", "boletus_edulis"],
+    leccinum_versipelle: ["boletus_edulis"],
+    albatrellus_ovinus: ["hydnum_repandum"],
+    cortinarius_caperatus: ["cortinarius_rubellus"],
+    lactarius_deliciosus: ["lactarius_torminosus"],
+    lactarius_torminosus: ["lactarius_deliciosus", "lactarius_rufus"],
+    lactarius_rufus: ["cortinarius_rubellus", "lactarius_torminosus"],
+    russula_decolorans: ["russula_emetica"],
+    russula_emetica: ["russula_decolorans"],
+    hygrophoropsis_aurantiaca: ["cantharellus_cibarius"],
+    tylopilus_felleus: ["boletus_edulis", "boletus_pinophilus"],
+    amanita_virosa: ["cortinarius_caperatus", "albatrellus_ovinus"],
+    cortinarius_rubellus: ["craterellus_tubaeformis", "lactarius_rufus"],
+    galerina_marginata: ["craterellus_tubaeformis"],
+    gyromitra_esculenta: ["craterellus_cornucopioides"],
+    paxillus_involutus: ["lactarius_rufus", "lactarius_torminosus"],
+    amanita_muscaria: ["amanita_virosa"]
+  },
+
   // Species Data (Trilingual Content)
   species: [
     {

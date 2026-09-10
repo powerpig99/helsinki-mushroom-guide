@@ -32,14 +32,17 @@ function setupLanguageSwitcher() {
   const langButtons = document.querySelectorAll(".lang-btn");
   langButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-      const newLang = btn.dataset.lang;
-      if (newLang !== I18N.currentLang) {
-        I18N.currentLang = newLang;
-        localStorage.setItem("helsinki_mushroom_lang", newLang);
-        applyLanguage(newLang);
-      }
+      switchAppLanguage(btn.dataset.lang);
     });
   });
+}
+
+function switchAppLanguage(newLang) {
+  if (newLang !== I18N.currentLang) {
+    I18N.currentLang = newLang;
+    localStorage.setItem("helsinki_mushroom_lang", newLang);
+    applyLanguage(newLang);
+  }
 }
 
 // Apply selected language across the entire application
@@ -159,8 +162,10 @@ function navigateToCatalog() {
 
 function showMushroomDetail(id) {
   currentMushroomId = id;
+  const siteHeader = document.querySelector("header");
   const viewMain = document.getElementById("view-main");
   const viewDetail = document.getElementById("view-mushroom-detail");
+  if (siteHeader) siteHeader.style.display = "none";
   if (viewMain) viewMain.style.display = "none";
   if (viewDetail) {
     viewDetail.style.display = "block";
@@ -171,8 +176,10 @@ function showMushroomDetail(id) {
 
 function showMainCatalog() {
   currentMushroomId = null;
+  const siteHeader = document.querySelector("header");
   const viewMain = document.getElementById("view-main");
   const viewDetail = document.getElementById("view-mushroom-detail");
+  if (siteHeader) siteHeader.style.display = "block";
   if (viewDetail) viewDetail.style.display = "none";
   if (viewMain) viewMain.style.display = "block";
 }
@@ -413,15 +420,64 @@ function renderMushroomDetail(speciesId) {
     </div>
   ` : "";
 
+  // Lookalike species interactive cards with images and links
+  const lookalikeIds = (I18N.lookalikeMap && I18N.lookalikeMap[sp.id]) ? I18N.lookalikeMap[sp.id] : [];
+  const lookalikeSpeciesList = lookalikeIds.map(id => I18N.species.find(s => s.id === id)).filter(Boolean);
+
+  const lookalikesCardsHtml = lookalikeSpeciesList.length > 0 ? `
+    <div class="lookalike-cards-grid">
+      ${lookalikeSpeciesList.map(lk => {
+        const lkName = lk.names[lang] || lk.names.en;
+        let lkBadgeClass = "badge-edible";
+        let lkBadgeText = t.badgeEdible;
+        if (lk.edibility === "choice") { lkBadgeClass = "badge-choice"; lkBadgeText = t.badgeChoice; }
+        else if (lk.edibility === "good") { lkBadgeClass = "badge-good"; lkBadgeText = t.badgeGood; }
+        else if (lk.edibility === "parboil") { lkBadgeClass = "badge-parboil"; lkBadgeText = t.badgeParboil; }
+        else if (lk.edibility === "deadly") { lkBadgeClass = "badge-deadly"; lkBadgeText = t.badgeDeadly; }
+        else if (lk.edibility === "inedible") { lkBadgeClass = "badge-inedible"; lkBadgeText = t.badgeInedible; }
+
+        return `
+          <div class="lookalike-interactive-card" onclick="navigateToMushroom('${lk.id}')" title="${t.viewDetails}: ${lkName.primary}">
+            <div class="lookalike-img-container">
+              <img src="${lk.image}" alt="${lkName.primary}" loading="lazy">
+              <span class="badge ${lkBadgeClass}">${lkBadgeText}</span>
+              <div class="lookalike-img-overlay">
+                <span>🔍 ${lang === 'zh' ? '点击查阅' : (lang === 'fi' ? 'Katso opas' : 'View Guide')}</span>
+              </div>
+            </div>
+            <div class="lookalike-content">
+              <div class="lookalike-tag-header">
+                <span class="lookalike-badge">⚠️ ${lang === 'zh' ? '易混淆物种' : (lang === 'fi' ? 'Näköislaji' : 'Lookalike Species')}</span>
+                <span class="star-rating" style="font-size: 0.9rem;">${lk.rating}</span>
+              </div>
+              <h3 class="lookalike-title">${lkName.primary}</h3>
+              <div class="lookalike-subtitle">${lk.latinName} • <em>${lkName.local}</em></div>
+              <div class="lookalike-morph-snippet">
+                <strong>${t.underCapLabel}</strong> ${lk.morphology[lang]?.underCap || ""}
+              </div>
+              <div class="lookalike-action-link">
+                <span>📖 ${lang === 'zh' ? '点击查看该物种专属指南与多图对比' : (lang === 'fi' ? 'Avaa tämän lajin täysi opas ja kuvat' : 'Read full field guide & photos')} →</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("")}
+    </div>
+  ` : "";
+
   // Render Full Field Guide Detail Layout
   container.innerHTML = `
-    <!-- Sticky Top Navigation Bar -->
+    <!-- Sticky Top Navigation Bar with Compact Language Switcher -->
     <div class="detail-top-bar">
-      <button class="btn-back-catalog" onclick="navigateToCatalog()">
-        ${t.backToCatalog}
-      </button>
-      <div class="detail-nav-species-name">
-        ${nameData.primary} (${sp.latinName})
+      <div class="detail-top-bar-left">
+        <button class="btn-back-catalog" onclick="navigateToCatalog()">
+          ${t.backToCatalog}
+        </button>
+        <div class="lang-switcher detail-lang-switcher" aria-label="Select Language">
+          <button class="lang-btn ${lang === 'en' ? 'active' : ''}" onclick="switchAppLanguage('en')">🇬🇧 EN</button>
+          <button class="lang-btn ${lang === 'zh' ? 'active' : ''}" onclick="switchAppLanguage('zh')">🇨🇳 中文</button>
+          <button class="lang-btn ${lang === 'fi' ? 'active' : ''}" onclick="switchAppLanguage('fi')">🇫🇮 FI</button>
+        </div>
       </div>
       <div class="detail-badge-group">
         <span class="badge ${badgeClass}">${badgeText}</span>
@@ -533,12 +589,13 @@ function renderMushroomDetail(speciesId) {
       </div>
     </div>
 
-    <!-- SECTION 4: Lookalikes & Deadly Pitfalls -->
+    <!-- SECTION 4: Lookalikes & Deadly Pitfalls with Clickable Photos -->
     <div class="detail-section-card" style="border-left: 4px solid var(--warning);">
       <h2 class="detail-section-title" style="color: var(--warning);">${t.lookalikesTitle}</h2>
-      <div class="detail-section-body">
+      <div class="detail-section-body" style="margin-bottom: 0.5rem;">
         <p>${sp.lookalikes ? sp.lookalikes[lang] : (sp.lookalikeAlert ? sp.lookalikeAlert[lang] : "")}</p>
       </div>
+      ${lookalikesCardsHtml}
     </div>
 
     <!-- SECTION 5: Preparation, Cooking, Parboiling & Preservation -->
