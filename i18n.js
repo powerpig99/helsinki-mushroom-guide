@@ -497,11 +497,11 @@ const I18N = {
       }
     },
     lactarius_deliciosus: {
-      url: "https://www.youtube.com/watch?v=0bio5dLIfcc",
+      url: "https://www.youtube.com/watch?v=DtfIopmfpic",
       title: {
-        en: "Pan-Frying Fresh Saffron Milkcaps (No Boiling Required!)",
-        zh: "松乳菇直接下锅黄油香煎做法（无需焯水！）",
-        fi: "Leppärouskun nopea paistaminen ilman ryöppäystä"
+        en: "Traditional Pan-Fried Saffron Milkcaps (No Boiling Required)",
+        zh: "经典大蒜欧芹香煎松乳菇做法（无需焯水，直接下锅）",
+        fi: "Perinteinen leppärouskujen paistaminen pannulla (ilman ryöppäystä)"
       }
     },
     russula_decolorans: {
