@@ -4,13 +4,15 @@
 const I18N = {
   // Current active language (default to 'en')
   currentLang: "en",
+  // Optional secondary comparison language (null or 'en', 'zh', 'fi')
+  secondaryLang: null,
 
   // UI Strings
   ui: {
     en: {
       siteBadge: "🇫🇮 Helsinki & Uusimaa Mycological Companion",
       siteTitle: "Helsinki Wild Mushroom Guide",
-      siteSubtitle: "A definitive, safety-first field guide for foraging wild mushrooms across the hemiboreal spruce, pine, and deciduous forests of the Helsinki Metropolitan Area.",
+      siteSubtitle: "A definitive, safety-first field guide for foraging wild mushrooms across the hemiboreal forests of the Helsinki Metropolitan Area — a live record of living the philosophy. Explore the journey on <a href=\"https://powerpig99.github.io/not-a-toe/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"blog-subtitle-link\">Not a ToE</a>.",
       emergencyTitle: "Poisoning Emergency? Call Finnish Poison Information Centre",
       emergencySubtitle: "Free 24/7 service across Finland: 0800 147 111 • General Emergency: 112",
       callPoison: "📞 Call 0800 147 111",
@@ -44,7 +46,7 @@ const I18N = {
       badgeParboil: "Must Parboil (!)",
       badgeDeadly: "DEADLY TOXIC",
       badgeInedible: "Inedible",
-      backToCatalog: "← Back to Catalog",
+      backToCatalog: "← Back",
       whereWhenTitle: "📍 When & Where to Find (Helsinki & Uusimaa)",
       searchTacticsTitle: "👁️ Search Tactics & Eye Training",
       lookalikesTitle: "⚠️ Lookalikes & Pitfalls to Pay Attention to",
@@ -62,7 +64,7 @@ const I18N = {
     zh: {
       siteBadge: "🇫🇮 芬兰赫尔辛基与乌西玛大区野生真菌野外手册",
       siteTitle: "赫尔辛基野生蘑菇采摘与鉴别指南",
-      siteSubtitle: "专为大赫尔辛基地区针阔混交林生态定制的权威安全野外采摘指南，收录22种常见食用菌与致命毒菇，提供公交路线、防毒鉴别与中西烹饪秘籍。",
+      siteSubtitle: "专为大赫尔辛基地区森林生态定制的权威安全野生真菌采摘指南 —— 践行生活哲学的鲜活实录。阅读更多哲学实录请访问博客：<a href=\"https://powerpig99.github.io/not-a-toe/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"blog-subtitle-link\">Not a ToE</a>。",
       emergencyTitle: "疑似蘑菇中毒？立即致电芬兰中毒信息中心",
       emergencySubtitle: "全芬兰24小时免费求助电话：0800 147 111 • 急救电话：112",
       callPoison: "📞 致电 0800 147 111",
@@ -85,7 +87,7 @@ const I18N = {
       underCapLabel: "菌盖下方:",
       capLabel: "菌盖形态:",
       stemLabel: "菌柄特征:",
-      odorLabel: "气味气味:",
+      odorLabel: "气味特征:",
       skillTag: "难度等级:",
       refId: "物种编号:",
       safeBadge: "安全 / 可食用",
@@ -96,7 +98,7 @@ const I18N = {
       badgeParboil: "必须焯水去毒 (!)",
       badgeDeadly: "致命剧毒 (☠️)",
       badgeInedible: "不可食用/极苦",
-      backToCatalog: "← 返回物种目录",
+      backToCatalog: "← Back",
       whereWhenTitle: "📍 采摘时令与地点（赫尔辛基及近郊）",
       searchTacticsTitle: "👁️ 森林实战寻菇技巧与眼力训练",
       lookalikesTitle: "⚠️ 易混淆近缘种与防毒鉴别核心",
@@ -114,24 +116,24 @@ const I18N = {
     fi: {
       siteBadge: "🇫🇮 Helsingin ja Uudenmaan sienestäjän maasto-opas",
       siteTitle: "Helsingin Paikallinen Sieniopas",
-      siteSubtitle: "Kattava, turvallisuuslähtöinen opas villisienestämiseen pääkaupunkiseudun ja Uudenmaan havumetsissä, lehtometsissä ja kankailla.",
+      siteSubtitle: "Kattava ja turvallisuuslähtöinen opas villisienestykseen pääkaupunkiseudun metsissä — elävää filosofiaa käytännön tekoina. Tutustu matkaan blogissa <a href=\"https://powerpig99.github.io/not-a-toe/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"blog-subtitle-link\">Not a ToE</a>.",
       emergencyTitle: "Epäiletkö sienimyrkytystä? Soita Myrkytystietokeskukseen",
       emergencySubtitle: "Maksuton 24/7-neuvonta koko maassa: 0800 147 111 • Yleinen hätänumero: 112",
       callPoison: "📞 Soita 0800 147 111",
       call112: "🚨 Soita 112",
-      tabCatalog: "🍄 Lajitunnistus (22 lajia)",
-      tabLookalikes: "⚖️ Näköislajivertailu",
-      tabCooking: "🍳 Käsittely & Reseptit",
-      tabSpots: "🚌 HSL-sienipaikat",
-      tabSafety: "🛡️ Turvallisuus & Jokamiehenoikeus",
-      searchPlaceholder: "Etsi suomeksi (esim. kantarelli), tieteellisellä nimellä, piirteillä...",
+      tabCatalog: "🍄 Lajiluettelo ja tunnistus (22)",
+      tabLookalikes: "⚖️ Näköislajien vertailu",
+      tabCooking: "🍳 Käsittely ja perinteiset reseptit",
+      tabSpots: "🚌 HSL-bussilla ja junalla sieneen",
+      tabSafety: "🛡️ Turvaohjeet ja jokaisenoikeudet",
+      searchPlaceholder: "Hae suomalaisella tai tieteellisellä nimellä, piirteillä (esim. heltat, pillit)...",
       skillLevelLabel: "Taitotaso:",
-      monthFilterLabel: "Satosenssi (kk):",
+      monthFilterLabel: "Satokuukausi:",
       allLevels: "Kaikki lajit",
-      beginnerLevel: "Helpot ruokasienet",
-      intermediateLevel: "Keskitaso",
-      advancedLevel: "Vaativat / Ryöpättävät",
-      deadlyLevel: "Tappavan myrkylliset",
+      beginnerLevel: "Aloittelijalle varma",
+      intermediateLevel: "Kokeneemmalle",
+      advancedLevel: "Vaatii esikäsittelyn",
+      deadlyLevel: "Tappavan myrkyllinen",
       noResultsTitle: "Yhtään sientä ei löytynyt",
       noResultsDesc: "Kokeile tyhjentää hakukenttä tai vaihtaa kuukautta tai taitotasoa.",
       underCapLabel: "Lakin alapinta:",
@@ -148,7 +150,7 @@ const I18N = {
       badgeParboil: "Ryöpättävä (!)",
       badgeDeadly: "TAPPAVAN MYRKYLLINEN",
       badgeInedible: "Kelvoton / Karvas",
-      backToCatalog: "← Takaisin lajiluetteloon",
+      backToCatalog: "← Back",
       whereWhenTitle: "📍 Milloin ja mistä löytää pääkaupunkiseudulla",
       searchTacticsTitle: "👁️ Etsintävinkit ja maastotaktiikka",
       lookalikesTitle: "⚠️ Näköislajit ja vaaranpaikat",
@@ -1765,5 +1767,111 @@ const I18N = {
         fi: "Nopea retkikohde metron varrella; männiköistä löytyy komeita männynherkkutatteja."
       }
     }
-  ]
+  ],
+
+  // Safety Guidelines and Forest Regulations
+  safetyGuidelines: {
+    everymansRight: {
+      title: {
+        en: "⚖️ Everyman’s Right (Jokamiehenoikeus)",
+        zh: "⚖️ 芬兰自然公共权 (Jokamiehenoikeus)",
+        fi: "⚖️ Jokamiehenoikeus Suomessa"
+      },
+      desc: {
+        en: "In Finland, you have the statutory legal right to forage wild mushrooms and berries on public and private land without permits or fees.",
+        zh: "法律赋予所有人（包括外国游客与居留人员）在芬兰公有和私有森林免费采摘野果与野生蘑菇的权利。",
+        fi: "Jokamiehenoikeudella saa vapaasti poimia luonnonmarjoja, sieniä ja kukkia toisenkin maalla."
+      },
+      rules: [
+        {
+          en: "Respect Private Yards: Stay at least 50–100m away from private homes, gardens, and summer cottages.",
+          zh: "尊重私人庭院：严禁进入他人住宅、庭院或度假木屋（Mökki）周边至少50-100米范围内。",
+          fi: "Pihapiirirauha: Älä mene liian lähelle asuttuja taloja tai mökkejä (n. 50–100 m)."
+        },
+        {
+          en: "Do Not Harm Living Trees: Never break branches or peel birch bark (tuohi).",
+          zh: "爱护活树：严禁砍折活树树枝、剥取白桦树皮（Tuohi）或取桦树汁。",
+          fi: "Älä vahingoita puita: Elävien puiden kaataminen, oksien taittaminen tai tuohen kiskominen on kiellettyä."
+        },
+        {
+          en: "No Moss/Lichen Gathering: Taking moss without landowner consent is strictly prohibited.",
+          zh: "禁采苔藓地衣：未经地主允许擅自铲取苔藓或地衣属于违法行为。",
+          fi: "Sammalenotto kielletty: Sammalta tai jäkälää ei saa kerätä ilman maanomistajan lupaa."
+        },
+        {
+          en: "Open Fires: Strictly banned on bare ground; use only official maintained campfire sites.",
+          zh: "严禁随意野火：仅可在国家公园规划的指定营火点生火，森林火险预警期严禁任何明火。",
+          fi: "Tulenteko: Avotulen teko maastoon ilman lupaa on kielletty lukuun ottamatta virallisia tulentekopaikkoja."
+        }
+      ]
+    },
+    foolproofFive: {
+      title: {
+        en: "🛡️ The \"Foolproof Five\" Rules",
+        zh: "🛡️ 新手“五大安全金菇”法则",
+        fi: "🛡️ Aloittelijan Varmat Viisi"
+      },
+      desc: {
+        en: "Beginners in Finnish forests should strictly restrict their harvest to these 5 unmistakable species:",
+        zh: "新手在芬兰森林请严格只采以下5种绝无剧毒混淆的特征菇：",
+        fi: "Aloittelijan kannattaa keskittyä näihin viiteen helposti tunnistettavaan ruokasienilajiin:"
+      },
+      species: [
+        {
+          en: "Chanterelle: Blunt ridges, apricot aroma, solid stem.",
+          zh: "黄鸡油菌：粗钝分叉假菌褶，杏子果香，实心黄柄。",
+          fi: "Kantarelli: Haaraiset poimut, aprikoosituoksu, umpinainen keltainen jalka."
+        },
+        {
+          en: "Funnel Chanterelle: Perforated trumpet, hollow yellow stem.",
+          zh: "漏斗鸡油菌：顶端穿孔如漏斗，鲜黄空心管状菌柄。",
+          fi: "Suppilovahvero: Suppilomainen reikä keskellä, kirkkaankeltainen ontto pilli."
+        },
+        {
+          en: "Hedgehog Mushroom: Soft spines underneath, zero toxic lookalikes.",
+          zh: "卷缘齿菌：菌盖下方密布柔软白色小菌刺，芬兰本土无任何带刺毒菇。",
+          fi: "Vaaleaorakas: Lakin alla hauraat piikit, ei myrkyllisiä näköislajeja."
+        },
+        {
+          en: "Black Trumpet: Thin black hollow horn, no gills or pores.",
+          zh: "灰包号角菇：薄而柔韧的炭黑喇叭号角，无褶无刺。",
+          fi: "Mustatorvisieni: Ohutmaltoinen musta torvi, alapinta lähes sileä."
+        },
+        {
+          en: "King Bolete (Porcini): Spongy pores, fine white net on stem.",
+          zh: "美味牛肝菌：海绵状吸水管孔，上半柄有精致立体白色细网纹。",
+          fi: "Herkkutatti: Valkoinen pillistö joka kellertyy, valkoinen verkkokuvio jalassa."
+        }
+      ]
+    },
+    forestSafety: {
+      title: {
+        en: "🌲 Forest Safety: Ticks & Navigation",
+        zh: "🌲 森林防虫与自救指南",
+        fi: "🌲 Metsän Turvallisuus"
+      },
+      items: [
+        {
+          en: "Ticks (Punkit): Wear high boots, tuck trousers into socks, and do a nightly body inspection.",
+          zh: "蜱虫 (Punkit)：穿浅色长裤扎进长袜中，配高筒胶靴。回家必做全身体检，拔虫用镊子垂直拔出。",
+          fi: "Punkit: Kumisaappaat, housunlahkeet sukkien sisään, päivittäinen punkkitarkastus."
+        },
+        {
+          en: "Deer Keds (Hirvikärpäset): Active late August to October. Wear smooth nylon jackets and a tight cap.",
+          zh: "鹿蝇 (Hirvikärpäset)：8月下旬至10月活跃。落入发丝即脱翅爬行，戴紧致帽子与光滑冲锋衣，备细齿梳子。",
+          fi: "Hirvikärpäset: Liukaspintaiset vaatteet, hattu, tiheä kampa taskuun."
+        },
+        {
+          en: "112 Suomi App: Install the free official app; it beams satellite GPS coordinates if you dial 112.",
+          zh: "112 Suomi App：手机务必提前下载官方112软件，一旦遇险报警会自动传输卫星经纬度。",
+          fi: "112 Suomi -sovellus: Asenna puhelimeen; välittää sijaintikoordinaatit automaattisesti hätäkeskukseen."
+        },
+        {
+          en: "Power Bank: Cold autumn air depletes smartphone batteries fast; always carry a portable battery pack.",
+          zh: "移动电源：深秋低温会使手机电池迅速掉电，务必携带充电宝以防迷路。",
+          fi: "Varavirtalähde: Syksyn viileys tyhjentää akun nopeasti; pidä mukana powerbank."
+        }
+      ]
+    }
+  }
 };

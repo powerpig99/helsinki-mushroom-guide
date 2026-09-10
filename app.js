@@ -17,6 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (savedLang && ["en", "zh", "fi"].includes(savedLang)) {
     I18N.currentLang = savedLang;
   }
+  const savedLang2 = localStorage.getItem("helsinki_mushroom_lang2");
+  if (savedLang2 && ["en", "zh", "fi"].includes(savedLang2) && savedLang2 !== I18N.currentLang) {
+    I18N.secondaryLang = savedLang2;
+  } else {
+    I18N.secondaryLang = null;
+  }
 
   setupLanguageSwitcher();
   setupTabs();
@@ -27,37 +33,104 @@ document.addEventListener("DOMContentLoaded", () => {
   handleRoute();
 });
 
-// Setup Language Switcher
+// Setup Language Switcher (Primary L1 & Secondary L2)
 function setupLanguageSwitcher() {
-  const langButtons = document.querySelectorAll(".lang-btn");
-  langButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
+  document.querySelectorAll(".primary-lang-row .lang-btn, [data-lang]").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
       switchAppLanguage(btn.dataset.lang);
+    });
+  });
+
+  document.querySelectorAll(".secondary-lang-row .lang-btn, [data-lang2]").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleSecondaryLanguage(btn.dataset.lang2);
     });
   });
 }
 
 function switchAppLanguage(newLang) {
-  if (newLang !== I18N.currentLang) {
+  if (newLang && ["en", "zh", "fi"].includes(newLang)) {
     I18N.currentLang = newLang;
     localStorage.setItem("helsinki_mushroom_lang", newLang);
-    applyLanguage(newLang);
+    // If the secondary language matches the new primary, disable secondary
+    if (I18N.secondaryLang === newLang) {
+      I18N.secondaryLang = null;
+      localStorage.removeItem("helsinki_mushroom_lang2");
+    }
+    applyLanguage(I18N.currentLang);
   }
+}
+
+function toggleSecondaryLanguage(candidateLang) {
+  if (!candidateLang) return;
+  if (candidateLang === I18N.currentLang) return;
+  if (I18N.secondaryLang === candidateLang) {
+    // Unclick / toggle off!
+    I18N.secondaryLang = null;
+    localStorage.removeItem("helsinki_mushroom_lang2");
+  } else {
+    // Enable second comparison language
+    I18N.secondaryLang = candidateLang;
+    localStorage.setItem("helsinki_mushroom_lang2", candidateLang);
+  }
+  applyLanguage(I18N.currentLang);
+}
+
+// Render Bilingual Text Block Helper
+function renderBilingualText(obj, lang1, lang2, customTag1, customTag2) {
+  if (!obj) return "";
+  const text1 = typeof obj === "string" ? obj : (obj[lang1] || obj.en || "");
+  if (!lang2 || lang1 === lang2) {
+    return `<p class="bilingual-text">${text1}</p>`;
+  }
+  const text2 = typeof obj === "string" ? obj : (obj[lang2] || obj.en || "");
+  const flag1 = lang1 === "en" ? "🇬🇧" : (lang1 === "zh" ? "🇨🇳" : "🇫🇮");
+  const flag2 = lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮");
+  const tag1 = customTag1 || `${flag1} ${lang1.toUpperCase()}`;
+  const tag2 = customTag2 || `${flag2} ${lang2.toUpperCase()}`;
+
+  return `
+    <div class="bilingual-container">
+      <div class="bilingual-box primary-box">
+        <div class="bilingual-header">${tag1}</div>
+        <p class="bilingual-text">${text1}</p>
+      </div>
+      <div class="bilingual-box secondary-box">
+        <div class="bilingual-header">${tag2}</div>
+        <p class="bilingual-text">${text2}</p>
+      </div>
+    </div>
+  `;
 }
 
 // Apply selected language across the entire application
 function applyLanguage(lang) {
   const t = I18N.ui[lang];
+  const lang2 = I18N.secondaryLang;
 
-  // Update active state of language buttons
-  document.querySelectorAll(".lang-btn").forEach(btn => {
-    btn.classList.toggle("active", btn.dataset.lang === lang);
+  // Update active state of primary language buttons
+  document.querySelectorAll(".primary-lang-row .lang-btn, [data-lang]").forEach(btn => {
+    if (btn.dataset.lang) {
+      btn.classList.toggle("active", btn.dataset.lang === lang);
+    }
+  });
+
+  // Update active state and disabled state of secondary language buttons
+  document.querySelectorAll(".secondary-lang-row .lang-btn, [data-lang2]").forEach(btn => {
+    if (btn.dataset.lang2) {
+      const isSelected = btn.dataset.lang2 === lang2;
+      const isSameAsPrimary = btn.dataset.lang2 === lang;
+      btn.classList.toggle("active-secondary", isSelected);
+      btn.classList.toggle("disabled-lang", isSameAsPrimary);
+    }
   });
 
   // Header & Static Text
   document.getElementById("site-badge").textContent = t.siteBadge;
   document.getElementById("site-title").textContent = t.siteTitle;
-  document.getElementById("site-subtitle").textContent = t.siteSubtitle;
+  document.getElementById("site-subtitle").innerHTML = t.siteSubtitle;
   document.getElementById("emergency-title").textContent = t.emergencyTitle;
   document.getElementById("emergency-subtitle").innerHTML = t.emergencySubtitle;
   document.getElementById("btn-call-poison").textContent = t.callPoison;
@@ -277,6 +350,8 @@ function renderCatalog() {
   }
 
   const monthNames = I18N.months[lang];
+  const lang2 = I18N.secondaryLang;
+  const flag2 = lang2 ? (lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮")) : "";
 
   container.innerHTML = filtered.map(m => {
     let badgeClass = "badge-edible";
@@ -293,7 +368,9 @@ function renderCatalog() {
     }).join("");
 
     const nameData = m.names[lang];
+    const nameData2 = (lang2 && lang2 !== lang) ? m.names[lang2] : null;
     const morph = m.morphology[lang];
+    const morph2 = (lang2 && lang2 !== lang) ? m.morphology[lang2] : null;
     const photoCount = (m.gallery && m.gallery.length) ? m.gallery.length : 4;
 
     return `
@@ -310,13 +387,19 @@ function renderCatalog() {
         </div>
         <div class="card-body">
           <div class="card-title-area">
-            <h3 class="card-finnish-name">${nameData.primary}</h3>
+            <h3 class="card-finnish-name">
+              ${nameData.primary}
+              ${nameData2 ? `<span class="card-secondary-title">${flag2} ${nameData2.primary}</span>` : ""}
+            </h3>
             <div class="card-latin-name">${m.latinName}</div>
-            <div class="card-english-name">${nameData.local} • <em>${nameData.alt}</em></div>
+            <div class="card-english-name">
+              ${nameData.local} • <em>${nameData.alt}</em>
+              ${nameData2 ? ` <span style="color:#0284c7; font-size:0.8rem;">| ${flag2} ${nameData2.local}</span>` : ""}
+            </div>
           </div>
 
           <div class="meta-row">
-            <span class="meta-tag" style="background:#e0f2fe; color:#0369a1;">📍 ${m.habitatName[lang]}</span>
+            <span class="meta-tag" style="background:#e0f2fe; color:#0369a1;">📍 ${m.habitatName[lang]}${nameData2 ? ` / ${m.habitatName[lang2]}` : ""}</span>
             <div style="display:flex; gap:0.25rem;">${monthTags}</div>
           </div>
 
@@ -324,23 +407,27 @@ function renderCatalog() {
             <div class="morphology-item">
               <span class="morphology-label">${t.underCapLabel}</span>
               <span><strong>${morph.underCap}</strong></span>
+              ${morph2 ? `<div class="card-morph-secondary">${flag2} ${morph2.underCap}</div>` : ""}
             </div>
             <div class="morphology-item">
               <span class="morphology-label">${t.capLabel}</span>
               <span>${morph.cap}</span>
+              ${morph2 ? `<div class="card-morph-secondary">${flag2} ${morph2.cap}</div>` : ""}
             </div>
             <div class="morphology-item">
               <span class="morphology-label">${t.stemLabel}</span>
               <span>${morph.stem || ""}</span>
+              ${morph2 && morph2.stem ? `<div class="card-morph-secondary">${flag2} ${morph2.stem}</div>` : ""}
             </div>
             <div class="morphology-item">
               <span class="morphology-label">${t.odorLabel}</span>
               <span>${morph.odor || ""}</span>
+              ${morph2 && morph2.odor ? `<div class="card-morph-secondary">${flag2} ${morph2.odor}</div>` : ""}
             </div>
           </div>
 
-          ${m.warning && m.warning[lang] ? `<div class="card-alert">⚠️ ${m.warning[lang]}</div>` : ""}
-          ${m.culinaryTip && m.culinaryTip[lang] ? `<div class="card-tip">🍳 ${m.culinaryTip[lang]}</div>` : ""}
+          ${m.warning && m.warning[lang] ? `<div class="card-alert">⚠️ ${m.warning[lang]}${nameData2 && m.warning[lang2] ? `<br><small style="color:#991b1b; padding-top:2px; display:inline-block;">${flag2} ${m.warning[lang2]}</small>` : ""}</div>` : ""}
+          ${m.culinaryTip && m.culinaryTip[lang] ? `<div class="card-tip">🍳 ${m.culinaryTip[lang]}${nameData2 && m.culinaryTip[lang2] ? `<br><small style="color:#166534; padding-top:2px; display:inline-block;">${flag2} ${m.culinaryTip[lang2]}</small>` : ""}</div>` : ""}
           ${m.lookalikeAlert && m.lookalikeAlert[lang] ? `<div style="background:#fef3c7; color:#92400e; padding:0.5rem; border-radius:6px; font-size:0.8rem; margin-bottom:0.75rem;">🔍 ${m.lookalikeAlert[lang]}</div>` : ""}
 
           <div class="card-footer">
@@ -369,9 +456,14 @@ function renderMushroomDetail(speciesId) {
   }
 
   const lang = I18N.currentLang;
+  const lang2 = I18N.secondaryLang;
   const t = I18N.ui[lang];
   const nameData = sp.names[lang] || sp.names.en;
+  const nameData2 = (lang2 && lang2 !== lang) ? (sp.names[lang2] || sp.names.en) : null;
   const morph = sp.morphology[lang] || sp.morphology.en;
+  const morph2 = (lang2 && lang2 !== lang) ? (sp.morphology[lang2] || sp.morphology.en) : null;
+  const flag1 = lang === "en" ? "🇬🇧" : (lang === "zh" ? "🇨🇳" : "🇫🇮");
+  const flag2 = lang2 ? (lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮")) : "";
   const monthNames = I18N.months[lang];
 
   // Edibility Badge determination
@@ -413,10 +505,11 @@ function renderMushroomDetail(speciesId) {
     <div class="detail-danger-card">
       <div class="detail-danger-title">
         <span>🚨 ${isDeadly ? (lang === 'zh' ? '【致命剧毒！严禁采食】' : (lang === 'fi' ? 'TAPPAVAN MYRKYLLINEN' : 'DEADLY TOXIC SPECIMEN')) : (lang === 'zh' ? '【不可食用 / 极苦或有毒】' : (lang === 'fi' ? 'EI SYÖTÄVÄ / MYRKYLLINEN' : 'INEDIBLE / TOXIC'))}</span>
+        ${nameData2 ? `<span style="font-size:0.85rem; font-weight:700; color:#b91c1c; margin-left:0.5rem;">(${isDeadly ? (lang2 === 'zh' ? '【致命剧毒】' : (lang2 === 'fi' ? 'TAPPAVAN MYRKYLLINEN' : 'DEADLY TOXIC')) : (lang2 === 'zh' ? '【不可食用】' : (lang2 === 'fi' ? 'EI SYÖTÄVÄ' : 'INEDIBLE'))})</span>` : ""}
       </div>
-      <p style="color: #7f1d1d; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
-        ${sp.warning && sp.warning[lang] ? sp.warning[lang] : (lang === 'zh' ? '严禁食用任何部位。若怀疑误食，请立即就医并拨打芬兰中毒中心。' : (lang === 'fi' ? 'Älä koskaan kerää syötäväksi. Epäilyssä soita heti Myrkytystietokeskukseen.' : 'Never ingest any part of this mushroom. If suspected poisoning occurs, contact medical services immediately.'))}
-      </p>
+      <div style="margin-bottom: 1rem;">
+        ${renderBilingualText(sp.warning, lang, lang2)}
+      </div>
       <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
         <a href="tel:0800147111" class="emergency-btn" style="background:#dc2626; color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; font-weight:700; padding:0.6rem 1.2rem; border-radius:8px;">📞 芬兰中毒中心 / Poison Center: 0800 147 111</a>
         <a href="tel:112" class="emergency-btn" style="background:#7f1d1d; color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; font-weight:700; padding:0.6rem 1.2rem; border-radius:8px;">🚨 紧急急救 / Emergency: 112</a>
@@ -432,6 +525,7 @@ function renderMushroomDetail(speciesId) {
     <div class="lookalike-cards-grid">
       ${lookalikeSpeciesList.map(lk => {
         const lkName = lk.names[lang] || lk.names.en;
+        const lkName2 = (lang2 && lang2 !== lang) ? (lk.names[lang2] || lk.names.en) : null;
         let lkBadgeClass = "badge-edible";
         let lkBadgeText = t.badgeEdible;
         if (lk.edibility === "choice") { lkBadgeClass = "badge-choice"; lkBadgeText = t.badgeChoice; }
@@ -454,10 +548,14 @@ function renderMushroomDetail(speciesId) {
                 <span class="lookalike-badge">⚠️ ${lang === 'zh' ? '易混淆物种' : (lang === 'fi' ? 'Näköislaji' : 'Lookalike Species')}</span>
                 <span class="star-rating" style="font-size: 0.9rem;">${lk.rating}</span>
               </div>
-              <h3 class="lookalike-title">${lkName.primary}</h3>
+              <h3 class="lookalike-title">
+                ${lkName.primary}
+                ${lkName2 ? `<span class="lookalike-sub-title">(${flag2} ${lkName2.primary})</span>` : ""}
+              </h3>
               <div class="lookalike-subtitle">${lk.latinName} • <em>${lkName.local}</em></div>
               <div class="lookalike-morph-snippet">
                 <strong>${t.underCapLabel}</strong> ${lk.morphology[lang]?.underCap || ""}
+                ${(lk.morphology[lang2]?.underCap) ? `<div style="color:#0369a1; font-size:0.8rem; margin-top:2px;">${flag2} ${lk.morphology[lang2].underCap}</div>` : ""}
               </div>
               <div class="lookalike-action-link">
                 <span>📖 ${lang === 'zh' ? '点击查看该物种专属指南与多图对比' : (lang === 'fi' ? 'Avaa tämän lajin täysi opas ja kuvat' : 'Read full field guide & photos')} →</span>
@@ -471,16 +569,25 @@ function renderMushroomDetail(speciesId) {
 
   // Render Full Field Guide Detail Layout
   container.innerHTML = `
-    <!-- Sticky Top Navigation Bar with Compact Language Switcher -->
+    <!-- Sticky Top Navigation Bar with Flags Only & Optional Second Language -->
     <div class="detail-top-bar">
       <div class="detail-top-bar-left">
         <button class="btn-back-catalog" onclick="navigateToCatalog()">
-          ${t.backToCatalog}
+          ← Back
         </button>
-        <div class="lang-switcher detail-lang-switcher" aria-label="Select Language">
-          <button class="lang-btn ${lang === 'en' ? 'active' : ''}" onclick="switchAppLanguage('en')">🇬🇧 EN</button>
-          <button class="lang-btn ${lang === 'zh' ? 'active' : ''}" onclick="switchAppLanguage('zh')">🇨🇳 中文</button>
-          <button class="lang-btn ${lang === 'fi' ? 'active' : ''}" onclick="switchAppLanguage('fi')">🇫🇮 FI</button>
+        <div class="lang-switcher-wrapper detail-lang-wrapper" aria-label="Select Language">
+          <div class="lang-row primary-lang-row">
+            <span class="lang-row-label">L1</span>
+            <button class="lang-btn ${lang === 'en' ? 'active' : ''}" onclick="switchAppLanguage('en')" title="English">🇬🇧</button>
+            <button class="lang-btn ${lang === 'zh' ? 'active' : ''}" onclick="switchAppLanguage('zh')" title="中文">🇨🇳</button>
+            <button class="lang-btn ${lang === 'fi' ? 'active' : ''}" onclick="switchAppLanguage('fi')" title="Suomi">🇫🇮</button>
+          </div>
+          <div class="lang-row secondary-lang-row">
+            <span class="lang-row-label">+L2</span>
+            <button class="lang-btn secondary-btn ${lang2 === 'en' ? 'active-secondary' : ''} ${lang === 'en' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('en')" title="Compare English (Click to toggle)">🇬🇧</button>
+            <button class="lang-btn secondary-btn ${lang2 === 'zh' ? 'active-secondary' : ''} ${lang === 'zh' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('zh')" title="与中文对照 (点击开启/取消)">🇨🇳</button>
+            <button class="lang-btn secondary-btn ${lang2 === 'fi' ? 'active-secondary' : ''} ${lang === 'fi' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('fi')" title="Vertaa suomeksi (Klikkaa päälle/pois)">🇫🇮</button>
+          </div>
         </div>
       </div>
       <div class="detail-badge-group">
@@ -531,9 +638,15 @@ function renderMushroomDetail(speciesId) {
     <div class="detail-header-card">
       <div class="detail-title-row">
         <div>
-          <h1 class="detail-species-primary-name">${nameData.primary}</h1>
+          <h1 class="detail-species-primary-name">
+            ${nameData.primary}
+            ${nameData2 ? `<span class="detail-species-secondary-name">${flag2} ${nameData2.primary}</span>` : ""}
+          </h1>
           <div class="detail-species-latin-name">${sp.latinName}</div>
-          <div class="detail-species-alt-names">${nameData.local} • <em>${nameData.alt}</em></div>
+          <div class="detail-species-alt-names">
+            ${nameData.local} • <em>${nameData.alt}</em>
+            ${nameData2 ? ` <span style="color:#0284c7; font-weight:600;">| ${flag2} ${nameData2.local}</span>` : ""}
+          </div>
         </div>
         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.35rem;">
           <div class="star-rating" style="font-size:1.4rem;">${sp.rating}</div>
@@ -542,7 +655,11 @@ function renderMushroomDetail(speciesId) {
       </div>
 
       <div class="detail-meta-bar">
-        <div><strong>📍 ${lang === 'zh' ? '生境类型' : (lang === 'fi' ? 'Elinympäristö' : 'Habitat')}:</strong> ${sp.habitatName[lang]}</div>
+        <div>
+          <strong>📍 ${lang === 'zh' ? '生境类型' : (lang === 'fi' ? 'Elinympäristö' : 'Habitat')}:</strong> 
+          ${sp.habitatName[lang]}
+          ${nameData2 ? ` / <span style="color:#0284c7;">${sp.habitatName[lang2]}</span>` : ""}
+        </div>
         <div style="display:flex; align-items:center; gap:0.35rem;">
           <strong>📅 ${lang === 'zh' ? '出菇月份' : (lang === 'fi' ? 'Satosenssi' : 'Fruiting Season')}:</strong>
           <div style="display:flex; gap:0.25rem;">${monthTags}</div>
@@ -558,7 +675,7 @@ function renderMushroomDetail(speciesId) {
     <div class="detail-section-card">
       <h2 class="detail-section-title">${t.whereWhenTitle}</h2>
       <div class="detail-section-body">
-        <p>${sp.whereWhen ? sp.whereWhen[lang] : sp.habitatName[lang]}</p>
+        ${renderBilingualText(sp.whereWhen, lang, lang2)}
       </div>
     </div>
 
@@ -566,7 +683,7 @@ function renderMushroomDetail(speciesId) {
     <div class="detail-section-card">
       <h2 class="detail-section-title">${t.searchTacticsTitle}</h2>
       <div class="detail-section-body">
-        <p>${sp.searchTactics ? sp.searchTactics[lang] : (sp.morphology[lang]?.odor || "")}</p>
+        ${renderBilingualText(sp.searchTactics, lang, lang2)}
       </div>
     </div>
 
@@ -576,19 +693,31 @@ function renderMushroomDetail(speciesId) {
       <div class="diagnostic-anatomy-grid">
         <div class="diagnostic-anatomy-item">
           <div class="diagnostic-anatomy-label">${t.underCapLabel}</div>
-          <div class="diagnostic-anatomy-value"><strong>${morph.underCap}</strong></div>
+          <div class="diagnostic-anatomy-value">
+            <div>${nameData2 ? `<span class="lang-flag-badge">${flag1}</span> ` : ""}<strong>${morph.underCap}</strong></div>
+            ${morph2 ? `<div class="secondary-trait-text"><span class="lang-flag-badge">${flag2}</span> ${morph2.underCap}</div>` : ""}
+          </div>
         </div>
         <div class="diagnostic-anatomy-item">
           <div class="diagnostic-anatomy-label">${t.capLabel}</div>
-          <div class="diagnostic-anatomy-value">${morph.cap}</div>
+          <div class="diagnostic-anatomy-value">
+            <div>${nameData2 ? `<span class="lang-flag-badge">${flag1}</span> ` : ""}${morph.cap}</div>
+            ${morph2 ? `<div class="secondary-trait-text"><span class="lang-flag-badge">${flag2}</span> ${morph2.cap}</div>` : ""}
+          </div>
         </div>
         <div class="diagnostic-anatomy-item">
           <div class="diagnostic-anatomy-label">${t.stemLabel}</div>
-          <div class="diagnostic-anatomy-value">${morph.stem || "—"}</div>
+          <div class="diagnostic-anatomy-value">
+            <div>${nameData2 ? `<span class="lang-flag-badge">${flag1}</span> ` : ""}${morph.stem || "—"}</div>
+            ${morph2 && morph2.stem ? `<div class="secondary-trait-text"><span class="lang-flag-badge">${flag2}</span> ${morph2.stem}</div>` : ""}
+          </div>
         </div>
         <div class="diagnostic-anatomy-item">
           <div class="diagnostic-anatomy-label">${t.odorLabel}</div>
-          <div class="diagnostic-anatomy-value">${morph.odor || "—"}</div>
+          <div class="diagnostic-anatomy-value">
+            <div>${nameData2 ? `<span class="lang-flag-badge">${flag1}</span> ` : ""}${morph.odor || "—"}</div>
+            ${morph2 && morph2.odor ? `<div class="secondary-trait-text"><span class="lang-flag-badge">${flag2}</span> ${morph2.odor}</div>` : ""}
+          </div>
         </div>
       </div>
     </div>
@@ -596,8 +725,8 @@ function renderMushroomDetail(speciesId) {
     <!-- SECTION 4: Lookalikes & Deadly Pitfalls with Clickable Photos -->
     <div class="detail-section-card" style="border-left: 4px solid var(--warning);">
       <h2 class="detail-section-title" style="color: var(--warning);">${t.lookalikesTitle}</h2>
-      <div class="detail-section-body" style="margin-bottom: 0.5rem;">
-        <p>${sp.lookalikes ? sp.lookalikes[lang] : (sp.lookalikeAlert ? sp.lookalikeAlert[lang] : "")}</p>
+      <div class="detail-section-body" style="margin-bottom: 0.75rem;">
+        ${renderBilingualText(sp.lookalikes, lang, lang2)}
       </div>
       ${lookalikesCardsHtml}
     </div>
@@ -606,7 +735,7 @@ function renderMushroomDetail(speciesId) {
     <div class="detail-section-card" style="border-left: 4px solid var(--success);">
       <h2 class="detail-section-title" style="color: var(--success);">${t.cookingTitle}</h2>
       <div class="detail-section-body">
-        <p>${sp.cookingGuide ? sp.cookingGuide[lang] : (sp.culinaryTip ? sp.culinaryTip[lang] : "")}</p>
+        ${renderBilingualText(sp.cookingGuide, lang, lang2)}
       </div>
     </div>
 
@@ -617,7 +746,7 @@ function renderMushroomDetail(speciesId) {
       </button>
 
       <button class="btn-back-catalog" onclick="navigateToCatalog()">
-        ${t.backToCatalog}
+        ← Back
       </button>
 
       <button class="detail-pager-btn" onclick="navigateToMushroom('${nextSpecies.id}')">
@@ -825,7 +954,9 @@ function renderLookalikes() {
   if (!container) return;
 
   const lang = I18N.currentLang;
+  const lang2 = I18N.secondaryLang;
   const t = I18N.ui[lang];
+  const flag2 = lang2 ? (lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮")) : "";
 
   const pairs = [
     {
@@ -936,29 +1067,50 @@ function renderLookalikes() {
     <div class="comparator-card">
       <div class="comparator-header">
         <div>
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e293b;">${pair.title[lang]}</h3>
-          <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.2rem;">${pair.summary[lang]}</p>
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e293b;">
+            ${pair.title[lang]}
+            ${lang2 ? `<span style="font-size: 1rem; color:#0284c7; display:block; margin-top:0.25rem;">${flag2} ${pair.title[lang2]}</span>` : ""}
+          </h3>
+          <div style="margin-top: 0.35rem;">
+            ${renderBilingualText(pair.summary, lang, lang2)}
+          </div>
         </div>
       </div>
       <div class="comparator-pair-grid">
         <div class="comparator-item edible">
           <span class="badge badge-choice">${t.safeBadge}</span>
-          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #14532d; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')">${pair.edible.name[lang]} 📖</h4>
+          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #14532d; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')">
+            ${pair.edible.name[lang]} 📖
+            ${lang2 ? `<span style="font-size:0.85rem; color:#0284c7; display:block; font-weight:600;">${flag2} ${pair.edible.name[lang2]}</span>` : ""}
+          </h4>
           <div style="height: 180px; border-radius: 8px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')" title="${t.viewDetails}">
             <img src="${pair.edible.image}" alt="Edible" style="width:100%; height:100%; object-fit: cover;">
           </div>
           <ul class="diff-checklist">
-            ${pair.edible.traits[lang].map(tr => `<li style="color: #166534;">✅ ${tr}</li>`).join("")}
+            ${pair.edible.traits[lang].map((tr, idx) => `
+              <li style="color: #166534;">
+                ✅ ${tr}
+                ${lang2 && pair.edible.traits[lang2]?.[idx] ? `<div style="color:#0369a1; font-size:0.82rem; padding-left:1.3rem; margin-top:2px;">${flag2} ${pair.edible.traits[lang2][idx]}</div>` : ""}
+              </li>
+            `).join("")}
           </ul>
         </div>
         <div class="comparator-item toxic">
           <span class="badge badge-deadly">${t.dangerBadge}</span>
-          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #7f1d1d; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')">${pair.toxic.name[lang]} 📖</h4>
+          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #7f1d1d; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')">
+            ${pair.toxic.name[lang]} 📖
+            ${lang2 ? `<span style="font-size:0.85rem; color:#0284c7; display:block; font-weight:600;">${flag2} ${pair.toxic.name[lang2]}</span>` : ""}
+          </h4>
           <div style="height: 180px; border-radius: 8px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')" title="${t.viewDetails}">
             <img src="${pair.toxic.image}" alt="Toxic" style="width:100%; height:100%; object-fit: cover;">
           </div>
           <ul class="diff-checklist">
-            ${pair.toxic.traits[lang].map(tr => `<li style="color: #991b1b;">⚠️ ${tr}</li>`).join("")}
+            ${pair.toxic.traits[lang].map((tr, idx) => `
+              <li style="color: #991b1b;">
+                ⚠️ ${tr}
+                ${lang2 && pair.toxic.traits[lang2]?.[idx] ? `<div style="color:#b91c1c; font-size:0.82rem; padding-left:1.3rem; margin-top:2px; opacity:0.85;">${flag2} ${pair.toxic.traits[lang2][idx]}</div>` : ""}
+              </li>
+            `).join("")}
           </ul>
         </div>
       </div>
@@ -974,31 +1126,53 @@ function renderCookingGuide() {
   if (!container) return;
 
   const lang = I18N.currentLang;
+  const lang2 = I18N.secondaryLang;
   const guide = I18N.cookingGuide[lang];
+  const guide2 = lang2 ? I18N.cookingGuide[lang2] : null;
   const t = I18N.ui[lang];
+  const flag2 = lang2 ? (lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮")) : "";
 
   container.innerHTML = `
     <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
-      <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">${guide.title}</h2>
-      <p style="color: #475569; font-size: 1rem; margin-bottom: 1.5rem;">${guide.intro}</p>
+      <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">
+        ${guide.title}
+        ${guide2 ? `<span style="display:block; font-size: 1.15rem; color:#0284c7; margin-top:0.35rem;">${flag2} ${guide2.title}</span>` : ""}
+      </h2>
+      <div style="color: #475569; font-size: 1rem; margin-bottom: 1.5rem;">
+        <p>${guide.intro}</p>
+        ${guide2 ? `<p style="color: #0284c7; font-size: 0.92rem; margin-top: 0.5rem;">${flag2} ${guide2.intro}</p>` : ""}
+      </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
-        ${guide.principles.map(p => `
+        ${guide.principles.map((p, idx) => `
           <div style="background: #f8fafc; border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 6px;">
             <h4 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin-bottom: 0.4rem;">${p.title}</h4>
             <p style="font-size: 0.88rem; color: #475569; line-height: 1.5;">${p.content}</p>
+            ${guide2 && guide2.principles?.[idx] ? `
+              <div style="margin-top: 0.6rem; padding-top: 0.5rem; border-top: 1px dashed #cbd5e1; font-size: 0.82rem; color: #0369a1; line-height: 1.45;">
+                <strong>${flag2} ${guide2.principles[idx].title}:</strong> ${guide2.principles[idx].content}
+              </div>
+            ` : ""}
           </div>
         `).join("")}
       </div>
     </div>
 
-    <h3 style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin-bottom: 1.25rem;">🍲 ${lang === "zh" ? "经典食谱制作" : (lang === "fi" ? "Perinteiset Reseptit" : "Featured Field Recipes")}</h3>
+    <h3 style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin-bottom: 1.25rem;">
+      🍲 ${lang === "zh" ? "经典食谱制作" : (lang === "fi" ? "Perinteiset Reseptit" : "Featured Field Recipes")}
+      ${guide2 ? `<span style="font-size: 1.05rem; color:#0284c7; font-weight:600; margin-left: 0.5rem;">(${flag2} ${lang2 === "zh" ? "经典食谱" : (lang2 === "fi" ? "Reseptit" : "Recipes")})</span>` : ""}
+    </h3>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.75rem;">
-      ${guide.recipes.map(rcp => `
+      ${guide.recipes.map((rcp, idx) => {
+        const rcp2 = guide2 && guide2.recipes?.[idx] ? guide2.recipes[idx] : null;
+        return `
         <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow); display: flex; flex-direction: column;">
-          <h4 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.5rem;">${rcp.name}</h4>
+          <h4 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.5rem;">
+            ${rcp.name}
+            ${rcp2 ? `<span style="display:block; font-size: 0.95rem; color:#0284c7; margin-top:0.25rem;">${flag2} ${rcp2.name}</span>` : ""}
+          </h4>
           
-          <div style="display: flex; gap: 1rem; font-size: 0.85rem; color: #64748b; margin-bottom: 1rem; background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px;">
+          <div style="display: flex; gap: 1rem; font-size: 0.85rem; color: #64748b; margin-bottom: 1rem; background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; flex-wrap: wrap;">
             <span>⏱️ <strong>${t.prepTime}</strong> ${rcp.prep}</span>
             <span>🔥 <strong>${t.cookTime}</strong> ${rcp.cook}</span>
             <span>🍽️ <strong>${t.servings}</strong> ${rcp.servings}</span>
@@ -1007,18 +1181,29 @@ function renderCookingGuide() {
           <div style="margin-bottom: 1rem;">
             <div style="font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 0.35rem;">Ingredients:</div>
             <ul style="padding-left: 1.2rem; font-size: 0.85rem; color: #475569; line-height: 1.5;">
-              ${rcp.ingredients.map(ing => `<li>${ing}</li>`).join("")}
+              ${rcp.ingredients.map((ing, iIdx) => `
+                <li>
+                  ${ing}
+                  ${rcp2 && rcp2.ingredients?.[iIdx] ? `<div style="color:#0369a1; font-size: 0.8rem; margin-top: 1px;">${flag2} ${rcp2.ingredients[iIdx]}</div>` : ""}
+                </li>
+              `).join("")}
             </ul>
           </div>
 
           <div style="margin-top: auto; padding-top: 0.75rem; border-top: 1px solid #e2e8f0;">
             <div style="font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 0.35rem;">Instructions:</div>
             <ol style="padding-left: 1.2rem; font-size: 0.85rem; color: #334155; line-height: 1.5;">
-              ${rcp.steps.map(step => `<li style="margin-bottom: 0.25rem;">${step}</li>`).join("")}
+              ${rcp.steps.map((step, sIdx) => `
+                <li style="margin-bottom: 0.35rem;">
+                  ${step}
+                  ${rcp2 && rcp2.steps?.[sIdx] ? `<div style="color:#0369a1; font-size: 0.8rem; margin-top: 1px;">${flag2} ${rcp2.steps[sIdx]}</div>` : ""}
+                </li>
+              `).join("")}
             </ol>
           </div>
         </div>
-      `).join("")}
+      `;
+      }).join("")}
     </div>
   `;
 }
@@ -1031,12 +1216,15 @@ function renderSpots() {
   if (!container) return;
 
   const lang = I18N.currentLang;
+  const lang2 = I18N.secondaryLang;
+  const flag2 = lang2 ? (lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮")) : "";
 
   container.innerHTML = I18N.spots.map(s => `
     <div class="spot-card">
       <div class="spot-header">
         <div>
           <h3 class="spot-title">${s.name[lang]}</h3>
+          ${lang2 ? `<div class="detail-species-secondary-name" style="font-size: 0.92rem; margin-top: 0.2rem;">${flag2} ${s.name[lang2]}</div>` : ""}
           <span style="font-size: 0.8rem; color: #64748b;">📍 ${s.municipality}</span>
         </div>
         <span class="spot-zone">${s.zone}</span>
@@ -1044,15 +1232,18 @@ function renderSpots() {
 
       <div class="spot-transit">
         <p><strong>🚌 HSL:</strong> ${s.transit[lang]}</p>
+        ${lang2 ? `<p style="color: #0284c7; font-size: 0.82rem; margin-top: 0.25rem;">${flag2} ${s.transit[lang2]}</p>` : ""}
         <p style="margin-top: 0.35rem;"><strong>⏱️ Duration:</strong> ~${s.time}</p>
       </div>
 
       <div style="font-size: 0.85rem; color: #334155; margin-bottom: 0.5rem;">
         <strong>Terrain:</strong> ${s.terrain[lang]}
+        ${lang2 ? `<div style="color: #0284c7; font-size: 0.82rem; margin-top: 0.2rem;">${flag2} ${s.terrain[lang2]}</div>` : ""}
       </div>
 
       <div style="font-size: 0.85rem; color: #166534; background: #f0fdf4; padding: 0.6rem; border-radius: 6px; margin-bottom: 0.75rem;">
-        💡 <em>${s.tip[lang]}</em>
+        <div>💡 <em>${s.tip[lang]}</em></div>
+        ${lang2 ? `<div style="color: #0369a1; font-size: 0.82rem; margin-top: 0.3rem;">${flag2} <em>${s.tip[lang2]}</em></div>` : ""}
       </div>
 
       <div style="font-size: 0.8rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Target Species:</div>
@@ -1071,123 +1262,67 @@ function renderSafety() {
   if (!container) return;
 
   const lang = I18N.currentLang;
+  const lang2 = I18N.secondaryLang;
+  const flag2 = lang2 ? (lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮")) : "";
+  const sg = I18N.safetyGuidelines;
 
-  if (lang === "zh") {
-    container.innerHTML = `
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">⚖️ 芬兰自然公共权 (Jokamiehenoikeus)</h3>
-          <p style="font-size: 0.9rem; color: #334155; margin-bottom: 0.75rem;">
-            法律赋予所有人（包括外国游客与居留人员）在芬兰公有和私有森林免费采摘野果与野生蘑菇的权利。
-          </p>
-          <ul style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
-            <li><strong>尊重私人庭院：</strong>严禁进入他人住宅、庭院或度假木屋（Mökki）周边至少50-100米范围内。</li>
-            <li><strong>爱护活树：</strong>严禁砍折活树树枝、剥取白桦树皮（Tuohi）或取桦树汁。</li>
-            <li><strong>禁采苔藓地衣：</strong>未经地主允许擅自铲取苔藓或地衣属于违法行为。</li>
-            <li><strong>严禁随意野火：</strong>仅可在国家公园规划的指定营火点生火，森林火险预警期严禁任何明火。</li>
-          </ul>
+  container.innerHTML = `
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+      <!-- Everyman's Right -->
+      <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">
+          ${sg.everymansRight.title[lang]}
+          ${lang2 ? `<span style="font-size: 0.95rem; color: #0284c7; display: block; margin-top: 0.25rem;">${flag2} ${sg.everymansRight.title[lang2]}</span>` : ""}
+        </h3>
+        <div style="font-size: 0.9rem; color: #334155; margin-bottom: 0.75rem;">
+          <p>${sg.everymansRight.desc[lang]}</p>
+          ${lang2 ? `<p style="color: #0284c7; font-size: 0.85rem; margin-top: 0.25rem;">${flag2} ${sg.everymansRight.desc[lang2]}</p>` : ""}
         </div>
-
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">🛡️ 新手“五大安全金菇”法则</h3>
-          <p style="font-size: 0.9rem; color: #334155; margin-bottom: 0.75rem;">
-            新手在芬兰森林请严格只采以下5种绝无剧毒混淆的特征菇：
-          </p>
-          <ol style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
-            <li><strong>黄鸡油菌：</strong>粗钝分叉假菌褶，杏子果香，实心黄柄。</li>
-            <li><strong>漏斗鸡油菌：</strong>顶端穿孔如漏斗，鲜黄空心管状菌柄。</li>
-            <li><strong>卷缘齿菌：</strong>菌盖下方密布柔软白色小菌刺，芬兰本土无任何带刺毒菇。</li>
-            <li><strong>灰包号角菇：</strong>薄而柔韧的炭黑喇叭号角，无褶无刺。</li>
-            <li><strong>美味牛肝菌：</strong>海绵状吸水管孔，上半柄有精致立体白色细网纹。</li>
-          </ol>
-        </div>
-
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">🌲 森林防虫与自救指南</h3>
-          <ul style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
-            <li><strong>蜱虫 (Punkit)：</strong>穿浅色长裤扎进长袜中，配高筒胶靴。回家必做全身体检，拔虫用镊子垂直拔出。</li>
-            <li><strong>鹿蝇 (Hirvikärpäset)：</strong>8月下旬至10月活跃。落入发丝即脱翅爬行，戴紧致帽子与光滑冲锋衣，备细齿梳子。</li>
-            <li><strong>112 Suomi App：</strong>手机务必提前下载官方112软件，一旦遇险报警会自动传输卫星经纬度。</li>
-            <li><strong>移动电源：</strong>深秋低温会使手机电池迅速掉电，务必携带充电宝以防迷路。</li>
-          </ul>
-        </div>
+        <ul style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
+          ${sg.everymansRight.rules.map(r => `
+            <li style="margin-bottom: 0.4rem;">
+              <div>${r[lang]}</div>
+              ${lang2 ? `<div style="color: #0369a1; font-size: 0.8rem; margin-top: 2px;">${flag2} ${r[lang2]}</div>` : ""}
+            </li>
+          `).join("")}
+        </ul>
       </div>
-    `;
-  } else if (lang === "fi") {
-    container.innerHTML = `
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">⚖️ Jokamiehenoikeus Suomessa</h3>
-          <p style="font-size: 0.9rem; color: #334155; margin-bottom: 0.75rem;">
-            Jokamiehenoikeudella saa vapaasti poimia luonnonmarjoja, sieniä ja kukkia toisenkin maalla.
-          </p>
-          <ul style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
-            <li><strong>Pihapiirirauha:</strong> Älä mene liian lähelle asuttuja taloja tai mökkejä (n. 50–100 m).</li>
-            <li><strong>Älä vahingoita puita:</strong> Elävien puiden kaataminen, oksien taittaminen tai tuohen kiskominen on kiellettyä.</li>
-            <li><strong>Sammalenotto kielletty:</strong> Sammalta tai jäkälää ei saa kerätä ilman maanomistajan lupaa.</li>
-            <li><strong>Tulenteko:</strong> Avotulen teko maastoon ilman lupaa on kielletty lukuun ottamatta virallisia tulentekopaikkoja.</li>
-          </ul>
-        </div>
 
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">🛡️ Aloittelijan Varmat Viisi</h3>
-          <ol style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
-            <li><strong>Kantarelli:</strong> Haaraiset poimut, aprikoosituoksu, umpinainen keltainen jalka.</li>
-            <li><strong>Suppilovahvero:</strong> Suppilomainen reikä keskellä, kirkkaankeltainen ontto pilli.</li>
-            <li><strong>Vaaleaorakas:</strong> Lakin alla hauraat piikit, ei myrkyllisiä näköislajeja.</li>
-            <li><strong>Mustatorvisieni:</strong> Ohutmaltoinen musta torvi, alapinta lähes sileä.</li>
-            <li><strong>Herkkutatti:</strong> Valkoinen pillistö joka kellertyy, valkoinen verkkokuvio jalassa.</li>
-          </ol>
+      <!-- Foolproof Five -->
+      <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">
+          ${sg.foolproofFive.title[lang]}
+          ${lang2 ? `<span style="font-size: 0.95rem; color: #0284c7; display: block; margin-top: 0.25rem;">${flag2} ${sg.foolproofFive.title[lang2]}</span>` : ""}
+        </h3>
+        <div style="font-size: 0.9rem; color: #334155; margin-bottom: 0.75rem;">
+          <p>${sg.foolproofFive.desc[lang]}</p>
+          ${lang2 ? `<p style="color: #0284c7; font-size: 0.85rem; margin-top: 0.25rem;">${flag2} ${sg.foolproofFive.desc[lang2]}</p>` : ""}
         </div>
-
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">🌲 Metsän Turvallisuus</h3>
-          <ul style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
-            <li><strong>Punkit:</strong> Kumisaappaat, housunlahkeet sukkien sisään, päivittäinen punkkitarkastus.</li>
-            <li><strong>Hirvikärpäset:</strong> Liukaspintaiset vaatteet, hattu, tiheä kampa taskuun.</li>
-            <li><strong>112 Suomi -sovellus:</strong> Asenna puhelimeen; välittää sijaintikoordinaatit automaattisesti hätäkeskukseen.</li>
-            <li><strong>Varavirtalähde:</strong> Syksyn viileys tyhjentää akun nopeasti; pidä mukana powerbank.</li>
-          </ul>
-        </div>
+        <ol style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
+          ${sg.foolproofFive.species.map(s => `
+            <li style="margin-bottom: 0.4rem;">
+              <div>${s[lang]}</div>
+              ${lang2 ? `<div style="color: #0369a1; font-size: 0.8rem; margin-top: 2px;">${flag2} ${s[lang2]}</div>` : ""}
+            </li>
+          `).join("")}
+        </ol>
       </div>
-    `;
-  } else {
-    container.innerHTML = `
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">⚖️ Everyman’s Right (*Jokamiehenoikeus*)</h3>
-          <p style="font-size: 0.9rem; color: #334155; margin-bottom: 0.75rem;">
-            In Finland, you have the statutory legal right to forage wild mushrooms and berries on public and private land without permits or fees.
-          </p>
-          <ul style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
-            <li><strong>Respect Private Yards:</strong> Stay at least 50–100m away from private homes, gardens, and summer cottages.</li>
-            <li><strong>Do Not Harm Living Trees:</strong> Never break branches or peel birch bark (*tuohi*).</li>
-            <li><strong>No Moss/Lichen Gathering:</strong> Taking moss without landowner consent is strictly prohibited.</li>
-            <li><strong>Open Fires:</strong> Strictly banned on bare ground; use only official maintained campfire sites.</li>
-          </ul>
-        </div>
 
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">🛡️ The "Foolproof Five" Rules</h3>
-          <ol style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
-            <li><strong>Chanterelle:</strong> Blunt ridges, apricot aroma, solid stem.</li>
-            <li><strong>Funnel Chanterelle:</strong> Perforated trumpet, hollow yellow stem.</li>
-            <li><strong>Hedgehog Mushroom:</strong> Soft spines underneath, zero toxic lookalikes.</li>
-            <li><strong>Black Trumpet:</strong> Thin black hollow horn, no gills or pores.</li>
-            <li><strong>King Bolete (Porcini):</strong> Spongy pores, fine white net on stem.</li>
-          </ol>
-        </div>
-
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">🌲 Forest Safety: Ticks & Navigation</h3>
-          <ul style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
-            <li><strong>Ticks (*Punkit*):</strong> Wear high boots, tuck trousers into socks, and do a nightly body inspection.</li>
-            <li><strong>Deer Keds (*Hirvikärpäset*):</strong> Active late August to October. Wear smooth nylon jackets and a tight cap.</li>
-            <li><strong>112 Suomi App:</strong> Install the free official app; it beams satellite GPS coordinates if you dial 112.</li>
-            <li><strong>Power Bank:</strong> Cold autumn air depletes smartphone batteries fast; always carry a portable battery pack.</li>
-          </ul>
-        </div>
+      <!-- Forest Safety -->
+      <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">
+          ${sg.forestSafety.title[lang]}
+          ${lang2 ? `<span style="font-size: 0.95rem; color: #0284c7; display: block; margin-top: 0.25rem;">${flag2} ${sg.forestSafety.title[lang2]}</span>` : ""}
+        </h3>
+        <ul style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
+          ${sg.forestSafety.items.map(it => `
+            <li style="margin-bottom: 0.4rem;">
+              <div>${it[lang]}</div>
+              ${lang2 ? `<div style="color: #0369a1; font-size: 0.8rem; margin-top: 2px;">${flag2} ${it[lang2]}</div>` : ""}
+            </li>
+          `).join("")}
+        </ul>
       </div>
-    `;
-  }
+    </div>
+  `;
 }

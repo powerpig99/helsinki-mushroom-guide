@@ -8,7 +8,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <link rel="stylesheet" href="styles.css?v=20260910-1035">
+  <link rel="stylesheet" href="styles.css?v=20260910-1115">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍄</text></svg>">
 </head>
 <body>
@@ -19,17 +19,26 @@
       <div class="header-top-bar">
         <span id="site-badge" class="site-badge">🇫🇮 Helsinki & Uusimaa Mycological Companion</span>
         
-        <!-- Language Switcher Bar -->
-        <div class="lang-switcher" aria-label="Select Language">
-          <button class="lang-btn active" data-lang="en">🇬🇧 English</button>
-          <button class="lang-btn" data-lang="zh">🇨🇳 中文</button>
-          <button class="lang-btn" data-lang="fi">🇫🇮 Suomi</button>
+        <!-- Language Switcher: Flag Only & Optional Second Comparison Language -->
+        <div class="lang-switcher-wrapper" aria-label="Select Language">
+          <div class="lang-row primary-lang-row" aria-label="Primary Language">
+            <span class="lang-row-label">L1</span>
+            <button class="lang-btn active" data-lang="en" title="English" aria-label="English">🇬🇧</button>
+            <button class="lang-btn" data-lang="zh" title="中文" aria-label="中文">🇨🇳</button>
+            <button class="lang-btn" data-lang="fi" title="Suomi" aria-label="Suomi">🇫🇮</button>
+          </div>
+          <div class="lang-row secondary-lang-row" aria-label="Secondary Language (Optional)">
+            <span class="lang-row-label">+L2</span>
+            <button class="lang-btn secondary-btn" data-lang2="en" title="Compare English (Click to toggle)" aria-label="Compare English">🇬🇧</button>
+            <button class="lang-btn secondary-btn" data-lang2="zh" title="与中文对照 (点击开启/取消)" aria-label="与中文对照">🇨🇳</button>
+            <button class="lang-btn secondary-btn" data-lang2="fi" title="Vertaa suomeksi (Klikkaa päälle/pois)" aria-label="Vertaa suomeksi">🇫🇮</button>
+          </div>
         </div>
       </div>
 
       <h1 id="site-title">Helsinki Wild Mushroom Guide</h1>
       <p id="site-subtitle" class="subtitle">
-        A definitive, safety-first field guide for foraging wild mushrooms across the hemiboreal spruce, pine, and deciduous forests of the Helsinki Metropolitan Area.
+        A definitive, safety-first field guide for foraging wild mushrooms across the hemiboreal forests of the Helsinki Metropolitan Area — a live record of living the philosophy. Explore the journey on <a href="https://powerpig99.github.io/not-a-toe/" target="_blank" rel="noopener noreferrer" class="blog-subtitle-link">Not a ToE</a>.
       </p>
 
       <!-- Emergency Hotline Card -->
@@ -172,7 +181,7 @@
   </div>
 
   <!-- Scripts: i18n database loaded first, followed by reactive controller -->
-  <script src="i18n.js?v=20260910-1035"></script>
-  <script src="app.js?v=20260910-1035"></script>
+  <script src="i18n.js?v=20260910-1115"></script>
+  <script src="app.js?v=20260910-1115"></script>
 </body>
 </html>
