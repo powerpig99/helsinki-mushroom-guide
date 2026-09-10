@@ -469,7 +469,7 @@ main {
 .badge-deadly { background-color: #991b1b; color: #ffffff; }
 .badge-inedible { background-color: #71717a; color: #ffffff; }
 
-.star-rating {
+.card-img-container .star-rating {
   position: absolute;
   bottom: 0.75rem;
   right: 0.75rem;

@@ -533,7 +533,6 @@ function renderMushroomDetail(speciesId) {
             <div class="lookalike-content">
               <div class="lookalike-tag-header">
                 <span class="lookalike-badge">⚠️ ${lang === 'zh' ? '易混淆物种' : (lang === 'fi' ? 'Näköislaji' : 'Lookalike Species')}</span>
-                <span class="star-rating" style="font-size: 0.9rem;">${lk.rating}</span>
               </div>
               <h3 class="lookalike-title">
                 ${lkName.primary}
@@ -633,8 +632,7 @@ function renderMushroomDetail(speciesId) {
             ${nameData2 ? ` <span style="color:#64748b; font-weight:400;">| ${nameData2.local}</span>` : ""}
           </div>
         </div>
-        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.35rem;">
-          <div class="star-rating" style="font-size:1.4rem;">${sp.rating}</div>
+        <div class="detail-badge-group">
           <span class="badge ${badgeClass}" style="font-size:0.9rem; padding:0.35rem 0.85rem;">${badgeText}</span>
         </div>
       </div>
