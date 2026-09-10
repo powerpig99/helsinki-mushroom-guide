@@ -52,3 +52,10 @@ cd /Users/jingliang/.gemini/antigravity/scratch/helsinki-mushroom-guide
 python3 -m http.server 8000
 ```
 Open [http://localhost:8000](http://localhost:8000) in your browser.
+
+---
+
+## 🧭 Philosophy & Context
+
+This project is a continuous living record and practical application of the first-person philosophy explored in [Not a ToE](https://powerpig99.github.io/not-a-toe/) — embodying the shift from analytical modeling to direct, active agency in everyday life.
+
