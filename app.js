@@ -130,6 +130,33 @@ function renderPrimeLocationCard(sp, lang, lang2, t) {
   `;
 }
 
+// Render Authentic YouTube Cooking & Preparation Video Card for Edible Species
+function renderCookingVideoCard(sp, lang, lang2, t) {
+  if (!I18N.cookingVideos || !I18N.cookingVideos[sp.id]) return "";
+  const v = I18N.cookingVideos[sp.id];
+  const videoTitle = v.title[lang] || v.title.en;
+  const videoTitle2 = (lang2 && lang2 !== lang && v.title[lang2]) ? v.title[lang2] : null;
+
+  return `
+    <div class="cooking-video-card">
+      <div class="cooking-video-content">
+        <div class="cooking-video-badge-wrapper">
+          <span class="cooking-video-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color: #dc2626;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            ${t.videoGuideBadge || "Video Tutorial"}
+          </span>
+        </div>
+        <div class="cooking-video-title">${videoTitle}</div>
+        ${videoTitle2 ? `<div class="cooking-video-title-secondary">${videoTitle2}</div>` : ""}
+      </div>
+      <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="btn-video-link" title="${videoTitle}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color: #dc2626;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <span>${t.watchVideoBtn || "Watch on YouTube"}</span>
+      </a>
+    </div>
+  `;
+}
+
 // Apply selected language across the entire application
 function applyLanguage(lang) {
   const t = I18N.ui[lang];
@@ -746,9 +773,10 @@ function renderMushroomDetail(speciesId) {
     <!-- SECTION 5: Preparation, Cooking, Parboiling & Preservation -->
     <div class="detail-section-card">
       <h2 class="detail-section-title">${t.cookingTitle}</h2>
-      <div class="detail-section-body">
+      <div class="detail-section-body" style="margin-bottom: 0.75rem;">
         ${renderBilingualText(sp.cookingGuide, lang, lang2)}
       </div>
+      ${renderCookingVideoCard(sp, lang, lang2, t)}
     </div>
 
     <!-- Bottom Navigation Footer with Previous and Next Species -->
@@ -1151,12 +1179,20 @@ function renderCookingGuide() {
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
         ${guide.principles.map((p, idx) => `
-          <div style="background: #f8fafc; border: 1px solid var(--border); padding: 1rem; border-radius: 6px;">
+          <div style="background: #f8fafc; border: 1px solid var(--border); padding: 1rem; border-radius: 6px; display: flex; flex-direction: column;">
             <h4 style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-bottom: 0.35rem;">${p.title}</h4>
             <p style="font-size: 0.85rem; color: #475569; line-height: 1.5;">${p.content}</p>
             ${guide2 && guide2.principles?.[idx] ? `
               <div style="margin-top: 0.5rem; font-size: 0.82rem; color: #64748b; line-height: 1.45;">
                 <strong>${guide2.principles[idx].title}:</strong> ${guide2.principles[idx].content}
+              </div>
+            ` : ""}
+            ${p.videoUrl ? `
+              <div style="margin-top: auto; padding-top: 0.65rem;">
+                <a href="${p.videoUrl}" target="_blank" rel="noopener noreferrer" class="btn-video-link-sm" title="${p.title}">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color: #dc2626;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  <span>${t.watchVideoBtn || "Watch Video"}</span>
+                </a>
               </div>
             ` : ""}
           </div>
@@ -1173,10 +1209,18 @@ function renderCookingGuide() {
         const rcp2 = guide2 && guide2.recipes?.[idx] ? guide2.recipes[idx] : null;
         return `
         <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column;">
-          <h4 style="font-size: 1.15rem; font-weight: 700; color: #1e3a2b; margin-bottom: 0.4rem;">
-            ${rcp.name}
-            ${rcp2 ? `<span style="display:block; font-size: 0.9rem; color:#64748b; margin-top:0.2rem; font-weight:400;">${rcp2.name}</span>` : ""}
-          </h4>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.4rem;">
+            <h4 style="font-size: 1.15rem; font-weight: 700; color: #1e3a2b; margin: 0;">
+              ${rcp.name}
+              ${rcp2 ? `<span style="display:block; font-size: 0.9rem; color:#64748b; margin-top:0.2rem; font-weight:400;">${rcp2.name}</span>` : ""}
+            </h4>
+            ${rcp.videoUrl ? `
+              <a href="${rcp.videoUrl}" target="_blank" rel="noopener noreferrer" class="btn-recipe-video" title="${rcp.name}">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="color: #dc2626;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                <span>${t.watchVideoBtn || "Watch Video"}</span>
+              </a>
+            ` : ""}
+          </div>
           
           <div style="display: flex; gap: 0.75rem; font-size: 0.82rem; color: #64748b; margin-bottom: 0.85rem; background: #f8fafc; padding: 0.4rem 0.6rem; border-radius: 4px; flex-wrap: wrap;">
             <span>⏱️ <strong>${t.prepTime}</strong> ${rcp.prep}</span>

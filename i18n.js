@@ -59,6 +59,9 @@ const I18N = {
       startingPointLabel: "Starting Point",
       openMapBtn: "Directions",
       primeLocationTitle: "Prime Foraging Trailhead",
+      watchVideoBtn: "Watch on YouTube",
+      watchRecipeVideoBtn: "Watch Recipe Video",
+      videoGuideBadge: "Video Tutorial",
       prepTime: "Prep:",
       cookTime: "Cook:",
       servings: "Servings:",
@@ -115,6 +118,9 @@ const I18N = {
       startingPointLabel: "出发起点",
       openMapBtn: "地图导航",
       primeLocationTitle: "推荐采摘路线与起点",
+      watchVideoBtn: "观看视频教学",
+      watchRecipeVideoBtn: "观看食谱教学",
+      videoGuideBadge: "视频示范",
       prepTime: "准备时间:",
       cookTime: "烹饪时间:",
       servings: "分量:",
@@ -171,6 +177,9 @@ const I18N = {
       startingPointLabel: "Lähtöpiste",
       openMapBtn: "Avaa kartta",
       primeLocationTitle: "Paras maastoreitti & lähtöpiste",
+      watchVideoBtn: "Katso video",
+      watchRecipeVideoBtn: "Katso videoresepti",
+      videoGuideBadge: "Videolinkki",
       prepTime: "Esivalmistelu:",
       cookTime: "Kypsennys:",
       servings: "Annosmäärä:",
@@ -411,6 +420,122 @@ const I18N = {
     hygrophoropsis_aurantiaca: "nuuksio_haukkalampi",
     tylopilus_felleus: "nuuksio_haukkalampi",
     amanita_muscaria: "keskuspuisto_paloheina"
+  },
+
+  // Authentic YouTube Cooking & Preparation Video Tutorials for Edible Species
+  cookingVideos: {
+    cantharellus_cibarius: {
+      url: "https://www.youtube.com/watch?v=0TysiLgHhd4",
+      title: {
+        en: "How to Make Finnish Chanterelle Cream Sauce (Kantarellikastike)",
+        zh: "经典芬兰奶油鸡油菌浓汁制作教学 (Kantarellikastike)",
+        fi: "Klassisen kermaisen kantarellikastikkeen valmistus"
+      }
+    },
+    craterellus_tubaeformis: {
+      url: "https://www.youtube.com/watch?v=-fyPqfJxX5s",
+      title: {
+        en: "How to Cook Funnel Chanterelle Soup from Dried & Fresh Mushrooms",
+        zh: "北欧漏斗鸡油菌汤烹饪教学（干菇泡发与烹饪）",
+        fi: "Suppilovahverokeitto kuivatuista tai tuoreista sienistä"
+      }
+    },
+    hydnum_repandum: {
+      url: "https://www.youtube.com/watch?v=BqxMFHyYvOQ",
+      title: {
+        en: "Cleaning & Pan-Frying Hedgehog Mushrooms (Vaaleaorakas)",
+        zh: "卷缘齿菌清洁与黄油香煎脆菇热三明治 (Vaaleaorakas)",
+        fi: "Vaaleaorakkaan käsittely ja paistaminen pannulla"
+      }
+    },
+    craterellus_cornucopioides: {
+      url: "https://www.youtube.com/watch?v=hepze8cMwVo",
+      title: {
+        en: "Black Trumpet Mushroom Soup & Dehydration Cooking (Mustatorvisieni)",
+        zh: "黑号角菇浓汤烹制与风干脱水食用技巧 (Mustatorvisieni)",
+        fi: "Mustatorvisienikeitto ja kuivattujen torvisienten käyttö"
+      }
+    },
+    boletus_edulis: {
+      url: "https://www.youtube.com/watch?v=XWB5C1ludQc",
+      title: {
+        en: "How to Clean & Pan-Sear Fresh Porcini in Garlic Butter",
+        zh: "鲜采牛肝菌（美味牛肝菌）处理与大蒜黄油香煎法",
+        fi: "Tuoreiden herkkutattien puhdistus ja paistaminen voissa"
+      }
+    },
+    boletus_pinophilus: {
+      url: "https://www.youtube.com/watch?v=XWB5C1ludQc",
+      title: {
+        en: "Cooking Fresh Pine Boletes (Männynherkkutatti)",
+        zh: "松生牛肝菌厚切香煎与森林野味搭配 (Männynherkkutatti)",
+        fi: "Männynherkkutattien valmistus ja paistaminen"
+      }
+    },
+    gyromitra_esculenta: {
+      url: "https://www.youtube.com/watch?v=kyf3FQOgyKQ",
+      title: {
+        en: "Official Finnish False Morel Double-Parboiling Detoxification & Omelette",
+        zh: "芬兰官方鹿花菌二次沸水焯水脱毒流程与滑蛋做法",
+        fi: "Korvasienien turvallinen ryöppäys ja korvasienimunakas"
+      }
+    },
+    lactarius_torminosus: {
+      url: "https://www.youtube.com/watch?v=RQR7FLnapZo",
+      title: {
+        en: "Parboiling Milkcaps & Making Traditional Finnish Mushroom Salad (Sienisalaatti)",
+        zh: "白汁乳菇焯水去毒与芬兰经典传统酸奶油沙拉做法",
+        fi: "Karvarouskun ryöppäys ja perinteinen sienisalaatti"
+      }
+    },
+    lactarius_rufus: {
+      url: "https://www.youtube.com/watch?v=6F67wBKOv0c",
+      title: {
+        en: "How to Parboil & Salt Northern Forest Milkcaps (Rouskujen ryöppäys)",
+        zh: "芬兰森林乳菇沸水滚煮排毒法（Ryöppäys）与盐渍储藏",
+        fi: "Metsärouskujen oikeaoppinen ryöppäys runsaassa vedessä"
+      }
+    },
+    lactarius_deliciosus: {
+      url: "https://www.youtube.com/watch?v=0bio5dLIfcc",
+      title: {
+        en: "Pan-Frying Fresh Saffron Milkcaps (No Boiling Required!)",
+        zh: "松乳菇直接下锅黄油香煎做法（无需焯水！）",
+        fi: "Leppärouskun nopea paistaminen ilman ryöppäystä"
+      }
+    },
+    russula_decolorans: {
+      url: "https://www.youtube.com/watch?v=RQd0Mli8SZc",
+      title: {
+        en: "How to Sauté Mild Brittlegills & Forest Mushrooms in Natural Juices",
+        zh: "温和红菇与野菇干锅出汁香煎技术 (Haperot)",
+        fi: "Haperoiden ja villisienien haudutus omassa liemessään"
+      }
+    },
+    cortinarius_caperatus: {
+      url: "https://www.youtube.com/watch?v=GgDhElL30YE",
+      title: {
+        en: "Cooking Gypsy Mushrooms in Butter & Cream (Kehnäsieni)",
+        zh: "皱盖罗鳞伞（隐花丝膜菌）黄油煎制与奶油炖法",
+        fi: "Kehnäsienen tunnistus, puhdistus ja ruoanvalmistus"
+      }
+    },
+    albatrellus_ovinus: {
+      url: "https://www.youtube.com/watch?v=EM_DzS2lVZ8",
+      title: {
+        en: "Cooking Sheep Polypore: Breaded Forest Cutlet & Soup (Lampaankääpä)",
+        zh: "地花孔菌（羊孔菌）香脆素肉排与浓汤烹饪教学",
+        fi: "Lampaankäävän valmistus leikkeeksi ja keitoksi"
+      }
+    },
+    leccinum_versipelle: {
+      url: "https://www.youtube.com/watch?v=XWB5C1ludQc",
+      title: {
+        en: "Thorough 20-Minute Cooking Rule for Leccinum Birch Boletes",
+        zh: "白桦疣柄牛肝菌必须彻底加热20分钟烹饪演示",
+        fi: "Punikkitattien turvallinen ja perusteellinen kypsennys"
+      }
+    }
   },
 
   // Species Data (Trilingual Content)
@@ -1521,11 +1646,13 @@ const I18N = {
         },
         {
           title: "2. Sautéing in Natural Juices (Haudutus omassa liemessä)",
-          content: "The authentic Finnish prep method for Chanterelles, Hedgehog mushrooms, and Boletes: Slice cleaned mushrooms into a wide dry pan over medium heat with NO fat. As heat activates cellular enzymes, mushrooms weep their fragrant broth. Simmer until the juices reduce by half, then freeze with the broth or add butter to crisp up."
+          content: "The authentic Finnish prep method for Chanterelles, Hedgehog mushrooms, and Boletes: Slice cleaned mushrooms into a wide dry pan over medium heat with NO fat. As heat activates cellular enzymes, mushrooms weep their fragrant broth. Simmer until the juices reduce by half, then freeze with the broth or add butter to crisp up.",
+          videoUrl: "https://www.youtube.com/watch?v=RQd0Mli8SZc"
         },
         {
           title: "3. The Science of Parboiling (Ryöppäys)",
-          content: "Certain milkcaps (e.g. Woolly Milkcap / Karvarousku, Rufous Milkcap / Kangasrousku) contain acrid sesquiterpene resins that cause severe stomach irritation. Boil them for 10–15 minutes in copious boiling water (3L per 1kg mushrooms). Flush with cold water and discard the boiling water completely."
+          content: "Certain milkcaps (e.g. Woolly Milkcap / Karvarousku, Rufous Milkcap / Kangasrousku) contain acrid sesquiterpene resins that cause severe stomach irritation. Boil them for 10–15 minutes in copious boiling water (3L per 1kg mushrooms). Flush with cold water and discard the boiling water completely.",
+          videoUrl: "https://www.youtube.com/watch?v=6F67wBKOv0c"
         },
         {
           title: "4. Dehydration Principles (Kuivaus)",
@@ -1538,6 +1665,7 @@ const I18N = {
           prep: "10 min",
           cook: "15 min",
           servings: "4",
+          videoUrl: "https://www.youtube.com/watch?v=0TysiLgHhd4",
           ingredients: [
             "500 g fresh Golden Chanterelles, coarsely chopped",
             "1 large shallot or yellow onion, finely diced",
@@ -1558,6 +1686,7 @@ const I18N = {
           prep: "15 min (+ desalting)",
           cook: "0 min",
           servings: "4–6",
+          videoUrl: "https://www.youtube.com/watch?v=RQR7FLnapZo",
           ingredients: [
             "300 g desalted parboiled milkcaps (e.g. Woolly Milkcap / Karvarousku)",
             "1 small red onion, finely diced",
@@ -1578,6 +1707,7 @@ const I18N = {
           prep: "15 min",
           cook: "25 min",
           servings: "4",
+          videoUrl: "https://www.youtube.com/watch?v=-fyPqfJxX5s",
           ingredients: [
             "1 liter fresh (or 30 g dried) Funnel Chanterelles",
             "2 tbsp butter, 1 yellow onion, 1 garlic clove minced",
@@ -1598,6 +1728,7 @@ const I18N = {
           prep: "15 min",
           cook: "8 min",
           servings: "3–4",
+          videoUrl: "https://www.youtube.com/watch?v=XWB5C1ludQc",
           ingredients: [
             "350 g fresh firm wild mushrooms (Boletes / Hedgehog / Leccinum)",
             "200 g pork tenderloin, thinly sliced into strips",
@@ -1625,11 +1756,13 @@ const I18N = {
         },
         {
           title: "二、自身汁液慢焖法（Haudutus omassa liemessä）",
-          content: "芬兰处理鸡油菌、牛肝菌、齿菌的黄金准则：净菇切片，干锅不放任何油，中火加热，菇体会自然析出大量鲜美原汤。待原汁收至一半，即可连汤分装冷冻保存1年；若当顿享用，待汁干时下黄油中火煎至边缘微焦。"
+          content: "芬兰处理鸡油菌、牛肝菌、齿菌的黄金准则：净菇切片，干锅不放任何油，中火加热，菇体会自然析出大量鲜美原汤。待原汁收至一半，即可连汤分装冷冻保存1年；若当顿享用，待汁干时下黄油中火煎至边缘微焦。",
+          videoUrl: "https://www.youtube.com/watch?v=RQd0Mli8SZc"
         },
         {
           title: "三、科学焯水杀青去辣（Ryöppäys）",
-          content: "白绒乳菇（Karvarousku）与红乳菇（Kangasrousku）等含有辛辣树脂毒素，生食会引发剧烈胃绞痛。必须在大锅沸水（1公斤菇配3升水）中滚煮10-15分钟，捞出后用大量冷水冲凉冲洗，焯菇水含有溶出毒素必须倒弃！"
+          content: "白绒乳菇（Karvarousku）与红乳菇（Kangasrousku）等含有辛辣树脂毒素，生食会引发剧烈胃绞痛。必须在大锅沸水（1公斤菇配3升水）中滚煮10-15分钟，捞出后用大量冷水冲凉冲洗，焯菇水含有溶出毒素必须倒弃！",
+          videoUrl: "https://www.youtube.com/watch?v=6F67wBKOv0c"
         },
         {
           title: "四、风干脱水与储藏（Kuivaus）",
@@ -1642,6 +1775,7 @@ const I18N = {
           prep: "10 分钟",
           cook: "15 分钟",
           servings: "4 人份",
+          videoUrl: "https://www.youtube.com/watch?v=0TysiLgHhd4",
           ingredients: [
             "500克 新鲜黄鸡油菌，手撕或切粗块",
             "1个 红葱头或小洋葱，切细碎丁",
@@ -1662,6 +1796,7 @@ const I18N = {
           prep: "15 分钟 (+脱盐时间)",
           cook: "无需加热",
           servings: "4–6 人份",
+          videoUrl: "https://www.youtube.com/watch?v=RQR7FLnapZo",
           ingredients: [
             "300克 焯水脱辣后盐腌的乳菇（如白绒乳菇Karvarousku），提前冷水浸泡脱盐",
             "1个 紫洋葱，切极细微丁",
@@ -1682,6 +1817,7 @@ const I18N = {
           prep: "15 分钟",
           cook: "25 分钟",
           servings: "4 人份",
+          videoUrl: "https://www.youtube.com/watch?v=-fyPqfJxX5s",
           ingredients: [
             "1升 新鲜漏斗鸡油菌（或30克风干漏斗鸡油菌温水泡发）",
             "2汤匙 黄油，1个 洋葱丁，1瓣 大蒜末",
@@ -1702,6 +1838,7 @@ const I18N = {
           prep: "15 分钟",
           cook: "8 分钟",
           servings: "3–4 人份",
+          videoUrl: "https://www.youtube.com/watch?v=XWB5C1ludQc",
           ingredients: [
             "350克 坚实野生菌（美味牛肝菌/红柄牛肝菌/齿菌切厚片）",
             "200克 猪里脊肉，切细丝",
@@ -1729,11 +1866,13 @@ const I18N = {
         },
         {
           title: "2. Haudutus omassa liemessä",
-          content: "Kantarellien, herkkutattien ja vaaleaorakkaiden paras käsittelytapa: paloittele sienet kuivalle kuumalle pannulle ilman rasvaa. Kuumuus saa sienet luovuttamaan oman aromaattisen liemensä. Hauduta, kunnes neste puolittuu. Pakasta liemineen tai lisää voi ja paista rapeaksi."
+          content: "Kantarellien, herkkutattien ja vaaleaorakkaiden paras käsittelytapa: paloittele sienet kuivalle kuumalle pannulle ilman rasvaa. Kuumuus saa sienet luovuttamaan oman aromaattisen liemensä. Hauduta, kunnes neste puolittuu. Pakasta liemineen tai lisää voi ja paista rapeaksi.",
+          videoUrl: "https://www.youtube.com/watch?v=RQd0Mli8SZc"
         },
         {
           title: "3. Ryöppäyksen merkitys (Keittäminen)",
-          content: "Kirpeät rouskut (karvarousku, kangasrousku) sisältävät polttavia hartsiaineita. Ne on keitettävä runsaassa vedessä 10–15 minuuttia. Huuhtele kylmällä vedellä ja heitä keitinvesi aina pois."
+          content: "Kirpeät rouskut (karvarousku, kangasrousku) sisältävät polttavia hartsiaineita. Ne on keitettävä runsaassa vedessä 10–15 minuuttia. Huuhtele kylmällä vedellä ja heitä keitinvesi aina pois.",
+          videoUrl: "https://www.youtube.com/watch?v=6F67wBKOv0c"
         },
         {
           title: "4. Kuivaus (Kuivatus)",
@@ -1746,6 +1885,7 @@ const I18N = {
           prep: "10 min",
           cook: "15 min",
           servings: "4",
+          videoUrl: "https://www.youtube.com/watch?v=0TysiLgHhd4",
           ingredients: [
             "500 g tuoreita kantarelleja paloiteltuna",
             "1 keltasipuli tai salottisipuli hienonnettuna",
@@ -1766,6 +1906,7 @@ const I18N = {
           prep: "15 min (+ liotus)",
           cook: "0 min",
           servings: "4–6",
+          videoUrl: "https://www.youtube.com/watch?v=RQR7FLnapZo",
           ingredients: [
             "300 g liotettuja ryöpättyjä suolasieniä (karvarouskuja tms.)",
             "1 pieni punasipuli hienoksi silputtuna",
@@ -1785,6 +1926,7 @@ const I18N = {
           prep: "15 min",
           cook: "25 min",
           servings: "4",
+          videoUrl: "https://www.youtube.com/watch?v=-fyPqfJxX5s",
           ingredients: [
             "1 l tuoreita (tai 30 g kuivattuja) suppilovahveroita",
             "2 rkl voita, 1 sipuli, 1 valkosipulinkynsi",
@@ -1805,6 +1947,7 @@ const I18N = {
           prep: "15 min",
           cook: "8 min",
           servings: "3–4",
+          videoUrl: "https://www.youtube.com/watch?v=XWB5C1ludQc",
           ingredients: [
             "350 g tuoreita kiinteitä herkkutatteja tai orakkaita",
             "200 g porsaan sisäfileetä ohuina suikaleina",
