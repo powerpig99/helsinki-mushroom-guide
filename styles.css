@@ -940,6 +940,17 @@ body.viewing-detail main {
     padding: 0.45rem 0.65rem;
     border-radius: 8px;
   }
+
+  body.viewing-detail .btn-back-catalog {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    padding: 0;
+  }
+
+  body.viewing-detail .btn-back-label {
+    display: none;
+  }
 }
 
 .mushroom-detail-view {
@@ -980,16 +991,15 @@ body.viewing-detail main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.4rem;
   background: var(--primary);
   color: #ffffff;
   border: none;
-  width: 32px;
-  height: 30px;
-  min-width: 32px;
-  padding: 0;
+  height: 32px;
+  padding: 0 0.85rem;
   border-radius: 6px;
-  font-weight: 700;
-  font-size: 1.25rem;
+  font-weight: 600;
+  font-size: 0.88rem;
   line-height: 1;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -999,6 +1009,15 @@ body.viewing-detail main {
 .btn-back-catalog:hover {
   background: var(--primary-light);
   transform: translateX(-2px);
+}
+
+.btn-back-label {
+  display: inline;
+}
+
+.back-icon {
+  flex-shrink: 0;
+  display: block;
 }
 
 .detail-lang-wrapper {
@@ -1404,7 +1423,7 @@ body.viewing-detail main {
   line-height: 1.45;
 }
 
-/* Detail Footer Pagination & Back Actions */
+/* Detail Footer Pagination */
 .detail-action-footer {
   display: flex;
   justify-content: space-between;
@@ -1430,9 +1449,28 @@ body.viewing-detail main {
   text-decoration: none;
 }
 
+.detail-pager-btn.next-pager {
+  margin-left: auto;
+}
+
 .detail-pager-btn:hover {
   background: #f1f5f9;
   border-color: #cbd5e1;
+}
+
+@media (max-width: 540px) {
+  .detail-action-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .detail-pager-btn {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 /* ==========================================================================

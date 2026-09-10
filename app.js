@@ -547,8 +547,12 @@ function renderMushroomDetail(speciesId) {
     <!-- Sticky Top Navigation Bar with Flags Only & Optional Second Language -->
     <div class="detail-top-bar">
       <div class="detail-top-bar-left">
-        <button class="btn-back-catalog" onclick="navigateToCatalog()" aria-label="Back">
-          ←
+        <button class="btn-back-catalog" onclick="navigateToCatalog()" aria-label="Back" title="Back to Species Guide">
+          <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span class="btn-back-label">Back</span>
         </button>
         <div class="lang-switcher-wrapper detail-lang-wrapper" aria-label="Select Language">
           <div class="lang-row primary-lang-row">
@@ -711,17 +715,13 @@ function renderMushroomDetail(speciesId) {
       </div>
     </div>
 
-    <!-- Bottom Navigation Footer with Previous, Back, and Next Buttons -->
+    <!-- Bottom Navigation Footer with Previous and Next Species -->
     <div class="detail-action-footer">
       <button class="detail-pager-btn" onclick="navigateToMushroom('${prevSpecies.id}')">
         ← ${prevSpecies.names[lang]?.primary || prevSpecies.latinName}
       </button>
 
-      <button class="btn-back-catalog" onclick="navigateToCatalog()" aria-label="Back">
-        ←
-      </button>
-
-      <button class="detail-pager-btn" onclick="navigateToMushroom('${nextSpecies.id}')">
+      <button class="detail-pager-btn next-pager" onclick="navigateToMushroom('${nextSpecies.id}')">
         ${nextSpecies.names[lang]?.primary || nextSpecies.latinName} →
       </button>
     </div>
