@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helsinki Wild Mushroom Foraging Guide • 赫尔辛基野生蘑菇采摘指南 • Helsingin Sieniopas</title>
+  <meta name="description" content="Trilingual field guide to wild mushroom foraging in Helsinki & Uusimaa. Local species identification, HSL transit spots, dangerous lookalikes, and authentic recipes. Available in English, Chinese (中文), and Finnish (Suomi).">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍄</text></svg>">
+</head>
+<body>
+
+  <!-- Header Banner -->
+  <header>
+    <div class="header-container">
+      <div class="header-top-bar">
+        <span id="site-badge" class="site-badge">🇫🇮 Helsinki & Uusimaa Mycological Companion</span>
+        
+        <!-- Language Switcher Bar -->
+        <div class="lang-switcher" aria-label="Select Language">
+          <button class="lang-btn active" data-lang="en">🇬🇧 English</button>
+          <button class="lang-btn" data-lang="zh">🇨🇳 中文</button>
+          <button class="lang-btn" data-lang="fi">🇫🇮 Suomi</button>
+        </div>
+      </div>
+
+      <h1 id="site-title">Helsinki Wild Mushroom Guide</h1>
+      <p id="site-subtitle" class="subtitle">
+        A definitive, safety-first field guide for foraging wild mushrooms across the hemiboreal spruce, pine, and deciduous forests of the Helsinki Metropolitan Area.
+      </p>
+
+      <!-- Emergency Hotline Card -->
+      <div class="emergency-bar">
+        <div class="emergency-info">
+          <div class="emergency-icon">🚨</div>
+          <div class="emergency-text">
+            <strong id="emergency-title">Poisoning Emergency? Call Finnish Poison Information Centre</strong>
+            <span id="emergency-subtitle">Free 24/7 service across Finland: <strong>0800 147 111</strong> • General Emergency: <strong>112</strong></span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <a id="btn-call-poison" href="tel:0800147111" class="emergency-btn">📞 Call 0800 147 111</a>
+          <a id="btn-call-112" href="tel:112" class="emergency-btn" style="background: #fee2e2; color: #7f1d1d;">🚨 Call 112</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main>
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button id="tab-btn-catalog" class="tab-btn active" data-tab="catalog">🍄 Species Identification (22)</button>
+      <button id="tab-btn-lookalikes" class="tab-btn" data-tab="lookalikes">⚖️ Lookalike Comparator</button>
+      <button id="tab-btn-cooking" class="tab-btn" data-tab="cooking">🍳 Cooking & Prep Guide</button>
+      <button id="tab-btn-spots" class="tab-btn" data-tab="spots">🚌 Helsinki HSL Spots</button>
+      <button id="tab-btn-safety" class="tab-btn" data-tab="safety">🛡️ Safety & Everyman's Right</button>
+    </nav>
+
+    <!-- TAB 1: Mushroom Catalog -->
+    <section id="tab-catalog">
+      <!-- Search & Filters Panel -->
+      <div class="controls-panel">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" placeholder="Search by Finnish, Latin, English, Chinese, or traits (e.g. spines, pores)...">
+        </div>
+
+        <div class="filters-row">
+          <div class="filter-group">
+            <span id="label-skill-level" class="filter-label">Skill Level:</span>
+            <button id="filter-level-all" class="pill-btn active" data-level="all">All Species</button>
+            <button id="filter-level-beginner" class="pill-btn" data-level="beginner">Beginner-Safe</button>
+            <button id="filter-level-intermediate" class="pill-btn" data-level="intermediate">Intermediate</button>
+            <button id="filter-level-advanced" class="pill-btn" data-level="advanced">Advanced</button>
+            <button id="filter-level-deadly" class="pill-btn" data-level="deadly" style="color: #b91c1c;">Deadly Toxic</button>
+          </div>
+        </div>
+
+        <!-- Season Month Selector -->
+        <div class="season-bar">
+          <span id="label-month-filter" class="filter-label" style="align-self: center; margin-right: 0.5rem;">Fruiting Month:</span>
+          <button class="month-btn" data-month="5">May</button>
+          <button class="month-btn" data-month="6">Jun</button>
+          <button class="month-btn" data-month="7">Jul</button>
+          <button class="month-btn" data-month="8">Aug</button>
+          <button class="month-btn" data-month="9">Sep</button>
+          <button class="month-btn" data-month="10">Oct</button>
+          <button class="month-btn" data-month="11">Nov</button>
+        </div>
+      </div>
+
+      <!-- Mushroom Grid Container -->
+      <div id="mushroom-grid" class="mushroom-grid">
+        <!-- Rendered reactively by JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 2: Lookalike Comparator -->
+    <section id="tab-lookalikes" style="display: none;">
+      <div id="lookalike-container" class="comparator-section">
+        <!-- Rendered reactively by JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 3: Cooking & Preparation Guide -->
+    <section id="tab-cooking" style="display: none;">
+      <div id="cooking-container">
+        <!-- Rendered reactively by JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 4: HSL Spots -->
+    <section id="tab-spots" style="display: none;">
+      <div id="spots-container" class="spots-grid">
+        <!-- Rendered reactively by JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 5: Safety & Guidelines -->
+    <section id="tab-safety" style="display: none;">
+      <div id="safety-content-container">
+        <!-- Rendered reactively by JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #0f172a; color: #94a3b8; text-align: center; padding: 2.5rem 1rem 3rem; font-size: 0.85rem;">
+    <p id="footer-note">Helsinki Mushroom Foraging Companion • Built for local biodiversity and safe foraging in Uusimaa.</p>
+    <p id="footer-disclaimer" style="margin-top: 0.35rem; color: #64748b;">Always verify specimens with 100% certainty before consumption. Emergency: 112 • Poison Center: 0800 147 111.</p>
+  </footer>
+
+  <!-- Scripts: i18n database loaded first, followed by reactive controller -->
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

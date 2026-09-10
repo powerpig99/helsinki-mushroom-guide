@@ -1,0 +1,134 @@
+{
+  "cantharellus_cibarius": {
+    "species": "Cantharellus cibarius",
+    "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
+    "license_code": "cc-by-nc",
+    "file": "images/cantharellus_cibarius.jpg"
+  },
+  "craterellus_tubaeformis": {
+    "species": "Craterellus tubaeformis",
+    "attribution": "(c) growbadlands, some rights reserved (CC BY-NC), uploaded by growbadlands",
+    "license_code": "cc-by-nc",
+    "file": "images/craterellus_tubaeformis.jpg"
+  },
+  "hydnum_repandum": {
+    "species": "Hydnum repandum",
+    "attribution": "(c) Piotr Lukasik, some rights reserved (CC BY), uploaded by Piotr Lukasik",
+    "license_code": "cc-by",
+    "file": "images/hydnum_repandum.jpg"
+  },
+  "craterellus_cornucopioides": {
+    "species": "Craterellus cornucopioides",
+    "attribution": "(c) Paul George, some rights reserved (CC BY-NC-SA), uploaded by Paul George",
+    "license_code": "cc-by-nc-sa",
+    "file": "images/craterellus_cornucopioides.jpg"
+  },
+  "boletus_edulis": {
+    "species": "Boletus edulis",
+    "attribution": "(c) wp-polzin, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/boletus_edulis.jpg"
+  },
+  "boletus_pinophilus": {
+    "species": "Boletus pinophilus",
+    "attribution": "(c) Jose Luis Gonzalez, all rights reserved, uploaded by Jose Luis Gonzalez",
+    "license_code": null,
+    "file": "images/boletus_pinophilus.jpg"
+  },
+  "amanita_virosa": {
+    "species": "Amanita virosa",
+    "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
+    "license_code": "cc-by-nc",
+    "file": "images/amanita_virosa.jpg"
+  },
+  "cortinarius_rubellus": {
+    "species": "Cortinarius rubellus",
+    "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
+    "license_code": "cc-by-nc",
+    "file": "images/cortinarius_rubellus.jpg"
+  },
+  "galerina_marginata": {
+    "species": "Galerina marginata",
+    "attribution": "(c) Benjamin J. Dion, some rights reserved (CC BY-NC-SA), uploaded by Benjamin J. Dion",
+    "license_code": "cc-by-nc-sa",
+    "file": "images/galerina_marginata.jpg"
+  },
+  "gyromitra_esculenta": {
+    "species": "Gyromitra esculenta",
+    "attribution": "(c) Kari Pihlaviita, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/gyromitra_esculenta.jpg"
+  },
+  "paxillus_involutus": {
+    "species": "Paxillus involutus",
+    "attribution": "(c) Matthieu Morin, some rights reserved (CC BY-NC), uploaded by Matthieu Morin",
+    "license_code": "cc-by-nc",
+    "file": "images/paxillus_involutus.jpg"
+  },
+  "lactarius_torminosus": {
+    "species": "Lactarius torminosus",
+    "attribution": "(c) Liz Weinstein // A.K.A. mushroomphotography, some rights reserved (CC BY-NC-ND), uploaded by Liz Weinstein // A.K.A. mushroomphotography",
+    "license_code": "cc-by-nc-nd",
+    "file": "images/lactarius_torminosus.jpg"
+  },
+  "lactarius_rufus": {
+    "species": "Lactarius rufus",
+    "attribution": "(c) Natalie McNear, all rights reserved, uploaded by Natalie McNear",
+    "license_code": null,
+    "file": "images/lactarius_rufus.jpg"
+  },
+  "lactarius_deliciosus": {
+    "species": "Lactarius deliciosus",
+    "attribution": "(c) timendez, some rights reserved (CC BY-NC), uploaded by timendez",
+    "license_code": "cc-by-nc",
+    "file": "images/lactarius_deliciosus.jpg"
+  },
+  "russula_decolorans": {
+    "species": "Russula decolorans",
+    "attribution": "(c) Nina Filippova, some rights reserved (CC BY), uploaded by Nina Filippova",
+    "license_code": "cc-by",
+    "file": "images/russula_decolorans.jpg"
+  },
+  "russula_emetica": {
+    "species": "Russula emetica",
+    "attribution": "(c) noah_siegel, some rights reserved (CC BY-NC-SA), uploaded by noah_siegel",
+    "license_code": "cc-by-nc-sa",
+    "file": "images/russula_emetica.jpg"
+  },
+  "cortinarius_caperatus": {
+    "species": "Cortinarius caperatus",
+    "attribution": "(c) Dean Lyons, some rights reserved (CC BY-NC), uploaded by Dean Lyons",
+    "license_code": "cc-by-nc",
+    "file": "images/cortinarius_caperatus.jpg"
+  },
+  "albatrellus_ovinus": {
+    "species": "Albatrellus ovinus",
+    "attribution": "(c) tombigelow, some rights reserved (CC BY-NC), uploaded by tombigelow",
+    "license_code": "cc-by-nc",
+    "file": "images/albatrellus_ovinus.jpg"
+  },
+  "leccinum_versipelle": {
+    "species": "Leccinum versipelle",
+    "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
+    "license_code": "cc-by-nc",
+    "file": "images/leccinum_versipelle.jpg"
+  },
+  "hygrophoropsis_aurantiaca": {
+    "species": "Hygrophoropsis aurantiaca",
+    "attribution": "(c) Matthieu Morin, some rights reserved (CC BY-NC), uploaded by Matthieu Morin",
+    "license_code": "cc-by-nc",
+    "file": "images/hygrophoropsis_aurantiaca.jpg"
+  },
+  "tylopilus_felleus": {
+    "species": "Tylopilus felleus",
+    "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
+    "license_code": "cc-by-nc",
+    "file": "images/tylopilus_felleus.jpg"
+  },
+  "amanita_muscaria": {
+    "species": "Amanita muscaria",
+    "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
+    "license_code": "cc-by-nc",
+    "file": "images/amanita_muscaria.jpg"
+  }
+}
