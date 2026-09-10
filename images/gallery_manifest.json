@@ -1,0 +1,838 @@
+{
+  "cantharellus_cibarius": [
+    {
+      "file": "./images/cantharellus_cibarius.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/cantharellus_cibarius_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)"
+    },
+    {
+      "file": "./images/cantharellus_cibarius_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)"
+    },
+    {
+      "file": "./images/cantharellus_cibarius_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Bruce Newhouse, some rights reserved (CC BY-NC-ND)"
+    }
+  ],
+  "craterellus_tubaeformis": [
+    {
+      "file": "./images/craterellus_tubaeformis.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/craterellus_tubaeformis_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Bryan D. Gronemeier, all rights reserved"
+    },
+    {
+      "file": "./images/craterellus_tubaeformis_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Bryan D. Gronemeier, all rights reserved"
+    },
+    {
+      "file": "./images/craterellus_tubaeformis_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Bryan D. Gronemeier, all rights reserved"
+    }
+  ],
+  "hydnum_repandum": [
+    {
+      "file": "./images/hydnum_repandum.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/hydnum_repandum_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Alexis Tinker-Tsavalas, some rights reserved (CC BY)"
+    },
+    {
+      "file": "./images/hydnum_repandum_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Alexis Tinker-Tsavalas, some rights reserved (CC BY)"
+    },
+    {
+      "file": "./images/hydnum_repandum_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Alexis Tinker-Tsavalas, some rights reserved (CC BY)"
+    }
+  ],
+  "craterellus_cornucopioides": [
+    {
+      "file": "./images/craterellus_cornucopioides.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/craterellus_cornucopioides_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) naturkvinnan, all rights reserved"
+    },
+    {
+      "file": "./images/craterellus_cornucopioides_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) naturkvinnan, all rights reserved"
+    },
+    {
+      "file": "./images/craterellus_cornucopioides_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) naturkvinnan, all rights reserved"
+    }
+  ],
+  "boletus_edulis": [
+    {
+      "file": "./images/boletus_edulis.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/boletus_edulis_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Carita Bergman, some rights reserved (CC BY-NC-ND)"
+    },
+    {
+      "file": "./images/boletus_edulis_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Carita Bergman, some rights reserved (CC BY-NC-ND)"
+    },
+    {
+      "file": "./images/boletus_edulis_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Damon Tighe, some rights reserved (CC BY-NC)"
+    }
+  ],
+  "boletus_pinophilus": [
+    {
+      "file": "./images/boletus_pinophilus.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/boletus_pinophilus_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Svetlana Belmesova, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/boletus_pinophilus_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Svetlana Belmesova, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/boletus_pinophilus_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Tellur Fenner (Blue Wind School of Botanical Studies), some rights reserved (CC BY-NC)"
+    }
+  ],
+  "amanita_virosa": [
+    {
+      "file": "./images/amanita_virosa.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/amanita_virosa_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) simjar, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/amanita_virosa_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Jesse Kalwij, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/amanita_virosa_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Jesse Kalwij, some rights reserved (CC BY-NC)"
+    }
+  ],
+  "cortinarius_rubellus": [
+    {
+      "file": "./images/cortinarius_rubellus.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/cortinarius_rubellus_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) gnomie_87, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/cortinarius_rubellus_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) gnomie_87, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/cortinarius_rubellus_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) gnomie_87, some rights reserved (CC BY-NC)"
+    }
+  ],
+  "galerina_marginata": [
+    {
+      "file": "./images/galerina_marginata.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/galerina_marginata_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)"
+    },
+    {
+      "file": "./images/galerina_marginata_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)"
+    },
+    {
+      "file": "./images/galerina_marginata_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)"
+    }
+  ],
+  "gyromitra_esculenta": [
+    {
+      "file": "./images/gyromitra_esculenta.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/gyromitra_esculenta_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Panda5360, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/gyromitra_esculenta_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Panda5360, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/gyromitra_esculenta_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Pilgrim218, some rights reserved (CC BY-NC)"
+    }
+  ],
+  "paxillus_involutus": [
+    {
+      "file": "./images/paxillus_involutus.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/paxillus_involutus_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Victoria M., some rights reserved (CC BY)"
+    },
+    {
+      "file": "./images/paxillus_involutus_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Victoria M., some rights reserved (CC BY)"
+    },
+    {
+      "file": "./images/paxillus_involutus_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Victoria M., some rights reserved (CC BY)"
+    }
+  ],
+  "lactarius_torminosus": [
+    {
+      "file": "./images/lactarius_torminosus.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/lactarius_torminosus_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) George Lee, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/lactarius_torminosus_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) George Lee, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/lactarius_torminosus_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Avery Bartels, some rights reserved (CC BY-NC)"
+    }
+  ],
+  "lactarius_rufus": [
+    {
+      "file": "./images/lactarius_rufus.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/lactarius_rufus_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) lunaferna, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/lactarius_rufus_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) woodhaunt, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/lactarius_rufus_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) woodhaunt, some rights reserved (CC BY-NC)"
+    }
+  ],
+  "lactarius_deliciosus": [
+    {
+      "file": "./images/lactarius_deliciosus.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/lactarius_deliciosus_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Nicolas Schwab, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/lactarius_deliciosus_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Nicolas Schwab, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/lactarius_deliciosus_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Nicolas Schwab, some rights reserved (CC BY-NC)"
+    }
+  ],
+  "russula_decolorans": [
+    {
+      "file": "./images/russula_decolorans.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/russula_decolorans_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Daniel Zucker, some rights reserved (CC BY)"
+    },
+    {
+      "file": "./images/russula_decolorans_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Daniel Zucker, some rights reserved (CC BY)"
+    },
+    {
+      "file": "./images/russula_decolorans_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Daniel Zucker, some rights reserved (CC BY)"
+    }
+  ],
+  "russula_emetica": [
+    {
+      "file": "./images/russula_emetica.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/russula_emetica_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) noah_siegel, some rights reserved (CC BY-NC-SA)"
+    },
+    {
+      "file": "./images/russula_emetica_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Science Mom, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/russula_emetica_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Jules Demski, some rights reserved (CC BY-NC)"
+    }
+  ],
+  "cortinarius_caperatus": [
+    {
+      "file": "./images/cortinarius_caperatus.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/cortinarius_caperatus_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Christine Young, some rights reserved (CC BY)"
+    },
+    {
+      "file": "./images/cortinarius_caperatus_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Christine Young, some rights reserved (CC BY)"
+    },
+    {
+      "file": "./images/cortinarius_caperatus_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Christine Young, some rights reserved (CC BY)"
+    }
+  ],
+  "albatrellus_ovinus": [
+    {
+      "file": "./images/albatrellus_ovinus.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/albatrellus_ovinus_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Dylan T. Taylor, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/albatrellus_ovinus_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Dylan T. Taylor, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/albatrellus_ovinus_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Dylan T. Taylor, some rights reserved (CC BY-NC)"
+    }
+  ],
+  "leccinum_versipelle": [
+    {
+      "file": "./images/leccinum_versipelle.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/leccinum_versipelle_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) Александр Рогожин, all rights reserved"
+    },
+    {
+      "file": "./images/leccinum_versipelle_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) escander, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/leccinum_versipelle_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Jeanne Robinson, all rights reserved"
+    }
+  ],
+  "hygrophoropsis_aurantiaca": [
+    {
+      "file": "./images/hygrophoropsis_aurantiaca.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/hygrophoropsis_aurantiaca_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) jeaniusbeanius, all rights reserved"
+    },
+    {
+      "file": "./images/hygrophoropsis_aurantiaca_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) Anja Erbou Thormann, all rights reserved"
+    },
+    {
+      "file": "./images/hygrophoropsis_aurantiaca_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) Anja Erbou Thormann, all rights reserved"
+    }
+  ],
+  "tylopilus_felleus": [
+    {
+      "file": "./images/tylopilus_felleus.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/tylopilus_felleus_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "no rights reserved"
+    },
+    {
+      "file": "./images/tylopilus_felleus_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "no rights reserved"
+    },
+    {
+      "file": "./images/tylopilus_felleus_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "no rights reserved"
+    }
+  ],
+  "amanita_muscaria": [
+    {
+      "file": "./images/amanita_muscaria.jpg",
+      "caption": {
+        "en": "General habit and habitat",
+        "zh": "野外生长整体形态与环境",
+        "fi": "Kasvupaikka ja yleiskuva"
+      },
+      "attribution": "Field observation"
+    },
+    {
+      "file": "./images/amanita_muscaria_1.jpg",
+      "caption": {
+        "en": "Under-cap details (gills/pores/spines)",
+        "zh": "菌盖下方细节（菌褶/孔层/菌刺）",
+        "fi": "Lakin alapinnan yksityiskohdat"
+      },
+      "attribution": "(c) elephantmom, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/amanita_muscaria_2.jpg",
+      "caption": {
+        "en": "Cap surface, margin & stem",
+        "zh": "菌盖表皮、边缘与菌柄特写",
+        "fi": "Lakin pinta, reuna ja jalka"
+      },
+      "attribution": "(c) elephantmom, some rights reserved (CC BY-NC)"
+    },
+    {
+      "file": "./images/amanita_muscaria_3.jpg",
+      "caption": {
+        "en": "Specimen cluster / maturity stage",
+        "zh": "群生状态或不同成熟度阶段",
+        "fi": "Kasvuryhmä tai kehitysvaihe"
+      },
+      "attribution": "(c) cactusdan, all rights reserved"
+    }
+  ]
+}

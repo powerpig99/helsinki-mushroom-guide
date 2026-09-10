@@ -1,10 +1,14 @@
-// Trilingual Dynamic Web Application Logic
+// Trilingual Dynamic Web Application Logic with Interactive Lightbox Gallery
 // Helsinki Wild Mushroom Guide
 
 let currentTab = "catalog";
 let currentLevelFilter = "all";
 let currentMonthFilter = null;
 let searchQuery = "";
+
+// Lightbox Gallery State
+let currentGallerySpecies = null;
+let currentGalleryIndex = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   // Load saved language preference or default to 'en'
@@ -16,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupLanguageSwitcher();
   setupTabs();
   setupFilters();
+  setupGalleryListeners();
   applyLanguage(I18N.currentLang);
 });
 
@@ -94,6 +99,11 @@ function applyLanguage(lang) {
   renderCookingGuide();
   renderSpots();
   renderSafety();
+
+  // If gallery modal is open, re-render its text
+  if (currentGallerySpecies) {
+    updateGalleryView();
+  }
 }
 
 // Setup Navigation Tabs
@@ -191,6 +201,7 @@ function renderCatalog() {
   }
 
   const monthNames = I18N.months[lang];
+  const galleryHintText = lang === "zh" ? "📸 点击查看图集" : (lang === "fi" ? "📸 Avaa kuvagalleria" : "📸 View Gallery");
 
   container.innerHTML = filtered.map(m => {
     let badgeClass = "badge-edible";
@@ -208,19 +219,23 @@ function renderCatalog() {
 
     const nameData = m.names[lang];
     const morph = m.morphology[lang];
+    const photoCount = (m.gallery && m.gallery.length) ? m.gallery.length : 1;
 
     return `
       <div class="mushroom-card">
-        <div class="card-image-wrap">
+        <div class="card-image-wrap" onclick="openGallery('${m.id}', 0)" title="${galleryHintText}">
           <img src="${m.image}" alt="${nameData.primary}" loading="lazy">
           <div class="card-badges">
             <span class="badge ${badgeClass}">${badgeText}</span>
           </div>
           <div class="star-rating">${m.rating}</div>
+          <div class="card-gallery-hint">
+            <span>${galleryHintText} (${photoCount})</span>
+          </div>
         </div>
         <div class="card-body">
           <div class="card-title-area">
-            <h3 class="card-finnish-name">${nameData.primary}</h3>
+            <h3 class="card-finnish-name" style="cursor: pointer;" onclick="openGallery('${m.id}', 0)">${nameData.primary}</h3>
             <div class="card-latin-name">${m.latinName}</div>
             <div class="card-english-name">${nameData.local} • <em>${nameData.alt}</em></div>
           </div>
@@ -254,7 +269,9 @@ function renderCatalog() {
           ${m.lookalikeAlert && m.lookalikeAlert[lang] ? `<div style="background:#fef3c7; color:#92400e; padding:0.5rem; border-radius:6px; font-size:0.8rem; margin-bottom:0.75rem;">🔍 ${m.lookalikeAlert[lang]}</div>` : ""}
 
           <div class="card-footer">
-            <span>${t.skillTag} <strong>${m.level.toUpperCase()}</strong></span>
+            <button onclick="openGallery('${m.id}', 0)" style="background: none; border: none; color: var(--primary); font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.35rem; padding: 0;">
+              🖼️ ${lang === 'zh' ? '查看更多图片' : (lang === 'fi' ? 'Katso kuvat' : 'View Gallery')}
+            </button>
             <span>${t.refId} ${m.id}</span>
           </div>
         </div>
@@ -263,7 +280,142 @@ function renderCatalog() {
   }).join("");
 }
 
-// Render Lookalike Comparator
+// -------------------------------------------------------------
+// Interactive Lightbox Gallery System
+// -------------------------------------------------------------
+function setupGalleryListeners() {
+  const backdrop = document.getElementById("gallery-modal-backdrop");
+  const closeBtn = document.getElementById("gallery-close-btn");
+  const prevBtn = document.getElementById("gallery-nav-prev");
+  const nextBtn = document.getElementById("gallery-nav-next");
+
+  if (closeBtn) closeBtn.addEventListener("click", closeGallery);
+  if (prevBtn) prevBtn.addEventListener("click", prevGalleryPhoto);
+  if (nextBtn) nextBtn.addEventListener("click", nextGalleryPhoto);
+
+  if (backdrop) {
+    backdrop.addEventListener("click", (e) => {
+      if (e.target === backdrop) {
+        closeGallery();
+      }
+    });
+  }
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (!currentGallerySpecies) return;
+    if (e.key === "Escape") closeGallery();
+    else if (e.key === "ArrowLeft") prevGalleryPhoto();
+    else if (e.key === "ArrowRight") nextGalleryPhoto();
+  });
+}
+
+function openGallery(speciesId, photoIndex = 0) {
+  const sp = I18N.species.find(s => s.id === speciesId);
+  if (!sp) return;
+
+  currentGallerySpecies = sp;
+  currentGalleryIndex = photoIndex;
+
+  const backdrop = document.getElementById("gallery-modal-backdrop");
+  if (backdrop) {
+    backdrop.classList.add("open");
+    backdrop.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  updateGalleryView();
+}
+
+function closeGallery() {
+  currentGallerySpecies = null;
+  const backdrop = document.getElementById("gallery-modal-backdrop");
+  if (backdrop) {
+    backdrop.classList.remove("open");
+    backdrop.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+}
+
+function nextGalleryPhoto() {
+  if (!currentGallerySpecies || !currentGallerySpecies.gallery) return;
+  const total = currentGallerySpecies.gallery.length;
+  currentGalleryIndex = (currentGalleryIndex + 1) % total;
+  updateGalleryView();
+}
+
+function prevGalleryPhoto() {
+  if (!currentGallerySpecies || !currentGallerySpecies.gallery) return;
+  const total = currentGallerySpecies.gallery.length;
+  currentGalleryIndex = (currentGalleryIndex - 1 + total) % total;
+  updateGalleryView();
+}
+
+function setGalleryPhoto(index) {
+  if (!currentGallerySpecies || !currentGallerySpecies.gallery) return;
+  if (index >= 0 && index < currentGallerySpecies.gallery.length) {
+    currentGalleryIndex = index;
+    updateGalleryView();
+  }
+}
+
+function updateGalleryView() {
+  if (!currentGallerySpecies) return;
+
+  const lang = I18N.currentLang;
+  const sp = currentGallerySpecies;
+  const photos = (sp.gallery && sp.gallery.length) ? sp.gallery : [
+    { file: sp.image, caption: { en: "Field observation", zh: "野外生境观察", fi: "Luontohavainto" }, attribution: "" }
+  ];
+
+  if (currentGalleryIndex >= photos.length) {
+    currentGalleryIndex = 0;
+  }
+
+  const currentPhoto = photos[currentGalleryIndex];
+
+  // Titles
+  const titleEl = document.getElementById("gallery-modal-title");
+  const subEl = document.getElementById("gallery-modal-subtitle");
+  const counterEl = document.getElementById("gallery-counter");
+  const mainImgEl = document.getElementById("gallery-main-img");
+  const captionEl = document.getElementById("gallery-caption-text");
+  const attrEl = document.getElementById("gallery-attribution");
+  const thumbsContainer = document.getElementById("gallery-thumbs");
+
+  if (titleEl) titleEl.textContent = sp.names[lang]?.primary || sp.latinName;
+  if (subEl) subEl.textContent = `${sp.latinName} • ${sp.names[lang]?.local || ""}`;
+  if (counterEl) counterEl.textContent = `${currentGalleryIndex + 1} / ${photos.length}`;
+
+  if (mainImgEl) {
+    mainImgEl.src = currentPhoto.file;
+    mainImgEl.alt = `${sp.names[lang]?.primary} photo ${currentGalleryIndex + 1}`;
+  }
+
+  if (captionEl) {
+    const capText = (currentPhoto.caption && currentPhoto.caption[lang]) 
+      ? currentPhoto.caption[lang] 
+      : (currentPhoto.caption?.en || "Botanical detail");
+    captionEl.textContent = `🔍 ${capText}`;
+  }
+
+  if (attrEl) {
+    attrEl.textContent = currentPhoto.attribution || "CC Observation Data";
+  }
+
+  // Render Thumbnail strip
+  if (thumbsContainer) {
+    thumbsContainer.innerHTML = photos.map((p, idx) => `
+      <div class="gallery-thumb ${idx === currentGalleryIndex ? 'active' : ''}" onclick="setGalleryPhoto(${idx})" title="Photo ${idx + 1}">
+        <img src="${p.file}" alt="Thumbnail ${idx + 1}">
+      </div>
+    `).join("");
+  }
+}
+
+// -------------------------------------------------------------
+// Lookalike Comparator Render
+// -------------------------------------------------------------
 function renderLookalikes() {
   const container = document.getElementById("lookalike-container");
   if (!container) return;
@@ -284,6 +436,7 @@ function renderLookalikes() {
         fi: "Yleisin aloittelijan sekaannus. Toinen huippuherkku, toinen sitkeä ja mitätön."
       },
       edible: {
+        id: "cantharellus_cibarius",
         name: { en: "Golden Chanterelle (Keltavahvero)", zh: "真鸡油菌 (Cantharellus cibarius)", fi: "Keltavahvero (Kantarelli)" },
         image: "./images/cantharellus_cibarius.jpg",
         status: t.badgeChoice,
@@ -294,6 +447,7 @@ function renderLookalikes() {
         }
       },
       toxic: {
+        id: "hygrophoropsis_aurantiaca",
         name: { en: "False Chanterelle (Valekantarelli)", zh: "假鸡油菌 (Hygrophoropsis aurantiaca)", fi: "Valekantarelli" },
         image: "./images/hygrophoropsis_aurantiaca.jpg",
         status: t.badgeInedible,
@@ -316,6 +470,7 @@ function renderLookalikes() {
         fi: "HENGENPELASTAVA VERTAILU: Kasvavat samoissa kosteissa kuusikoissa vierekkäin!"
       },
       edible: {
+        id: "craterellus_tubaeformis",
         name: { en: "Funnel Chanterelle (Suppilovahvero)", zh: "漏斗鸡油菌 (Craterellus tubaeformis)", fi: "Suppilovahvero" },
         image: "./images/craterellus_tubaeformis.jpg",
         status: t.badgeChoice,
@@ -326,6 +481,7 @@ function renderLookalikes() {
         }
       },
       toxic: {
+        id: "cortinarius_rubellus",
         name: { en: "Deadly Webcap (Suippumyrkkyseitikki)", zh: "赭红丝膜菌 (Cortinarius rubellus)", fi: "Suippumyrkkyseitikki" },
         image: "./images/cortinarius_rubellus.jpg",
         status: t.badgeDeadly,
@@ -348,6 +504,7 @@ function renderLookalikes() {
         fi: "Sappitatti ei ole tappava, mutta pilaa kitkeryydellään koko ruoan."
       },
       edible: {
+        id: "boletus_edulis",
         name: { en: "King Bolete (Herkkutatti)", zh: "美味牛肝菌 (Boletus edulis)", fi: "Herkkutatti" },
         image: "./images/boletus_edulis.jpg",
         status: t.badgeChoice,
@@ -358,6 +515,7 @@ function renderLookalikes() {
         }
       },
       toxic: {
+        id: "tylopilus_felleus",
         name: { en: "Bitter Bolete (Sappitatti)", zh: "苦粉孢牛肝菌 (Tylopilus felleus)", fi: "Sappitatti" },
         image: "./images/tylopilus_felleus.jpg",
         status: t.badgeInedible,
@@ -381,8 +539,8 @@ function renderLookalikes() {
       <div class="comparator-pair-grid">
         <div class="comparator-item edible">
           <span class="badge badge-choice">${t.safeBadge}</span>
-          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #14532d;">${pair.edible.name[lang]}</h4>
-          <div style="height: 180px; border-radius: 8px; overflow: hidden; margin: 0.75rem 0;">
+          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #14532d; cursor:pointer;" onclick="openGallery('${pair.edible.id}', 0)">${pair.edible.name[lang]} 📸</h4>
+          <div style="height: 180px; border-radius: 8px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="openGallery('${pair.edible.id}', 0)" title="Click to view gallery">
             <img src="${pair.edible.image}" alt="Edible" style="width:100%; height:100%; object-fit: cover;">
           </div>
           <ul class="diff-checklist">
@@ -391,8 +549,8 @@ function renderLookalikes() {
         </div>
         <div class="comparator-item toxic">
           <span class="badge badge-deadly">${t.dangerBadge}</span>
-          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #7f1d1d;">${pair.toxic.name[lang]}</h4>
-          <div style="height: 180px; border-radius: 8px; overflow: hidden; margin: 0.75rem 0;">
+          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #7f1d1d; cursor:pointer;" onclick="openGallery('${pair.toxic.id}', 0)">${pair.toxic.name[lang]} 📸</h4>
+          <div style="height: 180px; border-radius: 8px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="openGallery('${pair.toxic.id}', 0)" title="Click to view gallery">
             <img src="${pair.toxic.image}" alt="Toxic" style="width:100%; height:100%; object-fit: cover;">
           </div>
           <ul class="diff-checklist">
@@ -404,7 +562,9 @@ function renderLookalikes() {
   `).join("");
 }
 
-// Render Cooking & Preparation Guide
+// -------------------------------------------------------------
+// Cooking Guide & Recipes
+// -------------------------------------------------------------
 function renderCookingGuide() {
   const container = document.getElementById("cooking-container");
   if (!container) return;
@@ -459,7 +619,9 @@ function renderCookingGuide() {
   `;
 }
 
-// Render HSL Transit Spots
+// -------------------------------------------------------------
+// HSL Transit Spots
+// -------------------------------------------------------------
 function renderSpots() {
   const container = document.getElementById("spots-container");
   if (!container) return;
@@ -497,7 +659,9 @@ function renderSpots() {
   `).join("");
 }
 
-// Render Safety Tab Content
+// -------------------------------------------------------------
+// Safety Rules
+// -------------------------------------------------------------
 function renderSafety() {
   const container = document.getElementById("safety-content-container");
   if (!container) return;

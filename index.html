@@ -131,6 +131,35 @@
     <p id="footer-disclaimer" style="margin-top: 0.35rem; color: #64748b;">Always verify specimens with 100% certainty before consumption. Emergency: 112 • Poison Center: 0800 147 111.</p>
   </footer>
 
+  <!-- Interactive Lightbox Gallery Modal -->
+  <div id="gallery-modal-backdrop" class="gallery-modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="gallery-modal-content">
+      <div class="gallery-modal-header">
+        <div class="gallery-modal-title">
+          <h3 id="gallery-modal-title">Species Name</h3>
+          <span id="gallery-modal-subtitle">Latin name</span>
+        </div>
+        <span id="gallery-counter" class="gallery-counter">1 / 4</span>
+        <button id="gallery-close-btn" class="gallery-close-btn" aria-label="Close Gallery">✕</button>
+      </div>
+
+      <div class="gallery-stage">
+        <button id="gallery-nav-prev" class="gallery-nav-btn prev" aria-label="Previous photo">‹</button>
+        <img id="gallery-main-img" class="gallery-main-image" src="" alt="Mushroom reference photo">
+        <button id="gallery-nav-next" class="gallery-nav-btn next" aria-label="Next photo">›</button>
+      </div>
+
+      <div class="gallery-caption-bar">
+        <div id="gallery-caption-text" class="gallery-caption-text">Diagnostic feature</div>
+        <div id="gallery-attribution" class="gallery-attribution">Attribution</div>
+      </div>
+
+      <div id="gallery-thumbs" class="gallery-thumbnails-strip">
+        <!-- Thumbnails rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts: i18n database loaded first, followed by reactive controller -->
   <script src="i18n.js"></script>
   <script src="app.js"></script>
