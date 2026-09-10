@@ -79,28 +79,18 @@ function toggleSecondaryLanguage(candidateLang) {
 }
 
 // Render Bilingual Text Block Helper
-function renderBilingualText(obj, lang1, lang2, customTag1, customTag2) {
+function renderBilingualText(obj, lang1, lang2) {
   if (!obj) return "";
   const text1 = typeof obj === "string" ? obj : (obj[lang1] || obj.en || "");
   if (!lang2 || lang1 === lang2) {
     return `<p class="bilingual-text">${text1}</p>`;
   }
   const text2 = typeof obj === "string" ? obj : (obj[lang2] || obj.en || "");
-  const flag1 = lang1 === "en" ? "🇬🇧" : (lang1 === "zh" ? "🇨🇳" : "🇫🇮");
-  const flag2 = lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮");
-  const tag1 = customTag1 || `${flag1} ${lang1.toUpperCase()}`;
-  const tag2 = customTag2 || `${flag2} ${lang2.toUpperCase()}`;
 
   return `
     <div class="bilingual-container">
-      <div class="bilingual-box primary-box">
-        <div class="bilingual-header">${tag1}</div>
-        <p class="bilingual-text">${text1}</p>
-      </div>
-      <div class="bilingual-box secondary-box">
-        <div class="bilingual-header">${tag2}</div>
-        <p class="bilingual-text">${text2}</p>
-      </div>
+      <div class="bilingual-primary"><p>${text1}</p></div>
+      <div class="bilingual-secondary"><p>${text2}</p></div>
     </div>
   `;
 }
@@ -351,7 +341,6 @@ function renderCatalog() {
 
   const monthNames = I18N.months[lang];
   const lang2 = I18N.secondaryLang;
-  const flag2 = lang2 ? (lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮")) : "";
 
   container.innerHTML = filtered.map(m => {
     let badgeClass = "badge-edible";
@@ -389,17 +378,17 @@ function renderCatalog() {
           <div class="card-title-area">
             <h3 class="card-finnish-name">
               ${nameData.primary}
-              ${nameData2 ? `<span class="card-secondary-title">${flag2} ${nameData2.primary}</span>` : ""}
+              ${nameData2 ? `<span class="card-secondary-title">${nameData2.primary}</span>` : ""}
             </h3>
             <div class="card-latin-name">${m.latinName}</div>
             <div class="card-english-name">
               ${nameData.local} • <em>${nameData.alt}</em>
-              ${nameData2 ? ` <span style="color:#0284c7; font-size:0.8rem;">| ${flag2} ${nameData2.local}</span>` : ""}
+              ${nameData2 ? ` <span class="card-secondary-alias">| ${nameData2.local}</span>` : ""}
             </div>
           </div>
 
           <div class="meta-row">
-            <span class="meta-tag" style="background:#e0f2fe; color:#0369a1;">📍 ${m.habitatName[lang]}${nameData2 ? ` / ${m.habitatName[lang2]}` : ""}</span>
+            <span class="meta-tag" style="background:#f1f5f9; color:#475569;">📍 ${m.habitatName[lang]}${nameData2 ? ` / ${m.habitatName[lang2]}` : ""}</span>
             <div style="display:flex; gap:0.25rem;">${monthTags}</div>
           </div>
 
@@ -407,31 +396,31 @@ function renderCatalog() {
             <div class="morphology-item">
               <span class="morphology-label">${t.underCapLabel}</span>
               <span><strong>${morph.underCap}</strong></span>
-              ${morph2 ? `<div class="card-morph-secondary">${flag2} ${morph2.underCap}</div>` : ""}
+              ${morph2 ? `<div class="card-morph-secondary">${morph2.underCap}</div>` : ""}
             </div>
             <div class="morphology-item">
               <span class="morphology-label">${t.capLabel}</span>
               <span>${morph.cap}</span>
-              ${morph2 ? `<div class="card-morph-secondary">${flag2} ${morph2.cap}</div>` : ""}
+              ${morph2 ? `<div class="card-morph-secondary">${morph2.cap}</div>` : ""}
             </div>
             <div class="morphology-item">
               <span class="morphology-label">${t.stemLabel}</span>
               <span>${morph.stem || ""}</span>
-              ${morph2 && morph2.stem ? `<div class="card-morph-secondary">${flag2} ${morph2.stem}</div>` : ""}
+              ${morph2 && morph2.stem ? `<div class="card-morph-secondary">${morph2.stem}</div>` : ""}
             </div>
             <div class="morphology-item">
               <span class="morphology-label">${t.odorLabel}</span>
               <span>${morph.odor || ""}</span>
-              ${morph2 && morph2.odor ? `<div class="card-morph-secondary">${flag2} ${morph2.odor}</div>` : ""}
+              ${morph2 && morph2.odor ? `<div class="card-morph-secondary">${morph2.odor}</div>` : ""}
             </div>
           </div>
 
-          ${m.warning && m.warning[lang] ? `<div class="card-alert">⚠️ ${m.warning[lang]}${nameData2 && m.warning[lang2] ? `<br><small style="color:#991b1b; padding-top:2px; display:inline-block;">${flag2} ${m.warning[lang2]}</small>` : ""}</div>` : ""}
-          ${m.culinaryTip && m.culinaryTip[lang] ? `<div class="card-tip">🍳 ${m.culinaryTip[lang]}${nameData2 && m.culinaryTip[lang2] ? `<br><small style="color:#166534; padding-top:2px; display:inline-block;">${flag2} ${m.culinaryTip[lang2]}</small>` : ""}</div>` : ""}
-          ${m.lookalikeAlert && m.lookalikeAlert[lang] ? `<div style="background:#fef3c7; color:#92400e; padding:0.5rem; border-radius:6px; font-size:0.8rem; margin-bottom:0.75rem;">🔍 ${m.lookalikeAlert[lang]}</div>` : ""}
+          ${m.warning && m.warning[lang] ? `<div class="card-alert">⚠️ ${m.warning[lang]}${nameData2 && m.warning[lang2] ? `<div class="card-secondary-alert" style="color:#7f1d1d; font-size:0.8rem; margin-top:3px;">${m.warning[lang2]}</div>` : ""}</div>` : ""}
+          ${m.culinaryTip && m.culinaryTip[lang] ? `<div class="card-tip">🍳 ${m.culinaryTip[lang]}${nameData2 && m.culinaryTip[lang2] ? `<div class="card-secondary-tip" style="color:#78350f; font-size:0.8rem; margin-top:3px;">${m.culinaryTip[lang2]}</div>` : ""}</div>` : ""}
+          ${m.lookalikeAlert && m.lookalikeAlert[lang] ? `<div style="background:#fef3c7; color:#92400e; padding:0.5rem; border-radius:6px; font-size:0.8rem; margin-bottom:0.75rem;">🔍 ${m.lookalikeAlert[lang]}${nameData2 && m.lookalikeAlert[lang2] ? `<div style="color:#78350f; font-size:0.78rem; margin-top:2px;">${m.lookalikeAlert[lang2]}</div>` : ""}</div>` : ""}
 
           <div class="card-footer">
-            <span class="btn-card-details" style="background: var(--primary); color: #ffffff; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; border-radius: 6px;">
+            <span class="btn-card-details" style="background: var(--primary); color: #ffffff; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.85rem; border-radius: 6px;">
               📖 ${t.viewDetails} →
             </span>
             <span>${t.refId} ${m.id}</span>
@@ -462,8 +451,6 @@ function renderMushroomDetail(speciesId) {
   const nameData2 = (lang2 && lang2 !== lang) ? (sp.names[lang2] || sp.names.en) : null;
   const morph = sp.morphology[lang] || sp.morphology.en;
   const morph2 = (lang2 && lang2 !== lang) ? (sp.morphology[lang2] || sp.morphology.en) : null;
-  const flag1 = lang === "en" ? "🇬🇧" : (lang === "zh" ? "🇨🇳" : "🇫🇮");
-  const flag2 = lang2 ? (lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮")) : "";
   const monthNames = I18N.months[lang];
 
   // Edibility Badge determination
@@ -550,12 +537,12 @@ function renderMushroomDetail(speciesId) {
               </div>
               <h3 class="lookalike-title">
                 ${lkName.primary}
-                ${lkName2 ? `<span class="lookalike-sub-title">(${flag2} ${lkName2.primary})</span>` : ""}
+                ${lkName2 ? `<span class="lookalike-sub-title">(${lkName2.primary})</span>` : ""}
               </h3>
               <div class="lookalike-subtitle">${lk.latinName} • <em>${lkName.local}</em></div>
               <div class="lookalike-morph-snippet">
                 <strong>${t.underCapLabel}</strong> ${lk.morphology[lang]?.underCap || ""}
-                ${(lk.morphology[lang2]?.underCap) ? `<div style="color:#0369a1; font-size:0.8rem; margin-top:2px;">${flag2} ${lk.morphology[lang2].underCap}</div>` : ""}
+                ${(lk.morphology[lang2]?.underCap) ? `<div style="color:#64748b; font-size:0.8rem; margin-top:2px;">${lk.morphology[lang2].underCap}</div>` : ""}
               </div>
               <div class="lookalike-action-link">
                 <span>📖 ${lang === 'zh' ? '点击查看该物种专属指南与多图对比' : (lang === 'fi' ? 'Avaa tämän lajin täysi opas ja kuvat' : 'Read full field guide & photos')} →</span>
@@ -577,13 +564,11 @@ function renderMushroomDetail(speciesId) {
         </button>
         <div class="lang-switcher-wrapper detail-lang-wrapper" aria-label="Select Language">
           <div class="lang-row primary-lang-row">
-            <span class="lang-row-label">L1</span>
             <button class="lang-btn ${lang === 'en' ? 'active' : ''}" onclick="switchAppLanguage('en')" title="English">🇬🇧</button>
             <button class="lang-btn ${lang === 'zh' ? 'active' : ''}" onclick="switchAppLanguage('zh')" title="中文">🇨🇳</button>
             <button class="lang-btn ${lang === 'fi' ? 'active' : ''}" onclick="switchAppLanguage('fi')" title="Suomi">🇫🇮</button>
           </div>
           <div class="lang-row secondary-lang-row">
-            <span class="lang-row-label">+L2</span>
             <button class="lang-btn secondary-btn ${lang2 === 'en' ? 'active-secondary' : ''} ${lang === 'en' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('en')" title="Compare English (Click to toggle)">🇬🇧</button>
             <button class="lang-btn secondary-btn ${lang2 === 'zh' ? 'active-secondary' : ''} ${lang === 'zh' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('zh')" title="与中文对照 (点击开启/取消)">🇨🇳</button>
             <button class="lang-btn secondary-btn ${lang2 === 'fi' ? 'active-secondary' : ''} ${lang === 'fi' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('fi')" title="Vertaa suomeksi (Klikkaa päälle/pois)">🇫🇮</button>
@@ -640,12 +625,12 @@ function renderMushroomDetail(speciesId) {
         <div>
           <h1 class="detail-species-primary-name">
             ${nameData.primary}
-            ${nameData2 ? `<span class="detail-species-secondary-name">${flag2} ${nameData2.primary}</span>` : ""}
+            ${nameData2 ? `<span class="detail-species-secondary-name">${nameData2.primary}</span>` : ""}
           </h1>
           <div class="detail-species-latin-name">${sp.latinName}</div>
           <div class="detail-species-alt-names">
             ${nameData.local} • <em>${nameData.alt}</em>
-            ${nameData2 ? ` <span style="color:#0284c7; font-weight:600;">| ${flag2} ${nameData2.local}</span>` : ""}
+            ${nameData2 ? ` <span style="color:#64748b; font-weight:400;">| ${nameData2.local}</span>` : ""}
           </div>
         </div>
         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.35rem;">
@@ -658,7 +643,7 @@ function renderMushroomDetail(speciesId) {
         <div>
           <strong>📍 ${lang === 'zh' ? '生境类型' : (lang === 'fi' ? 'Elinympäristö' : 'Habitat')}:</strong> 
           ${sp.habitatName[lang]}
-          ${nameData2 ? ` / <span style="color:#0284c7;">${sp.habitatName[lang2]}</span>` : ""}
+          ${nameData2 ? ` / <span style="color:#64748b;">${sp.habitatName[lang2]}</span>` : ""}
         </div>
         <div style="display:flex; align-items:center; gap:0.35rem;">
           <strong>📅 ${lang === 'zh' ? '出菇月份' : (lang === 'fi' ? 'Satosenssi' : 'Fruiting Season')}:</strong>
@@ -694,37 +679,37 @@ function renderMushroomDetail(speciesId) {
         <div class="diagnostic-anatomy-item">
           <div class="diagnostic-anatomy-label">${t.underCapLabel}</div>
           <div class="diagnostic-anatomy-value">
-            <div>${nameData2 ? `<span class="lang-flag-badge">${flag1}</span> ` : ""}<strong>${morph.underCap}</strong></div>
-            ${morph2 ? `<div class="secondary-trait-text"><span class="lang-flag-badge">${flag2}</span> ${morph2.underCap}</div>` : ""}
+            <div><strong>${morph.underCap}</strong></div>
+            ${morph2 ? `<div class="secondary-trait-text">${morph2.underCap}</div>` : ""}
           </div>
         </div>
         <div class="diagnostic-anatomy-item">
           <div class="diagnostic-anatomy-label">${t.capLabel}</div>
           <div class="diagnostic-anatomy-value">
-            <div>${nameData2 ? `<span class="lang-flag-badge">${flag1}</span> ` : ""}${morph.cap}</div>
-            ${morph2 ? `<div class="secondary-trait-text"><span class="lang-flag-badge">${flag2}</span> ${morph2.cap}</div>` : ""}
+            <div>${morph.cap}</div>
+            ${morph2 ? `<div class="secondary-trait-text">${morph2.cap}</div>` : ""}
           </div>
         </div>
         <div class="diagnostic-anatomy-item">
           <div class="diagnostic-anatomy-label">${t.stemLabel}</div>
           <div class="diagnostic-anatomy-value">
-            <div>${nameData2 ? `<span class="lang-flag-badge">${flag1}</span> ` : ""}${morph.stem || "—"}</div>
-            ${morph2 && morph2.stem ? `<div class="secondary-trait-text"><span class="lang-flag-badge">${flag2}</span> ${morph2.stem}</div>` : ""}
+            <div>${morph.stem || "—"}</div>
+            ${morph2 && morph2.stem ? `<div class="secondary-trait-text">${morph2.stem}</div>` : ""}
           </div>
         </div>
         <div class="diagnostic-anatomy-item">
           <div class="diagnostic-anatomy-label">${t.odorLabel}</div>
           <div class="diagnostic-anatomy-value">
-            <div>${nameData2 ? `<span class="lang-flag-badge">${flag1}</span> ` : ""}${morph.odor || "—"}</div>
-            ${morph2 && morph2.odor ? `<div class="secondary-trait-text"><span class="lang-flag-badge">${flag2}</span> ${morph2.odor}</div>` : ""}
+            <div>${morph.odor || "—"}</div>
+            ${morph2 && morph2.odor ? `<div class="secondary-trait-text">${morph2.odor}</div>` : ""}
           </div>
         </div>
       </div>
     </div>
 
     <!-- SECTION 4: Lookalikes & Deadly Pitfalls with Clickable Photos -->
-    <div class="detail-section-card" style="border-left: 4px solid var(--warning);">
-      <h2 class="detail-section-title" style="color: var(--warning);">${t.lookalikesTitle}</h2>
+    <div class="detail-section-card">
+      <h2 class="detail-section-title">${t.lookalikesTitle}</h2>
       <div class="detail-section-body" style="margin-bottom: 0.75rem;">
         ${renderBilingualText(sp.lookalikes, lang, lang2)}
       </div>
@@ -732,8 +717,8 @@ function renderMushroomDetail(speciesId) {
     </div>
 
     <!-- SECTION 5: Preparation, Cooking, Parboiling & Preservation -->
-    <div class="detail-section-card" style="border-left: 4px solid var(--success);">
-      <h2 class="detail-section-title" style="color: var(--success);">${t.cookingTitle}</h2>
+    <div class="detail-section-card">
+      <h2 class="detail-section-title">${t.cookingTitle}</h2>
       <div class="detail-section-body">
         ${renderBilingualText(sp.cookingGuide, lang, lang2)}
       </div>
@@ -946,8 +931,8 @@ function updateGalleryView() {
   }
 }
 
-// -------------------------------------------------------------
-// Lookalike Comparator Render
+// // -------------------------------------------------------------
+// Lookalike Comparator Feature
 // -------------------------------------------------------------
 function renderLookalikes() {
   const container = document.getElementById("lookalike-container");
@@ -956,7 +941,6 @@ function renderLookalikes() {
   const lang = I18N.currentLang;
   const lang2 = I18N.secondaryLang;
   const t = I18N.ui[lang];
-  const flag2 = lang2 ? (lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮")) : "";
 
   const pairs = [
     {
@@ -1067,9 +1051,9 @@ function renderLookalikes() {
     <div class="comparator-card">
       <div class="comparator-header">
         <div>
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e293b;">
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b;">
             ${pair.title[lang]}
-            ${lang2 ? `<span style="font-size: 1rem; color:#0284c7; display:block; margin-top:0.25rem;">${flag2} ${pair.title[lang2]}</span>` : ""}
+            ${lang2 ? `<span style="font-size: 0.95rem; color:#64748b; display:block; margin-top:0.2rem; font-weight:400;">${pair.title[lang2]}</span>` : ""}
           </h3>
           <div style="margin-top: 0.35rem;">
             ${renderBilingualText(pair.summary, lang, lang2)}
@@ -1079,36 +1063,36 @@ function renderLookalikes() {
       <div class="comparator-pair-grid">
         <div class="comparator-item edible">
           <span class="badge badge-choice">${t.safeBadge}</span>
-          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #14532d; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')">
+          <h4 style="font-size: 1.15rem; font-weight: 700; margin-top: 0.4rem; color: #14532d; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')">
             ${pair.edible.name[lang]} 📖
-            ${lang2 ? `<span style="font-size:0.85rem; color:#0284c7; display:block; font-weight:600;">${flag2} ${pair.edible.name[lang2]}</span>` : ""}
+            ${lang2 ? `<span style="font-size:0.85rem; color:#64748b; display:block; font-weight:500;">${pair.edible.name[lang2]}</span>` : ""}
           </h4>
-          <div style="height: 180px; border-radius: 8px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')" title="${t.viewDetails}">
+          <div style="height: 180px; border-radius: 6px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')" title="${t.viewDetails}">
             <img src="${pair.edible.image}" alt="Edible" style="width:100%; height:100%; object-fit: cover;">
           </div>
           <ul class="diff-checklist">
             ${pair.edible.traits[lang].map((tr, idx) => `
               <li style="color: #166534;">
                 ✅ ${tr}
-                ${lang2 && pair.edible.traits[lang2]?.[idx] ? `<div style="color:#0369a1; font-size:0.82rem; padding-left:1.3rem; margin-top:2px;">${flag2} ${pair.edible.traits[lang2][idx]}</div>` : ""}
+                ${lang2 && pair.edible.traits[lang2]?.[idx] ? `<div style="color:#64748b; font-size:0.82rem; padding-left:1.3rem; margin-top:2px;">${pair.edible.traits[lang2][idx]}</div>` : ""}
               </li>
             `).join("")}
           </ul>
         </div>
         <div class="comparator-item toxic">
           <span class="badge badge-deadly">${t.dangerBadge}</span>
-          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #7f1d1d; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')">
+          <h4 style="font-size: 1.15rem; font-weight: 700; margin-top: 0.4rem; color: #7f1d1d; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')">
             ${pair.toxic.name[lang]} 📖
-            ${lang2 ? `<span style="font-size:0.85rem; color:#0284c7; display:block; font-weight:600;">${flag2} ${pair.toxic.name[lang2]}</span>` : ""}
+            ${lang2 ? `<span style="font-size:0.85rem; color:#64748b; display:block; font-weight:500;">${pair.toxic.name[lang2]}</span>` : ""}
           </h4>
-          <div style="height: 180px; border-radius: 8px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')" title="${t.viewDetails}">
+          <div style="height: 180px; border-radius: 6px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')" title="${t.viewDetails}">
             <img src="${pair.toxic.image}" alt="Toxic" style="width:100%; height:100%; object-fit: cover;">
           </div>
           <ul class="diff-checklist">
             ${pair.toxic.traits[lang].map((tr, idx) => `
               <li style="color: #991b1b;">
                 ⚠️ ${tr}
-                ${lang2 && pair.toxic.traits[lang2]?.[idx] ? `<div style="color:#b91c1c; font-size:0.82rem; padding-left:1.3rem; margin-top:2px; opacity:0.85;">${flag2} ${pair.toxic.traits[lang2][idx]}</div>` : ""}
+                ${lang2 && pair.toxic.traits[lang2]?.[idx] ? `<div style="color:#64748b; font-size:0.82rem; padding-left:1.3rem; margin-top:2px;">${pair.toxic.traits[lang2][idx]}</div>` : ""}
               </li>
             `).join("")}
           </ul>
@@ -1130,27 +1114,26 @@ function renderCookingGuide() {
   const guide = I18N.cookingGuide[lang];
   const guide2 = lang2 ? I18N.cookingGuide[lang2] : null;
   const t = I18N.ui[lang];
-  const flag2 = lang2 ? (lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮")) : "";
 
   container.innerHTML = `
-    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
-      <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">
+    <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
         ${guide.title}
-        ${guide2 ? `<span style="display:block; font-size: 1.15rem; color:#0284c7; margin-top:0.35rem;">${flag2} ${guide2.title}</span>` : ""}
+        ${guide2 ? `<span style="display:block; font-size: 1.05rem; color:#64748b; margin-top:0.25rem; font-weight:400;">${guide2.title}</span>` : ""}
       </h2>
-      <div style="color: #475569; font-size: 1rem; margin-bottom: 1.5rem;">
+      <div style="color: #475569; font-size: 0.95rem; margin-bottom: 1.25rem;">
         <p>${guide.intro}</p>
-        ${guide2 ? `<p style="color: #0284c7; font-size: 0.92rem; margin-top: 0.5rem;">${flag2} ${guide2.intro}</p>` : ""}
+        ${guide2 ? `<p style="color: #64748b; font-size: 0.9rem; margin-top: 0.35rem;">${guide2.intro}</p>` : ""}
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
         ${guide.principles.map((p, idx) => `
-          <div style="background: #f8fafc; border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 6px;">
-            <h4 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin-bottom: 0.4rem;">${p.title}</h4>
-            <p style="font-size: 0.88rem; color: #475569; line-height: 1.5;">${p.content}</p>
+          <div style="background: #f8fafc; border: 1px solid var(--border); padding: 1rem; border-radius: 6px;">
+            <h4 style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-bottom: 0.35rem;">${p.title}</h4>
+            <p style="font-size: 0.85rem; color: #475569; line-height: 1.5;">${p.content}</p>
             ${guide2 && guide2.principles?.[idx] ? `
-              <div style="margin-top: 0.6rem; padding-top: 0.5rem; border-top: 1px dashed #cbd5e1; font-size: 0.82rem; color: #0369a1; line-height: 1.45;">
-                <strong>${flag2} ${guide2.principles[idx].title}:</strong> ${guide2.principles[idx].content}
+              <div style="margin-top: 0.5rem; font-size: 0.82rem; color: #64748b; line-height: 1.45;">
+                <strong>${guide2.principles[idx].title}:</strong> ${guide2.principles[idx].content}
               </div>
             ` : ""}
           </div>
@@ -1158,45 +1141,45 @@ function renderCookingGuide() {
       </div>
     </div>
 
-    <h3 style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin-bottom: 1.25rem;">
+    <h3 style="font-size: 1.35rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">
       🍲 ${lang === "zh" ? "经典食谱制作" : (lang === "fi" ? "Perinteiset Reseptit" : "Featured Field Recipes")}
-      ${guide2 ? `<span style="font-size: 1.05rem; color:#0284c7; font-weight:600; margin-left: 0.5rem;">(${flag2} ${lang2 === "zh" ? "经典食谱" : (lang2 === "fi" ? "Reseptit" : "Recipes")})</span>` : ""}
+      ${guide2 ? `<span style="font-size: 0.95rem; color:#64748b; font-weight:400; margin-left: 0.5rem;">(${lang2 === "zh" ? "经典食谱" : (lang2 === "fi" ? "Reseptit" : "Recipes")})</span>` : ""}
     </h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.75rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
       ${guide.recipes.map((rcp, idx) => {
         const rcp2 = guide2 && guide2.recipes?.[idx] ? guide2.recipes[idx] : null;
         return `
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow); display: flex; flex-direction: column;">
-          <h4 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.5rem;">
+        <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column;">
+          <h4 style="font-size: 1.15rem; font-weight: 700; color: #1e3a2b; margin-bottom: 0.4rem;">
             ${rcp.name}
-            ${rcp2 ? `<span style="display:block; font-size: 0.95rem; color:#0284c7; margin-top:0.25rem;">${flag2} ${rcp2.name}</span>` : ""}
+            ${rcp2 ? `<span style="display:block; font-size: 0.9rem; color:#64748b; margin-top:0.2rem; font-weight:400;">${rcp2.name}</span>` : ""}
           </h4>
           
-          <div style="display: flex; gap: 1rem; font-size: 0.85rem; color: #64748b; margin-bottom: 1rem; background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; flex-wrap: wrap;">
+          <div style="display: flex; gap: 0.75rem; font-size: 0.82rem; color: #64748b; margin-bottom: 0.85rem; background: #f8fafc; padding: 0.4rem 0.6rem; border-radius: 4px; flex-wrap: wrap;">
             <span>⏱️ <strong>${t.prepTime}</strong> ${rcp.prep}</span>
             <span>🔥 <strong>${t.cookTime}</strong> ${rcp.cook}</span>
             <span>🍽️ <strong>${t.servings}</strong> ${rcp.servings}</span>
           </div>
 
-          <div style="margin-bottom: 1rem;">
-            <div style="font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 0.35rem;">Ingredients:</div>
-            <ul style="padding-left: 1.2rem; font-size: 0.85rem; color: #475569; line-height: 1.5;">
+          <div style="margin-bottom: 0.85rem;">
+            <div style="font-size: 0.82rem; font-weight: 700; color: #334155; margin-bottom: 0.3rem;">Ingredients:</div>
+            <ul style="padding-left: 1.1rem; font-size: 0.82rem; color: #475569; line-height: 1.5;">
               ${rcp.ingredients.map((ing, iIdx) => `
                 <li>
                   ${ing}
-                  ${rcp2 && rcp2.ingredients?.[iIdx] ? `<div style="color:#0369a1; font-size: 0.8rem; margin-top: 1px;">${flag2} ${rcp2.ingredients[iIdx]}</div>` : ""}
+                  ${rcp2 && rcp2.ingredients?.[iIdx] ? `<div style="color:#64748b; font-size: 0.78rem; margin-top: 1px;">${rcp2.ingredients[iIdx]}</div>` : ""}
                 </li>
               `).join("")}
             </ul>
           </div>
 
-          <div style="margin-top: auto; padding-top: 0.75rem; border-top: 1px solid #e2e8f0;">
-            <div style="font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 0.35rem;">Instructions:</div>
-            <ol style="padding-left: 1.2rem; font-size: 0.85rem; color: #334155; line-height: 1.5;">
+          <div style="margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border);">
+            <div style="font-size: 0.82rem; font-weight: 700; color: #334155; margin-bottom: 0.3rem;">Instructions:</div>
+            <ol style="padding-left: 1.1rem; font-size: 0.82rem; color: #334155; line-height: 1.5;">
               ${rcp.steps.map((step, sIdx) => `
-                <li style="margin-bottom: 0.35rem;">
+                <li style="margin-bottom: 0.3rem;">
                   ${step}
-                  ${rcp2 && rcp2.steps?.[sIdx] ? `<div style="color:#0369a1; font-size: 0.8rem; margin-top: 1px;">${flag2} ${rcp2.steps[sIdx]}</div>` : ""}
+                  ${rcp2 && rcp2.steps?.[sIdx] ? `<div style="color:#64748b; font-size: 0.78rem; margin-top: 1px;">${rcp2.steps[sIdx]}</div>` : ""}
                 </li>
               `).join("")}
             </ol>
@@ -1217,14 +1200,13 @@ function renderSpots() {
 
   const lang = I18N.currentLang;
   const lang2 = I18N.secondaryLang;
-  const flag2 = lang2 ? (lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮")) : "";
 
   container.innerHTML = I18N.spots.map(s => `
     <div class="spot-card">
       <div class="spot-header">
         <div>
           <h3 class="spot-title">${s.name[lang]}</h3>
-          ${lang2 ? `<div class="detail-species-secondary-name" style="font-size: 0.92rem; margin-top: 0.2rem;">${flag2} ${s.name[lang2]}</div>` : ""}
+          ${lang2 ? `<div style="font-size: 0.88rem; color:#64748b; margin-top: 0.15rem; font-weight:400;">${s.name[lang2]}</div>` : ""}
           <span style="font-size: 0.8rem; color: #64748b;">📍 ${s.municipality}</span>
         </div>
         <span class="spot-zone">${s.zone}</span>
@@ -1232,18 +1214,18 @@ function renderSpots() {
 
       <div class="spot-transit">
         <p><strong>🚌 HSL:</strong> ${s.transit[lang]}</p>
-        ${lang2 ? `<p style="color: #0284c7; font-size: 0.82rem; margin-top: 0.25rem;">${flag2} ${s.transit[lang2]}</p>` : ""}
+        ${lang2 ? `<p style="color: #64748b; font-size: 0.82rem; margin-top: 0.2rem;">${s.transit[lang2]}</p>` : ""}
         <p style="margin-top: 0.35rem;"><strong>⏱️ Duration:</strong> ~${s.time}</p>
       </div>
 
       <div style="font-size: 0.85rem; color: #334155; margin-bottom: 0.5rem;">
         <strong>Terrain:</strong> ${s.terrain[lang]}
-        ${lang2 ? `<div style="color: #0284c7; font-size: 0.82rem; margin-top: 0.2rem;">${flag2} ${s.terrain[lang2]}</div>` : ""}
+        ${lang2 ? `<div style="color: #64748b; font-size: 0.82rem; margin-top: 0.15rem;">${s.terrain[lang2]}</div>` : ""}
       </div>
 
       <div style="font-size: 0.85rem; color: #166534; background: #f0fdf4; padding: 0.6rem; border-radius: 6px; margin-bottom: 0.75rem;">
         <div>💡 <em>${s.tip[lang]}</em></div>
-        ${lang2 ? `<div style="color: #0369a1; font-size: 0.82rem; margin-top: 0.3rem;">${flag2} <em>${s.tip[lang2]}</em></div>` : ""}
+        ${lang2 ? `<div style="color: #64748b; font-size: 0.82rem; margin-top: 0.25rem;"><em>${s.tip[lang2]}</em></div>` : ""}
       </div>
 
       <div style="font-size: 0.8rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Target Species:</div>
@@ -1263,62 +1245,61 @@ function renderSafety() {
 
   const lang = I18N.currentLang;
   const lang2 = I18N.secondaryLang;
-  const flag2 = lang2 ? (lang2 === "en" ? "🇬🇧" : (lang2 === "zh" ? "🇨🇳" : "🇫🇮")) : "";
   const sg = I18N.safetyGuidelines;
 
   container.innerHTML = `
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;">
       <!-- Everyman's Right -->
-      <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
-        <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">
+      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem;">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: #1e3a2b; margin-bottom: 0.6rem;">
           ${sg.everymansRight.title[lang]}
-          ${lang2 ? `<span style="font-size: 0.95rem; color: #0284c7; display: block; margin-top: 0.25rem;">${flag2} ${sg.everymansRight.title[lang2]}</span>` : ""}
+          ${lang2 ? `<span style="font-size: 0.9rem; color: #64748b; display: block; margin-top: 0.2rem; font-weight: 400;">${sg.everymansRight.title[lang2]}</span>` : ""}
         </h3>
-        <div style="font-size: 0.9rem; color: #334155; margin-bottom: 0.75rem;">
+        <div style="font-size: 0.88rem; color: #334155; margin-bottom: 0.75rem;">
           <p>${sg.everymansRight.desc[lang]}</p>
-          ${lang2 ? `<p style="color: #0284c7; font-size: 0.85rem; margin-top: 0.25rem;">${flag2} ${sg.everymansRight.desc[lang2]}</p>` : ""}
+          ${lang2 ? `<p style="color: #64748b; font-size: 0.82rem; margin-top: 0.2rem;">${sg.everymansRight.desc[lang2]}</p>` : ""}
         </div>
-        <ul style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
+        <ul style="padding-left: 1.1rem; font-size: 0.82rem; color: #475569; line-height: 1.55;">
           ${sg.everymansRight.rules.map(r => `
-            <li style="margin-bottom: 0.4rem;">
+            <li style="margin-bottom: 0.35rem;">
               <div>${r[lang]}</div>
-              ${lang2 ? `<div style="color: #0369a1; font-size: 0.8rem; margin-top: 2px;">${flag2} ${r[lang2]}</div>` : ""}
+              ${lang2 ? `<div style="color: #64748b; font-size: 0.78rem; margin-top: 1px;">${r[lang2]}</div>` : ""}
             </li>
           `).join("")}
         </ul>
       </div>
 
       <!-- Foolproof Five -->
-      <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
-        <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">
+      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem;">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: #1e3a2b; margin-bottom: 0.6rem;">
           ${sg.foolproofFive.title[lang]}
-          ${lang2 ? `<span style="font-size: 0.95rem; color: #0284c7; display: block; margin-top: 0.25rem;">${flag2} ${sg.foolproofFive.title[lang2]}</span>` : ""}
+          ${lang2 ? `<span style="font-size: 0.9rem; color: #64748b; display: block; margin-top: 0.2rem; font-weight: 400;">${sg.foolproofFive.title[lang2]}</span>` : ""}
         </h3>
-        <div style="font-size: 0.9rem; color: #334155; margin-bottom: 0.75rem;">
+        <div style="font-size: 0.88rem; color: #334155; margin-bottom: 0.75rem;">
           <p>${sg.foolproofFive.desc[lang]}</p>
-          ${lang2 ? `<p style="color: #0284c7; font-size: 0.85rem; margin-top: 0.25rem;">${flag2} ${sg.foolproofFive.desc[lang2]}</p>` : ""}
+          ${lang2 ? `<p style="color: #64748b; font-size: 0.82rem; margin-top: 0.2rem;">${sg.foolproofFive.desc[lang2]}</p>` : ""}
         </div>
-        <ol style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
+        <ol style="padding-left: 1.1rem; font-size: 0.82rem; color: #475569; line-height: 1.55;">
           ${sg.foolproofFive.species.map(s => `
-            <li style="margin-bottom: 0.4rem;">
+            <li style="margin-bottom: 0.35rem;">
               <div>${s[lang]}</div>
-              ${lang2 ? `<div style="color: #0369a1; font-size: 0.8rem; margin-top: 2px;">${flag2} ${s[lang2]}</div>` : ""}
+              ${lang2 ? `<div style="color: #64748b; font-size: 0.78rem; margin-top: 1px;">${s[lang2]}</div>` : ""}
             </li>
           `).join("")}
         </ol>
       </div>
 
       <!-- Forest Safety -->
-      <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
-        <h3 style="font-size: 1.25rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.75rem;">
+      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem;">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: #1e3a2b; margin-bottom: 0.6rem;">
           ${sg.forestSafety.title[lang]}
-          ${lang2 ? `<span style="font-size: 0.95rem; color: #0284c7; display: block; margin-top: 0.25rem;">${flag2} ${sg.forestSafety.title[lang2]}</span>` : ""}
+          ${lang2 ? `<span style="font-size: 0.9rem; color: #64748b; display: block; margin-top: 0.2rem; font-weight: 400;">${sg.forestSafety.title[lang2]}</span>` : ""}
         </h3>
-        <ul style="padding-left: 1.25rem; font-size: 0.85rem; color: #475569; line-height: 1.6;">
+        <ul style="padding-left: 1.1rem; font-size: 0.82rem; color: #475569; line-height: 1.55;">
           ${sg.forestSafety.items.map(it => `
-            <li style="margin-bottom: 0.4rem;">
+            <li style="margin-bottom: 0.35rem;">
               <div>${it[lang]}</div>
-              ${lang2 ? `<div style="color: #0369a1; font-size: 0.8rem; margin-top: 2px;">${flag2} ${it[lang2]}</div>` : ""}
+              ${lang2 ? `<div style="color: #64748b; font-size: 0.78rem; margin-top: 1px;">${it[lang2]}</div>` : ""}
             </li>
           `).join("")}
         </ul>
