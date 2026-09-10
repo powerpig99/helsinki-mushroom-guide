@@ -418,30 +418,6 @@ main {
   transform: scale(1.04);
 }
 
-.card-gallery-hint {
-  position: absolute;
-  bottom: 0.75rem;
-  left: 0.75rem;
-  background: rgba(15, 23, 42, 0.82);
-  backdrop-filter: blur(4px);
-  color: #f8fafc;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.3rem 0.65rem;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  transition: all 0.2s;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-.card-image-wrap:hover .card-gallery-hint {
-  background: rgba(30, 58, 43, 0.95);
-  color: #86efac;
-  transform: scale(1.02);
-}
-
 .card-badges {
   position: absolute;
   top: 0.75rem;
@@ -456,9 +432,12 @@ main {
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.25rem 0.6rem;
-  border-radius: 6px;
+  border-radius: 9999px;
   text-transform: uppercase;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
@@ -469,9 +448,9 @@ main {
 .badge-deadly { background-color: #991b1b; color: #ffffff; }
 .badge-inedible { background-color: #71717a; color: #ffffff; }
 
-.card-img-container .star-rating {
+.star-rating {
   position: absolute;
-  bottom: 0.75rem;
+  top: 0.75rem;
   right: 0.75rem;
   background: rgba(0, 0, 0, 0.75);
   color: #fbbf24;
@@ -480,7 +459,26 @@ main {
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
   backdrop-filter: blur(4px);
-  z-index: 2;
+  z-index: 10;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.detail-photo-star {
+  top: 0.85rem;
+  right: 0.85rem;
+  font-size: 1.15rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.lookalike-img-container .star-rating {
+  top: 0.4rem;
+  right: 0.4rem;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.4rem;
 }
 
 .card-body {
@@ -982,20 +980,20 @@ body.viewing-detail main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
   background: var(--primary);
   color: #ffffff;
   border: none;
-  padding: 0.5rem 0.85rem;
-  border-radius: 8px;
+  width: 32px;
+  height: 30px;
+  min-width: 32px;
+  padding: 0;
+  border-radius: 6px;
   font-weight: 700;
-  font-size: 0.88rem;
+  font-size: 1.25rem;
+  line-height: 1;
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
-  min-width: 78px;
-  box-sizing: border-box;
-  white-space: nowrap;
 }
 
 .btn-back-catalog:hover {
@@ -1249,9 +1247,9 @@ body.viewing-detail main {
 /* Carousel Dots Indicator Bar */
 .detail-carousel-footer {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 0.75rem 1rem 1rem;
+  justify-content: center;
+  padding: 0.65rem 1rem;
   background: #ffffff;
   border-top: 1px solid var(--border);
 }
@@ -1261,7 +1259,6 @@ body.viewing-detail main {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 0.4rem;
 }
 
 .carousel-dot {
@@ -1279,14 +1276,6 @@ body.viewing-detail main {
   width: 28px;
   border-radius: 9999px;
   background: var(--primary);
-}
-
-.carousel-swipe-hint {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
 }
 
 /* Detail Info Header Card */
@@ -1498,19 +1487,6 @@ body.viewing-detail main {
   box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-.lookalike-img-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.6);
-  color: #ffffff;
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-align: center;
-  padding: 0.25rem;
-}
-
 .lookalike-content {
   padding: 0.9rem 1.15rem;
   display: flex;
@@ -1521,14 +1497,13 @@ body.viewing-detail main {
 
 .lookalike-tag-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 0.25rem;
 }
 
 .lookalike-badge {
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #c2410c;
   background: #ffedd5;
   padding: 0.15rem 0.5rem;
@@ -1553,21 +1528,6 @@ body.viewing-detail main {
   font-size: 0.85rem;
   color: #334155;
   line-height: 1.4;
-  margin-bottom: 0.6rem;
-}
-
-.lookalike-action-link {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--primary-light);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.lookalike-interactive-card:hover .lookalike-action-link {
-  text-decoration: underline;
-  color: var(--primary);
 }
 
 @media (max-width: 540px) {

@@ -369,10 +369,7 @@ function renderCatalog() {
           <div class="card-badges">
             <span class="badge ${badgeClass}">${badgeText}</span>
           </div>
-          <div class="star-rating">${m.rating}</div>
-          <div class="card-gallery-hint">
-            <span>📖 ${t.viewDetails} (${photoCount} 📸)</span>
-          </div>
+          ${m.rating ? `<div class="star-rating">${m.rating}</div>` : ""}
         </div>
         <div class="card-body">
           <div class="card-title-area">
@@ -420,9 +417,6 @@ function renderCatalog() {
           ${m.lookalikeAlert && m.lookalikeAlert[lang] ? `<div style="background:#fef3c7; color:#92400e; padding:0.5rem; border-radius:6px; font-size:0.8rem; margin-bottom:0.75rem;">🔍 ${m.lookalikeAlert[lang]}${nameData2 && m.lookalikeAlert[lang2] ? `<div style="color:#78350f; font-size:0.78rem; margin-top:2px;">${m.lookalikeAlert[lang2]}</div>` : ""}</div>` : ""}
 
           <div class="card-footer">
-            <span class="btn-card-details" style="background: var(--primary); color: #ffffff; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.85rem; border-radius: 6px;">
-              📖 ${t.viewDetails} →
-            </span>
             <span>${t.refId} ${m.id}</span>
           </div>
         </div>
@@ -522,13 +516,11 @@ function renderMushroomDetail(speciesId) {
         else if (lk.edibility === "inedible") { lkBadgeClass = "badge-inedible"; lkBadgeText = t.badgeInedible; }
 
         return `
-          <a href="#/mushroom/${lk.id}" class="lookalike-interactive-card" onclick="navigateToMushroom('${lk.id}')" title="${t.viewDetails}: ${lkName.primary}">
+          <a href="#/mushroom/${lk.id}" class="lookalike-interactive-card" onclick="navigateToMushroom('${lk.id}')">
             <div class="lookalike-img-container">
               <img src="${lk.image}" alt="${lkName.primary}" loading="lazy">
               <span class="badge ${lkBadgeClass}">${lkBadgeText}</span>
-              <div class="lookalike-img-overlay">
-                <span>🔍 ${lang === 'zh' ? '点击查阅' : (lang === 'fi' ? 'Katso opas' : 'View Guide')}</span>
-              </div>
+              ${lk.rating ? `<div class="star-rating">${lk.rating}</div>` : ""}
             </div>
             <div class="lookalike-content">
               <div class="lookalike-tag-header">
@@ -543,9 +535,6 @@ function renderMushroomDetail(speciesId) {
                 <strong>${t.underCapLabel}</strong> ${lk.morphology[lang]?.underCap || ""}
                 ${(lk.morphology[lang2]?.underCap) ? `<div style="color:#64748b; font-size:0.8rem; margin-top:2px;">${lk.morphology[lang2].underCap}</div>` : ""}
               </div>
-              <div class="lookalike-action-link">
-                <span>📖 ${lang === 'zh' ? '点击查看该物种专属指南与多图对比' : (lang === 'fi' ? 'Avaa tämän lajin täysi opas ja kuvat' : 'Read full field guide & photos')} →</span>
-              </div>
             </div>
           </a>
         `;
@@ -558,8 +547,8 @@ function renderMushroomDetail(speciesId) {
     <!-- Sticky Top Navigation Bar with Flags Only & Optional Second Language -->
     <div class="detail-top-bar">
       <div class="detail-top-bar-left">
-        <button class="btn-back-catalog" onclick="navigateToCatalog()">
-          ← Back
+        <button class="btn-back-catalog" onclick="navigateToCatalog()" aria-label="Back">
+          ←
         </button>
         <div class="lang-switcher-wrapper detail-lang-wrapper" aria-label="Select Language">
           <div class="lang-row primary-lang-row">
@@ -589,7 +578,7 @@ function renderMushroomDetail(speciesId) {
               <div class="detail-carousel-slide" data-index="${idx}">
                 <img src="${p.file}" alt="${nameData.primary} photo ${idx + 1}" loading="${idx === 0 ? 'eager' : 'lazy'}">
                 <div class="slide-caption-overlay">
-                  <div class="slide-caption-title">🔍 ${capText}</div>
+                  <div class="slide-caption-title">${capText}</div>
                   <div class="slide-photo-count">${idx + 1} / ${photos.length}</div>
                 </div>
               </div>
@@ -597,12 +586,15 @@ function renderMushroomDetail(speciesId) {
           }).join("")}
         </div>
 
+        <!-- Star Rating on Top-Right of Hero Picture -->
+        ${sp.rating ? `<div class="star-rating detail-photo-star">${sp.rating}</div>` : ""}
+
         <!-- Arrow Buttons for Desktop Navigation -->
         <button class="carousel-arrow-btn prev" onclick="slideDetailCarousel(-1)" aria-label="Previous photo">‹</button>
         <button class="carousel-arrow-btn next" onclick="slideDetailCarousel(1)" aria-label="Next photo">›</button>
       </div>
 
-      <!-- Carousel Dots Indicator and Swipe Instruction -->
+      <!-- Carousel Dots Indicator -->
       <div class="detail-carousel-footer">
         <div class="carousel-dots-container" id="detail-carousel-dots">
           ${photos.map((_, idx) => `
@@ -611,9 +603,6 @@ function renderMushroomDetail(speciesId) {
                     onclick="scrollDetailCarousel(${idx})" 
                     aria-label="Photo ${idx + 1}"></button>
           `).join("")}
-        </div>
-        <div class="carousel-swipe-hint">
-          <span>👈 👉 ${t.swipeHint} (${photos.length} photos)</span>
         </div>
       </div>
     </div>
@@ -728,8 +717,8 @@ function renderMushroomDetail(speciesId) {
         ← ${prevSpecies.names[lang]?.primary || prevSpecies.latinName}
       </button>
 
-      <button class="btn-back-catalog" onclick="navigateToCatalog()">
-        ← Back
+      <button class="btn-back-catalog" onclick="navigateToCatalog()" aria-label="Back">
+        ←
       </button>
 
       <button class="detail-pager-btn" onclick="navigateToMushroom('${nextSpecies.id}')">
@@ -1062,7 +1051,7 @@ function renderLookalikes() {
         <div class="comparator-item edible">
           <span class="badge badge-choice">${t.safeBadge}</span>
           <h4 style="font-size: 1.15rem; font-weight: 700; margin-top: 0.4rem; color: #14532d; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')">
-            ${pair.edible.name[lang]} 📖
+            ${pair.edible.name[lang]}
             ${lang2 ? `<span style="font-size:0.85rem; color:#64748b; display:block; font-weight:500;">${pair.edible.name[lang2]}</span>` : ""}
           </h4>
           <div style="height: 180px; border-radius: 6px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')" title="${t.viewDetails}">
@@ -1080,7 +1069,7 @@ function renderLookalikes() {
         <div class="comparator-item toxic">
           <span class="badge badge-deadly">${t.dangerBadge}</span>
           <h4 style="font-size: 1.15rem; font-weight: 700; margin-top: 0.4rem; color: #7f1d1d; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')">
-            ${pair.toxic.name[lang]} 📖
+            ${pair.toxic.name[lang]}
             ${lang2 ? `<span style="font-size:0.85rem; color:#64748b; display:block; font-weight:500;">${pair.toxic.name[lang2]}</span>` : ""}
           </h4>
           <div style="height: 180px; border-radius: 6px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')" title="${t.viewDetails}">
