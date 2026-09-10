@@ -425,11 +425,11 @@ const I18N = {
   // Authentic YouTube Cooking & Preparation Video Tutorials for Edible Species
   cookingVideos: {
     cantharellus_cibarius: {
-      url: "https://www.youtube.com/watch?v=0TysiLgHhd4",
+      url: "https://www.youtube.com/watch?v=JBj7XznS8fU",
       title: {
-        en: "How to Make Finnish Chanterelle Cream Sauce (Kantarellikastike)",
-        zh: "经典芬兰奶油鸡油菌浓汁制作教学 (Kantarellikastike)",
-        fi: "Klassisen kermaisen kantarellikastikkeen valmistus"
+        en: "Traditional Finnish Chanterelle Cream Sauce (Kantarellikastike)",
+        zh: "经典芬兰传统奶油鸡油菌浓汁制作教程",
+        fi: "Perinteisen kermaisen kantarellikastikkeen valmistus"
       }
     },
     craterellus_tubaeformis: {
@@ -465,11 +465,11 @@ const I18N = {
       }
     },
     boletus_pinophilus: {
-      url: "https://www.youtube.com/watch?v=XWB5C1ludQc",
+      url: "https://www.youtube.com/watch?v=IGxtCj8ZuFE",
       title: {
-        en: "Cooking Fresh Pine Boletes (Männynherkkutatti)",
-        zh: "松生牛肝菌厚切香煎与森林野味搭配 (Männynherkkutatti)",
-        fi: "Männynherkkutattien valmistus ja paistaminen"
+        en: "Cooking Wild Boletes in Butter & Cream (Tattikastike)",
+        zh: "北欧松生牛肝菌黄油奶油浓汁烹饪教学",
+        fi: "Herkullisen tattikastikkeen valmistus pannulla"
       }
     },
     gyromitra_esculenta: {
@@ -489,11 +489,11 @@ const I18N = {
       }
     },
     lactarius_rufus: {
-      url: "https://www.youtube.com/watch?v=6F67wBKOv0c",
+      url: "https://www.youtube.com/watch?v=tL8_h3I0bC4",
       title: {
-        en: "How to Parboil & Salt Northern Forest Milkcaps (Rouskujen ryöppäys)",
-        zh: "芬兰森林乳菇沸水滚煮排毒法（Ryöppäys）与盐渍储藏",
-        fi: "Metsärouskujen oikeaoppinen ryöppäys runsaassa vedessä"
+        en: "Official Finnish Guide: Parboiling & Salting Forest Milkcaps (Martat)",
+        zh: "芬兰Martat权威教学：森林红乳菇焯水脱苦与传统盐渍法",
+        fi: "Rouskujen perinteinen ryöppäys ja suolaaminen (Martat)"
       }
     },
     lactarius_deliciosus: {
@@ -505,35 +505,35 @@ const I18N = {
       }
     },
     russula_decolorans: {
-      url: "https://www.youtube.com/watch?v=RQd0Mli8SZc",
+      url: "https://www.youtube.com/watch?v=PvEH3kYOTDQ",
       title: {
-        en: "How to Sauté Mild Brittlegills & Forest Mushrooms in Natural Juices",
-        zh: "温和红菇与野菇干锅出汁香煎技术 (Haperot)",
-        fi: "Haperoiden ja villisienien haudutus omassa liemessään"
+        en: "Pan-Frying Wild Russula Brittlegills with Onions & Black Pepper",
+        zh: "野采红菇洋葱黑胡椒出汁香煎做法（无需焯水）",
+        fi: "Mietoina poimittujen haperoiden paistaminen sipulin kera"
       }
     },
     cortinarius_caperatus: {
-      url: "https://www.youtube.com/watch?v=GgDhElL30YE",
+      url: "https://www.youtube.com/watch?v=xZybP1obYFQ",
       title: {
-        en: "Cooking Gypsy Mushrooms in Butter & Cream (Kehnäsieni)",
-        zh: "皱盖罗鳞伞（隐花丝膜菌）黄油煎制与奶油炖法",
-        fi: "Kehnäsienen tunnistus, puhdistus ja ruoanvalmistus"
+        en: "Pan-Braising Fresh Gypsy Mushrooms (Cortinarius caperatus)",
+        zh: "鲜采皱盖罗鳞伞（隐花丝膜菌）慢火焖煎做法",
+        fi: "Tuoreen kehnäsienen kypsennys ja paistaminen"
       }
     },
     albatrellus_ovinus: {
-      url: "https://www.youtube.com/watch?v=EM_DzS2lVZ8",
+      url: "https://www.youtube.com/watch?v=5oeFlbj43_c",
       title: {
-        en: "Cooking Sheep Polypore: Breaded Forest Cutlet & Soup (Lampaankääpä)",
-        zh: "地花孔菌（羊孔菌）香脆素肉排与浓汤烹饪教学",
-        fi: "Lampaankäävän valmistus leikkeeksi ja keitoksi"
+        en: "Restaurant-Quality Creamy Sheep Polypore Soup (Lampaankääpäkeitto)",
+        zh: "地花孔菌（羊孔菌）经典奶油浓汤餐厅级烹饪教学",
+        fi: "Ravintolatason kermainen lampaankääpäkeitto"
       }
     },
     leccinum_versipelle: {
-      url: "https://www.youtube.com/watch?v=XWB5C1ludQc",
+      url: "https://www.youtube.com/watch?v=o3XPSC6HKDc",
       title: {
-        en: "Thorough 20-Minute Cooking Rule for Leccinum Birch Boletes",
-        zh: "白桦疣柄牛肝菌必须彻底加热20分钟烹饪演示",
-        fi: "Punikkitattien turvallinen ja perusteellinen kypsennys"
+        en: "Thorough Pan-Cooking for Orange Birch Boletes (20-Minute Safety Rule)",
+        zh: "白桦疣柄牛肝菌识别与必须彻底加热20分钟烹饪演示",
+        fi: "Punikkitattien turvallinen ja perusteellinen kypsennys pannulla"
       }
     }
   },
