@@ -1579,8 +1579,32 @@ body.viewing-detail main {
 }
 
 /* ==========================================================================
-   Foraging Location & Trailhead Navigation Cards
+   Clickable Map Links for Prime Foraging Spots
    ========================================================================== */
+
+.spot-map-link {
+  display: inline;
+  color: #166534;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: #86efac;
+  text-underline-offset: 3px;
+  padding: 1px 2px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.spot-map-link:hover {
+  color: #14532d;
+  text-decoration-color: #166534;
+  background-color: #ecfdf5;
+}
+
+.spot-map-link:active {
+  transform: scale(0.98);
+}
 
 .prime-location-card {
   background: #f8fafc;

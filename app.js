@@ -95,6 +95,154 @@ function renderBilingualText(obj, lang1, lang2) {
   `;
 }
 
+// Foraging Spot Google Maps Patterns (Compound & specific phrases listed first)
+const FORAGING_SPOT_PATTERNS = [
+  // Compound / specific location phrases first (longest match)
+  { pattern: /Keskuspuisto \(Paloheinä & Pirkkola\)/g, url: "https://www.google.com/maps/search/?api=1&query=Palohein%C3%A4n+maja+Helsinki" },
+  { pattern: /Keskuspuiston Paloheinä ja Pirkkola/g, url: "https://www.google.com/maps/search/?api=1&query=Palohein%C3%A4n+maja+Helsinki" },
+  { pattern: /中央公园Paloheinä林区/g, url: "https://www.google.com/maps/search/?api=1&query=Palohein%C3%A4n+maja+Helsinki" },
+  
+  { pattern: /Nuuksio \(around Haukkalampi slopes\)/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  { pattern: /Nuuksion Haukkalammen ympäristö/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  { pattern: /Nuuksio国家公园Haukkalampi环湖山坡/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  
+  { pattern: /Luukki forest borders/g, url: "https://www.google.com/maps/search/?api=1&query=Luukin+kartano+Espoo" },
+  { pattern: /Luukki forest boundaries/g, url: "https://www.google.com/maps/search/?api=1&query=Luukin+kartano+Espoo" },
+  { pattern: /Luukki休闲森林小径旁/g, url: "https://www.google.com/maps/search/?api=1&query=Luukin+kartano+Espoo" },
+  { pattern: /北埃斯波Luukki自然林边界/g, url: "https://www.google.com/maps/search/?api=1&query=Luukin+kartano+Espoo" },
+  
+  { pattern: /Sipoonkorpi \(Bisajärvi and Tasakallio\)/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  { pattern: /Sipoonkorven Bisajärven ja Tasakallion maastot/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  { pattern: /西波国家公园（Sipoonkorpi）的Bisajärvi湖畔林区/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  
+  { pattern: /Keskuspuisto \(Pitkäkoski ravines\)/g, url: "https://www.google.com/maps/search/?api=1&query=Pitk%C3%A4kosken+ulkoilumaja" },
+  { pattern: /Keskuspuiston Pitkäkosken notkot/g, url: "https://www.google.com/maps/search/?api=1&query=Pitk%C3%A4kosken+ulkoilumaja" },
+  { pattern: /中央公园最北段的Pitkäkoski水系幽深峡谷/g, url: "https://www.google.com/maps/search/?api=1&query=Pitk%C3%A4kosken+ulkoilumaja" },
+  
+  { pattern: /Vaakkoi in North Espoo/g, url: "https://www.google.com/maps/search/?api=1&query=Vaakkoi+Espoo" },
+  { pattern: /Vaakkoi Pohjois-Espoossa/g, url: "https://www.google.com/maps/search/?api=1&query=Vaakkoi+Espoo" },
+  { pattern: /北埃斯波的Vaakkoi原始云杉林/g, url: "https://www.google.com/maps/search/?api=1&query=Vaakkoi+Espoo" },
+  
+  { pattern: /Luukki \(around Lake Hauklampi\)/g, url: "https://www.google.com/maps/search/?api=1&query=Luukin+kartano+Espoo" },
+  { pattern: /Luukin Hauklammen ympäristö/g, url: "https://www.google.com/maps/search/?api=1&query=Luukin+kartano+Espoo" },
+  { pattern: /北埃斯波Luukki湖区周边林地/g, url: "https://www.google.com/maps/search/?api=1&query=Luukin+kartano+Espoo" },
+  
+  { pattern: /Sipoonkorpi \(Bakunkärr\)/g, url: "https://www.google.com/maps/search/?api=1&query=Knutersintie+256+Sipoo" },
+  { pattern: /Sipoonkorven Bakunkärr/g, url: "https://www.google.com/maps/search/?api=1&query=Knutersintie+256+Sipoo" },
+  { pattern: /西波国家公园Bakunkärr山谷/g, url: "https://www.google.com/maps/search/?api=1&query=Knutersintie+256+Sipoo" },
+  
+  { pattern: /Nuuksio valleys/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  { pattern: /Nuuksion laaksot/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  { pattern: /Nuuksio未开发阴湿山沟/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  
+  { pattern: /Keskuspuisto \(Maunula hazel groves\)/g, url: "https://www.google.com/maps/search/?api=1&query=Maunulan+ulkoilumaja+Helsinki" },
+  { pattern: /Keskuspuiston Maunulan pähkinäpensaikot/g, url: "https://www.google.com/maps/search/?api=1&query=Maunulan+ulkoilumaja+Helsinki" },
+  { pattern: /中央公园Maunula受保护的欧榛树林外缘/g, url: "https://www.google.com/maps/search/?api=1&query=Maunulan+ulkoilumaja+Helsinki" },
+  
+  { pattern: /Petikko in Vantaa/g, url: "https://www.google.com/maps/search/?api=1&query=Petikon+ulkoilualue+Vantaa" },
+  { pattern: /Petikko Vantaalla/g, url: "https://www.google.com/maps/search/?api=1&query=Petikon+ulkoilualue+Vantaa" },
+  { pattern: /万塔Petikko富营养阔叶林/g, url: "https://www.google.com/maps/search/?api=1&query=Petikon+ulkoilualue+Vantaa" },
+  
+  { pattern: /sheltered deciduous slopes in Nuuksio/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  { pattern: /Nuuksion suojaisat rinnelehdot/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  { pattern: /Nuuksio背风朝阳的栎树谷地/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  
+  { pattern: /Sipoonkorpi \(around Kuusijärvi and Bisajärvi\)/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  { pattern: /Sipoonkorpi \(Kuusijärven ja Bisajärven ympäristö\)/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  { pattern: /西波国家公园（Kuusijärvi与Bisajärvi之间的老林区）/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  
+  { pattern: /Nuuksio \(Haukkalampi trails\)/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  { pattern: /Nuuksion polkuverkosto/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  { pattern: /Nuuksio步道深处/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  
+  { pattern: /Sipoonkorpi rocky crags/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  { pattern: /Sipoonkorven kalliomaastot/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  { pattern: /西波国家公园（Sipoonkorpi）高地岩丘/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  
+  { pattern: /Porkkalanniemi pine ridges/g, url: "https://www.google.com/maps/search/?api=1&query=Porkkalanniemi+Kirkkonummi" },
+  { pattern: /Porkkalanniemen männiköt/g, url: "https://www.google.com/maps/search/?api=1&query=Porkkalanniemi+Kirkkonummi" },
+  { pattern: /Porkkalanniemi海角松林山脊/g, url: "https://www.google.com/maps/search/?api=1&query=Porkkalanniemi+Kirkkonummi" },
+  
+  { pattern: /Vuosaari coastal woodlands/g, url: "https://www.google.com/maps/search/?api=1&query=Uutelan+luontopolku+Helsinki" },
+  { pattern: /Vuosaaren rannikkometsät/g, url: "https://www.google.com/maps/search/?api=1&query=Uutelan+luontopolku+Helsinki" },
+  { pattern: /Vuosaari沿海松树步道/g, url: "https://www.google.com/maps/search/?api=1&query=Uutelan+luontopolku+Helsinki" },
+  
+  { pattern: /Haltiala原始林区/g, url: "https://www.google.com/maps/search/?api=1&query=Haltialan+aarnialue+Helsinki" },
+  { pattern: /Uutela海滨步道/g, url: "https://www.google.com/maps/search/?api=1&query=Kahvila+Kampela+Helsinki" },
+  { pattern: /中央公园Pitkäkoski/g, url: "https://www.google.com/maps/search/?api=1&query=Pitk%C3%A4kosken+ulkoilumaja" },
+  { pattern: /西波国家公园（Sipoonkorpi）/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  { pattern: /西波国家公园/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  { pattern: /Nuuksio sandy tracks/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  { pattern: /Nuuksio沙质小径/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+
+  // Single word / city park matches
+  { pattern: /\bPitkäkoskella\b/g, url: "https://www.google.com/maps/search/?api=1&query=Pitk%C3%A4kosken+ulkoilumaja" },
+  { pattern: /\bPitkäkoski\b/g, url: "https://www.google.com/maps/search/?api=1&query=Pitk%C3%A4kosken+ulkoilumaja" },
+  { pattern: /\bSipoonkorvessa\b/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  { pattern: /\bSipoonkorpi\b/g, url: "https://www.google.com/maps/search/?api=1&query=Kuusij%C3%A4rven+ulkoilualue" },
+  { pattern: /\bNuuksiossa\b/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  { pattern: /\bNuuksio\b/g, url: "https://www.google.com/maps/search/?api=1&query=Haukkalammen+luontotupa+Espoo" },
+  { pattern: /\bLuukissa\b/g, url: "https://www.google.com/maps/search/?api=1&query=Luukin+kartano+Espoo" },
+  { pattern: /\bLuukki\b/g, url: "https://www.google.com/maps/search/?api=1&query=Luukin+kartano+Espoo" },
+  { pattern: /\bKeskuspuisto\b/g, url: "https://www.google.com/maps/search/?api=1&query=Palohein%C3%A4n+maja+Helsinki" },
+  { pattern: /中央公园/g, url: "https://www.google.com/maps/search/?api=1&query=Palohein%C3%A4n+maja+Helsinki" },
+  { pattern: /\bHaltiala\b/g, url: "https://www.google.com/maps/search/?api=1&query=Haltialan+aarnialue+Helsinki" },
+  { pattern: /\bTöölönlahti\b/g, url: "https://www.google.com/maps/search/?api=1&query=T%C3%B6%C3%B6l%C3%B6nlahti+Helsinki" },
+  { pattern: /\bMeilahti\b/g, url: "https://www.google.com/maps/search/?api=1&query=Meilahti+Arboretum+Helsinki" },
+  { pattern: /\bSeurasaari\b/g, url: "https://www.google.com/maps/search/?api=1&query=Seurasaari+Helsinki" },
+  { pattern: /\bVuosaari\b/g, url: "https://www.google.com/maps/search/?api=1&query=Uutelan+luontopolku+Helsinki" },
+  { pattern: /\bUutela\b/g, url: "https://www.google.com/maps/search/?api=1&query=Kahvila+Kampela+Helsinki" },
+  { pattern: /\bMatinkylä\b/g, url: "https://www.google.com/maps/search/?api=1&query=Matinkyl%C3%A4+Espoo" },
+  { pattern: /\bLauttasaari\b/g, url: "https://www.google.com/maps/search/?api=1&query=Lauttasaari+Helsinki" },
+  { pattern: /\bOtaniemi\b/g, url: "https://www.google.com/maps/search/?api=1&query=Otaniemi+Espoo" },
+  { pattern: /\bVaakkoissa\b/g, url: "https://www.google.com/maps/search/?api=1&query=Vaakkoi+Espoo" },
+  { pattern: /\bVaakkoi\b/g, url: "https://www.google.com/maps/search/?api=1&query=Vaakkoi+Espoo" },
+  { pattern: /\bPetikko\b/g, url: "https://www.google.com/maps/search/?api=1&query=Petikon+ulkoilualue+Vantaa" },
+  { pattern: /\bPorkkalanniemi\b/g, url: "https://www.google.com/maps/search/?api=1&query=Porkkalanniemi+Kirkkonummi" }
+];
+
+// Helper to turn prime foraging spot names directly into Google Maps links
+function linkifyForagingSpots(text, lang) {
+  if (!text) return "";
+  let counter = 0;
+  const tokens = {};
+  
+  for (const item of FORAGING_SPOT_PATTERNS) {
+    text = text.replace(item.pattern, (match) => {
+      const cleanMatch = match.trim();
+      const token = `__MAP_LINK_${counter++}__`;
+      let title = `Open ${cleanMatch} in Google Maps`;
+      if (lang === "zh") title = `在 Google 地图中打开 ${cleanMatch}`;
+      else if (lang === "fi") title = `Avaa ${cleanMatch} Google Mapsissa`;
+      
+      tokens[token] = `<a href="${item.url}" target="_blank" rel="noopener noreferrer" class="spot-map-link" title="${title}">${cleanMatch}</a>`;
+      return token;
+    });
+  }
+  
+  for (const [token, html] of Object.entries(tokens)) {
+    text = text.replaceAll(token, html);
+  }
+  return text;
+}
+
+// Render Where & When Section with Direct Google Maps Links on Prime Spots
+function renderWhereWhenSection(whereWhenObj, lang1, lang2) {
+  if (!whereWhenObj) return "";
+  const text1 = linkifyForagingSpots(whereWhenObj[lang1] || whereWhenObj.en || "", lang1);
+  if (!lang2 || lang1 === lang2) {
+    return `<p class="bilingual-text">${text1}</p>`;
+  }
+  const text2 = linkifyForagingSpots(whereWhenObj[lang2] || whereWhenObj.en || "", lang2);
+
+  return `
+    <div class="bilingual-container">
+      <div class="bilingual-primary"><p>${text1}</p></div>
+      <div class="bilingual-secondary"><p>${text2}</p></div>
+    </div>
+  `;
+}
+
 // Render Prime Foraging Location Card with Popular Trail & Trailhead Link
 function renderPrimeLocationCard(sp, lang, lang2, t) {
   const locKey = sp.primeLocationKey || (I18N.speciesLocations && I18N.speciesLocations[sp.id]);
@@ -712,10 +860,9 @@ function renderMushroomDetail(speciesId) {
     <!-- SECTION 1: When & Where to Find (Helsinki & Uusimaa Specific) -->
     <div class="detail-section-card">
       <h2 class="detail-section-title">${t.whereWhenTitle}</h2>
-      <div class="detail-section-body" style="margin-bottom: 0.85rem;">
-        ${renderBilingualText(sp.whereWhen, lang, lang2)}
+      <div class="detail-section-body">
+        ${renderWhereWhenSection(sp.whereWhen, lang, lang2)}
       </div>
-      ${renderPrimeLocationCard(sp, lang, lang2, t)}
     </div>
 
     <!-- SECTION 2: Hunter's Search Tactics & Eye-Training -->
