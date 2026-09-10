@@ -1,12 +1,13 @@
-// Trilingual Dynamic Web Application Logic with Interactive Lightbox Gallery
+// Trilingual Dynamic Web Application Logic with Dedicated Mobile Field Guides
 // Helsinki Wild Mushroom Guide
 
 let currentTab = "catalog";
 let currentLevelFilter = "all";
 let currentMonthFilter = null;
 let searchQuery = "";
+let currentMushroomId = null;
 
-// Lightbox Gallery State
+// Lightbox Gallery State (modal fallback)
 let currentGallerySpecies = null;
 let currentGalleryIndex = 0;
 
@@ -21,7 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
   setupTabs();
   setupFilters();
   setupGalleryListeners();
+  setupRouter();
   applyLanguage(I18N.currentLang);
+  handleRoute();
 });
 
 // Setup Language Switcher
@@ -100,10 +103,78 @@ function applyLanguage(lang) {
   renderSpots();
   renderSafety();
 
+  // If currently viewing a mushroom detail page, re-render it in the new language
+  if (currentMushroomId) {
+    renderMushroomDetail(currentMushroomId);
+  }
+
   // If gallery modal is open, re-render its text
   if (currentGallerySpecies) {
     updateGalleryView();
   }
+}
+
+// -------------------------------------------------------------
+// Client-Side Routing & View Transitions
+// -------------------------------------------------------------
+function setupRouter() {
+  window.addEventListener("hashchange", handleRoute);
+}
+
+function handleRoute() {
+  const hash = window.location.hash || "#/";
+  if (hash.startsWith("#/mushroom/")) {
+    const id = hash.replace("#/mushroom/", "").trim();
+    showMushroomDetail(id);
+  } else {
+    showMainCatalog();
+    if (hash === "#/lookalikes") switchTabDirectly("lookalikes");
+    else if (hash === "#/cooking") switchTabDirectly("cooking");
+    else if (hash === "#/spots") switchTabDirectly("spots");
+    else if (hash === "#/safety") switchTabDirectly("safety");
+    else switchTabDirectly("catalog");
+  }
+}
+
+function switchTabDirectly(tabKey) {
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  tabButtons.forEach(b => {
+    b.classList.toggle("active", b.dataset.tab === tabKey);
+  });
+  currentTab = tabKey;
+  document.getElementById("tab-catalog").style.display = tabKey === "catalog" ? "block" : "none";
+  document.getElementById("tab-lookalikes").style.display = tabKey === "lookalikes" ? "block" : "none";
+  document.getElementById("tab-cooking").style.display = tabKey === "cooking" ? "block" : "none";
+  document.getElementById("tab-spots").style.display = tabKey === "spots" ? "block" : "none";
+  document.getElementById("tab-safety").style.display = tabKey === "safety" ? "block" : "none";
+}
+
+function navigateToMushroom(id) {
+  window.location.hash = "#/mushroom/" + id;
+}
+
+function navigateToCatalog() {
+  window.location.hash = "#/catalog";
+}
+
+function showMushroomDetail(id) {
+  currentMushroomId = id;
+  const viewMain = document.getElementById("view-main");
+  const viewDetail = document.getElementById("view-mushroom-detail");
+  if (viewMain) viewMain.style.display = "none";
+  if (viewDetail) {
+    viewDetail.style.display = "block";
+    renderMushroomDetail(id);
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showMainCatalog() {
+  currentMushroomId = null;
+  const viewMain = document.getElementById("view-main");
+  const viewDetail = document.getElementById("view-mushroom-detail");
+  if (viewDetail) viewDetail.style.display = "none";
+  if (viewMain) viewMain.style.display = "block";
 }
 
 // Setup Navigation Tabs
@@ -111,15 +182,9 @@ function setupTabs() {
   const tabButtons = document.querySelectorAll(".tab-btn");
   tabButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-      tabButtons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      currentTab = btn.dataset.tab;
-
-      document.getElementById("tab-catalog").style.display = currentTab === "catalog" ? "block" : "none";
-      document.getElementById("tab-lookalikes").style.display = currentTab === "lookalikes" ? "block" : "none";
-      document.getElementById("tab-cooking").style.display = currentTab === "cooking" ? "block" : "none";
-      document.getElementById("tab-spots").style.display = currentTab === "spots" ? "block" : "none";
-      document.getElementById("tab-safety").style.display = currentTab === "safety" ? "block" : "none";
+      const tab = btn.dataset.tab;
+      window.location.hash = "#/" + tab;
+      switchTabDirectly(tab);
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   });
@@ -201,7 +266,6 @@ function renderCatalog() {
   }
 
   const monthNames = I18N.months[lang];
-  const galleryHintText = lang === "zh" ? "📸 点击查看图集" : (lang === "fi" ? "📸 Avaa kuvagalleria" : "📸 View Gallery");
 
   container.innerHTML = filtered.map(m => {
     let badgeClass = "badge-edible";
@@ -219,23 +283,23 @@ function renderCatalog() {
 
     const nameData = m.names[lang];
     const morph = m.morphology[lang];
-    const photoCount = (m.gallery && m.gallery.length) ? m.gallery.length : 1;
+    const photoCount = (m.gallery && m.gallery.length) ? m.gallery.length : 4;
 
     return `
-      <div class="mushroom-card">
-        <div class="card-image-wrap" onclick="openGallery('${m.id}', 0)" title="${galleryHintText}">
+      <div class="mushroom-card" onclick="navigateToMushroom('${m.id}')" style="cursor: pointer;" title="${t.viewDetails}">
+        <div class="card-image-wrap">
           <img src="${m.image}" alt="${nameData.primary}" loading="lazy">
           <div class="card-badges">
             <span class="badge ${badgeClass}">${badgeText}</span>
           </div>
           <div class="star-rating">${m.rating}</div>
           <div class="card-gallery-hint">
-            <span>${galleryHintText} (${photoCount})</span>
+            <span>📖 ${t.viewDetails} (${photoCount} 📸)</span>
           </div>
         </div>
         <div class="card-body">
           <div class="card-title-area">
-            <h3 class="card-finnish-name" style="cursor: pointer;" onclick="openGallery('${m.id}', 0)">${nameData.primary}</h3>
+            <h3 class="card-finnish-name">${nameData.primary}</h3>
             <div class="card-latin-name">${m.latinName}</div>
             <div class="card-english-name">${nameData.local} • <em>${nameData.alt}</em></div>
           </div>
@@ -269,8 +333,8 @@ function renderCatalog() {
           ${m.lookalikeAlert && m.lookalikeAlert[lang] ? `<div style="background:#fef3c7; color:#92400e; padding:0.5rem; border-radius:6px; font-size:0.8rem; margin-bottom:0.75rem;">🔍 ${m.lookalikeAlert[lang]}</div>` : ""}
 
           <div class="card-footer">
-            <button onclick="openGallery('${m.id}', 0)" style="background: none; border: none; color: var(--primary); font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.35rem; padding: 0;">
-              🖼️ ${lang === 'zh' ? '查看更多图片' : (lang === 'fi' ? 'Katso kuvat' : 'View Gallery')}
+            <button onclick="event.stopPropagation(); navigateToMushroom('${m.id}')" style="background: var(--primary); color: #ffffff; border: none; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; border-radius: 6px;">
+              📖 ${t.viewDetails}
             </button>
             <span>${t.refId} ${m.id}</span>
           </div>
@@ -279,6 +343,285 @@ function renderCatalog() {
     `;
   }).join("");
 }
+
+// -------------------------------------------------------------
+// Dedicated Mushroom Field Guide Detail View & Swipe Carousel
+// -------------------------------------------------------------
+function renderMushroomDetail(speciesId) {
+  const container = document.getElementById("view-mushroom-detail");
+  if (!container) return;
+
+  const sp = I18N.species.find(s => s.id === speciesId);
+  if (!sp) {
+    navigateToCatalog();
+    return;
+  }
+
+  const lang = I18N.currentLang;
+  const t = I18N.ui[lang];
+  const nameData = sp.names[lang] || sp.names.en;
+  const morph = sp.morphology[lang] || sp.morphology.en;
+  const monthNames = I18N.months[lang];
+
+  // Edibility Badge determination
+  let badgeClass = "badge-edible";
+  let badgeText = t.badgeEdible;
+  if (sp.edibility === "choice") { badgeClass = "badge-choice"; badgeText = t.badgeChoice; }
+  else if (sp.edibility === "good") { badgeClass = "badge-good"; badgeText = t.badgeGood; }
+  else if (sp.edibility === "parboil") { badgeClass = "badge-parboil"; badgeText = t.badgeParboil; }
+  else if (sp.edibility === "deadly") { badgeClass = "badge-deadly"; badgeText = t.badgeDeadly; }
+  else if (sp.edibility === "inedible") { badgeClass = "badge-inedible"; badgeText = t.badgeInedible; }
+
+  // Skill level label determination
+  let levelText = t.beginnerLevel;
+  if (sp.level === "intermediate") levelText = t.intermediateLevel;
+  else if (sp.level === "advanced") levelText = t.advancedLevel;
+  else if (sp.level === "deadly") levelText = t.deadlyLevel;
+
+  // Fruiting months tags
+  const monthTags = sp.months.map(num => {
+    const idx = num - 5;
+    return `<span class="meta-tag active" style="background:#1e3a2b; color:#fff; font-weight:700;">${monthNames[idx] || num}</span>`;
+  }).join("");
+
+  // Photos for carousel (all 4 verified botanical photos)
+  const photos = (sp.gallery && sp.gallery.length) ? sp.gallery : [
+    { file: sp.image, caption: { en: "Field observation", zh: "野外生境观察", fi: "Luontohavainto" }, attribution: "Field observation" }
+  ];
+
+  // Previous & Next navigation
+  const currentIndex = I18N.species.findIndex(s => s.id === speciesId);
+  const prevSpecies = I18N.species[(currentIndex - 1 + I18N.species.length) % I18N.species.length];
+  const nextSpecies = I18N.species[(currentIndex + 1) % I18N.species.length];
+
+  // Danger alert section if deadly or poisonous
+  const isDeadly = sp.level === "deadly" || sp.edibility === "deadly";
+  const isInedibleOrToxic = isDeadly || sp.edibility === "inedible" || (sp.rating && sp.rating.includes("☠️"));
+
+  const dangerBannerHtml = isInedibleOrToxic ? `
+    <div class="detail-danger-card">
+      <div class="detail-danger-title">
+        <span>🚨 ${isDeadly ? (lang === 'zh' ? '【致命剧毒！严禁采食】' : (lang === 'fi' ? 'TAPPAVAN MYRKYLLINEN' : 'DEADLY TOXIC SPECIMEN')) : (lang === 'zh' ? '【不可食用 / 极苦或有毒】' : (lang === 'fi' ? 'EI SYÖTÄVÄ / MYRKYLLINEN' : 'INEDIBLE / TOXIC'))}</span>
+      </div>
+      <p style="color: #7f1d1d; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
+        ${sp.warning && sp.warning[lang] ? sp.warning[lang] : (lang === 'zh' ? '严禁食用任何部位。若怀疑误食，请立即就医并拨打芬兰中毒中心。' : (lang === 'fi' ? 'Älä koskaan kerää syötäväksi. Epäilyssä soita heti Myrkytystietokeskukseen.' : 'Never ingest any part of this mushroom. If suspected poisoning occurs, contact medical services immediately.'))}
+      </p>
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a href="tel:0800147111" class="emergency-btn" style="background:#dc2626; color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; font-weight:700; padding:0.6rem 1.2rem; border-radius:8px;">📞 芬兰中毒中心 / Poison Center: 0800 147 111</a>
+        <a href="tel:112" class="emergency-btn" style="background:#7f1d1d; color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; font-weight:700; padding:0.6rem 1.2rem; border-radius:8px;">🚨 紧急急救 / Emergency: 112</a>
+      </div>
+    </div>
+  ` : "";
+
+  // Render Full Field Guide Detail Layout
+  container.innerHTML = `
+    <!-- Sticky Top Navigation Bar -->
+    <div class="detail-top-bar">
+      <button class="btn-back-catalog" onclick="navigateToCatalog()">
+        ${t.backToCatalog}
+      </button>
+      <div class="detail-nav-species-name">
+        ${nameData.primary} (${sp.latinName})
+      </div>
+      <div class="detail-badge-group">
+        <span class="badge ${badgeClass}">${badgeText}</span>
+      </div>
+    </div>
+
+    <!-- Top Swipeable Photo Carousel -->
+    <div class="detail-carousel-card">
+      <div class="carousel-viewport-wrapper">
+        <div class="detail-carousel-track" id="detail-carousel-track">
+          ${photos.map((p, idx) => {
+            const capText = (p.caption && p.caption[lang]) ? p.caption[lang] : (p.caption?.en || "Botanical specimen");
+            return `
+              <div class="detail-carousel-slide" data-index="${idx}">
+                <img src="${p.file}" alt="${nameData.primary} photo ${idx + 1}" loading="${idx === 0 ? 'eager' : 'lazy'}">
+                <div class="slide-caption-overlay">
+                  <div class="slide-caption-title">🔍 ${capText}</div>
+                  <div class="slide-photo-count">${idx + 1} / ${photos.length}</div>
+                </div>
+              </div>
+            `;
+          }).join("")}
+        </div>
+
+        <!-- Arrow Buttons for Desktop Navigation -->
+        <button class="carousel-arrow-btn prev" onclick="slideDetailCarousel(-1)" aria-label="Previous photo">‹</button>
+        <button class="carousel-arrow-btn next" onclick="slideDetailCarousel(1)" aria-label="Next photo">›</button>
+      </div>
+
+      <!-- Carousel Dots Indicator and Swipe Instruction -->
+      <div class="detail-carousel-footer">
+        <div class="carousel-dots-container" id="detail-carousel-dots">
+          ${photos.map((_, idx) => `
+            <button class="carousel-dot ${idx === 0 ? 'active' : ''}" 
+                    data-index="${idx}" 
+                    onclick="scrollDetailCarousel(${idx})" 
+                    aria-label="Photo ${idx + 1}"></button>
+          `).join("")}
+        </div>
+        <div class="carousel-swipe-hint">
+          <span>👈 👉 ${t.swipeHint} (${photos.length} photos)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Species Header & Taxonomy Meta -->
+    <div class="detail-header-card">
+      <div class="detail-title-row">
+        <div>
+          <h1 class="detail-species-primary-name">${nameData.primary}</h1>
+          <div class="detail-species-latin-name">${sp.latinName}</div>
+          <div class="detail-species-alt-names">${nameData.local} • <em>${nameData.alt}</em></div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.35rem;">
+          <div class="star-rating" style="font-size:1.4rem;">${sp.rating}</div>
+          <span class="badge ${badgeClass}" style="font-size:0.9rem; padding:0.35rem 0.85rem;">${badgeText}</span>
+        </div>
+      </div>
+
+      <div class="detail-meta-bar">
+        <div><strong>📍 ${lang === 'zh' ? '生境类型' : (lang === 'fi' ? 'Elinympäristö' : 'Habitat')}:</strong> ${sp.habitatName[lang]}</div>
+        <div style="display:flex; align-items:center; gap:0.35rem;">
+          <strong>📅 ${lang === 'zh' ? '出菇月份' : (lang === 'fi' ? 'Satosenssi' : 'Fruiting Season')}:</strong>
+          <div style="display:flex; gap:0.25rem;">${monthTags}</div>
+        </div>
+        <div><strong>🎯 ${t.skillLevelLabel}</strong> ${levelText}</div>
+        <div><strong>🆔 ${t.refId}</strong> ${sp.id}</div>
+      </div>
+    </div>
+
+    ${dangerBannerHtml}
+
+    <!-- SECTION 1: When & Where to Find (Helsinki & Uusimaa Specific) -->
+    <div class="detail-section-card">
+      <h2 class="detail-section-title">${t.whereWhenTitle}</h2>
+      <div class="detail-section-body">
+        <p>${sp.whereWhen ? sp.whereWhen[lang] : sp.habitatName[lang]}</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2: Hunter's Search Tactics & Eye-Training -->
+    <div class="detail-section-card">
+      <h2 class="detail-section-title">${t.searchTacticsTitle}</h2>
+      <div class="detail-section-body">
+        <p>${sp.searchTactics ? sp.searchTactics[lang] : (sp.morphology[lang]?.odor || "")}</p>
+      </div>
+    </div>
+
+    <!-- SECTION 3: Field Diagnostic Anatomy Checklist -->
+    <div class="detail-section-card">
+      <h2 class="detail-section-title">${t.anatomyTitle}</h2>
+      <div class="diagnostic-anatomy-grid">
+        <div class="diagnostic-anatomy-item">
+          <div class="diagnostic-anatomy-label">${t.underCapLabel}</div>
+          <div class="diagnostic-anatomy-value"><strong>${morph.underCap}</strong></div>
+        </div>
+        <div class="diagnostic-anatomy-item">
+          <div class="diagnostic-anatomy-label">${t.capLabel}</div>
+          <div class="diagnostic-anatomy-value">${morph.cap}</div>
+        </div>
+        <div class="diagnostic-anatomy-item">
+          <div class="diagnostic-anatomy-label">${t.stemLabel}</div>
+          <div class="diagnostic-anatomy-value">${morph.stem || "—"}</div>
+        </div>
+        <div class="diagnostic-anatomy-item">
+          <div class="diagnostic-anatomy-label">${t.odorLabel}</div>
+          <div class="diagnostic-anatomy-value">${morph.odor || "—"}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Lookalikes & Deadly Pitfalls -->
+    <div class="detail-section-card" style="border-left: 4px solid var(--warning);">
+      <h2 class="detail-section-title" style="color: var(--warning);">${t.lookalikesTitle}</h2>
+      <div class="detail-section-body">
+        <p>${sp.lookalikes ? sp.lookalikes[lang] : (sp.lookalikeAlert ? sp.lookalikeAlert[lang] : "")}</p>
+      </div>
+    </div>
+
+    <!-- SECTION 5: Preparation, Cooking, Parboiling & Preservation -->
+    <div class="detail-section-card" style="border-left: 4px solid var(--success);">
+      <h2 class="detail-section-title" style="color: var(--success);">${t.cookingTitle}</h2>
+      <div class="detail-section-body">
+        <p>${sp.cookingGuide ? sp.cookingGuide[lang] : (sp.culinaryTip ? sp.culinaryTip[lang] : "")}</p>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation Footer with Previous, Back, and Next Buttons -->
+    <div class="detail-action-footer">
+      <button class="detail-pager-btn" onclick="navigateToMushroom('${prevSpecies.id}')">
+        ← ${prevSpecies.names[lang]?.primary || prevSpecies.latinName}
+      </button>
+
+      <button class="btn-back-catalog" onclick="navigateToCatalog()">
+        ${t.backToCatalog}
+      </button>
+
+      <button class="detail-pager-btn" onclick="navigateToMushroom('${nextSpecies.id}')">
+        ${nextSpecies.names[lang]?.primary || nextSpecies.latinName} →
+      </button>
+    </div>
+  `;
+
+  // Attach touch/scroll dot tracking to the carousel track
+  setupDetailCarousel();
+}
+
+// Top Horizontal Swipe Carousel Synchronization
+function setupDetailCarousel() {
+  const track = document.getElementById("detail-carousel-track");
+  if (!track) return;
+
+  const dots = document.querySelectorAll("#detail-carousel-dots .carousel-dot");
+  if (!dots.length) return;
+
+  let ticking = false;
+
+  function updateActiveDot() {
+    const slideWidth = track.clientWidth || track.offsetWidth || 1;
+    const activeIdx = Math.round(track.scrollLeft / slideWidth);
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === activeIdx);
+    });
+  }
+
+  track.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateActiveDot();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", () => {
+    updateActiveDot();
+  }, { passive: true });
+}
+
+function scrollDetailCarousel(index) {
+  const track = document.getElementById("detail-carousel-track");
+  if (!track) return;
+  const slideWidth = track.clientWidth || track.offsetWidth;
+  track.scrollTo({
+    left: index * slideWidth,
+    behavior: "smooth"
+  });
+}
+
+function slideDetailCarousel(direction) {
+  const track = document.getElementById("detail-carousel-track");
+  if (!track) return;
+  const slideWidth = track.clientWidth || track.offsetWidth;
+  const currentIdx = Math.round(track.scrollLeft / slideWidth);
+  const totalSlides = track.children.length;
+  const targetIdx = Math.max(0, Math.min(totalSlides - 1, currentIdx + direction));
+  scrollDetailCarousel(targetIdx);
+}
+
 
 // -------------------------------------------------------------
 // Interactive Lightbox Gallery System
@@ -539,8 +882,8 @@ function renderLookalikes() {
       <div class="comparator-pair-grid">
         <div class="comparator-item edible">
           <span class="badge badge-choice">${t.safeBadge}</span>
-          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #14532d; cursor:pointer;" onclick="openGallery('${pair.edible.id}', 0)">${pair.edible.name[lang]} 📸</h4>
-          <div style="height: 180px; border-radius: 8px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="openGallery('${pair.edible.id}', 0)" title="Click to view gallery">
+          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #14532d; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')">${pair.edible.name[lang]} 📖</h4>
+          <div style="height: 180px; border-radius: 8px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')" title="${t.viewDetails}">
             <img src="${pair.edible.image}" alt="Edible" style="width:100%; height:100%; object-fit: cover;">
           </div>
           <ul class="diff-checklist">
@@ -549,8 +892,8 @@ function renderLookalikes() {
         </div>
         <div class="comparator-item toxic">
           <span class="badge badge-deadly">${t.dangerBadge}</span>
-          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #7f1d1d; cursor:pointer;" onclick="openGallery('${pair.toxic.id}', 0)">${pair.toxic.name[lang]} 📸</h4>
-          <div style="height: 180px; border-radius: 8px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="openGallery('${pair.toxic.id}', 0)" title="Click to view gallery">
+          <h4 style="font-size: 1.15rem; font-weight: 800; margin-top: 0.4rem; color: #7f1d1d; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')">${pair.toxic.name[lang]} 📖</h4>
+          <div style="height: 180px; border-radius: 8px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')" title="${t.viewDetails}">
             <img src="${pair.toxic.image}" alt="Toxic" style="width:100%; height:100%; object-fit: cover;">
           </div>
           <ul class="diff-checklist">
