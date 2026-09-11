@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03. Seasonal Calendar & Forest Ecology | Helsinki Mushroom Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    .doc-sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #182e22;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .doc-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .doc-btn-back {
+      color: #fff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.4rem 0.85rem;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+    }
+    .doc-btn-back:hover {
+      background: #2d5a42;
+      color: #fff;
+      transform: translateX(-2px);
+    }
+    .doc-select {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      cursor: pointer;
+      outline: none;
+      max-width: 320px;
+    }
+    .doc-select option {
+      background: #182e22;
+      color: #fff;
+    }
+    .doc-main-container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.25rem 4rem;
+      flex: 1;
+      width: 100%;
+    }
+    .doc-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 2.5rem 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .doc-content-area {
+      line-height: 1.75;
+      font-size: 1.02rem;
+      color: #334155;
+    }
+    .doc-content-area h1 {
+      font-size: 2rem;
+      color: #1e3a2b;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .doc-content-area h2 {
+      font-size: 1.45rem;
+      color: #0f172a;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    .doc-content-area h3 {
+      font-size: 1.18rem;
+      color: #1e293b;
+      margin-top: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .doc-content-area p {
+      margin-bottom: 1rem;
+    }
+    .doc-content-area ul, .doc-content-area ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.75rem;
+    }
+    .doc-content-area li {
+      margin-bottom: 0.4rem;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td {
+      background: #fcfcfd;
+    }
+    .reader-alert {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .reader-alert.note {
+      background-color: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      color: #1e40af;
+    }
+    .reader-alert.warning {
+      background-color: var(--warning-light);
+      border-left: 4px solid var(--warning);
+      color: #92400e;
+    }
+    .reader-alert.danger {
+      background-color: var(--danger-light);
+      border-left: 4px solid var(--danger);
+      color: #991b1b;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-size: 0.88rem;
+      margin: 1.25rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: rgba(0,0,0,0.06);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    blockquote {
+      border-left: 4px solid #2d5a42;
+      padding-left: 1rem;
+      margin: 1.25rem 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .doc-footer-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .doc-nav-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+    .doc-nav-btn:hover {
+      background: #2d5a42;
+      color: #fff;
+    }
+    .doc-nav-btn.primary {
+      background: #1e3a2b;
+      color: #fff;
+    }
+    .doc-nav-btn.primary:hover {
+      background: #2d5a42;
+    }
+    .doc-raw-link {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .doc-card {
+        padding: 1.5rem;
+      }
+      .doc-content-area h1 {
+        font-size: 1.5rem;
+      }
+      .doc-select {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Bar -->
+  <header class="doc-sticky-header">
+    <div class="doc-nav-left">
+      <a href="../index.html" class="doc-btn-back">🍄 Mushroom Portal</a>
+      <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
+      <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
+      <select class="doc-select" onchange="if(this.value) window.location.href=this.value" aria-label="Jump to Chapter">
+        
+    <option value="01_legal_and_ethics.html" >
+      ⚖️ 01. Legal Rights, Nature Protection & Forest Safety
+    </option>
+  
+    <option value="02_helsinki_transit_spots_guide.html" >
+      🚌 02. Helsinki Foraging Spots by HSL Transit
+    </option>
+  
+    <option value="03_seasonal_calendar_and_habitats.html" selected>
+      📅 03. Seasonal Calendar & Forest Ecology
+    </option>
+  
+    <option value="04_deadly_and_toxic_species.html" >
+      ☠️ 04. Deadly & Toxic Species Survival Manual
+    </option>
+  
+    <option value="05_beginner_safe_species.html" >
+      🍄 05. The "Safe Five" Beginner Species
+    </option>
+  
+    <option value="06_intermediate_and_advanced.html" >
+      🧺 06. Intermediate & Advanced Gourmet Species
+    </option>
+  
+    <option value="07_preservation_and_recipes.html" >
+      🍳 07. Preservation & Authentic Finnish Recipes
+    </option>
+  
+    <option value="cooking_and_recipes_zh.html" >
+      🇨🇳 ZH. 中文野菌烹饪预处理与中西经典食谱
+    </option>
+  
+      </select>
+    </div>
+    <div>
+      <a href="03_seasonal_calendar_and_habitats.md" class="doc-btn-back" target="_blank" style="background:rgba(255,255,255,0.08); font-weight:normal; font-size:0.8rem;">📄 Raw .md Source</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="doc-main-container">
+    <article class="doc-card">
+      <div class="doc-content-area">
+        <h1>03. Seasonal Calendar & Forest Ecology of Uusimaa</h1>
+
+<p>To find mushrooms consistently around Helsinki, you must understand two biological fundamentals: <strong>Finnish Forest Habitat Types</strong> (the host trees and soil conditions) and <strong>Phenology</strong> (the seasonal timing dictated by temperature, day length, and rainfall).</p>
+
+<hr>
+
+<h2>1. Forest Ecology & Cajander's Forest Site Types</h2>
+
+<p>Finnish foresters and botanists classify forests using the <strong>Cajander site type classification</strong>, based on understory ground vegetation. Each site type fosters specific mycorrhizal (root-symbiotic) fungi:</p>
+
+<pre><code class="language-text">[ Rich Deciduous Grove ]  --&gt;  [ Mesic Spruce Heath ]  --&gt;  [ Dry Pine Heath ]  --&gt;  [ Peatland Bog ]
+       (Lehto)                    (Tuore kangas)              (Kuiva kangas)             (Räme / Korpi)
+  Hazel, Oak, Birch              Norway Spruce, Moss          Scots Pine, Lichen       Sphagnum, Alder
+  Black Trumpets, Ceps           Chanterelles, Porcini        Pine Boletes, Cow Fungi  Bog Russulas, Birch Boletes
+</code></pre>
+
+<h3>A. <em>Lehto</em> (Herb-rich Deciduous Groves)</h3>
+<ul>
+  <li><strong>Soil & Light</strong>: Nutrient-dense, damp, rich humus, alkaline to neutral pH. Filtered sunlight beneath broadleaved canopies.</li>
+  <li><strong>Canopy & Undergrowth</strong>: Silver birch (<em>Betula pendula</em>), European hazel (<em>Corylus avellana</em>), aspen (<em>Populus tremula</em>), pedunculate oak (<em>Quercus robur</em>), wood anemone (<em>valkovuokko</em>), spring pea.</li>
+  <li><strong>Where to find around Helsinki</strong>: Keskuspuisto (Maunula hazelnut groves), Petikko (Vantaa), Tammisto nature reserve borders.</li>
+  <li><strong>Signature Mushrooms</strong>:</li>
+</ul>
+  - <strong>Black Trumpet</strong> (<em>Craterellus cornucopioides</em> / <em>mustatorvisieni</em>): Loves mossy banks under hazel and oak.
+  - <strong>Summer Cep</strong> (<em>Boletus reticulatus</em> / <em>tammenherkkutatti</em>).
+  - <strong>Charcoal Burner</strong> (<em>Russula cyanoxantha</em> / <em>kyyhkyshapero</em>).
+
+<h3>B. <em>Tuore kangas</em> (Mesic Spruce-Blueberry Heath - <em>Myrtillus</em> type)</h3>
+<ul>
+  <li><strong>Soil & Light</strong>: Acidic podzol, thick moisture-retentive carpet of red-stemmed feather moss (<em>Pleurozium schreberi</em>) and stair-step moss (<em>Hylocomium splendens</em>).</li>
+  <li><strong>Canopy & Undergrowth</strong>: Norway spruce (<em>Picea abies</em>), mixed with scattered birch. Dominated by European blueberry / bilberry (<em>Vaccinium myrtillus</em> / <em>mustikka</em>).</li>
+  <li><strong>Where to find</strong>: Sipoonkorpi, Nuuksio ravines, Luukki, Pitkäkoski.</li>
+  <li><strong>The Capital Region's Mushroom Motherlode</strong>:</li>
+</ul>
+  - <strong>King Bolete / Porcini</strong> (<em>Boletus edulis</em> / <em>herkkutatti</em>): At the base of mature spruce where blueberry gives way to moss cushions.
+  - <strong>Funnel Chanterelle</strong> (<em>Craterellus tubaeformis</em> / <em>suppilovahvero</em>): Shaded north-facing slopes, nestled deep inside thick green moss.
+  - <strong>Wood Hedgehog</strong> (<em>Hydnum repandum</em> / <em>vaaleaorakas</em>): Forming rings (<em>fairy rings</em>) in mossy spruce troughs.
+  - <strong>Gypsy Mushroom</strong> (<em>Cortinarius caperatus</em> / <em>kehnäsieni</em>): Among blueberry bushes.
+  - <strong>DEADLY WARNING</strong>: This exact habitat is also where the lethal <strong>Destroying Angel</strong> (<em>Amanita virosa</em>) and <strong>Deadly Webcap</strong> (<em>Cortinarius rubellus</em>) grow!
+
+<h3>C. <em>Kuiva kangas</em> (Sub-xeric Pine-Lingonberry Heath - <em>Vaccinium</em> type)</h3>
+<ul>
+  <li><strong>Soil & Light</strong>: Coarse sand, gravelly glacial moraine, rapid drainage, bright open canopy.</li>
+  <li><strong>Canopy & Undergrowth</strong>: Scots pine (<em>Pinus sylvestris</em>), lingonberry (<em>Vaccinium vitis-idaea</em> / <em>puolukka</em>), heather (<em>Calluna vulgaris</em>), and silvery reindeer lichens (<em>Cladonia</em> / <em>jäkälä</em>).</li>
+  <li><strong>Where to find</strong>: Uutela coastal ridges, Salmen ulkoilualue, rocky ridges of Nuuksio.</li>
+  <li><strong>Signature Mushrooms</strong>:</li>
+</ul>
+  - <strong>Pine Bolete</strong> (<em>Boletus pinophilus</em> / <em>männynherkkutatti</em>): Heavy mahogany-capped bolete with deep reddish reticulation.
+  - <strong>Rufous Milkcap</strong> (<em>Lactarius rufus</em> / <em>kangasrousku</em>): Conical terracotta cap; quintessential Finnish salting mushroom.
+  - <strong>Slippery Jack & Velvet Bolete</strong> (<em>Suillus luteus</em> / <em>voitatti</em>, <em>Suillus variegatus</em> / <em>kangastatti</em>).
+  - <strong>Copper Brittlegill</strong> (<em>Russula decolorans</em> / <em>kangashapero</em>).
+
+<h3>D. <em>Korpi</em> & <em>Räme</em> (Spruce Mires & Peatland Bogs)</h3>
+<ul>
+  <li><strong>Soil & Light</strong>: Waterlogged peat, perpetual dampness, spongy <em>Sphagnum</em> moss pillows.</li>
+  <li><strong>Canopy & Undergrowth</strong>: Stunted Scots pine, downy birch (<em>Betula pubescens</em>), bog bilberry (<em>juolukka</em>), Labrador tea (<em>suopursu</em>).</li>
+  <li><strong>Where to find</strong>: Sipoonkorpi bog edges, Nuuksio peat valleys.</li>
+  <li><strong>Signature Mushrooms</strong>:</li>
+</ul>
+  - <strong>Orange Birch Bolete</strong> (<em>Leccinum versipelle</em> / <em>koivunpunikkitatti</em>).
+  - <strong>Marsh Brittlegill</strong> (<em>Russula paludosa</em> / <em>isohapero</em>): Giant blood-red cap with mild apple-sweet crunch.
+  - <strong>Northern Milkcap</strong> (<em>Lactarius trivialis</em> / <em>haaparousku</em>).
+
+<hr>
+
+<h2>2. Month-by-Month Foraging Calendar in Southern Finland</h2>
+
+<pre><code class="language-text">May        Jun        Jul        Aug        Sep        Oct        Nov
+ |----------|----------|----------|----------|----------|----------|
+ [Korvasieni]
+            [Kantarelli starts]
+                       [Tatit / Porcini explosion]
+                                  [Peak Diversity: All Species]
+                                             [Suppilovahvero / Late Autumn]
+</code></pre>
+
+<h3>May – Early June: The Spring Anomaly</h3>
+<ul>
+  <li><strong>Target</strong>: <strong>False Morel</strong> (<em>Gyromitra esculenta</em> / <em>korvasieni</em>).</li>
+  <li><strong>Habitat</strong>: Disturbed sandy pine soil, clearcuts, logging tire ruts.</li>
+  <li><strong>Crucial Caution</strong>: <em>Gyromitra esculenta</em> contains <strong>gyromitrin</strong>, a lethal volatile toxin that metabolizes into monomethylhydrazine (rocket propellant). In Finland, it is traditionally parboiled twice with vigorous ventilation. <strong>Not recommended for novices.</strong></li>
+</ul>
+
+<h3>July: The Midsummer Awakening</h3>
+<ul>
+  <li><strong>Weather Factor</strong>: Needs warm summer rains. If July is dry, fungi stay dormant.</li>
+  <li><strong>Targets</strong>:</li>
+</ul>
+  - <strong>Golden Chanterelle</strong> (<em>Cantharellus cibarius</em>): Starts fruiting along exposed forest trails, mossy bedrock crevices, and ditch banks.
+  - Early boletes (<em>Leccinum</em>, <em>Suillus</em>).
+<ul>
+  <li><strong>Forager Tip</strong>: Inspect south-facing hillsides where sunlight warmed the forest floor first.</li>
+</ul>
+
+<h3>August: The Grand Flush (The Boletes & Russulas)</h3>
+<ul>
+  <li><strong>Prime Conditions</strong>: Warm nights (>12°C) combined with heavy late-summer thunderstorms.</li>
+  <li><strong>Targets</strong>:</li>
+</ul>
+  - <strong>King Bolete / Porcini</strong> (<em>Boletus edulis</em>): Massive flush lasting 2–3 weeks. Must be harvested early before fungus gnats lay eggs in the spongy pores.
+  - *<em>Brittlegills (</em>Haperot<em>)</em><em>: Yellow brittlegill (</em>keltahapero<em>), copper brittlegill (</em>kangashapero<em>).
+  - <strong>Saffron Milkcap</strong> (</em>Lactarius deliciosus<em> / </em>männynleppärousku<em>): Orange-milked delicacy under young pines.
+
+<h3>September: The Golden Peak of Mycology</h3>
+<ul>
+  <li><strong>The undisputed crown month of Finnish foraging</strong>: Over 50 edible species fruit concurrently.</li>
+  <li><strong>Targets</strong>:</li>
+</ul>
+  - <strong>Hedgehog Mushroom</strong> (</em>Hydnum repandum<em>): Spines under the cap; firm, bug-free white meat.
+  - <strong>Black Trumpet</strong> (</em>Craterellus cornucopioides<em>): The "black truffle of the north".
+  - <strong>Salting Milkcaps</strong>: Woolly milkcap (</em>karvarousku<em>), Northern milkcap (</em>haaparousku<em>), Rufous milkcap (</em>kangasrousku<em>).
+  - <strong>Gypsy Mushroom</strong> (</em>Cortinarius caperatus<em> / </em>kehnäsieni<em>).
+  - <strong>Sheep Polypore</strong> (</em>Albatrellus ovinus<em> / </em>lampaankääpä<em>).
+
+<h3>October – Mid-November: The Late Frost-Resistant Season</h3>
+<ul>
+  <li><strong>Weather</strong>: Night frosts begin (0°C to -4°C), deciduous leaves drop, forest quietens.</li>
+  <li><strong>The Star</strong>: <strong>Funnel Chanterelle</strong> (</em>Craterellus tubaeformis<em> / </em>suppilovahvero*).</li>
+</ul>
+  - Thrives in cold temperatures and survives light frosts.
+  - Can be harvested frozen solid on the stem; once thawed gently at home, it retains prime culinary quality.
+  - Season extends until permanent snow cover blankets the moss (often well into November or early December in Helsinki).
+      </div>
+
+      <!-- Navigation Footer -->
+      <footer class="doc-footer-nav">
+        <div>
+          <a href="02_helsinki_transit_spots_guide.html" class="doc-nav-btn">← 🚌 Prev Chapter</a>
+        </div>
+        <div>
+          <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="doc-nav-btn" style="cursor:pointer;">↑ Top</button>
+        </div>
+        <div>
+          <a href="04_deadly_and_toxic_species.html" class="doc-nav-btn primary">☠️ Next Chapter →</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer style="background:#182e22; color:rgba(255,255,255,0.7); text-align:center; padding:2rem 1rem; font-size:0.88rem;">
+    <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
+    <p style="margin-top:0.5rem;">
+      <a href="../index.html" style="color:#a7f3d0;">Home Portal</a> • 
+      <a href="https://powerpig99.github.io/not-a-toe/" style="color:#a7f3d0;" target="_blank" rel="noopener">Not a ToE Blog</a> • 
+      <a href="https://powerpig99.github.io/hunting-in-finland/" style="color:#a7f3d0;" target="_blank" rel="noopener">Hunting in Finland</a> • 
+      <a href="https://github.com/powerpig99/helsinki-mushroom-guide" style="color:#a7f3d0;" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>

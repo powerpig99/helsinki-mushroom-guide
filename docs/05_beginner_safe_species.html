@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05. The "Safe Five" Beginner Species | Helsinki Mushroom Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    .doc-sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #182e22;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .doc-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .doc-btn-back {
+      color: #fff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.4rem 0.85rem;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+    }
+    .doc-btn-back:hover {
+      background: #2d5a42;
+      color: #fff;
+      transform: translateX(-2px);
+    }
+    .doc-select {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      cursor: pointer;
+      outline: none;
+      max-width: 320px;
+    }
+    .doc-select option {
+      background: #182e22;
+      color: #fff;
+    }
+    .doc-main-container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.25rem 4rem;
+      flex: 1;
+      width: 100%;
+    }
+    .doc-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 2.5rem 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .doc-content-area {
+      line-height: 1.75;
+      font-size: 1.02rem;
+      color: #334155;
+    }
+    .doc-content-area h1 {
+      font-size: 2rem;
+      color: #1e3a2b;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .doc-content-area h2 {
+      font-size: 1.45rem;
+      color: #0f172a;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    .doc-content-area h3 {
+      font-size: 1.18rem;
+      color: #1e293b;
+      margin-top: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .doc-content-area p {
+      margin-bottom: 1rem;
+    }
+    .doc-content-area ul, .doc-content-area ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.75rem;
+    }
+    .doc-content-area li {
+      margin-bottom: 0.4rem;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td {
+      background: #fcfcfd;
+    }
+    .reader-alert {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .reader-alert.note {
+      background-color: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      color: #1e40af;
+    }
+    .reader-alert.warning {
+      background-color: var(--warning-light);
+      border-left: 4px solid var(--warning);
+      color: #92400e;
+    }
+    .reader-alert.danger {
+      background-color: var(--danger-light);
+      border-left: 4px solid var(--danger);
+      color: #991b1b;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-size: 0.88rem;
+      margin: 1.25rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: rgba(0,0,0,0.06);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    blockquote {
+      border-left: 4px solid #2d5a42;
+      padding-left: 1rem;
+      margin: 1.25rem 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .doc-footer-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .doc-nav-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+    .doc-nav-btn:hover {
+      background: #2d5a42;
+      color: #fff;
+    }
+    .doc-nav-btn.primary {
+      background: #1e3a2b;
+      color: #fff;
+    }
+    .doc-nav-btn.primary:hover {
+      background: #2d5a42;
+    }
+    .doc-raw-link {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .doc-card {
+        padding: 1.5rem;
+      }
+      .doc-content-area h1 {
+        font-size: 1.5rem;
+      }
+      .doc-select {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Bar -->
+  <header class="doc-sticky-header">
+    <div class="doc-nav-left">
+      <a href="../index.html" class="doc-btn-back">🍄 Mushroom Portal</a>
+      <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
+      <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
+      <select class="doc-select" onchange="if(this.value) window.location.href=this.value" aria-label="Jump to Chapter">
+        
+    <option value="01_legal_and_ethics.html" >
+      ⚖️ 01. Legal Rights, Nature Protection & Forest Safety
+    </option>
+  
+    <option value="02_helsinki_transit_spots_guide.html" >
+      🚌 02. Helsinki Foraging Spots by HSL Transit
+    </option>
+  
+    <option value="03_seasonal_calendar_and_habitats.html" >
+      📅 03. Seasonal Calendar & Forest Ecology
+    </option>
+  
+    <option value="04_deadly_and_toxic_species.html" >
+      ☠️ 04. Deadly & Toxic Species Survival Manual
+    </option>
+  
+    <option value="05_beginner_safe_species.html" selected>
+      🍄 05. The "Safe Five" Beginner Species
+    </option>
+  
+    <option value="06_intermediate_and_advanced.html" >
+      🧺 06. Intermediate & Advanced Gourmet Species
+    </option>
+  
+    <option value="07_preservation_and_recipes.html" >
+      🍳 07. Preservation & Authentic Finnish Recipes
+    </option>
+  
+    <option value="cooking_and_recipes_zh.html" >
+      🇨🇳 ZH. 中文野菌烹饪预处理与中西经典食谱
+    </option>
+  
+      </select>
+    </div>
+    <div>
+      <a href="05_beginner_safe_species.md" class="doc-btn-back" target="_blank" style="background:rgba(255,255,255,0.08); font-weight:normal; font-size:0.8rem;">📄 Raw .md Source</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="doc-main-container">
+    <article class="doc-card">
+      <div class="doc-content-area">
+        <h1>05. The "Safe Five" Beginner Mushrooms of Southern Finland</h1>
+
+<p>If you are new to foraging in Finland, start exclusively with these five species. Each has <strong>unmistakable macroscopic characteristics</strong> (false gills, hollow funnels, ventral spines, or sponge-like pores) and <strong>no deadly lookalikes</strong> when following simple verification rules.</p>
+
+<hr>
+
+<h2>1. Golden Chanterelle (<em>Cantharellus cibarius</em> / <em>Keltavahvero</em> / <em>Kantarelli</em>)</h2>
+<strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible)</strong>
+
+<p><img src="../images/cantharellus_cibarius.jpg" alt="Cantharellus cibarius - Golden Chanterelle" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Egg-yellow wavy cap with decurrent blunt vein-like ridges</em></p>
+
+<h3>Identification Checklist</h3>
+<ul>
+  <li><strong>Cap</strong>: 3–10 cm across. Bright egg-yolk yellow to golden orange. Irregular, undulating, wavy margin that curves downwards when young, flaring outward into a trumpet shape as it matures.</li>
+  <li><strong>Under-Cap Structure</strong>: <strong>FALSE GILLS (Poimut)</strong>. These are not true, thin, paper-like gills! They are thick, blunt, vein-like ridges (<em>poimut</em>) that repeatedly fork and branch, running significantly down the stem (<em>decurrent</em>). They cannot be cleanly scraped away from the cap.</li>
+  <li><strong>Stem</strong>: Firm, solid, tapering toward the base, colored exactly like the cap.</li>
+  <li><strong>Flesh</strong>: Dense, fibrous, pale cream to pale yellow inside. <strong>Never hollow</strong> in fresh specimens.</li>
+  <li><strong>Smell</strong>: Distinctly <strong>fruity, resembling ripe apricots or mirabelle plums</strong>.</li>
+</ul>
+
+<h3>Helsinki Habitats & Season</h3>
+<ul>
+  <li><strong>Habitat</strong>: Mossy birch-spruce edges, along forest paths, sandy trail margins, moss-covered bedrock benches in <strong>Keskuspuisto (Paloheinä)</strong>, <strong>Nuuksio</strong>, and <strong>Luukki</strong>.</li>
+  <li><strong>Season</strong>: <strong>July to October</strong> (peak in August).</li>
+</ul>
+
+<hr>
+
+<h3>Lookalike Check: False Chanterelle (<em>Hygrophoropsis aurantiaca</em> / <em>Valekantarelli</em>)</h3>
+<strong>Status</strong>: <code>*</code> Edible but bland / Not poisonous, but inferior.
+
+<p><img src="../images/hygrophoropsis_aurantiaca.jpg" alt="Hygrophoropsis aurantiaca - False Chanterelle" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Note the sharp, thin, knife-edge true gills and bright orange coloration</em></p>
+
+<div class="table-container"><table><thead><tr><th>Feature</th><th>Golden Chanterelle (<em>Keltavahvero</em>)</th><th>False Chanterelle (<em>Valekantarelli</em>)</th></tr></thead><tbody><tr><td><strong>Underside</strong></td><td>*<em>Blunt, thick, branched ridges (</em>poimut<em>)<strong></td><td></strong>Thin, sharp, crowded true gills (</em>oikeat heltat<em>)<strong></td></tr><tr><td></strong>Color<strong></td><td>Egg-yolk yellow, golden yellow</td><td>Intense electric orange to tawny reddish-orange</td></tr><tr><td></strong>Flesh<strong></td><td>Firm, meaty, pale yellowish-white</td><td>Soft, flexible, thin, orange flesh</td></tr><tr><td></strong>Stem<strong></td><td>Solid, thick, yellow throughout</td><td>Slender, often darker/brownish near the base</td></tr><tr><td></strong>Smell</em><em></td><td>Fresh fruity apricot fragrance</td><td>Mild, mushroomy or indistinct</td></tr></tbody></table></div>
+<hr>
+
+<h2>2. Funnel Chanterelle / Yellow Foot (</em>Craterellus tubaeformis<em> / </em>Suppilovahvero<em>)</h2>
+<strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible)</strong>
+
+<p><img src="../images/craterellus_tubaeformis.jpg" alt="Craterellus tubaeformis - Funnel Chanterelle" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Brown trumpet cap with bright yellow hollow stem<em></p>
+
+<h3>Identification Checklist</h3>
+<ul>
+  <li><strong>Cap</strong>: 2–6 cm. Yellow-brown, grey-brown, or olive-brown. Distinctly <strong>trumpet-shaped with a deep central funnel</strong> that pierces straight into the hollow stem.</li>
+  <li><strong>Underside</strong>: Greyish-yellow to ash-grey ridges (</em>poimut<em>), blunt, branched, running down the stem.</li>
+  <li><strong>Stem</strong>: 3–8 cm tall, 4–8 mm wide. <strong>Bright golden-yellow or yellowish-orange</strong>, flattened or grooved, and <strong>COMPLETELY HOLLOW</strong> like a drinking straw.</li>
+  <li><strong>Flesh</strong>: Thin, pliable, fragrant, yellowish.</li>
+  <li><strong>Smell</strong>: Pleasant, earthy, slightly spicy and fruity.</li>
+</ul>
+
+<h3>Helsinki Habitats & Season</h3>
+<ul>
+  <li><strong>Habitat</strong>: Deep, moist feather-moss blankets (</em>Pleurozium<em>, </em>Hylocomium<em>) in mature Norway spruce forests. Often hidden beneath fallen leaves.</li>
+  <li><strong>Where to Find</strong>: <strong>Sipoonkorpi</strong> (legendary hauls near Bisajärvi and Kuusijärvi), <strong>Pitkäkoski</strong>, <strong>Vaakkoi</strong>.</li>
+  <li><strong>Season</strong>: <strong>September to late November</strong> (even after multiple sub-zero frosts!).</li>
+</ul>
+
+<div class="reader-alert note"><strong>IMPORTANT:</strong> </em><em>Safety Check against Deadly Webcap (</em>Cortinarius rubellus<em>)</em><em>:
+Because Funnel Chanterelles grow hidden deep inside damp moss cushions where </em>Cortinarius rubellus<em> also lives, <strong>NEVER grab handfuls of mushrooms blind</strong>.
+<ul>
+  <li>Funnel Chanterelles have a <strong>completely hollow, yellow tube stem</strong> and a <strong>perforated funnel cap</strong>.</li>
+  <li>The Deadly Webcap has a <strong>solid, cinnamon-brown stem with yellow zigzag bands</strong> and a <strong>pointed cone cap</strong>.</div></li>
+</ul>
+
+<hr>
+
+<h2>3. Wood Hedgehog (</em>Hydnum repandum<em> & </em>Hydnum rufescens<em> / </em>Vaaleaorakas<em> & </em>Rusko-orakas<em>)</h2>
+<strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible)</strong>
+
+<p><img src="../images/hydnum_repandum.jpg" alt="Hydnum repandum - Wood Hedgehog" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Underside covered in dense, fragile spines (orakkaat)<em></p>
+
+<h3>Identification Checklist</h3>
+<ul>
+  <li><strong>Cap</strong>: 4–15 cm across. Creamy ivory, pale buff, or biscuit-colored (</em>H. repandum<em>); reddish-terracotta in the smaller </em>H. rufescens<em>. Irregular, thick, firm, slightly undulating.</li>
+  <li><strong>Under-Cap Structure</strong>: <strong>SPINES / TEETH (Orakset)</strong>. Instead of gills or pores, the underside is covered with <strong>thousands of tiny, fragile, soft white-to-cream spines</strong> (2–6 mm long).</li>
+</ul>
+  - You can brush these spines off easily with your fingertip.
+  - <strong>There are NO poisonous mushrooms with spines underneath caps in Finland!</strong>
+<ul>
+  <li><strong>Stem</strong>: Thick, solid, off-white, often eccentric.</li>
+  <li><strong>Flesh</strong>: Crisp, brittle, snapping like chalk. Pure white, bruising slowly yellowish-orange.</li>
+  <li><strong>Culinary Advantage</strong>: Extremely resistant to maggots and insect larvae; almost 100% of collected specimens are solid and clean.</li>
+</ul>
+
+<h3>Helsinki Habitats & Season</h3>
+<ul>
+  <li><strong>Habitat</strong>: Mossy spruce hollows, shaded birch-spruce slopes in <strong>Luukki</strong>, <strong>Sipoonkorpi</strong>, <strong>Keskuspuisto (Pirkkola)</strong>.</li>
+  <li><strong>Season</strong>: <strong>August to October</strong>.</li>
+</ul>
+
+<hr>
+
+<h2>4. Black Trumpet / Horn of Plenty (</em>Craterellus cornucopioides<em> / </em>Mustatorvisieni<em>)</h2>
+<strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible - "Black Gold")</strong>
+
+<p><img src="../images/craterellus_cornucopioides.jpg" alt="Craterellus cornucopioides - Black Trumpet" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Jet-black to dark grey hollow trumpet<em></p>
+
+<h3>Identification Checklist</h3>
+<ul>
+  <li><strong>Fruitbody</strong>: 3–8 cm wide, 4–10 cm tall. <strong>Entire mushroom is a thin, hollow, trumpet-shaped horn</strong> flaring open at the top with a wavy, ragged, rolled-back rim.</li>
+  <li><strong>Color</strong>: Soot-black, charcoal, or dark ash-grey when damp; drying to pale grey or brownish-black.</li>
+  <li><strong>Underside / Outer Surface</strong>: Smooth or slightly wrinkled, ash-grey, with <strong>no gills, ridges, pores, or spines</strong>.</li>
+  <li><strong>Flesh</strong>: Thin, pliable, elastic, dry, dark grey.</li>
+  <li><strong>Smell</strong>: Intensely aromatic, floral, fruity, reminiscent of dried black truffles.</li>
+  <li><strong>Zero Poisonous Lookalikes</strong>: There is no toxic mushroom in Northern Europe that looks like a black hollow trumpet.</li>
+</ul>
+
+<h3>Helsinki Habitats & Season</h3>
+<ul>
+  <li><strong>Habitat</strong>: Warm, moist, herb-rich deciduous groves (</em>lehto<em>) under </em><em>European hazel (</em>Corylus avellana<em>)<strong>, birch, and oak.</li>
+  <li></strong>Where to Find<strong>: </strong>Keskuspuisto (Maunula hazel groves)<strong>, </strong>Petikko<strong>, </strong>Nuuksio (Kattila slopes)<strong>.</li>
+  <li></strong>Season<strong>: </strong>August to October</em><em>.</li>
+</ul>
+
+<hr>
+
+<h2>5. King Bolete / Porcini (</em>Boletus edulis<em> & </em>Boletus pinophilus<em> / </em>Herkkutatti<em> & </em>Männynherkkutatti<em>)</h2>
+<strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible)</strong>
+
+<p><img src="../images/boletus_edulis.jpg" alt="Boletus edulis - King Bolete" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Bun-brown cap, white-to-olive spongy pores, club-shaped net-veined stem<em></p>
+
+<p><img src="../images/boletus_pinophilus.jpg" alt="Boletus pinophilus - Pine Bolete" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Deep mahogany reddish cap under Scots pine<em></p>
+
+<h3>Identification Checklist</h3>
+<ul>
+  <li><strong>Cap</strong>: 8–25 cm across. Hemispherical then convex, resembling a toasted bread roll. Pale brown to greasy chestnut (</em>B. edulis<em>), or dark wine-red mahogany (</em>B. pinophilus<em>).</li>
+  <li><strong>Under-Cap Structure</strong>: <strong>PORES / SPONGE (Pillit)</strong>. A spongy, detachable layer of vertical tubes:</li>
+</ul>
+  - <strong>White when young</strong> (firm like butter),
+  - Turning <strong>yellowish-green to olive-green</strong> in maturity.
+  - <strong>Never red or pink</strong> in </em>Boletus edulis<em>.
+<ul>
+  <li><strong>Stem</strong>: Robust, swollen, club-shaped or barrel-shaped. Covered with a </em><em>fine white raised net pattern (</em>verkkokuvio<em>)<strong> near the top of the stem.</li>
+  <li></strong>Flesh<strong>: Pure white, firm, solid. </strong>DOES NOT TURN BLUE OR BLACK WHEN CUT<strong>.</li>
+  <li></strong>Smell & Taste<strong>: Pleasant nutty fragrance, sweet and nutty on the tongue.</li>
+</ul>
+
+<h3>Helsinki Habitats & Season</h3>
+<ul>
+  <li></strong>Habitat</em><em>: Mature spruce-blueberry forests (</em>tuore kangas<em>) for </em>B. edulis<em>; sandy pine heaths (</em>kuiva kangas<em>) for </em>B. pinophilus<em>.</li>
+  <li><strong>Where to Find</strong>: <strong>Sipoonkorpi (Kuusijärvi / Bisajärvi)</strong>, <strong>Luukki</strong>, <strong>Nuuksio</strong>.</li>
+  <li><strong>Season</strong>: <strong>August to late September</strong>.</li>
+</ul>
+
+<hr>
+
+<h3>Lookalike Check: Bitter Bolete (</em>Tylopilus felleus<em> / </em>Sappitatti<em>)</h3>
+<strong>Status</strong>: <code>O</code> <strong>Inedible due to extreme, tongue-numbing bitterness (Not deadly toxic, but ruins an entire stew).</strong>
+
+<p><img src="../images/tylopilus_felleus.jpg" alt="Tylopilus felleus - Bitter Bolete" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Distinctive coarse dark-brown network on stem and pinkish pore tint<em></p>
+
+<div class="table-container"><table><thead><tr><th>Feature</th><th>King Bolete (</em>Herkkutatti<em>)</th><th>Bitter Bolete (</em>Sappitatti<em>)</th></tr></thead><tbody><tr><td></em><em>Pores (</em>Pillit<em>)<strong></td><td>Pure white when young, turning </strong>yellowish-green / olive<strong></td><td>White when young, turning </strong>dirty pink / brownish-pink<strong></td></tr><tr><td></strong>Stem Netting<strong></td><td></strong>Delicate white network<strong> on pale brownish background</td><td></strong>Coarse, dark brown, prominent raised netting<strong> on stem</td></tr><tr><td></strong>The Taste Test<strong></td><td>Touch a tiny piece of raw cap to the tip of your tongue: </strong>mild and nutty<strong></td><td>Touch a tiny piece to your tongue: </strong>violently bitter within 5 seconds</em>* (spit it out)</td></tr></tbody></table></div>
+      </div>
+
+      <!-- Navigation Footer -->
+      <footer class="doc-footer-nav">
+        <div>
+          <a href="04_deadly_and_toxic_species.html" class="doc-nav-btn">← ☠️ Prev Chapter</a>
+        </div>
+        <div>
+          <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="doc-nav-btn" style="cursor:pointer;">↑ Top</button>
+        </div>
+        <div>
+          <a href="06_intermediate_and_advanced.html" class="doc-nav-btn primary">🧺 Next Chapter →</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer style="background:#182e22; color:rgba(255,255,255,0.7); text-align:center; padding:2rem 1rem; font-size:0.88rem;">
+    <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
+    <p style="margin-top:0.5rem;">
+      <a href="../index.html" style="color:#a7f3d0;">Home Portal</a> • 
+      <a href="https://powerpig99.github.io/not-a-toe/" style="color:#a7f3d0;" target="_blank" rel="noopener">Not a ToE Blog</a> • 
+      <a href="https://powerpig99.github.io/hunting-in-finland/" style="color:#a7f3d0;" target="_blank" rel="noopener">Hunting in Finland</a> • 
+      <a href="https://github.com/powerpig99/helsinki-mushroom-guide" style="color:#a7f3d0;" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>

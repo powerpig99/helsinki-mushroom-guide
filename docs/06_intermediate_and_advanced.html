@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06. Intermediate & Advanced Gourmet Species | Helsinki Mushroom Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    .doc-sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #182e22;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .doc-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .doc-btn-back {
+      color: #fff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.4rem 0.85rem;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+    }
+    .doc-btn-back:hover {
+      background: #2d5a42;
+      color: #fff;
+      transform: translateX(-2px);
+    }
+    .doc-select {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      cursor: pointer;
+      outline: none;
+      max-width: 320px;
+    }
+    .doc-select option {
+      background: #182e22;
+      color: #fff;
+    }
+    .doc-main-container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.25rem 4rem;
+      flex: 1;
+      width: 100%;
+    }
+    .doc-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 2.5rem 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .doc-content-area {
+      line-height: 1.75;
+      font-size: 1.02rem;
+      color: #334155;
+    }
+    .doc-content-area h1 {
+      font-size: 2rem;
+      color: #1e3a2b;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .doc-content-area h2 {
+      font-size: 1.45rem;
+      color: #0f172a;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    .doc-content-area h3 {
+      font-size: 1.18rem;
+      color: #1e293b;
+      margin-top: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .doc-content-area p {
+      margin-bottom: 1rem;
+    }
+    .doc-content-area ul, .doc-content-area ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.75rem;
+    }
+    .doc-content-area li {
+      margin-bottom: 0.4rem;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td {
+      background: #fcfcfd;
+    }
+    .reader-alert {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .reader-alert.note {
+      background-color: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      color: #1e40af;
+    }
+    .reader-alert.warning {
+      background-color: var(--warning-light);
+      border-left: 4px solid var(--warning);
+      color: #92400e;
+    }
+    .reader-alert.danger {
+      background-color: var(--danger-light);
+      border-left: 4px solid var(--danger);
+      color: #991b1b;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-size: 0.88rem;
+      margin: 1.25rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: rgba(0,0,0,0.06);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    blockquote {
+      border-left: 4px solid #2d5a42;
+      padding-left: 1rem;
+      margin: 1.25rem 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .doc-footer-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .doc-nav-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+    .doc-nav-btn:hover {
+      background: #2d5a42;
+      color: #fff;
+    }
+    .doc-nav-btn.primary {
+      background: #1e3a2b;
+      color: #fff;
+    }
+    .doc-nav-btn.primary:hover {
+      background: #2d5a42;
+    }
+    .doc-raw-link {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .doc-card {
+        padding: 1.5rem;
+      }
+      .doc-content-area h1 {
+        font-size: 1.5rem;
+      }
+      .doc-select {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Bar -->
+  <header class="doc-sticky-header">
+    <div class="doc-nav-left">
+      <a href="../index.html" class="doc-btn-back">🍄 Mushroom Portal</a>
+      <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
+      <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
+      <select class="doc-select" onchange="if(this.value) window.location.href=this.value" aria-label="Jump to Chapter">
+        
+    <option value="01_legal_and_ethics.html" >
+      ⚖️ 01. Legal Rights, Nature Protection & Forest Safety
+    </option>
+  
+    <option value="02_helsinki_transit_spots_guide.html" >
+      🚌 02. Helsinki Foraging Spots by HSL Transit
+    </option>
+  
+    <option value="03_seasonal_calendar_and_habitats.html" >
+      📅 03. Seasonal Calendar & Forest Ecology
+    </option>
+  
+    <option value="04_deadly_and_toxic_species.html" >
+      ☠️ 04. Deadly & Toxic Species Survival Manual
+    </option>
+  
+    <option value="05_beginner_safe_species.html" >
+      🍄 05. The "Safe Five" Beginner Species
+    </option>
+  
+    <option value="06_intermediate_and_advanced.html" selected>
+      🧺 06. Intermediate & Advanced Gourmet Species
+    </option>
+  
+    <option value="07_preservation_and_recipes.html" >
+      🍳 07. Preservation & Authentic Finnish Recipes
+    </option>
+  
+    <option value="cooking_and_recipes_zh.html" >
+      🇨🇳 ZH. 中文野菌烹饪预处理与中西经典食谱
+    </option>
+  
+      </select>
+    </div>
+    <div>
+      <a href="06_intermediate_and_advanced.md" class="doc-btn-back" target="_blank" style="background:rgba(255,255,255,0.08); font-weight:normal; font-size:0.8rem;">📄 Raw .md Source</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="doc-main-container">
+    <article class="doc-card">
+      <div class="doc-content-area">
+        <h1>06. Intermediate & Advanced Edible Species of Southern Finland</h1>
+
+<p>Once you have mastered the "Safe Five," you can expand into the rich culinary traditions of Finland. This chapter covers the two staple families of Finnish foraging—*<em>Brittlegills (</em>Haperot<em>)<strong> and </strong>Milkcaps (</em>Rouskut<em>)<strong>—along with the prized </strong>Gypsy Mushroom<strong>, </strong>Sheep Polypore<strong>, and </strong>Scaber Stalks</em><em>.</p>
+
+<hr>
+
+<h2>1. Brittlegills (</em>Russula<em> / </em>Haperot<em>)</h2>
+<strong>Culinary Value</strong>: <code>***</code> to <code>**</code> for mild species.
+
+<p><img src="../images/russula_decolorans.jpg" alt="Russula decolorans - Copper Brittlegill" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Copper-orange cap, brittle chalk-like gills, greyish bruised stem<em></p>
+
+<h3>The Unique Anatomy of Russulas</h3>
+<ul>
+  <li><strong>Flesh Structure</strong>: Russula tissue consists of spherical cell clusters (</em>sphaerocysts<em>) rather than long fungal fibers. Consequently, the stem <strong>snaps cleanly like a crisp apple or a piece of chalk</strong>, leaving no fibrous strands.</li>
+  <li><strong>Under-Cap Structure</strong>: True, brittle gills that fracture easily into flakes when brushed.</li>
+  <li><strong>NO Latex</strong>: Unlike Milkcaps, Russulas never exude milky droplets when cut.</li>
+  <li><strong>NO Ring and NO Volva</strong>: Stems are completely naked (no ring, no basal cup).</li>
+</ul>
+
+<hr>
+
+<h3>The Foolproof Finnish "Russula Taste Test" (</em>Haperosääntö<em>)</h3>
+The genus </em>Russula<em> contains dozens of species in Finland. Luckily, you do not need to identify every individual scientific species to know if it is safe to eat!
+
+<div class="reader-alert note"><strong>IMPORTANT:</strong> <strong>HOW TO PERFORM THE RUSSULA TASTE TEST:</strong>
+<ol>
+  <li><strong>Confirm the genus first</strong>: Verify the mushroom has brittle chalk-snapping flesh, true gills, <strong>no milky liquid</strong>, <strong>no ring</strong>, and <strong>no volva</strong>.</li>
+  <li>Break off a piece of the cap the size of a pea.</li>
+  <li>Place it on the tip of your tongue and chew gently with your front teeth for 5–10 seconds. <strong>DO NOT SWALLOW</strong>.</li>
+  <li><strong>Interpretation</strong>:</li>
+</ol>
+   - <strong>Mild, sweet, nutty, or mushroomy</strong>: It is <strong>SAFE AND EDIBLE</strong>! You can cook it immediately.
+   - <strong>Peppery, burning, acrid, or bitter</strong>: It is <strong>UNFIT FOR CONSUMPTION</strong>. Spit it out completely.
+</em>(Note: This test applies ONLY to verified Russula species. Never taste-test Amanitas or Cortinarius!)<em></div>
+
+<hr>
+
+<h3>Toxic / Inedible Lookalike: The Sickener (</em>Russula emetica<em> / </em>Tulipunahapero<em>)</h3>
+<strong>Status</strong>: ☠️ <strong>TOXIC / GASTROINTESTINAL IRRITANT</strong>
+
+<p><img src="../images/russula_emetica.jpg" alt="Russula emetica - The Sickener" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Bright scarlet-red cap, snow-white gills, violently burning taste<em></p>
+
+<ul>
+  <li><strong>Cap</strong>: Scarlet red, shiny when wet.</li>
+  <li><strong>Taste Test</strong>: Burning, intensely peppery within 3 seconds. Causes severe vomiting and stomach upset if swallowed raw or fried.</li>
+</ul>
+
+<hr>
+
+<h2>2. Milkcaps (</em>Lactarius<em> / </em>Rouskut<em>)</h2>
+</em>The cornerstone of Finnish autumn food culture<em>
+
+<p>Milkcaps share the same brittle, chalk-like flesh as Russulas, but with one defining biological marker: </em><em>when cut or bruised, they exude milky liquid (</em>maitoneste<em>)<strong>.</p>
+
+<p>In Finnish cuisine, milkcaps are divided into two culinary categories:<br><ol><br>  <li></strong>Directly Edible Milkcaps (</em>Miedot rouskut<em>)<strong>: Sweet or mild latex; can be pan-fried directly with butter.</li><br>  <li></strong>Acrid Salting Milkcaps (</em>Kirpeät rouskut<em>)<strong>: Peppery or bitter latex; </strong>require parboiling (</em>ryöppäys<em>)</em><em> before pickling or salting for </em>sienisalaatti<em>.</li><br></ol></p>
+
+<hr>
+
+<h3>A. Saffron Milkcap (</em>Lactarius deliciosus<em> / </em>Männynleppärousku<em>)</h3>
+<strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible - No Parboiling Required!)</strong>
+
+<p><img src="../images/lactarius_deliciosus.jpg" alt="Lactarius deliciosus - Saffron Milkcap" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Orange zoned cap, carrot-orange milk, bruising green<em></p>
+
+<ul>
+  <li><strong>Cap</strong>: 4–12 cm. Warm carrot-orange, marked with concentric darker rings (</em>zoned<em>). In age or when damaged, it develops <strong>emerald-green stains</strong>.</li>
+  <li><strong>Milky Latex</strong>: <strong>BRIGHT CARROT-ORANGE</strong>. It never turns white.</li>
+  <li><strong>Stem</strong>: Hollow in maturity, with orange crater-like pit depressions (</em>tupsut<em>).</li>
+  <li><strong>Culinary Use</strong>: One of the finest mushrooms in Europe. Slice and sauté in hot butter with sea salt; never boil in water!</li>
+</ul>
+
+<hr>
+
+<h3>B. Woolly Milkcap (</em>Lactarius torminosus<em> / </em>Karvarousku<em>)</h3>
+<strong>Finnish Rating</strong>: <code>!</code> -> <code>***</code> </em><em>Toxic raw; Choice when parboiled (</em>Ryöpättävä<em>)</em><em>
+
+<p><img src="../images/lactarius_torminosus.jpg" alt="Lactarius torminosus - Woolly Milkcap" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Characteristic shaggy, hairy rolled margin and pinkish cap<em></p>
+
+<ul>
+  <li><strong>Cap</strong>: 5–12 cm. Pinkish-salmon, concentric zones, with a </em><em>dense woolly, hairy beard around the inrolled margin (</em>karvainen reuna<em>)<strong>.</li>
+  <li></strong>Milky Latex<strong>: Pure white, unchanging. Extremely peppery and burning on the tongue.</li>
+  <li></strong>Tree Partner<strong>: Strictly mycorrhizal with </strong>Silver birch (</em>Betula<em>)<strong>.</li>
+  <li></strong>Processing<strong>: Must be </strong>parboiled in boiling water for 10 minutes</em><em>, drained, and rinsed in cold water. It forms the base of the traditional Finnish Christmas salad (</em>sienisalaatti<em>).</li>
+</ul>
+
+<hr>
+
+<h3>C. Rufous Milkcap (</em>Lactarius rufus<em> / </em>Kangasrousku<em>)</h3>
+<strong>Finnish Rating</strong>: <code>!</code> -> <code>**</code> <strong>Toxic raw; Staple salting mushroom when parboiled</strong>
+
+<p><img src="../images/lactarius_rufus.jpg" alt="Lactarius rufus - Rufous Milkcap" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Terracotta-brown cap with sharp pointed central papilla<em></p>
+
+<ul>
+  <li><strong>Cap</strong>: 3–8 cm. Dark reddish-terracotta, dry, with a </em><em>distinct sharp conical pimple/papilla (</em>nypy<em>)<strong> at the center.</li>
+  <li></strong>Milky Latex<strong>: Abundant, watery white, blistering peppery on the throat.</li>
+  <li></strong>Habitat</em><em>: Dry Scots pine heaths (</em>kuiva kangas<em>) among lingonberry and lichens.</li>
+  <li><strong>Processing</strong>: <strong>Parboil for 10 minutes</strong> to eliminate acridity.</li>
+</ul>
+
+<hr>
+
+<h2>3. Gypsy Mushroom (</em>Cortinarius caperatus<em> / </em>Kehnäsieni<em>)</h2>
+<strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible)</strong>
+
+<p><img src="../images/cortinarius_caperatus.jpg" alt="Cortinarius caperatus - Gypsy Mushroom" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Straw-yellow cap with silvery frosted veil powder (kehnä)<em></p>
+
+<h3>Identification Keys</h3>
+<ul>
+  <li><strong>Cap</strong>: 5–12 cm. Straw-yellow, ochre, or pale honey-buff. Wrinkled center covered in a </em><em>silvery-white, frosted, flour-like sheen (</em>kehnä<em>)<strong>.</li>
+  <li></strong>Gills<strong>: Pale clay-yellow, maturing to cinnamon-brown, with finely serrated, wavy edges.</li>
+  <li></strong>Stem<strong>: Sturdy, pale buff, adorned with a </strong>distinct, membranous, persistent yellowish-white ring (</em>rengas<em>)<strong> midway up.</li>
+  <li></strong>Flesh</em><em>: Pale yellowish-white, firm, with a delicate, mildly sweet, mushroomy aroma.</li>
+</ul>
+
+<div class="reader-alert danger"><strong>CAUTION:</strong> Because it belongs to the genus </em>Cortinarius<em>, novice foragers must carefully check for:
+<ol>
+  <li>The <strong>silvery frosted coating</strong> on the cap center,</li>
+  <li>The <strong>firm membranous ring</strong> on the stem,</li>
+  <li>The <strong>lack of sharp pointed conical umbo</strong> and absence of yellow zigzag bands (to avoid </em>Cortinarius rubellus<em>).</div></li>
+</ol>
+
+<hr>
+
+<h2>4. Sheep Polypore (</em>Albatrellus ovinus<em> / </em>Lampaankääpä<em>)</h2>
+<strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible)</strong>
+
+<p><img src="../images/albatrellus_ovinus.jpg" alt="Albatrellus ovinus - Sheep Polypore" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Irregular creamy cap, tiny white pores, growing terrestrially on moss<em></p>
+
+<h3>Identification Keys</h3>
+<ul>
+  <li><strong>Cap</strong>: 6–20 cm. Irregular, wavy, pale cream to dirty greyish-white, cracking into mosaic patches when dry.</li>
+  <li><strong>Under-Cap Structure</strong>: <strong>Extremely tiny, dense, white pore layer</strong> running slightly down the stem.</li>
+  <li><strong>Habitat</strong>: Terrestrial on moss in old Norway spruce forests (never on tree trunks).</li>
+  <li><strong>The Magic Color Shift</strong>: When placed in a hot pan with butter, </em><em>the pure white flesh turns vibrant lemon-yellow (</em>sitruunankeltainen<em>)</em><em>. If it turns yellow, you have 100% genuine </em>Albatrellus ovinus<em>!</li>
+  <li><strong>Lookalike Comparison</strong>: </em>Albatrellus confluens<em> (</em>Typpikääpä<em>) looks similar but has a more apricot-buff cap and <strong>turns dull brownish-orange when cooked, tasting bitter</strong>.</li>
+</ul>
+
+<hr>
+
+<h2>5. Orange Birch Bolete (</em>Leccinum versipelle<em> / </em>Koivunpunikkitatti<em>)</h2>
+<strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible - Requires Thorough Cooking)</strong>
+
+<p><img src="../images/leccinum_versipelle.jpg" alt="Leccinum versipelle - Orange Birch Bolete" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Vivid brick-orange cap and stem covered in black scaber scales<em></p>
+
+<h3>Identification Keys</h3>
+<ul>
+  <li><strong>Cap</strong>: 8–20 cm. Vivid brick-red, orange-red, or apricot. Dry, suede-like texture, with the cap skin overhanging the edge slightly.</li>
+  <li><strong>Pores</strong>: Greyish-white, darkening to brownish-grey in age.</li>
+  <li><strong>Stem</strong>: Tall, firm, solid, covered with </em><em>prominent black woolly scales (</em>mustat nukkatupsut<em>)<strong> on a white background.</li>
+  <li></strong>Flesh<strong>: Solid white when cut, </strong>rapidly staining violet-grey, then dark blue-black<strong>.</li>
+</ul>
+
+<div class="reader-alert warning"><strong>WARNING:</strong> </strong>Mandatory Cooking Time</em><em>: All </em>Leccinum* species (punikkitatit and lehmäntatit) contain heat-labile toxins that cause acute stomach cramps, vomiting, and nausea if undercooked. <strong>Always cook in a pan or simmer for at least 15 to 20 minutes.</strong></div>
+      </div>
+
+      <!-- Navigation Footer -->
+      <footer class="doc-footer-nav">
+        <div>
+          <a href="05_beginner_safe_species.html" class="doc-nav-btn">← 🍄 Prev Chapter</a>
+        </div>
+        <div>
+          <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="doc-nav-btn" style="cursor:pointer;">↑ Top</button>
+        </div>
+        <div>
+          <a href="07_preservation_and_recipes.html" class="doc-nav-btn primary">🍳 Next Chapter →</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer style="background:#182e22; color:rgba(255,255,255,0.7); text-align:center; padding:2rem 1rem; font-size:0.88rem;">
+    <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
+    <p style="margin-top:0.5rem;">
+      <a href="../index.html" style="color:#a7f3d0;">Home Portal</a> • 
+      <a href="https://powerpig99.github.io/not-a-toe/" style="color:#a7f3d0;" target="_blank" rel="noopener">Not a ToE Blog</a> • 
+      <a href="https://powerpig99.github.io/hunting-in-finland/" style="color:#a7f3d0;" target="_blank" rel="noopener">Hunting in Finland</a> • 
+      <a href="https://github.com/powerpig99/helsinki-mushroom-guide" style="color:#a7f3d0;" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>

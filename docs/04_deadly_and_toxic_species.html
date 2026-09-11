@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04. Deadly & Toxic Species Survival Manual | Helsinki Mushroom Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    .doc-sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #182e22;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .doc-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .doc-btn-back {
+      color: #fff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.4rem 0.85rem;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+    }
+    .doc-btn-back:hover {
+      background: #2d5a42;
+      color: #fff;
+      transform: translateX(-2px);
+    }
+    .doc-select {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      cursor: pointer;
+      outline: none;
+      max-width: 320px;
+    }
+    .doc-select option {
+      background: #182e22;
+      color: #fff;
+    }
+    .doc-main-container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.25rem 4rem;
+      flex: 1;
+      width: 100%;
+    }
+    .doc-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 2.5rem 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .doc-content-area {
+      line-height: 1.75;
+      font-size: 1.02rem;
+      color: #334155;
+    }
+    .doc-content-area h1 {
+      font-size: 2rem;
+      color: #1e3a2b;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .doc-content-area h2 {
+      font-size: 1.45rem;
+      color: #0f172a;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    .doc-content-area h3 {
+      font-size: 1.18rem;
+      color: #1e293b;
+      margin-top: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .doc-content-area p {
+      margin-bottom: 1rem;
+    }
+    .doc-content-area ul, .doc-content-area ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.75rem;
+    }
+    .doc-content-area li {
+      margin-bottom: 0.4rem;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td {
+      background: #fcfcfd;
+    }
+    .reader-alert {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .reader-alert.note {
+      background-color: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      color: #1e40af;
+    }
+    .reader-alert.warning {
+      background-color: var(--warning-light);
+      border-left: 4px solid var(--warning);
+      color: #92400e;
+    }
+    .reader-alert.danger {
+      background-color: var(--danger-light);
+      border-left: 4px solid var(--danger);
+      color: #991b1b;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-size: 0.88rem;
+      margin: 1.25rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: rgba(0,0,0,0.06);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    blockquote {
+      border-left: 4px solid #2d5a42;
+      padding-left: 1rem;
+      margin: 1.25rem 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .doc-footer-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .doc-nav-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+    .doc-nav-btn:hover {
+      background: #2d5a42;
+      color: #fff;
+    }
+    .doc-nav-btn.primary {
+      background: #1e3a2b;
+      color: #fff;
+    }
+    .doc-nav-btn.primary:hover {
+      background: #2d5a42;
+    }
+    .doc-raw-link {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .doc-card {
+        padding: 1.5rem;
+      }
+      .doc-content-area h1 {
+        font-size: 1.5rem;
+      }
+      .doc-select {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Bar -->
+  <header class="doc-sticky-header">
+    <div class="doc-nav-left">
+      <a href="../index.html" class="doc-btn-back">🍄 Mushroom Portal</a>
+      <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
+      <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
+      <select class="doc-select" onchange="if(this.value) window.location.href=this.value" aria-label="Jump to Chapter">
+        
+    <option value="01_legal_and_ethics.html" >
+      ⚖️ 01. Legal Rights, Nature Protection & Forest Safety
+    </option>
+  
+    <option value="02_helsinki_transit_spots_guide.html" >
+      🚌 02. Helsinki Foraging Spots by HSL Transit
+    </option>
+  
+    <option value="03_seasonal_calendar_and_habitats.html" >
+      📅 03. Seasonal Calendar & Forest Ecology
+    </option>
+  
+    <option value="04_deadly_and_toxic_species.html" selected>
+      ☠️ 04. Deadly & Toxic Species Survival Manual
+    </option>
+  
+    <option value="05_beginner_safe_species.html" >
+      🍄 05. The "Safe Five" Beginner Species
+    </option>
+  
+    <option value="06_intermediate_and_advanced.html" >
+      🧺 06. Intermediate & Advanced Gourmet Species
+    </option>
+  
+    <option value="07_preservation_and_recipes.html" >
+      🍳 07. Preservation & Authentic Finnish Recipes
+    </option>
+  
+    <option value="cooking_and_recipes_zh.html" >
+      🇨🇳 ZH. 中文野菌烹饪预处理与中西经典食谱
+    </option>
+  
+      </select>
+    </div>
+    <div>
+      <a href="04_deadly_and_toxic_species.md" class="doc-btn-back" target="_blank" style="background:rgba(255,255,255,0.08); font-weight:normal; font-size:0.8rem;">📄 Raw .md Source</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="doc-main-container">
+    <article class="doc-card">
+      <div class="doc-content-area">
+        <h1>04. Deadly & Toxic Species: The Survival Manual</h1>
+
+<div class="reader-alert danger"><strong>CAUTION:</strong> <strong>MUSHROOM POISONING EMERGENCY PROTOCOL</strong>
+<ul>
+  <li>*<em>Finnish Poison Information Centre (</em>Myrkytystietokeskus<em>)<strong>:</li>
+</ul>
+  - </strong>0800 147 111<strong> (Toll-free 24/7 across Finland)
+  - </strong>+358 9 471 977<strong> (Standard mobile/international rate)
+<ul>
+  <li></strong>General Emergency<strong>: </strong>112<strong></li>
+  <li></strong>DO NOT INDUCE VOMITING<strong> unless explicitly instructed by the Poison Information Centre.</li>
+  <li></strong>Save All Specimens<strong>: Keep raw leftovers, peelings, or cleaning scraps in a paper bag or bowl in the fridge. Emergency doctors need these for microscopic spore analysis to determine if amatoxin or orellanine antidotes are required.</div></li>
+</ul>
+
+<p>Finland is home to several </strong>deadly poisonous mushrooms</em><em> that contain toxins resistant to boiling, drying, and freezing. Two of the most lethal—</em>Amanita virosa<em> and </em>Cortinarius rubellus<em>—grow commonly in the mossy spruce and pine forests directly surrounding Helsinki.</p>
+
+<hr>
+
+<h2>1. Destroying Angel (</em>Amanita virosa<em> / </em>Valkokärpässieni<em>)</h2>
+<strong>Status</strong>: ☠️☠️☠️ <strong>DEADLY POISONOUS (Tappavan myrkyllinen)</strong>
+
+<p><img src="../images/amanita_virosa.jpg" alt="Amanita virosa - Destroying Angel" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Pure white fruiting body with sack-like volva at stem base<em></p>
+
+<h3>Macro-Morphological Identification Keys</h3>
+<ul>
+  <li><strong>Cap</strong>: 5–12 cm. Pure silky white, occasionally ivory or yellowish at the center when aged. Conical-bell shaped when young, expanding to convex with ragged edges.</li>
+  <li></em><em>Gills (</em>Heltat<em>)<strong>: </strong>PURE WHITE<strong>, free from the stem, crowded. Never turn brown or pink.</li>
+  <li></strong>Stem (</em>Jalka<em>)</em><em>: 8–15 cm tall, slender, pure white, with a shaggy/scaly surface (</em>sukeltajamainen<em>).</li>
+  <li></em><em>Ring (</em>Rengas<em>)<strong>: Thin, delicate, skirt-like white ring on the upper stem (can tear or stick to cap margin in heavy rain).</li>
+  <li></strong>Volva / Universal Veil Sac (</em>Tuppi<em>)<strong>: </strong>CRITICAL FEATURE<strong>. A distinct, loose, bag-like white cup at the swollen base of the stem, often buried 3–7 cm deep inside thick green moss.</li>
+  <li></strong>Flesh & Odor</em><em>: Pure white, unchanging. Faint sickly sweet, unpleasantly cloying or radish-like when mature.</li>
+</ul>
+
+<h3>Habitat in Helsinki Region</h3>
+<ul>
+  <li>Mesic Norway spruce forests (</em>tuore kangas<em>), mixed spruce-birch stands, rich moss blankets (</em>Hylocomium<em>, </em>Pleurozium<em>).</li>
+  <li>Common in <strong>Keskuspuisto (Pitkäkoski)</strong>, <strong>Sipoonkorpi</strong>, <strong>Nuuksio</strong>, and <strong>Luukki</strong>.</li>
+  <li>Season: <strong>August to October</strong>.</li>
+</ul>
+
+<h3>Toxin & Clinical Pathology: Amatoxins</h3>
+<ul>
+  <li><strong>Mechanism</strong>: Alpha-amanitin irreversibly binds to and inhibits RNA polymerase II in human liver and kidney cells, halting protein synthesis and triggering massive cell necrosis.</li>
+  <li><strong>The Treacherous Three-Phase Progression</strong>:</li>
+</ul>
+  1. <strong>Asymptomatic Latency (6–24 hours)</strong>: The patient feels completely healthy while toxins silently destroy liver tissue.
+  2. <strong>Gastrointestinal Collapse (Day 2)</strong>: Violent, cholera-like watery diarrhea, severe vomiting, abdominal cramping, and rapid dehydration.
+  3. <strong>Apparent Recovery (Day 3)</strong>: Gastrointestinal symptoms temporarily abate ("false remission").
+  4. <strong>Fulminant Hepatorenal Failure (Days 4–7)</strong>: Jaundice, coagulopathy (internal bleeding), hepatic encephalopathy, coma, and multi-organ failure. Mortality is high without emergency Silibinin therapy or emergency liver transplantation.
+
+<h3>Deadly Confusion Risks</h3>
+<ul>
+  <li></em><em>Meadow / Wood Mushrooms (</em>Agaricus<em> / </em>Herkkusienet<em>)<strong>: Edible button mushrooms have brown-to-chocolate gills in maturity, never pure white gills. </strong>Rule: Novices in Finland must NEVER pick white-gilled white mushrooms.</em><em></li>
+</ul>
+
+<hr>
+
+<h2>2. Deadly Webcap (</em>Cortinarius rubellus<em> / </em>Suippumyrkkyseitikki<em>)</h2>
+<strong>Status</strong>: ☠️☠️☠️ <strong>DEADLY POISONOUS (Tappavan myrkyllinen)</strong>
+
+<p><img src="../images/cortinarius_rubellus.jpg" alt="Cortinarius rubellus - Deadly Webcap" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Cinnamon-brown conical cap with distinct pointed umbo<em></p>
+
+<h3>Macro-Morphological Identification Keys</h3>
+<ul>
+  <li><strong>Cap</strong>: 3–8 cm. Uniformly reddish-brown, cinnamon-brown, or rusty copper. Distinctly <strong>pointed / conical umbo</strong> in the center (like a miniature wizard’s hat). Dry, finely fibrous to velvety texture.</li>
+  <li></em><em>Gills (</em>Heltat<em>)<strong>: Broadly spaced, thick, rusty-cinnamon or red-brown (colored by rusty spores). Attached to the stem.</li>
+  <li></strong>Stem (</em>Jalka<em>)<strong>: 5–12 cm tall, cylindrical, same cinnamon color as cap, adorned with </strong>yellowish zigzag banding (</em>siksak-vyöt<em>)<strong> from veil remnants.</li>
+  <li></strong>Cortina</em><em>: In young buttons, a cobweb-like fibrous veil (</em>kortiina<em>) stretches from the cap margin to the stem.</li>
+  <li><strong>Flesh & Odor</strong>: Reddish-yellow to pale cinnamon. Faint odor of raw radish or freshly turned turnip.</li>
+</ul>
+
+<h3>Habitat in Helsinki Region</h3>
+<ul>
+  <li>Damp, mossy, acidic Norway spruce heaths (</em>mustikkatyypin kuusikko<em>), edges of spruce mires (</em>korpi<em>), sphagnum-filled depressions.</li>
+  <li><strong>EXTREME DANGER</strong>: It frequently grows <strong>intermingled right beside blueberry bushes and Golden Chanterelles</strong> in Nuuksio, Sipoonkorpi, and Vaakkoi!</li>
+  <li>Season: <strong>August to October</strong>.</li>
+</ul>
+
+<h3>Toxin & Clinical Pathology: Orellanine</h3>
+<ul>
+  <li><strong>Mechanism</strong>: Orellanine is a powerful bipyridine nephrotoxin that selectively attacks and destroys renal proximal tubular cells.</li>
+  <li><strong>The Long Latency Nightmare (2 to 14 Days!)</strong>:</li>
+</ul>
+  - The victim often shows <strong>zero symptoms for up to two full weeks</strong> after eating the meal!
+  - By the time intense thirst (</em>polydipsia<em>), frequent or ceased urination, lower back pain, chills, and severe headache appear, the kidneys have suffered permanent, irreversible fibrotic damage.
+  - Many victims require life-long hemodialysis or a donor kidney transplant.
+
+<h3>Deadly Confusion Risks</h3>
+<ul>
+  <li>Novices hunting for <strong>Golden Chanterelles</strong> (</em>Cantharellus cibarius<em>) or <strong>Funnel Chanterelles</strong> (</em>Craterellus tubaeformis<em>) who hurriedly pluck handfuls of mushrooms out of deep moss without inspecting every single specimen individually.</li>
+</ul>
+
+<hr>
+
+<h2>3. Funeral Bell (</em>Galerina marginata<em> / </em>Myrkkynääpikkä<em>)</h2>
+<strong>Status</strong>: ☠️☠️☠️ <strong>DEADLY POISONOUS (Tappavan myrkyllinen)</strong>
+
+<p><img src="../images/galerina_marginata.jpg" alt="Galerina marginata - Funeral Bell" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Small brown wood-rotting mushroom with stem ring<em></p>
+
+<h3>Macro-Morphological Identification Keys</h3>
+<ul>
+  <li><strong>Cap</strong>: 1.5–4.5 cm. Ochre-brown, honey-brown to watery cinnamon. Conical then flattening with a slight central bump. Striated margin when damp (</em>hygrophanous<em>).</li>
+  <li><strong>Gills</strong>: Crowded, ochre-brown, darkening to rusty cinnamon.</li>
+  <li><strong>Stem</strong>: Slender (2–6 mm thick), brownish, with a </em><em>small membranous ring (</em>rengas<em>)<strong> on the upper half, and silvery-white longitudinal fibrillose striations below the ring.</li>
+  <li></strong>Substrate<strong>: </strong>Grows strictly on decaying wood<strong>—rotting conifer stumps, fallen mossy logs, buried wood chips.</li>
+  <li></strong>Toxin<strong>: Contains the </strong>exact same lethal amatoxins</em><em> as the Destroying Angel (</em>Amanita virosa<em>).</li>
+</ul>
+
+<h3>Deadly Confusion Risks</h3>
+<ul>
+  <li></em><em>Sheathed Woodtuft (</em>Kuehneromyces mutabilis<em> / </em>Koivunkantosieni<em>)</em><em>:</li>
+</ul>
+  - </em>Kuehneromyces mutabilis<em> is a prized edible wood-decay mushroom that also grows in clusters on stumps.
+  - <strong>Differentiating Key</strong>: The stem of the edible </em>Kuehneromyces<em> is covered in </em><em>dense, dark, bristly backward-curving scales (</em>pörröiset tummat suomut<em>)</em><em> beneath the ring. The deadly </em>Galerina<em> has a <strong>smooth or silky-silvery fibrillose stem</strong> without coarse scales.
+  - <strong>Rule</strong>: Never harvest wood-growing cluster mushrooms unless you inspect the stem scales of </em>every single individual mushroom<em>. If unsure, leave all woodtufts alone.
+
+<hr>
+
+<h2>4. False Morel (</em>Gyromitra esculenta<em> / </em>Korvasieni<em>)</h2>
+<strong>Status</strong>: ☠️☠️☠️ <strong>DEADLY TOXIC RAW / TRADITIONAL FINNISH DELICACY</strong>
+
+<p><img src="../images/gyromitra_esculenta.jpg" alt="Gyromitra esculenta - False Morel" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Brain-like convoluted red-brown cap<em></p>
+
+<h3>Identification & Ecology</h3>
+<ul>
+  <li><strong>Cap</strong>: 5–12 cm across, reddish-brown to dark chestnut. Distinctly <strong>brain-like, folded, convoluted lobes</strong> (never pitted like true morels / </em>Morchella<em>). Hollow and chambered inside.</li>
+  <li><strong>Habitat</strong>: Sandy, disturbed soil in pine forests, logging tracks, sandy path sides.</li>
+  <li><strong>Season</strong>: <strong>May to early June</strong>.</li>
+</ul>
+
+<h3>Toxin: Gyromitrin</h3>
+<ul>
+  <li><strong>Metabolism</strong>: In the human stomach and liver, gyromitrin hydrolyzes into <strong>monomethylhydrazine (MMH)</strong>—a volatile hydrazine compound used as rocket propellant!</li>
+  <li><strong>Symptoms</strong>: Severe vomiting, neurological disorders, convulsions, hemolysis, toxic hepatitis. Inhaling the steam during boiling can also cause severe poisoning!</li>
+  <li></em><em>Mandatory Finnish Parboiling Protocol (</em>Keitto-ohje<em>)</em><em>:</li>
+</ul>
+  - The Finnish Food Authority (</em>Ruokavirasto<em>) mandates that fresh </em>korvasieni<em> must be <strong>boiled twice in abundant water (1 part mushrooms to at least 3 parts water) for at least 5 minutes each time</strong>.
+  - Between the two boilings, the mushrooms must be thoroughly rinsed under running cold water.
+  - The boiling water contains dissolved MMH and <strong>MUST BE DISCARDED</strong>. Never use it in cooking!
+  - <strong>Ventilation</strong>: Boil only with the kitchen range hood on maximum exhaust or outdoors.
+
+<hr>
+
+<h2>5. Brown Rollrim (</em>Paxillus involutus<em> / </em>Pulkkosieni<em>)</h2>
+<strong>Status</strong>: ☠️☠️ <strong>TOXIC / CHRONIC IMMUNOLOGICAL DANGER</strong>
+
+<p><img src="../images/paxillus_involutus.jpg" alt="Paxillus involutus - Brown Rollrim" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(c) Scientific field observation - Distinctly in-rolled velvet cap margin and bruising gills<em></p>
+
+<h3>Identification & Ecology</h3>
+<ul>
+  <li><strong>Cap</strong>: 5–15 cm. Ochre-brown to olive-brown. The </em><em>outer edge of the cap is strongly rolled inwards (</em>sisäänkiertynyt reuna<em>)<strong> and remains curled even in maturity.</li>
+  <li></strong>Gills<strong>: Yellowish-olive to brown, easily detached from cap flesh, and </strong>bruise instantly dark brown when pressed with a finger<strong>.</li>
+  <li></strong>Habitat</em><em>: Very common in Helsinki urban parks, birch groves, roadsides, and spruce borders.</li>
+</ul>
+
+<h3>Danger: The Paxillus Syndrome</h3>
+<ul>
+  <li>In older Eastern European and Soviet guidebooks, </em>Paxillus involutus* was listed as edible after boiling.</li>
+  <li><strong>Modern Medical Reality</strong>: It contains an unknown antigen that provokes an autoimmune reaction in the human body. With repeated consumption (sometimes after years of eating it without incident), the immune system produces antibodies that suddenly trigger <strong>massive autoimmune hemolysis</strong>—the body's own immune system destroys its red blood cells, leading to acute kidney failure, shock, and fatal hemolytic anemia. It is strictly classified as poisonous.</li>
+</ul>
+
+<hr>
+
+<h2>Summary Matrix of Dangerous Species</h2>
+
+<div class="table-container"><table><thead><tr><th>Species</th><th>Finnish Name</th><th>Key Warning Sign</th><th>Primary Toxin</th><th>Target Organ / Hazard</th></tr></thead><tbody><tr><td><strong><em>Amanita virosa</em></strong></td><td>Valkokärpässieni</td><td>Pure white, white gills, stem ring & basal cup</td><td>Amatoxins</td><td>Liver necrosis (6–24 hr latency)</td></tr><tr><td><strong><em>Cortinarius rubellus</em></strong></td><td>Suippumyrkkyseitikki</td><td>Pointed cinnamon cap, yellow zigzag stem bands</td><td>Orellanine</td><td>Permanent kidney destruction (2–14 day latency)</td></tr><tr><td><strong><em>Galerina marginata</em></strong></td><td>Myrkkynääpikkä</td><td>Small brown wood-grower, ring on smooth stem</td><td>Amatoxins</td><td>Liver destruction</td></tr><tr><td><strong><em>Gyromitra esculenta</em></strong></td><td>Korvasieni</td><td>Convoluted brain-like folds in spring</td><td>Gyromitrin</td><td>Nervous system, liver (volatile MMH)</td></tr><tr><td><strong><em>Paxillus involutus</em></strong></td><td>Pulkkosieni</td><td>In-rolled velvet margin, gills bruise brown</td><td>Paxillus antigen</td><td>Autoimmune red blood cell hemolysis</td></tr><tr><td><strong><em>Amanita muscaria</em></strong></td><td>Punakärpässieni</td><td>Bright red cap with white warts</td><td>Ibotenic acid, Muscimol</td><td>Central nervous system delirium</td></tr></tbody></table></div>
+      </div>
+
+      <!-- Navigation Footer -->
+      <footer class="doc-footer-nav">
+        <div>
+          <a href="03_seasonal_calendar_and_habitats.html" class="doc-nav-btn">← 📅 Prev Chapter</a>
+        </div>
+        <div>
+          <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="doc-nav-btn" style="cursor:pointer;">↑ Top</button>
+        </div>
+        <div>
+          <a href="05_beginner_safe_species.html" class="doc-nav-btn primary">🍄 Next Chapter →</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer style="background:#182e22; color:rgba(255,255,255,0.7); text-align:center; padding:2rem 1rem; font-size:0.88rem;">
+    <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
+    <p style="margin-top:0.5rem;">
+      <a href="../index.html" style="color:#a7f3d0;">Home Portal</a> • 
+      <a href="https://powerpig99.github.io/not-a-toe/" style="color:#a7f3d0;" target="_blank" rel="noopener">Not a ToE Blog</a> • 
+      <a href="https://powerpig99.github.io/hunting-in-finland/" style="color:#a7f3d0;" target="_blank" rel="noopener">Hunting in Finland</a> • 
+      <a href="https://github.com/powerpig99/helsinki-mushroom-guide" style="color:#a7f3d0;" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>

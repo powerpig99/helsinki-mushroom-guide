@@ -29,17 +29,19 @@ The interactive digital field companion is deployable for **free** on GitHub Pag
 
 ## 📚 Handbook Chapters & Manuals
 
-| Section | Document | Key Topics Covered |
-| :--- | :--- | :--- |
-| **01** | [**Legal Rights, Nature Protection & Forest Safety**](docs/01_legal_and_ethics.md) | *Jokamiehenoikeus* (Everyman's Right), nature reserves, ticks (*punkit*), deer keds (*hirvikärpäset*), forest navigation. |
-| **02** | [**Helsinki Foraging Spots by HSL Public Transit**](docs/02_helsinki_transit_spots_guide.md) | Keskuspuisto, Sipoonkorpi, Nuuksio, Luukki, Vaakkoi, Petikko, Uutela. Exact bus/train routes, trailheads, and forest types. |
-| **03** | [**Seasonal Calendar & Forest Ecology**](docs/03_seasonal_calendar_and_habitats.md) | Month-by-month fruiting timelines (May to November), Cajander forest site types (*tuore kangas*, *kuiva kangas*, *lehto*, *korpi*). |
-| **04** | [**Deadly & Toxic Species: The Survival Manual**](docs/04_deadly_and_toxic_species.md) | *Amanita virosa*, *Cortinarius rubellus*, *Galerina marginata*, *Gyromitra esculenta*, *Paxillus involutus*. Toxins, delayed latency, emergency protocols. |
-| **05** | [**The "Safe Five" Beginner Species**](docs/05_beginner_safe_species.md) | Chanterelle, Funnel Chanterelle, Hedgehog Mushroom, Black Trumpet, King Bolete. Macroscopic checks & false lookalike tables. |
-| **06** | [**Intermediate & Advanced Gourmet Species**](docs/06_intermediate_and_advanced.md) | Russula Mildness Test, Milkcaps (*Rouskut*) & parboiling (*ryöppäys*), Gypsy Mushroom (*Kehnäsieni*), Sheep Polypore (*Lampaankääpä*). |
-| **07** | [**Preservation & Authentic Finnish Recipes**](docs/07_preservation_and_recipes.md) | Dehydration rules, freezing in natural juices, Finnish salt-curing (*suolasienet*), classic recipes. |
-| **ZH** | [**中文野菌烹饪预处理与中西经典食谱**](docs/cooking_and_recipes_zh.md) | 软刷干理、自汁慢焖法、科学焯水去毒（Ryöppäys）、奶油鸡油菌酱、传统酸奶油腌乳菇沙拉、葱姜蒜香野菌炒肉丝。 |
-| **App** | [**Interactive Field Companion (SPA)**](index.html) | Trilingual responsive app with search, month filter, side-by-side comparator, HSL transit finder, and cooking guides. |
+> 🌐 **Live Web Version**: Read this complete handbook online at [**powerpig99.github.io/helsinki-mushroom-guide**](https://powerpig99.github.io/helsinki-mushroom-guide/) or browse the [**Full Overview Webpage**](overview.html).
+
+| Section | Document Webpage | Raw Source | Key Topics Covered |
+| :--- | :--- | :--- | :--- |
+| **01** | [**Legal Rights, Nature Protection & Forest Safety**](https://powerpig99.github.io/helsinki-mushroom-guide/docs/01_legal_and_ethics.html) ([Local HTML](docs/01_legal_and_ethics.html)) | [.md](docs/01_legal_and_ethics.md) | *Jokamiehenoikeus* (Everyman's Right), nature reserves, ticks (*punkit*), deer keds (*hirvikärpäset*), forest navigation. |
+| **02** | [**Helsinki Foraging Spots by HSL Public Transit**](https://powerpig99.github.io/helsinki-mushroom-guide/docs/02_helsinki_transit_spots_guide.html) ([Local HTML](docs/02_helsinki_transit_spots_guide.html)) | [.md](docs/02_helsinki_transit_spots_guide.md) | Keskuspuisto, Sipoonkorpi, Nuuksio, Luukki, Vaakkoi, Petikko, Uutela. Exact bus/train routes, trailheads, and forest types. |
+| **03** | [**Seasonal Calendar & Forest Ecology**](https://powerpig99.github.io/helsinki-mushroom-guide/docs/03_seasonal_calendar_and_habitats.html) ([Local HTML](docs/03_seasonal_calendar_and_habitats.html)) | [.md](docs/03_seasonal_calendar_and_habitats.md) | Month-by-month fruiting timelines (May to November), Cajander forest site types (*tuore kangas*, *kuiva kangas*, *lehto*, *korpi*). |
+| **04** | [**Deadly & Toxic Species: The Survival Manual**](https://powerpig99.github.io/helsinki-mushroom-guide/docs/04_deadly_and_toxic_species.html) ([Local HTML](docs/04_deadly_and_toxic_species.html)) | [.md](docs/04_deadly_and_toxic_species.md) | *Amanita virosa*, *Cortinarius rubellus*, *Galerina marginata*, *Gyromitra esculenta*, *Paxillus involutus*. Toxins, delayed latency, emergency protocols. |
+| **05** | [**The "Safe Five" Beginner Species**](https://powerpig99.github.io/helsinki-mushroom-guide/docs/05_beginner_safe_species.html) ([Local HTML](docs/05_beginner_safe_species.html)) | [.md](docs/05_beginner_safe_species.md) | Chanterelle, Funnel Chanterelle, Hedgehog Mushroom, Black Trumpet, King Bolete. Macroscopic checks & false lookalike tables. |
+| **06** | [**Intermediate & Advanced Gourmet Species**](https://powerpig99.github.io/helsinki-mushroom-guide/docs/06_intermediate_and_advanced.html) ([Local HTML](docs/06_intermediate_and_advanced.html)) | [.md](docs/06_intermediate_and_advanced.md) | Russula Mildness Test, Milkcaps (*Rouskut*) & parboiling (*ryöppäys*), Gypsy Mushroom (*Kehnäsieni*), Sheep Polypore (*Lampaankääpä*). |
+| **07** | [**Preservation & Authentic Finnish Recipes**](https://powerpig99.github.io/helsinki-mushroom-guide/docs/07_preservation_and_recipes.html) ([Local HTML](docs/07_preservation_and_recipes.html)) | [.md](docs/07_preservation_and_recipes.md) | Dehydration rules, freezing in natural juices, Finnish salt-curing (*suolasienet*), classic recipes. |
+| **ZH** | [**中文野菌烹饪预处理与中西经典食谱**](https://powerpig99.github.io/helsinki-mushroom-guide/docs/cooking_and_recipes_zh.html) ([Local HTML](docs/cooking_and_recipes_zh.html)) | [.md](docs/cooking_and_recipes_zh.md) | 软刷干理、自汁慢焖法、科学焯水去毒（Ryöppäys）、奶油鸡油菌酱、传统酸奶油腌乳菇沙拉、葱姜蒜香野菌炒肉丝。 |
+| **App** | [**Interactive Field Companion (SPA)**](index.html) | — | Trilingual responsive app with search, month filter, side-by-side comparator, HSL transit finder, and cooking guides. |
 
 ---
 

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZH. 中文野菌烹饪预处理与中西经典食谱 | Helsinki Mushroom Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    .doc-sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #182e22;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .doc-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .doc-btn-back {
+      color: #fff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.4rem 0.85rem;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+    }
+    .doc-btn-back:hover {
+      background: #2d5a42;
+      color: #fff;
+      transform: translateX(-2px);
+    }
+    .doc-select {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      cursor: pointer;
+      outline: none;
+      max-width: 320px;
+    }
+    .doc-select option {
+      background: #182e22;
+      color: #fff;
+    }
+    .doc-main-container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.25rem 4rem;
+      flex: 1;
+      width: 100%;
+    }
+    .doc-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 2.5rem 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .doc-content-area {
+      line-height: 1.75;
+      font-size: 1.02rem;
+      color: #334155;
+    }
+    .doc-content-area h1 {
+      font-size: 2rem;
+      color: #1e3a2b;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .doc-content-area h2 {
+      font-size: 1.45rem;
+      color: #0f172a;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    .doc-content-area h3 {
+      font-size: 1.18rem;
+      color: #1e293b;
+      margin-top: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .doc-content-area p {
+      margin-bottom: 1rem;
+    }
+    .doc-content-area ul, .doc-content-area ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.75rem;
+    }
+    .doc-content-area li {
+      margin-bottom: 0.4rem;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td {
+      background: #fcfcfd;
+    }
+    .reader-alert {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .reader-alert.note {
+      background-color: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      color: #1e40af;
+    }
+    .reader-alert.warning {
+      background-color: var(--warning-light);
+      border-left: 4px solid var(--warning);
+      color: #92400e;
+    }
+    .reader-alert.danger {
+      background-color: var(--danger-light);
+      border-left: 4px solid var(--danger);
+      color: #991b1b;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-size: 0.88rem;
+      margin: 1.25rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: rgba(0,0,0,0.06);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    blockquote {
+      border-left: 4px solid #2d5a42;
+      padding-left: 1rem;
+      margin: 1.25rem 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .doc-footer-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .doc-nav-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+    .doc-nav-btn:hover {
+      background: #2d5a42;
+      color: #fff;
+    }
+    .doc-nav-btn.primary {
+      background: #1e3a2b;
+      color: #fff;
+    }
+    .doc-nav-btn.primary:hover {
+      background: #2d5a42;
+    }
+    .doc-raw-link {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .doc-card {
+        padding: 1.5rem;
+      }
+      .doc-content-area h1 {
+        font-size: 1.5rem;
+      }
+      .doc-select {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Bar -->
+  <header class="doc-sticky-header">
+    <div class="doc-nav-left">
+      <a href="../index.html" class="doc-btn-back">🍄 Mushroom Portal</a>
+      <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
+      <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
+      <select class="doc-select" onchange="if(this.value) window.location.href=this.value" aria-label="Jump to Chapter">
+        
+    <option value="01_legal_and_ethics.html" >
+      ⚖️ 01. Legal Rights, Nature Protection & Forest Safety
+    </option>
+  
+    <option value="02_helsinki_transit_spots_guide.html" >
+      🚌 02. Helsinki Foraging Spots by HSL Transit
+    </option>
+  
+    <option value="03_seasonal_calendar_and_habitats.html" >
+      📅 03. Seasonal Calendar & Forest Ecology
+    </option>
+  
+    <option value="04_deadly_and_toxic_species.html" >
+      ☠️ 04. Deadly & Toxic Species Survival Manual
+    </option>
+  
+    <option value="05_beginner_safe_species.html" >
+      🍄 05. The "Safe Five" Beginner Species
+    </option>
+  
+    <option value="06_intermediate_and_advanced.html" >
+      🧺 06. Intermediate & Advanced Gourmet Species
+    </option>
+  
+    <option value="07_preservation_and_recipes.html" >
+      🍳 07. Preservation & Authentic Finnish Recipes
+    </option>
+  
+    <option value="cooking_and_recipes_zh.html" selected>
+      🇨🇳 ZH. 中文野菌烹饪预处理与中西经典食谱
+    </option>
+  
+      </select>
+    </div>
+    <div>
+      <a href="cooking_and_recipes_zh.md" class="doc-btn-back" target="_blank" style="background:rgba(255,255,255,0.08); font-weight:normal; font-size:0.8rem;">📄 Raw .md Source</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="doc-main-container">
+    <article class="doc-card">
+      <div class="doc-content-area">
+        <h1>芬兰野生菌烹饪预处理与中西经典食谱指南</h1>
+<em>Cooking & Preparation Guide for Finnish Wild Mushrooms (中文版)</em>
+
+<p>野生菌是大自然赐予北欧森林的珍馐。然而，许多初来芬兰的采菇者因不熟悉当地真菌生物化学特性，常犯下两类严重错误：要么<strong>误食需彻底焯水排毒的辛辣乳菇（引发急性肠胃炎）</strong>，要么<strong>将本应干炒的原汁真菌泡水淘洗（导致口感软塌无味）</strong>。</p>
+
+<p>本指南系统总结芬兰本土野生菌的四大预处理核心科学，并收录4道中西合璧的殿堂级食谱。</p>
+
+<hr>
+
+<h2>第一部分：野生菌四大预处理核心科学</h2>
+
+<h3>1. 清理法则：软刷干理，切忌久泡</h3>
+<ul>
+  <li><strong>吸水海绵效应</strong>：野生真菌的子实体充满多孔微管与细胞间隙，一旦浸入自来水中，会像海绵一样迅速吸收大量水分。这不仅会彻底冲淡其珍贵的挥发性芳香精油，还会导致下锅时析出大量脏水，使“煎炒”沦为“水煮”。</li>
+  <li><strong>标准化清理步骤</strong>：</li>
+</ul>
+  1. <strong>林间初理</strong>：在森林采摘时，立即用蘑菇刀尾部的天然猪鬃刷扫除菌盖上的泥土与松针，削去带有沙土的柄底根部，切勿带泥入筐。
+  2. <strong>室内精理</strong>：到家后，用干燥牙刷或毛刷轻刷菌褶与菌孔内部。
+  3. <strong>细沙处理</strong>：若菌盖附着顽固泥沙，仅可用<strong>微湿的厨房纸巾轻柔擦拭表面</strong>，严禁开水龙头冲洗或泡在水盆中！
+
+<hr>
+
+<h3>2. 自身汁液慢焖法 (<em>Haudutus omassa liemessä</em>)</h3>
+这是芬兰家庭代代相传、料理<strong>黄鸡油菌（Kantarelli）</strong>、<strong>牛肝菌（Tatit）</strong>与<strong>卷缘齿菌（Vaaleaorakas）</strong>的不二法门。
+
+<ul>
+  <li><strong>科学原理</strong>：生鲜菌类含水量高达85%–90%，若直接加冷油慢炒，油温上不去且菇体吸油腻口。利用真菌受热自渗汁液的特性，先以无油干锅慢逼出纯天然菌汁，菌体自身在浓缩的原汤中慢焖软化，鲜味呈几何级数倍增。</li>
+  <li><strong>实操步骤</strong>：</li>
+</ul>
+  1. 将整理干净的鲜菇切成均匀块状或粗条。
+  2. 取一口宽底平底锅，中火预热——<strong>不要加任何食用油、黄油或水！</strong>
+  3. 倒入菌块。受热约1-2分钟后，菇体内部细胞受热膨压破坏，会自然涌出极其丰沛清亮的原汤。
+  4. 保持中小火翻拌，让菌肉在自身沸腾的鲜美原汁中慢煨5–8分钟，直至汤汁蒸发浓缩过半。
+  5. <strong>分支操作</strong>：
+     - <strong>即时烹饪</strong>：待原汤即将收干时，投入大块咸黄油与洋葱碎，大火煎至边缘金黄焦香。
+     - <strong>冷冻越冬保存</strong>：熄火彻底放凉，将半浓缩的原汤连同菌肉分装入食品级冷冻自封袋，排尽空气平铺冷冻，可完美锁鲜长达12个月。
+
+<hr>
+
+<h3>3. 科学焯水杀青去辣 (<em>Ryöppäys</em>)</h3>
+在芬兰传统饮食中，<strong>乳菇（Rouskut）</strong>占有统治地位。然而，多数高产乳菇（如<strong>白绒乳菇/Karvarousku</strong>、<strong>红乳菇/Kangasrousku</strong>、<strong>北极乳菇/Haaparousku</strong>）含有刺激性极强的倍半萜类树脂毒素，生尝如嚼生辣椒般灼喉，生食会导致剧烈腹绞痛、呕吐与腹泻。
+
+<ul>
+  <li><strong>焯水去毒标准流程</strong>：</li>
+</ul>
+  1. 准备大汤锅，按<strong>1公斤鲜菇配至少3–4升水</strong>的比例加水大火烧开。
+  2. 投入切块的洗净乳菇。水再次沸腾后，<strong>保持大火滚煮10至15分钟</strong>（白绒乳菇建议15分钟，红乳菇10分钟）。在此过程中，苦辣树脂成分会完全溶解并析入沸水中。
+  3. <strong>特别注意</strong>：焯煮过程会产生微量刺激性挥发气体，必须开启强力吸油烟机或开窗通风！
+  4. 将煮透的乳菇倒入漏勺，<strong>必须将焯菇水全部倒弃，绝对不可用作高汤！</strong>
+  5. 立即用充沛的流动冷水冲凉过凉，彻底洗净残留苦涩味，最后用双手分批用力将多余水分挤干。
+  6. 经过焯水挤干后的乳菇，苦辣素已被彻底去除，口感脆爽如坚果，既可用于制作传统腌蘑菇沙拉，也可用于中式红烧与炒肉。
+
+<div class="reader-alert note"><strong>NOTE:</strong> <strong>无需焯水的例外</strong>：<strong>松乳菇（Lactarius deliciosus / Männynleppärousku）</strong>流出的是鲜亮胡萝卜橙色乳汁，质地极其甘甜柔嫩，<strong>绝对严禁焯水</strong>，直接用黄油大蒜干煎即是绝品！</div>
+
+<hr>
+
+<h3>4. 风干脱水与储藏 (<em>Kuivaus</em>)</h3>
+<ul>
+  <li><strong>最适合脱水的极品</strong>：</li>
+</ul>
+  - <strong>漏斗鸡油菌（Craterellus tubaeformis）</strong>
+  - <strong>灰包号角菇/黑喇叭菌（Craterellus cornucopioides）</strong>
+  - <strong>美味牛肝菌（Boletus edulis - 切4毫米薄片）</strong>
+<ul>
+  <li><strong>绝对严禁风干的物种</strong>：</li>
+</ul>
+  - <strong>黄鸡油菌（Cantharellus cibarius）</strong>：烘干后肉质纤维会不可逆地胶质角质化，即使长时间温水泡发也如同嚼老牛皮，并会产生浓重的难闻苦涩感。
+<ul>
+  <li><strong>温控参数</strong>：使用家用食物烘干机设定在 <strong>40°C 至 45°C</strong>，持续烘干6–10小时，直至手折时发出清脆响亮的断裂声（Cracker dry）。装入消过毒的密闭玻璃梅森罐，置于避光阴凉橱柜中，可常温保存 <strong>3至5年</strong> 风味不减。</li>
+</ul>
+
+<hr>
+
+<h2>第二部分：中西合璧经典食谱</h2>
+
+<hr>
+
+<h3>食谱一：经典北欧奶油鸡油菌浓汁配新土豆 (<em>Kermainen kantarellikastike</em>)</h3>
+<em>芬兰夏末秋初的国民级第一珍馐，与刚出土的莳萝小土豆是天作之合。</em>
+
+<ul>
+  <li><strong>准备时间</strong>：10分钟 | <strong>烹饪时间</strong>：15分钟 | <strong>分量</strong>：4人份</li>
+  <li><strong>食材准备</strong>：</li>
+</ul>
+  - 新鲜黄鸡油菌 500克（手撕成适口条块）
+  - 红葱头或小黄洋葱 1个（切极细碎丁）
+  - 优质芬兰咸黄油 40克（约3汤匙）
+  - 芬兰高脂鲜奶油（Kuohukerma，脂肪含量35%+） 200毫升
+  - 研磨海盐 1/2茶匙，现磨白胡椒粉 1/4茶匙
+  - 新鲜细叶莳萝（Dill）或法香碎 2汤匙
+
+<ul>
+  <li><strong>烹饪步骤</strong>：</li>
+</ul>
+  1. 将手撕好的鸡油菌放入干平底锅中，开中火翻焙，无需加水加油。2分钟后菇体析出大量天然汁液，转中大火继续加热，让汁水逐渐蒸发收浓。
+  2. 当锅底水分快收干时，加入黄油与洋葱碎。
+  3. 转中小火慢炒4–5分钟，炒出洋葱的焦糖甜香，直至鸡油菌边缘微微泛起金黄微焦的色泽。
+  4. 倒入高脂鲜奶油，轻轻搅拌均匀。转微火慢煨8–10分钟，奶油会自然浓缩收浓，呈现如丝绒般挂勺的质感。
+  5. 调入海盐与白胡椒粉拌匀。离火前最后一刻撒入新鲜莳萝碎，拌匀即起锅。
+  6. 趁热直接浇在煮熟透皮的黄心小土豆上享用。
+
+<hr>
+
+<h3>食谱二：传统芬兰酸奶油腌乳菇沙拉 (<em>Perinteinen sienisalaatti</em>)</h3>
+<em>芬兰圣诞年夜饭与秋季冷餐桌上的传奇冷盘，口感脆爽醇厚。</em>
+
+<ul>
+  <li><strong>准备时间</strong>：15分钟（+脱盐时间） | <strong>烹饪时间</strong>：无火冷拌 | <strong>分量</strong>：4–6人份</li>
+  <li><strong>食材准备</strong>：</li>
+</ul>
+  - 焯水并盐腌保存的乳菇（如白绒乳菇/Karvarousku） 300克
+  - 紫洋葱 1个（务必切成极细小的微米级碎粒）
+  - 芬兰高脂酸奶油（Smetana，42%脂肪） 150克
+  - 现磨白胡椒粉 1/4茶匙
+  - 鲜柠檬汁或白葡萄酒醋 1茶匙
+  - 新鲜小葱碎或细香葱少许
+
+<ul>
+  <li><strong>烹饪步骤</strong>：</li>
+</ul>
+  1. <strong>脱盐处理</strong>：提前将盐腌乳菇放入大盆冷水中浸泡1–2小时，中途换水1次，尝之咸淡适口（微带鲜咸）即可捞出，用手彻底挤干水分。
+  2. 将脱盐乳菇用大菜刀切成3毫米见方的规整细微小丁。
+  3. 在搅拌碗中放入冰镇的Smetana酸奶油，用叉子顺时针轻打几圈至柔顺无颗粒。
+  4. 倒入切好的乳菇细丁和紫洋葱末，用刮刀彻底翻拌均匀。
+  5. 调入白胡椒粉与少许柠檬汁去腻提鲜。
+  6. 加盖放入冰箱冷藏静置至少1小时，使洋葱的甜辣与乳菇的菌香充分渗入酸奶油中。
+  7. 吃时厚厚抹在烤热的芬兰黑麦面包（Ruisleipä）上，佐冷熏三文鱼同食，妙不可言。
+
+<hr>
+
+<h3>食谱三：西波森林漏斗鸡油菌烟熏奶酪浓汤 (<em>Suppilovahverokeitto</em>)</h3>
+<em>漫步于深秋冷雨中的Sipoonkorpi森林归来后，最暖胃解乏的灵魂热汤。</em>
+
+<ul>
+  <li><strong>准备时间</strong>：15分钟 | <strong>烹饪时间</strong>：25分钟 | <strong>分量</strong>：4人份</li>
+  <li><strong>食材准备</strong>：</li>
+</ul>
+  - 新鲜漏斗鸡油菌 1升（约300克，撕开去杂质）或风干品 30克（温水泡发20分钟）
+  - 芬兰Koskenlaskija Savu烟熏熔融奶酪 100克（切小块）
+  - 黄油 2汤匙，中等洋葱 1个（切小丁），大蒜 1瓣（压泥）
+  - 中筋面粉 2汤匙（用于增稠做鲁邦白汤底）
+  - 浓蔬菜或菌菇高汤 600毫升（若用干菇，可用泡菇水滤渣代替部分高汤）
+  - 浓鲜奶油 200毫升
+  - 鲜百里香叶 1茶匙，海盐、现磨黑胡椒适量
+
+<ul>
+  <li><strong>烹饪步骤</strong>：</li>
+</ul>
+  1. 在深底汤锅中融化黄油，下洋葱丁、蒜泥与百里香，中火慢炒3分钟至散发香气。
+  2. 倒入处理干净的漏斗鸡油菌，翻炒5分钟直至菇体软化透香。
+  3. 将面粉均匀撒在蘑菇表面，小火快速翻炒1分钟，去除面粉生粉气。
+  4. 分多次缓缓倒入温热高汤（与澄清泡菇水），边倒边用蛋抽快速搅打，防止结块。
+  5. 煮沸后转微火慢炖10分钟，让汤底自然变得浓郁丝滑。
+  6. 调至最小火，倒入鲜奶油与切小块的Koskenlaskija烟熏奶酪，轻柔搅拌至奶酪完全融解在汤中。
+  7. 磨入黑胡椒碎与少许海盐调味，搭配酥脆法棍或群岛黑面包趁热盛食。
+
+<hr>
+
+<h3>食谱四：葱姜蒜香野菌炒肉丝 (<em>Nordic Wild Mushroom & Pork Stir-Fry</em>)</h3>
+<em>专为在芬华人打造的家乡镬气美味，北欧坚实野菌与中华快炒的完美碰撞。</em>
+
+<ul>
+  <li><strong>准备时间</strong>：15分钟 | <strong>烹饪时间</strong>：8分钟 | <strong>分量</strong>：3–4人份</li>
+  <li><strong>食材准备</strong>：</li>
+</ul>
+  - 鲜采坚实野生菌 350克（美味牛肝菌、橙盖红柄牛肝菌或卷缘齿菌，切厚片）
+  - 猪里脊肉或梅花肉 200克（切均匀细肉丝）
+  - 小香葱 4根（切长段），老生姜 3片（切细丝），大蒜 3瓣（切片）
+  - 调味腌料：生抽 1汤匙，绍兴料酒 1茶匙，玉米淀粉 1茶匙，白胡椒粉少许
+  - 炒菜料汁：生抽 1汤匙，优质蚝油 1茶匙，白糖 1/3茶匙，芝麻香油半茶匙
+
+<ul>
+  <li><strong>烹饪步骤</strong>：</li>
+</ul>
+  1. <strong>肉丝上浆</strong>：肉丝放入小碗，加1茶匙生抽、料酒、白胡椒粉和淀粉抓匀，封1茶匙食用油锁水，腌制10分钟。
+  2. <strong>野菌初熟处理（关键防毒）</strong>：
+     - 若使用<strong>橙盖红柄牛肝菌（Leccinum）</strong>或厚切牛肝菌，烧开半锅水，将菌片投入滚水中大火焯水3分钟捞出控水（彻底破坏潜在胃肠道刺激素，确保万无一失）。
+  3. <strong>滑炒肉丝</strong>：铁锅烧热下宽油，大火将肉丝滑散翻炒至八成熟变色，立即盛出控油备用。
+  4. <strong>爆香底料</strong>：锅底留少许底油，中大火爆香姜丝、蒜片与小葱葱白段。
+  5. <strong>猛火爆菌</strong>：倒入焯好沥干的野菌片，转最大火猛烈翻炒2分钟，直至菌片边缘泛起焦香镬气。
+  6. <strong>合锅调味</strong>：倒入肉丝与葱绿段，淋入调好的生抽、蚝油与微量白糖，大火颠锅翻炒均匀约1分钟。
+  7. 出锅前淋几滴纯正芝麻香油，即刻装盘出锅。口感滑嫩弹牙，浓香下饭！
+      </div>
+
+      <!-- Navigation Footer -->
+      <footer class="doc-footer-nav">
+        <div>
+          <a href="07_preservation_and_recipes.html" class="doc-nav-btn">← 🍳 Prev Chapter</a>
+        </div>
+        <div>
+          <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="doc-nav-btn" style="cursor:pointer;">↑ Top</button>
+        </div>
+        <div>
+          <a href="../index.html" class="doc-nav-btn primary">Complete Guide ✓</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer style="background:#182e22; color:rgba(255,255,255,0.7); text-align:center; padding:2rem 1rem; font-size:0.88rem;">
+    <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
+    <p style="margin-top:0.5rem;">
+      <a href="../index.html" style="color:#a7f3d0;">Home Portal</a> • 
+      <a href="https://powerpig99.github.io/not-a-toe/" style="color:#a7f3d0;" target="_blank" rel="noopener">Not a ToE Blog</a> • 
+      <a href="https://powerpig99.github.io/hunting-in-finland/" style="color:#a7f3d0;" target="_blank" rel="noopener">Hunting in Finland</a> • 
+      <a href="https://github.com/powerpig99/helsinki-mushroom-guide" style="color:#a7f3d0;" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>

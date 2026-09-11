@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01. Legal Rights, Nature Protection & Forest Safety | Helsinki Mushroom Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    .doc-sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #182e22;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .doc-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .doc-btn-back {
+      color: #fff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.4rem 0.85rem;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+    }
+    .doc-btn-back:hover {
+      background: #2d5a42;
+      color: #fff;
+      transform: translateX(-2px);
+    }
+    .doc-select {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      cursor: pointer;
+      outline: none;
+      max-width: 320px;
+    }
+    .doc-select option {
+      background: #182e22;
+      color: #fff;
+    }
+    .doc-main-container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.25rem 4rem;
+      flex: 1;
+      width: 100%;
+    }
+    .doc-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 2.5rem 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .doc-content-area {
+      line-height: 1.75;
+      font-size: 1.02rem;
+      color: #334155;
+    }
+    .doc-content-area h1 {
+      font-size: 2rem;
+      color: #1e3a2b;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .doc-content-area h2 {
+      font-size: 1.45rem;
+      color: #0f172a;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    .doc-content-area h3 {
+      font-size: 1.18rem;
+      color: #1e293b;
+      margin-top: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .doc-content-area p {
+      margin-bottom: 1rem;
+    }
+    .doc-content-area ul, .doc-content-area ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.75rem;
+    }
+    .doc-content-area li {
+      margin-bottom: 0.4rem;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td {
+      background: #fcfcfd;
+    }
+    .reader-alert {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .reader-alert.note {
+      background-color: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      color: #1e40af;
+    }
+    .reader-alert.warning {
+      background-color: var(--warning-light);
+      border-left: 4px solid var(--warning);
+      color: #92400e;
+    }
+    .reader-alert.danger {
+      background-color: var(--danger-light);
+      border-left: 4px solid var(--danger);
+      color: #991b1b;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-size: 0.88rem;
+      margin: 1.25rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: rgba(0,0,0,0.06);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    blockquote {
+      border-left: 4px solid #2d5a42;
+      padding-left: 1rem;
+      margin: 1.25rem 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .doc-footer-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .doc-nav-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+    .doc-nav-btn:hover {
+      background: #2d5a42;
+      color: #fff;
+    }
+    .doc-nav-btn.primary {
+      background: #1e3a2b;
+      color: #fff;
+    }
+    .doc-nav-btn.primary:hover {
+      background: #2d5a42;
+    }
+    .doc-raw-link {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .doc-card {
+        padding: 1.5rem;
+      }
+      .doc-content-area h1 {
+        font-size: 1.5rem;
+      }
+      .doc-select {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Bar -->
+  <header class="doc-sticky-header">
+    <div class="doc-nav-left">
+      <a href="../index.html" class="doc-btn-back">🍄 Mushroom Portal</a>
+      <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
+      <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
+      <select class="doc-select" onchange="if(this.value) window.location.href=this.value" aria-label="Jump to Chapter">
+        
+    <option value="01_legal_and_ethics.html" selected>
+      ⚖️ 01. Legal Rights, Nature Protection & Forest Safety
+    </option>
+  
+    <option value="02_helsinki_transit_spots_guide.html" >
+      🚌 02. Helsinki Foraging Spots by HSL Transit
+    </option>
+  
+    <option value="03_seasonal_calendar_and_habitats.html" >
+      📅 03. Seasonal Calendar & Forest Ecology
+    </option>
+  
+    <option value="04_deadly_and_toxic_species.html" >
+      ☠️ 04. Deadly & Toxic Species Survival Manual
+    </option>
+  
+    <option value="05_beginner_safe_species.html" >
+      🍄 05. The "Safe Five" Beginner Species
+    </option>
+  
+    <option value="06_intermediate_and_advanced.html" >
+      🧺 06. Intermediate & Advanced Gourmet Species
+    </option>
+  
+    <option value="07_preservation_and_recipes.html" >
+      🍳 07. Preservation & Authentic Finnish Recipes
+    </option>
+  
+    <option value="cooking_and_recipes_zh.html" >
+      🇨🇳 ZH. 中文野菌烹饪预处理与中西经典食谱
+    </option>
+  
+      </select>
+    </div>
+    <div>
+      <a href="01_legal_and_ethics.md" class="doc-btn-back" target="_blank" style="background:rgba(255,255,255,0.08); font-weight:normal; font-size:0.8rem;">📄 Raw .md Source</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="doc-main-container">
+    <article class="doc-card">
+      <div class="doc-content-area">
+        <h1>01. Legal Rights, Nature Protection & Forest Safety in Finland</h1>
+
+<hr>
+
+<h2>1. Everyman’s Right (<em>Jokamiehenoikeus</em>)</h2>
+
+<p>Finland boasts one of the world's most progressive legal frameworks for public access to nature: <strong>Everyman’s Right</strong> (<em>Jokamiehenoikeus</em> / <em>Allemansrätten</em>). This customary legal principle allows anyone—regardless of nationality or residency—to enjoy and forage in the Finnish countryside.</p>
+
+<h3>What You CAN Do Under Everyman’s Right</h3>
+<ul>
+  <li><strong>Pick Wild Mushrooms and Berries</strong>: You may harvest wild edible mushrooms, berries (blueberries, lingonberries, cloudberries, cranberries), and uncultivated flowers freely on both state-owned and privately-owned land without permits or fees.</li>
+  <li><strong>Walk, Ski, and Cycle</strong>: You have free pedestrian right-of-way through natural forests, heaths, wetlands, and frozen bodies of water.</li>
+  <li><strong>Temporary Stay & Camping</strong>: You may pitch a tent for a short stay (1–2 nights) on open natural terrain, provided you do not cause disturbance or pitch too close to houses.</li>
+  <li><strong>Forage for Personal or Commercial Use</strong>: In Finland, you can legally sell wild mushrooms and berries you have picked yourself tax-free under current income tax regulations (Income Tax Act § 89).</li>
+</ul>
+
+<h3>What You CANNOT Do (Strictly Prohibited)</h3>
+<ul>
+  <li>*<em>Do NOT Enter Private Yards (</em>Pihapiiri<em>)</em><em>: You must stay at a respectful distance from private homes, summer cottages (</em>mökki<em>), residential gardens, and cultivated fields. As a rule of thumb, remain out of direct sight and earshot (typically at least 50–100 meters away).</li>
+  <li><strong>Do NOT Harm Living Trees</strong>: You may never cut down trees, break branches, peel bark (especially birch bark / </em>tuohi<em>), or collect chaga (</em>pakurikääpä<em>) or resin from living trees without the landowner’s explicit permission.</li>
+  <li><strong>Do NOT Gather Moss or Lichen</strong>: Gathering moss (</em>sammal<em>) or reindeer lichen (</em>jäkälä<em>) is prohibited without landowner consent, as it strips fragile topsoil.</li>
+  <li><strong>Do NOT Light Open Campfires Without Permission</strong>: Fires on bare ground or rock are strictly forbidden without landowner consent or except at designated, maintained Metsähallitus / municipal fire pits (</em>tulentekopaikka<em>). During forest fire warnings (</em>metsäpalovaroitus<em>), even designated fire pits are strictly off-limits (only cooking with camping gas stoves is permitted).</li>
+  <li><strong>Do NOT Drive Motor Vehicles Off-Road</strong>: Driving cars, motorbikes, or ATVs across forest terrain or gated logging roads without permission is illegal.</li>
+  <li><strong>Do NOT Disturb Wildlife or Livestock</strong>: Keep dogs on a leash at all times from March 1 to August 19 (under the Hunting Act) to protect nesting birds and calves/fawns; in municipal outdoor recreation areas like Helsinki Central Park, dogs must be leashed year-round.</li>
+</ul>
+
+<hr>
+
+<h2>2. Protected Areas & Nature Reserves Around Helsinki</h2>
+
+<p>When foraging in the Helsinki Metropolitan Area, you will encounter diverse park and reserve designations managed by <strong>Metsähallitus</strong> (Parks & Wildlife Finland) or the municipal cities of Helsinki, Espoo, and Vantaa:</p>
+
+<div class="table-container"><table><thead><tr><th>Area Classification</th><th>Finnish Term</th><th>Mushroom Picking Allowed?</th><th>Key Rules & Exceptions</th></tr></thead><tbody><tr><td><strong>National Parks</strong></td><td></em>Kansallispuisto<em> (e.g. Sipoonkorpi, Nuuksio)</td><td><strong>YES</strong></td><td>You may pick mushrooms and berries freely. However, camping and fires are restricted to designated spots. Stay off strictly protected core zones.</td></tr><tr><td><strong>Strict Nature Reserves</strong></td><td></em>Luonnonpuisto<em></td><td><strong>NO</strong></td><td>Closed to public entry or strictly restricted to marked trails for scientific research. Foraging is completely forbidden.</td></tr><tr><td><strong>Nature Reserves & Sanctuaries</strong></td><td></em>Luonnonsuojelualue<em> (e.g. Viikki-Vanhankaupunginlahti, Uutela reserves)</td><td><strong>DEPENDS</strong></td><td>Check localized municipal decrees. Most permit berry/mushroom picking, but sensitive wetland bird nesting sanctuaries prohibit leaving designated paths or entering during breeding season (April–July).</td></tr><tr><td><strong>City Recreational Forests</strong></td><td></em>Ulkoilumetsät<em> (e.g. Keskuspuisto, Luukki, Pirttimäki)</td><td><strong>YES</strong></td><td>Fully open for mushroom picking. Avoid trampling landscaped ski trails, disc golf tracks, or historical earthworks.</td></tr></tbody></table></div>
+<div class="reader-alert note"><strong>TIP:</strong> Always look for signs reading <strong>"Luonnonsuojelualue – Fredat Naturskyddsområde"</strong>. Read the small map panel at the trailhead; if there are seasonal trail restrictions (</em>liikkumiskielto<em>), respect them strictly.</div>
+
+<hr>
+
+<h2>3. Nordic Forest Health & Safety</h2>
+
+<h3>Ticks (</em>Punkit<em> / </em>Puutiaiset<em>)</h3>
+Southern Finland and coastal Uusimaa are active tick habitats from April until the first sub-zero winter freeze. Ticks carry two primary pathogens: <strong>Borrelia burgdorferi</strong> (Lyme disease bacteria) and <strong>Tick-Borne Encephalitis (TBE)</strong> virus.
+
+<ul>
+  <li><strong>Protective Clothing</strong>: Wear light-colored clothing (making crawling ticks easy to spot), long pants tucked securely into high socks, and rubber boots (</em>kumisaappaat<em>).</li>
+  <li><strong>DEET & Icaridin Repellents</strong>: Spray boots, lower pant legs, and cuffs.</li>
+  <li></em><em>Nightly Tick Check (</em>Punkkitarkastus<em>)<strong>: Always thoroughly inspect your skin after returning from the forest—especially behind knees, groin, armpits, behind ears, and along the hairline.</li>
+  <li></strong>Removal</em><em>: Use fine-tipped tweezers or a tick-removal card. Grasp the tick as close to the skin as possible and pull straight outward without twisting or squeezing the abdomen. Disinfect the bite site.</li>
+</ul>
+
+<h3>Deer Keds (</em>Hirvikärpäset<em> - </em>Lipoptena cervi<em>)</h3>
+From late August through October, deer keds emerge in dense numbers in pine and spruce forests populated by moose and deer.
+<ul>
+  <li><strong>Behavior</strong>: They fly toward warm hosts, drop their wings immediately upon landing, and crawl vigorously into hair, beards, and under collars. While they do not transmit diseases to humans, their bites can produce itchy, inflamed, long-lasting welts.</li>
+  <li><strong>Defense</strong>: Wear smooth, tightly woven synthetic fabrics (fleece is a magnet for them), a tight-fitting cap or bandana covering all hair, and tuck your shirt into your trousers. Carry a fine-toothed comb to extract them from your hair before getting into your car or stepping onto public transit.</li>
+</ul>
+
+<h3>Navigation & Lost-Person Prevention</h3>
+Finnish spruce forests can be deceptively dense, flat, and uniform; disorientation can occur quickly once you stray 50 meters from a trail.
+<ol>
+  <li><strong>Download the Official "112 Suomi" App</strong>: Mandatory for anyone venturing into Finnish forests. If you call emergency services through this app, your exact satellite GPS coordinates are automatically transmitted to the Finnish Emergency Response Centre Agency (</em>Hätäkeskuslaitos*).</li>
+  <li><strong>Offline Topographic Maps</strong>: Install <strong>Karttaselain</strong> or download offline areas in <strong>Google Maps</strong> / <strong>Gaia GPS</strong> / <strong>Maanmittauslaitos Karttapaikka</strong>.</li>
+  <li><strong>Power Bank</strong>: Cold autumn weather drastically accelerates smartphone battery drain. Always pack an external battery pack and charging cable.</li>
+</ol>
+
+<hr>
+
+<h2>4. Ethical & Sustainable Harvesting Practices</h2>
+
+<ol>
+  <li><strong>Cut vs. Pluck</strong>:</li>
+</ol>
+   - For <strong>boletes, chanterelles, and polypores</strong>: You can either slice the stem cleanly just above moss level with your mushroom knife or gently twist and pull the entire fruitbody, then immediately trim the dirty base back onto the forest floor. Scientific studies (e.g. long-term Swiss forest trials) confirm that neither method harms future mycelial yields.
+   - For <strong>fragile funnel chanterelles</strong>: Gentle hand plucking or clipping with scissors prevents pulling up moss clumps.
+   - <strong>Crucial Rule</strong>: Never rip up moss blankets! Always press disturbed moss back into place to protect the delicate, moisture-sensitive mycelial network underneath.
+<ol>
+  <li><strong>Leave Overripe & Insect-Damaged Specimens</strong>:</li>
+</ol>
+   - Spongy, waterlogged, or heavily maggot-eaten mushrooms should remain in the forest. They serve as essential food for invertebrates, forest mice, and squirrels, and are needed to release billions of spores for future generations.
+<ol>
+  <li><strong>Keep Your Harvest Clean on Site</strong>:</li>
+</ol>
+   - A minute spent brushing pine needles and soil off caps in the woods saves an hour of washing at home. Once dirt enters the gills or pores in your basket, it is notoriously difficult to rinse away without turning the mushroom into a waterlogged sponge.
+<ol>
+  <li><strong>Never Use Plastic Bags</strong>:</li>
+</ol>
+   - Collect solely in rigid baskets, wooden crates, or breathable canvas bags. In plastic, mushrooms sweat, anaerobic bacteria multiply rapidly, and proteins break down into gastrointestinal toxins within hours.
+      </div>
+
+      <!-- Navigation Footer -->
+      <footer class="doc-footer-nav">
+        <div>
+          <a href="../index.html" class="doc-nav-btn">← Main Portal</a>
+        </div>
+        <div>
+          <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="doc-nav-btn" style="cursor:pointer;">↑ Top</button>
+        </div>
+        <div>
+          <a href="02_helsinki_transit_spots_guide.html" class="doc-nav-btn primary">🚌 Next Chapter →</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer style="background:#182e22; color:rgba(255,255,255,0.7); text-align:center; padding:2rem 1rem; font-size:0.88rem;">
+    <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
+    <p style="margin-top:0.5rem;">
+      <a href="../index.html" style="color:#a7f3d0;">Home Portal</a> • 
+      <a href="https://powerpig99.github.io/not-a-toe/" style="color:#a7f3d0;" target="_blank" rel="noopener">Not a ToE Blog</a> • 
+      <a href="https://powerpig99.github.io/hunting-in-finland/" style="color:#a7f3d0;" target="_blank" rel="noopener">Hunting in Finland</a> • 
+      <a href="https://github.com/powerpig99/helsinki-mushroom-guide" style="color:#a7f3d0;" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>

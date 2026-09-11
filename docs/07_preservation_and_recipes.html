@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07. Preservation & Authentic Finnish Recipes | Helsinki Mushroom Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    .doc-sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #182e22;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .doc-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .doc-btn-back {
+      color: #fff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.4rem 0.85rem;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+    }
+    .doc-btn-back:hover {
+      background: #2d5a42;
+      color: #fff;
+      transform: translateX(-2px);
+    }
+    .doc-select {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      cursor: pointer;
+      outline: none;
+      max-width: 320px;
+    }
+    .doc-select option {
+      background: #182e22;
+      color: #fff;
+    }
+    .doc-main-container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.25rem 4rem;
+      flex: 1;
+      width: 100%;
+    }
+    .doc-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 2.5rem 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .doc-content-area {
+      line-height: 1.75;
+      font-size: 1.02rem;
+      color: #334155;
+    }
+    .doc-content-area h1 {
+      font-size: 2rem;
+      color: #1e3a2b;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .doc-content-area h2 {
+      font-size: 1.45rem;
+      color: #0f172a;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    .doc-content-area h3 {
+      font-size: 1.18rem;
+      color: #1e293b;
+      margin-top: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .doc-content-area p {
+      margin-bottom: 1rem;
+    }
+    .doc-content-area ul, .doc-content-area ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.75rem;
+    }
+    .doc-content-area li {
+      margin-bottom: 0.4rem;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td {
+      background: #fcfcfd;
+    }
+    .reader-alert {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .reader-alert.note {
+      background-color: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      color: #1e40af;
+    }
+    .reader-alert.warning {
+      background-color: var(--warning-light);
+      border-left: 4px solid var(--warning);
+      color: #92400e;
+    }
+    .reader-alert.danger {
+      background-color: var(--danger-light);
+      border-left: 4px solid var(--danger);
+      color: #991b1b;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-size: 0.88rem;
+      margin: 1.25rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: rgba(0,0,0,0.06);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    blockquote {
+      border-left: 4px solid #2d5a42;
+      padding-left: 1rem;
+      margin: 1.25rem 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .doc-footer-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .doc-nav-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+    .doc-nav-btn:hover {
+      background: #2d5a42;
+      color: #fff;
+    }
+    .doc-nav-btn.primary {
+      background: #1e3a2b;
+      color: #fff;
+    }
+    .doc-nav-btn.primary:hover {
+      background: #2d5a42;
+    }
+    .doc-raw-link {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .doc-card {
+        padding: 1.5rem;
+      }
+      .doc-content-area h1 {
+        font-size: 1.5rem;
+      }
+      .doc-select {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Bar -->
+  <header class="doc-sticky-header">
+    <div class="doc-nav-left">
+      <a href="../index.html" class="doc-btn-back">🍄 Mushroom Portal</a>
+      <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
+      <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
+      <select class="doc-select" onchange="if(this.value) window.location.href=this.value" aria-label="Jump to Chapter">
+        
+    <option value="01_legal_and_ethics.html" >
+      ⚖️ 01. Legal Rights, Nature Protection & Forest Safety
+    </option>
+  
+    <option value="02_helsinki_transit_spots_guide.html" >
+      🚌 02. Helsinki Foraging Spots by HSL Transit
+    </option>
+  
+    <option value="03_seasonal_calendar_and_habitats.html" >
+      📅 03. Seasonal Calendar & Forest Ecology
+    </option>
+  
+    <option value="04_deadly_and_toxic_species.html" >
+      ☠️ 04. Deadly & Toxic Species Survival Manual
+    </option>
+  
+    <option value="05_beginner_safe_species.html" >
+      🍄 05. The "Safe Five" Beginner Species
+    </option>
+  
+    <option value="06_intermediate_and_advanced.html" >
+      🧺 06. Intermediate & Advanced Gourmet Species
+    </option>
+  
+    <option value="07_preservation_and_recipes.html" selected>
+      🍳 07. Preservation & Authentic Finnish Recipes
+    </option>
+  
+    <option value="cooking_and_recipes_zh.html" >
+      🇨🇳 ZH. 中文野菌烹饪预处理与中西经典食谱
+    </option>
+  
+      </select>
+    </div>
+    <div>
+      <a href="07_preservation_and_recipes.md" class="doc-btn-back" target="_blank" style="background:rgba(255,255,255,0.08); font-weight:normal; font-size:0.8rem;">📄 Raw .md Source</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="doc-main-container">
+    <article class="doc-card">
+      <div class="doc-content-area">
+        <h1>07. Preservation & Authentic Finnish Forest Recipes</h1>
+
+<p>Wild mushrooms harvested in Helsinki's forests are organic culinary treasures. Because a successful autumn excursion can yield several kilograms in a single afternoon, proper processing and storage are vital.</p>
+
+<hr>
+
+<h2>1. Preservation Methods</h2>
+
+<h3>A. Dehydration (<em>Kuivaus</em>)</h3>
+Drying is the premier preservation method for thin-fleshed species and concentrates rich umami compounds.
+
+<ul>
+  <li><strong>Best Species for Drying</strong>:</li>
+</ul>
+  - <strong>Funnel Chanterelle</strong> (<em>Craterellus tubaeformis</em> / <em>suppilovahvero</em>)
+  - <strong>Black Trumpet</strong> (<em>Craterellus cornucopioides</em> / <em>mustatorvisieni</em>)
+  - <strong>King Bolete / Porcini</strong> (<em>Boletus edulis</em> / <em>herkkutatti</em> - sliced into 4–5 mm planks)
+  - <strong>Wood Hedgehog</strong> (<em>Hydnum repandum</em> - sliced thin)
+<ul>
+  <li><strong>Species to NEVER Dry</strong>:</li>
+</ul>
+  - *<em>Golden Chanterelles (</em>Cantharellus cibarius<em>)<strong>: When dehydrated, golden chanterelles become rubbery, leathery, and develop an unpleasant, lingering bitterness that remains even after prolonged rehydration.
+<ul>
+  <li></strong>Dehydrator Settings<strong>:</li>
+</ul>
+  - 40°C to 45°C for 6 to 12 hours until "cracker dry" (they must snap audibly when bent).
+  - If using an electric oven: Set to 45°C with the convection fan running and prop the door open 2–3 cm with a wooden spoon to let humidity escape.
+<ul>
+  <li></strong>Storage<strong>: Clean, airtight glass mason jars stored in a dark pantry. Dehydrated funnel chanterelles and black trumpets retain peak fragrance for </strong>3 to 5 years<strong>.</li>
+  <li></strong>Rehydration<strong>: Soak dried mushrooms in lukewarm water or broth for 20 minutes before cooking. </strong>Never discard the soaking liquid</em><em>: filter it through a fine sieve and use it as a concentrated mushroom stock!</li>
+</ul>
+
+<hr>
+
+<h3>B. Freezing in Natural Juices (</em>Pakastus omassa liemessä<em>)</h3>
+Never freeze wild mushrooms raw! Raw freezing ruptures cellular walls, releasing enzymes that rapidly turn mushrooms mushy, watery, and bitter.
+
+<ul>
+  <li></em><em>The Finnish Sauté Method (</em>Haudutus omassa liemessä<em>)<strong>:</li>
+</ul>
+  1. Clean and chop mushrooms (essential for </strong>Golden Chanterelles<strong>, </strong>Hedgehog mushrooms<strong>, and </strong>Boletes<strong>).
+  2. Heat a wide dry skillet over medium heat—</strong>do not add butter or oil!<strong> (Fats go rancid in the freezer over time).
+  3. Add the chopped mushrooms. As the heat penetrates the fungal cells, the mushrooms will release a copious volume of flavorful natural juices.
+  4. Simmer the mushrooms gently in their own liquid for 5–8 minutes until the liquid reduces by roughly half.
+  5. Remove from heat and allow to cool completely to room temperature.
+  6. Portion into ziplock freezer bags along with their concentrated broth, press out excess air, and freeze.
+  7. </strong>Shelf Life</em><em>: Up to 12 months at -18°C.
+
+<hr>
+
+<h3>C. Traditional Finnish Parboiling & Salting (</em>Ryöppäys ja suolaus<em>)</h3>
+The traditional Nordic technique for preserving acrid milkcaps (</em>Lactarius torminosus<em>, </em>Lactarius trivialis<em>, </em>Lactarius rufus<em>) for the winter pantry.
+
+<ol>
+  <li></em><em>Parboiling (</em>Ryöppäys<em>)<strong>:</li>
+</ol>
+   - Bring a large pot of water to a rolling boil (at least 3 liters of water per 1 kg of fresh milkcaps).
+   - Plunge the cleaned mushrooms into boiling water. Boil for </strong>10 to 15 minutes<strong> (this extracts the bitter, burning diterpene resins into the water).
+   - Drain in a colander and immediately flush with plenty of cold water to halt the cooking process and rinse away residual acridity.
+   - Gently squeeze out excess water with your hands.
+<ol>
+  <li></strong>Layering & Salting<strong>:</li>
+</ol>
+   - In a sterilized glass jar or ceramic crock, layer the boiled mushrooms alternately with </strong>coarse sea salt<strong> (use roughly </strong>100 g to 120 g of coarse non-iodized sea salt per 1 kg of boiled, squeezed mushrooms</em><em>).
+   - Optional aromatics: Add whole allspice berries (</em>maustepippuri<em>), black peppercorns, and clean blackcurrant leaves between layers.
+   - Press down firmly until brine covers the mushrooms. Weigh down with a clean saucer or food-grade weight.
+   - Store in a cold refrigerator or cellar (2°C–5°C).
+<ol>
+  <li></em><em>Desalting Before Cooking (</em>Liotus<em>)</em><em>:</li>
+</ol>
+   - Before preparing a recipe, scoop out the salted mushrooms and soak them in a large bowl of cold water for 1 to 2 hours, changing the water once or twice, until the saltiness reaches a pleasant seasoning level.
+
+<hr>
+
+<h2>2. Authentic Finnish Forest Recipes</h2>
+
+<hr>
+
+<h3>1. Traditional Finnish Mushroom Salad (</em>Perinteinen sienisalaatti<em>)</h3>
+</em>The crowned centerpiece of the Finnish Christmas table, also enjoyed year-round on dark sourdough rye bread.<em>
+
+<p><img src="../images/lactarius_torminosus.jpg" alt="Finnish Sienisalaatti" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br></em>(Made with desalted parboiled milkcaps such as Karvarousku or Haaparousku)<em></p>
+
+<ul>
+  <li><strong>Prep time</strong>: 15 min (+ soaking time)</li>
+  <li><strong>Yield</strong>: 4–6 servings</li>
+</ul>
+
+<h4>Ingredients</h4>
+<ul>
+  <li>300 g desalted, parboiled milkcaps (</em>suolatut rouskut<em>) OR rehydrated funnel chanterelles</li>
+  <li>1 small red onion or mild Finnish shallot, very finely diced</li>
+  <li>150 g Finnish </em>smetana<em> (sour cream with 42% fat) or thick </em>kermaviili<em> / crème fraîche</li>
+  <li>1/4 tsp finely ground white pepper</li>
+  <li>1 tsp freshly squeezed lemon juice or white wine vinegar</li>
+  <li>A pinch of sea salt (only if needed after tasting)</li>
+  <li>Fresh chives or dill for garnish</li>
+</ul>
+
+<h4>Instructions</h4>
+<ol>
+  <li>Finely chop the desalted, squeezed mushrooms into tiny 3–4 mm cubes.</li>
+  <li>In a mixing bowl, whip the chilled </em>smetana<em> lightly with a fork until smooth and fluffy.</li>
+  <li>Fold in the finely diced red onion and chopped mushrooms.</li>
+  <li>Season with ground white pepper and lemon juice.</li>
+  <li>Cover and chill in the refrigerator for at least 1 hour before serving to allow the onion and mushroom flavors to meld.</li>
+  <li>Serve atop toasted slices of Finnish rye bread (</em>ruisleipä<em>) alongside cold-smoked salmon or boiled potatoes.</li>
+</ol>
+
+<hr>
+
+<h3>2. Classic Creamy Chanterelle Sauce (</em>Kermainen kantarellikastike<em>)</h3>
+</em>The quintessential Finnish late-summer dish, traditionally paired with fresh dill-seasoned new potatoes (<em>uudet perunat</em>).<em>
+
+<p><img src="../images/cantharellus_cibarius.jpg" alt="Cantharellus cibarius" style="max-width:100%; border-radius:8px; margin:1rem 0;"></p>
+
+<ul>
+  <li><strong>Prep time</strong>: 10 min</li>
+  <li><strong>Cooking time</strong>: 15 min</li>
+  <li><strong>Yield</strong>: 4 servings</li>
+</ul>
+
+<h4>Ingredients</h4>
+<ul>
+  <li>500 g fresh golden chanterelles (</em>kantarelli<em>), brushed clean and coarsely chopped</li>
+  <li>1 medium yellow onion or 2 shallots, finely minced</li>
+  <li>2–3 tbsp real butter</li>
+  <li>200 ml Finnish heavy cream (</em>kuohukerma<em>) or full-fat cream</li>
+  <li>1/2 tsp sea salt</li>
+  <li>1/4 tsp freshly cracked black or white pepper</li>
+  <li>2 tbsp fresh parsley or dill, finely chopped</li>
+</ul>
+
+<h4>Instructions</h4>
+<ol>
+  <li>Place the chopped chanterelles into a dry, wide frying pan over medium heat. Let them sweat and simmer in their own moisture until the liquid has evaporated.</li>
+  <li>Add the butter to the pan along with the minced onions.</li>
+  <li>Sauté over medium-low heat for 4–5 minutes until the onions are soft and translucent, and the chanterelles begin to turn lightly golden at the edges.</li>
+  <li>Pour in the heavy cream. Stir well, lower the heat, and simmer gently for 8–10 minutes until the cream thickens into a velvety, luscious sauce.</li>
+  <li>Season with salt and cracked pepper. Stir in the fresh parsley or dill right before taking off the heat.</li>
+  <li>Serve immediately poured over steaming, buttered new potatoes.</li>
+</ol>
+
+<hr>
+
+<h3>3. Autumn Funnel Chanterelle Soup with Smoked Cheese (</em>Suppilovahverokeitto<em>)</h3>
+</em>A deeply comforting, rich soup designed for brisk October and November evenings after a day in Sipoonkorpi.<em>
+
+<p><img src="../images/craterellus_tubaeformis.jpg" alt="Craterellus tubaeformis" style="max-width:100%; border-radius:8px; margin:1rem 0;"></p>
+
+<ul>
+  <li><strong>Prep time</strong>: 15 min</li>
+  <li><strong>Cooking time</strong>: 25 min</li>
+  <li><strong>Yield</strong>: 4 servings</li>
+</ul>
+
+<h4>Ingredients</h4>
+<ul>
+  <li>1 liter fresh funnel chanterelles (</em>suppilovahvero<em>) OR 30 g dried funnel chanterelles (rehydrated)</li>
+  <li>2 tbsp butter</li>
+  <li>1 medium yellow onion, finely diced</li>
+  <li>1 garlic clove, finely minced</li>
+  <li>2 tbsp all-purpose flour (optional, for thickening)</li>
+  <li>600 ml rich vegetable or mushroom broth</li>
+  <li>200 ml heavy cream (</em>kuohukerma<em>) or oat cream</li>
+  <li>100 g Finnish </em>Koskenlaskija Savu<em> (smoked processed melting cheese) OR smoked gouda, cut into small cubes</li>
+  <li>1 tsp fresh thyme leaves</li>
+  <li>Freshly cracked black pepper and sea salt to taste</li>
+</ul>
+
+<h4>Instructions</h4>
+<ol>
+  <li>If using dried chanterelles, soak in warm water for 20 minutes and drain, reserving the soaking liquid to replace part of the broth. If using fresh, coarsely chop them.</li>
+  <li>In a heavy-bottomed soup pot, melt the butter over medium heat. Add the onion and garlic and sauté until fragrant and tender (about 3 minutes).</li>
+  <li>Add the mushrooms and thyme. Cook for 5 minutes until the mushrooms have softened and released their aroma.</li>
+  <li>Sprinkle the flour evenly over the mushrooms and stir continuously for 1 minute to cook out the raw flour taste.</li>
+  <li>Slowly whisk in the broth (and strained mushroom soaking water), stirring constantly to ensure no lumps form.</li>
+  <li>Bring to a gentle boil, then reduce heat and simmer for 10 minutes.</li>
+  <li>Lower the heat and add the cream and the cubes of smoked cheese (</em>Koskenlaskija<em>). Whisk gently over low heat until the cheese has completely melted into the velvety soup.</li>
+  <li>Season with fresh black pepper and salt to taste. Ladle into warm bowls and garnish with extra whole sautéed funnel chanterelles and thyme sprigs. Serve with crusty sourdough or dark archipelago bread (</em>saaristolaisleipä*).</li>
+</ol>
+      </div>
+
+      <!-- Navigation Footer -->
+      <footer class="doc-footer-nav">
+        <div>
+          <a href="06_intermediate_and_advanced.html" class="doc-nav-btn">← 🧺 Prev Chapter</a>
+        </div>
+        <div>
+          <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="doc-nav-btn" style="cursor:pointer;">↑ Top</button>
+        </div>
+        <div>
+          <a href="cooking_and_recipes_zh.html" class="doc-nav-btn primary">🇨🇳 Next Chapter →</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer style="background:#182e22; color:rgba(255,255,255,0.7); text-align:center; padding:2rem 1rem; font-size:0.88rem;">
+    <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
+    <p style="margin-top:0.5rem;">
+      <a href="../index.html" style="color:#a7f3d0;">Home Portal</a> • 
+      <a href="https://powerpig99.github.io/not-a-toe/" style="color:#a7f3d0;" target="_blank" rel="noopener">Not a ToE Blog</a> • 
+      <a href="https://powerpig99.github.io/hunting-in-finland/" style="color:#a7f3d0;" target="_blank" rel="noopener">Hunting in Finland</a> • 
+      <a href="https://github.com/powerpig99/helsinki-mushroom-guide" style="color:#a7f3d0;" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>

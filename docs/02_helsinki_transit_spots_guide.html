@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02. Helsinki Foraging Spots by HSL Transit | Helsinki Mushroom Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    .doc-sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #182e22;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .doc-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .doc-btn-back {
+      color: #fff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.4rem 0.85rem;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+    }
+    .doc-btn-back:hover {
+      background: #2d5a42;
+      color: #fff;
+      transform: translateX(-2px);
+    }
+    .doc-select {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      cursor: pointer;
+      outline: none;
+      max-width: 320px;
+    }
+    .doc-select option {
+      background: #182e22;
+      color: #fff;
+    }
+    .doc-main-container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.25rem 4rem;
+      flex: 1;
+      width: 100%;
+    }
+    .doc-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 2.5rem 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .doc-content-area {
+      line-height: 1.75;
+      font-size: 1.02rem;
+      color: #334155;
+    }
+    .doc-content-area h1 {
+      font-size: 2rem;
+      color: #1e3a2b;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .doc-content-area h2 {
+      font-size: 1.45rem;
+      color: #0f172a;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    .doc-content-area h3 {
+      font-size: 1.18rem;
+      color: #1e293b;
+      margin-top: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .doc-content-area p {
+      margin-bottom: 1rem;
+    }
+    .doc-content-area ul, .doc-content-area ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.75rem;
+    }
+    .doc-content-area li {
+      margin-bottom: 0.4rem;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td {
+      background: #fcfcfd;
+    }
+    .reader-alert {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .reader-alert.note {
+      background-color: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      color: #1e40af;
+    }
+    .reader-alert.warning {
+      background-color: var(--warning-light);
+      border-left: 4px solid var(--warning);
+      color: #92400e;
+    }
+    .reader-alert.danger {
+      background-color: var(--danger-light);
+      border-left: 4px solid var(--danger);
+      color: #991b1b;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-size: 0.88rem;
+      margin: 1.25rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: rgba(0,0,0,0.06);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    blockquote {
+      border-left: 4px solid #2d5a42;
+      padding-left: 1rem;
+      margin: 1.25rem 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .doc-footer-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .doc-nav-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+    .doc-nav-btn:hover {
+      background: #2d5a42;
+      color: #fff;
+    }
+    .doc-nav-btn.primary {
+      background: #1e3a2b;
+      color: #fff;
+    }
+    .doc-nav-btn.primary:hover {
+      background: #2d5a42;
+    }
+    .doc-raw-link {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .doc-card {
+        padding: 1.5rem;
+      }
+      .doc-content-area h1 {
+        font-size: 1.5rem;
+      }
+      .doc-select {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Bar -->
+  <header class="doc-sticky-header">
+    <div class="doc-nav-left">
+      <a href="../index.html" class="doc-btn-back">🍄 Mushroom Portal</a>
+      <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
+      <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
+      <select class="doc-select" onchange="if(this.value) window.location.href=this.value" aria-label="Jump to Chapter">
+        
+    <option value="01_legal_and_ethics.html" >
+      ⚖️ 01. Legal Rights, Nature Protection & Forest Safety
+    </option>
+  
+    <option value="02_helsinki_transit_spots_guide.html" selected>
+      🚌 02. Helsinki Foraging Spots by HSL Transit
+    </option>
+  
+    <option value="03_seasonal_calendar_and_habitats.html" >
+      📅 03. Seasonal Calendar & Forest Ecology
+    </option>
+  
+    <option value="04_deadly_and_toxic_species.html" >
+      ☠️ 04. Deadly & Toxic Species Survival Manual
+    </option>
+  
+    <option value="05_beginner_safe_species.html" >
+      🍄 05. The "Safe Five" Beginner Species
+    </option>
+  
+    <option value="06_intermediate_and_advanced.html" >
+      🧺 06. Intermediate & Advanced Gourmet Species
+    </option>
+  
+    <option value="07_preservation_and_recipes.html" >
+      🍳 07. Preservation & Authentic Finnish Recipes
+    </option>
+  
+    <option value="cooking_and_recipes_zh.html" >
+      🇨🇳 ZH. 中文野菌烹饪预处理与中西经典食谱
+    </option>
+  
+      </select>
+    </div>
+    <div>
+      <a href="02_helsinki_transit_spots_guide.md" class="doc-btn-back" target="_blank" style="background:rgba(255,255,255,0.08); font-weight:normal; font-size:0.8rem;">📄 Raw .md Source</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="doc-main-container">
+    <article class="doc-card">
+      <div class="doc-content-area">
+        <h1>02. Helsinki & Uusimaa Foraging Spots by HSL Public Transit</h1>
+
+<p>The capital region of Finland (<em>Pääkaupunkiseutu</em>) is uniquely blessed: pristine hemiboreal forests are directly accessible via the <strong>HSL (Helsingin seudun liikenne)</strong> public transit network. You do not need a car to reach world-class mushroom foraging territory.</p>
+
+<hr>
+
+<h2>Transit Planning Tools</h2>
+<ul>
+  <li>*<em>HSL Journey Planner (</em>Reittiopas<em>)<strong>: Available in the HSL app or at <a href="https://reittiopas.hsl.fi" rel="noopener noreferrer">reittiopas.hsl.fi</a>.</li>
+  <li></strong>Ticket Zones<strong>:</li>
+</ul>
+  - Helsinki inner zones (Keskuspuisto, Uutela): </strong>Zone AB<strong>
+  - Espoo & Vantaa outer forests (Luukki, Petikko, Kuusijärvi / Sipoonkorpi edge): </strong>Zone ABC<strong>
+  - Nuuksio & deeper Sipoonkorpi (Sipoo municipality): </strong>Zone ABCD<strong> or </strong>Zone CD</em><em> (depending on starting point)
+
+<hr>
+
+<h2>1. Helsinki Central Park (</em>Keskuspuisto<em>)</h2>
+</em>The urban forest in Helsinki's backyard<em>
+
+<p>Spanning 10 kilometers north-to-south from Töölönlahti to the Vantaanjoki river, Keskuspuisto offers surprisingly rich mushroom yields in its northern segments.</p>
+
+<pre><code class="language-text">       [ Pitkäkoski &amp; Haltiala ]  &lt;-- Top northern sector (old-growth spruce)
+                  |
+            [ Paloheinä ]         &lt;-- Excellent berry/spruce heath &amp; hazel
+                  |
+             [ Pirkkola ]         &lt;-- Mixed woodland &amp; mossy slopes
+                  |
+             [ Maunula ]          &lt;-- Hazelnut groves &amp; southern boundary
+</code></pre>
+
+<h3>Prime Sectors & Transit Access</h3>
+<ul>
+  <li><strong>Pitkäkoski & Haltiala Nature Reserve</strong>:</li>
+</ul>
+  - <strong>Transit</strong>: Bus <strong>67</strong> from Rautatientori to Torpparinmäki, or Bus <strong>560</strong> / <strong>600</strong> to Tammisto/Pitkäkoski edge.
+  - <strong>Forest Type</strong>: Mature, damp Norway spruce (</em>Picea abies<em>) stands, steep riverine ravines, rotting nurse logs.
+  - <strong>Target Species</strong>: Funnel Chanterelles (</em>Craterellus tubaeformis<em>), Hedgehog mushrooms (</em>Hydnum repandum<em>), King Boletes (</em>Boletus edulis<em>), Brittlegills (</em>Russula<em>).
+<ul>
+  <li><strong>Paloheinä Forest</strong>:</li>
+</ul>
+  - <strong>Transit</strong>: Bus <strong>66</strong> from Rautatientori directly to Paloheinän maja (outdoor hut).
+  - <strong>Forest Type</strong>: Mixed spruce and birch heaths, rocky outcrops covered in moss.
+  - <strong>Target Species</strong>: Chanterelles (</em>Cantharellus cibarius<em>), Rufous milkcaps (</em>Lactarius rufus<em>), Orange birch boletes (</em>Leccinum versipelle<em>).
+<ul>
+  <li><strong>Maunula & Pirkkola</strong>:</li>
+</ul>
+  - <strong>Transit</strong>: Bus <strong>63</strong> from Kamppi, or light rail <strong>Raide-Jokeri (Tram 15)</strong> to Pirkkola/Maunula stops.
+  - <strong>Forest Type</strong>: Herb-rich deciduous groves (</em>lehto<em>) with hazel (</em>Corylus avellana<em>), aspen, and oak.
+  - <strong>Target Species</strong>: Black Trumpets (</em>Craterellus cornucopioides<em>) near hazel, Summer ceps (</em>Boletus reticulatus<em>).
+
+<div class="reader-alert warning"><strong>WARNING:</strong> <strong>Urban Foraging Buffer</strong>: In Keskuspuisto, stay at least <strong>50–100 meters away</strong> from main paved cycling arteries, high-traffic dog walking loops, and motorways (Tuusulanväylä / Kehä I) to avoid lead, heavy metals, road dust, and pet contamination.</div>
+
+<hr>
+
+<h2>2. Sipoonkorpi National Park (</em>Sipoonkorven kansallispuisto<em>)</h2>
+</em>The wild wilderness of Eastern Uusimaa<em>
+
+<p>Sipoonkorpi features rugged granite bedrock, ancient spruce-blueberry heaths, and swamp margins. It is widely considered the capital region’s finest habitat for Funnel Chanterelles and Black Trumpets.</p>
+
+<h3>Gateway 1: Kuusijärvi (Vantaa edge)</h3>
+<ul>
+  <li><strong>Transit</strong>:</li>
+</ul>
+  - Train <strong>K</strong> or <strong>I/P</strong> to <strong>Tikkurila Station</strong>, then transfer to <strong>Bus 736</strong> or <strong>739</strong> directly to <strong>Kuusijärvi</strong>.
+<ul>
+  <li><strong>Trail Access</strong>:</li>
+</ul>
+  - Cross the magnificent wooden Sudentassu suspension bridge into the national park. Follow trails toward <strong>Bisajärvi</strong> and <strong>Tasakallio</strong>.
+<ul>
+  <li><strong>Target Species</strong>: Heavy carpetings of </em>Craterellus tubaeformis<em> in late autumn; abundant </em>Boletus edulis<em> in August.</li>
+</ul>
+
+<h3>Gateway 2: Bakunkärr & Kalkkiuuni (Sipoo side)</h3>
+<ul>
+  <li><strong>Transit</strong>:</li>
+</ul>
+  - Bus <strong>738</strong> from Kalasatama metro station (peak/weekend schedules) or <strong>Bus 736</strong> to </em>Kalkkiuunintie<em>.
+  - Seasonal <strong>Sipoonkorpi Hop-On Hop-Off bus</strong> operates on summer/autumn weekends from Tikkurila train station, connecting Kuusijärvi, Landbo, Byabäcken, and Korvenportti.
+<ul>
+  <li><strong>Forest Type</strong>: Dense, shaded spruce forests, damp mossy hollows, and stream valleys (</em>Byabäcken<em>).</li>
+  <li><strong>Target Species</strong>: Hedgehog mushrooms (</em>Vaaleaorakas<em>), Woolly milkcaps (</em>Karvarousku<em>), Northern milkcaps (</em>Haaparousku<em>), Gypsy mushrooms (</em>Kehnäsieni<em>).</li>
+</ul>
+
+<hr>
+
+<h2>3. Nuuksio National Park (</em>Nuuksion kansallispuisto<em>)</h2>
+</em>The glacial lake and granite wilderness of Espoo<em>
+
+<p>Over 53 square kilometers of rugged valleys, sheer rock cliffs, peat bogs, and mature hemiboreal taiga.</p>
+
+<h3>How to Reach Nuuksio by HSL</h3>
+<ol>
+  <li>Take commuter train <strong>U</strong>, <strong>E</strong>, <strong>X</strong>, or <strong>L</strong> from Helsinki Central Station to <strong>Espoon keskus (Espoo Station)</strong> (~25 min).</li>
+  <li>Transfer at Platform 13 to <strong>Bus 245</strong> or <strong>245A</strong> (runs every 30–60 minutes, ~25–35 min ride).</li>
+</ol>
+
+<h3>Key Trailheads for Foragers</h3>
+<ul>
+  <li><strong>Stop: Haukkalammentie (Haukkalampi)</strong>:</li>
+</ul>
+  - The central gateway. Walk 1.5 km down Haukkalammentie to the trail hub.
+  - Head off-trail northwest toward <strong>Valklampi</strong> and <strong>Mustalampi</strong>.
+  - <strong>Forest</strong>: Mossy spruce hollows between granite ridges. Excellent for Golden Chanterelles on path slopes, Porcini, and Sheep polypore (</em>Albatrellus ovinus<em>).
+<ul>
+  <li><strong>Stop: Kattila (Bus 245A terminus)</strong>:</li>
+</ul>
+  - The northernmost bus-accessible point in Nuuksio.
+  - Less crowded than Haukkalampi; pristine spruce mires (</em>korpi<em>) and pine heaths.
+  - <strong>Target Species</strong>: Black Trumpets on south-facing mossy slopes, Funnel Chanterelles in damp depressions.
+<ul>
+  <li><strong>Stop: Haltia (Finnish Nature Centre Haltia)</strong>:</li>
+</ul>
+  - Excellent for route advice, paper topographic maps, and ranger trail updates.
+
+<hr>
+
+<h2>4. Luukki & Vaakkoi Outdoor Recreation Areas (North Espoo)</h2>
+</em>The local foragers' secret weapon<em>
+
+<p>While crowds flock to Nuuksio’s main trails, seasoned foragers in the Helsinki region often head to the North Espoo recreational chain (<strong>Luukki</strong>, <strong>Vaakkoi</strong>, and <strong>Pirttimäki</strong>).</p>
+
+<h3>Luukki</h3>
+<ul>
+  <li><strong>Transit</strong>: Bus <strong>345</strong> directly from <strong>Elielinaukio (Helsinki Central Station)</strong> to <strong>Luukki</strong> stop (~45 min, Zone C).</li>
+  <li><strong>Terrain</strong>: Ancient mixed forests surrounding seven forest lakes (Hauklampi, Kaitalampi, Mustlampi).</li>
+  <li><strong>Foraging Value</strong>: Extremely high. Abundant boletes along the forest lake borders, vast beds of </em>Hydnum repandum<em> (Hedgehog mushrooms), and rich patches of Russulas in August.</li>
+</ul>
+
+<h3>Vaakkoi</h3>
+<ul>
+  <li><strong>Transit</strong>: Bus <strong>345</strong> further north to the <strong>Vaakkoi</strong> stop on Vihdintie.</li>
+  <li><strong>Terrain</strong>: Rugged, rocky, wilderness-like terrain with fewer maintained facilities than Luukki.</li>
+  <li><strong>Foraging Value</strong>: Incredible undisturbed spruce moss blankets; prime territory for late-autumn </em>Craterellus tubaeformis<em> and prized </em>Boletus pinophilus<em> (Pine bolete) on sandy ridges.</li>
+</ul>
+
+<hr>
+
+<h2>5. Petikko & Vestra (Western Vantaa)</h2>
+</em>Rich soils and diverse deciduous groves<em>
+
+<ul>
+  <li><strong>Transit</strong>: Bus <strong>321</strong> from Elielinaukio to <strong>Petikko</strong>, or Bus <strong>345</strong> / <strong>436N</strong> to Askisto/Vestra edge.</li>
+  <li><strong>Terrain</strong>: Petikko features undulating moraine hills, spruce forests transitioning into moist herb-rich deciduous groves (</em>lehto<em>), hazelnut bushes, and calcareous clay hollows.</li>
+  <li><strong>Target Species</strong>:</li>
+</ul>
+  - </em>Boletus reticulatus<em> (Summer Cep) under deciduous trees.
+  - </em>Leccinum versipelle<em> (Orange Birch Bolete) and </em>Leccinum scabrum<em> (Brown Birch Bolete).
+  - </em>Craterellus cornucopioides<em> (Black Trumpet) tucked under hazel thickets.
+
+<hr>
+
+<h2>6. Uutela & Meri-Rastila (East Helsinki)</h2>
+</em>Maritime pine forests & coastal heaths<em>
+
+<ul>
+  <li><strong>Transit</strong>: <strong>Metro</strong> to <strong>Vuosaari</strong> station, then either a 15-minute scenic walk through Kahvikadunpuisto or Bus <strong>560</strong> to </em>Aurinkolahti<em>.</li>
+  <li><strong>Terrain</strong>: Särkkäniemi coastal reserve, pine-clad bedrock cliffs, coastal alder fringes, and mixed spruce stands.</li>
+  <li><strong>Target Species</strong>:</li>
+</ul>
+  - Pine Boletes (</em>Boletus pinophilus<em>) and Rufous Milkcaps (</em>Lactarius rufus*) in dry lichen-pine zones.
+  - Chanterelles along shaded slope footpaths.
+  - Note: Be mindful of coastal bird protection zones where off-trail trampling is discouraged.
+
+<hr>
+
+<h2>Summary Transit Table for Foragers</h2>
+
+<div class="table-container"><table><thead><tr><th>Location</th><th>HSL Zone</th><th>Primary Route from Helsinki Central</th><th>Travel Time</th><th>Best Season</th><th>Top Species</th></tr></thead><tbody><tr><td><strong>Keskuspuisto (Paloheinä)</strong></td><td>AB</td><td>Bus 66 (Rautatientori)</td><td>30 min</td><td>Aug – Oct</td><td>Chanterelles, Boletes, Russula</td></tr><tr><td><strong>Keskuspuisto (Pitkäkoski)</strong></td><td>AB</td><td>Bus 67 / Train P + Bus 560</td><td>35 min</td><td>Sep – Nov</td><td>Funnel Chanterelles, Porcini</td></tr><tr><td><strong>Sipoonkorpi (Kuusijärvi)</strong></td><td>B / C</td><td>Train K/P to Tikkurila + Bus 736/739</td><td>45 min</td><td>Aug – Nov</td><td>Porcini, Funnel Chanterelles</td></tr><tr><td><strong>Nuuksio (Haukkalampi)</strong></td><td>C</td><td>Train U/E to Espoon keskus + Bus 245</td><td>60 min</td><td>Jul – Oct</td><td>Chanterelles, Boletes, Polypores</td></tr><tr><td><strong>Luukki (North Espoo)</strong></td><td>C</td><td>Bus 345 from Elielinaukio</td><td>45 min</td><td>Aug – Nov</td><td>Hedgehog, Boletes, Milkcaps</td></tr><tr><td><strong>Vaakkoi (North Espoo)</strong></td><td>C</td><td>Bus 345 from Elielinaukio</td><td>55 min</td><td>Sep – Nov</td><td>Funnel Chanterelles, Pine Boletes</td></tr><tr><td><strong>Petikko (Vantaa)</strong></td><td>B / C</td><td>Bus 321 from Elielinaukio</td><td>40 min</td><td>Aug – Oct</td><td>Leccinum, Black Trumpets</td></tr><tr><td><strong>Uutela (Vuosaari)</strong></td><td>B</td><td>Metro to Vuosaari + walk / Bus 560</td><td>35 min</td><td>Jul – Sep</td><td>Chanterelles, Pine Milkcaps</td></tr></tbody></table></div>
+      </div>
+
+      <!-- Navigation Footer -->
+      <footer class="doc-footer-nav">
+        <div>
+          <a href="01_legal_and_ethics.html" class="doc-nav-btn">← ⚖️ Prev Chapter</a>
+        </div>
+        <div>
+          <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="doc-nav-btn" style="cursor:pointer;">↑ Top</button>
+        </div>
+        <div>
+          <a href="03_seasonal_calendar_and_habitats.html" class="doc-nav-btn primary">📅 Next Chapter →</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer style="background:#182e22; color:rgba(255,255,255,0.7); text-align:center; padding:2rem 1rem; font-size:0.88rem;">
+    <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
+    <p style="margin-top:0.5rem;">
+      <a href="../index.html" style="color:#a7f3d0;">Home Portal</a> • 
+      <a href="https://powerpig99.github.io/not-a-toe/" style="color:#a7f3d0;" target="_blank" rel="noopener">Not a ToE Blog</a> • 
+      <a href="https://powerpig99.github.io/hunting-in-finland/" style="color:#a7f3d0;" target="_blank" rel="noopener">Hunting in Finland</a> • 
+      <a href="https://github.com/powerpig99/helsinki-mushroom-guide" style="color:#a7f3d0;" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>
