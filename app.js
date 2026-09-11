@@ -285,6 +285,44 @@ function renderCookingVideoCard(sp, lang, lang2, t) {
   const videoTitle = v.title[lang] || v.title.en;
   const videoTitle2 = (lang2 && lang2 !== lang && v.title[lang2]) ? v.title[lang2] : null;
 
+  let chineseRecipesHtml = "";
+  if (v.chineseRecipes && v.chineseRecipes.length > 0) {
+    const listHtml = v.chineseRecipes.map(r => {
+      const rTitle = r.title[lang] || r.title.en;
+      const rTitle2 = (lang2 && lang2 !== lang && r.title[lang2]) ? r.title[lang2] : null;
+      return `
+        <div class="chinese-recipe-card">
+          <div class="chinese-recipe-info">
+            <div class="chinese-recipe-title">${rTitle}</div>
+            ${rTitle2 ? `<div class="chinese-recipe-title-sub">${rTitle2}</div>` : ""}
+            <div class="chinese-recipe-meta">
+              <span class="chinese-recipe-author">👨‍🍳 ${r.creator}</span>
+              <span class="chinese-recipe-duration">⏱️ ${r.duration}</span>
+            </div>
+          </div>
+          <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="btn-video-link btn-video-link-sm" title="${rTitle}">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="color: #dc2626;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <span>${t.watchVideoBtn || "Watch on YouTube"}</span>
+          </a>
+        </div>
+      `;
+    }).join("");
+
+    chineseRecipesHtml = `
+      <div class="chinese-recipes-container">
+        <div class="chinese-recipes-header">
+          <span class="chinese-recipes-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+            ${t.chineseRecipesTitle || "Featured Chinese Culinary Recipes"}
+          </span>
+        </div>
+        <div class="chinese-recipes-grid">
+          ${listHtml}
+        </div>
+      </div>
+    `;
+  }
+
   return `
     <div class="cooking-video-card">
       <div class="cooking-video-content">
@@ -302,6 +340,7 @@ function renderCookingVideoCard(sp, lang, lang2, t) {
         <span>${t.watchVideoBtn || "Watch on YouTube"}</span>
       </a>
     </div>
+    ${chineseRecipesHtml}
   `;
 }
 

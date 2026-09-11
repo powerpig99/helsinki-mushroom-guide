@@ -62,6 +62,7 @@ const I18N = {
       watchVideoBtn: "Watch on YouTube",
       watchRecipeVideoBtn: "Watch Recipe Video",
       videoGuideBadge: "Video Tutorial",
+      chineseRecipesTitle: "Top Chinese Culinary Recipes (中华经典名菜)",
       prepTime: "Prep:",
       cookTime: "Cook:",
       servings: "Servings:",
@@ -121,6 +122,7 @@ const I18N = {
       watchVideoBtn: "观看视频教学",
       watchRecipeVideoBtn: "观看食谱教学",
       videoGuideBadge: "视频示范",
+      chineseRecipesTitle: "中华经典牛肝菌名菜烹饪教学",
       prepTime: "准备时间:",
       cookTime: "烹饪时间:",
       servings: "分量:",
@@ -180,6 +182,7 @@ const I18N = {
       watchVideoBtn: "Katso video",
       watchRecipeVideoBtn: "Katso videoresepti",
       videoGuideBadge: "Videolinkki",
+      chineseRecipesTitle: "Perinteiset kiinalaiset herkkutattireseptit",
       prepTime: "Esivalmistelu:",
       cookTime: "Kypsennys:",
       servings: "Annosmäärä:",
@@ -462,7 +465,59 @@ const I18N = {
         en: "How to Clean & Pan-Sear Fresh Porcini in Garlic Butter",
         zh: "鲜采牛肝菌（美味牛肝菌）处理与大蒜黄油香煎法",
         fi: "Tuoreiden herkkutattien puhdistus ja paistaminen voissa"
-      }
+      },
+      chineseRecipes: [
+        {
+          url: "https://www.youtube.com/watch?v=zBrJFnXTMcQ",
+          creator: "Lily's Meals",
+          duration: "3:29",
+          title: {
+            en: "Classic Stir-Fried Boletes with Garlic & Chili (Forest Aroma)",
+            zh: "经典蒜片青椒干椒爆炒牛肝菌（原汁原味释放山野鲜香）",
+            fi: "Perinteinen herkkutatin pikapaisto valkosipulilla ja chilillä"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=-H_7xTFu8Ls",
+          creator: "兑兑 Duidui in Finland",
+          duration: "5:31",
+          title: {
+            en: "Finnish Forest Foraging: Chinese Spiced Oil-Preserved Boletes",
+            zh: "芬兰森林采摘野味：中式香料油浸野生牛肝菌与保存法",
+            fi: "Suomen metsistä kerättyjen herkkutattien säilöntä mausteöljyssä"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=BSvep9GRHlg",
+          creator: "Shirley的快乐厨房",
+          duration: "4:16",
+          title: {
+            en: "Nourishing Clear Chicken Broth with Wild Boletes (Porcini Soup)",
+            zh: "原汁原味牛肝菌清炖土鸡汤（汤色清亮醇厚、鲜香甘润）",
+            fi: "Kirkas ja ravitseva villitatti-kanaliemi"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=PmO9194VTnw",
+          creator: "三妹妹厨房",
+          duration: "3:59",
+          title: {
+            en: "Yunnan Cured Ham & Wild Bolete Braised Fragrant Rice",
+            zh: "云南经典火腿鸡肉牛肝菌焖饭（米粒吸饱山珍浓郁鲜味）",
+            fi: "Yunnan-tyylinen tatti-kinkku-riisipata"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=c_KosrETlbs",
+          creator: "美食台 FoodVideo",
+          duration: "2:54",
+          title: {
+            en: "5 Master Secrets to Stir-Frying Wild Boletes (FoodVideo)",
+            zh: "美食台：大厨秘传炒出完美野生牛肝菌的5大诀窍",
+            fi: "Mestarilliset niksit villitattien paistamiseen (FoodVideo)"
+          }
+        }
+      ]
     },
     boletus_pinophilus: {
       url: "https://www.youtube.com/watch?v=IGxtCj8ZuFE",
@@ -470,7 +525,59 @@ const I18N = {
         en: "Cooking Wild Boletes in Butter & Cream (Tattikastike)",
         zh: "北欧松生牛肝菌黄油奶油浓汁烹饪教学",
         fi: "Herkullisen tattikastikkeen valmistus pannulla"
-      }
+      },
+      chineseRecipes: [
+        {
+          url: "https://www.youtube.com/watch?v=zBrJFnXTMcQ",
+          creator: "Lily's Meals",
+          duration: "3:29",
+          title: {
+            en: "Classic Stir-Fried Boletes with Garlic & Chili (Forest Aroma)",
+            zh: "经典蒜片青椒干椒爆炒牛肝菌（原汁原味释放山野鲜香）",
+            fi: "Perinteinen herkkutatin pikapaisto valkosipulilla ja chilillä"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=-H_7xTFu8Ls",
+          creator: "兑兑 Duidui in Finland",
+          duration: "5:31",
+          title: {
+            en: "Finnish Forest Foraging: Chinese Spiced Oil-Preserved Boletes",
+            zh: "芬兰森林采摘野味：中式香料油浸野生牛肝菌与保存法",
+            fi: "Suomen metsistä kerättyjen herkkutattien säilöntä mausteöljyssä"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=BSvep9GRHlg",
+          creator: "Shirley的快乐厨房",
+          duration: "4:16",
+          title: {
+            en: "Nourishing Clear Chicken Broth with Wild Boletes (Porcini Soup)",
+            zh: "原汁原味牛肝菌清炖土鸡汤（汤色清亮醇厚、鲜香甘润）",
+            fi: "Kirkas ja ravitseva villitatti-kanaliemi"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=PmO9194VTnw",
+          creator: "三妹妹厨房",
+          duration: "3:59",
+          title: {
+            en: "Yunnan Cured Ham & Wild Bolete Braised Fragrant Rice",
+            zh: "云南经典火腿鸡肉牛肝菌焖饭（米粒吸饱山珍浓郁鲜味）",
+            fi: "Yunnan-tyylinen tatti-kinkku-riisipata"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=c_KosrETlbs",
+          creator: "美食台 FoodVideo",
+          duration: "2:54",
+          title: {
+            en: "5 Master Secrets to Stir-Frying Wild Boletes (FoodVideo)",
+            zh: "美食台：大厨秘传炒出完美野生牛肝菌的5大诀窍",
+            fi: "Mestarilliset niksit villitattien paistamiseen (FoodVideo)"
+          }
+        }
+      ]
     },
     gyromitra_esculenta: {
       url: "https://www.youtube.com/watch?v=kyf3FQOgyKQ",
