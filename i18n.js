@@ -62,7 +62,7 @@ const I18N = {
       watchVideoBtn: "Watch on YouTube",
       watchRecipeVideoBtn: "Watch Recipe Video",
       videoGuideBadge: "Video Tutorial",
-      chineseRecipesTitle: "Top Chinese Culinary Recipes (中华经典名菜)",
+      chineseRecipesTitle: "Top Chinese Culinary Recipes (中华名菜)",
       prepTime: "Prep:",
       cookTime: "Cook:",
       servings: "Servings:",
@@ -122,7 +122,7 @@ const I18N = {
       watchVideoBtn: "观看视频教学",
       watchRecipeVideoBtn: "观看食谱教学",
       videoGuideBadge: "视频示范",
-      chineseRecipesTitle: "中华经典牛肝菌名菜烹饪教学",
+      chineseRecipesTitle: "中华经典名菜烹饪教学",
       prepTime: "准备时间:",
       cookTime: "烹饪时间:",
       servings: "分量:",
@@ -182,7 +182,7 @@ const I18N = {
       watchVideoBtn: "Katso video",
       watchRecipeVideoBtn: "Katso videoresepti",
       videoGuideBadge: "Videolinkki",
-      chineseRecipesTitle: "Perinteiset kiinalaiset herkkutattireseptit",
+      chineseRecipesTitle: "Perinteiset kiinalaiset reseptit",
       prepTime: "Esivalmistelu:",
       cookTime: "Kypsennys:",
       servings: "Annosmäärä:",
@@ -433,7 +433,59 @@ const I18N = {
         en: "Traditional Finnish Chanterelle Cream Sauce (Kantarellikastike)",
         zh: "经典芬兰传统奶油鸡油菌浓汁制作教程",
         fi: "Perinteisen kermaisen kantarellikastikkeen valmistus"
-      }
+      },
+      chineseRecipes: [
+        {
+          url: "https://www.youtube.com/watch?v=9NEKn4yqJvY",
+          creator: "云南妹子啦嘀嗒",
+          duration: "4:29",
+          title: {
+            en: "Yunnan Wild Chanterelle Stir-Fry with Fresh Peppers (Crispy & Tender)",
+            zh: "云南野生鸡油菌青红椒大火爆炒（甜嫩脆滑极下饭）",
+            fi: "Yunnanilainen villien vahveroiden pikapaisto tuoreella chilillä"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=oQflKhysm2A",
+          creator: "美食台 FoodVideo",
+          duration: "2:02",
+          title: {
+            en: "Shangri-La Secrets to Sautéing Wild Forest Chanterelles",
+            zh: "美食台：香格里拉大厨炒新鲜野生林地菌子的独门绝招",
+            fi: "Shangri-Lan mestarin niksit metsävahveroiden paistamiseen"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=KYb4HSSahEk",
+          creator: "Jenny's Kitchen",
+          duration: "2:24",
+          title: {
+            en: "Wok-Seared Wild Chanterelles with Fresh Sea Scallops & Garlic",
+            zh: "鲜果木香鸡油菌蒜蓉爆炒鲜带子/扇贝（高档粤式海鲜搭配）",
+            fi: "Vahveroiden ja kampasimpukoiden pikapaisto valkosipulilla"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=5VXiFDkb9dk",
+          creator: "飲食男女 大師姐食譜",
+          duration: "2:16",
+          title: {
+            en: "Masterchef Cantonese Wok-Fried Chanterelles with Chicken Fillet",
+            zh: "香港饮食男女大师姐食谱：镬气十足野生鸡油菌炒滑鸡球",
+            fi: "Perinteinen kantonilainen vahvero-kanawokki"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=OIByq7YxNdg",
+          creator: "品味食間 Taste Food time",
+          duration: "4:16",
+          title: {
+            en: "Nourishing Slow-Simmered Chicken Broth with Forest Chanterelles",
+            zh: "古法慢火清炖野生鸡油菇土鸡汤（果香清甜、暖胃滋补）",
+            fi: "Mieto ja aromaattinen villivahvera-kanaliemi"
+          }
+        }
+      ]
     },
     craterellus_tubaeformis: {
       url: "https://www.youtube.com/watch?v=-fyPqfJxX5s",
@@ -441,7 +493,69 @@ const I18N = {
         en: "How to Cook Funnel Chanterelle Soup from Dried & Fresh Mushrooms",
         zh: "北欧漏斗鸡油菌汤烹饪教学（干菇泡发与烹饪）",
         fi: "Suppilovahverokeitto kuivatuista tai tuoreista sienistä"
-      }
+      },
+      chineseRecipes: [
+        {
+          url: "https://www.youtube.com/watch?v=9NEKn4yqJvY",
+          creator: "云南妹子啦嘀嗒",
+          duration: "4:29",
+          title: {
+            en: "Yunnan Wild Chanterelle Stir-Fry with Fresh Peppers (Crispy & Tender)",
+            zh: "云南野生鸡油菌/漏斗菌青红椒大火爆炒（甜嫩脆滑极下饭）",
+            fi: "Yunnanilainen villien vahveroiden pikapaisto tuoreella chilillä"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=oQflKhysm2A",
+          creator: "美食台 FoodVideo",
+          duration: "2:02",
+          title: {
+            en: "Shangri-La Secrets to Sautéing Wild Forest Chanterelles & Boletes",
+            zh: "美食台：香格里拉大厨炒新鲜野生林地菌子的独门绝招",
+            fi: "Shangri-Lan mestarin niksit metsävahveroiden paistamiseen"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=KYb4HSSahEk",
+          creator: "Jenny's Kitchen",
+          duration: "2:24",
+          title: {
+            en: "Wok-Seared Wild Chanterelles with Fresh Sea Scallops & Garlic",
+            zh: "鲜果木香鸡油菌蒜蓉爆炒鲜带子/扇贝（高档粤式海鲜搭配）",
+            fi: "Vahveroiden ja kampasimpukoiden pikapaisto valkosipulilla"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=5VXiFDkb9dk",
+          creator: "飲食男女 大師姐食譜",
+          duration: "2:16",
+          title: {
+            en: "Masterchef Cantonese Wok-Fried Chanterelles with Chicken Fillet",
+            zh: "香港饮食男女大师姐食谱：镬气十足野生鸡油菌炒滑鸡球",
+            fi: "Perinteinen kantonilainen vahvero-kanawokki"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=OIByq7YxNdg",
+          creator: "品味食間 Taste Food time",
+          duration: "4:16",
+          title: {
+            en: "Nourishing Slow-Simmered Chicken Broth with Forest Chanterelles",
+            zh: "古法慢火清炖野生鸡油菇土鸡汤（果香清甜、暖胃滋补）",
+            fi: "Mieto ja aromaattinen villivahvera-kanaliemi"
+          }
+        },
+        {
+          url: "https://www.youtube.com/watch?v=BQxezCwNZ98",
+          creator: "優視 • 美食頻道",
+          duration: "6:31",
+          title: {
+            en: "Nordic Wild Chanterelle Velouté Soup with Chinese Culinary Touch",
+            zh: "北欧秋季经典野采鸡油菌浓汤制作（全中文讲解家庭版）",
+            fi: "Pohjoismainen kermainen vahverokeitto kiinalaisin keittiöniksein"
+          }
+        }
+      ]
     },
     hydnum_repandum: {
       url: "https://www.youtube.com/watch?v=BqxMFHyYvOQ",
