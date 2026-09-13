@@ -23,6 +23,34 @@ const I18N = {
       tabSpots: "🚌 Helsinki HSL Spots",
       tabSafety: "🛡️ Safety & Everyman's Right",
       tabHandbook: "📚 Field Handbook (9)",
+      handbookReaderTitle: "Live Field Handbook",
+      handbookAllChapters: "All Chapters Overview",
+      handbookBackToOverview: "← All Chapters",
+      handbookNextChapter: "Next Chapter →",
+      handbookPrevChapter: "← Previous Chapter",
+      handbookTopBtn: "↑ Top",
+      handbookReadTime: "Reading time:",
+      handbookTargetSpecies: "Featured Species in this Chapter:",
+      handbookReferencesTitle: "📚 Field Handbook References",
+      handbookReferencesSubtitle: "In-depth monographs, ecological analyses, and recipes featuring this species:",
+      handbookReadInChapter: "Read Chapter →",
+      handbookReturnToChapter: "← Return to Chapter",
+      handbookStaticDocNotice: "Viewing static offline document. Open in live interactive app for 3-photo galleries & maps:",
+      handbookOpenInteractive: "Open Live Interactive Reader →",
+      portalSpotsTitle: "📖 Complete Transit Guide & 5 Hidden Gems in Handbook Chapter 02",
+      portalSpotsDesc: "Explore in-depth bus timetables, secret trailhead parking, and low-pressure wilderness valleys across Meiko, Tremanskärr, Northern Sipoonkorpi, Salmi, and Vestra.",
+      portalSpotsBtn: "Read Live Chapter 02 →",
+      portalSafetyTitle: "🛡️ Forest Safety, Legal Rights & Deadly Species Survival Manual",
+      portalSafetyDesc: "Master Everyman's Right in nature reserves, tick protection protocols, and zero-tolerance fatal toxin mechanisms (Amatoxins, Orellanine, Gyromitrin).",
+      portalSafetyBtn1: "Read Chapter 01 (Rights & Safety) →",
+      portalSafetyBtn2: "Read Chapter 04 (Deadly Species) →",
+      portalCookingTitle: "🍳 Nordic Preservation Science & Chinese Wild Mushroom Mastery",
+      portalCookingDesc: "Dehydration curves, milkcap salt-curing (suolasienet), authentic Finnish pies & soups, plus high-temperature Chinese wok-searing and umami broths.",
+      portalCookingBtn1: "Read Chapter 07 (Preservation & Nordic Recipes) →",
+      portalCookingBtn2: "Read Special Guide (Chinese Culinary) →",
+      portalLookalikesTitle: "☠️ In-Depth Lookalikes & Deadly Toxins Manual in Chapter 04",
+      portalLookalikesDesc: "Learn the irreversible cellular damage mechanisms, delayed incubation periods (up to 17 days), and why boiling does not neutralize Amanita or Cortinarius toxins.",
+      portalLookalikesBtn: "Read Chapter 04 Survival Manual →",
       handbookTitle: "📚 Complete Helsinki Mushroom Field Handbook (9 Chapters)",
       handbookSubtitle: "Read our comprehensive field guide monographs online anytime. All 9 chapters cover everything from transit lines and forest ecology to deadly lookalikes, 50+ edible species, and gourmet cooking.",
       readChapterBtn: "Read Chapter Online →",
@@ -100,6 +128,34 @@ const I18N = {
       tabSpots: "🚌 赫尔辛基地铁公交采摘点",
       tabSafety: "🛡️ 安全法则与自然公共权",
       tabHandbook: "📚 野外手册全书 (9章专著)",
+      handbookReaderTitle: "实地野菌交互典籍",
+      handbookAllChapters: "全部章节总览",
+      handbookBackToOverview: "← 全部章节总览",
+      handbookNextChapter: "下一章 →",
+      handbookPrevChapter: "← 上一章",
+      handbookTopBtn: "↑ 返回顶部",
+      handbookReadTime: "预计阅读时间：",
+      handbookTargetSpecies: "本章重点收录物种：",
+      handbookReferencesTitle: "📚 典籍章节深度收录与专章论述",
+      handbookReferencesSubtitle: "本物种在以下实地野菌专章中有系统的生态学生境、避险或料理论述：",
+      handbookReadInChapter: "阅读专章 →",
+      handbookReturnToChapter: "← 返回阅读章节",
+      handbookStaticDocNotice: "当前正在浏览静态文档。点击进入包含三视角高清图集与实时筛选的交互式典籍：",
+      handbookOpenInteractive: "在交互式典籍中打开 →",
+      portalSpotsTitle: "📖 完整公交指引与5大小众秘境详见典籍第02章",
+      portalSpotsDesc: "深度解析大赫尔辛基公交与火车直达路线、隐秘停车坐标，以及Meiko、Tremanskärr、北西波等5大小众采摘圣地。",
+      portalSpotsBtn: "在典籍中阅读第02章 →",
+      portalSafetyTitle: "🛡️ 森林法规、自然公共权与生死避险手册详见典籍第01 & 04章",
+      portalSafetyDesc: "详尽解读自然保护区采摘法规、蜱虫与鹿蝇防护，以及致命毒素（鹅膏毒素、丝膜菌素、鹿花菌素）机理与急救流程。",
+      portalSafetyBtn1: "阅读第01章（自然权与安全）→",
+      portalSafetyBtn2: "阅读第04章（剧毒避险）→",
+      portalCookingTitle: "🍳 芬兰传统储藏法与中华野菌烹饪心法详见第07章与中文专著",
+      portalCookingDesc: "风干脱水曲线、芬兰传统盐渍乳菇（Suolasienet）、正统咸派浓汤，以及中华大火干煸、云腿焖鸡与野生菌高汤心法。",
+      portalCookingBtn1: "阅读第07章（储藏与北欧料理）→",
+      portalCookingBtn2: "阅读中文料理专著（火候与名菜）→",
+      portalLookalikesTitle: "☠️ 极度危险混淆种与毒理机制详见典籍第04章",
+      portalLookalikesDesc: "深入剖析致命丝膜菌长达17天潜伏期机理，以及为何白毒伞毒素耐受高温蒸煮、必须绝对零容忍避险。",
+      portalLookalikesBtn: "阅读第04章生死避险手册 →",
       handbookTitle: "📚 赫尔辛基野生蘑菇野外手册全书与专著系列 (共9章)",
       handbookSubtitle: "随时随地在线阅读9大完整深度专著章节。从赫尔辛基公交采菇点、林型与树种共生生态，到致命毒菇避险、50+食用菌全景大典及中西烹饪心法。",
       readChapterBtn: "在线阅读本章完整专著 →",
@@ -177,6 +233,34 @@ const I18N = {
       tabSpots: "🚌 HSL-bussilla ja junalla sieneen",
       tabSafety: "🛡️ Turvaohjeet ja jokaisenoikeudet",
       tabHandbook: "📚 Käsikirja & Oppaat (9 lukua)",
+      handbookReaderTitle: "Interaktiivinen kenttäopas",
+      handbookAllChapters: "Kaikkien lukujen yleisnäkymä",
+      handbookBackToOverview: "← Kaikki luvut",
+      handbookNextChapter: "Seuraava luku →",
+      handbookPrevChapter: "← Edellinen luku",
+      handbookTopBtn: "↑ Alkuun",
+      handbookReadTime: "Arvioitu lukuaika:",
+      handbookTargetSpecies: "Luvussa käsitellyt lajit:",
+      handbookReferencesTitle: "📚 Kirjallisuusviitteet kenttäoppaassa",
+      handbookReferencesSubtitle: "Tätä lajia käsitellään perusteellisesti seuraavissa kenttäoppaan luvuissa:",
+      handbookReadInChapter: "Lue luku →",
+      handbookReturnToChapter: "← Palaa lukuun",
+      handbookStaticDocNotice: "Tarkastelet staattista dokumenttia. Avaa interaktiivisessa oppaassa kuvagallerioineen ja reitteineen:",
+      handbookOpenInteractive: "Avaa interaktiivisessa sovelluksessa →",
+      portalSpotsTitle: "📖 Kattava reittiopas ja 5 salaista helmeä luvussa 02",
+      portalSpotsDesc: "Tutustu tarkkoihin HSL-yhteyksiin, lähtöpisteisiin ja rauhallisiin erämaakohteisiin (Meiko, Tremanskärr, Pohjois-Sipoonkorpi, Salmi, Vestra).",
+      portalSpotsBtn: "Lue luku 02 kenttäoppaassa →",
+      portalSafetyTitle: "🛡️ Jokamiehenoikeudet ja myrkkysienten selviytymisopas luvuissa 01 & 04",
+      portalSafetyDesc: "Kertaa luonnonsuojelualueiden säännöt, punkkisuojaus sekä hengenvaarallisten toksiinien (amatoksiinit, orellaniini) toimintamekanismit.",
+      portalSafetyBtn1: "Lue luku 01 (Oikeudet ja turvallisuus) →",
+      portalSafetyBtn2: "Lue luku 04 (Myrkkysienet) →",
+      portalCookingTitle: "🍳 Sienien säilöntä ja perinteiset reseptit luvuissa 07 & Kiina-opas",
+      portalCookingDesc: "Kuivaaminen, rouskujen suolaus, perinteinen sienisalaatti sekä kiinalaisen keittiön tekniikat villisienille.",
+      portalCookingBtn1: "Lue luku 07 (Säilöntä ja reseptit) →",
+      portalCookingBtn2: "Lue kiinalainen keittiömestariopas →",
+      portalLookalikesTitle: "☠️ Vaaralliset näköislajit ja toksiinit luvussa 04",
+      portalLookalikesDesc: "Opi tunnistamaan tappavan myrkylliset valkokärpässieni ja suippumyrkkyseitikki sekä välttämään kohtalokkaat erehdykset.",
+      portalLookalikesBtn: "Lue luku 04 selviytymisopas →",
       handbookTitle: "📚 Helsingin Sienioppaan Käsikirjasarja (9 lukua)",
       handbookSubtitle: "Lue kattavat sienestysmonografiat suoraan verkossa. 9 erillistä lukua kattavat kaiken HSL-reiteistä ja metsätyypeistä myrkkysieniin, säilöntään ja 50+ syötävään sieneen.",
       readChapterBtn: "Lue luku verkossa →",
@@ -1031,7 +1115,8 @@ const I18N = {
   species: [
     {
       id: "cantharellus_cibarius",
-      latinName: "Cantharellus cibarius",
+      "chapters": ["02","03","05","07","08","zh"],
+          latinName: "Cantharellus cibarius",
       family: "cantharellaceae",
       whereWhen: {"en": "Fruiting from early July until October, with peak flushes following warm late-summer rains in August. Thrives along mossy trails, shaded slope margins, granite outcrop crevices, and mixed spruce-birch heaths (tuore kangas). Prime spots: Keskuspuisto (Paloheinä & Pirkkola), Nuuksio (around Haukkalampi slopes), and Luukki forest borders.", "zh": "7月上旬一直出菇至10月，8月下旬夏末温暖雷雨后迎来大爆发。最喜在光线柔和的步道两旁苔藓坡、花岗岩岩缝台地以及云杉-白桦混交林边缘生长。大赫尔辛基重点出菇地：中央公园Paloheinä林区、Nuuksio国家公园Haukkalampi环湖山坡、Luukki休闲森林小径旁。", "fi": "Satoaika heinäkuun alkupuolelta lokakuulle, paras sesonki elo-syyskuussa lämpimien sateiden jälkeen. Viihtyy valoisissa sammalikoissa, polkujen varsilla, kalliomänniköiden reunoilla ja kuusi-koivu-sekametsissä. Parhaita paikkoja: Keskuspuiston Paloheinä ja Pirkkola, Nuuksion Haukkalammen ympäristö ja Luukki."},
       searchTactics: {"en": "Focus your gaze on the edges of trampled footpaths and sunny slope clearings where rainwater drains slowly. Scan for bright egg-yolk yellow buttons pushing through green moss or half-concealed under fallen birch leaves. Golden Chanterelles are highly gregarious: if you spot one, stop immediately and crouch low—there are almost always dozens clustered within a 3-meter radius.", "zh": "重点搜寻泥土小径的边缘与向阳缓坡，那里雨水不易积水且透光。注意寻找顶开绿色羽状苔藓或半藏在枯黄桦树落叶下的明黄色小菌纽。鸡油菌极喜群聚生：一旦发现一朵，务必立刻停下脚步蹲低身姿，地毯式细察周边3米范围，通常会有整窝数十朵同伴！采摘时用小刀在贴近苔藓处平切，避免拔松底层菌丝菌根。", "fi": "Tarkkaile polkujen pientareita ja valoisia rinteitä, joihin vesi valuu. Etsi sammalesta tai koivunlehtien alta pilkottavaa kirkkaankeltaista väriä. Kantarelli kasvaa ryhmissä: kun löydät yhden, pysähdy ja kyykisty katsomaan matalalta – lähellä on lähes aina kymmeniä muita. Leikkaa sieni veitsellä tyvestä sammalta repimättä."},
@@ -1086,7 +1171,8 @@ const I18N = {
     },
     {
       id: "craterellus_tubaeformis",
-      latinName: "Craterellus tubaeformis",
+      "chapters": ["02","03","05","07","08","zh"],
+          latinName: "Craterellus tubaeformis",
       family: "cantharellaceae",
       whereWhen: {"en": "The late autumn treasure of Southern Finland, fruiting from September through November and persisting even after multiple sub-zero night frosts. Prefers deep, moist feather moss (Hylocomium splendens, Pleurozium schreberi) in shaded, old-growth Norway spruce forests (tuore kangas) on north-facing hillsides. Prime spots: Sipoonkorpi (Bisajärvi and Tasakallio), Keskuspuisto (Pitkäkoski ravines), and Vaakkoi in North Espoo.", "zh": "芬兰深秋真正的森林宝藏，出菇期从9月贯穿至11月下旬，甚至能经受数轮零下夜霜。极喜生长在老龄挪威云杉林背阴北坡极其湿润深厚的羽状绿苔藓地层毯中。大赫尔辛基绝佳采点：西波国家公园（Sipoonkorpi）的Bisajärvi湖畔林区、中央公园最北段的Pitkäkoski水系幽深峡谷、以及北埃斯波的Vaakkoi原始云杉林。", "fi": "Syksyn kruunaamaton kuningas, joka tekee satoa syyskuusta pitkälle marraskuuhun ja kestää toistuvia yöpakkasia. Kasvaa paksussa, kosteassa seinäsammalikossa ja kerrossammalikossa vanhoissa varjoisissa kuusikoissa pohjoisrinteillä. Parhaita paikkoja: Sipoonkorven Bisajärven ja Tasakallion maastot, Keskuspuiston Pitkäkosken notkot sekä Vaakkoi Pohjois-Espoossa."},
       searchTactics: {"en": "Their yellow-brown to grey caps provide masterful camouflage against rotting spruce needles and fallen birch leaves. Walk very slowly along mossy hollows. Do not look directly down; scan 2–3 meters ahead at a low oblique angle. The moment you spot one perforated cap, immediately drop to your knees: your eyes will acclimatize, and you will suddenly discover hundreds of bright yellow hollow stems standing all around you! Always inspect stems individually—never grab blind handfuls out of deep moss.", "zh": "黄褐色的菌盖与针叶枯枝落叶融为一体，堪称自然界伪装大师。漫步苔藓洼地时切莫直挺挺低头，而应微倾身体向前方2-3米处低角度扫视。一旦发现第一只带有中心小孔的菌盖，立刻蹲伏下来：你的瞳孔与视觉焦点会在几秒内适应微光，随后你会惊喜地发现周围密密麻麻站立着成百上千只金黄色空心柄！必须单朵采摘检查，严禁在深厚苔藓中整把盲拔，以防误拔同生的毒物。", "fi": "Ruskehtava lakki naamioituu täydellisesti havunneulasten ja lehtien sekaan. Etene hitaasti kosteissa painanteissa ja katsele matalasta kulmasta parin metrin päähän. Kun havaitset yhden torven, kyykisty alas: silmäsi tottuvat ja yhtäkkiä näet satoja keltaisia jalkoja ympärilläsi! Poimi aina sieni kerrallaan tyvestä tarkastaen – älä koskaan kahmi sokkona kourallista sammaleesta."},
@@ -1141,7 +1227,8 @@ const I18N = {
     },
     {
       id: "hydnum_repandum",
-      latinName: "Hydnum repandum",
+      "chapters": ["02","03","05","07","08","zh"],
+          latinName: "Hydnum repandum",
       family: "hydnaceae",
       whereWhen: {"en": "Fruits from August through October. Inhabits mossy spruce hollows, shaded birch-spruce slopes, and moist depressions in mature coniferous forests. Often forms large, arcs or complete fairy rings. Prime spots: Luukki (around Lake Hauklampi), Sipoonkorpi (Bakunkärr), and Nuuksio valleys.", "zh": "出菇期从8月至10月。喜居于成熟针阔混交林、阴湿云杉背阴坡及厚苔藓洼地，常常成排长成弧线或巨大的“仙女圈”。大赫尔辛基高产地：北埃斯波Luukki湖区周边林地、西波国家公园Bakunkärr山谷、以及Nuuksio未开发阴湿山沟。", "fi": "Satoaika elokuusta lokakuulle. Asustaa paksusammalisissa kuusikoissa, rinteiden notkoissa ja sekametsien kosteapohjaisissa osissa. Muodostaa usein näyttäviä noidankehiä. Parhaita paikkoja: Luukin Hauklammen ympäristö, Sipoonkorven Bakunkärr ja Nuuksion laaksot."},
       searchTactics: {"en": "Look for irregular, thick, creamy-white to pale biscuit-colored shapes breaking through green moss carpets. As you lift the cap, check the underside immediately: you will see thousands of delicate, soft white-to-cream spines. If you find one hedgehog, scan the terrain in a gentle arc—they almost always grow along subterranean mycelial circles.", "zh": "在深绿色苔藓地表搜寻边缘不规则、厚实厚润的乳白色或浅米饼色菌盖。轻轻揭开观察菌盖下方：若布满千百根密密麻麻、触指即落的脆弱柔软小菌刺，即是此菇！找到第一朵后，沿着弧形轨迹向前寻找，通常会顺着地底菌丝环连续收获数公斤。", "fi": "Etsi paksuja, epäsäännöllisiä kermanvaaleita tai vaaleanruskeita lakkeja, jotka puskevat sammalen läpi. Käännä sieni ja tarkista alapinta: se on täynnä pehmeitä, helposti irtoavia vaaleita piikkejä. Seuraa maastoa loivassa kaaressa, sillä orakkaat kasvavat usein laajoissa kehillä."},
@@ -1191,7 +1278,8 @@ const I18N = {
     },
     {
       id: "craterellus_cornucopioides",
-      latinName: "Craterellus cornucopioides",
+      "chapters": ["02","03","05","07","08","zh"],
+          latinName: "Craterellus cornucopioides",
       family: "cantharellaceae",
       whereWhen: {"en": "Fruiting from mid-August through October. Strictly prefers warm, moist, nutrient-rich deciduous groves (lehto) under European hazel (Corylus avellana), birch, and pedunculate oak. Grows in rich humus and mossy clay banks. Prime spots: Keskuspuisto (Maunula hazel groves), Petikko in Vantaa, and sheltered deciduous slopes in Nuuksio.", "zh": "8月中旬至10月出菇。特异性偏爱富营养、微碱性的湿暖阔叶林（lehto），与欧榛（Corylus avellana）、夏栎（橡树）共生，长于肥沃腐殖土与青苔斜坡上。大赫尔辛基黄金地段：中央公园Maunula受保护的欧榛树林外缘、万塔Petikko富营养阔叶林、以及Nuuksio背风朝阳的栎树谷地。", "fi": "Satoaika elokuun puolivälistä lokakuuhun. Vaatii ravinteikkaita, lämpimiä ja kosteita lehtoja, erityisesti pähkinäpensaiden (Corylus avellana), tammien ja koivujen alla. Kasvaa paksussa multamaassa ja sammalisilla savipenereillä. Parhaita paikkoja: Keskuspuiston Maunulan pähkinäpensaikot, Petikko Vantaalla ja Nuuksion suojaisat rinnelehdot."},
       searchTactics: {"en": "Black Trumpets are notoriously invisible to standing foragers—their soot-black to ash-grey funnels look identical to shadows between decaying leaves. Drop onto your knees and scan uphill against the light under hazel bushes. Once your vision tunes in to the velvety charcoal texture, an entire hidden colony will reveal itself. Harvest cleanly with scissors or by pinching at base.", "zh": "站立行走几乎不可能看到它！炭灰墨黑的薄号角在昏暗的榛树落叶堆中与阴影完全无异。寻菇绝招：在欧榛树冠遮蔽下双膝跪地或深蹲，逆着微光由下向上仰角扫视地面。一旦你的视网膜识别出那种如黑色丝绒般的细腻质感，整片原本空无一物的枯叶地就会神奇地显现出成百上千只号角！建议用小剪刀沿基部平齐剪下，保持内部清洁无土。", "fi": "Mustatorvisieni on maastossa lähes näkymätön seisaaltaan katsottuna – musta torvi sulautuu maatuviin lehtiin ja puiden varjoihin. Kyykisty maahan pähkinäpensaiden alle ja katsele yläviistoon valoa vasten. Kun silmä oppii erottamaan mustan samettisen pinnan, huomaat usein olevasi keskellä valtavaa esiintymää. Leikkaa torvet saksilla tyvestä puhtauden takaamiseksi."},
@@ -1241,7 +1329,8 @@ const I18N = {
     },
     {
       id: "boletus_edulis",
-      latinName: "Boletus edulis",
+      "chapters": ["02","03","05","07","08","zh"],
+          latinName: "Boletus edulis",
       family: "boletaceae",
       whereWhen: {"en": "Flushes heavily in August and early September following soaking thunderstorms. Forms mycorrhizal partnerships with Norway spruce in mesic heaths (tuore kangas) and Silver birch. Prime spots: Sipoonkorpi (around Kuusijärvi and Bisajärvi), Nuuksio (Haukkalampi trails), and Luukki forest boundaries.", "zh": "8月至9月上旬在暴雨洗礼后迎来集中爆发。主要与挪威云杉及白桦树形成外生菌根，生于蓝莓苔藓针叶林（tuore kangas）。大赫尔辛基核心产区：西波国家公园（Kuusijärvi与Bisajärvi之间的老林区）、Nuuksio步道深处、以及北埃斯波Luukki自然林边界。", "fi": "Tuottaa valtavia satoja elo-syyskuussa rankkasateiden jälkeen. Elää symbioosissa kuusen ja koivun kanssa tuoreissa mustikkatyypin kangasmetsissä. Parhaita paikkoja: Sipoonkorpi (Kuusijärven ja Bisajärven ympäristö), Nuuksion polkuverkosto ja Luukki."},
       searchTactics: {"en": "Look for glossy, toasted-bun domes swelling above green feather moss, especially in the transitional band between tall blueberry bushes and open moss hollows. Harvest early in the morning: warm autumn days allow fungus gnats to lay eggs rapidly, causing the pore layer to become maggoty within 24 hours. Young 'cork' buttons with pure white under-pores are culinary perfection.", "zh": "在蓝莓灌木丛与平整羽状苔藓交界的地表断层，搜寻油亮凸起如烤小面包般的棕褐半球。务必清晨赶早采摘：温暖秋季森林中的蕈蚊极易在海绵孔层产卵，24小时内幼虫就会侵蚀管孔。菌盖下方海绵孔尚呈纯白坚硬（如红酒软木塞）的幼菇为无虫无洞的极品！切开检查菇肉，纯白不变色即可入筐。", "fi": "Etsi sämpylänruskeita pyöreitä lakkeja, jotka nousevat seinäsammalesta erityisesti mustikkatiheikköjen ja avoimen sammalen rajapinnassa. Kerää aikaisin aamulla: lämpiminä päivinä sienisääsket munivat nopeasti pillistöön, jolloin se toukkantuu vuorokaudessa. Nuoret, kivikovat tatit, joiden pillistö on vielä lumivalkoinen, ovat ruokasienten aatelia."},
@@ -1296,7 +1385,8 @@ const I18N = {
     },
     {
       id: "boletus_pinophilus",
-      latinName: "Boletus pinophilus",
+      "chapters": ["02","03","07","08"],
+          latinName: "Boletus pinophilus",
       family: "boletaceae",
       whereWhen: {"en":"Fruits from July through October across dry, sunny sandy pine heaths (kuiva kangas), lichen-covered granite outcrop terraces, and coastal pine forests. Prime spots in Uusimaa: Sipoonkorpi rocky crags, Porkkalanniemi pine ridges, and Vuosaari coastal woodlands.","zh":"7月至10月生于干燥向阳的沙质松树林（kuiva kangas）、覆满地衣的花岗岩岩脊台地以及海边松林中。大赫尔辛基绝佳采点：西波国家公园（Sipoonkorpi）高地岩丘、Porkkalanniemi海角松林山脊、以及Vuosaari沿海松树步道。","fi":"Satoaika heinäkuusta lokakuuhun kuivissa mäntykankaissa, jäkäläisillä kallioilla ja hiekkapohjaisissa männiköissä. Pääkaupunkiseudun parhaita paikkoja: Sipoonkorven kalliomaastot, Porkkalanniemen männiköt ja Vuosaaren rannikkometsät."},
       searchTactics: {"en":"Scan sunny, well-drained slopes beneath Scots pines (Pinus sylvestris). Look for distinctive humps pushing up reindeer lichen and dry pine needles. The cap is deep wine-red to mahogany-copper with a wrinkly texture. The stem is massive and bulbous, anchored deep in sandy soil.","zh":"在向阳、排水优良的欧洲赤松林缓坡搜寻。寻找被顶起的地衣和松针堆小土包。菌盖呈深沉的酒红褐色或紫铜色，表面微带皱褶。菌柄极其粗壮呈球棒状，深固于沙质土壤中。","fi":"Haravoi katseellasi valoisia mäntyrinteitä ja jäkäläalueita. Etsi sammal- ja neulasmaton kohoumia. Lakki on syvän viininpunaruskea tai kuparinen ja usein ryppyinen. Jalka on erittäin massiivinen ja mukulamainen."},
@@ -1346,7 +1436,8 @@ const I18N = {
     },
     {
       id: "amanita_virosa",
-      latinName: "Amanita virosa",
+      "chapters": ["01","03","04"],
+          latinName: "Amanita virosa",
       family: "deadly_toxic",
       whereWhen: {"en": "DEADLY POISONOUS: Fruits August to October in moist, acidic Norway spruce forests (tuore kangas) with thick feather moss throughout Helsinki, Espoo, Vantaa, and Sipoo. Common in Pitkäkoski, Sipoonkorpi, Nuuksio, and Luukki.", "zh": "【致命剧毒！一朵致死】：8月至10月在赫尔辛基、埃斯波、万塔及西波各大潮湿酸性挪威云杉林藓苔层中极度常见。常见于中央公园Pitkäkoski、Sipoonkorpi、Nuuksio和Luukki。", "fi": "TAPPAVAN MYRKYLLINEN: Esiintyy elo-lokakuussa kosteissa, happamissa paksusammalisissa kuusikoissa koko Uudellamaalla. Erittäin yleinen Pitkäkoskella, Sipoonkorvessa, Nuuksiossa ja Luukissa."},
       searchTactics: {"en": "NEVER PICK FOR CONSUMPTION. Learn to identify to stay safe: Pure silky white all over. Gills are pure white and free from the stem. A delicate skirt-like ring hangs from the upper stem, and a loose bag-like volva cup is buried deep in the moss at the base. Do not pluck mushrooms without inspecting the stem base!", "zh": "【严禁采食！务必辨识】：通体纯白丝绢光泽。菌褶纯白色且离生。柄上部有下垂膜质菌环，【基部深埋在苔藓中有松散的白色袋状菌托】。采摘任何野菌都必须连根拔起查验是否有菌托，严禁采食任何带有纯白菌褶的白蘑菇！", "fi": "ÄLÄ KOSKAAN KERÄÄ SYÖTÄVÄKSI. Tunnista hengenvaaran välttämiseksi: Puhtaan valkoinen koko sieni. Heltat ovat aina valkoiset ja irti jalasta. Jalassa riippuva hapsuinen rengas ja tyvellä syvällä sammaleessa pussimainen tuppi. Tarkista aina jalan tyvi!"},
@@ -1396,7 +1487,8 @@ const I18N = {
     },
     {
       id: "cortinarius_rubellus",
-      latinName: "Cortinarius rubellus",
+      "chapters": ["01","03","04"],
+          latinName: "Cortinarius rubellus",
       family: "deadly_toxic",
       whereWhen: {"en": "DEADLY POISONOUS: Fruits August to October in damp, acidic Norway spruce moss heaths alongside blueberry bushes and Golden Chanterelles in Nuuksio, Sipoonkorpi, Vaakkoi, and Luukki.", "zh": "【致命剧毒！潜伏期极长】：8月至10月生于潮湿酸性挪威云杉林中，常与蓝莓灌木丛及真假鸡油菌混生于同一片苔藓毯上。Nuuksio、Sipoonkorpi、Vaakkoi与Luukki高发。", "fi": "TAPPAVAN MYRKYLLINEN: Kasvaa elo-lokakuussa kosteissa happamissa mustikkatyypin kuusikoissa kantarellien ja mustikoiden vieressä Nuuksiossa, Sipoonkorvessa, Vaakkoissa ja Luukissa."},
       searchTactics: {"en": "NEVER PICK FOR CONSUMPTION. Distinct conical cinnamon-copper cap with a sharp central pointed peak (umbo). Thick rusty-brown gills. The stem is cinnamon-brown adorned with yellow zigzag bands, and is SOLID throughout (unlike the hollow Funnel Chanterelle).", "zh": "【严禁采食！】肉桂红褐色菌盖，顶端有极锐利锥状乳突。菌褶厚稀肉桂锈红。菌柄为带黄色“之”字形蛇纹斑带的【实心肉柱】（与漏斗鸡油菌的空心黄管截然相反）。", "fi": "ÄLÄ KERÄÄ SYÖTÄVÄKSI. Kartiomainen kanelinruskea lakki, jossa terävä piikkimäinen huippu. Paksut ruosteenruskeat heltat. Jalka on kanelinruskea keltaisilla siksak-vöillä ja TÄYSIN UMPINAINEN."},
@@ -1446,7 +1538,8 @@ const I18N = {
     },
     {
       id: "galerina_marginata",
-      latinName: "Galerina marginata",
+      "chapters": ["04"],
+          latinName: "Galerina marginata",
       family: "deadly_toxic",
       whereWhen: {"en":"DEADLY POISONOUS: August to November. Fruits on decaying coniferous logs, rotting spruce and birch stumps, buried wood chips, and logging debris throughout all Helsinki forests (Keskuspuisto, Haltiala, Nuuksio).","zh":"【致命剧毒！致死量极小】：8月至11月出菇。专一生长于腐朽倒木、云杉及白桦树桩、埋于地下的碎木屑上。赫尔辛基各大森林（中央公园、Haltiala原始林区、Nuuksio）腐木上均广泛分布。","fi":"TAPPAVAN MYRKYLLINEN: Elo-marraskuussa. Kasvaa lahoavilla havupuiden rungoilla, kannoilla, hakkuutähteillä ja kuorikkeella kaikissa Helsingin metsissä (Keskuspuisto, Haltiala, Nuuksio)."},
       searchTactics: {"en":"NEVER PICK FOR CONSUMPTION. Learn to identify to stay safe: Small honey-brown to ochre cap (2-6cm) with translucent striate edge when wet. Slender brownish stem with a fragile membranous ring and silvery-white silky fibrillose coating below the ring. Distinct mealy/flour-like odor.","zh":"【严禁采食！务必认清保命】：菌盖小（2-6cm），潮湿时呈蜜褐或黄褐色，边缘有透光条纹。纤细菌柄上具脆弱膜质菌环，菌环下方覆有银白色丝绢光泽纤维。具明显生面粉气味。","fi":"ÄLÄ KOSKAAN KERÄÄ SYÖTÄVÄKSI. Pieni hunajanruskea lakki (2–6 cm), jonka reuna on kosteana läpisäteinen. Hento ruskehtava jalka, jossa pieni rengas ja sen alapuolella hopeanvalkoista silkkisäikeisyyttä. Tuoksu jauhomainen."},
@@ -1496,7 +1589,8 @@ const I18N = {
     },
     {
       id: "gyromitra_esculenta",
-      latinName: "Gyromitra esculenta",
+      "chapters": ["04"],
+          latinName: "Gyromitra esculenta",
       family: "deadly_toxic",
       whereWhen: {"en":"DEADLY POISONOUS RAW / DELICACY WHEN DETOXIFIED: Spring mushroom fruiting May to early June in sandy Scots pine woods, logging clearings, disturbed soil, vehicle tracks, and sand pits in Uusimaa (e.g. Sipoonkorpi, Nuuksio sandy tracks).","zh":"【生食致命剧毒 / 规范处理后为传统珍馐】：春季特色菌，5月至6月上旬出菇。生于沙质松树林开阔地、伐木采伐迹地、被车轮碾压的沙土凹痕及泥土裸露地。Sipoonkorpi与Nuuksio沙质小径多见。","fi":"TAPPAVAN MYRKYLLINEN RAAKANA / HERKKUSIENI OIKEIN KÄSITELTYNÄ: Kevätsieni, sato touko-kesäkuussa hiekkapohjaisissa kangasmetsissä, hakkuuaukeilla, polunvarsilla ja maansiirtoalueilla Uudellamaalla (esim. Sipoonkorpi, Nuuksio)."},
       searchTactics: {"en":"Look for rounded, brain-like or convoluted dark walnut-brown to reddish-brown caps poking through needle litter. The mushroom is entirely hollow inside with multi-chambered folds.","zh":"在开春融雪后的沙地松针间搜寻类似深核桃红褐色的大脑沟回状或胡桃壳皱缩状不规则菌盖。菌体内部完全空心，呈多腔室褶皱。","fi":"Etsi aivomaisesti poimuttuneita, pähkinänruskeita tai punaruskeita möykkyjä hiekkamaalta. Sieni on sisältä täysin ontto ja lokeroinen."},
@@ -1546,7 +1640,8 @@ const I18N = {
     },
     {
       id: "paxillus_involutus",
-      latinName: "Paxillus involutus",
+      "chapters": ["04"],
+          latinName: "Paxillus involutus",
       family: "deadly_toxic",
       whereWhen: {"en":"DANGEROUS & POTENTIALLY DEADLY OVER TIME: August to October. Extremely common in deciduous and coniferous woods, birch parks, urban lawns, roadsides, and private gardens across all Helsinki (Töölönlahti, Keskuspuisto, Meilahti).","zh":"【危险！累积性致死免疫溶血】：8月至10月。极其常见于阔叶与针叶林、白桦公园、城市草坪、路旁与私家花园（Töölönlahti、中央公园、Meilahti处处可见）。","fi":"VAARALLINEN JA KUOLETTAVA: Elo-lokakuussa. Erittäin yleinen havu- ja lehtimetsissä, koivikoissa, puistoissa, pihoilla ja teiden varsilla koko Helsingissä (Töölönlahti, Keskuspuisto, Meilahti)."},
       searchTactics: {"en":"Thick yellow-brown to olive-tan cap with a strongly inrolled, velvety-fuzzy margin. Decurrent brownish-yellow gills that bruise instantly dark reddish-brown when scratched with a thumbnail.","zh":"黄褐色至橄榄赭色厚菌盖，边缘向内紧紧卷曲呈厚毛绒圈状。延生黄褐色菌褶，指甲轻刮处会立即氧化变深红褐色。","fi":"Paksumaltoinen ruskeankeltainen lakki, jonka reuna on tiukasti sisäänkiertynyt ja nukkainen. Johtavat heltat tummuvat voimakkaasti punaruskeiksi painettaessa kynnellä."},
@@ -1596,7 +1691,8 @@ const I18N = {
     },
     {
       id: "lactarius_torminosus",
-      latinName: "Lactarius torminosus",
+      "chapters": ["06","07","08"],
+          latinName: "Lactarius torminosus",
       family: "lactarius_parboil",
       whereWhen: {"en":"August to October. Strictly mycorrhizal with Birch (Betula). Abundant on birch borders, forest path verges, moist grassy woodland edges, and heaths in Helsinki (Keskuspuisto, Seurasaari, Haltiala).","zh":"8月至10月。严格与白桦树共生。在赫尔辛基白桦树林缘、步道草地边缘、湿润草坡林地（中央公园、Seurasaari、Haltiala）极为丰富。","fi":"Elo-lokakuussa. Esiintyy koivun seuralaisena valoisissa koivikoissa, polkujen varsilla, metsäniityillä ja kankailla Helsingissä (Keskuspuisto, Seurasaari, Haltiala)."},
       searchTactics: {"en":"Search the dripline of birch trees. Look for salmon-pink to reddish-pink caps with concentric darker zones and a conspicuously shaggy, beard-like woolly margin. Damaged flesh exudes acrid white milk.","zh":"在白桦树冠投影外围寻找。特征为鲑鱼肉粉色或红粉色菌盖，表面有深浅同心环带，边缘密被长毛状下卷的粗羊毛胡须。划破菌褶流出辛辣灼口的乳白色汁液。","fi":"Etsi koivujen alta. Vaaleanpunainen rengaskuvioinen lakki, jonka reunassa on erittäin selvä villava, takkuinen karvapeite. Erittelee polttavan valkoista maitiaisnestettä."},
@@ -1646,7 +1742,8 @@ const I18N = {
     },
     {
       id: "lactarius_rufus",
-      latinName: "Lactarius rufus",
+      "chapters": ["02","03","06","07","08"],
+          latinName: "Lactarius rufus",
       family: "lactarius_parboil",
       whereWhen: {"en":"July to November. One of Finland's most prolific wild mushrooms! Fruits by the millions across dry acidic Scots pine heaths (kuiva kangas), mossy granite crags, and peat bogs across all Uusimaa forests (e.g. Nuuksio, Sipoonkorpi, Luukki).","zh":"7月至11月。芬兰大自然出菇量最大的野生菇之一！数以百万计地出产于干燥酸性松树苔藓林（kuiva kangas）、花岗岩岩缝及泥炭藓沼泽边缘，各大森林（Nuuksio、Sipoonkorpi、Luukki）随处可见。","fi":"Heinä-marraskuussa. Suomen satoisimpia luonnonsieniä! Satoa syntyy miljoonittain kuivissa mäntykankaissa, kallioilla ja rämeillä koko Uudenmaan alueella (kuten Nuuksio, Sipoonkorpi, Luukki)."},
       searchTactics: {"en":"Look on dry pine needle floors and mossy mounds. Smooth reddish-brown to copper-bay cap with a sharp central pointed nipple (pieni suippo nysty). Broken flesh yields abundant white milk that burns the tongue.","zh":"在干燥松针地与低矮苔藓包上扫视。菌盖为光滑红褐色或赤铜色，中央有一枚尖锐凸起的小乳突。划伤处涌出大量纯白乳汁，沾在舌尖有强烈辛辣感。","fi":"Etsi kuivalta neulaskarikkeelta ja kalliopainanteista. Sileä punaruskea lakki, jonka keskellä on terävä nysty. Valkeaa polttavaa maitiaisnestettä vuotaa runsaasti."},
@@ -1696,7 +1793,8 @@ const I18N = {
     },
     {
       id: "lactarius_deliciosus",
-      latinName: "Lactarius deliciosus",
+      "chapters": ["02","03","06","08","zh"],
+          latinName: "Lactarius deliciosus",
       family: "lactarius_mild",
       whereWhen: {"en":"August to October. Found in young Scots pine stands, sandy road banks, grassy pine clearings, and coastal dunes in Helsinki and Espoo (Vuosaari, Uutela, Matinkylä).","zh":"8月至10月。生于年轻欧洲赤松幼林、沙质路堤草丛、向阳松林林窗及沿海沙丘（Vuosaari、Uutela海滨步道常见）。","fi":"Elo-lokakuussa. Viihtyy nuorissa männiköissä, hiekkateiden pientareilla, ruohikkoisilla aukeilla ja hiekkamailla Helsingissä ja Espoossa (Vuosaari, Uutela, Matinkylä)."},
       searchTactics: {"en":"Look for bright carrot-orange to apricot caps with faint concentric rings, often developing greenish-blue verdigris patches. KEY ID: exudes BRIGHT CARROT-ORANGE MILK (never white!), slowly turning reddish or green.","zh":"搜寻鲜艳胡萝卜橙色或杏橙色的菌盖，带有同心圆斑带，常伴有蓝绿色铜锈斑。核心鉴别：伤处涌出【极其鲜艳的胡萝卜橙色汁液】（绝非白色！），后渐转暗红或铜绿色。","fi":"Etsi kirkkaan porkkananoransseja tai oranssinkirjavia lakkeja, joissa on usein vihertäviä laikkuja. TUNTOMERKKI: Erittelee KIRKKAAN ORANSSIA maitiaisnestettä (ei koskaan valkoista!)."},
@@ -1746,7 +1844,8 @@ const I18N = {
     },
     {
       id: "russula_decolorans",
-      latinName: "Russula decolorans",
+      "chapters": ["02","06","07","08"],
+          latinName: "Russula decolorans",
       family: "russulaceae",
       whereWhen: {"en":"July to September. Common in damp, mossy Norway spruce heaths (tuore kangas) with thick blueberry bushes (Vaccinium myrtillus) and sphagnum hollows in Nuuksio, Sipoonkorpi, and Luukki.","zh":"7月至9月。常见于潮湿长满蓝莓灌木（Vaccinium myrtillus）的云杉苔藓林（tuore kangas）以及林间泥炭藓洼地边缘（Nuuksio、Sipoonkorpi、Luukki）。","fi":"Heinä-syyskuussa. Yleinen kosteissa mustikkatyypin kuusimetsissä ja suonlaiteilla paksussa sammalikossa Nuuksiossa, Sipoonkorvessa ja Luukissa."},
       searchTactics: {"en":"Look for warm apricot-orange, brick-yellow to coppery-orange caps among green blueberry leaves. The chalky white stem snaps cleanly like blackboard chalk. Bruised flesh and stem turn distinctly slate-grey over time.","zh":"在绿油油的蓝莓枝叶间寻找杏橙色、砖黄或铜橙色的圆菌盖。白垩质地菌柄像粉笔一样能脆生生折断。切伤或碰伤部位随时间推移会变成独特的瓦石灰色。","fi":"Etsi kuparin- tai aprikoosinkeltaisia lakkeja mustikanvarpujen seasta. Liitumainen jalka murtuu puhtaasti ilman säikeitä. Vaurioitunut malto harmaantuu selvästi."},
@@ -1796,7 +1895,8 @@ const I18N = {
     },
     {
       id: "russula_emetica",
-      latinName: "Russula emetica",
+      "chapters": ["04"],
+          latinName: "Russula emetica",
       family: "russulaceae",
       whereWhen: {"en":"POISONOUS / GASTRO-IRRITANT: July to October. Very common in wet sphagnum moss bogs, peat swamps, and soggy coniferous depressions throughout Uusimaa (e.g. Nuuksio, Sipoonkorpi).","zh":"【有毒胃肠刺激性真菌】：7月至10月。极其多见于潮湿泥炭藓沼泽、湿地松林及阴湿针叶林低洼积水区（如Nuuksio、Sipoonkorpi）。","fi":"MYRKYLLINEN: Heinä-lokakuussa. Hyvin yleinen kosteissa rahkasammalsoissa, rämeillä ja mäntymetsien märissä painanteissa Uudellamaalla (esim. Nuuksio, Sipoonkorpi)."},
       searchTactics: {"en":"Noticeable flaming cherry-scarlet red, glossy, slightly sticky cap with peelable skin. Pure snow-white gills and brittle white stem. Extremely fiery peppery taste if tested on tongue tip.","zh":"鲜艳如红樱桃般的亮红色菌盖，潮湿时粘滑，表皮易剥离。菌褶与菌柄皆纯白如雪，质脆易碎。舌尖触尝极其辛辣呛口。","fi":"Loistavan helakanpunainen, kiiltävä lakki, jonka pintakelmu irtoaa helposti. Puhtaanvalkoiset heltat ja jalka. Maku heti erittäin polttavan pippurinen."},
@@ -1846,7 +1946,8 @@ const I18N = {
     },
     {
       id: "cortinarius_caperatus",
-      latinName: "Cortinarius caperatus",
+      "chapters": ["02","06","08"],
+          latinName: "Cortinarius caperatus",
       family: "agaric_others",
       whereWhen: {"en":"August to October. Plentiful in nutrient-poor acidic pine and spruce heaths, blueberry and lingonberry forests (mustikkatyypin kangasmetsä) in Nuuksio, Sipoonkorpi, and Espoo woodlands.","zh":"8月至10月。丰富产于贫瘠酸性云杉和松树林、蓝莓与越橘矮灌木苔藓带（Nuuksio、Sipoonkorpi及埃斯波北区森林）。","fi":"Elo-lokakuussa. Yleinen karuissa kangasmetsissä, mustikkatyypin kuusikoissa ja männiköissä Nuuksiossa, Sipoonkorvessa ja Espoon metsissä."},
       searchTactics: {"en":"Look for warm straw-buff to ochre-yellow caps with a distinct frosted silvery-white bloom (kehnä) in the center and radial wrinkling toward the margin. The stem bears a thin, delicate membranous ring (rengas).","zh":"寻找麦秆黄至土黄色的菌盖，特征是菌顶中心覆盖一层独特的银白色薄霜粉（kehnä），边缘有辐射状细密浅皱纹。菌柄中上部有一枚纤薄的小菌环。","fi":"Etsi oljenkeltaisia lakkeja, joiden keskellä on selvä vaalea helmiäishohtoinen härmä (kehnä) ja reunoilla säteittäisiä ryppyjä. Jalassa ohut rengas."},
@@ -1896,7 +1997,8 @@ const I18N = {
     },
     {
       id: "albatrellus_ovinus",
-      latinName: "Albatrellus ovinus",
+      "chapters": ["02","06","07","08"],
+          latinName: "Albatrellus ovinus",
       family: "polyporaceae",
       whereWhen: {"en":"August to October. Old, moss-rich Norway spruce forests (kuusikot) on fertile or calcareous soils. Often fruits in huge overlapping clusters and extensive fairy rings in Sipoonkorpi and Nuuksio.","zh":"8月至10月。老龄长满厚苔藓的挪威云杉林中，喜较肥沃或钙质土壤。常在西波国家公园（Sipoonkorpi）与Nuuksio形成壮观的巨型群聚与蘑菇圈。","fi":"Elo-lokakuussa. Vanhankaltaisissa sammalpeitteisissä kuusikoissa tuoreilla kankailla. Kasvaa usein laajoina ryhminä ja noidankehinä Sipoonkorvessa ja Nuuksiossa."},
       searchTactics: {"en":"Large irregular whitish to pale grey-buff caps (5-20cm) growing directly from the soil. The under-cap surface has a very shallow, dense, white pore layer that turns greenish-yellow when cooked or bruised.","zh":"菌盖宽大（5-20cm）呈不规则起伏的灰白色至浅黄褐色波浪肉饼状，直接从苔藓地层长出。菌盖下方覆盖致密微小的白色浅孔层，加热煮熟或揉搓后会变为鲜艳的柠檬黄微绿色彩。","fi":"Kookkaat (5–20 cm) epäsäännölliset vaaleanharmaat tai kermanvalkoiset lakit maassa sammaleessa. Alapinnalla tiheä valkoinen pillistö, joka muuttuu kypsennettäessä keltaiseksi."},
@@ -1946,7 +2048,8 @@ const I18N = {
     },
     {
       id: "leccinum_versipelle",
-      latinName: "Leccinum versipelle",
+      "chapters": ["02","03","06","08"],
+          latinName: "Leccinum versipelle",
       family: "boletaceae",
       whereWhen: {"en":"July to October. Exclusively associated with birch trees (Betula). Abundant in mixed woodlands, forest paths, suburban park edges, and lake margins across Helsinki (Keskuspuisto, Seurasaari, Lauttasaari, Haltiala).","zh":"7月至10月。严格与白桦树共生。遍布赫尔辛基各大混交林、步道旁、湖岸及郊野公园（中央公园、Seurasaari、Lauttasaari、Haltiala随处可见）。","fi":"Heinä-lokakuussa. Kasvaa koivujen seuralaisena sekametsissä, metsäteiden varsilla, puistoissa ja rannoilla koko Helsingissä (Keskuspuisto, Seurasaari, Lauttasaari, Haltiala)."},
       searchTactics: {"en":"Noticeable fiery brick-red to orange-russet cap with cuticle overlapping the margin. The tall, sturdy stem is densely covered in small black-tipped scales. Cut flesh rapidly discolors: blue-grey then inky purple-black.","zh":"耀眼的砖红至鲜橙色毡状菌盖，表皮边缘下延略微包裹孔层。粗壮菌柄密布深黑色立体小鳞片。切开后白菇肉迅速氧化，先泛灰紫蓝，最终变为深沉的墨黑紫色。","fi":"Näyttävä tiilenpunainen tai oranssi samettinen lakki. Paksussa jalassa on runsaasti pieniä mustia tupsuja/suomuja. Malto tummuu leikattaessa nopeasti sinipunaiseksi ja mustaksi."},
@@ -1996,7 +2099,8 @@ const I18N = {
     },
     {
       id: "hygrophoropsis_aurantiaca",
-      latinName: "Hygrophoropsis aurantiaca",
+      "chapters": ["04","05"],
+          latinName: "Hygrophoropsis aurantiaca",
       family: "deadly_toxic",
       whereWhen: {"en":"August to November. Common on decaying pine needles, woodchips, coniferous bark litter, and acidic sandy soils throughout Helsinki forest trails and parks (Keskuspuisto, Nuuksio, Luukki).","zh":"8月至11月。常见于赫尔辛基林间小径旁的腐烂松针堆、碎木屑层、针叶树皮落屑及酸性沙土上（中央公园、Nuuksio、Luukki）。","fi":"Elo-marraskuussa. Kasvaa neulaskarikkeella, lahopuulla, hakkeella ja happamilla mailla metsien kätköissä ja puistoissa (Keskuspuisto, Nuuksio, Luukki)."},
       searchTactics: {"en":"Vivid flame-orange to golden cap with a darker sunken center. Underside features knife-thin, crowded, blade-like TRUE gills that fork repeatedly. Stem is thin, flexible, and darkens to black-brown near the base.","zh":"刺目的火橙色或金橙色菌盖，中央微凹且色泽深暗。菌盖下方是极其薄细、刀刃般锋利密集的【真菌褶】。菌柄较细软，基部渐变为黑褐色。","fi":"Räikeän helovanoranssi lakki, joka on keskeltä usein tummempi. Alapinnalla ohuet, veitsenterävät ja tiheät haaraiset heltat. Jalka on hoikka ja tummuu tyvestä ruskeanmustaksi."},
@@ -2046,7 +2150,8 @@ const I18N = {
     },
     {
       id: "tylopilus_felleus",
-      latinName: "Tylopilus felleus",
+      "chapters": ["04"],
+          latinName: "Tylopilus felleus",
       family: "boletaceae",
       whereWhen: {"en":"July to September. Acidic spruce and pine forests, often fruiting directly on or around mossy rotting conifer stumps and sandy trails in Nuuksio, Sipoonkorpi, and Luukki.","zh":"7月至9月。酸性云杉与松树林中，常直接生长于覆满青苔的腐朽树桩旁或沙质小径苔藓坡上（Nuuksio、Sipoonkorpi、Luukki）。","fi":"Heinä-syyskuussa. Happamissa havu- ja sekametsissä, usein lahonneiden kantojen läheisyydessä ja hiekkapohjaisilla kankailla Nuuksiossa, Sipoonkorvessa ja Luukissa."},
       searchTactics: {"en":"Remarkably deceptive: resembles a plump King Bolete (Porcini). The pore sponge is pure white when young, but turns dirty PINKISH-BROWN with age. The stem features a dark brown, coarse, raised mesh pattern.","zh":"极具欺骗性：外形与肥壮的美味牛肝菌如出一辙。幼时菌孔纯白，但老熟后转为【脏肉粉红、粉褐色】。菌柄表面密布深黑褐色凸出的粗大立体网纹。","fi":"Pettävän näköinen: muistuttaa herkkutattia. Pillistö on nuorena valkoinen, mutta muuttuu vanhetessa likaisen vaaleanpunaiseksi. Jalassa karkea tummanruskea verkkokuvio."},
@@ -2096,7 +2201,8 @@ const I18N = {
     },
     {
       id: "amanita_muscaria",
-      latinName: "Amanita muscaria",
+      "chapters": ["04"],
+          latinName: "Amanita muscaria",
       family: "deadly_toxic",
       whereWhen: {"en":"POISONOUS / PSYCHOACTIVE: August to October. Very common in birch and spruce woodlands, forest edges, and city parks throughout Helsinki (Keskuspuisto, Meilahti, Otaniemi).","zh":"【有毒 / 致幻性真菌】：8月至10月。极其常见于白桦和云杉混交林、林缘草地及城市绿化带中（中央公园、Meilahti、Otaniemi处处可见）。","fi":"MYRKYLLINEN: Elo-lokakuussa. Hyvin yleinen koivikoissa, kuusikoissa, puistoissa ja pientareilla Helsingin seudulla (Keskuspuisto, Meilahti, Otaniemi)."},
       searchTactics: {"en":"The iconic fairy-tale toadstool: bright scarlet-red cap dotted with white pyramidal warts, pure white gills, and a white stem with a hanging skirt-like ring and bulbous concentric base.","zh":"经典的童话红蘑菇：鲜艳夺目的猩红色菌盖，上面点缀着白色的金字塔形鳞片残渣，纯白色菌褶，带有下垂宽菌环的白菌柄，基部膨大具数圈同心环鳞。","fi":"Klassinen satukirjasieni: loistavan punainen lakki valkoisilla suomuilla, puhtaanvalkoiset heltat, jalassa riippuva rengas ja sipulimainen tyvi."},
@@ -2146,6 +2252,7 @@ const I18N = {
     },
 {
           "id": "craterellus_lutescens",
+          "chapters": ["02","08"],
           "latinName": "Craterellus lutescens",
           "family": "cantharellaceae",
           "rating": "***",
@@ -2262,6 +2369,7 @@ const I18N = {
     },
 {
           "id": "cantharellus_amethysteus",
+          "chapters": ["02","08"],
           "latinName": "Cantharellus amethysteus",
           "family": "cantharellaceae",
           "rating": "**",
@@ -2378,6 +2486,7 @@ const I18N = {
     },
 {
           "id": "boletus_reticulatus",
+          "chapters": ["02","03","08"],
           "latinName": "Boletus reticulatus",
           "family": "boletaceae",
           "rating": "***",
@@ -2494,6 +2603,7 @@ const I18N = {
     },
 {
           "id": "leccinum_vulpinum",
+          "chapters": ["02","06","08"],
           "latinName": "Leccinum vulpinum",
           "family": "boletaceae",
           "rating": "**",
@@ -2610,6 +2720,7 @@ const I18N = {
     },
 {
           "id": "leccinum_aurantiacum",
+          "chapters": ["06","08"],
           "latinName": "Leccinum aurantiacum",
           "family": "boletaceae",
           "rating": "**",
@@ -2726,6 +2837,7 @@ const I18N = {
     },
 {
           "id": "leccinum_scabrum",
+          "chapters": ["02","06","08"],
           "latinName": "Leccinum scabrum",
           "family": "boletaceae",
           "rating": "*",
@@ -2842,6 +2954,7 @@ const I18N = {
     },
 {
           "id": "leccinum_variicolor",
+          "chapters": ["06","08"],
           "latinName": "Leccinum variicolor",
           "family": "boletaceae",
           "rating": "**",
@@ -2957,6 +3070,7 @@ const I18N = {
     },
 {
           "id": "suillus_luteus",
+          "chapters": ["06","08"],
           "latinName": "Suillus luteus",
           "family": "boletaceae",
           "rating": "**",
@@ -3072,6 +3186,7 @@ const I18N = {
     },
 {
           "id": "suillus_variegatus",
+          "chapters": ["06","08"],
           "latinName": "Suillus variegatus",
           "family": "boletaceae",
           "rating": "**",
@@ -3188,6 +3303,7 @@ const I18N = {
     },
 {
           "id": "suillus_bovinus",
+          "chapters": ["06","08"],
           "latinName": "Suillus bovinus",
           "family": "boletaceae",
           "rating": "*",
@@ -3303,6 +3419,7 @@ const I18N = {
     },
 {
           "id": "suillus_grevillei",
+          "chapters": ["06","08"],
           "latinName": "Suillus grevillei",
           "family": "boletaceae",
           "rating": "**",
@@ -3418,6 +3535,7 @@ const I18N = {
     },
 {
           "id": "hydnum_rufescens",
+          "chapters": ["02","08"],
           "latinName": "Hydnum rufescens",
           "family": "hydnaceae",
           "rating": "**",
@@ -3533,6 +3651,7 @@ const I18N = {
     },
 {
           "id": "albatrellus_confluens",
+          "chapters": ["06","08"],
           "latinName": "Albatrellus confluens",
           "family": "polyporaceae",
           "rating": "*",
@@ -3648,6 +3767,7 @@ const I18N = {
     },
 {
           "id": "laetiporus_sulphureus",
+          "chapters": ["06","08"],
           "latinName": "Laetiporus sulphureus",
           "family": "polyporaceae",
           "rating": "**",
@@ -3764,6 +3884,7 @@ const I18N = {
     },
 {
           "id": "lactarius_deterrimus",
+          "chapters": ["02","06","08"],
           "latinName": "Lactarius deterrimus",
           "family": "lactarius_mild",
           "rating": "**",
@@ -3879,6 +4000,7 @@ const I18N = {
     },
 {
           "id": "lactarius_volemus",
+          "chapters": ["06","08"],
           "latinName": "Lactarius volemus",
           "family": "lactarius_mild",
           "rating": "***",
@@ -3994,6 +4116,7 @@ const I18N = {
     },
 {
           "id": "lactarius_trivialis",
+          "chapters": ["03","06","07","08"],
           "latinName": "Lactarius trivialis",
           "family": "lactarius_parboil",
           "rating": "!*",
@@ -4109,6 +4232,7 @@ const I18N = {
     },
 {
           "id": "lactarius_utilis",
+          "chapters": ["06","08"],
           "latinName": "Lactarius utilis",
           "family": "lactarius_parboil",
           "rating": "!*",
@@ -4224,6 +4348,7 @@ const I18N = {
     },
 {
           "id": "lactarius_necator",
+          "chapters": ["06","08"],
           "latinName": "Lactarius necator",
           "family": "lactarius_parboil",
           "rating": "!*",
@@ -4339,6 +4464,7 @@ const I18N = {
     },
 {
           "id": "lactarius_mammosus",
+          "chapters": ["06","08"],
           "latinName": "Lactarius mammosus",
           "family": "lactarius_parboil",
           "rating": "**",
@@ -4454,6 +4580,7 @@ const I18N = {
     },
 {
           "id": "russula_paludosa",
+          "chapters": ["02","03","06","08"],
           "latinName": "Russula paludosa",
           "family": "russulaceae",
           "rating": "***",
@@ -4570,6 +4697,7 @@ const I18N = {
     },
 {
           "id": "russula_claroflava",
+          "chapters": ["06","08"],
           "latinName": "Russula claroflava",
           "family": "russulaceae",
           "rating": "***",
@@ -4685,6 +4813,7 @@ const I18N = {
     },
 {
           "id": "russula_aeruginea",
+          "chapters": ["06","08"],
           "latinName": "Russula aeruginea",
           "family": "russulaceae",
           "rating": "**",
@@ -4801,6 +4930,7 @@ const I18N = {
     },
 {
           "id": "russula_cyanoxantha",
+          "chapters": ["06","08"],
           "latinName": "Russula cyanoxantha",
           "family": "russulaceae",
           "rating": "***",
@@ -4917,6 +5047,7 @@ const I18N = {
     },
 {
           "id": "russula_vesca",
+          "chapters": ["06","08"],
           "latinName": "Russula vesca",
           "family": "russulaceae",
           "rating": "***",
@@ -5033,6 +5164,7 @@ const I18N = {
     },
 {
           "id": "russula_xerampelina",
+          "chapters": ["06","08"],
           "latinName": "Russula xerampelina",
           "family": "russulaceae",
           "rating": "**",
@@ -5148,6 +5280,7 @@ const I18N = {
     },
 {
           "id": "russula_vinosa",
+          "chapters": ["02","06","08"],
           "latinName": "Russula vinosa",
           "family": "russulaceae",
           "rating": "***",
@@ -5263,6 +5396,7 @@ const I18N = {
     },
 {
           "id": "russula_integra",
+          "chapters": ["06","08"],
           "latinName": "Russula integra",
           "family": "russulaceae",
           "rating": "**",
@@ -5379,6 +5513,7 @@ const I18N = {
     },
 {
           "id": "tricholoma_matsutake",
+          "chapters": ["02","06","08","zh"],
           "latinName": "Tricholoma matsutake",
           "family": "agaric_others",
           "rating": "***",
@@ -5494,6 +5629,7 @@ const I18N = {
     },
 {
           "id": "tricholoma_portentosum",
+          "chapters": ["03","06","08"],
           "latinName": "Tricholoma portentosum",
           "family": "agaric_others",
           "rating": "***",
@@ -5609,6 +5745,7 @@ const I18N = {
     },
 {
           "id": "macrolepiota_procera",
+          "chapters": ["08","zh"],
           "latinName": "Macrolepiota procera",
           "family": "agaric_others",
           "rating": "***",
@@ -5724,6 +5861,7 @@ const I18N = {
     },
 {
           "id": "agaricus_arvensis",
+          "chapters": ["08"],
           "latinName": "Agaricus arvensis",
           "family": "agaric_others",
           "rating": "***",
@@ -5840,6 +5978,7 @@ const I18N = {
     },
 {
           "id": "agaricus_silvaticus",
+          "chapters": ["08"],
           "latinName": "Agaricus silvaticus",
           "family": "agaric_others",
           "rating": "***",
@@ -5955,6 +6094,7 @@ const I18N = {
     },
 {
           "id": "coprinus_comatus",
+          "chapters": ["08","zh"],
           "latinName": "Coprinus comatus",
           "family": "agaric_others",
           "rating": "***",
@@ -6070,6 +6210,7 @@ const I18N = {
     },
 {
           "id": "infundibulicybe_geotropa",
+          "chapters": ["08"],
           "latinName": "Infundibulicybe geotropa",
           "family": "agaric_others",
           "rating": "**",
@@ -6185,6 +6326,7 @@ const I18N = {
     },
 {
           "id": "clitocybe_nebularis",
+          "chapters": ["06","08"],
           "latinName": "Clitocybe nebularis",
           "family": "agaric_others",
           "rating": "!*",
@@ -6300,6 +6442,7 @@ const I18N = {
     },
 {
           "id": "marasmius_oreades",
+          "chapters": ["08","zh"],
           "latinName": "Marasmius oreades",
           "family": "agaric_others",
           "rating": "***",
@@ -6417,6 +6560,7 @@ const I18N = {
     },
 {
           "id": "armillaria_mellea",
+          "chapters": ["06","08","zh"],
           "latinName": "Armillaria mellea",
           "family": "agaric_others",
           "rating": "!*",
@@ -6532,6 +6676,7 @@ const I18N = {
     },
 {
           "id": "kuehneromyces_mutabilis",
+          "chapters": ["04","06","08"],
           "latinName": "Kuehneromyces mutabilis",
           "family": "agaric_others",
           "rating": "***",
@@ -6649,6 +6794,7 @@ const I18N = {
     },
 {
           "id": "calvatia_gigantea",
+          "chapters": ["08","zh"],
           "latinName": "Calvatia gigantea",
           "family": "agaric_others",
           "rating": "**",
@@ -6764,6 +6910,7 @@ const I18N = {
     },
 {
           "id": "lycoperdon_perlatum",
+          "chapters": ["08"],
           "latinName": "Lycoperdon perlatum",
           "family": "agaric_others",
           "rating": "**",
@@ -7581,7 +7728,7 @@ const I18N = {
   // Field Handbook & In-Depth Guides (9 Chapters)
   handbookChapters: [
     {
-      id: "ch01",
+      id: "01",
       chapterNum: "Chapter 01",
       icon: "⚖️",
       title: {
@@ -7602,7 +7749,7 @@ const I18N = {
       url: "docs/01_legal_and_ethics.html"
     },
     {
-      id: "ch02",
+      id: "02",
       chapterNum: "Chapter 02",
       icon: "🚌",
       title: {
@@ -7623,7 +7770,7 @@ const I18N = {
       url: "docs/02_helsinki_transit_spots_guide.html"
     },
     {
-      id: "ch03",
+      id: "03",
       chapterNum: "Chapter 03",
       icon: "📅",
       title: {
@@ -7644,7 +7791,7 @@ const I18N = {
       url: "docs/03_seasonal_calendar_and_habitats.html"
     },
     {
-      id: "ch04",
+      id: "04",
       chapterNum: "Chapter 04",
       icon: "☠️",
       title: {
@@ -7665,7 +7812,7 @@ const I18N = {
       url: "docs/04_deadly_and_toxic_species.html"
     },
     {
-      id: "ch05",
+      id: "05",
       chapterNum: "Chapter 05",
       icon: "🍄",
       title: {
@@ -7686,7 +7833,7 @@ const I18N = {
       url: "docs/05_beginner_safe_species.html"
     },
     {
-      id: "ch06",
+      id: "06",
       chapterNum: "Chapter 06",
       icon: "🧺",
       title: {
@@ -7707,7 +7854,7 @@ const I18N = {
       url: "docs/06_intermediate_and_advanced.html"
     },
     {
-      id: "ch07",
+      id: "07",
       chapterNum: "Chapter 07",
       icon: "🍳",
       title: {
@@ -7728,7 +7875,7 @@ const I18N = {
       url: "docs/07_preservation_and_recipes.html"
     },
     {
-      id: "ch08",
+      id: "08",
       chapterNum: "Chapter 08",
       icon: "📋",
       title: {
@@ -7749,7 +7896,7 @@ const I18N = {
       url: "docs/08_expanded_edible_species_index.html"
     },
     {
-      id: "ch_zh",
+      id: "zh",
       chapterNum: "Special Guide",
       icon: "🇨🇳",
       title: {
@@ -7771,3 +7918,7 @@ const I18N = {
     }
   ]
 };
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { I18N };
+}

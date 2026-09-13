@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>06. Intermediate & Advanced Gourmet Species | Helsinki Mushroom Guide</title>
+  <title>Intermediate & Advanced Gourmet Species | Helsinki Mushroom Guide</title>
   <link rel="stylesheet" href="../styles.css">
   <style>
     body {
@@ -14,10 +14,58 @@
       flex-direction: column;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     }
-    .doc-sticky-header {
+    .doc-live-banner {
+      background: linear-gradient(90deg, #1e3a2b 0%, #064e3b 100%);
+      color: #ffffff;
+      padding: 0.65rem 1.25rem;
+      border-bottom: 1px solid rgba(52, 211, 153, 0.3);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 101;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .doc-live-banner-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .banner-badge {
+      background: rgba(16, 185, 129, 0.25);
+      color: #6ee7b7;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      white-space: nowrap;
+    }
+    .banner-text {
+      font-size: 0.86rem;
+      color: #e2e8f0;
+      flex: 1;
+      min-width: 260px;
+    }
+    .banner-cta {
+      background: #10b981;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-decoration: none;
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .banner-cta:hover {
+      background: #059669;
+      transform: translateY(-1px);
+    }
+    .doc-sticky-header {
       background: #182e22;
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -164,6 +212,51 @@
       border-left: 4px solid var(--danger);
       color: #991b1b;
     }
+    .reader-figure {
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+    .reader-figure img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    .reader-figure figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .inline-species-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+      padding: 0.05rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.88em;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.15s ease;
+      vertical-align: baseline;
+      white-space: nowrap;
+    }
+    .inline-species-chip:hover {
+      background: #10b981;
+      color: #ffffff;
+      border-color: #10b981;
+      transform: translateY(-1px);
+    }
+    .inline-chapter-link {
+      color: #047857;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .inline-chapter-link:hover {
+      color: #065f46;
+    }
     pre {
       background: #0f172a;
       color: #f8fafc;
@@ -228,11 +321,6 @@
     .doc-nav-btn.primary:hover {
       background: #2d5a42;
     }
-    .doc-raw-link {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      text-decoration: underline;
-    }
     @media (max-width: 768px) {
       .doc-card {
         padding: 1.5rem;
@@ -249,48 +337,58 @@
 </head>
 <body>
 
+  <!-- Sticky Live App Banner -->
+  <aside class="doc-live-banner" aria-label="Interactive Version Available">
+    <div class="doc-live-banner-inner">
+      <span class="banner-badge">✨ Live Interactive App</span>
+      <span class="banner-text">This monograph is fully integrated into our interactive Field Handbook with 3-photo botanical galleries, transit trailheads, and species cross-linking.</span>
+      <a href="../index.html#/chapter/06" class="banner-cta">Open in Live App →</a>
+    </div>
+  </aside>
+
   <!-- Sticky Header Bar -->
   <header class="doc-sticky-header">
     <div class="doc-nav-left">
-      <a href="../index.html" class="doc-btn-back">🍄 Mushroom Portal</a>
+      <a href="../index.html#/chapter/06" class="doc-btn-back">🍄 Live App Reader</a>
+      <a href="../index.html#/catalog" class="doc-btn-back">🍄 63 Species Catalog</a>
       <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
       <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
       <select class="doc-select" onchange="if(this.value) window.location.href=this.value" aria-label="Jump to Chapter">
         
     <option value="01_legal_and_ethics.html" >
-      ⚖️ 01. Legal Rights, Nature Protection & Forest Safety
+      ⚖️ Legal Rights, Nature Protection & Forest Safety
     </option>
   
     <option value="02_helsinki_transit_spots_guide.html" >
-      🚌 02. Helsinki Foraging Spots by HSL Transit
+      🚌 Helsinki Foraging Spots by HSL Transit (Zone A–D)
     </option>
   
     <option value="03_seasonal_calendar_and_habitats.html" >
-      📅 03. Seasonal Calendar & Forest Ecology
+      📅 Seasonal Calendar, Habitats & The Chanterelle Dilemma
     </option>
   
     <option value="04_deadly_and_toxic_species.html" >
-      ☠️ 04. Deadly & Toxic Species Survival Manual
+      ☠️ Deadly & Toxic Species Survival Manual
     </option>
   
     <option value="05_beginner_safe_species.html" >
-      🍄 05. The "Safe Five" Beginner Species
+      🍄 The "Safe Five" Beginner Species
     </option>
   
     <option value="06_intermediate_and_advanced.html" selected>
-      🧺 06. Intermediate & Advanced Gourmet Species
+      🧺 Intermediate & Advanced Gourmet Species
     </option>
   
     <option value="07_preservation_and_recipes.html" >
-      🍳 07. Preservation & Authentic Finnish Recipes
+      🍳 Preservation & Authentic Finnish Recipes
     </option>
   
     <option value="08_expanded_edible_species_index.html" >
-      📋 08. Master Index: 50+ Wild Edible Mushrooms of Finland
+      📋 Master Index: 50+ Wild Edible Mushrooms of Finland
     </option>
   
     <option value="cooking_and_recipes_zh.html" >
-      🇨🇳 ZH. 中文野菌烹饪预处理与中西经典食谱
+      🇨🇳 Chinese Wild Mushroom Culinary Mastery & Cross-Culture Recipes
     </option>
   
       </select>
@@ -313,7 +411,8 @@
 <h2>1. Brittlegills (<em>Russula</em> / <em>Haperot</em>)</h2>
 <strong>Culinary Value</strong>: <code>***</code> to <code>**</code> for mild species.
 
-<p><img src="../images/russula_decolorans.jpg" alt="Russula decolorans - Copper Brittlegill" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Copper-orange cap, brittle chalk-like gills, greyish bruised stem</em></p>
+<figure class="reader-figure"><img src="../images/russula_decolorans.jpg" alt="Russula decolorans - Copper Brittlegill" loading="lazy"><figcaption>Russula decolorans - Copper Brittlegill</figcaption></figure>
+<em>(c) Scientific field observation - Copper-orange cap, brittle chalk-like gills, greyish bruised stem</em>
 
 <h3>The Unique Anatomy of Russulas</h3>
 <ul>
@@ -341,10 +440,11 @@ The genus <em>Russula</em> contains dozens of species in Finland. Luckily, you d
 
 <hr>
 
-<h3>Toxic / Inedible Lookalike: The Sickener (<em>Russula emetica</em> / <em>Tulipunahapero</em>)</h3>
+<h3>Toxic / Inedible Lookalike: The Sickener (<a href="../index.html#/mushroom/russula_emetica" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Russula emetica</em></span></a> / <em>Tulipunahapero</em>)</h3>
 <strong>Status</strong>: ☠️ <strong>TOXIC / GASTROINTESTINAL IRRITANT</strong>
 
-<p><img src="../images/russula_emetica.jpg" alt="Russula emetica - The Sickener" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Bright scarlet-red cap, snow-white gills, violently burning taste</em></p>
+<figure class="reader-figure"><img src="../images/russula_emetica.jpg" alt="Russula emetica - The Sickener" loading="lazy"><figcaption>Russula emetica - The Sickener</figcaption></figure>
+<em>(c) Scientific field observation - Bright scarlet-red cap, snow-white gills, violently burning taste</em>
 
 <ul>
   <li><strong>Cap</strong>: Scarlet red, shiny when wet.</li>
@@ -362,10 +462,11 @@ The genus <em>Russula</em> contains dozens of species in Finland. Luckily, you d
 
 <hr>
 
-<h3>A. Saffron Milkcap (<em>Lactarius deliciosus</em> / <em>Männynleppärousku</em>)</h3>
+<h3>A. Saffron Milkcap (<a href="../index.html#/mushroom/lactarius_deliciosus" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Lactarius deliciosus</em></span></a> / <em>Männynleppärousku</em>)</h3>
 <strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible - No Parboiling Required!)</strong>
 
-<p><img src="../images/lactarius_deliciosus.jpg" alt="Lactarius deliciosus - Saffron Milkcap" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Orange zoned cap, carrot-orange milk, bruising green</em></p>
+<figure class="reader-figure"><img src="../images/lactarius_deliciosus.jpg" alt="Lactarius deliciosus - Saffron Milkcap" loading="lazy"><figcaption>Lactarius deliciosus - Saffron Milkcap</figcaption></figure>
+<em>(c) Scientific field observation - Orange zoned cap, carrot-orange milk, bruising green</em>
 
 <ul>
   <li><strong>Cap</strong>: 4–12 cm. Warm carrot-orange, marked with concentric darker rings (<em>zoned</em>). In age or when damaged, it develops <strong>emerald-green stains</strong>.</li>
@@ -376,10 +477,11 @@ The genus <em>Russula</em> contains dozens of species in Finland. Luckily, you d
 
 <hr>
 
-<h3>B. Woolly Milkcap (<em>Lactarius torminosus</em> / <em>Karvarousku</em>)</h3>
+<h3>B. Woolly Milkcap (<a href="../index.html#/mushroom/lactarius_torminosus" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Lactarius torminosus</em></span></a> / <em>Karvarousku</em>)</h3>
 <strong>Finnish Rating</strong>: <code>!</code> -> <code>***</code> <strong>Toxic raw; Choice when parboiled (<em>Ryöpättävä</em>)</strong>
 
-<p><img src="../images/lactarius_torminosus.jpg" alt="Lactarius torminosus - Woolly Milkcap" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Characteristic shaggy, hairy rolled margin and pinkish cap</em></p>
+<figure class="reader-figure"><img src="../images/lactarius_torminosus.jpg" alt="Lactarius torminosus - Woolly Milkcap" loading="lazy"><figcaption>Lactarius torminosus - Woolly Milkcap</figcaption></figure>
+<em>(c) Scientific field observation - Characteristic shaggy, hairy rolled margin and pinkish cap</em>
 
 <ul>
   <li><strong>Cap</strong>: 5–12 cm. Pinkish-salmon, concentric zones, with a <strong>dense woolly, hairy beard around the inrolled margin (<em>karvainen reuna</em>)</strong>.</li>
@@ -390,10 +492,11 @@ The genus <em>Russula</em> contains dozens of species in Finland. Luckily, you d
 
 <hr>
 
-<h3>C. Rufous Milkcap (<em>Lactarius rufus</em> / <em>Kangasrousku</em>)</h3>
+<h3>C. Rufous Milkcap (<a href="../index.html#/mushroom/lactarius_rufus" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Lactarius rufus</em></span></a> / <em>Kangasrousku</em>)</h3>
 <strong>Finnish Rating</strong>: <code>!</code> -> <code>**</code> <strong>Toxic raw; Staple salting mushroom when parboiled</strong>
 
-<p><img src="../images/lactarius_rufus.jpg" alt="Lactarius rufus - Rufous Milkcap" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Terracotta-brown cap with sharp pointed central papilla</em></p>
+<figure class="reader-figure"><img src="../images/lactarius_rufus.jpg" alt="Lactarius rufus - Rufous Milkcap" loading="lazy"><figcaption>Lactarius rufus - Rufous Milkcap</figcaption></figure>
+<em>(c) Scientific field observation - Terracotta-brown cap with sharp pointed central papilla</em>
 
 <ul>
   <li><strong>Cap</strong>: 3–8 cm. Dark reddish-terracotta, dry, with a <strong>distinct sharp conical pimple/papilla (<em>nypy</em>)</strong> at the center.</li>
@@ -404,10 +507,11 @@ The genus <em>Russula</em> contains dozens of species in Finland. Luckily, you d
 
 <hr>
 
-<h2>3. Gypsy Mushroom (<em>Cortinarius caperatus</em> / <em>Kehnäsieni</em>)</h2>
+<h2>3. Gypsy Mushroom (<a href="../index.html#/mushroom/cortinarius_caperatus" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Cortinarius caperatus</em></span></a> / <em>Kehnäsieni</em>)</h2>
 <strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible)</strong>
 
-<p><img src="../images/cortinarius_caperatus.jpg" alt="Cortinarius caperatus - Gypsy Mushroom" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Straw-yellow cap with silvery frosted veil powder (kehnä)</em></p>
+<figure class="reader-figure"><img src="../images/cortinarius_caperatus.jpg" alt="Cortinarius caperatus - Gypsy Mushroom" loading="lazy"><figcaption>Cortinarius caperatus - Gypsy Mushroom</figcaption></figure>
+<em>(c) Scientific field observation - Straw-yellow cap with silvery frosted veil powder (kehnä)</em>
 
 <h3>Identification Keys</h3>
 <ul>
@@ -421,31 +525,33 @@ The genus <em>Russula</em> contains dozens of species in Finland. Luckily, you d
 <ol>
   <li>The <strong>silvery frosted coating</strong> on the cap center,</li>
   <li>The <strong>firm membranous ring</strong> on the stem,</li>
-  <li>The <strong>lack of sharp pointed conical umbo</strong> and absence of yellow zigzag bands (to avoid <em>Cortinarius rubellus</em>).</div></li>
+  <li>The <strong>lack of sharp pointed conical umbo</strong> and absence of yellow zigzag bands (to avoid <a href="../index.html#/mushroom/cortinarius_rubellus" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Cortinarius rubellus</em></span></a>).</div></li>
 </ol>
 
 <hr>
 
-<h2>4. Sheep Polypore (<em>Albatrellus ovinus</em> / <em>Lampaankääpä</em>)</h2>
+<h2>4. Sheep Polypore (<a href="../index.html#/mushroom/albatrellus_ovinus" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Albatrellus ovinus</em></span></a> / <em>Lampaankääpä</em>)</h2>
 <strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible)</strong>
 
-<p><img src="../images/albatrellus_ovinus.jpg" alt="Albatrellus ovinus - Sheep Polypore" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Irregular creamy cap, tiny white pores, growing terrestrially on moss</em></p>
+<figure class="reader-figure"><img src="../images/albatrellus_ovinus.jpg" alt="Albatrellus ovinus - Sheep Polypore" loading="lazy"><figcaption>Albatrellus ovinus - Sheep Polypore</figcaption></figure>
+<em>(c) Scientific field observation - Irregular creamy cap, tiny white pores, growing terrestrially on moss</em>
 
 <h3>Identification Keys</h3>
 <ul>
   <li><strong>Cap</strong>: 6–20 cm. Irregular, wavy, pale cream to dirty greyish-white, cracking into mosaic patches when dry.</li>
   <li><strong>Under-Cap Structure</strong>: <strong>Extremely tiny, dense, white pore layer</strong> running slightly down the stem.</li>
   <li><strong>Habitat</strong>: Terrestrial on moss in old Norway spruce forests (never on tree trunks).</li>
-  <li><strong>The Magic Color Shift</strong>: When placed in a hot pan with butter, <strong>the pure white flesh turns vibrant lemon-yellow (<em>sitruunankeltainen</em>)</strong>. If it turns yellow, you have 100% genuine <em>Albatrellus ovinus</em>!</li>
-  <li><strong>Lookalike Comparison</strong>: <em>Albatrellus confluens</em> (<em>Typpikääpä</em>) looks similar but has a more apricot-buff cap and <strong>turns dull brownish-orange when cooked, tasting bitter</strong>.</li>
+  <li><strong>The Magic Color Shift</strong>: When placed in a hot pan with butter, <strong>the pure white flesh turns vibrant lemon-yellow (<em>sitruunankeltainen</em>)</strong>. If it turns yellow, you have 100% genuine <a href="../index.html#/mushroom/albatrellus_ovinus" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Albatrellus ovinus</em></span></a>!</li>
+  <li><strong>Lookalike Comparison</strong>: <a href="../index.html#/mushroom/albatrellus_confluens" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Albatrellus confluens</em></span></a> (<em>Typpikääpä</em>) looks similar but has a more apricot-buff cap and <strong>turns dull brownish-orange when cooked, tasting bitter</strong>.</li>
 </ul>
 
 <hr>
 
-<h2>5. Orange Birch Bolete (<em>Leccinum versipelle</em> / <em>Koivunpunikkitatti</em>)</h2>
+<h2>5. Orange Birch Bolete (<a href="../index.html#/mushroom/leccinum_versipelle" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Leccinum versipelle</em></span></a> / <em>Koivunpunikkitatti</em>)</h2>
 <strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible - Requires Thorough Cooking)</strong>
 
-<p><img src="../images/leccinum_versipelle.jpg" alt="Leccinum versipelle - Orange Birch Bolete" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Vivid brick-orange cap and stem covered in black scaber scales</em></p>
+<figure class="reader-figure"><img src="../images/leccinum_versipelle.jpg" alt="Leccinum versipelle - Orange Birch Bolete" loading="lazy"><figcaption>Leccinum versipelle - Orange Birch Bolete</figcaption></figure>
+<em>(c) Scientific field observation - Vivid brick-orange cap and stem covered in black scaber scales</em>
 
 <h3>Identification Keys</h3>
 <ul>
@@ -477,6 +583,7 @@ The genus <em>Russula</em> contains dozens of species in Finland. Luckily, you d
     <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
     <p style="margin-top:0.5rem;">
       <a href="../index.html" style="color:#a7f3d0;">Home Portal</a> • 
+      <a href="../index.html#/chapter/06" style="color:#a7f3d0;">Live Chapter 06</a> • 
       <a href="https://powerpig99.github.io/not-a-toe/" style="color:#a7f3d0;" target="_blank" rel="noopener">Not a ToE Blog</a> • 
       <a href="https://powerpig99.github.io/hunting-in-finland/" style="color:#a7f3d0;" target="_blank" rel="noopener">Hunting in Finland</a> • 
       <a href="https://github.com/powerpig99/helsinki-mushroom-guide" style="color:#a7f3d0;" target="_blank" rel="noopener">GitHub</a>

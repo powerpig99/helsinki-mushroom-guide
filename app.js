@@ -7,6 +7,7 @@ let currentFamilyFilter = "all";
 let currentMonthFilter = null;
 let searchQuery = "";
 let currentMushroomId = null;
+let lastActiveChapterId = null;
 
 // Lightbox Gallery State (modal fallback)
 let currentGallerySpecies = null;
@@ -464,19 +465,36 @@ function setupRouter() {
   window.addEventListener("hashchange", handleRoute);
 }
 
+function normalizeChapterId(chId) {
+  if (!chId) return "01";
+  let clean = chId.toLowerCase().trim();
+  if (clean.startsWith("ch_")) clean = clean.replace("ch_", "");
+  if (clean.startsWith("ch")) clean = clean.replace("ch", "");
+  if (clean.length === 1 && /^\d$/.test(clean)) clean = "0" + clean;
+  return clean;
+}
+
 function handleRoute() {
   const hash = window.location.hash || "#/";
   if (hash.startsWith("#/mushroom/")) {
     const id = hash.replace("#/mushroom/", "").trim();
     showMushroomDetail(id);
+  } else if (hash.startsWith("#/chapter/")) {
+    const rawId = hash.replace("#/chapter/", "").trim();
+    showMainCatalog();
+    showLiveChapter(rawId);
   } else {
     showMainCatalog();
     if (hash === "#/lookalikes") switchTabDirectly("lookalikes");
     else if (hash === "#/cooking") switchTabDirectly("cooking");
     else if (hash === "#/spots") switchTabDirectly("spots");
     else if (hash === "#/safety") switchTabDirectly("safety");
-    else if (hash === "#/handbook") switchTabDirectly("handbook");
-    else switchTabDirectly("catalog");
+    else if (hash === "#/handbook") {
+      switchTabDirectly("handbook");
+      showHandbookOverview();
+    } else {
+      switchTabDirectly("catalog");
+    }
   }
 }
 
@@ -493,16 +511,38 @@ function switchTabDirectly(tabKey) {
   document.getElementById("tab-safety").style.display = tabKey === "safety" ? "block" : "none";
   const tabHandbook = document.getElementById("tab-handbook");
   if (tabHandbook) tabHandbook.style.display = tabKey === "handbook" ? "block" : "none";
-  if (tabKey === "handbook") renderHandbook();
+  
+  if (tabKey === "handbook") {
+    const hash = window.location.hash || "";
+    if (hash.startsWith("#/chapter/")) {
+      showLiveChapter(hash.replace("#/chapter/", "").trim());
+    } else {
+      showHandbookOverview();
+    }
+  }
 }
 
 function navigateToMushroom(id) {
   window.location.hash = "#/mushroom/" + id;
 }
+window.navigateToMushroom = navigateToMushroom;
 
 function navigateToCatalog() {
   window.location.hash = "#/catalog";
 }
+window.navigateToCatalog = navigateToCatalog;
+
+function navigateToChapter(chId) {
+  const clean = normalizeChapterId(chId);
+  lastActiveChapterId = clean;
+  window.location.hash = "#/chapter/" + clean;
+}
+window.navigateToChapter = navigateToChapter;
+
+function navigateToHandbook() {
+  window.location.hash = "#/handbook";
+}
+window.navigateToHandbook = navigateToHandbook;
 
 function showMushroomDetail(id) {
   currentMushroomId = id;
@@ -880,6 +920,12 @@ function renderMushroomDetail(speciesId) {
     <!-- Sticky Top Navigation Bar with Flags Only & Optional Second Language -->
     <div class="detail-top-bar">
       <div class="detail-top-bar-left">
+        ${lastActiveChapterId ? `
+        <button class="btn-back-chapter" onclick="navigateToChapter('${lastActiveChapterId}')" title="${t.handbookReturnToChapter || 'Return to Chapter'} ${lastActiveChapterId}">
+          <span>📖</span>
+          <span>${t.handbookReturnToChapter || '← Return to Chapter'} ${lastActiveChapterId}</span>
+        </button>
+        ` : ""}
         <button class="btn-back-catalog" onclick="navigateToCatalog()" aria-label="Back" title="Back to Species Guide">
           <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -1048,6 +1094,9 @@ function renderMushroomDetail(speciesId) {
       </div>
       ${renderCookingVideoCard(sp, lang, lang2, t)}
     </div>
+
+    <!-- SECTION 6: Field Handbook References -->
+    ${renderHandbookReferencesForMushroom(sp, lang, lang2, t)}
 
     <!-- Bottom Navigation Footer with Previous and Next Species -->
     <div class="detail-action-footer">
@@ -1263,6 +1312,19 @@ function renderLookalikes() {
   const lang2 = I18N.secondaryLang;
   const t = I18N.ui[lang];
 
+  const portalBannerHtml = `
+    <div class="tab-handbook-portal" style="margin-bottom: 2rem;">
+      <div class="portal-info">
+        <span class="portal-tag">☠️ Field Handbook • Chapter 04</span>
+        <h3 class="portal-title">${t.portalLookalikesTitle || "☠️ In-Depth Lookalikes & Deadly Toxins Manual in Chapter 04"}</h3>
+        <p class="portal-desc">${t.portalLookalikesDesc || "Learn the irreversible cellular damage mechanisms, delayed incubation periods (up to 17 days), and why boiling does not neutralize Amanita or Cortinarius toxins."}</p>
+      </div>
+      <a href="#/chapter/04" onclick="navigateToChapter('04'); return false;" class="portal-btn danger">
+        ${t.portalLookalikesBtn || "Read Chapter 04 Survival Manual →"}
+      </a>
+    </div>
+  `;
+
   const pairs = [
     {
       title: {
@@ -1368,7 +1430,7 @@ function renderLookalikes() {
     }
   ];
 
-  container.innerHTML = pairs.map(pair => `
+  container.innerHTML = portalBannerHtml + pairs.map(pair => `
     <div class="comparator-card">
       <div class="comparator-header">
         <div>
@@ -1436,7 +1498,25 @@ function renderCookingGuide() {
   const guide2 = lang2 ? I18N.cookingGuide[lang2] : null;
   const t = I18N.ui[lang];
 
-  container.innerHTML = `
+  const portalBannerHtml = `
+    <div class="tab-handbook-portal">
+      <div class="portal-info">
+        <span class="portal-tag">🍳 Field Handbook • Chapter 07 & Chinese Culinary Guide</span>
+        <h3 class="portal-title">${t.portalCookingTitle || "Nordic Preservation Science & Chinese Wild Mushroom Mastery"}</h3>
+        <p class="portal-desc">${t.portalCookingDesc || "Dehydration curves, milkcap salt-curing (suolasienet), authentic Finnish pies & soups, plus high-temperature Chinese wok-searing and umami broths."}</p>
+      </div>
+      <div class="portal-actions">
+        <a href="#/chapter/07" onclick="navigateToChapter('07'); return false;" class="portal-btn">
+          ${t.portalCookingBtn1 || "Read Chapter 07 (Preservation & Nordic Recipes) →"}
+        </a>
+        <a href="#/chapter/zh" onclick="navigateToChapter('zh'); return false;" class="portal-btn chinese">
+          ${t.portalCookingBtn2 || "Read Special Guide (Chinese Culinary) →"}
+        </a>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = portalBannerHtml + `
     <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
       <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
         ${guide.title}
@@ -1539,7 +1619,20 @@ function renderSpots() {
   const lang2 = I18N.secondaryLang;
   const t = I18N.ui[lang] || I18N.ui.en;
 
-  container.innerHTML = I18N.spots.map(s => `
+  const portalBannerHtml = `
+    <div class="tab-handbook-portal" style="grid-column: 1 / -1; margin-bottom: 0.5rem;">
+      <div class="portal-info">
+        <span class="portal-tag">📖 Field Handbook • Chapter 02</span>
+        <h3 class="portal-title">${t.portalSpotsTitle || "Complete Transit Guide & 5 Hidden Gems in Handbook Chapter 02"}</h3>
+        <p class="portal-desc">${t.portalSpotsDesc || "Explore in-depth bus timetables, secret trailhead parking, and low-pressure wilderness valleys across Meiko, Tremanskärr, Northern Sipoonkorpi, Salmi, and Vestra."}</p>
+      </div>
+      <a href="#/chapter/02" onclick="navigateToChapter('02'); return false;" class="portal-btn">
+        ${t.portalSpotsBtn || "Read Live Chapter 02 →"}
+      </a>
+    </div>
+  `;
+
+  container.innerHTML = portalBannerHtml + I18N.spots.map(s => `
     <div class="spot-card">
       <div class="spot-header">
         <div>
@@ -1606,7 +1699,26 @@ function renderSafety() {
   const lang2 = I18N.secondaryLang;
   const sg = I18N.safetyGuidelines;
 
-  container.innerHTML = `
+  const t = I18N.ui[lang] || I18N.ui.en;
+  const portalBannerHtml = `
+    <div class="tab-handbook-portal" style="margin-bottom: 2rem;">
+      <div class="portal-info">
+        <span class="portal-tag">🛡️ Field Handbook • Chapters 01 & 04</span>
+        <h3 class="portal-title">${t.portalSafetyTitle || "Forest Safety, Legal Rights & Deadly Species Survival Manual"}</h3>
+        <p class="portal-desc">${t.portalSafetyDesc || "Master Everyman's Right in nature reserves, tick protection protocols, and zero-tolerance fatal toxin mechanisms (Amatoxins, Orellanine, Gyromitrin)."}</p>
+      </div>
+      <div class="portal-actions">
+        <a href="#/chapter/01" onclick="navigateToChapter('01'); return false;" class="portal-btn">
+          ${t.portalSafetyBtn1 || "Read Chapter 01 (Rights & Safety) →"}
+        </a>
+        <a href="#/chapter/04" onclick="navigateToChapter('04'); return false;" class="portal-btn danger">
+          ${t.portalSafetyBtn2 || "Read Chapter 04 (Deadly Species) →"}
+        </a>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = portalBannerHtml + `
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;">
       <!-- Everyman's Right -->
       <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem;">
@@ -1700,13 +1812,53 @@ function renderSafety() {
 }
 
 // -------------------------------------------------------------
-// Field Handbook & 9-Chapter Monograph Library
+// Field Handbook & Live Interactive Reader Suite
 // -------------------------------------------------------------
 function renderHandbook() {
-  const container = document.getElementById("handbook-container");
-  const banner = document.getElementById("handbook-banner");
-  if (!container) return;
+  const hash = window.location.hash || "";
+  if (hash.startsWith("#/chapter/")) {
+    showLiveChapter(hash.replace("#/chapter/", "").trim());
+  } else {
+    showHandbookOverview();
+  }
+}
 
+function renderHandbookNav(activeChapterId) {
+  const navBar = document.getElementById("handbook-nav-bar");
+  if (!navBar) return;
+  const lang = I18N.currentLang;
+  const t = I18N.ui[lang] || I18N.ui.en;
+
+  const chapters = (window.HANDBOOK_DATA && HANDBOOK_DATA.chapters) ? HANDBOOK_DATA.chapters : I18N.handbookChapters;
+  if (!chapters) return;
+
+  navBar.innerHTML = `
+    <button class="handbook-nav-pill ${!activeChapterId ? 'active' : ''}" onclick="navigateToHandbook()">
+      <span>📚</span>
+      <span>${t.handbookAllChapters || "All Chapters Overview"}</span>
+    </button>
+    ${chapters.map(ch => `
+      <button class="handbook-nav-pill ${activeChapterId === ch.id ? 'active' : ''}" onclick="navigateToChapter('${ch.id}')">
+        <span>${ch.icon}</span>
+        <span>${ch.chapterNum}: ${ch.title[lang]}</span>
+      </button>
+    `).join("")}
+  `;
+}
+
+function showHandbookOverview() {
+  const tabHandbook = document.getElementById("tab-handbook");
+  if (tabHandbook) tabHandbook.style.display = "block";
+  
+  const overviewView = document.getElementById("handbook-overview-view");
+  const readerView = document.getElementById("handbook-reader-view");
+  if (overviewView) overviewView.style.display = "block";
+  if (readerView) readerView.style.display = "none";
+
+  renderHandbookNav(null);
+
+  const banner = document.getElementById("handbook-banner");
+  const container = document.getElementById("handbook-container");
   const lang = I18N.currentLang;
   const lang2 = I18N.secondaryLang;
   const t = I18N.ui[lang] || I18N.ui.en;
@@ -1715,20 +1867,20 @@ function renderHandbook() {
     banner.innerHTML = `
       <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow);">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem;">
-          <div style="max-width: 680px;">
+          <div style="max-width: 720px;">
             <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: #ecfdf5; color: #047857; font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.5rem; border: 1px solid #a7f3d0;">
-              <span>🌐 Web Edition</span> • <span>Published & Live on GitHub Pages</span>
+              <span>🌐 Interactive Live Reader</span> • <span>9 Field Monographs & Guides</span>
             </div>
             <h2 style="font-size: 1.35rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.35rem;">
-              ${t.handbookTitle}
+              ${t.handbookTitle || "Field Handbook & Monographs"}
             </h2>
             <p style="font-size: 0.92rem; color: #475569; line-height: 1.55;">
-              ${t.handbookSubtitle}
+              ${t.handbookSubtitle || "Read our comprehensive field guide monographs directly inside the web app. Every species mentioned is an interactive link with 3-photo botanical galleries, seasonal calendars, and transit trailheads."}
             </p>
           </div>
           <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-            <a href="overview.html" target="_blank" rel="noopener noreferrer" class="emergency-btn" style="background: #10b981; color: #ffffff; text-decoration: none; font-weight: 600; padding: 0.6rem 1.1rem; display: inline-flex; align-items: center; gap: 0.4rem; border-radius: 6px;">
-              ${t.viewFullToc} →
+            <a href="overview.html" target="_blank" rel="noopener noreferrer" class="emergency-btn" style="background: #1e3a2b; color: #ffffff; text-decoration: none; font-weight: 600; padding: 0.6rem 1.1rem; display: inline-flex; align-items: center; gap: 0.4rem; border-radius: 6px;">
+              📄 ${t.viewFullToc || "Static HTML Index"} →
             </a>
           </div>
         </div>
@@ -1736,17 +1888,18 @@ function renderHandbook() {
     `;
   }
 
-  if (!I18N.handbookChapters) return;
+  const chapters = (window.HANDBOOK_DATA && HANDBOOK_DATA.chapters) ? HANDBOOK_DATA.chapters : I18N.handbookChapters;
+  if (!container || !chapters) return;
 
-  container.innerHTML = I18N.handbookChapters.map(ch => `
-    <div class="spot-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+  container.innerHTML = chapters.map(ch => `
+    <div class="spot-card" style="display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;" onclick="navigateToChapter('${ch.id}')">
       <div>
         <div class="spot-header" style="align-items: flex-start;">
           <div>
             <div style="font-size: 0.78rem; font-weight: 700; color: #10b981; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
               ${ch.chapterNum}
             </div>
-            <h3 class="spot-title" style="font-size: 1.1rem; line-height: 1.35;">
+            <h3 class="spot-title" style="font-size: 1.12rem; line-height: 1.35;">
               ${ch.icon} ${ch.title[lang]}
             </h3>
             ${lang2 ? `<div style="font-size: 0.86rem; color: #64748b; margin-top: 0.25rem; font-weight: 400;">${ch.title[lang2]}</div>` : ""}
@@ -1762,13 +1915,159 @@ function renderHandbook() {
         </div>
       </div>
 
-      <div style="border-top: 1px solid #f1f5f9; padding-top: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-        <span style="font-size: 0.78rem; color: #94a3b8; font-weight: 500;">🌐 Web Page (HTML)</span>
-        <a href="${ch.url}" target="_blank" rel="noopener noreferrer" class="btn-location-map" style="background: #1e3a2b; color: #ffffff; text-decoration: none; padding: 0.45rem 0.9rem; font-size: 0.84rem; font-weight: 600; border-radius: 6px;">
-          ${t.readChapterBtn}
-        </a>
+      <div style="border-top: 1px solid #f1f5f9; padding-top: 0.85rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+        <span style="font-size: 0.8rem; color: #64748b; font-weight: 500;">⏱️ ${ch.readTime ? ch.readTime[lang] : "8 min read"}</span>
+        <div style="display: flex; gap: 0.4rem;">
+          <button class="btn-location-map" onclick="event.stopPropagation(); navigateToChapter('${ch.id}')" style="background: #10b981; color: #ffffff; border: none; padding: 0.45rem 0.95rem; font-size: 0.84rem; font-weight: 700; border-radius: 6px; cursor: pointer;">
+            📖 ${t.handbookReadInChapter || "Read Live Chapter →"}
+          </button>
+        </div>
       </div>
     </div>
   `).join("");
 }
+
+function showLiveChapter(rawChId) {
+  const chId = normalizeChapterId(rawChId);
+  lastActiveChapterId = chId;
+
+  const tabHandbook = document.getElementById("tab-handbook");
+  if (tabHandbook) tabHandbook.style.display = "block";
+
+  const overviewView = document.getElementById("handbook-overview-view");
+  const readerView = document.getElementById("handbook-reader-view");
+  if (overviewView) overviewView.style.display = "none";
+  if (readerView) readerView.style.display = "block";
+
+  renderHandbookNav(chId);
+
+  const chapters = (window.HANDBOOK_DATA && HANDBOOK_DATA.chapters) ? HANDBOOK_DATA.chapters : I18N.handbookChapters;
+  if (!chapters) return;
+
+  const chIdx = chapters.findIndex(c => c.id === chId || c.slug === rawChId);
+  const ch = chIdx !== -1 ? chapters[chIdx] : chapters[0];
+  const prevCh = chIdx > 0 ? chapters[chIdx - 1] : null;
+  const nextCh = chIdx < chapters.length - 1 ? chapters[chIdx + 1] : null;
+
+  const lang = I18N.currentLang;
+  const lang2 = I18N.secondaryLang;
+  const t = I18N.ui[lang] || I18N.ui.en;
+
+  // Render Header
+  const headerEl = document.getElementById("live-reader-header");
+  if (headerEl) {
+    const featuredSpeciesHtml = (ch.targetSpecies && ch.targetSpecies.length > 0) ? `
+      <div class="live-reader-species-strip">
+        <strong style="color: #1e3a2b;">${t.handbookTargetSpecies || "Featured Species in this Chapter:"}</strong>
+        ${ch.targetSpecies.map(spId => {
+          const sp = I18N.species.find(s => s.id === spId);
+          if (!sp) return "";
+          const spName = sp.names[lang]?.primary || sp.latinName;
+          return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">🍄 ${spName}</a>`;
+        }).join("")}
+      </div>
+    ` : "";
+
+    headerEl.innerHTML = `
+      <div class="live-reader-top-meta">
+        <button class="reader-back-btn" onclick="navigateToHandbook()">
+          ${t.handbookBackToOverview || "← All Chapters"}
+        </button>
+        <div class="reader-meta-right">
+          <span class="reader-badge">${ch.badge[lang]}</span>
+          <span class="reader-readtime">⏱️ ${ch.readTime ? ch.readTime[lang] : ""}</span>
+        </div>
+      </div>
+      <h1 class="live-reader-title">${ch.icon} ${ch.chapterNum}: ${ch.title[lang]}</h1>
+      ${lang2 ? `<div class="live-reader-subtitle">${ch.title[lang2]}</div>` : ""}
+      ${featuredSpeciesHtml}
+    `;
+  }
+
+  // Inject Body
+  const bodyEl = document.getElementById("live-reader-body");
+  if (bodyEl) {
+    bodyEl.innerHTML = ch.html || `<p>${ch.desc[lang]}</p>`;
+  }
+
+  // Render Pager
+  const pagerEl = document.getElementById("live-reader-pager");
+  if (pagerEl) {
+    pagerEl.innerHTML = `
+      <div>
+        ${prevCh ? `
+          <button class="reader-pager-btn" onclick="navigateToChapter('${prevCh.id}')">
+            ← ${prevCh.icon} ${prevCh.chapterNum}
+          </button>
+        ` : `
+          <button class="reader-pager-btn" onclick="navigateToHandbook()">
+            ← ${t.handbookBackToOverview || "All Chapters"}
+          </button>
+        `}
+      </div>
+      <div>
+        <button class="reader-pager-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+          ${t.handbookTopBtn || "↑ Top"}
+        </button>
+      </div>
+      <div>
+        ${nextCh ? `
+          <button class="reader-pager-btn primary" onclick="navigateToChapter('${nextCh.id}')">
+            ${nextCh.icon} ${nextCh.chapterNum} →
+          </button>
+        ` : `
+          <button class="reader-pager-btn primary" onclick="navigateToCatalog()">
+            🍄 ${t.tabCatalog || "Species Directory"} ✓
+          </button>
+        `}
+      </div>
+    `;
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// -------------------------------------------------------------
+// Field Handbook References in Mushroom Detail
+// -------------------------------------------------------------
+function renderHandbookReferencesForMushroom(sp, lang, lang2, t) {
+  const chapters = (window.HANDBOOK_DATA && HANDBOOK_DATA.chapters) ? HANDBOOK_DATA.chapters : I18N.handbookChapters;
+  if (!chapters || !sp) return "";
+
+  const referencedChapters = chapters.filter(ch => {
+    if (sp.chapters && sp.chapters.includes(ch.id)) return true;
+    if (ch.targetSpecies && ch.targetSpecies.includes(sp.id)) return true;
+    return false;
+  });
+
+  if (referencedChapters.length === 0) return "";
+
+  return `
+    <div class="detail-section-card detail-handbook-refs-card">
+      <h2 class="detail-section-title">${t.handbookReferencesTitle || "📚 Field Handbook References"}</h2>
+      <p style="font-size: 0.88rem; color: #64748b; margin-bottom: 1rem;">
+        ${t.handbookReferencesSubtitle || "In-depth monographs, ecological analyses, and recipes featuring this species:"}
+      </p>
+      <div class="handbook-refs-grid">
+        ${referencedChapters.map(ch => `
+          <div class="handbook-ref-item" onclick="navigateToChapter('${ch.id}')">
+            <div>
+              <div class="handbook-ref-header">
+                <span class="handbook-ref-num">${ch.chapterNum}</span>
+                <span class="handbook-ref-badge">${ch.badge[lang]}</span>
+              </div>
+              <h4 class="handbook-ref-title">${ch.icon} ${ch.title[lang]}</h4>
+              ${lang2 ? `<div class="handbook-ref-subtitle">${ch.title[lang2]}</div>` : ""}
+              <p class="handbook-ref-desc">${ch.desc[lang]}</p>
+            </div>
+            <button class="handbook-ref-btn" onclick="event.stopPropagation(); navigateToChapter('${ch.id}')">
+              ${t.handbookReadInChapter || "Read Chapter →"}
+            </button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
 

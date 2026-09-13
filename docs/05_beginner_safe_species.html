@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>05. The "Safe Five" Beginner Species | Helsinki Mushroom Guide</title>
+  <title>The "Safe Five" Beginner Species | Helsinki Mushroom Guide</title>
   <link rel="stylesheet" href="../styles.css">
   <style>
     body {
@@ -14,10 +14,58 @@
       flex-direction: column;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     }
-    .doc-sticky-header {
+    .doc-live-banner {
+      background: linear-gradient(90deg, #1e3a2b 0%, #064e3b 100%);
+      color: #ffffff;
+      padding: 0.65rem 1.25rem;
+      border-bottom: 1px solid rgba(52, 211, 153, 0.3);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 101;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .doc-live-banner-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .banner-badge {
+      background: rgba(16, 185, 129, 0.25);
+      color: #6ee7b7;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      white-space: nowrap;
+    }
+    .banner-text {
+      font-size: 0.86rem;
+      color: #e2e8f0;
+      flex: 1;
+      min-width: 260px;
+    }
+    .banner-cta {
+      background: #10b981;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-decoration: none;
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .banner-cta:hover {
+      background: #059669;
+      transform: translateY(-1px);
+    }
+    .doc-sticky-header {
       background: #182e22;
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -164,6 +212,51 @@
       border-left: 4px solid var(--danger);
       color: #991b1b;
     }
+    .reader-figure {
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+    .reader-figure img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    .reader-figure figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .inline-species-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+      padding: 0.05rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.88em;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.15s ease;
+      vertical-align: baseline;
+      white-space: nowrap;
+    }
+    .inline-species-chip:hover {
+      background: #10b981;
+      color: #ffffff;
+      border-color: #10b981;
+      transform: translateY(-1px);
+    }
+    .inline-chapter-link {
+      color: #047857;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .inline-chapter-link:hover {
+      color: #065f46;
+    }
     pre {
       background: #0f172a;
       color: #f8fafc;
@@ -228,11 +321,6 @@
     .doc-nav-btn.primary:hover {
       background: #2d5a42;
     }
-    .doc-raw-link {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      text-decoration: underline;
-    }
     @media (max-width: 768px) {
       .doc-card {
         padding: 1.5rem;
@@ -249,48 +337,58 @@
 </head>
 <body>
 
+  <!-- Sticky Live App Banner -->
+  <aside class="doc-live-banner" aria-label="Interactive Version Available">
+    <div class="doc-live-banner-inner">
+      <span class="banner-badge">✨ Live Interactive App</span>
+      <span class="banner-text">This monograph is fully integrated into our interactive Field Handbook with 3-photo botanical galleries, transit trailheads, and species cross-linking.</span>
+      <a href="../index.html#/chapter/05" class="banner-cta">Open in Live App →</a>
+    </div>
+  </aside>
+
   <!-- Sticky Header Bar -->
   <header class="doc-sticky-header">
     <div class="doc-nav-left">
-      <a href="../index.html" class="doc-btn-back">🍄 Mushroom Portal</a>
+      <a href="../index.html#/chapter/05" class="doc-btn-back">🍄 Live App Reader</a>
+      <a href="../index.html#/catalog" class="doc-btn-back">🍄 63 Species Catalog</a>
       <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
       <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
       <select class="doc-select" onchange="if(this.value) window.location.href=this.value" aria-label="Jump to Chapter">
         
     <option value="01_legal_and_ethics.html" >
-      ⚖️ 01. Legal Rights, Nature Protection & Forest Safety
+      ⚖️ Legal Rights, Nature Protection & Forest Safety
     </option>
   
     <option value="02_helsinki_transit_spots_guide.html" >
-      🚌 02. Helsinki Foraging Spots by HSL Transit
+      🚌 Helsinki Foraging Spots by HSL Transit (Zone A–D)
     </option>
   
     <option value="03_seasonal_calendar_and_habitats.html" >
-      📅 03. Seasonal Calendar & Forest Ecology
+      📅 Seasonal Calendar, Habitats & The Chanterelle Dilemma
     </option>
   
     <option value="04_deadly_and_toxic_species.html" >
-      ☠️ 04. Deadly & Toxic Species Survival Manual
+      ☠️ Deadly & Toxic Species Survival Manual
     </option>
   
     <option value="05_beginner_safe_species.html" selected>
-      🍄 05. The "Safe Five" Beginner Species
+      🍄 The "Safe Five" Beginner Species
     </option>
   
     <option value="06_intermediate_and_advanced.html" >
-      🧺 06. Intermediate & Advanced Gourmet Species
+      🧺 Intermediate & Advanced Gourmet Species
     </option>
   
     <option value="07_preservation_and_recipes.html" >
-      🍳 07. Preservation & Authentic Finnish Recipes
+      🍳 Preservation & Authentic Finnish Recipes
     </option>
   
     <option value="08_expanded_edible_species_index.html" >
-      📋 08. Master Index: 50+ Wild Edible Mushrooms of Finland
+      📋 Master Index: 50+ Wild Edible Mushrooms of Finland
     </option>
   
     <option value="cooking_and_recipes_zh.html" >
-      🇨🇳 ZH. 中文野菌烹饪预处理与中西经典食谱
+      🇨🇳 Chinese Wild Mushroom Culinary Mastery & Cross-Culture Recipes
     </option>
   
       </select>
@@ -310,10 +408,11 @@
 
 <hr>
 
-<h2>1. Golden Chanterelle (<em>Cantharellus cibarius</em> / <em>Keltavahvero</em> / <em>Kantarelli</em>)</h2>
+<h2>1. Golden Chanterelle (<a href="../index.html#/mushroom/cantharellus_cibarius" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Cantharellus cibarius</em></span></a> / <em>Keltavahvero</em> / <em>Kantarelli</em>)</h2>
 <strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible)</strong>
 
-<p><img src="../images/cantharellus_cibarius.jpg" alt="Cantharellus cibarius - Golden Chanterelle" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Egg-yellow wavy cap with decurrent blunt vein-like ridges</em></p>
+<figure class="reader-figure"><img src="../images/cantharellus_cibarius.jpg" alt="Cantharellus cibarius - Golden Chanterelle" loading="lazy"><figcaption>Cantharellus cibarius - Golden Chanterelle</figcaption></figure>
+<em>(c) Scientific field observation - Egg-yellow wavy cap with decurrent blunt vein-like ridges</em>
 
 <h3>Identification Checklist</h3>
 <ul>
@@ -332,18 +431,20 @@
 
 <hr>
 
-<h3>Lookalike Check: False Chanterelle (<em>Hygrophoropsis aurantiaca</em> / <em>Valekantarelli</em>)</h3>
+<h3>Lookalike Check: False Chanterelle (<a href="../index.html#/mushroom/hygrophoropsis_aurantiaca" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Hygrophoropsis aurantiaca</em></span></a> / <em>Valekantarelli</em>)</h3>
 <strong>Status</strong>: <code>*</code> Edible but bland / Not poisonous, but inferior.
 
-<p><img src="../images/hygrophoropsis_aurantiaca.jpg" alt="Hygrophoropsis aurantiaca - False Chanterelle" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Note the sharp, thin, knife-edge true gills and bright orange coloration</em></p>
+<figure class="reader-figure"><img src="../images/hygrophoropsis_aurantiaca.jpg" alt="Hygrophoropsis aurantiaca - False Chanterelle" loading="lazy"><figcaption>Hygrophoropsis aurantiaca - False Chanterelle</figcaption></figure>
+<em>(c) Scientific field observation - Note the sharp, thin, knife-edge true gills and bright orange coloration</em>
 
 <div class="table-container"><table><thead><tr><th>Feature</th><th>Golden Chanterelle (<em>Keltavahvero</em>)</th><th>False Chanterelle (<em>Valekantarelli</em>)</th></tr></thead><tbody><tr><td><strong>Underside</strong></td><td><strong>Blunt, thick, branched ridges (<em>poimut</em>)</strong></td><td><strong>Thin, sharp, crowded true gills (<em>oikeat heltat</em>)</strong></td></tr><tr><td><strong>Color</strong></td><td>Egg-yolk yellow, golden yellow</td><td>Intense electric orange to tawny reddish-orange</td></tr><tr><td><strong>Flesh</strong></td><td>Firm, meaty, pale yellowish-white</td><td>Soft, flexible, thin, orange flesh</td></tr><tr><td><strong>Stem</strong></td><td>Solid, thick, yellow throughout</td><td>Slender, often darker/brownish near the base</td></tr><tr><td><strong>Smell</strong></td><td>Fresh fruity apricot fragrance</td><td>Mild, mushroomy or indistinct</td></tr></tbody></table></div>
 <hr>
 
-<h2>2. Funnel Chanterelle / Yellow Foot (<em>Craterellus tubaeformis</em> / <em>Suppilovahvero</em>)</h2>
+<h2>2. Funnel Chanterelle / Yellow Foot (<a href="../index.html#/mushroom/craterellus_tubaeformis" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Craterellus tubaeformis</em></span></a> / <em>Suppilovahvero</em>)</h2>
 <strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible)</strong>
 
-<p><img src="../images/craterellus_tubaeformis.jpg" alt="Craterellus tubaeformis - Funnel Chanterelle" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Brown trumpet cap with bright yellow hollow stem</em></p>
+<figure class="reader-figure"><img src="../images/craterellus_tubaeformis.jpg" alt="Craterellus tubaeformis - Funnel Chanterelle" loading="lazy"><figcaption>Craterellus tubaeformis - Funnel Chanterelle</figcaption></figure>
+<em>(c) Scientific field observation - Brown trumpet cap with bright yellow hollow stem</em>
 
 <h3>Identification Checklist</h3>
 <ul>
@@ -361,8 +462,8 @@
   <li><strong>Season</strong>: <strong>September to late November</strong> (even after multiple sub-zero frosts!).</li>
 </ul>
 
-<div class="reader-alert note"><strong>IMPORTANT:</strong> <strong>Safety Check against Deadly Webcap (<em>Cortinarius rubellus</em>)</strong>:
-Because Funnel Chanterelles grow hidden deep inside damp moss cushions where <em>Cortinarius rubellus</em> also lives, <strong>NEVER grab handfuls of mushrooms blind</strong>.
+<div class="reader-alert note"><strong>IMPORTANT:</strong> <strong>Safety Check against Deadly Webcap (<a href="../index.html#/mushroom/cortinarius_rubellus" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Cortinarius rubellus</em></span></a>)</strong>:
+Because Funnel Chanterelles grow hidden deep inside damp moss cushions where <a href="../index.html#/mushroom/cortinarius_rubellus" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Cortinarius rubellus</em></span></a> also lives, <strong>NEVER grab handfuls of mushrooms blind</strong>.
 <ul>
   <li>Funnel Chanterelles have a <strong>completely hollow, yellow tube stem</strong> and a <strong>perforated funnel cap</strong>.</li>
   <li>The Deadly Webcap has a <strong>solid, cinnamon-brown stem with yellow zigzag bands</strong> and a <strong>pointed cone cap</strong>.</div></li>
@@ -370,10 +471,11 @@ Because Funnel Chanterelles grow hidden deep inside damp moss cushions where <em
 
 <hr>
 
-<h2>3. Wood Hedgehog (<em>Hydnum repandum</em> & <em>Hydnum rufescens</em> / <em>Vaaleaorakas</em> & <em>Rusko-orakas</em>)</h2>
+<h2>3. Wood Hedgehog (<a href="../index.html#/mushroom/hydnum_repandum" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Hydnum repandum</em></span></a> & <a href="../index.html#/mushroom/hydnum_rufescens" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Hydnum rufescens</em></span></a> / <em>Vaaleaorakas</em> & <em>Rusko-orakas</em>)</h2>
 <strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible)</strong>
 
-<p><img src="../images/hydnum_repandum.jpg" alt="Hydnum repandum - Wood Hedgehog" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Underside covered in dense, fragile spines (orakkaat)</em></p>
+<figure class="reader-figure"><img src="../images/hydnum_repandum.jpg" alt="Hydnum repandum - Wood Hedgehog" loading="lazy"><figcaption>Hydnum repandum - Wood Hedgehog</figcaption></figure>
+<em>(c) Scientific field observation - Underside covered in dense, fragile spines (orakkaat)</em>
 
 <h3>Identification Checklist</h3>
 <ul>
@@ -396,10 +498,11 @@ Because Funnel Chanterelles grow hidden deep inside damp moss cushions where <em
 
 <hr>
 
-<h2>4. Black Trumpet / Horn of Plenty (<em>Craterellus cornucopioides</em> / <em>Mustatorvisieni</em>)</h2>
+<h2>4. Black Trumpet / Horn of Plenty (<a href="../index.html#/mushroom/craterellus_cornucopioides" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Craterellus cornucopioides</em></span></a> / <em>Mustatorvisieni</em>)</h2>
 <strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible - "Black Gold")</strong>
 
-<p><img src="../images/craterellus_cornucopioides.jpg" alt="Craterellus cornucopioides - Black Trumpet" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Jet-black to dark grey hollow trumpet</em></p>
+<figure class="reader-figure"><img src="../images/craterellus_cornucopioides.jpg" alt="Craterellus cornucopioides - Black Trumpet" loading="lazy"><figcaption>Craterellus cornucopioides - Black Trumpet</figcaption></figure>
+<em>(c) Scientific field observation - Jet-black to dark grey hollow trumpet</em>
 
 <h3>Identification Checklist</h3>
 <ul>
@@ -420,12 +523,14 @@ Because Funnel Chanterelles grow hidden deep inside damp moss cushions where <em
 
 <hr>
 
-<h2>5. King Bolete / Porcini (<em>Boletus edulis</em> & <em>Boletus pinophilus</em> / <em>Herkkutatti</em> & <em>Männynherkkutatti</em>)</h2>
+<h2>5. King Bolete / Porcini (<a href="../index.html#/mushroom/boletus_edulis" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Boletus edulis</em></span></a> & <a href="../index.html#/mushroom/boletus_pinophilus" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Boletus pinophilus</em></span></a> / <em>Herkkutatti</em> & <em>Männynherkkutatti</em>)</h2>
 <strong>Finnish Rating</strong>: <code>***</code> <strong>Erinomainen ruokasieni (Choice Edible)</strong>
 
-<p><img src="../images/boletus_edulis.jpg" alt="Boletus edulis - King Bolete" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Bun-brown cap, white-to-olive spongy pores, club-shaped net-veined stem</em></p>
+<figure class="reader-figure"><img src="../images/boletus_edulis.jpg" alt="Boletus edulis - King Bolete" loading="lazy"><figcaption>Boletus edulis - King Bolete</figcaption></figure>
+<em>(c) Scientific field observation - Bun-brown cap, white-to-olive spongy pores, club-shaped net-veined stem</em>
 
-<p><img src="../images/boletus_pinophilus.jpg" alt="Boletus pinophilus - Pine Bolete" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Deep mahogany reddish cap under Scots pine</em></p>
+<figure class="reader-figure"><img src="../images/boletus_pinophilus.jpg" alt="Boletus pinophilus - Pine Bolete" loading="lazy"><figcaption>Boletus pinophilus - Pine Bolete</figcaption></figure>
+<em>(c) Scientific field observation - Deep mahogany reddish cap under Scots pine</em>
 
 <h3>Identification Checklist</h3>
 <ul>
@@ -434,7 +539,7 @@ Because Funnel Chanterelles grow hidden deep inside damp moss cushions where <em
 </ul>
   - <strong>White when young</strong> (firm like butter),
   - Turning <strong>yellowish-green to olive-green</strong> in maturity.
-  - <strong>Never red or pink</strong> in <em>Boletus edulis</em>.
+  - <strong>Never red or pink</strong> in <a href="../index.html#/mushroom/boletus_edulis" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Boletus edulis</em></span></a>.
 <ul>
   <li><strong>Stem</strong>: Robust, swollen, club-shaped or barrel-shaped. Covered with a <strong>fine white raised net pattern (<em>verkkokuvio</em>)</strong> near the top of the stem.</li>
   <li><strong>Flesh</strong>: Pure white, firm, solid. <strong>DOES NOT TURN BLUE OR BLACK WHEN CUT</strong>.</li>
@@ -450,10 +555,11 @@ Because Funnel Chanterelles grow hidden deep inside damp moss cushions where <em
 
 <hr>
 
-<h3>Lookalike Check: Bitter Bolete (<em>Tylopilus felleus</em> / <em>Sappitatti</em>)</h3>
+<h3>Lookalike Check: Bitter Bolete (<a href="../index.html#/mushroom/tylopilus_felleus" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>Tylopilus felleus</em></span></a> / <em>Sappitatti</em>)</h3>
 <strong>Status</strong>: <code>O</code> <strong>Inedible due to extreme, tongue-numbing bitterness (Not deadly toxic, but ruins an entire stew).</strong>
 
-<p><img src="../images/tylopilus_felleus.jpg" alt="Tylopilus felleus - Bitter Bolete" style="max-width:100%; border-radius:8px; margin:1rem 0;"><br><em>(c) Scientific field observation - Distinctive coarse dark-brown network on stem and pinkish pore tint</em></p>
+<figure class="reader-figure"><img src="../images/tylopilus_felleus.jpg" alt="Tylopilus felleus - Bitter Bolete" loading="lazy"><figcaption>Tylopilus felleus - Bitter Bolete</figcaption></figure>
+<em>(c) Scientific field observation - Distinctive coarse dark-brown network on stem and pinkish pore tint</em>
 
 <div class="table-container"><table><thead><tr><th>Feature</th><th>King Bolete (<em>Herkkutatti</em>)</th><th>Bitter Bolete (<em>Sappitatti</em>)</th></tr></thead><tbody><tr><td><strong>Pores (<em>Pillit</em>)</strong></td><td>Pure white when young, turning <strong>yellowish-green / olive</strong></td><td>White when young, turning <strong>dirty pink / brownish-pink</strong></td></tr><tr><td><strong>Stem Netting</strong></td><td><strong>Delicate white network</strong> on pale brownish background</td><td><strong>Coarse, dark brown, prominent raised netting</strong> on stem</td></tr><tr><td><strong>The Taste Test</strong></td><td>Touch a tiny piece of raw cap to the tip of your tongue: <strong>mild and nutty</strong></td><td>Touch a tiny piece to your tongue: <strong>violently bitter within 5 seconds</strong> (spit it out)</td></tr></tbody></table></div>
       </div>
@@ -477,6 +583,7 @@ Because Funnel Chanterelles grow hidden deep inside damp moss cushions where <em
     <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
     <p style="margin-top:0.5rem;">
       <a href="../index.html" style="color:#a7f3d0;">Home Portal</a> • 
+      <a href="../index.html#/chapter/05" style="color:#a7f3d0;">Live Chapter 05</a> • 
       <a href="https://powerpig99.github.io/not-a-toe/" style="color:#a7f3d0;" target="_blank" rel="noopener">Not a ToE Blog</a> • 
       <a href="https://powerpig99.github.io/hunting-in-finland/" style="color:#a7f3d0;" target="_blank" rel="noopener">Hunting in Finland</a> • 
       <a href="https://github.com/powerpig99/helsinki-mushroom-guide" style="color:#a7f3d0;" target="_blank" rel="noopener">GitHub</a>

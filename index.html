@@ -40,10 +40,10 @@
       </p>
 
       <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.85rem;">
-        <a id="header-link-handbook" href="overview.html" class="emergency-btn" style="background: rgba(16, 185, 129, 0.2); color: #a7f3d0; border: 1px solid #10b981; font-weight: 600; text-decoration: none;">
+        <a id="header-link-handbook" href="#/handbook" class="emergency-btn" style="background: rgba(16, 185, 129, 0.2); color: #a7f3d0; border: 1px solid #10b981; font-weight: 600; text-decoration: none;">
           📖 Read 9-Chapter Web Handbook Online →
         </a>
-        <a id="header-link-species" href="docs/08_expanded_edible_species_index.html" class="emergency-btn" style="background: rgba(245, 158, 11, 0.2); color: #fde68a; border: 1px solid #f59e0b; font-weight: 600; text-decoration: none;">
+        <a id="header-link-species" href="#/chapter/08" class="emergency-btn" style="background: rgba(245, 158, 11, 0.2); color: #fde68a; border: 1px solid #f59e0b; font-weight: 600; text-decoration: none;">
           📋 50+ Edible Species Master Index →
         </a>
       </div>
@@ -161,13 +161,34 @@
         </div>
       </section>
 
-      <!-- TAB 6: Field Handbook & Complete Guides (9 Chapters) -->
+      <!-- TAB 6: Live Field Handbook & Complete Interactive Monographs (9 Chapters) -->
       <section id="tab-handbook" style="display: none;">
-        <div id="handbook-banner" style="margin-bottom: 1.5rem;">
-          <!-- Rendered reactively by JavaScript -->
+        <!-- Horizontal Pill Bar for Live Chapter Quick-Switching -->
+        <div id="handbook-nav-bar" class="handbook-nav-bar" aria-label="Handbook Chapter Navigation">
+          <!-- Rendered dynamically by renderHandbookNav() in app.js -->
         </div>
-        <div id="handbook-container" class="spots-grid">
-          <!-- Rendered reactively by JavaScript -->
+
+        <!-- Subview 1: Overview Grid of All 9 Chapters -->
+        <div id="handbook-overview-view">
+          <div id="handbook-banner" style="margin-bottom: 1.5rem;">
+            <!-- Rendered reactively by JavaScript -->
+          </div>
+          <div id="handbook-container" class="spots-grid">
+            <!-- Rendered reactively by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Subview 2: Live Chapter Interactive Reader -->
+        <div id="handbook-reader-view" class="live-reader-container" style="display: none;">
+          <div id="live-reader-header" class="live-reader-header">
+            <!-- Rendered reactively by JavaScript -->
+          </div>
+          <article id="live-reader-body" class="live-reader-body">
+            <!-- Injected dynamically from HANDBOOK_DATA -->
+          </article>
+          <div id="live-reader-pager" class="live-reader-pager">
+            <!-- Rendered reactively by JavaScript -->
+          </div>
         </div>
       </section>
     </div>
@@ -219,8 +240,9 @@
     </div>
   </div>
 
-  <!-- Scripts: i18n database loaded first, followed by reactive controller -->
-  <script src="i18n.js?v=20260911-1035"></script>
-  <script src="app.js?v=20260911-1035"></script>
+  <!-- Scripts: handbook data & i18n database loaded first, followed by reactive controller -->
+  <script src="handbook_data.js?v=20260913-2330"></script>
+  <script src="i18n.js?v=20260913-2330"></script>
+  <script src="app.js?v=20260913-2330"></script>
 </body>
 </html>
