@@ -407,14 +407,29 @@ function applyLanguage(lang) {
   document.getElementById("btn-call-poison").textContent = t.callPoison;
   document.getElementById("btn-call-112").textContent = t.call112;
 
-  // Tabs
-  document.getElementById("tab-btn-catalog").textContent = t.tabCatalog;
-  document.getElementById("tab-btn-lookalikes").textContent = t.tabLookalikes;
-  document.getElementById("tab-btn-cooking").textContent = t.tabCooking;
-  document.getElementById("tab-btn-spots").textContent = t.tabSpots;
-  document.getElementById("tab-btn-safety").textContent = t.tabSafety;
-  const tabBtnHandbook = document.getElementById("tab-btn-handbook");
-  if (tabBtnHandbook) tabBtnHandbook.textContent = t.tabHandbook;
+  // Tabs (6 Canonical Integrated Sections)
+  const tabBtnCatalog = document.getElementById("tab-btn-catalog");
+  if (tabBtnCatalog) tabBtnCatalog.textContent = t.tabCatalog;
+  const tabBtnLookalikes = document.getElementById("tab-btn-lookalikes");
+  if (tabBtnLookalikes) tabBtnLookalikes.textContent = t.tabLookalikes;
+  const tabBtnCooking = document.getElementById("tab-btn-cooking");
+  if (tabBtnCooking) tabBtnCooking.textContent = t.tabCooking;
+  const tabBtnHabitats = document.getElementById("tab-btn-habitats");
+  if (tabBtnHabitats) tabBtnHabitats.textContent = t.tabHabitats;
+  const tabBtnSpots = document.getElementById("tab-btn-spots");
+  if (tabBtnSpots) tabBtnSpots.textContent = t.tabSpots;
+  const tabBtnSafety = document.getElementById("tab-btn-safety");
+  if (tabBtnSafety) tabBtnSafety.textContent = t.tabSafety;
+
+  // View Mode Switcher Labels (Tab 1: Species & Master Index)
+  const labelGrid = document.getElementById("label-view-grid");
+  if (labelGrid && t.labelViewGrid) labelGrid.textContent = t.labelViewGrid;
+  const labelSafe5 = document.getElementById("label-view-safe5");
+  if (labelSafe5 && t.labelViewSafe5) labelSafe5.textContent = t.labelViewSafe5;
+  const labelInter = document.getElementById("label-view-intermediate");
+  if (labelInter && t.labelViewIntermediate) labelInter.textContent = t.labelViewIntermediate;
+  const labelMaster = document.getElementById("label-view-master");
+  if (labelMaster && t.labelViewMaster) labelMaster.textContent = t.labelViewMaster;
 
   // Header quick links
   const headerLinkHandbook = document.getElementById("header-link-handbook");
@@ -469,13 +484,13 @@ function applyLanguage(lang) {
   document.getElementById("footer-note").textContent = t.footerNote;
   document.getElementById("footer-disclaimer").textContent = t.footerDisclaimer;
 
-  // Render Dynamic Sections
+  // Render Dynamic Sections (6 Canonical Integrated Sections)
   renderCatalog();
   renderLookalikes();
   renderCookingGuide();
+  renderHabitats();
   renderSpots();
   renderSafety();
-  renderHandbook();
 
   // If currently viewing a mushroom detail page, re-render it in the new language
   if (currentMushroomId) {
@@ -504,6 +519,29 @@ function normalizeChapterId(chId) {
   return clean;
 }
 
+let currentCatalogViewMode = "grid";
+
+function getHandbookChapter(chId) {
+  const chapters = (window.HANDBOOK_DATA && HANDBOOK_DATA.chapters) ? HANDBOOK_DATA.chapters : I18N.handbookChapters;
+  if (!chapters) return null;
+  return chapters.find(c => c.id === chId) || null;
+}
+
+function renderSpeciesChipsForChapter(ch, lang, t) {
+  if (!ch || !ch.targetSpecies || ch.targetSpecies.length === 0) return "";
+  return `
+    <div class="live-reader-species-strip">
+      <strong style="color: #1e3a2b;">${t.handbookTargetSpecies || "Featured Species in this Section:"}</strong>
+      ${ch.targetSpecies.map(spId => {
+        const sp = I18N.species.find(s => s.id === spId);
+        if (!sp) return "";
+        const spName = sp.names[lang]?.primary || sp.latinName;
+        return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">🍄 ${spName}</a>`;
+      }).join("")}
+    </div>
+  `;
+}
+
 function handleRoute() {
   const hash = window.location.hash || "#/";
   if (hash.startsWith("#/mushroom/")) {
@@ -511,17 +549,16 @@ function handleRoute() {
     showMushroomDetail(id);
   } else if (hash.startsWith("#/chapter/")) {
     const rawId = hash.replace("#/chapter/", "").trim();
-    showMainCatalog();
-    showLiveChapter(rawId);
+    navigateToChapter(rawId);
   } else {
     showMainCatalog();
     if (hash === "#/lookalikes") switchTabDirectly("lookalikes");
     else if (hash === "#/cooking") switchTabDirectly("cooking");
+    else if (hash === "#/habitats") switchTabDirectly("habitats");
     else if (hash === "#/spots") switchTabDirectly("spots");
     else if (hash === "#/safety") switchTabDirectly("safety");
     else if (hash === "#/handbook") {
-      switchTabDirectly("handbook");
-      showHandbookOverview();
+      navigateToHandbook();
     } else {
       switchTabDirectly("catalog");
     }
@@ -534,22 +571,20 @@ function switchTabDirectly(tabKey) {
     b.classList.toggle("active", b.dataset.tab === tabKey);
   });
   currentTab = tabKey;
-  document.getElementById("tab-catalog").style.display = tabKey === "catalog" ? "block" : "none";
-  document.getElementById("tab-lookalikes").style.display = tabKey === "lookalikes" ? "block" : "none";
-  document.getElementById("tab-cooking").style.display = tabKey === "cooking" ? "block" : "none";
-  document.getElementById("tab-spots").style.display = tabKey === "spots" ? "block" : "none";
-  document.getElementById("tab-safety").style.display = tabKey === "safety" ? "block" : "none";
-  const tabHandbook = document.getElementById("tab-handbook");
-  if (tabHandbook) tabHandbook.style.display = tabKey === "handbook" ? "block" : "none";
   
-  if (tabKey === "handbook") {
-    const hash = window.location.hash || "";
-    if (hash.startsWith("#/chapter/")) {
-      showLiveChapter(hash.replace("#/chapter/", "").trim());
-    } else {
-      showHandbookOverview();
-    }
-  }
+  const tabCatalog = document.getElementById("tab-catalog");
+  const tabLookalikes = document.getElementById("tab-lookalikes");
+  const tabCooking = document.getElementById("tab-cooking");
+  const tabHabitats = document.getElementById("tab-habitats");
+  const tabSpots = document.getElementById("tab-spots");
+  const tabSafety = document.getElementById("tab-safety");
+
+  if (tabCatalog) tabCatalog.style.display = tabKey === "catalog" ? "block" : "none";
+  if (tabLookalikes) tabLookalikes.style.display = tabKey === "lookalikes" ? "block" : "none";
+  if (tabCooking) tabCooking.style.display = tabKey === "cooking" ? "block" : "none";
+  if (tabHabitats) tabHabitats.style.display = tabKey === "habitats" ? "block" : "none";
+  if (tabSpots) tabSpots.style.display = tabKey === "spots" ? "block" : "none";
+  if (tabSafety) tabSafety.style.display = tabKey === "safety" ? "block" : "none";
 }
 
 function navigateToMushroom(id) {
@@ -559,20 +594,129 @@ window.navigateToMushroom = navigateToMushroom;
 
 function navigateToCatalog() {
   window.location.hash = "#/catalog";
+  switchTabDirectly("catalog");
+  switchCatalogViewMode("grid");
 }
 window.navigateToCatalog = navigateToCatalog;
 
 function navigateToChapter(chId) {
   const clean = normalizeChapterId(chId);
-  lastActiveChapterId = clean;
-  window.location.hash = "#/chapter/" + clean;
+  showMainCatalog();
+  if (clean === "01") {
+    window.location.hash = "#/safety";
+    switchTabDirectly("safety");
+  } else if (clean === "02") {
+    window.location.hash = "#/spots";
+    switchTabDirectly("spots");
+  } else if (clean === "03") {
+    window.location.hash = "#/habitats";
+    switchTabDirectly("habitats");
+  } else if (clean === "04") {
+    window.location.hash = "#/lookalikes";
+    switchTabDirectly("lookalikes");
+  } else if (clean === "05") {
+    window.location.hash = "#/catalog";
+    switchTabDirectly("catalog");
+    switchCatalogViewMode("safe5");
+  } else if (clean === "06") {
+    window.location.hash = "#/catalog";
+    switchTabDirectly("catalog");
+    switchCatalogViewMode("intermediate");
+  } else if (clean === "07" || clean === "zh") {
+    window.location.hash = "#/cooking";
+    switchTabDirectly("cooking");
+  } else if (clean === "08") {
+    window.location.hash = "#/catalog";
+    switchTabDirectly("catalog");
+    switchCatalogViewMode("master");
+  } else {
+    window.location.hash = "#/catalog";
+    switchTabDirectly("catalog");
+    switchCatalogViewMode("grid");
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 window.navigateToChapter = navigateToChapter;
 
 function navigateToHandbook() {
-  window.location.hash = "#/handbook";
+  window.location.hash = "#/catalog";
+  switchTabDirectly("catalog");
 }
 window.navigateToHandbook = navigateToHandbook;
+
+function switchCatalogViewMode(mode, btn) {
+  currentCatalogViewMode = mode || "grid";
+  
+  const viewModeBtns = document.querySelectorAll(".view-mode-btn");
+  viewModeBtns.forEach(b => {
+    b.classList.toggle("active", b.dataset.mode === currentCatalogViewMode);
+  });
+
+  const controlsPanel = document.getElementById("catalog-controls-panel");
+  const mushroomGrid = document.getElementById("mushroom-grid");
+  const monographContainer = document.getElementById("catalog-monograph-container");
+
+  if (currentCatalogViewMode === "grid") {
+    if (controlsPanel) controlsPanel.style.display = "block";
+    if (mushroomGrid) mushroomGrid.style.display = "grid";
+    if (monographContainer) monographContainer.style.display = "none";
+  } else {
+    if (controlsPanel) controlsPanel.style.display = "none";
+    if (mushroomGrid) mushroomGrid.style.display = "none";
+    if (monographContainer) {
+      monographContainer.style.display = "block";
+      renderCatalogMonograph(currentCatalogViewMode);
+    }
+  }
+}
+window.switchCatalogViewMode = switchCatalogViewMode;
+
+function renderCatalogMonograph(mode) {
+  const container = document.getElementById("catalog-monograph-container");
+  if (!container) return;
+
+  const lang = I18N.currentLang;
+  const lang2 = I18N.secondaryLang;
+  const t = I18N.ui[lang] || I18N.ui.en;
+
+  let chId = "05";
+  if (mode === "intermediate") chId = "06";
+  else if (mode === "master") chId = "08";
+
+  const ch = getHandbookChapter(chId);
+  if (!ch) return;
+
+  container.innerHTML = `
+    <div class="integrated-monograph-header">
+      <div class="integrated-monograph-top-bar">
+        <button class="btn-back-to-grid" onclick="switchCatalogViewMode('grid')">
+          ${t.btnBackToGrid || "← Return to Interactive Field Grid (63)"}
+        </button>
+        <div class="reader-meta-right">
+          <span class="reader-badge">${ch.badge[lang]}</span>
+          <span class="reader-readtime">⏱️ ${ch.readTime ? ch.readTime[lang] : ""}</span>
+        </div>
+      </div>
+      <h1 class="integrated-monograph-title">${ch.icon} ${ch.chapterNum}: ${ch.title[lang]}</h1>
+      ${lang2 ? `<div class="integrated-monograph-subtitle">${ch.title[lang2]}</div>` : ""}
+      <p class="integrated-monograph-desc">${ch.desc[lang]}</p>
+      ${renderSpeciesChipsForChapter(ch, lang, t)}
+    </div>
+
+    <article class="live-reader-body integrated-monograph-body">
+      ${ch.html || `<p>${ch.desc[lang]}</p>`}
+    </article>
+
+    <div class="integrated-monograph-footer">
+      <button class="btn-back-to-grid" onclick="switchCatalogViewMode('grid'); window.scrollTo({ top: 0, behavior: 'smooth' });">
+        ${t.btnBackToGrid || "← Return to Interactive Field Grid (63)"}
+      </button>
+      <button class="reader-pager-btn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+        ${t.handbookTopBtn || "↑ Top"}
+      </button>
+    </div>
+  `;
+}
 
 function showMushroomDetail(id) {
   currentMushroomId = id;
@@ -1340,20 +1484,27 @@ function renderLookalikes() {
 
   const lang = I18N.currentLang;
   const lang2 = I18N.secondaryLang;
-  const t = I18N.ui[lang];
+  const t = I18N.ui[lang] || I18N.ui.en;
 
-  const portalBannerHtml = `
-    <div class="tab-handbook-portal" style="margin-bottom: 2rem;">
-      <div class="portal-info">
-        <span class="portal-tag">☠️ Field Handbook • Chapter 04</span>
-        <h3 class="portal-title">${t.portalLookalikesTitle || "☠️ In-Depth Lookalikes & Deadly Toxins Manual in Chapter 04"}</h3>
-        <p class="portal-desc">${t.portalLookalikesDesc || "Learn the irreversible cellular damage mechanisms, delayed incubation periods (up to 17 days), and why boiling does not neutralize Amanita or Cortinarius toxins."}</p>
+  const ch04 = getHandbookChapter("04");
+
+  const chapterHeaderHtml = ch04 ? `
+    <div class="integrated-monograph-header danger-theme">
+      <div class="integrated-monograph-top-bar">
+        <div class="reader-meta-right">
+          <span class="reader-badge danger">${ch04.badge[lang]}</span>
+          <span class="reader-readtime">⏱️ ${ch04.readTime ? ch04.readTime[lang] : ""}</span>
+        </div>
       </div>
-      <a href="#/chapter/04" onclick="navigateToChapter('04'); return false;" class="portal-btn danger">
-        ${t.portalLookalikesBtn || "Read Chapter 04 Survival Manual →"}
-      </a>
+      <h1 class="integrated-monograph-title" style="color: #991b1b;">${ch04.icon} ${ch04.chapterNum}: ${ch04.title[lang]}</h1>
+      ${lang2 ? `<div class="integrated-monograph-subtitle">${ch04.title[lang2]}</div>` : ""}
+      <p class="integrated-monograph-desc">${ch04.desc[lang]}</p>
+      ${renderSpeciesChipsForChapter(ch04, lang, t)}
     </div>
-  `;
+    <article class="live-reader-body integrated-monograph-body" style="margin-bottom: 2.5rem;">
+      ${ch04.html || ""}
+    </article>
+  ` : "";
 
   const pairs = [
     {
@@ -1460,7 +1611,18 @@ function renderLookalikes() {
     }
   ];
 
-  container.innerHTML = portalBannerHtml + pairs.map(pair => `
+  const comparatorsHeaderHtml = `
+    <div class="section-divider-header" style="margin: 2rem 0 1.25rem;">
+      <h2 style="font-size: 1.45rem; font-weight: 800; color: #1e293b; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+        <span>⚖️</span> <span>${t.tabLookalikes || "Side-by-Side Visual Lookalike Comparators"}</span>
+      </h2>
+      <p style="font-size: 0.92rem; color: #64748b;">
+        ${lang === "zh" ? "微距形态特征、分叉假褶对比与致命陷阱高精度显微鉴别" : (lang === "fi" ? "Tarkat mikroskooppiset ja morfologiset erot rinnakkain" : "Direct side-by-side morphological feature breakdowns and lethal pitfalls")}
+      </p>
+    </div>
+  `;
+
+  container.innerHTML = chapterHeaderHtml + comparatorsHeaderHtml + pairs.map(pair => `
     <div class="comparator-card">
       <div class="comparator-header">
         <div>
@@ -1593,25 +1755,44 @@ function renderCookingGuide() {
   const lang2 = I18N.secondaryLang;
   const guide = I18N.cookingGuide[lang];
   const guide2 = lang2 ? I18N.cookingGuide[lang2] : null;
-  const t = I18N.ui[lang];
+  const t = I18N.ui[lang] || I18N.ui.en;
 
-  const portalBannerHtml = `
-    <div class="tab-handbook-portal">
-      <div class="portal-info">
-        <span class="portal-tag">🍳 Field Handbook • Chapter 07 & Chinese Culinary Guide</span>
-        <h3 class="portal-title">${t.portalCookingTitle || "Nordic Preservation Science & Chinese Wild Mushroom Mastery"}</h3>
-        <p class="portal-desc">${t.portalCookingDesc || "Dehydration curves, milkcap salt-curing (suolasienet), authentic Finnish pies & soups, plus high-temperature Chinese wok-searing and umami broths."}</p>
+  const ch07 = getHandbookChapter("07");
+  const chZH = getHandbookChapter("zh");
+
+  const ch07Html = ch07 ? `
+    <div class="integrated-monograph-header">
+      <div class="integrated-monograph-top-bar">
+        <div class="reader-meta-right">
+          <span class="reader-badge">${ch07.badge[lang]}</span>
+          <span class="reader-readtime">⏱️ ${ch07.readTime ? ch07.readTime[lang] : ""}</span>
+        </div>
       </div>
-      <div class="portal-actions">
-        <a href="#/chapter/07" onclick="navigateToChapter('07'); return false;" class="portal-btn">
-          ${t.portalCookingBtn1 || "Read Chapter 07 (Preservation & Nordic Recipes) →"}
-        </a>
-        <a href="#/chapter/zh" onclick="navigateToChapter('zh'); return false;" class="portal-btn chinese">
-          ${t.portalCookingBtn2 || "Read Special Guide (Chinese Culinary) →"}
-        </a>
-      </div>
+      <h1 class="integrated-monograph-title">${ch07.icon} ${ch07.chapterNum}: ${ch07.title[lang]}</h1>
+      ${lang2 ? `<div class="integrated-monograph-subtitle">${ch07.title[lang2]}</div>` : ""}
+      <p class="integrated-monograph-desc">${ch07.desc[lang]}</p>
+      ${renderSpeciesChipsForChapter(ch07, lang, t)}
     </div>
-  `;
+    <article class="live-reader-body integrated-monograph-body" style="margin-bottom: 2.5rem;">
+      ${ch07.html || ""}
+    </article>
+  ` : "";
+
+  const chZHHtml = (chZH && (lang === "zh" || lang2 === "zh")) ? `
+    <div class="integrated-monograph-header" style="background: #fffbf0; border-left: 4px solid #d97706; margin-bottom: 2.5rem;">
+      <div class="integrated-monograph-top-bar">
+        <span class="reader-badge" style="background: #fef3c7; color: #92400e;">${chZH.badge[lang]}</span>
+        <span class="reader-readtime">⏱️ ${chZH.readTime ? chZH.readTime[lang] : ""}</span>
+      </div>
+      <h2 class="integrated-monograph-title" style="color: #92400e; font-size: 1.4rem;">${chZH.icon} ${chZH.title[lang]}</h2>
+      ${lang2 ? `<div class="integrated-monograph-subtitle">${chZH.title[lang2]}</div>` : ""}
+      <p class="integrated-monograph-desc">${chZH.desc[lang]}</p>
+      ${renderSpeciesChipsForChapter(chZH, lang, t)}
+      <article class="live-reader-body integrated-monograph-body" style="margin-top: 1.25rem;">
+        ${chZH.html || ""}
+      </article>
+    </div>
+  ` : "";
 
   const videoGallerySectionHtml = `
     <div class="cooking-gallery-section">
@@ -1642,8 +1823,8 @@ function renderCookingGuide() {
     </div>
   `;
 
-  container.innerHTML = portalBannerHtml + `
-    <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
+  container.innerHTML = ch07Html + chZHHtml + `
+    <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
       <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
         ${guide.title}
         ${guide2 ? `<span style="display:block; font-size: 1.05rem; color:#64748b; margin-top:0.25rem; font-weight:400;">${guide2.title}</span>` : ""}
@@ -1737,7 +1918,41 @@ function renderCookingGuide() {
 }
 
 // -------------------------------------------------------------
-// HSL Transit Spots
+// Forest Habitats, Trees & Seasons (Chapter 03 Integration)
+// -------------------------------------------------------------
+function renderHabitats() {
+  const container = document.getElementById("habitats-container");
+  if (!container) return;
+
+  const lang = I18N.currentLang;
+  const lang2 = I18N.secondaryLang;
+  const t = I18N.ui[lang] || I18N.ui.en;
+
+  const ch03 = getHandbookChapter("03");
+
+  const ch03Html = ch03 ? `
+    <div class="integrated-monograph-header">
+      <div class="integrated-monograph-top-bar">
+        <div class="reader-meta-right">
+          <span class="reader-badge">${ch03.badge[lang]}</span>
+          <span class="reader-readtime">⏱️ ${ch03.readTime ? ch03.readTime[lang] : ""}</span>
+        </div>
+      </div>
+      <h1 class="integrated-monograph-title">${ch03.icon} ${ch03.chapterNum}: ${ch03.title[lang]}</h1>
+      ${lang2 ? `<div class="integrated-monograph-subtitle">${ch03.title[lang2]}</div>` : ""}
+      <p class="integrated-monograph-desc">${ch03.desc[lang]}</p>
+      ${renderSpeciesChipsForChapter(ch03, lang, t)}
+    </div>
+    <article class="live-reader-body integrated-monograph-body">
+      ${ch03.html || ""}
+    </article>
+  ` : "";
+
+  container.innerHTML = ch03Html;
+}
+
+// -------------------------------------------------------------
+// HSL Transit Spots & Hidden Trails (Chapter 02 Integration)
 // -------------------------------------------------------------
 function renderSpots() {
   const container = document.getElementById("spots-container");
@@ -1747,20 +1962,36 @@ function renderSpots() {
   const lang2 = I18N.secondaryLang;
   const t = I18N.ui[lang] || I18N.ui.en;
 
-  const portalBannerHtml = `
-    <div class="tab-handbook-portal" style="grid-column: 1 / -1; margin-bottom: 0.5rem;">
-      <div class="portal-info">
-        <span class="portal-tag">📖 Field Handbook • Chapter 02</span>
-        <h3 class="portal-title">${t.portalSpotsTitle || "Complete Transit Guide & 5 Hidden Gems in Handbook Chapter 02"}</h3>
-        <p class="portal-desc">${t.portalSpotsDesc || "Explore in-depth bus timetables, secret trailhead parking, and low-pressure wilderness valleys across Meiko, Tremanskärr, Northern Sipoonkorpi, Salmi, and Vestra."}</p>
+  const ch02 = getHandbookChapter("02");
+
+  const ch02Html = ch02 ? `
+    <div class="integrated-monograph-header" style="grid-column: 1 / -1; margin-bottom: 1.5rem;">
+      <div class="integrated-monograph-top-bar">
+        <div class="reader-meta-right">
+          <span class="reader-badge">${ch02.badge[lang]}</span>
+          <span class="reader-readtime">⏱️ ${ch02.readTime ? ch02.readTime[lang] : ""}</span>
+        </div>
       </div>
-      <a href="#/chapter/02" onclick="navigateToChapter('02'); return false;" class="portal-btn">
-        ${t.portalSpotsBtn || "Read Live Chapter 02 →"}
-      </a>
+      <h1 class="integrated-monograph-title">${ch02.icon} ${ch02.chapterNum}: ${ch02.title[lang]}</h1>
+      ${lang2 ? `<div class="integrated-monograph-subtitle">${ch02.title[lang2]}</div>` : ""}
+      <p class="integrated-monograph-desc">${ch02.desc[lang]}</p>
+      ${renderSpeciesChipsForChapter(ch02, lang, t)}
+      <article class="live-reader-body integrated-monograph-body" style="margin-top: 1.5rem;">
+        ${ch02.html || ""}
+      </article>
+    </div>
+  ` : "";
+
+  const spotsGridHeader = `
+    <div style="grid-column: 1 / -1; margin: 1.5rem 0 1rem;">
+      <h3 style="font-size: 1.4rem; font-weight: 800; color: #1e3a2b; display: flex; align-items: center; gap: 0.5rem;">
+        <span>🚌</span> <span>${t.tabSpots || "HSL Transit Trailheads & Direct Navigation"}</span>
+      </h3>
+      <p style="font-size: 0.9rem; color: #64748b;">${lang === "zh" ? "赫尔辛基大区6大主力直达采摘点，含公交班次、起终点定位与Google Maps一键导航" : (lang === "fi" ? "Pääkaupunkiseudun 6 parasta sienireittiä HSL-yhteyksillä ja suoralla Google Maps -navigoinnilla" : "6 prime foraging trailheads with HSL routes, starting points, and live Google Maps directions")}</p>
     </div>
   `;
 
-  container.innerHTML = portalBannerHtml + I18N.spots.map(s => `
+  container.innerHTML = ch02Html + spotsGridHeader + I18N.spots.map(s => `
     <div class="spot-card">
       <div class="spot-header">
         <div>
@@ -1826,27 +2057,37 @@ function renderSafety() {
   const lang = I18N.currentLang;
   const lang2 = I18N.secondaryLang;
   const sg = I18N.safetyGuidelines;
-
   const t = I18N.ui[lang] || I18N.ui.en;
-  const portalBannerHtml = `
-    <div class="tab-handbook-portal" style="margin-bottom: 2rem;">
-      <div class="portal-info">
-        <span class="portal-tag">🛡️ Field Handbook • Chapters 01 & 04</span>
-        <h3 class="portal-title">${t.portalSafetyTitle || "Forest Safety, Legal Rights & Deadly Species Survival Manual"}</h3>
-        <p class="portal-desc">${t.portalSafetyDesc || "Master Everyman's Right in nature reserves, tick protection protocols, and zero-tolerance fatal toxin mechanisms (Amatoxins, Orellanine, Gyromitrin)."}</p>
+
+  const ch01 = getHandbookChapter("01");
+
+  const ch01Html = ch01 ? `
+    <div class="integrated-monograph-header">
+      <div class="integrated-monograph-top-bar">
+        <div class="reader-meta-right">
+          <span class="reader-badge">${ch01.badge[lang]}</span>
+          <span class="reader-readtime">⏱️ ${ch01.readTime ? ch01.readTime[lang] : ""}</span>
+        </div>
       </div>
-      <div class="portal-actions">
-        <a href="#/chapter/01" onclick="navigateToChapter('01'); return false;" class="portal-btn">
-          ${t.portalSafetyBtn1 || "Read Chapter 01 (Rights & Safety) →"}
-        </a>
-        <a href="#/chapter/04" onclick="navigateToChapter('04'); return false;" class="portal-btn danger">
-          ${t.portalSafetyBtn2 || "Read Chapter 04 (Deadly Species) →"}
-        </a>
-      </div>
+      <h1 class="integrated-monograph-title">${ch01.icon} ${ch01.chapterNum}: ${ch01.title[lang]}</h1>
+      ${lang2 ? `<div class="integrated-monograph-subtitle">${ch01.title[lang2]}</div>` : ""}
+      <p class="integrated-monograph-desc">${ch01.desc[lang]}</p>
+      ${renderSpeciesChipsForChapter(ch01, lang, t)}
+    </div>
+    <article class="live-reader-body integrated-monograph-body" style="margin-bottom: 2rem;">
+      ${ch01.html || ""}
+    </article>
+  ` : "";
+
+  const guidelinesHeader = `
+    <div style="margin: 1.5rem 0 1rem;">
+      <h3 style="font-size: 1.4rem; font-weight: 800; color: #1e3a2b; display: flex; align-items: center; gap: 0.5rem;">
+        <span>🛡️</span> <span>${t.tabSafety || "Everyman's Right & Forest Safety Guidelines"}</span>
+      </h3>
     </div>
   `;
 
-  container.innerHTML = portalBannerHtml + `
+  container.innerHTML = ch01Html + guidelinesHeader + `
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;">
       <!-- Everyman's Right -->
       <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem;">
@@ -1939,221 +2180,8 @@ function renderSafety() {
   `;
 }
 
-// -------------------------------------------------------------
-// Field Handbook & Live Interactive Reader Suite
-// -------------------------------------------------------------
-function renderHandbook() {
-  const hash = window.location.hash || "";
-  if (hash.startsWith("#/chapter/")) {
-    showLiveChapter(hash.replace("#/chapter/", "").trim());
-  } else {
-    showHandbookOverview();
-  }
-}
+// (Field handbook chapters are now natively integrated into the 6 canonical sections above)
 
-function renderHandbookNav(activeChapterId) {
-  const navBar = document.getElementById("handbook-nav-bar");
-  if (!navBar) return;
-  const lang = I18N.currentLang;
-  const t = I18N.ui[lang] || I18N.ui.en;
-
-  const chapters = (window.HANDBOOK_DATA && HANDBOOK_DATA.chapters) ? HANDBOOK_DATA.chapters : I18N.handbookChapters;
-  if (!chapters) return;
-
-  navBar.innerHTML = `
-    <button class="handbook-nav-pill ${!activeChapterId ? 'active' : ''}" onclick="navigateToHandbook()">
-      <span>📚</span>
-      <span>${t.handbookAllChapters || "All Chapters Overview"}</span>
-    </button>
-    ${chapters.map(ch => `
-      <button class="handbook-nav-pill ${activeChapterId === ch.id ? 'active' : ''}" onclick="navigateToChapter('${ch.id}')">
-        <span>${ch.icon}</span>
-        <span>${ch.chapterNum}: ${ch.title[lang]}</span>
-      </button>
-    `).join("")}
-  `;
-}
-
-function showHandbookOverview() {
-  const tabHandbook = document.getElementById("tab-handbook");
-  if (tabHandbook) tabHandbook.style.display = "block";
-  
-  const overviewView = document.getElementById("handbook-overview-view");
-  const readerView = document.getElementById("handbook-reader-view");
-  if (overviewView) overviewView.style.display = "block";
-  if (readerView) readerView.style.display = "none";
-
-  renderHandbookNav(null);
-
-  const banner = document.getElementById("handbook-banner");
-  const container = document.getElementById("handbook-container");
-  const lang = I18N.currentLang;
-  const lang2 = I18N.secondaryLang;
-  const t = I18N.ui[lang] || I18N.ui.en;
-
-  if (banner) {
-    banner.innerHTML = `
-      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow);">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem;">
-          <div style="max-width: 720px;">
-            <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: #ecfdf5; color: #047857; font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.5rem; border: 1px solid #a7f3d0;">
-              <span>🌐 Interactive Live Reader</span> • <span>9 Field Monographs & Guides</span>
-            </div>
-            <h2 style="font-size: 1.35rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.35rem;">
-              ${t.handbookTitle || "Field Handbook & Monographs"}
-            </h2>
-            <p style="font-size: 0.92rem; color: #475569; line-height: 1.55;">
-              ${t.handbookSubtitle || "Read our comprehensive field guide monographs directly inside the web app. Every species mentioned is an interactive link with 3-photo botanical galleries, seasonal calendars, and transit trailheads."}
-            </p>
-          </div>
-          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-            <a href="overview.html" target="_blank" rel="noopener noreferrer" class="emergency-btn" style="background: #1e3a2b; color: #ffffff; text-decoration: none; font-weight: 600; padding: 0.6rem 1.1rem; display: inline-flex; align-items: center; gap: 0.4rem; border-radius: 6px;">
-              📄 ${t.viewFullToc || "Static HTML Index"} →
-            </a>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  const chapters = (window.HANDBOOK_DATA && HANDBOOK_DATA.chapters) ? HANDBOOK_DATA.chapters : I18N.handbookChapters;
-  if (!container || !chapters) return;
-
-  container.innerHTML = chapters.map(ch => `
-    <div class="spot-card" style="display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;" onclick="navigateToChapter('${ch.id}')">
-      <div>
-        <div class="spot-header" style="align-items: flex-start;">
-          <div>
-            <div style="font-size: 0.78rem; font-weight: 700; color: #10b981; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
-              ${ch.chapterNum}
-            </div>
-            <h3 class="spot-title" style="font-size: 1.12rem; line-height: 1.35;">
-              ${ch.icon} ${ch.title[lang]}
-            </h3>
-            ${lang2 ? `<div style="font-size: 0.86rem; color: #64748b; margin-top: 0.25rem; font-weight: 400;">${ch.title[lang2]}</div>` : ""}
-          </div>
-          <span class="spot-zone" style="background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; white-space: nowrap;">
-            ${ch.badge[lang]}
-          </span>
-        </div>
-
-        <div style="font-size: 0.88rem; color: #334155; line-height: 1.6; margin: 0.85rem 0 1.25rem;">
-          <p>${ch.desc[lang]}</p>
-          ${lang2 ? `<p style="color: #64748b; font-size: 0.82rem; margin-top: 0.4rem;">${ch.desc[lang2]}</p>` : ""}
-        </div>
-      </div>
-
-      <div style="border-top: 1px solid #f1f5f9; padding-top: 0.85rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-        <span style="font-size: 0.8rem; color: #64748b; font-weight: 500;">⏱️ ${ch.readTime ? ch.readTime[lang] : "8 min read"}</span>
-        <div style="display: flex; gap: 0.4rem;">
-          <button class="btn-location-map" onclick="event.stopPropagation(); navigateToChapter('${ch.id}')" style="background: #10b981; color: #ffffff; border: none; padding: 0.45rem 0.95rem; font-size: 0.84rem; font-weight: 700; border-radius: 6px; cursor: pointer;">
-            📖 ${t.handbookReadInChapter || "Read Live Chapter →"}
-          </button>
-        </div>
-      </div>
-    </div>
-  `).join("");
-}
-
-function showLiveChapter(rawChId) {
-  const chId = normalizeChapterId(rawChId);
-  lastActiveChapterId = chId;
-
-  const tabHandbook = document.getElementById("tab-handbook");
-  if (tabHandbook) tabHandbook.style.display = "block";
-
-  const overviewView = document.getElementById("handbook-overview-view");
-  const readerView = document.getElementById("handbook-reader-view");
-  if (overviewView) overviewView.style.display = "none";
-  if (readerView) readerView.style.display = "block";
-
-  renderHandbookNav(chId);
-
-  const chapters = (window.HANDBOOK_DATA && HANDBOOK_DATA.chapters) ? HANDBOOK_DATA.chapters : I18N.handbookChapters;
-  if (!chapters) return;
-
-  const chIdx = chapters.findIndex(c => c.id === chId || c.slug === rawChId);
-  const ch = chIdx !== -1 ? chapters[chIdx] : chapters[0];
-  const prevCh = chIdx > 0 ? chapters[chIdx - 1] : null;
-  const nextCh = chIdx < chapters.length - 1 ? chapters[chIdx + 1] : null;
-
-  const lang = I18N.currentLang;
-  const lang2 = I18N.secondaryLang;
-  const t = I18N.ui[lang] || I18N.ui.en;
-
-  // Render Header
-  const headerEl = document.getElementById("live-reader-header");
-  if (headerEl) {
-    const featuredSpeciesHtml = (ch.targetSpecies && ch.targetSpecies.length > 0) ? `
-      <div class="live-reader-species-strip">
-        <strong style="color: #1e3a2b;">${t.handbookTargetSpecies || "Featured Species in this Chapter:"}</strong>
-        ${ch.targetSpecies.map(spId => {
-          const sp = I18N.species.find(s => s.id === spId);
-          if (!sp) return "";
-          const spName = sp.names[lang]?.primary || sp.latinName;
-          return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">🍄 ${spName}</a>`;
-        }).join("")}
-      </div>
-    ` : "";
-
-    headerEl.innerHTML = `
-      <div class="live-reader-top-meta">
-        <button class="reader-back-btn" onclick="navigateToHandbook()">
-          ${t.handbookBackToOverview || "← All Chapters"}
-        </button>
-        <div class="reader-meta-right">
-          <span class="reader-badge">${ch.badge[lang]}</span>
-          <span class="reader-readtime">⏱️ ${ch.readTime ? ch.readTime[lang] : ""}</span>
-        </div>
-      </div>
-      <h1 class="live-reader-title">${ch.icon} ${ch.chapterNum}: ${ch.title[lang]}</h1>
-      ${lang2 ? `<div class="live-reader-subtitle">${ch.title[lang2]}</div>` : ""}
-      ${featuredSpeciesHtml}
-    `;
-  }
-
-  // Inject Body
-  const bodyEl = document.getElementById("live-reader-body");
-  if (bodyEl) {
-    bodyEl.innerHTML = ch.html || `<p>${ch.desc[lang]}</p>`;
-  }
-
-  // Render Pager
-  const pagerEl = document.getElementById("live-reader-pager");
-  if (pagerEl) {
-    pagerEl.innerHTML = `
-      <div>
-        ${prevCh ? `
-          <button class="reader-pager-btn" onclick="navigateToChapter('${prevCh.id}')">
-            ← ${prevCh.icon} ${prevCh.chapterNum}
-          </button>
-        ` : `
-          <button class="reader-pager-btn" onclick="navigateToHandbook()">
-            ← ${t.handbookBackToOverview || "All Chapters"}
-          </button>
-        `}
-      </div>
-      <div>
-        <button class="reader-pager-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-          ${t.handbookTopBtn || "↑ Top"}
-        </button>
-      </div>
-      <div>
-        ${nextCh ? `
-          <button class="reader-pager-btn primary" onclick="navigateToChapter('${nextCh.id}')">
-            ${nextCh.icon} ${nextCh.chapterNum} →
-          </button>
-        ` : `
-          <button class="reader-pager-btn primary" onclick="navigateToCatalog()">
-            🍄 ${t.tabCatalog || "Species Directory"} ✓
-          </button>
-        `}
-      </div>
-    `;
-  }
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
 
 // -------------------------------------------------------------
 // Field Handbook References in Mushroom Detail

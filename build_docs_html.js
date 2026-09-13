@@ -80,6 +80,18 @@ const nameVariants = {
   'amanita muscaria': 'amanita_muscaria'
 };
 
+const chapterTargetHash = {
+  '01': '#/safety',
+  '02': '#/spots',
+  '03': '#/habitats',
+  '04': '#/lookalikes',
+  '05': '#/catalog',
+  '06': '#/catalog',
+  '07': '#/cooking',
+  '08': '#/catalog',
+  'zh': '#/cooking'
+};
+
 const chapters = [
   {
     id: "01",
@@ -432,7 +444,8 @@ function parseMarkdown(md, isLiveApp = false) {
     if (chapterMap[targetUrl]) {
       const chId = chapterMap[targetUrl];
       if (isLiveApp) {
-        return `<a href="#/chapter/${chId}" class="inline-chapter-link" onclick="if(window.navigateToChapter){window.navigateToChapter('${chId}');return false;}">${text}</a>`;
+        const hash = chapterTargetHash[chId] || `#/chapter/${chId}`;
+        return `<a href="${hash}" class="inline-chapter-link" onclick="if(window.navigateToChapter){window.navigateToChapter('${chId}');return false;}">${text}</a>`;
       } else {
         return `<a href="${targetUrl.replace(/\.md$/, '.html')}" class="inline-chapter-link">${text}</a>`;
       }
@@ -918,14 +931,14 @@ chapters.forEach((ch, idx) => {
     <div class="doc-live-banner-inner">
       <span class="banner-badge">✨ Live Interactive App</span>
       <span class="banner-text">This monograph is fully integrated into our interactive Field Handbook with 3-photo botanical galleries, transit trailheads, and species cross-linking.</span>
-      <a href="../index.html#/chapter/${ch.id}" class="banner-cta">Open in Live App →</a>
+      <a href="../index.html${chapterTargetHash[ch.id] || '#/catalog'}" class="banner-cta">Open in Live App →</a>
     </div>
   </aside>
 
   <!-- Sticky Header Bar -->
   <header class="doc-sticky-header">
     <div class="doc-nav-left">
-      <a href="../index.html#/chapter/${ch.id}" class="doc-btn-back">🍄 Live App Reader</a>
+      <a href="../index.html${chapterTargetHash[ch.id] || '#/catalog'}" class="doc-btn-back">🍄 Live App Section</a>
       <a href="../index.html#/catalog" class="doc-btn-back">🍄 63 Species Catalog</a>
       <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
       <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
@@ -948,13 +961,13 @@ chapters.forEach((ch, idx) => {
       <!-- Navigation Footer -->
       <footer class="doc-footer-nav">
         <div>
-          ${prevCh ? `<a href="${prevCh.file.replace(/\.md$/, '.html')}" class="doc-nav-btn">← ${prevCh.icon} Prev Chapter</a>` : `<a href="../index.html#/handbook" class="doc-nav-btn">← Main Portal</a>`}
+          ${prevCh ? `<a href="${prevCh.file.replace(/\.md$/, '.html')}" class="doc-nav-btn">← ${prevCh.icon} Prev Chapter</a>` : `<a href="../index.html#/catalog" class="doc-nav-btn">← Main Catalog</a>`}
         </div>
         <div>
           <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="doc-nav-btn" style="cursor:pointer;">↑ Top</button>
         </div>
         <div>
-          ${nextCh ? `<a href="${nextCh.file.replace(/\.md$/, '.html')}" class="doc-nav-btn primary">${nextCh.icon} Next Chapter →</a>` : `<a href="../index.html#/handbook" class="doc-nav-btn primary">Complete Guide ✓</a>`}
+          ${nextCh ? `<a href="${nextCh.file.replace(/\.md$/, '.html')}" class="doc-nav-btn primary">${nextCh.icon} Next Chapter →</a>` : `<a href="../index.html#/catalog" class="doc-nav-btn primary">Complete Guide ✓</a>`}
         </div>
       </footer>
     </article>
@@ -964,7 +977,7 @@ chapters.forEach((ch, idx) => {
     <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
     <p style="margin-top:0.5rem;">
       <a href="../index.html" style="color:#a7f3d0;">Home Portal</a> • 
-      <a href="../index.html#/chapter/${ch.id}" style="color:#a7f3d0;">Live Chapter ${ch.id}</a> • 
+      <a href="../index.html${chapterTargetHash[ch.id] || '#/catalog'}" style="color:#a7f3d0;">Live App Section</a> • 
       <a href="https://powerpig99.github.io/not-a-toe/" style="color:#a7f3d0;" target="_blank" rel="noopener">Not a ToE Blog</a> • 
       <a href="https://powerpig99.github.io/hunting-in-finland/" style="color:#a7f3d0;" target="_blank" rel="noopener">Hunting in Finland</a> • 
       <a href="https://github.com/powerpig99/helsinki-mushroom-guide" style="color:#a7f3d0;" target="_blank" rel="noopener">GitHub</a>
@@ -1185,14 +1198,14 @@ if (fs.existsSync(readmePath)) {
     <div class="doc-live-banner-inner">
       <span class="banner-badge">✨ Live Interactive App</span>
       <span class="banner-text">Explore the Helsinki Mushroom Guide with live 3-photo botanical galleries, HSL transit filters & field handbook.</span>
-      <a href="index.html#/handbook" class="banner-cta">Open Live Interactive App →</a>
+      <a href="index.html#/catalog" class="banner-cta">Open Live Interactive App →</a>
     </div>
   </aside>
 
   <header class="doc-sticky-header">
     <div class="doc-nav-left">
-      <a href="index.html#/handbook" class="doc-btn-back">🍄 Live App Reader</a>
-      <a href="index.html#/catalog" class="doc-btn-back">🍄 63 Species Catalog</a>
+      <a href="index.html#/catalog" class="doc-btn-back">🍄 Live App Catalog</a>
+      <a href="index.html#/habitats" class="doc-btn-back">🌲 Habitats & Trees</a>
       <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
       <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
     </div>

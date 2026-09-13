@@ -40,11 +40,11 @@
       </p>
 
       <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.85rem;">
-        <a id="header-link-handbook" href="#/handbook" class="emergency-btn" style="background: rgba(16, 185, 129, 0.2); color: #a7f3d0; border: 1px solid #10b981; font-weight: 600; text-decoration: none;">
-          📖 Read 9-Chapter Web Handbook Online →
+        <a id="header-link-handbook" href="#/habitats" class="emergency-btn" style="background: rgba(16, 185, 129, 0.2); color: #a7f3d0; border: 1px solid #10b981; font-weight: 600; text-decoration: none;">
+          🌲 Forest Habitats & Trees Guide →
         </a>
-        <a id="header-link-species" href="#/chapter/08" class="emergency-btn" style="background: rgba(245, 158, 11, 0.2); color: #fde68a; border: 1px solid #f59e0b; font-weight: 600; text-decoration: none;">
-          📋 50+ Edible Species Master Index →
+        <a id="header-link-species" href="#/catalog" onclick="if (typeof switchCatalogViewMode === 'function') switchCatalogViewMode('safe5');" class="emergency-btn" style="background: rgba(245, 158, 11, 0.2); color: #fde68a; border: 1px solid #f59e0b; font-weight: 600; text-decoration: none;">
+          ⭐ Safe Five & 50+ Species Masterclass →
         </a>
       </div>
 
@@ -71,18 +71,34 @@
     <div id="view-main">
       <!-- Navigation Tabs -->
       <nav class="nav-tabs">
-        <button id="tab-btn-catalog" class="tab-btn active" data-tab="catalog">🍄 Species Identification (63)</button>
-        <button id="tab-btn-lookalikes" class="tab-btn" data-tab="lookalikes">⚖️ Lookalike Comparator</button>
-        <button id="tab-btn-cooking" class="tab-btn" data-tab="cooking">🍳 Cooking & Prep Guide</button>
-        <button id="tab-btn-spots" class="tab-btn" data-tab="spots">🚌 Helsinki HSL Spots</button>
+        <button id="tab-btn-catalog" class="tab-btn active" data-tab="catalog">🍄 Species & Master Index (63)</button>
+        <button id="tab-btn-lookalikes" class="tab-btn" data-tab="lookalikes">⚖️ Deadly Lookalikes & Toxins</button>
+        <button id="tab-btn-cooking" class="tab-btn" data-tab="cooking">🍳 Culinary & Preservation</button>
+        <button id="tab-btn-habitats" class="tab-btn" data-tab="habitats">🌲 Habitats, Trees & Seasons</button>
+        <button id="tab-btn-spots" class="tab-btn" data-tab="spots">🚌 Transit Spots & Hidden Trails</button>
         <button id="tab-btn-safety" class="tab-btn" data-tab="safety">🛡️ Safety & Everyman's Right</button>
-        <button id="tab-btn-handbook" class="tab-btn" data-tab="handbook">📚 Handbook & Guides (9)</button>
       </nav>
 
-      <!-- TAB 1: Mushroom Catalog -->
+      <!-- TAB 1: Mushroom Catalog & Master Index -->
       <section id="tab-catalog">
-        <!-- Search & Filters Panel -->
-        <div class="controls-panel">
+        <!-- View Mode Switcher: Explorer vs Masterclass Monographs -->
+        <div class="view-mode-bar" id="catalog-view-mode-bar">
+          <button class="view-mode-btn active" data-mode="grid" onclick="switchCatalogViewMode('grid', this)">
+            <span>🔍</span> <span id="label-view-grid">Interactive Field Grid (63)</span>
+          </button>
+          <button class="view-mode-btn" data-mode="safe5" onclick="switchCatalogViewMode('safe5', this)">
+            <span>⭐</span> <span id="label-view-safe5">The Safe Five Masterclass</span>
+          </button>
+          <button class="view-mode-btn" data-mode="intermediate" onclick="switchCatalogViewMode('intermediate', this)">
+            <span>🧺</span> <span id="label-view-intermediate">Intermediate Gourmet</span>
+          </button>
+          <button class="view-mode-btn" data-mode="master" onclick="switchCatalogViewMode('master', this)">
+            <span>📋</span> <span id="label-view-master">50+ Species Master Index</span>
+          </button>
+        </div>
+
+        <!-- Search & Filters Panel (Shown in Grid mode) -->
+        <div id="catalog-controls-panel" class="controls-panel">
           <div class="search-box">
             <span class="search-icon">🔍</span>
             <input type="text" id="search-input" placeholder="Search by Finnish, Latin, English, Chinese, or traits (e.g. spines, pores)...">
@@ -131,64 +147,45 @@
         <div id="mushroom-grid" class="mushroom-grid">
           <!-- Rendered reactively by JavaScript -->
         </div>
+
+        <!-- Monograph Reader Container for Safe Five, Intermediate & Master Index -->
+        <div id="catalog-monograph-container" class="live-reader-container" style="display: none;">
+          <!-- Injected reactively by switchCatalogViewMode -->
+        </div>
       </section>
 
-      <!-- TAB 2: Lookalike Comparator -->
+      <!-- TAB 2: Lookalike Comparator & Toxin Science -->
       <section id="tab-lookalikes" style="display: none;">
         <div id="lookalike-container" class="comparator-section">
           <!-- Rendered reactively by JavaScript -->
         </div>
       </section>
 
-      <!-- TAB 3: Cooking & Preparation Guide -->
+      <!-- TAB 3: Cooking & Preparation Guide & Masterclasses -->
       <section id="tab-cooking" style="display: none;">
         <div id="cooking-container">
           <!-- Rendered reactively by JavaScript -->
         </div>
       </section>
 
-      <!-- TAB 4: HSL Spots -->
+      <!-- TAB 4: Forest Habitats, Trees & Seasons -->
+      <section id="tab-habitats" style="display: none;">
+        <div id="habitats-container">
+          <!-- Rendered reactively by JavaScript -->
+        </div>
+      </section>
+
+      <!-- TAB 5: HSL Transit Spots & Hidden Trails -->
       <section id="tab-spots" style="display: none;">
         <div id="spots-container" class="spots-grid">
           <!-- Rendered reactively by JavaScript -->
         </div>
       </section>
 
-      <!-- TAB 5: Safety & Guidelines -->
+      <!-- TAB 6: Safety, Everyman's Right & Law -->
       <section id="tab-safety" style="display: none;">
         <div id="safety-content-container">
           <!-- Rendered reactively by JavaScript -->
-        </div>
-      </section>
-
-      <!-- TAB 6: Live Field Handbook & Complete Interactive Monographs (9 Chapters) -->
-      <section id="tab-handbook" style="display: none;">
-        <!-- Horizontal Pill Bar for Live Chapter Quick-Switching -->
-        <div id="handbook-nav-bar" class="handbook-nav-bar" aria-label="Handbook Chapter Navigation">
-          <!-- Rendered dynamically by renderHandbookNav() in app.js -->
-        </div>
-
-        <!-- Subview 1: Overview Grid of All 9 Chapters -->
-        <div id="handbook-overview-view">
-          <div id="handbook-banner" style="margin-bottom: 1.5rem;">
-            <!-- Rendered reactively by JavaScript -->
-          </div>
-          <div id="handbook-container" class="spots-grid">
-            <!-- Rendered reactively by JavaScript -->
-          </div>
-        </div>
-
-        <!-- Subview 2: Live Chapter Interactive Reader -->
-        <div id="handbook-reader-view" class="live-reader-container" style="display: none;">
-          <div id="live-reader-header" class="live-reader-header">
-            <!-- Rendered reactively by JavaScript -->
-          </div>
-          <article id="live-reader-body" class="live-reader-body">
-            <!-- Injected dynamically from HANDBOOK_DATA -->
-          </article>
-          <div id="live-reader-pager" class="live-reader-pager">
-            <!-- Rendered reactively by JavaScript -->
-          </div>
         </div>
       </section>
     </div>
