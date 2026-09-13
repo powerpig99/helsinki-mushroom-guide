@@ -282,10 +282,39 @@ function renderPrimeLocationCard(sp, lang, lang2, t) {
 
 // Render Authentic YouTube Cooking & Preparation Video Card for Edible Species
 function renderCookingVideoCard(sp, lang, lang2, t) {
-  if (!I18N.cookingVideos || !I18N.cookingVideos[sp.id]) return "";
-  const v = I18N.cookingVideos[sp.id];
+  if (!I18N.cookingVideos) return "";
+
+  const direct = I18N.cookingVideos[sp.id];
+  const sisterId = (!direct && I18N.sisterSpeciesCookingMap) ? I18N.sisterSpeciesCookingMap[sp.id] : null;
+  const v = direct || (sisterId ? I18N.cookingVideos[sisterId] : null);
+  if (!v) return "";
+
+  const isInherited = !direct && !!sisterId;
+  const sisterSp = isInherited ? I18N.species.find(s => s.id === sisterId) : null;
+  const sisterName = sisterSp ? (sisterSp.names[lang]?.primary || sisterSp.latinName) : "";
+
   const videoTitle = v.title[lang] || v.title.en;
   const videoTitle2 = (lang2 && lang2 !== lang && v.title[lang2]) ? v.title[lang2] : null;
+
+  let inheritedNoticeHtml = "";
+  if (isInherited && sisterSp) {
+    inheritedNoticeHtml = `
+      <div class="inherited-cooking-notice">
+        <div class="inherited-notice-header">
+          <span class="inherited-notice-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            ${t.sharedCulinaryBadge || "Shared Technique"}
+          </span>
+          <span class="inherited-notice-text">
+            ${t.sharedCulinaryNotice || "Culinary & preparation guide shared with sister species:"}
+            <a href="#/mushroom/${sisterSp.id}" onclick="navigateToMushroom('${sisterSp.id}'); return false;" class="inherited-species-link">
+              <strong>${sisterName}</strong> (<em>${sisterSp.latinName}</em>)
+            </a>
+          </span>
+        </div>
+      </div>
+    `;
+  }
 
   let chineseRecipesHtml = "";
   if (v.chineseRecipes && v.chineseRecipes.length > 0) {
@@ -326,12 +355,13 @@ function renderCookingVideoCard(sp, lang, lang2, t) {
   }
 
   return `
-    <div class="cooking-video-card">
+    ${inheritedNoticeHtml}
+    <div class="cooking-video-card ${isInherited ? 'is-inherited' : ''}">
       <div class="cooking-video-content">
         <div class="cooking-video-badge-wrapper">
           <span class="cooking-video-badge">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color: #dc2626;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            ${t.videoGuideBadge || "Video Tutorial"}
+            ${isInherited ? (t.sharedCulinaryBadge || "Shared Technique") : (t.videoGuideBadge || "Video Tutorial")}
           </span>
         </div>
         <div class="cooking-video-title">${videoTitle}</div>
@@ -1488,6 +1518,73 @@ function renderLookalikes() {
 // -------------------------------------------------------------
 // Cooking Guide & Recipes
 // -------------------------------------------------------------
+
+// Render Video Masterclasses Cards for Cooking Tab
+function renderCookingGalleryCards(catalog, lang, lang2, t) {
+  if (!catalog || catalog.length === 0) return "";
+
+  return catalog.map(v => {
+    const title = v.title[lang] || v.title.en;
+    const title2 = (lang2 && lang2 !== lang && v.title[lang2]) ? v.title[lang2] : null;
+    const desc = v.desc ? (v.desc[lang] || v.desc.en) : "";
+    const sp = v.speciesId ? I18N.species.find(s => s.id === v.speciesId) : null;
+    const spName = sp ? (sp.names[lang]?.primary || sp.latinName) : "";
+    const catClasses = (v.categories || []).join(" ");
+    const isChinese = v.tradition === 'zh';
+
+    return `
+      <div class="cooking-gallery-card" data-categories="${catClasses}">
+        <div class="cooking-gallery-thumb-wrap">
+          <img src="https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg" alt="${title}" class="cooking-gallery-thumb" loading="lazy" />
+          <div class="cooking-gallery-play-btn" title="${title}">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="cooking-gallery-duration">⏱️ ${v.duration}</span>
+          <span class="cooking-gallery-badge ${isChinese ? 'chinese' : 'nordic'}">
+            ${isChinese ? '🇨🇳 中华大师课' : '🇫🇮 Suomi / Nordic'}
+          </span>
+        </div>
+        <div class="cooking-gallery-info">
+          <div class="cooking-gallery-creator">👨‍🍳 ${v.creator}</div>
+          <h4 class="cooking-gallery-card-title">${title}</h4>
+          ${title2 ? `<div class="cooking-gallery-card-subtitle">${title2}</div>` : ""}
+          <p class="cooking-gallery-card-desc">${desc}</p>
+          <div class="cooking-gallery-card-footer">
+            ${sp ? `
+              <a href="#/mushroom/${sp.id}" onclick="navigateToMushroom('${sp.id}'); return false;" class="gallery-species-chip" title="${spName}">
+                <img src="${sp.image}" alt="${spName}" class="gallery-chip-thumb" />
+                <span>${spName}</span>
+              </a>
+            ` : `<div></div>`}
+            <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="btn-video-link btn-video-link-sm" title="${title}">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="color: #dc2626;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <span>${t.watchVideoBtn || "Watch on YouTube"}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+// Global Filter for Video Masterclasses in Cooking Tab
+window.filterCookingVideos = function(category, btnElement) {
+  if (btnElement && btnElement.parentElement) {
+    btnElement.parentElement.querySelectorAll('.gallery-filter-btn').forEach(b => b.classList.remove('active'));
+    btnElement.classList.add('active');
+  }
+
+  const cards = document.querySelectorAll('#cooking-gallery-grid .cooking-gallery-card');
+  cards.forEach(card => {
+    const cats = (card.dataset.categories || "").split(' ');
+    if (category === 'all' || cats.includes(category)) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+};
+
 function renderCookingGuide() {
   const container = document.getElementById("cooking-container");
   if (!container) return;
@@ -1512,6 +1609,35 @@ function renderCookingGuide() {
         <a href="#/chapter/zh" onclick="navigateToChapter('zh'); return false;" class="portal-btn chinese">
           ${t.portalCookingBtn2 || "Read Special Guide (Chinese Culinary) →"}
         </a>
+      </div>
+    </div>
+  `;
+
+  const videoGallerySectionHtml = `
+    <div class="cooking-gallery-section">
+      <div class="cooking-gallery-header">
+        <div>
+          <h3 class="cooking-gallery-title">
+            ${t.videoMasterclassesTitle || "🎥 Video Masterclasses & Forest Kitchen Guides"}
+          </h3>
+          <p class="cooking-gallery-desc">
+            ${t.videoMasterclassesDesc || "Authentic video tutorials from Finnish Martat experts and Chinese masterchefs, covering forest-to-table techniques, parboiling, and preservation."}
+          </p>
+        </div>
+      </div>
+
+      <div class="cooking-gallery-filters" id="cooking-gallery-filters">
+        <button class="gallery-filter-btn active" onclick="filterCookingVideos('all', this)">${t.videoFilterAll || "All Masterclasses (28)"}</button>
+        <button class="gallery-filter-btn" onclick="filterCookingVideos('finnish', this)">${t.videoFilterFinnish || "🇫🇮 Finnish & Martat"}</button>
+        <button class="gallery-filter-btn" onclick="filterCookingVideos('chinese', this)">${t.videoFilterChinese || "🇨🇳 Chinese Masterclasses"}</button>
+        <button class="gallery-filter-btn" onclick="filterCookingVideos('chanterelle', this)">${t.videoFilterChanterelle || "Chanterelles & Trumpets"}</button>
+        <button class="gallery-filter-btn" onclick="filterCookingVideos('bolete', this)">${t.videoFilterBolete || "Boletes & Porcini"}</button>
+        <button class="gallery-filter-btn" onclick="filterCookingVideos('milkcap', this)">${t.videoFilterMilkcap || "Milkcaps & Salting"}</button>
+        <button class="gallery-filter-btn" onclick="filterCookingVideos('soup', this)">${t.videoFilterSoup || "Soups & Broths"}</button>
+      </div>
+
+      <div class="cooking-gallery-grid" id="cooking-gallery-grid">
+        ${renderCookingGalleryCards(I18N.culinaryVideoCatalog, lang, lang2, t)}
       </div>
     </div>
   `;
@@ -1549,6 +1675,8 @@ function renderCookingGuide() {
         `).join("")}
       </div>
     </div>
+
+    ${videoGallerySectionHtml}
 
     <h3 style="font-size: 1.35rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">
       🍲 ${lang === "zh" ? "经典食谱制作" : (lang === "fi" ? "Perinteiset Reseptit" : "Featured Field Recipes")}

@@ -31,6 +31,10 @@
      - **即时烹饪**：待原汤即将收干时，投入大块咸黄油与洋葱碎，大火煎至边缘金黄焦香。
      - **冷冻越冬保存**：熄火彻底放凉，将半浓缩的原汤连同菌肉分装入食品级冷冻自封袋，排尽空气平铺冷冻，可完美锁鲜长达12个月。
 
+> [!TIP]
+> **大师视频演示**：  
+> [▶️ 实操视频：芬兰传统自身汁液慢焖出水法 (Haudutus omassa liemessä)](https://www.youtube.com/watch?v=RQd0Mli8SZc)
+
 ---
 
 ### 3. 科学焯水杀青去辣 (*Ryöppäys*)
@@ -46,6 +50,11 @@
 
 > [!NOTE]
 > **无需焯水的例外**：**松乳菇（Lactarius deliciosus / Männynleppärousku）**流出的是鲜亮胡萝卜橙色乳汁，质地极其甘甜柔嫩，**绝对严禁焯水**，直接用黄油大蒜干煎即是绝品！
+
+> [!TIP]
+> **官方权威视频教程**：  
+> [▶️ 官方教学：芬兰Martat红乳菇焯水脱苦与传统盐渍法 (Suolasienet)](https://www.youtube.com/watch?v=tL8_h3I0bC4)  
+> [▶️ 科学视频：白汁乳菇科学沸水焯水脱毒原理与流程 (Ryöppäys)](https://www.youtube.com/watch?v=6F67wBKOv0c)
 
 ---
 
@@ -65,6 +74,10 @@
 ---
 
 ### 食谱一：经典北欧奶油鸡油菌浓汁配新土豆 (*Kermainen kantarellikastike*)
+
+[▶️ 视频食谱：经典北欧奶油鸡油菌浓汁制作 (Kermainen kantarellikastike)](https://www.youtube.com/watch?v=0TysiLgHhd4)  
+[▶️ 中华大师课：云南野生鸡油菌青红椒大火爆炒（甜嫩脆滑）](https://www.youtube.com/watch?v=9NEKn4yqJvY)  
+[▶️ 粤式名肴：鲜果木香鸡油菌蒜蓉爆炒鲜带子/扇贝](https://www.youtube.com/watch?v=KYb4HSSahEk)
 *芬兰夏末秋初的国民级第一珍馐，与刚出土的莳萝小土豆是天作之合。*
 
 - **准备时间**：10分钟 | **烹饪时间**：15分钟 | **分量**：4人份
@@ -87,6 +100,8 @@
 ---
 
 ### 食谱二：传统芬兰酸奶油腌乳菇沙拉 (*Perinteinen sienisalaatti*)
+
+[▶️ 视频食谱：传统芬兰酸奶油腌乳菇沙拉冷调法 (Perinteinen sienisalaatti)](https://www.youtube.com/watch?v=RQR7FLnapZo)
 *芬兰圣诞年夜饭与秋季冷餐桌上的传奇冷盘，口感脆爽醇厚。*
 
 - **准备时间**：15分钟（+脱盐时间） | **烹饪时间**：无火冷拌 | **分量**：4–6人份
@@ -110,6 +125,9 @@
 ---
 
 ### 食谱三：西波森林漏斗鸡油菌烟熏奶酪浓汤 (*Suppilovahverokeitto*)
+
+[▶️ 视频食谱：西波森林漏斗鸡油菌烟熏奶酪浓汤 (Suppilovahverokeitto)](https://www.youtube.com/watch?v=-fyPqfJxX5s)  
+[▶️ 中文示范：北欧野采鸡油菌/漏斗菌浓汤全中文制作演示](https://www.youtube.com/watch?v=BQxezCwNZ98)
 *漫步于深秋冷雨中的Sipoonkorpi森林归来后，最暖胃解乏的灵魂热汤。*
 
 - **准备时间**：15分钟 | **烹饪时间**：25分钟 | **分量**：4人份
@@ -134,6 +152,10 @@
 ---
 
 ### 食谱四：葱姜蒜香野菌炒肉丝 (*Nordic Wild Mushroom & Pork Stir-Fry*)
+
+[▶️ 视频食谱：鲜采美味牛肝菌处理与中西大火爆炒肉丝](https://www.youtube.com/watch?v=XWB5C1ludQc)  
+[▶️ 大师独门：美食台特级大厨秘传炒出完美野生牛肝菌的5大诀窍](https://www.youtube.com/watch?v=c_KosrETlbs)  
+[▶️ 经典滇味：大蒜干椒青椒大火爆炒牛肝菌](https://www.youtube.com/watch?v=zBrJFnXTMcQ)
 *专为在芬华人打造的家乡镬气美味，北欧坚实野菌与中华快炒的完美碰撞。*
 
 - **准备时间**：15分钟 | **烹饪时间**：8分钟 | **分量**：3–4人份
@@ -153,3 +175,18 @@
   5. **猛火爆菌**：倒入焯好沥干的野菌片，转最大火猛烈翻炒2分钟，直至菌片边缘泛起焦香镬气。
   6. **合锅调味**：倒入肉丝与葱绿段，淋入调好的生抽、蚝油与微量白糖，大火颠锅翻炒均匀约1分钟。
   7. 出锅前淋几滴纯正芝麻香油，即刻装盘出锅。口感滑嫩弹牙，浓香下饭！
+
+---
+
+## 第三部分：中华野菌名菜烹饪与油浸保存实操视频
+
+北欧纯净森林赋予我们零农残、质地肥厚的高品质野真菌。结合中华烹饪智慧与火候，以下四道进阶名菜与储藏法已录制全流程高清视频教程：
+
+1. **云南经典火腿牛肝菌焖饭**：生米吸饱牛肝菌原汤与咸香云腿，瓦煲微焦香脆。  
+   [▶️ 观看视频：云南经典火腿鸡肉牛肝菌焖饭全流程演示](https://www.youtube.com/watch?v=PmO9194VTnw)
+2. **芬兰森林香料油浸牛肝菌（拌面拌饭万能菌油）**：八角红葱慢火慢熬，可冷藏密封长保数月。  
+   [▶️ 观看视频：芬兰森林采摘中式香料油浸野生牛肝菌与菌油保存法](https://www.youtube.com/watch?v=-H_7xTFu8Ls)
+3. **原汁原味野生牛肝菌慢炖土鸡汤**：不加重料，清炖出琥珀甘甜清亮鲜汤。  
+   [▶️ 观看视频：原汁原味野生牛肝菌慢火清炖土鸡汤](https://www.youtube.com/watch?v=BSvep9GRHlg)
+4. **古法慢火清炖野生鸡油菇土鸡汤**：鸡油菌清甜果香渗入鸡汤，暖胃润燥。  
+   [▶️ 观看视频：古法慢火清炖野生鸡油菇土鸡汤](https://www.youtube.com/watch?v=OIByq7YxNdg)

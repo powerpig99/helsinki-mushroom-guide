@@ -36,6 +36,10 @@ Never freeze wild mushrooms raw! Raw freezing ruptures cellular walls, releasing
   6. Portion into ziplock freezer bags along with their concentrated broth, press out excess air, and freeze.
   7. **Shelf Life**: Up to 12 months at -18°C.
 
+> [!TIP]
+> **Video Demonstration**: Watch how forest mushrooms weep their juices and reduce in a dry skillet:  
+> [▶️ Watch Video Tutorial: Finnish Sautéing in Natural Juices (Haudutus omassa liemessä)](https://www.youtube.com/watch?v=RQd0Mli8SZc)
+
 ---
 
 ### C. Traditional Finnish Parboiling & Salting (*Ryöppäys ja suolaus*)
@@ -54,6 +58,11 @@ The traditional Nordic technique for preserving acrid milkcaps (*Lactarius tormi
 3. **Desalting Before Cooking (*Liotus*)**:
    - Before preparing a recipe, scoop out the salted mushrooms and soak them in a large bowl of cold water for 1 to 2 hours, changing the water once or twice, until the saltiness reaches a pleasant seasoning level.
 
+> [!TIP]
+> **Video Tutorials**:  
+> [▶️ Official Video: Parboiling & Salting Forest Milkcaps for Winter (Martat)](https://www.youtube.com/watch?v=tL8_h3I0bC4)  
+> [▶️ Science Video: The Science of Parboiling Acrid Milkcaps (Ryöppäys)](https://www.youtube.com/watch?v=6F67wBKOv0c)
+
 ---
 
 ## 2. Authentic Finnish Forest Recipes
@@ -65,6 +74,8 @@ The traditional Nordic technique for preserving acrid milkcaps (*Lactarius tormi
 
 ![Finnish Sienisalaatti](../images/lactarius_torminosus.jpg)
 *(Made with desalted parboiled milkcaps such as Karvarousku or Haaparousku)*
+
+[▶️ Video Recipe: Traditional Finnish Salted Milkcap Salad (Perinteinen sienisalaatti)](https://www.youtube.com/watch?v=RQR7FLnapZo)
 
 - **Prep time**: 15 min (+ soaking time)
 - **Yield**: 4–6 servings
@@ -93,6 +104,9 @@ The traditional Nordic technique for preserving acrid milkcaps (*Lactarius tormi
 
 ![Cantharellus cibarius](../images/cantharellus_cibarius.jpg)
 
+[▶️ Video Recipe: Classic Finnish Chanterelle Cream Sauce (Kermainen kantarellikastike)](https://www.youtube.com/watch?v=0TysiLgHhd4)  
+[▶️ Video Tutorial: Traditional Finnish Chanterelle Sauce](https://www.youtube.com/watch?v=JBj7XznS8fU)
+
 - **Prep time**: 10 min
 - **Cooking time**: 15 min
 - **Yield**: 4 servings
@@ -120,6 +134,9 @@ The traditional Nordic technique for preserving acrid milkcaps (*Lactarius tormi
 *A deeply comforting, rich soup designed for brisk October and November evenings after a day in Sipoonkorpi.*
 
 ![Craterellus tubaeformis](../images/craterellus_tubaeformis.jpg)
+
+[▶️ Video Recipe: Sipoonkorpi Funnel Chanterelle Soup with Smoked Cheese](https://www.youtube.com/watch?v=-fyPqfJxX5s)  
+[▶️ Video Tutorial: Black Trumpet Mushroom Soup & Dehydration Cooking](https://www.youtube.com/watch?v=hepze8cMwVo)
 
 - **Prep time**: 15 min
 - **Cooking time**: 25 min

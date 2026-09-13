@@ -2531,3 +2531,346 @@ body.viewing-detail main {
 }
 
 
+
+
+/* ==========================================================================
+   Synchronized Video Masterclasses & Sister Species Cooking Styles
+   ========================================================================== */
+
+/* Inherited Video Notice on Mushroom Detail View */
+.inherited-cooking-notice {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 0.85rem 1.15rem;
+  margin-top: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.inherited-notice-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.inherited-notice-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.inherited-notice-badge svg {
+  color: #16a34a;
+}
+
+.inherited-notice-text {
+  font-size: 0.86rem;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.inherited-species-link {
+  color: #047857;
+  text-decoration: none;
+  border-bottom: 1px dashed #059669;
+  padding-bottom: 1px;
+  transition: all 0.15s ease;
+}
+
+.inherited-species-link:hover {
+  color: #065f46;
+  border-bottom-style: solid;
+}
+
+.cooking-video-card.is-inherited {
+  border-left: 4px solid #10b981;
+}
+
+/* Cooking Tab Video Masterclasses Gallery */
+.cooking-gallery-section {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.cooking-gallery-header {
+  margin-bottom: 1.25rem;
+}
+
+.cooking-gallery-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.35rem 0;
+}
+
+.cooking-gallery-desc {
+  font-size: 0.92rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.cooking-gallery-filters {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.65rem;
+  margin-bottom: 1.35rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-filter-btn {
+  background: #f8fafc;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  padding: 0.42rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.gallery-filter-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.gallery-filter-btn.active {
+  background: #1e3a2b;
+  color: #ffffff;
+  border-color: #1e3a2b;
+  box-shadow: 0 2px 5px rgba(30, 58, 43, 0.2);
+}
+
+.cooking-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.35rem;
+}
+
+.cooking-gallery-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.cooking-gallery-card:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.cooking-gallery-thumb-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+.cooking-gallery-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.cooking-gallery-card:hover .cooking-gallery-thumb {
+  transform: scale(1.03);
+}
+
+.cooking-gallery-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px;
+  height: 46px;
+  background: rgba(220, 38, 38, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s ease;
+}
+
+.cooking-gallery-card:hover .cooking-gallery-play-btn {
+  background: #dc2626;
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+.cooking-gallery-duration {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  backdrop-filter: blur(2px);
+}
+
+.cooking-gallery-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.cooking-gallery-badge.nordic {
+  background: rgba(30, 58, 43, 0.9);
+  color: #ffffff;
+  backdrop-filter: blur(4px);
+}
+
+.cooking-gallery-badge.chinese {
+  background: rgba(185, 28, 28, 0.9);
+  color: #ffffff;
+  backdrop-filter: blur(4px);
+}
+
+.cooking-gallery-info {
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.cooking-gallery-creator {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 0.35rem;
+}
+
+.cooking-gallery-card-title {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.38;
+  margin: 0 0 0.3rem 0;
+}
+
+.cooking-gallery-card-subtitle {
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.35;
+  margin-bottom: 0.55rem;
+}
+
+.cooking-gallery-card-desc {
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.48;
+  margin: 0 0 1rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cooking-gallery-card-footer {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.gallery-species-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 0.22rem 0.55rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.gallery-species-chip:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+.gallery-chip-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* In-Text Video Action Button inside Live Handbook & Static Docs */
+.inline-video-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #be123c;
+  padding: 0.38rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0.45rem 0.35rem 0.45rem 0;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.inline-video-btn svg {
+  color: #e11d48 !important;
+  flex-shrink: 0;
+}
+
+.inline-video-btn:hover {
+  background: #e11d48;
+  border-color: #e11d48;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(225, 29, 72, 0.2);
+}
+
+.inline-video-btn:hover svg {
+  color: #ffffff !important;
+}
+
+.inline-video-btn:active {
+  transform: scale(0.98);
+}

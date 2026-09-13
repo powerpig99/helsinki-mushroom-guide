@@ -108,6 +108,18 @@ const I18N = {
       watchRecipeVideoBtn: "Watch Recipe Video",
       videoGuideBadge: "Video Tutorial",
       chineseRecipesTitle: "Top Chinese Culinary Recipes (中华名菜)",
+      videoMasterclassesTitle: "🎥 Video Masterclasses & Forest Kitchen Guides",
+      videoMasterclassesDesc: "Authentic video tutorials from Finnish Martat experts and Chinese masterchefs, covering forest-to-table techniques, parboiling, and preservation.",
+      videoFilterAll: "All Masterclasses (28)",
+      videoFilterFinnish: "🇫🇮 Finnish & Martat",
+      videoFilterChinese: "🇨🇳 Chinese Masterclasses",
+      videoFilterChanterelle: "Chanterelles & Trumpets",
+      videoFilterBolete: "Boletes & Porcini",
+      videoFilterMilkcap: "Milkcaps & Salting",
+      videoFilterSoup: "Soups & Broths",
+      sharedCulinaryBadge: "Shared Technique",
+      sharedCulinaryNotice: "Culinary & preparation guide shared with sister species:",
+      viewSpeciesGuideBtn: "View Mushroom Field Guide →",
       prepTime: "Prep:",
       cookTime: "Cook:",
       servings: "Servings:",
@@ -213,6 +225,18 @@ const I18N = {
       watchRecipeVideoBtn: "观看食谱教学",
       videoGuideBadge: "视频示范",
       chineseRecipesTitle: "中华经典名菜烹饪教学",
+      videoMasterclassesTitle: "🎥 视频烹饪大师课与森林厨房精选",
+      videoMasterclassesDesc: "精选芬兰本土Martat权威家政真菌处理、北欧传统料理与中华特级厨师野菌镬气名菜实操视频，林间到餐桌全流程演示。",
+      videoFilterAll: "全部大师课 (28)",
+      videoFilterFinnish: "🇫🇮 芬兰传统与处理",
+      videoFilterChinese: "🇨🇳 中华厨艺名菜",
+      videoFilterChanterelle: "鸡油菌与号角菇",
+      videoFilterBolete: "牛肝菌家族",
+      videoFilterMilkcap: "乳菇焯水与盐渍",
+      videoFilterSoup: "浓汤与炖汤",
+      sharedCulinaryBadge: "同科共享烹饪心法",
+      sharedCulinaryNotice: "本物种与同科姊妹种共享烹饪调味、焯水排毒与储藏技巧：",
+      viewSpeciesGuideBtn: "查看物种生态图鉴 →",
       prepTime: "准备时间:",
       cookTime: "烹饪时间:",
       servings: "分量:",
@@ -318,6 +342,18 @@ const I18N = {
       watchRecipeVideoBtn: "Katso videoresepti",
       videoGuideBadge: "Videolinkki",
       chineseRecipesTitle: "Perinteiset kiinalaiset reseptit",
+      videoMasterclassesTitle: "🎥 Ruoanvalmistusvideot ja Metsäkeittiö",
+      videoMasterclassesDesc: "Aitoja video-oppaita Marttojen perinteisistä sienikäsittelyistä, säilönnästä ja kiinalaisten keittiömestareiden villisieniresepteistä.",
+      videoFilterAll: "Kaikki videot (28)",
+      videoFilterFinnish: "🇫🇮 Suomalainen & Martat",
+      videoFilterChinese: "🇨🇳 Kiinalainen keittiö",
+      videoFilterChanterelle: "Vahverot & torvisienet",
+      videoFilterBolete: "Tatit & herkkutatit",
+      videoFilterMilkcap: "Rouskut & suolaus",
+      videoFilterSoup: "Keitot & liemet",
+      sharedCulinaryBadge: "Jaettu valmistusohje",
+      sharedCulinaryNotice: "Tämä laji jakaa esikäsittely- ja valmistustekniikat seuraavan lähilajin kanssa:",
+      viewSpeciesGuideBtn: "Katso lajikuvaus →",
       prepTime: "Esivalmistelu:",
       cookTime: "Kypsennys:",
       servings: "Annosmäärä:",
@@ -7916,7 +7952,703 @@ const I18N = {
       },
       url: "docs/cooking_and_recipes_zh.html"
     }
-  ]
+  ],
+
+  // Sister Species Culinary Mapping (covers all 55 edible species)
+  sisterSpeciesCookingMap: {
+  "craterellus_lutescens": "craterellus_tubaeformis",
+  "cantharellus_amethysteus": "cantharellus_cibarius",
+  "boletus_reticulatus": "boletus_edulis",
+  "suillus_luteus": "boletus_edulis",
+  "suillus_variegatus": "boletus_edulis",
+  "suillus_bovinus": "boletus_edulis",
+  "suillus_grevillei": "boletus_edulis",
+  "leccinum_vulpinum": "leccinum_versipelle",
+  "leccinum_aurantiacum": "leccinum_versipelle",
+  "leccinum_scabrum": "leccinum_versipelle",
+  "leccinum_variicolor": "leccinum_versipelle",
+  "hydnum_rufescens": "hydnum_repandum",
+  "lactarius_trivialis": "lactarius_torminosus",
+  "lactarius_utilis": "lactarius_torminosus",
+  "lactarius_necator": "lactarius_rufus",
+  "lactarius_mammosus": "lactarius_rufus",
+  "lactarius_deterrimus": "lactarius_deliciosus",
+  "lactarius_volemus": "lactarius_deliciosus",
+  "russula_paludosa": "russula_decolorans",
+  "russula_claroflava": "russula_decolorans",
+  "russula_aeruginea": "russula_decolorans",
+  "russula_cyanoxantha": "russula_decolorans",
+  "russula_vesca": "russula_decolorans",
+  "russula_xerampelina": "russula_decolorans",
+  "russula_vinosa": "russula_decolorans",
+  "russula_integra": "russula_decolorans",
+  "albatrellus_confluens": "albatrellus_ovinus",
+  "laetiporus_sulphureus": "albatrellus_ovinus",
+  "tricholoma_matsutake": "boletus_edulis",
+  "tricholoma_portentosum": "cortinarius_caperatus",
+  "macrolepiota_procera": "albatrellus_ovinus",
+  "agaricus_arvensis": "cantharellus_cibarius",
+  "agaricus_silvaticus": "cantharellus_cibarius",
+  "coprinus_comatus": "cantharellus_cibarius",
+  "infundibulicybe_geotropa": "cortinarius_caperatus",
+  "clitocybe_nebularis": "lactarius_rufus",
+  "marasmius_oreades": "craterellus_tubaeformis",
+  "armillaria_mellea": "leccinum_versipelle",
+  "kuehneromyces_mutabilis": "craterellus_tubaeformis",
+  "calvatia_gigantea": "albatrellus_ovinus",
+  "lycoperdon_perlatum": "cantharellus_cibarius"
+},
+
+  // Canonical Video Masterclasses & Tutorials Catalog (28 curated videos)
+  culinaryVideoCatalog: [
+  {
+    "id": "haudutus_omassa_liemessa",
+    "url": "https://www.youtube.com/watch?v=RQd0Mli8SZc",
+    "videoId": "RQd0Mli8SZc",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "chanterelle",
+      "bolete"
+    ],
+    "speciesId": "cantharellus_cibarius",
+    "creator": "Martat / Nordic Kitchen",
+    "duration": "3:15",
+    "title": {
+      "en": "Sautéing Wild Mushrooms in Natural Juices (Haudutus omassa liemessä)",
+      "zh": "芬兰传统自身汁液慢焖出水法（无油干锅慢煸锁鲜）",
+      "fi": "Sienien haudutus omassa liemessään ilman rasvaa (Martat)"
+    },
+    "desc": {
+      "en": "The foundational Nordic technique for Chanterelles, Hedgehog mushrooms, and Boletes before frying or freezing.",
+      "zh": "芬兰料理鸡油菌、齿菌与牛肝菌的黄金准则：干锅受热析出鲜美原汤，收汁或连汤冷冻。",
+      "fi": "Perinteinen suomalainen esikäsittelytapa ennen paistamista tai pakastamista."
+    }
+  },
+  {
+    "id": "ryoppays_parboiling",
+    "url": "https://www.youtube.com/watch?v=6F67wBKOv0c",
+    "videoId": "6F67wBKOv0c",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "milkcap"
+    ],
+    "speciesId": "lactarius_torminosus",
+    "creator": "Martat",
+    "duration": "4:12",
+    "title": {
+      "en": "The Science of Parboiling Acrid Milkcaps (Ryöppäys)",
+      "zh": "白汁乳菇科学沸水焯水脱毒去辣标准流程（Martat官方教学）",
+      "fi": "Kirpeiden rouskujen oikeaoppinen ryöppäys (Martat)"
+    },
+    "desc": {
+      "en": "How to extract bitter sesquiterpene resins from Woolly Milkcaps in boiling water.",
+      "zh": "大锅沸水滚煮10-15分钟去除白绒乳菇辛辣树脂毒素，彻底冲凉冲洗排毒。",
+      "fi": "Poista polttavan kirpeät makuaineet ja valmista rouskut turvallisesti ruuaksi."
+    }
+  },
+  {
+    "id": "kantarellikastike_cream_sauce",
+    "url": "https://www.youtube.com/watch?v=0TysiLgHhd4",
+    "videoId": "0TysiLgHhd4",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "chanterelle"
+    ],
+    "speciesId": "cantharellus_cibarius",
+    "creator": "Finnish Forest Cuisine",
+    "duration": "5:20",
+    "title": {
+      "en": "Classic Finnish Chanterelle Cream Sauce (Kermainen kantarellikastike)",
+      "zh": "经典北欧奶油鸡油菌浓汁制作配新土豆",
+      "fi": "Kermainen kantarellikastike uusien perunoiden kera"
+    },
+    "desc": {
+      "en": "Golden chanterelles sautéed in butter with shallots, heavy cream (kuohukerma), and fresh dill.",
+      "zh": "黄油煸透金黄鸡油菌，倒入高脂鲜奶油慢煨挂勺，撒新鲜莳萝碎浇在新土豆上。",
+      "fi": "Perinteinen kermainen kastike voissa paistetuista keltavahveroista ja tillistä."
+    }
+  },
+  {
+    "id": "kantarellikastike_traditional",
+    "url": "https://www.youtube.com/watch?v=JBj7XznS8fU",
+    "videoId": "JBj7XznS8fU",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "chanterelle"
+    ],
+    "speciesId": "cantharellus_cibarius",
+    "creator": "Nordic Chef",
+    "duration": "3:48",
+    "title": {
+      "en": "Traditional Finnish Chanterelle Cream Sauce (Kantarellikastike)",
+      "zh": "经典芬兰传统奶油鸡油菌浓汁制作教程",
+      "fi": "Perinteisen kermaisen kantarellikastikkeen valmistus"
+    },
+    "desc": {
+      "en": "Pan-crisped chanterelles folded into reduced cream sauce with sea salt and white pepper.",
+      "zh": "干炒收汁后加黄油慢炒至金黄微焦，加入浓奶油调味出锅。",
+      "fi": "Kullanruskeaksi paistetut kantarellit pehmeässä kermakastikkeessa."
+    }
+  },
+  {
+    "id": "perinteinen_sienisalaatti",
+    "url": "https://www.youtube.com/watch?v=RQR7FLnapZo",
+    "videoId": "RQR7FLnapZo",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "milkcap"
+    ],
+    "speciesId": "lactarius_torminosus",
+    "creator": "Martat / Suomalainen Perinne",
+    "duration": "4:05",
+    "title": {
+      "en": "Traditional Finnish Salted Milkcap Salad (Perinteinen sienisalaatti)",
+      "zh": "传统芬兰酸奶油腌乳菇沙拉（圣诞经典冷盘冷调法）",
+      "fi": "Perinteinen suomalainen sienisalaatti suolasienistä"
+    },
+    "desc": {
+      "en": "Desalted parboiled milkcaps folded with red onions, 42% fat smetana, and white pepper.",
+      "zh": "焯水盐渍乳菇切3毫米碎丁，与紫洋葱碎拌入打滑的芬兰高脂Smetana酸奶油，抹黑麦面包食用。",
+      "fi": "Hienonnettua suolasientä, punasipulia ja aitoa smetanaa ruisleivän päälle."
+    }
+  },
+  {
+    "id": "martat_salting_milkcaps",
+    "url": "https://www.youtube.com/watch?v=tL8_h3I0bC4",
+    "videoId": "tL8_h3I0bC4",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "milkcap"
+    ],
+    "speciesId": "lactarius_rufus",
+    "creator": "Martat",
+    "duration": "6:15",
+    "title": {
+      "en": "Official Finnish Guide: Parboiling & Salting Forest Milkcaps (Martat)",
+      "zh": "芬兰Martat权威教学：森林红乳菇焯水脱苦与传统盐渍法（Suolasienet）",
+      "fi": "Rouskujen ryöppäys ja suolaus talven varalle (Martat)"
+    },
+    "desc": {
+      "en": "The complete winter preservation guide: layering boiled milkcaps with coarse sea salt in jars.",
+      "zh": "芬兰家庭传统冬储全流程：大锅滚煮10分钟过凉挤干，按比例分层铺粗海盐入罐压实冷藏。",
+      "fi": "Kattava opas rouskujen esikäsittelyyn ja suolasienien valmistukseen lasipurkkiin."
+    }
+  },
+  {
+    "id": "suppilovahverokeitto_soup",
+    "url": "https://www.youtube.com/watch?v=-fyPqfJxX5s",
+    "videoId": "-fyPqfJxX5s",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "soup",
+      "chanterelle"
+    ],
+    "speciesId": "craterellus_tubaeformis",
+    "creator": "Sipoo Forest Kitchen",
+    "duration": "5:45",
+    "title": {
+      "en": "Sipoonkorpi Funnel Chanterelle Soup with Smoked Cheese (Suppilovahverokeitto)",
+      "zh": "西波森林漏斗鸡油菌烟熏奶酪浓汤（干鲜皆宜秋冬暖胃极品）",
+      "fi": "Samettinen suppilovahverokeitto Koskenlaskija-savujuustolla"
+    },
+    "desc": {
+      "en": "Velvety forest soup with funnel chanterelles, broth, cream, and melting Finnish Koskenlaskija smoked cheese.",
+      "zh": "黄油炒香漏斗鸡油菌与百里香，注入高汤与鲜奶油，融化芬兰传统烟熏奶酪，配酸面包绝配。",
+      "fi": "Klassikkokeitto tuoreista tai kuivatuista suppilovahveroista ja savusulatejuustosta."
+    }
+  },
+  {
+    "id": "black_trumpet_soup_drying",
+    "url": "https://www.youtube.com/watch?v=hepze8cMwVo",
+    "videoId": "hepze8cMwVo",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "soup",
+      "chanterelle"
+    ],
+    "speciesId": "craterellus_cornucopioides",
+    "creator": "Nordic Forager Kitchen",
+    "duration": "4:32",
+    "title": {
+      "en": "Black Trumpet Mushroom Soup & Dehydration Cooking (Mustatorvisieni)",
+      "zh": "黑号角菇（黑喇叭菌）浓汤烹制与风干脱水食用技巧",
+      "fi": "Mustatorvisienikeitto ja kuivatun torvisienen käyttö"
+    },
+    "desc": {
+      "en": "How to properly dry black trumpets and rehydrate them into the ultimate truffle-like mushroom velouté.",
+      "zh": "北欧森林黑松露之称：45度低温烘干长期储存，温水泡发后菌汤极浓郁，做高汤或浓汤极鲜。",
+      "fi": "Metsän mustan kullan kuivaaminen ja hyödyntäminen aromaattisissa keitoissa."
+    }
+  },
+  {
+    "id": "hedgehog_pan_fry",
+    "url": "https://www.youtube.com/watch?v=BqxMFHyYvOQ",
+    "videoId": "BqxMFHyYvOQ",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "chanterelle"
+    ],
+    "speciesId": "hydnum_repandum",
+    "creator": "Nordic Outdoor Cooking",
+    "duration": "4:18",
+    "title": {
+      "en": "Cleaning & Pan-Frying Hedgehog Mushrooms (Vaaleaorakas)",
+      "zh": "卷缘齿菌（白刺儿菜）清洁与黄油香煎脆菇热三明治 (Vaaleaorakas)",
+      "fi": "Vaaleaorakkaan puhdistus ja paistaminen rapeaksi pannulla"
+    },
+    "desc": {
+      "en": "How to brush off fragile spines, sweat in dry pan, and crisp up in salted butter for open-face sandwiches.",
+      "zh": "刷理脆弱菌刺技巧，干锅慢煸出清汤收干，加黄油大火煎脆，肉质紧密爽脆。",
+      "fi": "Murean ja kiinteän orakkaan esikäsittely ja paistaminen voissa leivän päälle."
+    }
+  },
+  {
+    "id": "bolete_garlic_butter_pan_sear",
+    "url": "https://www.youtube.com/watch?v=XWB5C1ludQc",
+    "videoId": "XWB5C1ludQc",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "bolete"
+    ],
+    "speciesId": "boletus_edulis",
+    "creator": "Nordic / Asian Forest Cooking",
+    "duration": "4:40",
+    "title": {
+      "en": "How to Clean & Pan-Sear Fresh Porcini in Garlic Butter (Herkkutatti)",
+      "zh": "鲜采牛肝菌（美味牛肝菌）处理与大蒜黄油香煎法 / 中式炒肉丝",
+      "fi": "Tuoreen herkkutatin paistaminen valkosipulivoissa pannulla"
+    },
+    "desc": {
+      "en": "Thick porcini slices seared in brown butter and garlic until nutty and caramelized.",
+      "zh": "美味牛肝菌切厚片，热黄油大蒜大火快煎出坚果香气，边缘微焦肉质厚实如牛排。",
+      "fi": "Pähkinäisen aromikas herkkutatti paistettuna rapeaksi voissa."
+    }
+  },
+  {
+    "id": "pine_bolete_cream_sauce",
+    "url": "https://www.youtube.com/watch?v=IGxtCj8ZuFE",
+    "videoId": "IGxtCj8ZuFE",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "bolete"
+    ],
+    "speciesId": "boletus_pinophilus",
+    "creator": "Suomalainen Eräkokki",
+    "duration": "3:50",
+    "title": {
+      "en": "Cooking Wild Boletes in Butter & Cream (Tattikastike)",
+      "zh": "北欧松生牛肝菌黄油奶油浓汁烹饪教学（Tattikastike）",
+      "fi": "Herkullinen tattikastike männynherkkutatista ja kermasta"
+    },
+    "desc": {
+      "en": "Rich Finnish sauce made from firm pine boletes simmered in country cream.",
+      "zh": "松林红头牛肝菌肉质致密坚实，加黄油慢煸倒入奶油与海盐，浇配烤肉或土豆。",
+      "fi": "Männynherkkutatin tiivis malto pääsee oikeuksiinsa kermaisessa tattikastikkeessa."
+    }
+  },
+  {
+    "id": "orange_birch_bolete_thorough_cooking",
+    "url": "https://www.youtube.com/watch?v=o3XPSC6HKDc",
+    "videoId": "o3XPSC6HKDc",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "bolete"
+    ],
+    "speciesId": "leccinum_versipelle",
+    "creator": "Suomen Luonto & Martat",
+    "duration": "5:10",
+    "title": {
+      "en": "Thorough Pan-Cooking for Orange Birch Boletes (20-Minute Safety Rule)",
+      "zh": "白桦疣柄牛肝菌（红头牛肝菌）识别与必须彻底加热20分钟烹饪演示",
+      "fi": "Punikkitattien turvallinen ja perusteellinen kypsennys pannulla"
+    },
+    "desc": {
+      "en": "Mandatory 20-minute cooking technique to eliminate stomach toxins; normal blackening of flesh explained.",
+      "zh": "疣柄牛肝菌属含有微毒刺激素，必须切片中火炒透至少20分钟，加热变墨黑为正常酶促反应。",
+      "fi": "Punikkitatit vaativat vähintään 15-20 minuutin kypsennyksen vatsakipujen välttämiseksi."
+    }
+  },
+  {
+    "id": "saffron_milkcaps_pan_fried",
+    "url": "https://www.youtube.com/watch?v=DtfIopmfpic",
+    "videoId": "DtfIopmfpic",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "milkcap"
+    ],
+    "speciesId": "lactarius_deliciosus",
+    "creator": "Mediterranean & Nordic Wild Kitchen",
+    "duration": "3:30",
+    "title": {
+      "en": "Traditional Pan-Fried Saffron Milkcaps (No Boiling Required)",
+      "zh": "经典大蒜欧芹香煎松乳菇做法（严禁焯水！直接下锅香煎脆嫩）",
+      "fi": "Männynleppärouskun paistaminen pannulla (ei saa ryöpätä!)"
+    },
+    "desc": {
+      "en": "Orange-milking rousku that should NEVER be parboiled; seared quickly in olive oil or butter with garlic.",
+      "zh": "橙乳乳菇是顶级美味菌，绝不可用水焯煮！直接用热黄油加大蒜与洋葱煎透，脆嫩爆汁。",
+      "fi": "Herkullinen leppärousku paistetaan suoraan pannulla valkosipulin ja yrttien kera."
+    }
+  },
+  {
+    "id": "pan_frying_mild_russula",
+    "url": "https://www.youtube.com/watch?v=PvEH3kYOTDQ",
+    "videoId": "PvEH3kYOTDQ",
+    "tradition": "fi",
+    "categories": [
+      "finnish"
+    ],
+    "speciesId": "russula_decolorans",
+    "creator": "Metsän Maut",
+    "duration": "3:40",
+    "title": {
+      "en": "Pan-Frying Wild Russula Brittlegills with Onions & Black Pepper",
+      "zh": "野采红菇洋葱黑胡椒出汁香煎做法（无需焯水，脆爽清甜）",
+      "fi": "Mietoina poimittujen haperoiden paistaminen sipulin kera"
+    },
+    "desc": {
+      "en": "Tasting the sweet crunch of mild brittlegills; cooked gently with diced onions and butter.",
+      "zh": "温和红菇（如变黑红菇、美味红菇）肉质脆爽，直接加黄油洋葱碎慢煎，受热变灰黑为天然本色。",
+      "fi": "Miedot haperot paistuvat pannulla rapeiksi ilman ryöppäystä."
+    }
+  },
+  {
+    "id": "pan_braising_gypsy_mushroom",
+    "url": "https://www.youtube.com/watch?v=xZybP1obYFQ",
+    "videoId": "xZybP1obYFQ",
+    "tradition": "fi",
+    "categories": [
+      "finnish"
+    ],
+    "speciesId": "cortinarius_caperatus",
+    "creator": "Nordic Gourmet Forager",
+    "duration": "4:02",
+    "title": {
+      "en": "Pan-Braising Fresh Gypsy Mushrooms (Cortinarius caperatus)",
+      "zh": "鲜采皱盖罗鳞伞（隐花丝膜菌）慢火焖煎做法（肉质细嫩极品）",
+      "fi": "Tuoreen kehnäsienen kypsennys ja paistaminen miedolla lämmöllä"
+    },
+    "desc": {
+      "en": "Gently cooking the tender gypsy mushroom caps in butter, perfect for morning omelettes.",
+      "zh": "五星级美味皱盖罗鳞伞，肉质极细嫩芳香，加少许黄油微火香煎，拌入煎蛋或做奶油炖肉极佳。",
+      "fi": "Kehnäsieni on viiden tähden ruokasieni, joka paistetaan hellävaraisesti voissa."
+    }
+  },
+  {
+    "id": "sheep_polypore_creamy_soup",
+    "url": "https://www.youtube.com/watch?v=5oeFlbj43_c",
+    "videoId": "5oeFlbj43_c",
+    "tradition": "fi",
+    "categories": [
+      "finnish",
+      "soup"
+    ],
+    "speciesId": "albatrellus_ovinus",
+    "creator": "Kokkaa Metsässä",
+    "duration": "4:50",
+    "title": {
+      "en": "Restaurant-Quality Creamy Sheep Polypore Soup & Schnitzel (Lampaankääpä)",
+      "zh": "地花孔菌（羊孔菌）经典奶油浓汤与森林素猪排餐厅级烹饪教学",
+      "fi": "Ravintolatason kermainen lampaankääpäkeitto ja metsäleikkeet"
+    },
+    "desc": {
+      "en": "How sheep polypore turns canary yellow upon cooking; breaded forest schnitzels and velvety soup.",
+      "zh": "肉质致密坚实如肉排，受热变为明亮亮黄色！裹面包屑油炸成香酥“森林素猪排”或慢熬奶油汤。",
+      "fi": "Lampaankääpä muuttuu keltaiseksi paistettaessa; leivitetty leike tai samettinen keitto."
+    }
+  },
+  {
+    "id": "false_morel_parboiling_detox",
+    "url": "https://www.youtube.com/watch?v=kyf3FQOgyKQ",
+    "videoId": "kyf3FQOgyKQ",
+    "tradition": "fi",
+    "categories": [
+      "finnish"
+    ],
+    "speciesId": "gyromitra_esculenta",
+    "creator": "Suomen Virallinen Ohjeistus",
+    "duration": "6:40",
+    "title": {
+      "en": "Official Finnish False Morel Double-Parboiling Detoxification & Omelette",
+      "zh": "芬兰官方鹿花菌二次沸水焯水脱毒流程与春季滑蛋做法（极度严格）",
+      "fi": "Korvasienen virallinen keittäminen kahdesti ja korvasienimuhennos"
+    },
+    "desc": {
+      "en": "Evaporating gyromitrin via twice 5-minute rolling boil in abundant water under ventilation.",
+      "zh": "含致命鹿花菌素，必须在通风良好处经两次5分钟大锅沸水滚煮脱毒，彻底冲凉冲洗方可入馔。",
+      "fi": "Korvasieni vaatii ehdottoman keittämisen kahdesti runsaassa vedessä hyvällä tuuletuksella."
+    }
+  },
+  {
+    "id": "yunnan_chanterelle_stir_fry",
+    "url": "https://www.youtube.com/watch?v=9NEKn4yqJvY",
+    "videoId": "9NEKn4yqJvY",
+    "tradition": "zh",
+    "categories": [
+      "chinese",
+      "chanterelle"
+    ],
+    "speciesId": "cantharellus_cibarius",
+    "creator": "云南妹子啦嘀嗒",
+    "duration": "4:29",
+    "title": {
+      "en": "Yunnan Wild Chanterelle Stir-Fry with Fresh Peppers (Crispy & Tender)",
+      "zh": "云南野生鸡油菌青红椒大火爆炒（甜嫩脆滑极下饭）",
+      "fi": "Yunnanilainen villien vahveroiden pikapaisto tuoreella chilillä"
+    },
+    "desc": {
+      "en": "High-heat wok searing with wrinkly green chilis and garlic, retaining the natural crunch and sweetness.",
+      "zh": "云南地道农家做法：猪油大蒜爆锅，投入撕成条的鸡油菌大火翻炒断生，加青红椒圈激出镬气。",
+      "fi": "Korkean lämmön wokki tuoreilla chileillä, valkosipulilla ja rapeilla metsävahveroilla."
+    }
+  },
+  {
+    "id": "shangri_la_chanterelle_secrets",
+    "url": "https://www.youtube.com/watch?v=oQflKhysm2A",
+    "videoId": "oQflKhysm2A",
+    "tradition": "zh",
+    "categories": [
+      "chinese",
+      "chanterelle"
+    ],
+    "speciesId": "cantharellus_cibarius",
+    "creator": "美食台 FoodVideo",
+    "duration": "2:02",
+    "title": {
+      "en": "Shangri-La Secrets to Sautéing Wild Forest Chanterelles",
+      "zh": "美食台：香格里拉大厨炒新鲜野生林地菌子的独门绝招",
+      "fi": "Shangri-Lan mestarin niksit metsävahveroiden paistamiseen"
+    },
+    "desc": {
+      "en": "Masterchef tips from the Tibetan plateau: controlling moisture, pork lard sear, and aromatic garlic.",
+      "zh": "香格里拉大厨传授：下锅前控干水分，用自炼猪油锁住菌香，快火猛炒保持脆嫩鲜甜。",
+      "fi": "Mestarikokin salaisuudet: kosteuden hallinta ja pikainen paisto."
+    }
+  },
+  {
+    "id": "chanterelle_scallop_wok_sear",
+    "url": "https://www.youtube.com/watch?v=KYb4HSSahEk",
+    "videoId": "KYb4HSSahEk",
+    "tradition": "zh",
+    "categories": [
+      "chinese",
+      "chanterelle"
+    ],
+    "speciesId": "cantharellus_cibarius",
+    "creator": "Jenny's Kitchen",
+    "duration": "2:24",
+    "title": {
+      "en": "Wok-Seared Wild Chanterelles with Fresh Sea Scallops & Garlic",
+      "zh": "鲜果木香鸡油菌蒜蓉爆炒鲜带子/扇贝（高档粤式海鲜搭配）",
+      "fi": "Vahveroiden ja kampasimpukoiden pikapaisto valkosipulilla"
+    },
+    "desc": {
+      "en": "Cantonese seafood pairing: buttery wild chanterelles meeting sweet, seared sea scallops.",
+      "zh": "粤菜山海双鲜组合：大火滑炒带子至刚熟，与大蒜爆香的鸡油菌迅速合炒，果香与海鲜甜味完美交融。",
+      "fi": "Ylellinen yhdistelmä metsäsieniä ja makeita kampasimpukoita."
+    }
+  },
+  {
+    "id": "cantonese_chanterelle_chicken",
+    "url": "https://www.youtube.com/watch?v=5VXiFDkb9dk",
+    "videoId": "5VXiFDkb9dk",
+    "tradition": "zh",
+    "categories": [
+      "chinese",
+      "chanterelle"
+    ],
+    "speciesId": "cantharellus_cibarius",
+    "creator": "飲食男女 大師姐食譜",
+    "duration": "2:16",
+    "title": {
+      "en": "Masterchef Cantonese Wok-Fried Chanterelles with Chicken Fillet",
+      "zh": "香港饮食男女大师姐食谱：镬气十足野生鸡油菌炒滑鸡球",
+      "fi": "Perinteinen kantonilainen vahvero-kanawokki"
+    },
+    "desc": {
+      "en": "Classic Hong Kong wok dish: velvet chicken fillet combined with aromatic forest chanterelles.",
+      "zh": "香港大师姐经典配方：嫩滑鸡球提前腌渍过油，大火热锅爆香姜蒜与鸡油菌，镬气扑鼻鲜嫩下饭。",
+      "fi": "Kantonilainen mestariresepti mehevällä kanalla ja metsäsienillä."
+    }
+  },
+  {
+    "id": "chanterelle_chicken_broth",
+    "url": "https://www.youtube.com/watch?v=OIByq7YxNdg",
+    "videoId": "OIByq7YxNdg",
+    "tradition": "zh",
+    "categories": [
+      "chinese",
+      "soup",
+      "chanterelle"
+    ],
+    "speciesId": "cantharellus_cibarius",
+    "creator": "品味食間 Taste Food time",
+    "duration": "4:16",
+    "title": {
+      "en": "Nourishing Slow-Simmered Chicken Broth with Forest Chanterelles",
+      "zh": "古法慢火清炖野生鸡油菇土鸡汤（果香清甜、暖胃滋补）",
+      "fi": "Mieto ja aromaattinen villivahvera-kanaliemi"
+    },
+    "desc": {
+      "en": "Gentle double-boiled soup extracting deep golden umami from wild chanterelles and free-range chicken.",
+      "zh": "将鸡块焯水后与姜片慢炖出清汤，出锅前20分钟投入鲜鸡油菌，汤色金黄清澈，果香清甜滋润。",
+      "fi": "Pitkään haudutettu kirkas kanaliemi villivahveroilla."
+    }
+  },
+  {
+    "id": "nordic_chanterelle_soup_chinese_touch",
+    "url": "https://www.youtube.com/watch?v=BQxezCwNZ98",
+    "videoId": "BQxezCwNZ98",
+    "tradition": "zh",
+    "categories": [
+      "chinese",
+      "soup",
+      "chanterelle"
+    ],
+    "speciesId": "craterellus_tubaeformis",
+    "creator": "優視 • 美食頻道",
+    "duration": "6:31",
+    "title": {
+      "en": "Nordic Wild Chanterelle Velouté Soup with Chinese Culinary Touch",
+      "zh": "北欧秋季经典野采鸡油菌/漏斗菌浓汤制作（全中文讲解家庭版）",
+      "fi": "Pohjoismainen vahverokeitto kiinalaisella otteella"
+    },
+    "desc": {
+      "en": "A bilingual cooking walkthrough explaining how to master Finnish wild mushroom soup in a Chinese kitchen.",
+      "zh": "华人家庭在芬兰实拍：从林间采回漏斗鸡油菌，用中式灶具做出餐厅级丝滑鲜美菌菇浓汤。",
+      "fi": "Kotikokin kattava suomenkielinen/kiinankielinen opastus vahverokeiton tekoon."
+    }
+  },
+  {
+    "id": "bolete_garlic_chili_stir_fry",
+    "url": "https://www.youtube.com/watch?v=zBrJFnXTMcQ",
+    "videoId": "zBrJFnXTMcQ",
+    "tradition": "zh",
+    "categories": [
+      "chinese",
+      "bolete"
+    ],
+    "speciesId": "boletus_edulis",
+    "creator": "Lily's Meals",
+    "duration": "3:29",
+    "title": {
+      "en": "Classic Stir-Fried Boletes with Garlic & Chili (Forest Aroma)",
+      "zh": "经典蒜片青椒干椒爆炒牛肝菌（原汁原味释放山野鲜香）",
+      "fi": "Herkkutattien pikapaisto valkosipulilla ja chilillä"
+    },
+    "desc": {
+      "en": "The definitive Yunnan technique for fresh porcini: abundant garlic slices, mild chilis, and searing heat.",
+      "zh": "爆炒牛肝菌灵魂搭配：大蒜必须切厚片下重手，加干辣椒爆香，大火将牛肝菌炒熟透，滑嫩腴美无比。",
+      "fi": "Runsaasti valkosipulia ja mietoa chiliä – tattien paras aasialainen valmistustapa."
+    }
+  },
+  {
+    "id": "bolete_spiced_oil_confit",
+    "url": "https://www.youtube.com/watch?v=-H_7xTFu8Ls",
+    "videoId": "-H_7xTFu8Ls",
+    "tradition": "zh",
+    "categories": [
+      "chinese",
+      "bolete"
+    ],
+    "speciesId": "boletus_edulis",
+    "creator": "兑兑 Duidui in Finland",
+    "duration": "5:31",
+    "title": {
+      "en": "Finnish Forest Foraging: Chinese Spiced Oil-Preserved Boletes",
+      "zh": "芬兰森林采摘野味：中式香料油浸野生牛肝菌与保存法（极品拌面菌油）",
+      "fi": "Suomalaisten tattien säilöntä mausteöljyssä (kiinalainen öljykonfitti)"
+    },
+    "desc": {
+      "en": "Foraged porcini cooked gently in aromatics and vegetable oil to create an umami mushroom oil that keeps for months.",
+      "zh": "赫尔辛基林间鲜采牛肝菌切丁，配八角、花椒、红葱头慢火熬制出金黄菌油，拌面拌饭香绝全家。",
+      "fi": "Miedolla lämmöllä öljyssä kypsennetyt herkkutatit ja aromikas sieniöljy säilyvät kuukausia."
+    }
+  },
+  {
+    "id": "bolete_clear_chicken_soup",
+    "url": "https://www.youtube.com/watch?v=BSvep9GRHlg",
+    "videoId": "BSvep9GRHlg",
+    "tradition": "zh",
+    "categories": [
+      "chinese",
+      "soup",
+      "bolete"
+    ],
+    "speciesId": "boletus_edulis",
+    "creator": "Shirley的快乐厨房",
+    "duration": "4:16",
+    "title": {
+      "en": "Nourishing Clear Chicken Broth with Wild Boletes (Porcini Soup)",
+      "zh": "原汁原味牛肝菌清炖土鸡汤（汤色清亮醇厚、鲜香甘润）",
+      "fi": "Kirkas herkkutatti-kanaliemi (terveellinen keitto)"
+    },
+    "desc": {
+      "en": "Pure, comforting broth pairing whole wild boletes with simmering chicken, red dates, and ginger.",
+      "zh": "无需复杂香料，优质牛肝菌配母鸡慢火炖出琥珀色高汤，汤鲜味醇，菇体吸饱肉汁软糯甘甜。",
+      "fi": "Herkkutattien täyteläinen umami korostuu haudutetussa kanaliemessä."
+    }
+  },
+  {
+    "id": "yunnan_ham_bolete_claypot_rice",
+    "url": "https://www.youtube.com/watch?v=PmO9194VTnw",
+    "videoId": "PmO9194VTnw",
+    "tradition": "zh",
+    "categories": [
+      "chinese",
+      "bolete"
+    ],
+    "speciesId": "boletus_edulis",
+    "creator": "三妹妹厨房",
+    "duration": "3:59",
+    "title": {
+      "en": "Yunnan Cured Ham & Wild Bolete Braised Fragrant Rice",
+      "zh": "云南经典火腿鸡肉牛肝菌焖饭（米粒吸饱山珍浓郁鲜味）",
+      "fi": "Kinkku-tattipataruoka riisillä (perinteinen saviruoka)"
+    },
+    "desc": {
+      "en": "Rice cooked directly with seared porcini, cured ham cubes, and chicken fat in a clay pot for crispy crust.",
+      "zh": "牛肝菌丁与咸香云腿先在锅中煸出油脂，倒入大米中火焖煮，锅底结出焦脆金黄饭焦，满屋生香。",
+      "fi": "Riisipata, jossa herkkutatit ja suolainen kinkku maustavat riisin rapeaksi."
+    }
+  },
+  {
+    "id": "five_master_secrets_stir_frying_boletes",
+    "url": "https://www.youtube.com/watch?v=c_KosrETlbs",
+    "videoId": "c_KosrETlbs",
+    "tradition": "zh",
+    "categories": [
+      "chinese",
+      "bolete"
+    ],
+    "speciesId": "boletus_edulis",
+    "creator": "美食台 FoodVideo",
+    "duration": "2:54",
+    "title": {
+      "en": "5 Master Secrets to Stir-Frying Wild Boletes (FoodVideo)",
+      "zh": "美食台：特级大厨秘传炒出完美野生牛肝菌的5大诀窍",
+      "fi": "Viisi keittiömestarin salaisuutta tattien paistamiseen"
+    },
+    "desc": {
+      "en": "Crucial professional rules: heat control, slicing thickness, cooking thoroughly, and umami pairing.",
+      "zh": "资深主厨传授：为什么大火热锅是关键、蒜片为何必不可少、彻底熟透的黄金翻炒时间节点。",
+      "fi": "Ammattikokin vinkit: lämmönsäätö, viipalointipaksuus ja kypsyysaika."
+    }
+  }
+]
 };
 
 if (typeof module !== "undefined" && module.exports) {
