@@ -1579,6 +1579,38 @@ function renderSafety() {
           `).join("")}
         </ul>
       </div>
+
+      <!-- Forager's Pro-Tip & Host Trees (Pine vs. Birch) -->
+      ${sg.fieldTips ? `
+      <div style="grid-column: 1 / -1; background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 1.25rem;">
+        <h3 style="font-size: 1.2rem; font-weight: 700; color: #14532d; margin-bottom: 0.6rem;">
+          ${sg.fieldTips.title[lang]}
+          ${lang2 ? `<span style="font-size: 0.95rem; color: #166534; display: block; margin-top: 0.2rem; font-weight: 400;">${sg.fieldTips.title[lang2]}</span>` : ""}
+        </h3>
+        <div style="font-size: 0.9rem; color: #15803d; margin-bottom: 0.85rem; font-weight: 500;">
+          <p>${sg.fieldTips.desc[lang]}</p>
+          ${lang2 ? `<p style="color: #166534; font-size: 0.84rem; margin-top: 0.25rem;">${sg.fieldTips.desc[lang2]}</p>` : ""}
+        </div>
+
+        <!-- Pine vs Birch Comparative Image -->
+        <div style="margin: 0.75rem 0 1rem;">
+          <img src="${sg.fieldTips.image}" alt="Scots Pine vs Silver Birch" style="width: 100%; max-height: 460px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); display: block;">
+          <div style="font-size: 0.82rem; color: #475569; text-align: center; margin-top: 0.4rem; font-style: italic;">
+            ${sg.fieldTips.imageCaption[lang]}
+            ${lang2 ? ` • ${sg.fieldTips.imageCaption[lang2]}` : ""}
+          </div>
+        </div>
+
+        <ul style="padding-left: 1.1rem; font-size: 0.86rem; color: #1e3a2b; line-height: 1.6;">
+          ${sg.fieldTips.items.map(it => `
+            <li style="margin-bottom: 0.5rem;">
+              <div style="font-weight: 600;">${it[lang]}</div>
+              ${lang2 ? `<div style="color: #475569; font-size: 0.82rem; margin-top: 2px; font-weight: 400;">${it[lang2]}</div>` : ""}
+            </li>
+          `).join("")}
+        </ul>
+      </div>
+      ` : ""}
     </div>
   `;
 }

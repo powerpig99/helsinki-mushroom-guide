@@ -2515,6 +2515,41 @@ const I18N = {
           fi: "Varavirtalähde: Syksyn viileys tyhjentää akun nopeasti; pidä mukana powerbank."
         }
       ]
+    },
+    fieldTips: {
+      title: {
+        en: "🌲 Forager's Pro-Tip: The Chanterelle Dilemma & Host Trees",
+        zh: "🌲 寻菇秘笈：为何9月满地漏斗菇却难寻鸡油菌？（树种生态与隐秘点）",
+        fi: "🌲 Sienestäjän Pro-Vinkki: Kantarelli vs. Suppilovahvero & Isäntäpuut"
+      },
+      desc: {
+        en: "Finding heaps of Funnel Chanterelles (Suppilovahvero) but zero Golden Chanterelles (Kantarelli) in September? It's not because someone picked them earlier today—it is driven by seasonality, forest room (spruce vs birch/pine), and tree mycorrhiza!",
+        zh: "秋天进林子发现满地都是漏斗鸡油菌（Suppilovahvero），却一颗鲜黄鸡油菌（Kantarelli）都找不到？绝非因为下午去被人摘光，而是季节节律、生境错位与树种共生差异！",
+        fi: "Löydätkö syyskuussa kasoittain suppilovahveroita mutta et lainkaan kantarelleja? Kyse ei ole kellonajasta, vaan sesongista, elinympäristöstä ja puiden mykorritsasta!"
+      },
+      image: "images/pine_vs_birch.jpg",
+      imageCaption: {
+        en: "Scots Pine (Pinus sylvestris / Mänty) vs. Silver Birch (Betula pendula / Koivu)",
+        zh: "欧洲赤松 (Mänty) 对比 垂枝白桦 (Koivu) 实地特征",
+        fi: "Mänty (Pinus sylvestris) vs. Rauduskoivu (Betula pendula) maastossa"
+      },
+      items: [
+        {
+          en: "Season Shift: Golden chanterelles peak in July–August and taper off by mid-September. Funnel chanterelles peak September–November in damp, chilly weather.",
+          zh: "季节错位：黄鸡油菌盛产于7-8月盛夏，9月中旬已入尾声；而漏斗鸡油菌喜阴冷湿润，正值9-11月爆发高峰期。",
+          fi: "Kausiero: Kantarellin pääsato on heinä-elokuussa; suppilovahvero puhkeaa syys-marraskuussa."
+        },
+        {
+          en: "Forest Habitat: Funnel chanterelles love dark, damp spruce forests (Kuusikko) in deep feathermoss. Golden chanterelles demand sunlight, mossy granite rocks, and Birch (Koivu) or Pine (Mänty) edges.",
+          zh: "树种与生境：漏斗菇专爱深邃潮湿、覆满厚苔藓的成熟云杉林（Kuusikko）；黄鸡油菌则需要充足光照，专依附于白桦（Koivu）或松树（Mänty）林缘与长苔藓的岩台。",
+          fi: "Elinympäristö: Suppilovahvero viihtyy varjoisissa kuusikoissa sammalikossa; kantarelli vaatii valoa ja kasvaa koivujen ja mäntyjen juurella sekä kalliomättäillä."
+        },
+        {
+          en: "Hidden Low-Pressure Spots: Avoid picked-out tourist trails at Nuuksio Haukkalampi or Kuusijärvi. Try Meiko Nature Reserve (Kirkkonummi), Tremanskärr (North Espoo), Byabäcken (North Sipoonkorpi), or Salmi (North Nuuksio plateau) for pristine unpicked foraging.",
+          zh: "清净小众采摘点：避开游人如织的 Nuuksio Haukkalampi 或 Kuusijärvi。前往 Meiko 自然保护区（Kirkkonummi）、Tremanskärr（北埃斯波）、Byabäcken（北锡博）或 Salmi（北努克西奥高地），享受无人争抢的原始林区。",
+          fi: "Rauhalliset hotspotit: Vältä ruuhkaisia Nuuksion ja Kuusijärven pääreittejä. Kokeile Meikon luonnonsuojelualuetta, Tremanskärriä, Pohjois-Sipoonkorpea (Byabäcken) tai Salmea."
+        }
+      ]
     }
   }
 };
