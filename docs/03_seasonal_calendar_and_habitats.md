@@ -126,12 +126,12 @@ This is one of the most common dilemmas for autumn foragers in Finland. While fo
 
 ---
 
-### B. Tree Identification: Scots Pine vs. Silver Birch
+### B. Tree Identification: Silver Birch vs. Scots Pine vs. Norway Spruce
 
-Recognizing your forest canopy is the single greatest skill for locating specific mushrooms. Golden chanterelles live in symbiosis with birch and pine, while funnel chanterelles prefer spruce.
+Recognizing your forest canopy is the single greatest skill for locating specific mushrooms. In Finland, the "Big Three" trees dictate virtually all mushroom distribution: **Golden chanterelles** partner with birch and pine; **Pine boletes** partner with pine; while **Funnel chanterelles** and hedgehogs carpet the moss under spruce.
 
-![Scots Pine (Pinus sylvestris) vs. Silver Birch (Betula pendula) in Finnish forest](../images/pine_vs_birch.jpg)
-*(c) Botanical field guide - Left: Silver Birch (Betula pendula) • Right: Scots Pine (Pinus sylvestris)*
+![Silver Birch (Betula pendula), Scots Pine (Pinus sylvestris), and Norway Spruce (Picea abies) in Finnish forest](../images/birch_pine_spruce.jpg)
+*(c) Botanical field guide - Left: Silver Birch (Betula pendula / Koivu) • Center: Scots Pine (Pinus sylvestris / Mänty) • Right: Norway Spruce (Picea abies / Kuusi)*
 
 | Diagnostic Feature | Silver Birch (*Betula pendula* / *Rauduskoivu*) | Scots Pine (*Pinus sylvestris* / *Mänty*) | Norway Spruce (*Picea abies* / *Kuusi*) |
 | :--- | :--- | :--- | :--- |

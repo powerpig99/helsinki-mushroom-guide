@@ -138,6 +138,7 @@ const chapters = [
   { file: '05_beginner_safe_species.md', title: '05. The "Safe Five" Beginner Species', icon: '🍄' },
   { file: '06_intermediate_and_advanced.md', title: '06. Intermediate & Advanced Gourmet Species', icon: '🧺' },
   { file: '07_preservation_and_recipes.md', title: '07. Preservation & Authentic Finnish Recipes', icon: '🍳' },
+  { file: '08_expanded_edible_species_index.md', title: '08. Master Index: 50+ Wild Edible Mushrooms of Finland', icon: '📋' },
   { file: 'cooking_and_recipes_zh.md', title: 'ZH. 中文野菌烹饪预处理与中西经典食谱', icon: '🇨🇳' }
 ];
 

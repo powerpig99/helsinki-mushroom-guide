@@ -2527,11 +2527,11 @@ const I18N = {
         zh: "秋天进林子发现满地都是漏斗鸡油菌（Suppilovahvero），却一颗鲜黄鸡油菌（Kantarelli）都找不到？绝非因为下午去被人摘光，而是季节节律、生境错位与树种共生差异！",
         fi: "Löydätkö syyskuussa kasoittain suppilovahveroita mutta et lainkaan kantarelleja? Kyse ei ole kellonajasta, vaan sesongista, elinympäristöstä ja puiden mykorritsasta!"
       },
-      image: "images/pine_vs_birch.jpg",
+      image: "images/birch_pine_spruce.jpg",
       imageCaption: {
-        en: "Scots Pine (Pinus sylvestris / Mänty) vs. Silver Birch (Betula pendula / Koivu)",
-        zh: "欧洲赤松 (Mänty) 对比 垂枝白桦 (Koivu) 实地特征",
-        fi: "Mänty (Pinus sylvestris) vs. Rauduskoivu (Betula pendula) maastossa"
+        en: "Silver Birch (Koivu) • Scots Pine (Mänty) • Norway Spruce (Kuusi)",
+        zh: "垂枝白桦 (Koivu) • 欧洲赤松 (Mänty) • 欧洲云杉 (Kuusi) 三大树种实地对比",
+        fi: "Rauduskoivu (Koivu) • Mänty • Kuusi maastovertailu"
       },
       items: [
         {
