@@ -381,6 +381,14 @@ function applyLanguage(lang) {
   document.getElementById("tab-btn-cooking").textContent = t.tabCooking;
   document.getElementById("tab-btn-spots").textContent = t.tabSpots;
   document.getElementById("tab-btn-safety").textContent = t.tabSafety;
+  const tabBtnHandbook = document.getElementById("tab-btn-handbook");
+  if (tabBtnHandbook) tabBtnHandbook.textContent = t.tabHandbook;
+
+  // Header quick links
+  const headerLinkHandbook = document.getElementById("header-link-handbook");
+  if (headerLinkHandbook && t.headerLinkHandbook) headerLinkHandbook.textContent = t.headerLinkHandbook;
+  const headerLinkSpecies = document.getElementById("header-link-species");
+  if (headerLinkSpecies && t.headerLinkSpecies) headerLinkSpecies.textContent = t.headerLinkSpecies;
 
   // Search Placeholder
   const searchInput = document.getElementById("search-input");
@@ -417,6 +425,7 @@ function applyLanguage(lang) {
   renderCookingGuide();
   renderSpots();
   renderSafety();
+  renderHandbook();
 
   // If currently viewing a mushroom detail page, re-render it in the new language
   if (currentMushroomId) {
@@ -447,6 +456,7 @@ function handleRoute() {
     else if (hash === "#/cooking") switchTabDirectly("cooking");
     else if (hash === "#/spots") switchTabDirectly("spots");
     else if (hash === "#/safety") switchTabDirectly("safety");
+    else if (hash === "#/handbook") switchTabDirectly("handbook");
     else switchTabDirectly("catalog");
   }
 }
@@ -462,6 +472,9 @@ function switchTabDirectly(tabKey) {
   document.getElementById("tab-cooking").style.display = tabKey === "cooking" ? "block" : "none";
   document.getElementById("tab-spots").style.display = tabKey === "spots" ? "block" : "none";
   document.getElementById("tab-safety").style.display = tabKey === "safety" ? "block" : "none";
+  const tabHandbook = document.getElementById("tab-handbook");
+  if (tabHandbook) tabHandbook.style.display = tabKey === "handbook" ? "block" : "none";
+  if (tabKey === "handbook") renderHandbook();
 }
 
 function navigateToMushroom(id) {
@@ -1614,3 +1627,77 @@ function renderSafety() {
     </div>
   `;
 }
+
+// -------------------------------------------------------------
+// Field Handbook & 9-Chapter Monograph Library
+// -------------------------------------------------------------
+function renderHandbook() {
+  const container = document.getElementById("handbook-container");
+  const banner = document.getElementById("handbook-banner");
+  if (!container) return;
+
+  const lang = I18N.currentLang;
+  const lang2 = I18N.secondaryLang;
+  const t = I18N.ui[lang] || I18N.ui.en;
+
+  if (banner) {
+    banner.innerHTML = `
+      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem;">
+          <div style="max-width: 680px;">
+            <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: #ecfdf5; color: #047857; font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.5rem; border: 1px solid #a7f3d0;">
+              <span>🌐 Web Edition</span> • <span>Published & Live on GitHub Pages</span>
+            </div>
+            <h2 style="font-size: 1.35rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.35rem;">
+              ${t.handbookTitle}
+            </h2>
+            <p style="font-size: 0.92rem; color: #475569; line-height: 1.55;">
+              ${t.handbookSubtitle}
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <a href="overview.html" target="_blank" rel="noopener noreferrer" class="emergency-btn" style="background: #10b981; color: #ffffff; text-decoration: none; font-weight: 600; padding: 0.6rem 1.1rem; display: inline-flex; align-items: center; gap: 0.4rem; border-radius: 6px;">
+              ${t.viewFullToc} →
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (!I18N.handbookChapters) return;
+
+  container.innerHTML = I18N.handbookChapters.map(ch => `
+    <div class="spot-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="spot-header" style="align-items: flex-start;">
+          <div>
+            <div style="font-size: 0.78rem; font-weight: 700; color: #10b981; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
+              ${ch.chapterNum}
+            </div>
+            <h3 class="spot-title" style="font-size: 1.1rem; line-height: 1.35;">
+              ${ch.icon} ${ch.title[lang]}
+            </h3>
+            ${lang2 ? `<div style="font-size: 0.86rem; color: #64748b; margin-top: 0.25rem; font-weight: 400;">${ch.title[lang2]}</div>` : ""}
+          </div>
+          <span class="spot-zone" style="background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; white-space: nowrap;">
+            ${ch.badge[lang]}
+          </span>
+        </div>
+
+        <div style="font-size: 0.88rem; color: #334155; line-height: 1.6; margin: 0.85rem 0 1.25rem;">
+          <p>${ch.desc[lang]}</p>
+          ${lang2 ? `<p style="color: #64748b; font-size: 0.82rem; margin-top: 0.4rem;">${ch.desc[lang2]}</p>` : ""}
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid #f1f5f9; padding-top: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.78rem; color: #94a3b8; font-weight: 500;">🌐 Web Page (HTML)</span>
+        <a href="${ch.url}" target="_blank" rel="noopener noreferrer" class="btn-location-map" style="background: #1e3a2b; color: #ffffff; text-decoration: none; padding: 0.45rem 0.9rem; font-size: 0.84rem; font-weight: 600; border-radius: 6px;">
+          ${t.readChapterBtn}
+        </a>
+      </div>
+    </div>
+  `).join("");
+}
+

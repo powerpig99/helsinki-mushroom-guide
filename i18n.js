@@ -22,6 +22,13 @@ const I18N = {
       tabCooking: "🍳 Cooking & Prep Guide",
       tabSpots: "🚌 Helsinki HSL Spots",
       tabSafety: "🛡️ Safety & Everyman's Right",
+      tabHandbook: "📚 Field Handbook (9)",
+      handbookTitle: "📚 Complete Helsinki Mushroom Field Handbook (9 Chapters)",
+      handbookSubtitle: "Read our comprehensive field guide monographs online anytime. All 9 chapters cover everything from transit lines and forest ecology to deadly lookalikes, 50+ edible species, and gourmet cooking.",
+      readChapterBtn: "Read Chapter Online →",
+      viewFullToc: "📖 View Complete Table of Contents & Overview",
+      headerLinkHandbook: "📖 Read 9-Chapter Web Handbook Online →",
+      headerLinkSpecies: "📋 50+ Edible Species Master Index →",
       searchPlaceholder: "Search by Finnish, Latin, English, Chinese, or traits (e.g. spines, pores)...",
       skillLevelLabel: "Skill Level:",
       monthFilterLabel: "Fruiting Month:",
@@ -82,6 +89,13 @@ const I18N = {
       tabCooking: "🍳 烹饪处理与经典食谱",
       tabSpots: "🚌 赫尔辛基地铁公交采摘点",
       tabSafety: "🛡️ 安全法则与自然公共权",
+      tabHandbook: "📚 野外手册全书 (9章专著)",
+      handbookTitle: "📚 赫尔辛基野生蘑菇野外手册全书与专著系列 (共9章)",
+      handbookSubtitle: "随时随地在线阅读9大完整深度专著章节。从赫尔辛基公交采菇点、林型与树种共生生态，到致命毒菇避险、50+食用菌全景大典及中西烹饪心法。",
+      readChapterBtn: "在线阅读本章完整专著 →",
+      viewFullToc: "📖 打开全书完整目录与总览",
+      headerLinkHandbook: "📖 在线阅读9章野外专著全书 →",
+      headerLinkSpecies: "📋 50+ 芬兰食用菌全景图鉴 →",
       searchPlaceholder: "输入中文（如鸡油菌）、芬兰语、学名、特征（如菌刺、菌孔）搜索...",
       skillLevelLabel: "采摘难度:",
       monthFilterLabel: "出菇月份:",
@@ -142,6 +156,13 @@ const I18N = {
       tabCooking: "🍳 Käsittely ja perinteiset reseptit",
       tabSpots: "🚌 HSL-bussilla ja junalla sieneen",
       tabSafety: "🛡️ Turvaohjeet ja jokaisenoikeudet",
+      tabHandbook: "📚 Käsikirja & Oppaat (9 lukua)",
+      handbookTitle: "📚 Helsingin Sienioppaan Käsikirjasarja (9 lukua)",
+      handbookSubtitle: "Lue kattavat sienestysmonografiat suoraan verkossa. 9 erillistä lukua kattavat kaiken HSL-reiteistä ja metsätyypeistä myrkkysieniin, säilöntään ja 50+ syötävään sieneen.",
+      readChapterBtn: "Lue luku verkossa →",
+      viewFullToc: "📖 Avaa käsikirjan koko sisällysluettelo",
+      headerLinkHandbook: "📖 Lue 9 luvun käsikirja verkossa →",
+      headerLinkSpecies: "📋 50+ Ruokasienen suurluettelo →",
       searchPlaceholder: "Hae suomalaisella tai tieteellisellä nimellä, piirteillä (esim. heltat, pillit)...",
       skillLevelLabel: "Taitotaso:",
       monthFilterLabel: "Satokuukausi:",
@@ -2551,5 +2572,198 @@ const I18N = {
         }
       ]
     }
-  }
+  },
+
+  // Field Handbook & In-Depth Guides (9 Chapters)
+  handbookChapters: [
+    {
+      id: "ch01",
+      chapterNum: "Chapter 01",
+      icon: "⚖️",
+      title: {
+        en: "Legal Rights, Nature Protection & Forest Safety",
+        zh: "芬兰自然公共权、自然保护区法规与森林安全守则",
+        fi: "Jokamiehenoikeudet, luonnonsuojelualueet ja metsäturvallisuus"
+      },
+      badge: {
+        en: "Legal & Ethics",
+        zh: "法律与伦理",
+        fi: "Laki ja etiikka"
+      },
+      desc: {
+        en: "Master Everyman's Right (Jokamiehenoikeus), commercial vs personal limits, strict rules in nature reserves, and protective protocols against ticks (punkit) and deer keds (hirvikärpäset). Includes 112 Suomi app setup.",
+        zh: "详尽解析芬兰人人享有的自然公共权（Jokamiehenoikeus）、采摘限额、自然保护区禁区界限，以及防范森林蜱虫（punkit）与鹿蝇（hirvikärpäset）的实地生存指南与112急救配置。",
+        fi: "Kattava opas jokamiehenoikeuksiin, rauhoitettuihin suojelualueisiin ja maastoturvallisuuteen punkkeja sekä hirvikärpäsiä vastaan."
+      },
+      url: "docs/01_legal_and_ethics.html"
+    },
+    {
+      id: "ch02",
+      chapterNum: "Chapter 02",
+      icon: "🚌",
+      title: {
+        en: "Helsinki Foraging Spots by HSL Transit (Zone A–D)",
+        zh: "赫尔辛基大区HSL公共交通采蘑菇宝典（含5大小众秘境）",
+        fi: "Helsingin seudun sienipaikat HSL-yhteyksillä ja 5 salaista helmeä"
+      },
+      badge: {
+        en: "Transit & Maps",
+        zh: "交通路线与秘境",
+        fi: "Reitit ja kartat"
+      },
+      desc: {
+        en: "Step-by-step public transit routes, trailheads, and Google Maps links for Keskuspuisto, Sipoonkorpi, Nuuksio, Luukki, plus 5 low-pressure hidden gems: Meiko (Kirkkonummi), Tremanskärr, Northern Sipoonkorpi, Salmi, and Vestra.",
+        zh: "详尽整理可搭乘HSL公交/火车直达的经典森林采摘点（中央公园、西波国家公园、努克西奥、Luukki），并特别收录5大小众少人采摘的森林秘境（Meiko、Tremanskärr、北西波等），附起点导航与行车时刻。",
+        fi: "Tarkat julkisen liikenteen reitit, lähtöpisteet ja Google Maps -linkit Keskuspuistoon, Sipoonkorpeen, Nuuksioon, Luukkiin sekä 5 rauhalliseen erämaakohteeseen."
+      },
+      url: "docs/02_helsinki_transit_spots_guide.html"
+    },
+    {
+      id: "ch03",
+      chapterNum: "Chapter 03",
+      icon: "📅",
+      title: {
+        en: "Seasonal Calendar, Habitats & The Chanterelle Dilemma",
+        zh: "物候出菇日历、树种生境生态与金黄鸡油菌寻菇秘法",
+        fi: "Satokalenteri, metsätyypit ja kantarellin maastoekologia"
+      },
+      badge: {
+        en: "Ecology & Phenology",
+        zh: "生态与树种辨识",
+        fi: "Ekologia ja puut"
+      },
+      desc: {
+        en: "Month-by-month fruiting timelines (May to November), Finnish forest types (kuusikko, männikkö, lehto), and an in-depth breakdown of why golden chanterelles seem absent while funnel chanterelles abound in autumn, featuring 3-tree field diagnostics (Birch vs Pine vs Spruce).",
+        zh: "5月至11月出菇时令表、芬兰四大林型生态学、深度破解“为何9月满地漏斗菇却难寻鸡油菌”的季节与林型生境错位之谜，并附垂枝白桦、欧洲赤松、欧洲云杉三大树种外生菌根现场鉴别要点与图解。",
+        fi: "Kuukausikohtainen satokalenteri, metsätyypit sekä syvällinen katsaus kantarellin ja suppilovahveron esiintymiseroihin syksyllä, mukana rauduskoivun, männyn ja kuusen vertailukuva."
+      },
+      url: "docs/03_seasonal_calendar_and_habitats.html"
+    },
+    {
+      id: "ch04",
+      chapterNum: "Chapter 04",
+      icon: "☠️",
+      title: {
+        en: "Deadly & Toxic Species Survival Manual",
+        zh: "芬兰致命剧毒与危险有毒真菌生死鉴别避险手册",
+        fi: "Tappavan myrkylliset ja vaaralliset sienet: Selviytymisopas"
+      },
+      badge: {
+        en: "Safety & Toxicity",
+        zh: "生死避险手册",
+        fi: "Myrkkysienet"
+      },
+      desc: {
+        en: "Absolute zero-tolerance safety manual: Destroying Angel (Amanita virosa), Deadly Webcap (Cortinarius rubellus), Funeral Bell (Galerina marginata), and False Morel (Gyromitra esculenta). Toxins, latent incubation periods, lethal dosages, and emergency protocols.",
+        zh: "零容忍安全防线：白毒伞（毁灭天使）、致命丝膜菌、纹缘盔孢伞（丧钟菇）及鹿花菌的形态特征、毒素机理（Amatoxin、Orellanine、Gyromitrin）、潜伏期与急救求生协议。",
+        fi: "Ehdottoman tärkeä opas Suomen vaarallisimpiin myrkkysieniin: valkokärpässieni, suippumyrkkyseitikki, myrkkynääpikkä ja korvasieni. Oireet, toksiinit ja ensiaputoimet."
+      },
+      url: "docs/04_deadly_and_toxic_species.html"
+    },
+    {
+      id: "ch05",
+      chapterNum: "Chapter 05",
+      icon: "🍄",
+      title: {
+        en: "The \"Safe Five\" Beginner Species",
+        zh: "新手绝对安全采摘“安全五剑客”（零混淆美味菌）",
+        fi: "Aloittelijan \"Varma Viisikko\" ja helpot ruokasienet"
+      },
+      badge: {
+        en: "Beginner Choice",
+        zh: "新手必修五菌",
+        fi: "Varma viisikko"
+      },
+      desc: {
+        en: "The 5 foolproof species with distinct physical traits that cannot be mistaken for deadly toxins: Golden Chanterelle, Funnel Chanterelle, Hedgehog Mushroom, Black Trumpet, and King Bolete (Porcini). Field identification, habitat markers, and lookalike filters.",
+        zh: "形态极其鲜明、绝无致命混淆种的芬兰森林新手必学五菌：金黄鸡油菌、漏斗鸡油菌、美味齿菌（白刺儿菜）、灰黑喇叭菌以及美味牛肝菌（大红菇牛肝）。",
+        fi: "Viisi selkeää ja herkullista ruokasientä, joilla ei ole tappavia näköislajeja: kantarelli, suppilovahvero, vaalea orakas, mustatorvisieni ja herkkutatti."
+      },
+      url: "docs/05_beginner_safe_species.html"
+    },
+    {
+      id: "ch06",
+      chapterNum: "Chapter 06",
+      icon: "🧺",
+      title: {
+        en: "Intermediate & Advanced Gourmet Species",
+        zh: "进阶与资深老饕野菌指南（乳菇焯水、红菇折断与牛肝菌）",
+        fi: "Kokeneen sienestäjän herkut ja esikäsiteltävät lajit"
+      },
+      badge: {
+        en: "Advanced Foraging",
+        zh: "进阶老饕指南",
+        fi: "Kokeneille"
+      },
+      desc: {
+        en: "Expand your basket with parboil-required milkcaps (Lactarius torminosus, L. rufus), crisp brittlegills (Russula decolorans), orange birch boletes (Leccinum versipelle), gypsy mushrooms (Cortinarius caperatus), and sheep polypore.",
+        zh: "突破五大基础菌：需要科学水煮脱苦去毒的白乳菇、北欧红菇辨别法（折断无菌丝韧性）、桦树红头牛肝菌与进阶美味菌。系统掌握排毒工艺与风味挖掘。",
+        fi: "Laajenna sieniosaamistasi: ryöpättävät rouskut (karvarousku, kangasrousku), haurasmalikat, lehmäntatit, kangastatit ja kehnäsieni."
+      },
+      url: "docs/06_intermediate_and_advanced.html"
+    },
+    {
+      id: "ch07",
+      chapterNum: "Chapter 07",
+      icon: "🍳",
+      title: {
+        en: "Preservation & Authentic Finnish Recipes",
+        zh: "芬兰传统野菌储藏法（烘干/盐渍/冷冻）与正统北欧料理",
+        fi: "Sienien säilöntä (kuivaus, suolaus) ja perinteiset reseptit"
+      },
+      badge: {
+        en: "Culinary & Storage",
+        zh: "储藏与经典料理",
+        fi: "Säilöntä & keittiö"
+      },
+      desc: {
+        en: "Dehydration, salt-curing milkcaps (suolasienet), sauté-freezing, and authentic Finnish dishes: Chanterelle pie (kantarellipiirakka), mushroom salad (sienisalaatti), and creamy wild mushroom soup.",
+        zh: "系统化储藏全指南：风干脱水法、经典芬兰传统盐渍乳菇法（Suolasienet）、黄油热煸冷冻法；附正统芬兰鸡油菌奶油咸派、芬兰圣诞传统红菇色拉及野生牛肝菌浓汤食谱。",
+        fi: "Kuivaaminen, rouskujen suolaus, pakastus sekä parhaat perinteiset reseptit: kantarellipiirakka, suolasienisalaatti ja kermainen tattikeitto."
+      },
+      url: "docs/07_preservation_and_recipes.html"
+    },
+    {
+      id: "ch08",
+      chapterNum: "Chapter 08",
+      icon: "📋",
+      title: {
+        en: "Master Index: 50+ Wild Edible Mushrooms of Finland",
+        zh: "全景大典：芬兰50+种野生食用菌分类全书（八大家族分类图鉴）",
+        fi: "Suomen yli 50 syötävän luonnonvaraisen sienen lajiluettelo"
+      },
+      badge: {
+        en: "Master Index (54 Species)",
+        zh: "50+食用菌大典",
+        fi: "50+ lajin suurluettelo"
+      },
+      desc: {
+        en: "The complete Finnish mycological index cataloging 54 wild edible species across 8 families (Boletaceae, Cantharellaceae, Hydnaceae, Russulaceae, Agaricaceae, Tricholomataceae, Polyporaceae, and Ascomycota) with edibility ratings and host trees.",
+        zh: "收录芬兰真菌志记载的全部54种野生食用真菌，跨越牛肝菌科、鸡油菌科、齿菌科、红菇科、蘑菇科、口蘑科、多孔菌科及子囊菌门，包含三级美味评级、菌根树种与实地辨识特征。",
+        fi: "Täydellinen 54 luonnonvaraisen ruokasienen mestariluettelo ryhmiteltynä 8 heimoon, sisältäen ruoka-arvot, isäntäpuut ja keskeiset maastotuntomerkit."
+      },
+      url: "docs/08_expanded_edible_species_index.html"
+    },
+    {
+      id: "ch_zh",
+      chapterNum: "Special Guide",
+      icon: "🇨🇳",
+      title: {
+        en: "Chinese Wild Mushroom Culinary Mastery & Cross-Culture Recipes",
+        zh: "中华野菌烹饪处理心法与中西融合经典名菜食谱",
+        fi: "Villisienien perinteinen kiinalainen keittiömestariopas"
+      },
+      badge: {
+        en: "Chinese Culinary",
+        zh: "中华料理专著",
+        fi: "Kiinalainen keittiö"
+      },
+      desc: {
+        en: "Specialist culinary guide bridging Finnish wild harvest with Chinese culinary techniques: high-temperature wok searing, chicken-fat braising, umami soups, and cross-cultural gourmet dishes.",
+        zh: "专为华人采摘老饕撰写的深度料理指南：鸡油菌干煸云腿、野生牛肝菌瓦煲焖鸡、喇叭菌竹荪清润老火汤、以及极品野生菌酱熬制心法，将北欧极纯森林珍馐融入中华镬气之中。",
+        fi: "Erityisopas pohjoismaisten metsäsienien valmistamiseen perinteisen kiinalaisen keittiön tekniikoilla: wokkaukseen, haudutukseen ja aromaattisiin liemiin."
+      },
+      url: "docs/cooking_and_recipes_zh.html"
+    }
+  ]
 };

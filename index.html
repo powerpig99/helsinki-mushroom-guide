@@ -39,6 +39,15 @@
         A definitive, safety-first field guide for foraging wild mushrooms across the hemiboreal forests of the Helsinki Metropolitan Area — a live record of living the philosophy. Explore the journey on <a href="https://powerpig99.github.io/not-a-toe/" target="_blank" rel="noopener noreferrer" class="blog-subtitle-link">Not a ToE</a>.
       </p>
 
+      <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.85rem;">
+        <a id="header-link-handbook" href="overview.html" class="emergency-btn" style="background: rgba(16, 185, 129, 0.2); color: #a7f3d0; border: 1px solid #10b981; font-weight: 600; text-decoration: none;">
+          📖 Read 9-Chapter Web Handbook Online →
+        </a>
+        <a id="header-link-species" href="docs/08_expanded_edible_species_index.html" class="emergency-btn" style="background: rgba(245, 158, 11, 0.2); color: #fde68a; border: 1px solid #f59e0b; font-weight: 600; text-decoration: none;">
+          📋 50+ Edible Species Master Index →
+        </a>
+      </div>
+
       <!-- Emergency Hotline Card -->
       <div class="emergency-bar">
         <div class="emergency-info">
@@ -67,6 +76,7 @@
         <button id="tab-btn-cooking" class="tab-btn" data-tab="cooking">🍳 Cooking & Prep Guide</button>
         <button id="tab-btn-spots" class="tab-btn" data-tab="spots">🚌 Helsinki HSL Spots</button>
         <button id="tab-btn-safety" class="tab-btn" data-tab="safety">🛡️ Safety & Everyman's Right</button>
+        <button id="tab-btn-handbook" class="tab-btn" data-tab="handbook">📚 Handbook & Guides (9)</button>
       </nav>
 
       <!-- TAB 1: Mushroom Catalog -->
@@ -132,6 +142,16 @@
       <!-- TAB 5: Safety & Guidelines -->
       <section id="tab-safety" style="display: none;">
         <div id="safety-content-container">
+          <!-- Rendered reactively by JavaScript -->
+        </div>
+      </section>
+
+      <!-- TAB 6: Field Handbook & Complete Guides (9 Chapters) -->
+      <section id="tab-handbook" style="display: none;">
+        <div id="handbook-banner" style="margin-bottom: 1.5rem;">
+          <!-- Rendered reactively by JavaScript -->
+        </div>
+        <div id="handbook-container" class="spots-grid">
           <!-- Rendered reactively by JavaScript -->
         </div>
       </section>
