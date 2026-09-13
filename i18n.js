@@ -17,7 +17,7 @@ const I18N = {
       emergencySubtitle: "Free 24/7 service across Finland: 0800 147 111 • General Emergency: 112",
       callPoison: "📞 Call 0800 147 111",
       call112: "🚨 Call 112",
-      tabCatalog: "🍄 Species Identification (22)",
+      tabCatalog: "🍄 Species Identification (63)",
       tabLookalikes: "⚖️ Lookalike Comparator",
       tabCooking: "🍳 Cooking & Prep Guide",
       tabSpots: "🚌 Helsinki HSL Spots",
@@ -37,6 +37,16 @@ const I18N = {
       intermediateLevel: "Intermediate",
       advancedLevel: "Advanced",
       deadlyLevel: "Deadly Toxic",
+      familyFilterLabel: "Family / Group:",
+      allFamilies: "All Groups (63)",
+      famChanterelles: "Chanterelles (5)",
+      famBoletes: "Boletes (13)",
+      famTooth: "Tooth Fungi (2)",
+      famPolypores: "Polypores (3)",
+      famMilkcaps: "Milkcaps (9)",
+      famBrittlegills: "Brittlegills (10)",
+      famOthers: "Gilled & Others (14)",
+      famDeadly: "Deadly Lookalikes (7)",
       noResultsTitle: "No matching mushrooms found",
       noResultsDesc: "Try clearing your search term or selecting a different month/skill filter.",
       underCapLabel: "Under-Cap:",
@@ -84,7 +94,7 @@ const I18N = {
       emergencySubtitle: "全芬兰24小时免费求助电话：0800 147 111 • 急救电话：112",
       callPoison: "📞 致电 0800 147 111",
       call112: "🚨 拨打急救 112",
-      tabCatalog: "🍄 物种鉴别目录 (22种)",
+      tabCatalog: "🍄 物种鉴别目录 (63种)",
       tabLookalikes: "⚖️ 危险近缘种对比",
       tabCooking: "🍳 烹饪处理与经典食谱",
       tabSpots: "🚌 赫尔辛基地铁公交采摘点",
@@ -104,6 +114,16 @@ const I18N = {
       intermediateLevel: "进阶食用",
       advancedLevel: "资深/需处理",
       deadlyLevel: "致命剧毒",
+      familyFilterLabel: "分类家族:",
+      allFamilies: "全部类别 (63种)",
+      famChanterelles: "鸡油菌与号角菇 (5)",
+      famBoletes: "牛肝菌类 (13)",
+      famTooth: "齿菌类 (2)",
+      famPolypores: "多孔菌与地花菌 (3)",
+      famMilkcaps: "乳菇类 (9)",
+      famBrittlegills: "红菇类 (10)",
+      famOthers: "伞菌与马勃 (14)",
+      famDeadly: "致命毒菇对照 (7)",
       noResultsTitle: "未找到匹配的蘑菇",
       noResultsDesc: "请尝试清除搜索关键词，或切换不同的月份/难度筛选器。",
       underCapLabel: "菌盖下方:",
@@ -151,7 +171,7 @@ const I18N = {
       emergencySubtitle: "Maksuton 24/7-neuvonta koko maassa: 0800 147 111 • Yleinen hätänumero: 112",
       callPoison: "📞 Soita 0800 147 111",
       call112: "🚨 Soita 112",
-      tabCatalog: "🍄 Lajiluettelo ja tunnistus (22)",
+      tabCatalog: "🍄 Lajiluettelo ja tunnistus (63)",
       tabLookalikes: "⚖️ Näköislajien vertailu",
       tabCooking: "🍳 Käsittely ja perinteiset reseptit",
       tabSpots: "🚌 HSL-bussilla ja junalla sieneen",
@@ -171,6 +191,16 @@ const I18N = {
       intermediateLevel: "Kokeneemmalle",
       advancedLevel: "Vaatii esikäsittelyn",
       deadlyLevel: "Tappavan myrkyllinen",
+      familyFilterLabel: "Heimo ja ryhmä:",
+      allFamilies: "Kaikki lajit (63)",
+      famChanterelles: "Vahverot (5)",
+      famBoletes: "Tatit (13)",
+      famTooth: "Orakkaat (2)",
+      famPolypores: "Käävät ja lampaankäävät (3)",
+      famMilkcaps: "Rouskut (9)",
+      famBrittlegills: "Haperot (10)",
+      famOthers: "Helttasienet ja muut (14)",
+      famDeadly: "Myrkkysienet (7)",
       noResultsTitle: "Yhtään sientä ei löytynyt",
       noResultsDesc: "Kokeile tyhjentää hakukenttä tai vaihtaa kuukautta tai taitotasoa.",
       underCapLabel: "Lakin alapinta:",
@@ -785,6 +815,7 @@ const I18N = {
     {
       id: "cantharellus_cibarius",
       latinName: "Cantharellus cibarius",
+      family: "cantharellaceae",
       whereWhen: {"en": "Fruiting from early July until October, with peak flushes following warm late-summer rains in August. Thrives along mossy trails, shaded slope margins, granite outcrop crevices, and mixed spruce-birch heaths (tuore kangas). Prime spots: Keskuspuisto (Paloheinä & Pirkkola), Nuuksio (around Haukkalampi slopes), and Luukki forest borders.", "zh": "7月上旬一直出菇至10月，8月下旬夏末温暖雷雨后迎来大爆发。最喜在光线柔和的步道两旁苔藓坡、花岗岩岩缝台地以及云杉-白桦混交林边缘生长。大赫尔辛基重点出菇地：中央公园Paloheinä林区、Nuuksio国家公园Haukkalampi环湖山坡、Luukki休闲森林小径旁。", "fi": "Satoaika heinäkuun alkupuolelta lokakuulle, paras sesonki elo-syyskuussa lämpimien sateiden jälkeen. Viihtyy valoisissa sammalikoissa, polkujen varsilla, kalliomänniköiden reunoilla ja kuusi-koivu-sekametsissä. Parhaita paikkoja: Keskuspuiston Paloheinä ja Pirkkola, Nuuksion Haukkalammen ympäristö ja Luukki."},
       searchTactics: {"en": "Focus your gaze on the edges of trampled footpaths and sunny slope clearings where rainwater drains slowly. Scan for bright egg-yolk yellow buttons pushing through green moss or half-concealed under fallen birch leaves. Golden Chanterelles are highly gregarious: if you spot one, stop immediately and crouch low—there are almost always dozens clustered within a 3-meter radius.", "zh": "重点搜寻泥土小径的边缘与向阳缓坡，那里雨水不易积水且透光。注意寻找顶开绿色羽状苔藓或半藏在枯黄桦树落叶下的明黄色小菌纽。鸡油菌极喜群聚生：一旦发现一朵，务必立刻停下脚步蹲低身姿，地毯式细察周边3米范围，通常会有整窝数十朵同伴！采摘时用小刀在贴近苔藓处平切，避免拔松底层菌丝菌根。", "fi": "Tarkkaile polkujen pientareita ja valoisia rinteitä, joihin vesi valuu. Etsi sammalesta tai koivunlehtien alta pilkottavaa kirkkaankeltaista väriä. Kantarelli kasvaa ryhmissä: kun löydät yhden, pysähdy ja kyykisty katsomaan matalalta – lähellä on lähes aina kymmeniä muita. Leikkaa sieni veitsellä tyvestä sammalta repimättä."},
       lookalikes: {"en": "Confusing species: False Chanterelle (Hygrophoropsis aurantiaca). Differentiating keys: False Chanterelle has knife-thin, crowded, blade-like TRUE gills (not blunt ridges), a fiery neon-orange cap, soft flexible flesh, and a slender stem that darkens to brown near the base. It lacks the rich fruity apricot aroma of true chanterelles. In southern Europe, the poisonous Jack-o'-lantern (Omphalotus olearius) grows in dense wood clusters, but it does not occur in Finland.", "zh": "主要混淆种：假鸡油菌（橙黄拟假芝 Hygrophoropsis aurantiaca）。鉴别秘诀：假鸡油菌长着如刀刃般极其薄细锋利的【真菌褶】（真品为粗厚钝圆的假褶/肋状脊）；颜色为艳丽刺目的火橙色；肉质薄软如海绵垫；且菌柄基部常发黑变褐；完全没有真鸡油菌那股诱人的清甜杏子果香。在南欧生长的有毒毒脐菇（Omphalotus olearius）丛生于木桩上，芬兰本土无分布。", "fi": "Tärkein näköislaji: Valekantarelli (Hygrophoropsis aurantiaca). Tuntomerkkierot: Valekantarellilla on terävät, paperinohuet tiheät heltat (oikeat heltat, ei pyöreitä poimuja), räikeän oranssi väri, pehmeä vetelä malto ja tyvestä tummuva jalka. Siltä puuttuu kantarellin hieno hedelmäinen aprikoosin tuoksu. Valekantarelli ei ole hengenvaarallinen, mutta mauton ja sitkeä."},
@@ -839,6 +870,7 @@ const I18N = {
     {
       id: "craterellus_tubaeformis",
       latinName: "Craterellus tubaeformis",
+      family: "cantharellaceae",
       whereWhen: {"en": "The late autumn treasure of Southern Finland, fruiting from September through November and persisting even after multiple sub-zero night frosts. Prefers deep, moist feather moss (Hylocomium splendens, Pleurozium schreberi) in shaded, old-growth Norway spruce forests (tuore kangas) on north-facing hillsides. Prime spots: Sipoonkorpi (Bisajärvi and Tasakallio), Keskuspuisto (Pitkäkoski ravines), and Vaakkoi in North Espoo.", "zh": "芬兰深秋真正的森林宝藏，出菇期从9月贯穿至11月下旬，甚至能经受数轮零下夜霜。极喜生长在老龄挪威云杉林背阴北坡极其湿润深厚的羽状绿苔藓地层毯中。大赫尔辛基绝佳采点：西波国家公园（Sipoonkorpi）的Bisajärvi湖畔林区、中央公园最北段的Pitkäkoski水系幽深峡谷、以及北埃斯波的Vaakkoi原始云杉林。", "fi": "Syksyn kruunaamaton kuningas, joka tekee satoa syyskuusta pitkälle marraskuuhun ja kestää toistuvia yöpakkasia. Kasvaa paksussa, kosteassa seinäsammalikossa ja kerrossammalikossa vanhoissa varjoisissa kuusikoissa pohjoisrinteillä. Parhaita paikkoja: Sipoonkorven Bisajärven ja Tasakallion maastot, Keskuspuiston Pitkäkosken notkot sekä Vaakkoi Pohjois-Espoossa."},
       searchTactics: {"en": "Their yellow-brown to grey caps provide masterful camouflage against rotting spruce needles and fallen birch leaves. Walk very slowly along mossy hollows. Do not look directly down; scan 2–3 meters ahead at a low oblique angle. The moment you spot one perforated cap, immediately drop to your knees: your eyes will acclimatize, and you will suddenly discover hundreds of bright yellow hollow stems standing all around you! Always inspect stems individually—never grab blind handfuls out of deep moss.", "zh": "黄褐色的菌盖与针叶枯枝落叶融为一体，堪称自然界伪装大师。漫步苔藓洼地时切莫直挺挺低头，而应微倾身体向前方2-3米处低角度扫视。一旦发现第一只带有中心小孔的菌盖，立刻蹲伏下来：你的瞳孔与视觉焦点会在几秒内适应微光，随后你会惊喜地发现周围密密麻麻站立着成百上千只金黄色空心柄！必须单朵采摘检查，严禁在深厚苔藓中整把盲拔，以防误拔同生的毒物。", "fi": "Ruskehtava lakki naamioituu täydellisesti havunneulasten ja lehtien sekaan. Etene hitaasti kosteissa painanteissa ja katsele matalasta kulmasta parin metrin päähän. Kun havaitset yhden torven, kyykisty alas: silmäsi tottuvat ja yhtäkkiä näet satoja keltaisia jalkoja ympärilläsi! Poimi aina sieni kerrallaan tyvestä tarkastaen – älä koskaan kahmi sokkona kourallista sammaleesta."},
       lookalikes: {"en": "CRITICAL LIFE-SAVING LOOKALIKE: Deadly Webcap (Cortinarius rubellus). Both species share the exact same mossy spruce habitat in Uusimaa! How to differentiate with 100% certainty: Funnel Chanterelles have a deeply perforated funnel-shaped cap opening into a bright yellow-orange stem that is COMPLETELY HOLLOW like a drinking straw, with blunt branched grey-yellow ridges underneath. The Deadly Webcap has a pointed conical cinnamon-brown cap (wizard hat), a SOLID stem with yellow zigzag banding, and rusty-brown true gills containing fatal orellanine toxin.", "zh": "【性命攸关的核心鉴别】：致命赭红丝膜菌（Cortinarius rubellus）。这两种真菌在乌西玛的云杉苔藓带完全混生！百分百鉴别铁律：漏斗鸡油菌的菌盖中央有通透的穿孔，直通下方鲜艳黄橙色的菌柄，【菌柄内部完全空心如吸管】，菌盖下方为灰黄色分叉钝棱脊。而致死剧毒的赭红丝膜菌菌盖中央带尖锐圆锥形凸起，【菌柄实心坚韧带黄色之字蛇纹斑】，下方是锈褐色真菌褶，含导致不可逆肾衰竭的奥来毒素！", "fi": "HENGENPELASTAVA NÄKÖISLAJI: Suippumyrkkyseitikki (Cortinarius rubellus). Molemmat jakavat saman kostean kuusikkomaaston Uudellamaalla! Varmat tuntomerkit: Suppilovahverolla on suppilomainen reikä lakin keskellä ja kirkkaankeltainen, TÄYSIN ONTTOMAINEN pillimäinen jalka sekä tylpät haaraiset poimut. Suippumyrkkyseitillä on terävä huippunuppi lakissa, UMPINAINEN kanelinruskea jalka keltaisilla siksak-vöillä ja myrkylliset ruosteenruskeat heltat."},
@@ -893,6 +925,7 @@ const I18N = {
     {
       id: "hydnum_repandum",
       latinName: "Hydnum repandum",
+      family: "hydnaceae",
       whereWhen: {"en": "Fruits from August through October. Inhabits mossy spruce hollows, shaded birch-spruce slopes, and moist depressions in mature coniferous forests. Often forms large, arcs or complete fairy rings. Prime spots: Luukki (around Lake Hauklampi), Sipoonkorpi (Bakunkärr), and Nuuksio valleys.", "zh": "出菇期从8月至10月。喜居于成熟针阔混交林、阴湿云杉背阴坡及厚苔藓洼地，常常成排长成弧线或巨大的“仙女圈”。大赫尔辛基高产地：北埃斯波Luukki湖区周边林地、西波国家公园Bakunkärr山谷、以及Nuuksio未开发阴湿山沟。", "fi": "Satoaika elokuusta lokakuulle. Asustaa paksusammalisissa kuusikoissa, rinteiden notkoissa ja sekametsien kosteapohjaisissa osissa. Muodostaa usein näyttäviä noidankehiä. Parhaita paikkoja: Luukin Hauklammen ympäristö, Sipoonkorven Bakunkärr ja Nuuksion laaksot."},
       searchTactics: {"en": "Look for irregular, thick, creamy-white to pale biscuit-colored shapes breaking through green moss carpets. As you lift the cap, check the underside immediately: you will see thousands of delicate, soft white-to-cream spines. If you find one hedgehog, scan the terrain in a gentle arc—they almost always grow along subterranean mycelial circles.", "zh": "在深绿色苔藓地表搜寻边缘不规则、厚实厚润的乳白色或浅米饼色菌盖。轻轻揭开观察菌盖下方：若布满千百根密密麻麻、触指即落的脆弱柔软小菌刺，即是此菇！找到第一朵后，沿着弧形轨迹向前寻找，通常会顺着地底菌丝环连续收获数公斤。", "fi": "Etsi paksuja, epäsäännöllisiä kermanvaaleita tai vaaleanruskeita lakkeja, jotka puskevat sammalen läpi. Käännä sieni ja tarkista alapinta: se on täynnä pehmeitä, helposti irtoavia vaaleita piikkejä. Seuraa maastoa loivassa kaaressa, sillä orakkaat kasvavat usein laajoissa kehillä."},
       lookalikes: {"en": "ZERO POISONOUS LOOKALIKES: There is no toxic mushroom in Northern Europe with spines underneath the cap! The only confusing species is its close sibling, the Rufous Hedgehog (Hydnum rufescens / Rusko-orakas), which is smaller, orange-terracotta in color, has slightly darker spines, and is equally delicious. Exceptionally bug-resistant; maggots rarely touch it.", "zh": "【零有毒混淆种】：在北欧整个自然界中，没有任何一种菌盖下生刺的蘑菇是有毒的！唯一的近亲是赤褐齿菌（Hydnum rufescens / Rusko-orakas），体型稍小，色泽偏赤陶橙褐色，刺也偏黄，同样属于顶级美味食用菌。更难能可贵的是它极少生虫，几乎朵朵纯净坚实。", "fi": "EI YHTÄKÄÄN MYRKYLLISTÄ NÄKÖISLAJIA: Pohjois-Euroopassa ei kasva yhtään myrkyllistä lakin alapinnalta piikkistä sientä! Ainoa samannäköinen on sen lähisukulainen rusko-orakas (Hydnum rufescens), joka on hieman pienempi, oranssinruskea ja yhtä erinomainen ruokasieni. Orakkaat ovat lähes aina täysin toukattomia."},
@@ -942,6 +975,7 @@ const I18N = {
     {
       id: "craterellus_cornucopioides",
       latinName: "Craterellus cornucopioides",
+      family: "cantharellaceae",
       whereWhen: {"en": "Fruiting from mid-August through October. Strictly prefers warm, moist, nutrient-rich deciduous groves (lehto) under European hazel (Corylus avellana), birch, and pedunculate oak. Grows in rich humus and mossy clay banks. Prime spots: Keskuspuisto (Maunula hazel groves), Petikko in Vantaa, and sheltered deciduous slopes in Nuuksio.", "zh": "8月中旬至10月出菇。特异性偏爱富营养、微碱性的湿暖阔叶林（lehto），与欧榛（Corylus avellana）、夏栎（橡树）共生，长于肥沃腐殖土与青苔斜坡上。大赫尔辛基黄金地段：中央公园Maunula受保护的欧榛树林外缘、万塔Petikko富营养阔叶林、以及Nuuksio背风朝阳的栎树谷地。", "fi": "Satoaika elokuun puolivälistä lokakuuhun. Vaatii ravinteikkaita, lämpimiä ja kosteita lehtoja, erityisesti pähkinäpensaiden (Corylus avellana), tammien ja koivujen alla. Kasvaa paksussa multamaassa ja sammalisilla savipenereillä. Parhaita paikkoja: Keskuspuiston Maunulan pähkinäpensaikot, Petikko Vantaalla ja Nuuksion suojaisat rinnelehdot."},
       searchTactics: {"en": "Black Trumpets are notoriously invisible to standing foragers—their soot-black to ash-grey funnels look identical to shadows between decaying leaves. Drop onto your knees and scan uphill against the light under hazel bushes. Once your vision tunes in to the velvety charcoal texture, an entire hidden colony will reveal itself. Harvest cleanly with scissors or by pinching at base.", "zh": "站立行走几乎不可能看到它！炭灰墨黑的薄号角在昏暗的榛树落叶堆中与阴影完全无异。寻菇绝招：在欧榛树冠遮蔽下双膝跪地或深蹲，逆着微光由下向上仰角扫视地面。一旦你的视网膜识别出那种如黑色丝绒般的细腻质感，整片原本空无一物的枯叶地就会神奇地显现出成百上千只号角！建议用小剪刀沿基部平齐剪下，保持内部清洁无土。", "fi": "Mustatorvisieni on maastossa lähes näkymätön seisaaltaan katsottuna – musta torvi sulautuu maatuviin lehtiin ja puiden varjoihin. Kyykisty maahan pähkinäpensaiden alle ja katsele yläviistoon valoa vasten. Kun silmä oppii erottamaan mustan samettisen pinnan, huomaat usein olevasi keskellä valtavaa esiintymää. Leikkaa torvet saksilla tyvestä puhtauden takaamiseksi."},
       lookalikes: {"en": "ZERO POISONOUS LOOKALIKES: There is no toxic lookalike in Northern Europe for a thin, hollow, black-to-dark-grey trumpet horn with a smooth/wrinkled under-surface. The closely related Sinuous Chanterelle (Pseudocraterellus undulatus) is paler grey-brown, ruffled, and equally delicious.", "zh": "【绝无有毒混淆种】：在整个北欧自然界，没有任何一种黑灰色、中空薄质、外壁平滑无褶皱的喇叭形有毒真菌。近缘的皱边假号角菌（Pseudocraterellus undulatus）颜色稍浅偏灰褐色，褶边波折，同样属于上等食用野菌。", "fi": "EI MYRKYLLISIÄ NÄKÖISLAJEJA: Pohjois-Euroopassa ei ole mitään myrkyllistä sientä, joka muistuttaisi ohutmaltoista, mustaa onttoa torvea, jonka alapinta on sileä tai poimuinen. Lähisukulainen harmaatorvisieni (Pseudocraterellus undulatus) on vaaleamman ruskeanharmaa ja yhtä herkullinen."},
@@ -991,6 +1025,7 @@ const I18N = {
     {
       id: "boletus_edulis",
       latinName: "Boletus edulis",
+      family: "boletaceae",
       whereWhen: {"en": "Flushes heavily in August and early September following soaking thunderstorms. Forms mycorrhizal partnerships with Norway spruce in mesic heaths (tuore kangas) and Silver birch. Prime spots: Sipoonkorpi (around Kuusijärvi and Bisajärvi), Nuuksio (Haukkalampi trails), and Luukki forest boundaries.", "zh": "8月至9月上旬在暴雨洗礼后迎来集中爆发。主要与挪威云杉及白桦树形成外生菌根，生于蓝莓苔藓针叶林（tuore kangas）。大赫尔辛基核心产区：西波国家公园（Kuusijärvi与Bisajärvi之间的老林区）、Nuuksio步道深处、以及北埃斯波Luukki自然林边界。", "fi": "Tuottaa valtavia satoja elo-syyskuussa rankkasateiden jälkeen. Elää symbioosissa kuusen ja koivun kanssa tuoreissa mustikkatyypin kangasmetsissä. Parhaita paikkoja: Sipoonkorpi (Kuusijärven ja Bisajärven ympäristö), Nuuksion polkuverkosto ja Luukki."},
       searchTactics: {"en": "Look for glossy, toasted-bun domes swelling above green feather moss, especially in the transitional band between tall blueberry bushes and open moss hollows. Harvest early in the morning: warm autumn days allow fungus gnats to lay eggs rapidly, causing the pore layer to become maggoty within 24 hours. Young 'cork' buttons with pure white under-pores are culinary perfection.", "zh": "在蓝莓灌木丛与平整羽状苔藓交界的地表断层，搜寻油亮凸起如烤小面包般的棕褐半球。务必清晨赶早采摘：温暖秋季森林中的蕈蚊极易在海绵孔层产卵，24小时内幼虫就会侵蚀管孔。菌盖下方海绵孔尚呈纯白坚硬（如红酒软木塞）的幼菇为无虫无洞的极品！切开检查菇肉，纯白不变色即可入筐。", "fi": "Etsi sämpylänruskeita pyöreitä lakkeja, jotka nousevat seinäsammalesta erityisesti mustikkatiheikköjen ja avoimen sammalen rajapinnassa. Kerää aikaisin aamulla: lämpiminä päivinä sienisääsket munivat nopeasti pillistöön, jolloin se toukkantuu vuorokaudessa. Nuoret, kivikovat tatit, joiden pillistö on vielä lumivalkoinen, ovat ruokasienten aatelia."},
       lookalikes: {"en": "Confusing species: Bitter Bolete (Tylopilus felleus / Sappitatti). The Bitter Bolete is not deadly, but a single slice will render an entire dish inedible with lingering gall-like bitterness. Differentiating keys: The King Bolete has fine, delicate WHITE raised netting on the upper stem, white pores that turn yellowish-olive in age, and sweet nutty flesh. The Bitter Bolete has coarse, prominent, dark brown netting, pores that mature to dirty flesh-pink, and burns with extreme bitterness on the tip of the tongue within 5 seconds.", "zh": "最关键混淆种：苦粉孢牛肝菌（苦牛肝 Tylopilus felleus / Sappitatti）。苦牛肝虽无致命剧毒，但一小片就会将整锅佳肴变为难以咽下的苦胆水！鉴别铁律：美味牛肝菌菌柄上半段覆有精致微细的【白色立体网纹】，菌孔由白转黄绿或橄榄色，舌尝甘甜坚果香；苦牛肝菌柄全柄密布【粗大凸起深褐黑网纹】，菌孔老熟后泛出【污肉粉红、褐粉色】，切一丁点用舌尖轻碰5秒内狂苦无比！", "fi": "Tärkein näköislaji: Sappitatti (Tylopilus felleus). Sappitatti ei ole tappava, mutta tekee kitkeryydellään ruoasta syömäkelvotonta. Tuntomerkkierot: Herkkutatilla on hieno, vaalea verkkokuvio jalan yläosassa, nuorena valkoinen ja vanhana kellanvihreä pillistö sekä makean pähkinäinen maku. Sappitatilla on voimakas, kohollaan oleva tummanruskea verkkokuvio, vanhetessa likaisen vaaleanpunaiseksi muuttuva pillistö ja polttavan karvas maku kielellä kokeiltaessa."},
@@ -1045,6 +1080,7 @@ const I18N = {
     {
       id: "boletus_pinophilus",
       latinName: "Boletus pinophilus",
+      family: "boletaceae",
       whereWhen: {"en":"Fruits from July through October across dry, sunny sandy pine heaths (kuiva kangas), lichen-covered granite outcrop terraces, and coastal pine forests. Prime spots in Uusimaa: Sipoonkorpi rocky crags, Porkkalanniemi pine ridges, and Vuosaari coastal woodlands.","zh":"7月至10月生于干燥向阳的沙质松树林（kuiva kangas）、覆满地衣的花岗岩岩脊台地以及海边松林中。大赫尔辛基绝佳采点：西波国家公园（Sipoonkorpi）高地岩丘、Porkkalanniemi海角松林山脊、以及Vuosaari沿海松树步道。","fi":"Satoaika heinäkuusta lokakuuhun kuivissa mäntykankaissa, jäkäläisillä kallioilla ja hiekkapohjaisissa männiköissä. Pääkaupunkiseudun parhaita paikkoja: Sipoonkorven kalliomaastot, Porkkalanniemen männiköt ja Vuosaaren rannikkometsät."},
       searchTactics: {"en":"Scan sunny, well-drained slopes beneath Scots pines (Pinus sylvestris). Look for distinctive humps pushing up reindeer lichen and dry pine needles. The cap is deep wine-red to mahogany-copper with a wrinkly texture. The stem is massive and bulbous, anchored deep in sandy soil.","zh":"在向阳、排水优良的欧洲赤松林缓坡搜寻。寻找被顶起的地衣和松针堆小土包。菌盖呈深沉的酒红褐色或紫铜色，表面微带皱褶。菌柄极其粗壮呈球棒状，深固于沙质土壤中。","fi":"Haravoi katseellasi valoisia mäntyrinteitä ja jäkäläalueita. Etsi sammal- ja neulasmaton kohoumia. Lakki on syvän viininpunaruskea tai kuparinen ja usein ryppyinen. Jalka on erittäin massiivinen ja mukulamainen."},
       lookalikes: {"en":"Tylopilus felleus (Bitter Bolete) has pinkish pores and a dark coarse raised net on the stem with violently bitter flesh. Boletus edulis has a lighter hazel-tan cap and white net, also choice edible.","zh":"警惕苦粉孢牛肝菌（苦牛肝），其菌孔老后泛脏粉红，菌柄有粗大深色凸出黑网纹且极苦；美味牛肝菌（白牛肝）菌盖偏浅褐，网纹为白色，同属顶级美味。","fi":"Sappitatti (Tylopilus felleus) erottuu punertavan pillistön, karkean tumman verkon ja polttavan karvaan maun perusteella. Herkkutatti on vaaleamman ruskea valkoisella verkolla ja yhtä laadukas ruokasieni."},
@@ -1094,6 +1130,7 @@ const I18N = {
     {
       id: "amanita_virosa",
       latinName: "Amanita virosa",
+      family: "deadly_toxic",
       whereWhen: {"en": "DEADLY POISONOUS: Fruits August to October in moist, acidic Norway spruce forests (tuore kangas) with thick feather moss throughout Helsinki, Espoo, Vantaa, and Sipoo. Common in Pitkäkoski, Sipoonkorpi, Nuuksio, and Luukki.", "zh": "【致命剧毒！一朵致死】：8月至10月在赫尔辛基、埃斯波、万塔及西波各大潮湿酸性挪威云杉林藓苔层中极度常见。常见于中央公园Pitkäkoski、Sipoonkorpi、Nuuksio和Luukki。", "fi": "TAPPAVAN MYRKYLLINEN: Esiintyy elo-lokakuussa kosteissa, happamissa paksusammalisissa kuusikoissa koko Uudellamaalla. Erittäin yleinen Pitkäkoskella, Sipoonkorvessa, Nuuksiossa ja Luukissa."},
       searchTactics: {"en": "NEVER PICK FOR CONSUMPTION. Learn to identify to stay safe: Pure silky white all over. Gills are pure white and free from the stem. A delicate skirt-like ring hangs from the upper stem, and a loose bag-like volva cup is buried deep in the moss at the base. Do not pluck mushrooms without inspecting the stem base!", "zh": "【严禁采食！务必辨识】：通体纯白丝绢光泽。菌褶纯白色且离生。柄上部有下垂膜质菌环，【基部深埋在苔藓中有松散的白色袋状菌托】。采摘任何野菌都必须连根拔起查验是否有菌托，严禁采食任何带有纯白菌褶的白蘑菇！", "fi": "ÄLÄ KOSKAAN KERÄÄ SYÖTÄVÄKSI. Tunnista hengenvaaran välttämiseksi: Puhtaan valkoinen koko sieni. Heltat ovat aina valkoiset ja irti jalasta. Jalassa riippuva hapsuinen rengas ja tyvellä syvällä sammaleessa pussimainen tuppi. Tarkista aina jalan tyvi!"},
       lookalikes: {"en": "Novices confuse it with edible Field Mushrooms / Champignons (Agaricus / Herkkusieni). Agaricus gills turn pink, then chocolate-brown in maturity, and NEVER have a basal volva cup. Golden rule in Finland: NEVER eat white mushrooms with white gills.", "zh": "极易被不知情者误当作白蘑菇/草菇（Agaricus / Herkkusieni）。食用洋菇成熟后菌褶会变为粉红至深巧克力褐色，且【绝对没有基部袋状菌托】。在芬兰的初学者保命铁律：绝不采食任何菌褶纯白的白色蘑菇！", "fi": "Sekoitetaan valitettavasti syötäviin herkkusieniin (Agaricus). Herkkusienten heltat muuttuvat vanhetessa vaaleanpunaisiksi ja suklaanruskeiksi, eikä niillä koskaan ole pussimaista tuppea tyvellä. Suomen sääntö: ÄLÄ KOSKAAN syö valkohelttaista valkoista sientä."},
@@ -1143,6 +1180,7 @@ const I18N = {
     {
       id: "cortinarius_rubellus",
       latinName: "Cortinarius rubellus",
+      family: "deadly_toxic",
       whereWhen: {"en": "DEADLY POISONOUS: Fruits August to October in damp, acidic Norway spruce moss heaths alongside blueberry bushes and Golden Chanterelles in Nuuksio, Sipoonkorpi, Vaakkoi, and Luukki.", "zh": "【致命剧毒！潜伏期极长】：8月至10月生于潮湿酸性挪威云杉林中，常与蓝莓灌木丛及真假鸡油菌混生于同一片苔藓毯上。Nuuksio、Sipoonkorpi、Vaakkoi与Luukki高发。", "fi": "TAPPAVAN MYRKYLLINEN: Kasvaa elo-lokakuussa kosteissa happamissa mustikkatyypin kuusikoissa kantarellien ja mustikoiden vieressä Nuuksiossa, Sipoonkorvessa, Vaakkoissa ja Luukissa."},
       searchTactics: {"en": "NEVER PICK FOR CONSUMPTION. Distinct conical cinnamon-copper cap with a sharp central pointed peak (umbo). Thick rusty-brown gills. The stem is cinnamon-brown adorned with yellow zigzag bands, and is SOLID throughout (unlike the hollow Funnel Chanterelle).", "zh": "【严禁采食！】肉桂红褐色菌盖，顶端有极锐利锥状乳突。菌褶厚稀肉桂锈红。菌柄为带黄色“之”字形蛇纹斑带的【实心肉柱】（与漏斗鸡油菌的空心黄管截然相反）。", "fi": "ÄLÄ KERÄÄ SYÖTÄVÄKSI. Kartiomainen kanelinruskea lakki, jossa terävä piikkimäinen huippu. Paksut ruosteenruskeat heltat. Jalka on kanelinruskea keltaisilla siksak-vöillä ja TÄYSIN UMPINAINEN."},
       lookalikes: {"en": "Frequently gathered accidentally by people picking Funnel Chanterelles or Chroogomphus rutilus. Funnel Chanterelles have a HOLLOW yellow stem and perforated funnel cap; Deadly Webcaps have a SOLID stem and pointed peak.", "zh": "极易被混在漏斗鸡油菌中一起采摘。漏斗鸡油菌为黄色空心管状柄且菌顶有穿孔洞；赭红丝膜菌为实心坚韧带斑柄且顶端尖突，含导致肾坏死的奥来毒素。", "fi": "Sekoitetaan usein suppilovahveroihin sammalikossa kahmiessa. Suppilovahverolla on ONTTOMAINEN keltainen jalka ja reikäinen suppilo; myrkkyseitillä umpinainen jalka ja terävä lakki."},
@@ -1192,6 +1230,7 @@ const I18N = {
     {
       id: "galerina_marginata",
       latinName: "Galerina marginata",
+      family: "deadly_toxic",
       whereWhen: {"en":"DEADLY POISONOUS: August to November. Fruits on decaying coniferous logs, rotting spruce and birch stumps, buried wood chips, and logging debris throughout all Helsinki forests (Keskuspuisto, Haltiala, Nuuksio).","zh":"【致命剧毒！致死量极小】：8月至11月出菇。专一生长于腐朽倒木、云杉及白桦树桩、埋于地下的碎木屑上。赫尔辛基各大森林（中央公园、Haltiala原始林区、Nuuksio）腐木上均广泛分布。","fi":"TAPPAVAN MYRKYLLINEN: Elo-marraskuussa. Kasvaa lahoavilla havupuiden rungoilla, kannoilla, hakkuutähteillä ja kuorikkeella kaikissa Helsingin metsissä (Keskuspuisto, Haltiala, Nuuksio)."},
       searchTactics: {"en":"NEVER PICK FOR CONSUMPTION. Learn to identify to stay safe: Small honey-brown to ochre cap (2-6cm) with translucent striate edge when wet. Slender brownish stem with a fragile membranous ring and silvery-white silky fibrillose coating below the ring. Distinct mealy/flour-like odor.","zh":"【严禁采食！务必认清保命】：菌盖小（2-6cm），潮湿时呈蜜褐或黄褐色，边缘有透光条纹。纤细菌柄上具脆弱膜质菌环，菌环下方覆有银白色丝绢光泽纤维。具明显生面粉气味。","fi":"ÄLÄ KOSKAAN KERÄÄ SYÖTÄVÄKSI. Pieni hunajanruskea lakki (2–6 cm), jonka reuna on kosteana läpisäteinen. Hento ruskehtava jalka, jossa pieni rengas ja sen alapuolella hopeanvalkoista silkkisäikeisyyttä. Tuoksu jauhomainen."},
       lookalikes: {"en":"LETHALLY confused with edible Sheathed Woodtuft (Kuehneromyces mutabilis / Koivunkantosieni). Kuehneromyces has prominent dark bristly scales below the ring. Strict rule for novices: NEVER forage small brown wood-dwelling mushrooms in Finland!","zh":"【极度危险混淆】：极易与食用菌毛柄库恩菇（变色鳞伞/Koivunkantosieni）混淆。后者菌环下方密布粗糙深褐色反卷鳞片。初学者安全铁律：在芬兰绝不采摘生长在木桩上的任何小型褐色真菌！","fi":"SEKOITETAAN HENGENVAARALLISESTI koivunkantosieniin (Kuehneromyces mutabilis). Koivunkantosienellä on renkaan alapuolella karkeita tummanruskeita suomuja. Aloittelijan sääntö: Älä koskaan poimi pieniä ruskeita lahottajasieniä!"},
@@ -1241,6 +1280,7 @@ const I18N = {
     {
       id: "gyromitra_esculenta",
       latinName: "Gyromitra esculenta",
+      family: "deadly_toxic",
       whereWhen: {"en":"DEADLY POISONOUS RAW / DELICACY WHEN DETOXIFIED: Spring mushroom fruiting May to early June in sandy Scots pine woods, logging clearings, disturbed soil, vehicle tracks, and sand pits in Uusimaa (e.g. Sipoonkorpi, Nuuksio sandy tracks).","zh":"【生食致命剧毒 / 规范处理后为传统珍馐】：春季特色菌，5月至6月上旬出菇。生于沙质松树林开阔地、伐木采伐迹地、被车轮碾压的沙土凹痕及泥土裸露地。Sipoonkorpi与Nuuksio沙质小径多见。","fi":"TAPPAVAN MYRKYLLINEN RAAKANA / HERKKUSIENI OIKEIN KÄSITELTYNÄ: Kevätsieni, sato touko-kesäkuussa hiekkapohjaisissa kangasmetsissä, hakkuuaukeilla, polunvarsilla ja maansiirtoalueilla Uudellamaalla (esim. Sipoonkorpi, Nuuksio)."},
       searchTactics: {"en":"Look for rounded, brain-like or convoluted dark walnut-brown to reddish-brown caps poking through needle litter. The mushroom is entirely hollow inside with multi-chambered folds.","zh":"在开春融雪后的沙地松针间搜寻类似深核桃红褐色的大脑沟回状或胡桃壳皱缩状不规则菌盖。菌体内部完全空心，呈多腔室褶皱。","fi":"Etsi aivomaisesti poimuttuneita, pähkinänruskeita tai punaruskeita möykkyjä hiekkamaalta. Sieni on sisältä täysin ontto ja lokeroinen."},
       lookalikes: {"en":"Gyromitra gigas (Iso korvasieni) has a lighter yellowish cap; Morchella (Huhtasieni / True Morel) has regular honeycomb-like pits and ridges rather than brain folds and is non-toxic.","zh":"巨鹿花菌（Gyromitra gigas）颜色偏黄褐；真正羊肚菌（Morchella / Huhtasieni）表面呈规则蜂窝状网眼与凹坑，无大脑回旋褶皱且无剧毒。","fi":"Laakakorvasienellä ja isokorvasienellä on kellertävämpi lakki; aidoilla huhtasienillä (Morchella) on säännöllinen kennomainen lokerikko aivopoimujen sijaan."},
@@ -1290,6 +1330,7 @@ const I18N = {
     {
       id: "paxillus_involutus",
       latinName: "Paxillus involutus",
+      family: "deadly_toxic",
       whereWhen: {"en":"DANGEROUS & POTENTIALLY DEADLY OVER TIME: August to October. Extremely common in deciduous and coniferous woods, birch parks, urban lawns, roadsides, and private gardens across all Helsinki (Töölönlahti, Keskuspuisto, Meilahti).","zh":"【危险！累积性致死免疫溶血】：8月至10月。极其常见于阔叶与针叶林、白桦公园、城市草坪、路旁与私家花园（Töölönlahti、中央公园、Meilahti处处可见）。","fi":"VAARALLINEN JA KUOLETTAVA: Elo-lokakuussa. Erittäin yleinen havu- ja lehtimetsissä, koivikoissa, puistoissa, pihoilla ja teiden varsilla koko Helsingissä (Töölönlahti, Keskuspuisto, Meilahti)."},
       searchTactics: {"en":"Thick yellow-brown to olive-tan cap with a strongly inrolled, velvety-fuzzy margin. Decurrent brownish-yellow gills that bruise instantly dark reddish-brown when scratched with a thumbnail.","zh":"黄褐色至橄榄赭色厚菌盖，边缘向内紧紧卷曲呈厚毛绒圈状。延生黄褐色菌褶，指甲轻刮处会立即氧化变深红褐色。","fi":"Paksumaltoinen ruskeankeltainen lakki, jonka reuna on tiukasti sisäänkiertynyt ja nukkainen. Johtavat heltat tummuvat voimakkaasti punaruskeiksi painettaessa kynnellä."},
       lookalikes: {"en":"Historically boiled and eaten in older generations, but now medically proven to cause Paxillus syndrome: an immune hemolysis where antibodies destroy your red blood cells after repeated consumption, leading to acute kidney collapse.","zh":"过往年代曾有人焯水食用，但现代医学已证实其含有抗原，反复食用会激活人体免疫系统攻击破坏自身红细胞，诱发急性溶血性肾衰竭致死！","fi":"Aiemmin vanha kansa keitti syötäväksi, mutta aiheuttaa Paxillus-syndrooman: vasta-aineet alkavat tuhota elimistön omia punasoluja toistuvan syönnin jälkeen johtaen munuaisvaurioon ja kuolemaan."},
@@ -1339,6 +1380,7 @@ const I18N = {
     {
       id: "lactarius_torminosus",
       latinName: "Lactarius torminosus",
+      family: "lactarius_parboil",
       whereWhen: {"en":"August to October. Strictly mycorrhizal with Birch (Betula). Abundant on birch borders, forest path verges, moist grassy woodland edges, and heaths in Helsinki (Keskuspuisto, Seurasaari, Haltiala).","zh":"8月至10月。严格与白桦树共生。在赫尔辛基白桦树林缘、步道草地边缘、湿润草坡林地（中央公园、Seurasaari、Haltiala）极为丰富。","fi":"Elo-lokakuussa. Esiintyy koivun seuralaisena valoisissa koivikoissa, polkujen varsilla, metsäniityillä ja kankailla Helsingissä (Keskuspuisto, Seurasaari, Haltiala)."},
       searchTactics: {"en":"Search the dripline of birch trees. Look for salmon-pink to reddish-pink caps with concentric darker zones and a conspicuously shaggy, beard-like woolly margin. Damaged flesh exudes acrid white milk.","zh":"在白桦树冠投影外围寻找。特征为鲑鱼肉粉色或红粉色菌盖，表面有深浅同心环带，边缘密被长毛状下卷的粗羊毛胡须。划破菌褶流出辛辣灼口的乳白色汁液。","fi":"Etsi koivujen alta. Vaaleanpunainen rengaskuvioinen lakki, jonka reunassa on erittäin selvä villava, takkuinen karvapeite. Erittelee polttavan valkoista maitiaisnestettä."},
       lookalikes: {"en":"Lactarius pubescens (Valkokarvarousku) is paler/whitish with woolly margin and also requires boiling. Other milkcaps with white acrid milk.","zh":"白毛乳菇（Lactarius pubescens）颜色更白，同样需要焯水排毒；与美味松乳菇区别在于本种汁液为纯白且极辣（松乳菇为胡萝卜橙汁且不辣）。","fi":"Valkokarvarousku (Lactarius pubescens) on vaaleampi ja vaatii saman käsittelyn; leppärouskuilla maitiaisneste on oranssia, karvarouskulla valkoista."},
@@ -1388,6 +1430,7 @@ const I18N = {
     {
       id: "lactarius_rufus",
       latinName: "Lactarius rufus",
+      family: "lactarius_parboil",
       whereWhen: {"en":"July to November. One of Finland's most prolific wild mushrooms! Fruits by the millions across dry acidic Scots pine heaths (kuiva kangas), mossy granite crags, and peat bogs across all Uusimaa forests (e.g. Nuuksio, Sipoonkorpi, Luukki).","zh":"7月至11月。芬兰大自然出菇量最大的野生菇之一！数以百万计地出产于干燥酸性松树苔藓林（kuiva kangas）、花岗岩岩缝及泥炭藓沼泽边缘，各大森林（Nuuksio、Sipoonkorpi、Luukki）随处可见。","fi":"Heinä-marraskuussa. Suomen satoisimpia luonnonsieniä! Satoa syntyy miljoonittain kuivissa mäntykankaissa, kallioilla ja rämeillä koko Uudenmaan alueella (kuten Nuuksio, Sipoonkorpi, Luukki)."},
       searchTactics: {"en":"Look on dry pine needle floors and mossy mounds. Smooth reddish-brown to copper-bay cap with a sharp central pointed nipple (pieni suippo nysty). Broken flesh yields abundant white milk that burns the tongue.","zh":"在干燥松针地与低矮苔藓包上扫视。菌盖为光滑红褐色或赤铜色，中央有一枚尖锐凸起的小乳突。划伤处涌出大量纯白乳汁，沾在舌尖有强烈辛辣感。","fi":"Etsi kuivalta neulaskarikkeelta ja kalliopainanteista. Sileä punaruskea lakki, jonka keskellä on terävä nysty. Valkeaa polttavaa maitiaisnestettä vuotaa runsaasti."},
       lookalikes: {"en":"Cortinarius rubellus (Deadly Webcap) also grows in pine heaths, but Cortinarius has NO MILK whatsoever and rust-brown gills. ALWAYS test for white milky liquid!","zh":"【务必区分赭红丝膜菌】：致命赭红丝膜菌亦生于针叶林，但丝膜菌【绝对没有白色乳汁】且菌褶呈锈红肉桂色。采摘时必须划伤菌褶确认有纯白乳汁！","fi":"Suippumyrkkyseitikki (Cortinarius rubellus) kasvaa samankaltaisissa maastoissa, mutta seitikillä EI OLE MAITIAISNESTETTÄ ja heltat ovat ruosteenruskeat. Tarkista aina maitiaisneste!"},
@@ -1437,6 +1480,7 @@ const I18N = {
     {
       id: "lactarius_deliciosus",
       latinName: "Lactarius deliciosus",
+      family: "lactarius_mild",
       whereWhen: {"en":"August to October. Found in young Scots pine stands, sandy road banks, grassy pine clearings, and coastal dunes in Helsinki and Espoo (Vuosaari, Uutela, Matinkylä).","zh":"8月至10月。生于年轻欧洲赤松幼林、沙质路堤草丛、向阳松林林窗及沿海沙丘（Vuosaari、Uutela海滨步道常见）。","fi":"Elo-lokakuussa. Viihtyy nuorissa männiköissä, hiekkateiden pientareilla, ruohikkoisilla aukeilla ja hiekkamailla Helsingissä ja Espoossa (Vuosaari, Uutela, Matinkylä)."},
       searchTactics: {"en":"Look for bright carrot-orange to apricot caps with faint concentric rings, often developing greenish-blue verdigris patches. KEY ID: exudes BRIGHT CARROT-ORANGE MILK (never white!), slowly turning reddish or green.","zh":"搜寻鲜艳胡萝卜橙色或杏橙色的菌盖，带有同心圆斑带，常伴有蓝绿色铜锈斑。核心鉴别：伤处涌出【极其鲜艳的胡萝卜橙色汁液】（绝非白色！），后渐转暗红或铜绿色。","fi":"Etsi kirkkaan porkkananoransseja tai oranssinkirjavia lakkeja, joissa on usein vihertäviä laikkuja. TUNTOMERKKI: Erittelee KIRKKAAN ORANSSIA maitiaisnestettä (ei koskaan valkoista!)."},
       lookalikes: {"en":"Lactarius deterrimus (Kuusenleppärousku) grows with Spruce, turns green rapidly, also choice edible. Woolly milkcap (L. torminosus) has acrid white milk and woolly rims.","zh":"云杉美味乳菇（Lactarius deterrimus）与云杉共生，极易变绿，同样是顶级食用菌；而白乳菇（毛头乳菇）汁液为白色且边缘带毛茸须。","fi":"Kuusenleppärousku (Lactarius deterrimus) kasvaa kuusen seurassa ja vihertyy voimakkaammin, erinomainen ruokasieni. Karvarouskulla maitiaisneste on valkoista."},
@@ -1486,6 +1530,7 @@ const I18N = {
     {
       id: "russula_decolorans",
       latinName: "Russula decolorans",
+      family: "russulaceae",
       whereWhen: {"en":"July to September. Common in damp, mossy Norway spruce heaths (tuore kangas) with thick blueberry bushes (Vaccinium myrtillus) and sphagnum hollows in Nuuksio, Sipoonkorpi, and Luukki.","zh":"7月至9月。常见于潮湿长满蓝莓灌木（Vaccinium myrtillus）的云杉苔藓林（tuore kangas）以及林间泥炭藓洼地边缘（Nuuksio、Sipoonkorpi、Luukki）。","fi":"Heinä-syyskuussa. Yleinen kosteissa mustikkatyypin kuusimetsissä ja suonlaiteilla paksussa sammalikossa Nuuksiossa, Sipoonkorvessa ja Luukissa."},
       searchTactics: {"en":"Look for warm apricot-orange, brick-yellow to coppery-orange caps among green blueberry leaves. The chalky white stem snaps cleanly like blackboard chalk. Bruised flesh and stem turn distinctly slate-grey over time.","zh":"在绿油油的蓝莓枝叶间寻找杏橙色、砖黄或铜橙色的圆菌盖。白垩质地菌柄像粉笔一样能脆生生折断。切伤或碰伤部位随时间推移会变成独特的瓦石灰色。","fi":"Etsi kuparin- tai aprikoosinkeltaisia lakkeja mustikanvarpujen seasta. Liitumainen jalka murtuu puhtaasti ilman säikeitä. Vaurioitunut malto harmaantuu selvästi."},
       lookalikes: {"en":"Russula emetica (The Sickener) has a flaming cherry-red cap, snow-white non-greying gills, and a fiery burning taste. Mild-tasting Russula species are safe to eat.","zh":"毒红菇（Russula emetica）菌盖呈艳红色，菌褶纯白永不变灰，且舌尖尝之辛辣刺痛；红菇属鉴别法：口尝微甜温和者皆可食用，辛辣者弃之。","fi":"Tulipunahapero (Russula emetica) on kirkkaanpunainen, malto ei harmaannu ja maku on polttavan kirpeä. Miedot haperot ovat hyviä ruokasieniä."},
@@ -1535,6 +1580,7 @@ const I18N = {
     {
       id: "russula_emetica",
       latinName: "Russula emetica",
+      family: "russulaceae",
       whereWhen: {"en":"POISONOUS / GASTRO-IRRITANT: July to October. Very common in wet sphagnum moss bogs, peat swamps, and soggy coniferous depressions throughout Uusimaa (e.g. Nuuksio, Sipoonkorpi).","zh":"【有毒胃肠刺激性真菌】：7月至10月。极其多见于潮湿泥炭藓沼泽、湿地松林及阴湿针叶林低洼积水区（如Nuuksio、Sipoonkorpi）。","fi":"MYRKYLLINEN: Heinä-lokakuussa. Hyvin yleinen kosteissa rahkasammalsoissa, rämeillä ja mäntymetsien märissä painanteissa Uudellamaalla (esim. Nuuksio, Sipoonkorpi)."},
       searchTactics: {"en":"Noticeable flaming cherry-scarlet red, glossy, slightly sticky cap with peelable skin. Pure snow-white gills and brittle white stem. Extremely fiery peppery taste if tested on tongue tip.","zh":"鲜艳如红樱桃般的亮红色菌盖，潮湿时粘滑，表皮易剥离。菌褶与菌柄皆纯白如雪，质脆易碎。舌尖触尝极其辛辣呛口。","fi":"Loistavan helakanpunainen, kiiltävä lakki, jonka pintakelmu irtoaa helposti. Puhtaanvalkoiset heltat ja jalka. Maku heti erittäin polttavan pippurinen."},
       lookalikes: {"en":"Russula paludosa (Isohapero) has a large red cap but mild apple-sweet taste and is choice edible. Safe test rule: ONLY for Russula and Lactarius, a crumb on the tongue tip tests mild vs peppery (never do this for Amanita or Cortinarius!).","zh":"沼泽红菇（Isohapero）菌盖同样红艳，但尝之香甜温和，为顶级食用菌。注意：口尝法仅限红菇属与乳菇属（吐出不咽），绝对严禁用于鹅膏菌或丝膜菌！","fi":"Isohapero (Russula paludosa) on myös punainen, mutta sen maku on mieto ja sieni erinomainen. Haperoiden maistamistesti: maista palaa kielenkärjellä ja sylkäise pois – kirpeät hylätään."},
@@ -1584,6 +1630,7 @@ const I18N = {
     {
       id: "cortinarius_caperatus",
       latinName: "Cortinarius caperatus",
+      family: "agaric_others",
       whereWhen: {"en":"August to October. Plentiful in nutrient-poor acidic pine and spruce heaths, blueberry and lingonberry forests (mustikkatyypin kangasmetsä) in Nuuksio, Sipoonkorpi, and Espoo woodlands.","zh":"8月至10月。丰富产于贫瘠酸性云杉和松树林、蓝莓与越橘矮灌木苔藓带（Nuuksio、Sipoonkorpi及埃斯波北区森林）。","fi":"Elo-lokakuussa. Yleinen karuissa kangasmetsissä, mustikkatyypin kuusikoissa ja männiköissä Nuuksiossa, Sipoonkorvessa ja Espoon metsissä."},
       searchTactics: {"en":"Look for warm straw-buff to ochre-yellow caps with a distinct frosted silvery-white bloom (kehnä) in the center and radial wrinkling toward the margin. The stem bears a thin, delicate membranous ring (rengas).","zh":"寻找麦秆黄至土黄色的菌盖，特征是菌顶中心覆盖一层独特的银白色薄霜粉（kehnä），边缘有辐射状细密浅皱纹。菌柄中上部有一枚纤薄的小菌环。","fi":"Etsi oljenkeltaisia lakkeja, joiden keskellä on selvä vaalea helmiäishohtoinen härmä (kehnä) ja reunoilla säteittäisiä ryppyjä. Jalassa ohut rengas."},
       lookalikes: {"en":"Cortinarius rubellus (Deadly Webcap) is cinnamon-red with a pointed cap and NO true ring. Inocybe species have darker spores and lack the white frosty center. Always check for the frosted cap center, wrinkled margins, and thin ring.","zh":"致命赭红丝膜菌无真菌环，顶端有锐尖突且呈肉桂深褐色；丝盖伞属体型较小且孢子深暗。采摘罗鳞伞必须同时确认：中心霜白薄粉、边缘放射皱纹、柄上薄菌环三要素！","fi":"Suippumyrkkyseitikki on kanelinruskea, terävänuppinen eikä sillä ole aitoa rengasta. Varmista aina kehnäsienen tuntomerkit: jauhemainen kehnä keskellä, poimuinen reuna ja rengas jalassa."},
@@ -1633,6 +1680,7 @@ const I18N = {
     {
       id: "albatrellus_ovinus",
       latinName: "Albatrellus ovinus",
+      family: "polyporaceae",
       whereWhen: {"en":"August to October. Old, moss-rich Norway spruce forests (kuusikot) on fertile or calcareous soils. Often fruits in huge overlapping clusters and extensive fairy rings in Sipoonkorpi and Nuuksio.","zh":"8月至10月。老龄长满厚苔藓的挪威云杉林中，喜较肥沃或钙质土壤。常在西波国家公园（Sipoonkorpi）与Nuuksio形成壮观的巨型群聚与蘑菇圈。","fi":"Elo-lokakuussa. Vanhankaltaisissa sammalpeitteisissä kuusikoissa tuoreilla kankailla. Kasvaa usein laajoina ryhminä ja noidankehinä Sipoonkorvessa ja Nuuksiossa."},
       searchTactics: {"en":"Large irregular whitish to pale grey-buff caps (5-20cm) growing directly from the soil. The under-cap surface has a very shallow, dense, white pore layer that turns greenish-yellow when cooked or bruised.","zh":"菌盖宽大（5-20cm）呈不规则起伏的灰白色至浅黄褐色波浪肉饼状，直接从苔藓地层长出。菌盖下方覆盖致密微小的白色浅孔层，加热煮熟或揉搓后会变为鲜艳的柠檬黄微绿色彩。","fi":"Kookkaat (5–20 cm) epäsäännölliset vaaleanharmaat tai kermanvalkoiset lakit maassa sammaleessa. Alapinnalla tiheä valkoinen pillistö, joka muuttuu kypsennettäessä keltaiseksi."},
       lookalikes: {"en":"Albatrellus subrubescens (Korpilampaankääpä) has a violet-brown spotted cap, bitter taste, and grows with pine; Hydnum repandum has spines, not pores.","zh":"紫斑地花（Albatrellus subrubescens）与松树共生且味苦；卷缘齿菌（Hydnum repandum）下表面是柔软下垂的小刺，而非孔层。","fi":"Korpilampaankääpä (Albatrellus subrubescens) on oranssinruskeampi, karvaanmakuinen ja kasvaa männyn seurassa. Vaaleaorakkaalla on alapinnalla piikit, ei pillejä."},
@@ -1682,6 +1730,7 @@ const I18N = {
     {
       id: "leccinum_versipelle",
       latinName: "Leccinum versipelle",
+      family: "boletaceae",
       whereWhen: {"en":"July to October. Exclusively associated with birch trees (Betula). Abundant in mixed woodlands, forest paths, suburban park edges, and lake margins across Helsinki (Keskuspuisto, Seurasaari, Lauttasaari, Haltiala).","zh":"7月至10月。严格与白桦树共生。遍布赫尔辛基各大混交林、步道旁、湖岸及郊野公园（中央公园、Seurasaari、Lauttasaari、Haltiala随处可见）。","fi":"Heinä-lokakuussa. Kasvaa koivujen seuralaisena sekametsissä, metsäteiden varsilla, puistoissa ja rannoilla koko Helsingissä (Keskuspuisto, Seurasaari, Lauttasaari, Haltiala)."},
       searchTactics: {"en":"Noticeable fiery brick-red to orange-russet cap with cuticle overlapping the margin. The tall, sturdy stem is densely covered in small black-tipped scales. Cut flesh rapidly discolors: blue-grey then inky purple-black.","zh":"耀眼的砖红至鲜橙色毡状菌盖，表皮边缘下延略微包裹孔层。粗壮菌柄密布深黑色立体小鳞片。切开后白菇肉迅速氧化，先泛灰紫蓝，最终变为深沉的墨黑紫色。","fi":"Näyttävä tiilenpunainen tai oranssi samettinen lakki. Paksussa jalassa on runsaasti pieniä mustia tupsuja/suomuja. Malto tummuu leikattaessa nopeasti sinipunaiseksi ja mustaksi."},
       lookalikes: {"en":"Leccinum aurantiacum (Aspen Bolete) has reddish-brown stem scales and associates with aspen. All Leccinum punikkitatit are edible but MUST follow the 20-minute cooking rule.","zh":"白杨牛肝菌（Haavanpunikkitatti）与欧洲山杨共生，菌柄鳞片偏棕红。所有红绒盖牛肝菌属物种食用前皆必须严格遵守“彻底加热20分钟”法则！","fi":"Haavanpunikkitatilla (Leccinum aurantiacum) jalan suomut ovat punaruskeita ja se kasvaa haavan alla. Kaikki punikkitatit vaativat 20 min kypsennyksen."},
@@ -1731,6 +1780,7 @@ const I18N = {
     {
       id: "hygrophoropsis_aurantiaca",
       latinName: "Hygrophoropsis aurantiaca",
+      family: "deadly_toxic",
       whereWhen: {"en":"August to November. Common on decaying pine needles, woodchips, coniferous bark litter, and acidic sandy soils throughout Helsinki forest trails and parks (Keskuspuisto, Nuuksio, Luukki).","zh":"8月至11月。常见于赫尔辛基林间小径旁的腐烂松针堆、碎木屑层、针叶树皮落屑及酸性沙土上（中央公园、Nuuksio、Luukki）。","fi":"Elo-marraskuussa. Kasvaa neulaskarikkeella, lahopuulla, hakkeella ja happamilla mailla metsien kätköissä ja puistoissa (Keskuspuisto, Nuuksio, Luukki)."},
       searchTactics: {"en":"Vivid flame-orange to golden cap with a darker sunken center. Underside features knife-thin, crowded, blade-like TRUE gills that fork repeatedly. Stem is thin, flexible, and darkens to black-brown near the base.","zh":"刺目的火橙色或金橙色菌盖，中央微凹且色泽深暗。菌盖下方是极其薄细、刀刃般锋利密集的【真菌褶】。菌柄较细软，基部渐变为黑褐色。","fi":"Räikeän helovanoranssi lakki, joka on keskeltä usein tummempi. Alapinnalla ohuet, veitsenterävät ja tiheät haaraiset heltat. Jalka on hoikka ja tummuu tyvestä ruskeanmustaksi."},
       lookalikes: {"en":"Golden Chanterelle (Cantharellus cibarius) has blunt, thick, branching ridges (poimut), uniform warm egg-yellow color, solid white interior flesh, and a rich apricot scent.","zh":"真鸡油菌（Cantharellus cibarius）长着钝厚圆润的分叉假菌褶（脉状棱脊），色泽为纯正蛋黄，切开肉质致密雪白，散发清甜杏子香气。","fi":"Keltavahverolla (kantarelli) on paksut pyöreät poimut, tasaisen munankeltainen väri, kiinteä vaalea malto ja ihana aprikoosin tuoksu."},
@@ -1780,6 +1830,7 @@ const I18N = {
     {
       id: "tylopilus_felleus",
       latinName: "Tylopilus felleus",
+      family: "boletaceae",
       whereWhen: {"en":"July to September. Acidic spruce and pine forests, often fruiting directly on or around mossy rotting conifer stumps and sandy trails in Nuuksio, Sipoonkorpi, and Luukki.","zh":"7月至9月。酸性云杉与松树林中，常直接生长于覆满青苔的腐朽树桩旁或沙质小径苔藓坡上（Nuuksio、Sipoonkorpi、Luukki）。","fi":"Heinä-syyskuussa. Happamissa havu- ja sekametsissä, usein lahonneiden kantojen läheisyydessä ja hiekkapohjaisilla kankailla Nuuksiossa, Sipoonkorvessa ja Luukissa."},
       searchTactics: {"en":"Remarkably deceptive: resembles a plump King Bolete (Porcini). The pore sponge is pure white when young, but turns dirty PINKISH-BROWN with age. The stem features a dark brown, coarse, raised mesh pattern.","zh":"极具欺骗性：外形与肥壮的美味牛肝菌如出一辙。幼时菌孔纯白，但老熟后转为【脏肉粉红、粉褐色】。菌柄表面密布深黑褐色凸出的粗大立体网纹。","fi":"Pettävän näköinen: muistuttaa herkkutattia. Pillistö on nuorena valkoinen, mutta muuttuu vanhetessa likaisen vaaleanpunaiseksi. Jalassa karkea tummanruskea verkkokuvio."},
       lookalikes: {"en":"King Bolete (Boletus edulis) has white pores turning yellowish-olive, and a fine WHITE mesh net on the upper stem. If ever in doubt: touch a tiny crumb of flesh to your tongue—Tylopilus is VIOLENTLY BITTER within 5 seconds!","zh":"美味牛肝菌（Boletus edulis）菌孔老熟转黄绿橄榄色，菌柄上半段为细致纯白网纹。最可靠判别：切下一丁点菇肉轻触舌尖，苦牛肝5秒内会泛起剧烈苦胆水苦味！","fi":"Herkkutatilla pillistö muuttuu kellanvihreäksi ja jalassa on hento valkoinen verkko. Jos epäröit maastossa: kosketa pientä palaa kielenkärjellä – sappitatti maistuu heti sietämättömän karvaalta!"},
@@ -1829,6 +1880,7 @@ const I18N = {
     {
       id: "amanita_muscaria",
       latinName: "Amanita muscaria",
+      family: "deadly_toxic",
       whereWhen: {"en":"POISONOUS / PSYCHOACTIVE: August to October. Very common in birch and spruce woodlands, forest edges, and city parks throughout Helsinki (Keskuspuisto, Meilahti, Otaniemi).","zh":"【有毒 / 致幻性真菌】：8月至10月。极其常见于白桦和云杉混交林、林缘草地及城市绿化带中（中央公园、Meilahti、Otaniemi处处可见）。","fi":"MYRKYLLINEN: Elo-lokakuussa. Hyvin yleinen koivikoissa, kuusikoissa, puistoissa ja pientareilla Helsingin seudulla (Keskuspuisto, Meilahti, Otaniemi)."},
       searchTactics: {"en":"The iconic fairy-tale toadstool: bright scarlet-red cap dotted with white pyramidal warts, pure white gills, and a white stem with a hanging skirt-like ring and bulbous concentric base.","zh":"经典的童话红蘑菇：鲜艳夺目的猩红色菌盖，上面点缀着白色的金字塔形鳞片残渣，纯白色菌褶，带有下垂宽菌环的白菌柄，基部膨大具数圈同心环鳞。","fi":"Klassinen satukirjasieni: loistavan punainen lakki valkoisilla suomuilla, puhtaanvalkoiset heltat, jalassa riippuva rengas ja sipulimainen tyvi."},
       lookalikes: {"en":"Amanita regalis (Ruskokärpässieni) has an umber-brown to liver-brown cap with yellow warts. Amanita caesarea has orange gills, but does not occur in Finland.","zh":"褐色毒蝇伞（Amanita regalis）菌盖为深肝褐色或黄褐色配黄色鳞片。芬兰本土无橙褶的凯撒食用鹅膏。","fi":"Ruskokärpässienellä (Amanita regalis) on keltaruskea lakki keltaisilla täplillä ja se on yhtä lailla myrkyllinen."},
@@ -1865,7 +1917,8 @@ const I18N = {
         fi: {
           cap: "8–20 cm, helakanpunainen, pinnalla valkoisia suojussuomuja",
           underCap: "Puhtaanvalkoiset irtonaiset heltat",
-          stem: "Valkoinen, renkaallinen, sipulityvinen"
+          stem: "Valkoinen, renkaallinen, sipulityvinen",
+          odor: "Heikko / tavallinen sienentuoksu"
         }
       },
       warning: {
@@ -1873,6 +1926,4002 @@ const I18N = {
         zh: "【神经毒性】含异恶唑衍生物（蝇蕈醇与伊博胜酸），致幻谵妄、痉挛抽搐并引起剧烈肠胃炎，切勿采食！",
         fi: "MYRKYLLINEN. Sisältää iboteenihappoa ja muskimolia; aiheuttaa sekavuutta, kouristuksia ja vakavia vatsavaivoja."
       }
+    },
+{
+          "id": "craterellus_lutescens",
+          "latinName": "Craterellus lutescens",
+          "family": "cantharellaceae",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "beginner",
+          "months": [
+                8,
+                9,
+                10,
+                11
+          ],
+          "names": {
+                "en": {
+                      "primary": "Yellow Foot / Flame Chanterelle",
+                      "local": "Kosteikkovahvero",
+                      "alt": "Cantharellus lutescens"
+                },
+                "zh": {
+                      "primary": "黄柄黄肉鸡油菌",
+                      "local": "湿地鸡油菌 / 金黄喇叭菌",
+                      "alt": "Craterellus lutescens"
+                },
+                "fi": {
+                      "primary": "Kosteikkovahvero",
+                      "local": "Kosteikkovahvero",
+                      "alt": "Craterellus lutescens"
+                }
+          },
+          "habitatName": {
+                "en": "Spruce bogs, paludified moss depressions & rich fen edges",
+                "zh": "云杉泥炭藓沼泽、林中积水苔藓凹坑及富营养湿地林缘",
+                "fi": "Korpikuusikot, rahkasammaliset kosteikot ja lähteiköt"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "2–7 cm, wavy lobed, yellowish-brown to dark sepia with orange flush",
+                      "underCap": "Nearly smooth to faintly wrinkled veins, bright salmon-orange to apricot-yellow",
+                      "stem": "Hollow, flattened with groove, vivid fiery chrome-yellow to orange",
+                      "odor": "Intensely fruity, sweet floral perfume reminiscent of apricots and mirabelles"
+                },
+                "zh": {
+                      "cap": "2–7厘米，薄漏斗状，波状边缘，黄褐至深黑褐色，透出橙光",
+                      "underCap": "近乎平滑或仅具微弱波状浅皱肋，呈鲜亮杏黄橙色",
+                      "stem": "空心，侧扁具纵沟，呈醒目极艳丽的金黄橙色",
+                      "odor": "极其浓郁强烈的清甜杏桃与成熟花果芳香"
+                },
+                "fi": {
+                      "cap": "2–7 cm, suppilomainen, aaltoilevareunainen, kellanruskea tai tummanruskea",
+                      "underCap": "Lähes sileä tai matalapoimuinen, kirkkaan kellanoranssi",
+                      "stem": "Ontto, litteähkö, loistavan keltanoranssi",
+                      "odor": "Erittäin voimakas ja makea, hedelmäinen tuoksu"
+                }
+          },
+          "culinaryTip": {
+                "en": "Supreme culinary chanterelle. Exceptional dried or quick-sautéed in butter. Retains extraordinary fruity fragrance.",
+                "zh": "北欧顶级食用菌之一。清炒极香脆，亦极其适合风干烘烤，脱水后会释放出犹如杏干般的浓郁蜜香。",
+                "fi": "Huippuluokan ruokasieni. Kuivattuna erinomainen, säilyttää upean hedelmäisen arominsa."
+          },
+          "lookalikeAlert": {
+                "en": "Closely related Funnel Chanterelle (C. tubaeformis) has distinct branched grey-yellow ridges underneath, not smooth salmon skin.",
+                "zh": "与漏斗鸡油菌（Suppilovahvero）近缘，但后者菌盖下方具清晰分叉的灰黄色假菌褶，而非平滑鲜橙色。",
+                "fi": "Muistuttaa suppilovahveroa, mutta lakin alapinta on poimuton ja oranssimpi."
+          },
+          "whereWhen": {
+                "en": "Fruits from late August through November. Strictly loves wet, spring-fed spruce bogs and peat moss (Sphagnum). Prime spots: Sipoonkorpi nature bogs, Nuuksio lake depressions, and Meiko wetland margins.",
+                "zh": "8月下旬至11月出菇。特异性偏爱阴冷湿润、长满泥炭藓的云杉沼泽和涌泉周边。大赫尔辛基绝佳地：西波国家公园幽深沼泽区、Nuuksio湿地湖畔及Meiko保护区盆地。",
+                "fi": "Sato elo-marraskuussa. Kasvaa kosteissa sammaleisissa korpikuusikoissa ja soiden laiteilla."
+          },
+          "searchTactics": {
+                "en": "Search where your boots sink into wet Sphagnum peat moss beneath tall spruces. Look for the glowing, neon-orange hollow stems peeking out of emerald moss.",
+                "zh": "当胶靴踩入深陷的潮湿泥炭藓坑时放慢脚步。在深绿苔藓丛中寻找那一根根宛如火苗般跳跃的鲜艳黄橙色菌柄。",
+                "fi": "Etsi upottavista rahkasammalokoista vanhojen kuusten alta. Kirkkaankeltainen jalka paljastaa sienen."
+          },
+          "lookalikes": {
+                "en": "Funnel Chanterelle (Craterellus tubaeformis) is also choice edible. No poisonous lookalikes share this bright hollow orange stem and smooth apricot underside in bogs.",
+                "zh": "漏斗鸡油菌同为顶级美味。在芬兰湿地苔藓中，没有具有此类金黄空心柄和平滑橙色腹面的有毒真菌。",
+                "fi": "Suppilovahvero on toinen samankaltainen herkku. Ei vaarallisia näköislajeja samoissa biotoopeissa."
+          },
+          "cookingGuide": {
+                "en": "Cook gently in foaming butter with chives or shallots. Sauté for 3–5 minutes. Dehydrate on racks at 40°C for year-round soups and winter game sauces.",
+                "zh": "黄油融化后中小火翻炒3-5分钟，加小葱碎和海盐即可出锅；或直接40度低温风干，是炖肉与冬日野味浓汤的最佳香料菌。",
+                "fi": "Paista nopeasti voissa tai kuivaa matalassa lämmössä. Sopii erinomaisesti riistaruokiin ja kastikkeisiin."
+          },
+          "image": "./images/craterellus_lutescens.jpg",
+          "gallery": [
+                {
+                      "file": "./images/craterellus_lutescens.jpg",
+                      "caption": {
+                            "en": "Yellow Foot / Flame Chanterelle in natural Finnish forest habitat",
+                            "zh": "黄柄黄肉鸡油菌 在芬兰森林中的自然生境",
+                            "fi": "Kosteikkovahvero luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) timendez, some rights reserved (CC BY-NC), uploaded by timendez"
+                }
+          ]
+    },
+{
+          "id": "cantharellus_amethysteus",
+          "latinName": "Cantharellus amethysteus",
+          "family": "cantharellaceae",
+          "rating": "**",
+          "edibility": "good",
+          "level": "beginner",
+          "months": [
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Amethyst Chanterelle",
+                      "local": "Samettivahvero",
+                      "alt": "Cantharellus amethysteus"
+                },
+                "zh": {
+                      "primary": "紫绒鸡油菌",
+                      "local": "紫鳞鸡油菌 / 绒毛鸡油菌",
+                      "alt": "Cantharellus amethysteus"
+                },
+                "fi": {
+                      "primary": "Samettivahvero",
+                      "local": "Samettikantarelli",
+                      "alt": "Cantharellus amethysteus"
+                }
+          },
+          "habitatName": {
+                "en": "Deciduous groves, oak-hazel slopes & mossy birch margins",
+                "zh": "阔叶林、橡树-欧榛山坡及长有苔藓的白桦林缘",
+                "fi": "Lehdot, tammi- ja pähkinämetsät, koivikot"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "3–9 cm, golden-yellow covered with delicate lilac-purple to violet velvety scales",
+                      "underCap": "Blunt, thick, decurrent yellow ridges",
+                      "stem": "Solid, firm, golden-buff",
+                      "odor": "Fruity apricot scent, identical to golden chanterelle"
+                },
+                "zh": {
+                      "cap": "3–9厘米，底色金黄，菌盖表面覆有精致淡紫至紫罗兰色绒毛细鳞片",
+                      "underCap": "粗厚钝圆的蛋黄色延生假菌褶（肋状脊）",
+                      "stem": "实心，粗壮坚韧，淡黄色",
+                      "odor": "清新的成熟杏子香气，与普通黄鸡油菌无异"
+                },
+                "fi": {
+                      "cap": "3–9 cm, keltapohjainen, pinnalla hienoja lilan- tai violetinsävyisiä nukkasuomuja",
+                      "underCap": "Paksut, keltaiset poimut",
+                      "stem": "Tukeva, umpinainen, kellertävä",
+                      "odor": "Hedelmäinen, kantarellimainen tuoksu"
+                }
+          },
+          "culinaryTip": {
+                "en": "Equivalent to the golden chanterelle in texture and flavor. Pan-fry in butter; beautiful contrast in wild forest plates.",
+                "zh": "口感与风味与经典黄鸡油菌完全一致。黄油干煎至微焦，紫金相间的色泽在餐盘上极具观赏美感。",
+                "fi": "Maultaan ja rakenteeltaan täysin kantarellin veroinen ruokasieni. Paista voissa."
+          },
+          "lookalikeAlert": {
+                "en": "Can only be confused with common Golden Chanterelle (C. cibarius), which is equally safe and choice.",
+                "zh": "仅可能与普通金黄鸡油菌混淆，两者均为安全可口的优质食用菌，无任何混毒风险。",
+                "fi": "Voi sekoittaa vain tavalliseen keltavahveroon, joka on yhtä erinomainen ruokasieni."
+          },
+          "whereWhen": {
+                "en": "Mid-July to October in warmer nutrient-rich deciduous pockets in Uusimaa (e.g. Ruissalo-type oak groves, Tammisaari, and sheltered spots in Espoo).",
+                "zh": "7月中旬至10月生于乌西玛大区温暖富营养的阔叶栎林带。在大赫尔辛基南缘及埃斯波阳光斜坡偶见。",
+                "fi": "Heinä-lokakuussa ravinteisissa lehtimetsissä ja tammien läheisyydessä."
+          },
+          "searchTactics": {
+                "en": "Look under mature oaks and hazel bushes on dappled sunny banks. Check the cap center for the telltale violet velvet dusting.",
+                "zh": "在成熟橡树与榛树下斑驳的向阳斜坡搜寻，细察金黄菌盖中心是否有那一层高雅的淡紫色天鹅绒细鳞。",
+                "fi": "Tarkkaile tammien alustoja ja valoisia lehtorinteitä. Huomaa lakin violetti sävy."
+          },
+          "lookalikes": {
+                "en": "Golden Chanterelle (Cantharellus cibarius) lacks the lilac-violet scales. Both are safe choice edibles.",
+                "zh": "经典黄鸡油菌无紫色鳞片。两者皆为绝佳无毒真菌。",
+                "fi": "Keltavahverolla ei ole lilaa suomutusta lakin keskustassa."
+          },
+          "cookingGuide": {
+                "en": "Clean with brush, cook in dry pan to sweat out natural juices, then fry in salted butter and garnish with fresh herbs.",
+                "zh": "毛刷扫净，热锅煸出原汤收浓，入足量咸黄油香煎，加新鲜欧芹或莳萝调味。",
+                "fi": "Puhdista harjalla, haihduta neste pannulla ja paista voissa."
+          },
+          "image": "./images/cantharellus_amethysteus.jpg",
+          "gallery": [
+                {
+                      "file": "./images/cantharellus_amethysteus.jpg",
+                      "caption": {
+                            "en": "Amethyst Chanterelle in natural Finnish forest habitat",
+                            "zh": "紫绒鸡油菌 在芬兰森林中的自然生境",
+                            "fi": "Samettivahvero luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+                }
+          ]
+    },
+{
+          "id": "boletus_reticulatus",
+          "latinName": "Boletus reticulatus",
+          "family": "boletaceae",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "beginner",
+          "months": [
+                6,
+                7,
+                8,
+                9
+          ],
+          "names": {
+                "en": {
+                      "primary": "Summer Cep",
+                      "local": "Tammenherkkutatti",
+                      "alt": "Boletus aestivalis"
+                },
+                "zh": {
+                      "primary": "网纹牛肝菌",
+                      "local": "夏牛肝菌 / 橡树牛肝菌",
+                      "alt": "Boletus reticulatus"
+                },
+                "fi": {
+                      "primary": "Tammenherkkutatti",
+                      "local": "Kesäherkkutatti",
+                      "alt": "Boletus reticulatus"
+                }
+          },
+          "habitatName": {
+                "en": "Oak groves, hazel thickets & southern birch parks",
+                "zh": "橡树林、欧榛灌木丛及南部开阔白桦草地",
+                "fi": "Tammimetsät, jalopuumetsiköt ja pähkinälehdot"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "6–20 cm, pale buff-brown to suede-fawn, dry, finely velvety, cracking in dry weather",
+                      "underCap": "Pores white initially, turning greenish-yellow; free from stem",
+                      "stem": "Club-shaped to bulbous, pale tan, with distinct raised white net covering entire length",
+                      "odor": "Sweet, intensely nutty and pleasant mushroom aroma"
+                },
+                "zh": {
+                      "cap": "6–20厘米，淡黄褐至鹿皮浅褐色，干燥微带细天鹅绒感，干旱时表皮易产生龟裂纹",
+                      "underCap": "菌孔幼时雪白紧实，成熟后变黄绿色，菌管在柄部凹陷",
+                      "stem": "球棒状至基部膨大，淡褐色，表面布满清晰凸起的白色网状纹路一直延伸至菌柄基部",
+                      "odor": "甘甜浓郁、纯正宜人的极品坚果牛肝菌香"
+                },
+                "fi": {
+                      "cap": "6–20 cm, vaaleanruskea, himmeäpintainen, hienosamettinen, kuivana usein halkeileva",
+                      "underCap": "Pillistö aluksi valkoinen, myöhemmin kellanvihreä",
+                      "stem": "Paksu, vaaleanruskea, pinnassa selkeä valkoinen verkkokuvio tyveen saakka",
+                      "odor": "Makeahko, voimakkaan pähkinäinen ja miellyttävä"
+                }
+          },
+          "culinaryTip": {
+                "en": "Premier summer delicacy. Tender and sweet flesh. Pan-sear raw in butter or slice into carpaccio if young.",
+                "zh": "初夏顶级美味。肉质比秋季美味牛肝更显柔嫩甘甜。鲜嫩幼菌可直接切极薄片生食（Carpaccio）或黄油嫩煎。",
+                "fi": "Alukesän huippuherkku. Malto pehmeämpää ja makeampaa kuin herkkutatilla. Paista voissa."
+          },
+          "lookalikeAlert": {
+                "en": "Bitter Bolete (Tylopilus felleus) has a coarse DARK black-brown net and pink pores with acrid bitter taste.",
+                "zh": "警惕苦粉孢牛肝菌（苦牛肝），其具粗大深黑色凸起网纹，菌孔呈脏粉色且极苦！",
+                "fi": "Sappitatilla on karkea tumma verkko ja punertava pillistö sekä sietämättömän karvas maku."
+          },
+          "whereWhen": {
+                "en": "Fruits earlier than B. edulis, from mid-June to August during warm spells under broadleaf trees in Southern Finland.",
+                "zh": "出菇时间明显早于秋季美味牛肝，6月中旬夏至前后至8月在乌西玛大区暖温阔叶林下现身。",
+                "fi": "Sato alkaa jo kesä-heinäkuussa lämpimissä lehtimetsissä."
+          },
+          "searchTactics": {
+                "en": "Search around the bases of ancient oak and hazel trees in urban parks and coastal reserves.",
+                "zh": "重点在老橡树、欧榛灌木林下以及沿海向阳的开阔林缘地表搜寻。",
+                "fi": "Etsi vanhojen tammien ja pähkinäpensaiden alta lämpimiltä paikoilta."
+          },
+          "lookalikes": {
+                "en": "Boletus edulis (King Bolete) has white net only on upper stem and a darker reddish greasy cap.",
+                "zh": "美味牛肝菌菌盖更光滑油润，且白色网纹通常仅限于菌柄上部三分之一。",
+                "fi": "Herkkutatilla verkko rajoittuu jalan yläosaan ja lakki on kiiltävämpi."
+          },
+          "cookingGuide": {
+                "en": "Slice 5mm thick, sear in brown butter with garlic and parsley for 4 minutes. Outstanding in pasta.",
+                "zh": "切半厘米厚片，以焦香黄油中火煎至两面金黄微脆，撒蒜蓉与欧芹，拌入意面风味绝伦。",
+                "fi": "Viipaloi ja paista voissa valkosipulin ja persiljan kanssa. Erinomainen pastoissa."
+          },
+          "image": "./images/boletus_reticulatus.jpg",
+          "gallery": [
+                {
+                      "file": "./images/boletus_reticulatus.jpg",
+                      "caption": {
+                            "en": "Summer Cep in natural Finnish forest habitat",
+                            "zh": "网纹牛肝菌 在芬兰森林中的自然生境",
+                            "fi": "Tammenherkkutatti luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Felipe Hidalgo, some rights reserved (CC BY-NC), uploaded by Felipe Hidalgo"
+                }
+          ]
+    },
+{
+          "id": "leccinum_vulpinum",
+          "latinName": "Leccinum vulpinum",
+          "family": "boletaceae",
+          "rating": "**",
+          "edibility": "good",
+          "level": "intermediate",
+          "months": [
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Pine Red-Capped Scaber",
+                      "local": "Männynpunikkitatti",
+                      "alt": "Leccinum vulpinum"
+                },
+                "zh": {
+                      "primary": "松生红盖牛肝菌",
+                      "local": "松林红绒盖牛肝菌",
+                      "alt": "Leccinum vulpinum"
+                },
+                "fi": {
+                      "primary": "Männynpunikkitatti",
+                      "local": "Männynpunikki",
+                      "alt": "Leccinum vulpinum"
+                }
+          },
+          "habitatName": {
+                "en": "Dry sandy Scots pine heaths, rocky lichen terraces & blueberry patches",
+                "zh": "干燥沙质欧洲赤松林、花岗岩地衣岩台及蓝莓矮灌木丛",
+                "fi": "Kuivat kangasmetsät, kalliomänniköt ja hiekkapohjaiset mäntykankaat"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "6–18 cm, dark brick-red to chestnut-red, dry, overhangs tubes at margin",
+                      "underCap": "Pores cream-grey, bruising brownish",
+                      "stem": "Solid, covered with dark brown to black rough fibrous scales",
+                      "odor": "Mild earthy mushroom aroma"
+                },
+                "zh": {
+                      "cap": "6–18厘米，深砖红至红栗色，表皮常超出菌盖边缘形成明显保护皮膜",
+                      "underCap": "菌孔乳白至灰褐，触碰后逐渐泛淡污褐色",
+                      "stem": "坚实粗壮，表面密布粗糙的深褐色至黑褐色丛毛状小鳞片",
+                      "odor": "温和朴实的森林泥土与菌菇气息"
+                },
+                "fi": {
+                      "cap": "6–18 cm, tiilenpunainen tai tumman punaruskea, reunanahka kääntyy pillien yli",
+                      "underCap": "Pillistö harmaanvalkoinen, vanhana harmahtava",
+                      "stem": "Tukeva, peittynyt ruskeanmustiin karkeisiin nukkasuomuihin",
+                      "odor": "Mieto, miellyttävä"
+                }
+          },
+          "culinaryTip": {
+                "en": "Firm meaty texture. MUST BE COOKED THOROUGHLY (>15 min) to prevent stomach upset. Blackens upon cooking.",
+                "zh": "肉质紧实耐煮。必须彻底加热烹饪15分钟以上以防肠胃不适！受热烹调后菌肉会转为深灰色至黑亮色。",
+                "fi": "Kiinteä ja hyvä ruokasieni. VAATII VÄHINTÄÄN 15 MINUUTIN KYPSENNYKSEN vatsavaivojen välttämiseksi."
+          },
+          "lookalikeAlert": {
+                "en": "Other red-capped Leccinum species (L. versipelle under birch, L. aurantiacum under aspen) are all similarly good edibles requiring thorough cooking.",
+                "zh": "与桦树红绒盖牛肝菌及山杨牛肝菌外形相近，均为无毒优质食用菌，均需充分烹熟后食用。",
+                "fi": "Kaikki punikkitatit ovat hyviä ruokasieniä, kunhan ne kypsennetään kunnolla."
+          },
+          "whereWhen": {
+                "en": "July through October in dry pine ridges across Nuuksio, Sipoonkorpi granite cliffs, and coastal Porkkala.",
+                "zh": "7月至10月在Nuuksio山脊、西波国家公园高地岩丘及Porkkalanniemi海角赤松林中极为多见。",
+                "fi": "Heinä-lokakuussa kallioisilla mäntykankailla koko Uudellamaalla."
+          },
+          "searchTactics": {
+                "en": "Spot the dome-like brick-red caps rising above the light green reindeer lichen under pines.",
+                "zh": "在赤松下浅灰绿色的驯鹿地衣毯和红莓灌木中，搜寻宛如小砖包般耸起的深红菌盖。",
+                "fi": "Etsi vaalean jäkälikön ja varpujen keskeltä männyn juurilta."
+          },
+          "lookalikes": {
+                "en": "Orange Birch Bolete (L. versipelle) grows strictly with birch and has coal-black scales on a white stem.",
+                "zh": "白桦红盖牛肝菌专生于桦树下，菌柄底色雪白且鳞片呈纯黑色。",
+                "fi": "Koivunpunikkitatilla on puhtaanvalkea jalka mustilla suomuilla ja se kasvaa koivun alla."
+          },
+          "cookingGuide": {
+                "en": "Cube finely, simmer in a stew or sauté with onions for 20 minutes until thoroughly cooked. Superb in hearty Finnish beef stews.",
+                "zh": "切成小丁，与洋葱在锅中翻炒并焖煮至少20分钟，肉质极其脆爽有嚼劲，是炖牛肉和配杂粮饭的绝佳食材。",
+                "fi": "Paloittele ja paista pannulla vähintään 15–20 minuuttia. Sopii lihapatoihin."
+          },
+          "image": "./images/leccinum_vulpinum.jpg",
+          "gallery": [
+                {
+                      "file": "./images/leccinum_vulpinum.jpg",
+                      "caption": {
+                            "en": "Pine Red-Capped Scaber in natural Finnish forest habitat",
+                            "zh": "松生红盖牛肝菌 在芬兰森林中的自然生境",
+                            "fi": "Männynpunikkitatti luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Christine Young, some rights reserved (CC BY), uploaded by Christine Young"
+                }
+          ]
+    },
+{
+          "id": "leccinum_aurantiacum",
+          "latinName": "Leccinum aurantiacum",
+          "family": "boletaceae",
+          "rating": "**",
+          "edibility": "good",
+          "level": "intermediate",
+          "months": [
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Aspen Bolete",
+                      "local": "Haavanpunikkitatti",
+                      "alt": "Leccinum aurantiacum"
+                },
+                "zh": {
+                      "primary": "欧洲山杨牛肝菌",
+                      "local": "杨树红盖牛肝菌 / 橙红疣柄牛肝菌",
+                      "alt": "Leccinum aurantiacum"
+                },
+                "fi": {
+                      "primary": "Haavanpunikkitatti",
+                      "local": "Haavanpunikki",
+                      "alt": "Leccinum aurantiacum"
+                }
+          },
+          "habitatName": {
+                "en": "Mixed deciduous forests with European aspen (Populus tremula)",
+                "zh": "含有欧洲山杨（Populus tremula）的针阔混交林与向阳阔叶林",
+                "fi": "Sekametsät ja lehdot, joissa kasvaa haapaa"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "6–20 cm, warm orange-red to apricot-tan, velvety when dry",
+                      "underCap": "Pores whitish to cream-buff, small round tubes",
+                      "stem": "Stout, scales initially white turning rusty-reddish-brown (not jet black)",
+                      "odor": "Mild, pleasant mushroom aroma"
+                },
+                "zh": {
+                      "cap": "6–20厘米，温润的杏橙红至橘黄色，干燥时呈细腻丝绒质感",
+                      "underCap": "菌孔白色至浅乳黄色，管孔细密均一",
+                      "stem": "粗壮挺拔，菌柄上的绒毛小鳞片幼时为白色，后转为红褐至锈褐色（非纯黑）",
+                      "odor": "清香温和"
+                },
+                "fi": {
+                      "cap": "6–20 cm, oranssinpunainen tai hehkuvan oranssi, samettipintainen",
+                      "underCap": "Pillistö valkeahko, myöhemmin ruskehtava",
+                      "stem": "Tukeva, suomut aluksi valkoisia, muuttuvat vaaleanruskeiksi tai punaruskeiksi",
+                      "odor": "Mieto"
+                }
+          },
+          "culinaryTip": {
+                "en": "Firm and substantial. Must be cooked for 15–20 minutes thoroughly before consumption.",
+                "zh": "肉质厚重充实。入口前必须彻底烹熟煮透15至20分钟。",
+                "fi": "Hyvä ja kiinteä ruokasieni. Vaatii huolellisen, vähintään 15 minuutin kypsennyksen."
+          },
+          "lookalikeAlert": {
+                "en": "All red-capped Leccinum species share the same safety rule: safe and delicious, but never eat raw or half-cooked.",
+                "zh": "所有红盖疣柄牛肝菌共享相同安全准则：美味无毒，但严禁生食或夹生食用！",
+                "fi": "Kaikilla punikeilla sama sääntö: kypsennä aina kunnolla."
+          },
+          "whereWhen": {
+                "en": "Fruiting late summer to early autumn wherever European aspen trees grow, especially along sunny forest tracks.",
+                "zh": "夏末至初秋出菇于欧洲山杨树下，尤其在林缘朝阳透光地段常见。",
+                "fi": "Heinä-syyskuussa haapojen seuralaisena."
+          },
+          "searchTactics": {
+                "en": "Look for fluttery trembling aspen leaves, then scan the grass and leaf litter around the tree drip line.",
+                "zh": "在森林中抬头辨识风吹哗哗作响的欧洲山杨圆叶，随后在树冠投影周围搜寻鲜亮橙色菌盖。",
+                "fi": "Etsi havisevien haapojen alta ruohikosta."
+          },
+          "lookalikes": {
+                "en": "Orange Birch Bolete (L. versipelle) has coal-black scales right from youth and partners with birch.",
+                "zh": "白桦红盖牛肝菌幼时鳞片即为炭黑色，且严格与白桦共生。",
+                "fi": "Koivunpunikkitatti kasvaa koivun alla ja sen jalassa on mustat suomut."
+          },
+          "cookingGuide": {
+                "en": "Chop into bite-sized pieces and cook into creamy mushroom pasta or bake into a savory autumn pie.",
+                "zh": "切滚刀块与蒜片下锅翻炒出汤汁收浓，加淡奶油制成经典牛肝菌意面酱，或作咸派馅料。",
+                "fi": "Hauduta pannulla ja valmista sienikastike tai piirakka."
+          },
+          "image": "./images/leccinum_aurantiacum.jpg",
+          "gallery": [
+                {
+                      "file": "./images/leccinum_aurantiacum.jpg",
+                      "caption": {
+                            "en": "Aspen Bolete in natural Finnish forest habitat",
+                            "zh": "欧洲山杨牛肝菌 在芬兰森林中的自然生境",
+                            "fi": "Haavanpunikkitatti luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+                }
+          ]
+    },
+{
+          "id": "leccinum_scabrum",
+          "latinName": "Leccinum scabrum",
+          "family": "boletaceae",
+          "rating": "*",
+          "edibility": "edible",
+          "level": "beginner",
+          "months": [
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Brown Birch Bolete",
+                      "local": "Lehmäntatti",
+                      "alt": "Leccinum scabrum"
+                },
+                "zh": {
+                      "primary": "褐疣柄牛肝菌",
+                      "local": "桦树牛肝菌 / 牛菇",
+                      "alt": "Leccinum scabrum"
+                },
+                "fi": {
+                      "primary": "Lehmäntatti",
+                      "local": "Lehmäntatti",
+                      "alt": "Leccinum scabrum"
+                }
+          },
+          "habitatName": {
+                "en": "Moist birch forests, mossy path borders & birch peat margins",
+                "zh": "湿润白桦林、长满苔藓的小径旁及桦木沼泽林缘",
+                "fi": "Koivikot, sekametsät ja soiden reunat"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "5–15 cm, uniform grey-brown to chocolate-brown, smooth, soft and cushion-like",
+                      "underCap": "Pores whitish, becoming dingy brownish-grey with age; deep spongy layer",
+                      "stem": "Slender, white covered with grey to blackish scabers; flesh remains white when sliced",
+                      "odor": "Mild earthy odor"
+                },
+                "zh": {
+                      "cap": "5–15厘米，均一灰褐色至浅巧克力褐色，表面平滑，老后海绵般松软",
+                      "underCap": "菌孔白色，成熟后转灰褐色，孔层厚而易脱落",
+                      "stem": "较修长纤细，白色底面上密布灰黑色粗糙斑点小疣；剖开后肉色基本不变黑",
+                      "odor": "微弱泥土香"
+                },
+                "fi": {
+                      "cap": "5–15 cm, tuhkanruskea tai harmaanruskea, pehmeämaltoinen",
+                      "underCap": "Pillistö vaalea, vanhana ruskeanharmaa",
+                      "stem": "Hoikka, valkeahko, harmaanmustien suomujen peitossa; malto ei tummu leikattaessa",
+                      "odor": "Mieto"
+                }
+          },
+          "culinaryTip": {
+                "en": "Soft texture. Harvest only young firm buttons; best chopped into mixed mushroom soups and stews.",
+                "zh": "肉质相对松软。建议仅采摘菌盖紧实闭合的幼菌；适合切碎混入杂菌汤或炖菜中增添菌香。",
+                "fi": "Pehmeämaltoinen. Kerää vain nuoria kiinteitä yksilöitä keittoihin ja patoihin."
+          },
+          "lookalikeAlert": {
+                "en": "Can be confused with other brown Leccinum species (e.g. L. variicolor), all of which are safe edibles.",
+                "zh": "可与斑褐疣柄牛肝菌等混淆，均为完全无毒的食用菌。",
+                "fi": "Ei vaarallisia näköislajeja."
+          },
+          "whereWhen": {
+                "en": "Abundant across all Helsinki birch woodlands from July to October, even in suburban park edges.",
+                "zh": "7月至10月在赫尔辛基凡有白桦树的林地极为普遍，甚至在城市公园草坪边沿也屡见不鲜。",
+                "fi": "Hyvin yleinen koivujen alla kaikkialla Uudellamaalla heinä-lokakuussa."
+          },
+          "searchTactics": {
+                "en": "Look right at the bases of Silver Birch trunks in grassy open glades.",
+                "zh": "在开阔草地边缘的垂枝白桦树根附近巡视即可轻松发现。",
+                "fi": "Etsi koivujen läheltä ruohikoista."
+          },
+          "lookalikes": {
+                "en": "Tylopilus felleus (Bitter Bolete) grows with conifers, has pink pores and violently bitter taste.",
+                "zh": "苦粉孢牛肝菌（苦牛肝）生于针叶林，菌孔粉红且味极苦。",
+                "fi": "Sappitatti kasvaa havumetsissä, on maultaan polttavan karvas ja sen pillistö on punertava."
+          },
+          "cookingGuide": {
+                "en": "Use young caps sliced in soups with potatoes, dill, and sour cream. Discard soft waterlogged old caps.",
+                "zh": "取幼嫩菌盖切丁，与土豆、莳萝和酸奶油同煮芬兰传统蘑菇浓汤。弃用吸水松垮的老菌。",
+                "fi": "Käytä nuoret lakit sienikeittoon perunan ja tillin kera."
+          },
+          "image": "./images/leccinum_scabrum.jpg",
+          "gallery": [
+                {
+                      "file": "./images/leccinum_scabrum.jpg",
+                      "caption": {
+                            "en": "Brown Birch Bolete in natural Finnish forest habitat",
+                            "zh": "褐疣柄牛肝菌 在芬兰森林中的自然生境",
+                            "fi": "Lehmäntatti luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+                }
+          ]
+    },
+{
+          "id": "leccinum_variicolor",
+          "latinName": "Leccinum variicolor",
+          "family": "boletaceae",
+          "rating": "**",
+          "edibility": "good",
+          "level": "intermediate",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Mottled Bolete",
+                      "local": "Kirjotatti",
+                      "alt": "Leccinum variicolor"
+                },
+                "zh": {
+                      "primary": "斑褐疣柄牛肝菌",
+                      "local": "花盖疣柄牛肝菌",
+                      "alt": "Leccinum variicolor"
+                },
+                "fi": {
+                      "primary": "Kirjotatti",
+                      "local": "Kirjotatti",
+                      "alt": "Leccinum variicolor"
+                }
+          },
+          "habitatName": {
+                "en": "Sphagnum moss in birch bogs & damp heath margins",
+                "zh": "白桦沼泽林泥炭藓层及阴湿蓝莓苔藓地",
+                "fi": "Rahkasammaliset koivuvaltaiset suot ja kosteat kankaat"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "5–12 cm, marbled with mottled patches of dark charcoal-brown and whitish spots",
+                      "underCap": "Cream-white pores",
+                      "stem": "Densely scabrous; stem base bruises vivid blue-green when cut",
+                      "odor": "Pleasant mild mushroom scent"
+                },
+                "zh": {
+                      "cap": "5–12厘米，表面具大理石花纹般深炭灰褐色与淡白灰斑驳交织的花斑",
+                      "underCap": "乳白色菌孔，成熟后转浅灰褐色",
+                      "stem": "粗糙黑鳞密布，菌柄基部肉质在切开后会转为醒目的蓝绿色",
+                      "odor": "清淡悦人的菌香"
+                },
+                "fi": {
+                      "cap": "5–12 cm, lakin pinnassa tummanharmaan ja vaalean kirjavia läiskiä",
+                      "underCap": "Pillistö kermanvalkea",
+                      "stem": "Mustanharmaasuomuinen; jalan tyvi muuttuu leikattaessa sinihreäksi",
+                      "odor": "Mieto"
+                }
+          },
+          "culinaryTip": {
+                "en": "Noticeably firmer flesh than L. scabrum. Excellent sautéed with butter and shallots.",
+                "zh": "肉质明显比普通的褐疣柄牛肝菌更为紧致结实。用黄油与红葱碎大火快炒极具风味。",
+                "fi": "Selvästi lehmäntattia kiinteämpi. Erinomainen paistettuna."
+          },
+          "lookalikeAlert": {
+                "en": "The blue-green staining at the stem base is normal and indicates this choice species, not toxicity.",
+                "zh": "菌柄基部切开后变蓝绿色是该种天然特征，绝非有毒变色，请安心享用。",
+                "fi": "Jalan tyven sinihreä väriytyminen on lajityypillistä eikä merkki myrkyllisyydestä."
+          },
+          "whereWhen": {
+                "en": "August to October in moist, mossy birch tracts across Sipoonkorpi and North Espoo.",
+                "zh": "8月至10月生于Sipoonkorpi与北埃斯波长满泥炭藓的桦木湿地周边。",
+                "fi": "Elo-lokakuussa kosteissa korpimetsissä koivujen alla."
+          },
+          "searchTactics": {
+                "en": "Look for mottled dark caps hidden among thick green bog mosses under birch trees.",
+                "zh": "在桦树旁的厚绿苔藓丛中搜寻带有斑驳大理石纹路的花色菌盖。",
+                "fi": "Tarkkaile paksusammalikoita koivujen läheisyydessä."
+          },
+          "lookalikes": {
+                "en": "Brown Birch Bolete (L. scabrum) has uniform brown cap and no blue-green base staining.",
+                "zh": "褐疣柄牛肝菌菌盖颜色单一且基部不变蓝绿。",
+                "fi": "Lehmäntatti on tasavärisempi eikä sen jalka muutu vihreänsiniseksi."
+          },
+          "cookingGuide": {
+                "en": "Pan-fry with butter, garlic, and fresh thyme. Firm texture holds up very well in mixed mushroom skillets.",
+                "zh": "切片入热黄油锅加蒜瓣百里香翻炒，肉质紧实耐煮，炒杂菌中口感极佳。",
+                "fi": "Paista voissa valkosipulin ja timjamin kanssa."
+          },
+          "image": "./images/leccinum_variicolor.jpg",
+          "gallery": [
+                {
+                      "file": "./images/leccinum_variicolor.jpg",
+                      "caption": {
+                            "en": "Mottled Bolete in natural Finnish forest habitat",
+                            "zh": "斑褐疣柄牛肝菌 在芬兰森林中的自然生境",
+                            "fi": "Kirjotatti luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Vladimir Bryukhov, some rights reserved (CC BY-NC), uploaded by Vladimir Bryukhov"
+                }
+          ]
+    },
+{
+          "id": "suillus_luteus",
+          "latinName": "Suillus luteus",
+          "family": "boletaceae",
+          "rating": "**",
+          "edibility": "good",
+          "level": "beginner",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Slippery Jack",
+                      "local": "Voitatti",
+                      "alt": "Suillus luteus"
+                },
+                "zh": {
+                      "primary": "褐环乳牛肝菌",
+                      "local": "黄油牛肝菌 / 滑菇",
+                      "alt": "Suillus luteus"
+                },
+                "fi": {
+                      "primary": "Voitatti",
+                      "local": "Voitatti",
+                      "alt": "Suillus luteus"
+                }
+          },
+          "habitatName": {
+                "en": "Young Scots pine stands, sandy roadbanks, grassy path verges & pine plantations",
+                "zh": "幼龄欧洲赤松林、沙质林道边坡、草地小径边缘及松树种植林",
+                "fi": "Nuoret mäntymetsät, polunvarret, hiekkaiset pientareet"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "4–12 cm, chocolate-brown to chestnut, covered in thick slimy glutinous skin when wet",
+                      "underCap": "Pores bright yellow, small, angular; covered by white veil in youth",
+                      "stem": "Cylindrical, pale yellow above a prominent membranous purple-white ring",
+                      "odor": "Fruity and slightly acidic"
+                },
+                "zh": {
+                      "cap": "4–12厘米，深巧克力褐色至红栗色，潮湿时覆有一层极其黏稠顺滑的胶质胶皮",
+                      "underCap": "菌孔亮黄色，细密角形；幼时被白色菌膜完全覆盖",
+                      "stem": "圆柱形，具显著膜质紫色至白色下垂菌环，菌环上方有黄色腺点",
+                      "odor": "清新果香微带酸意"
+                },
+                "fi": {
+                      "cap": "4–12 cm, suklaanruskea, kosteana erittäin limainen",
+                      "underCap": "Pillistö kirkkaankeltainen, nuorena suojuksen peittämä",
+                      "stem": "Renkaallinen, yläosastaan vaaleankeltainen, rengas kalvomainen ja violetinsävyinen",
+                      "odor": "Hedelmäinen, lievästi hapan"
+                }
+          },
+          "culinaryTip": {
+                "en": "ALWAYS peel off the slimy cap cuticle before cooking! It peels like a sticker; omitting peeling can cause laxative effects.",
+                "zh": "下锅前务必剥掉菌盖表面的黏皮！只需用小刀从边缘轻轻一提即可整片撕下。如不撕皮可能引起轻微腹泻。",
+                "fi": "POISTA LAKIN LIMAKALVO AINA ennen ruoaksi valmistamista; voi aiheuttaa vatsavaivoja jos sitä ei kuorita."
+          },
+          "lookalikeAlert": {
+                "en": "Velvet Bolete (S. variegatus) has a dry velvety cap with no ring; Larch Bolete (S. grevillei) strictly associates with larch.",
+                "zh": "斑点乳牛肝菌（Kangastatti）无菌环且盖面干燥无黏液；落叶松乳牛肝严格仅生于落叶松下。",
+                "fi": "Kangastatilla ei ole rengasta eikä limakalvoa."
+          },
+          "whereWhen": {
+                "en": "August to October along sunny sandy roadside pine ditches throughout Espoo, Vantaa and Helsinki.",
+                "zh": "8月至10月在赫尔辛基及近郊沙质向阳的松树道旁、林中小径两边成片生长。",
+                "fi": "Elo-lokakuussa mäntykankailla ja teiden varsilla."
+          },
+          "searchTactics": {
+                "en": "Scan sunny grassy ditch banks beside Scots pine woods after warm autumn rains.",
+                "zh": "夏末秋雨后，在向阳且长着杂草的松林沙沟斜坡上极易寻找。",
+                "fi": "Etsi valoisilta tienpientareilta mäntyjen läheisyydestä."
+          },
+          "lookalikes": {
+                "en": "Suillus bovinus lacks a ring and has wider composite pores running down the stem.",
+                "zh": "牛乳牛肝菌无菌环，菌孔更大且复合延生。",
+                "fi": "Nummitatilla ei ole rengasta ja sen pillistö on karkeampi."
+          },
+          "cookingGuide": {
+                "en": "Peel skin, fry in hot butter with onions, or pickle in a spiced vinegar brine for traditional Finnish smorgasbord.",
+                "zh": "剥去黏皮后切块，入热黄油中与洋葱爆炒，或加香醋与莳萝腌制成北欧传统冷盘酸甜渍蘑菇。",
+                "fi": "Kuori kalvo, paista voissa tai säilö etikkaliemeen."
+          },
+          "image": "./images/suillus_luteus.jpg",
+          "gallery": [
+                {
+                      "file": "./images/suillus_luteus.jpg",
+                      "caption": {
+                            "en": "Slippery Jack in natural Finnish forest habitat",
+                            "zh": "褐环乳牛肝菌 在芬兰森林中的自然生境",
+                            "fi": "Voitatti luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Davide Puddu, some rights reserved (CC BY), uploaded by Davide Puddu"
+                }
+          ]
+    },
+{
+          "id": "suillus_variegatus",
+          "latinName": "Suillus variegatus",
+          "family": "boletaceae",
+          "rating": "**",
+          "edibility": "good",
+          "level": "beginner",
+          "months": [
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Velvet Bolete",
+                      "local": "Kangastatti",
+                      "alt": "Suillus variegatus"
+                },
+                "zh": {
+                      "primary": "斑点乳牛肝菌",
+                      "local": "细点牛肝菌 / 干燥乳牛肝",
+                      "alt": "Suillus variegatus"
+                },
+                "fi": {
+                      "primary": "Kangastatti",
+                      "local": "Kangastatti",
+                      "alt": "Suillus variegatus"
+                }
+          },
+          "habitatName": {
+                "en": "Dry sandy pine heaths, mossy bedrock terraces & blueberry slopes",
+                "zh": "干燥沙质松林、苔藓覆盖的花岗岩台地及蓝莓荒原",
+                "fi": "Kuivat ja tuoreet mäntykankaat, kalliomänniköt"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "5–13 cm, ochre-yellow to buff, dry felt-like/velvety with fine darker freckles; NO slime",
+                      "underCap": "Pores dingy olive-yellow to ochre-brown; bruises faintly blue-green when pressed",
+                      "stem": "Solid, yellowish-ochre, smooth, no ring",
+                      "odor": "Distinctive, slightly metallic, acidic or pine-needle aroma"
+                },
+                "zh": {
+                      "cap": "5–13厘米，赭黄至沙黄色，表面干燥如毛毡或细天鹅绒，覆有微小深色斑点，绝无黏液",
+                      "underCap": "菌孔污橄榄黄至赭褐色，轻按后会缓慢转泛微弱蓝绿色",
+                      "stem": "实心坚实，赭黄色，表面平滑无菌环",
+                      "odor": "独特微带金属感与松针清香的微酸气息"
+                },
+                "fi": {
+                      "cap": "5–13 cm, himmeän kellanruskea, hienosuomuinen tai nukkainen, kuiva",
+                      "underCap": "Pillistö oliivinruskea, sinertyy hitaasti painettaessa",
+                      "stem": "Tasapaksu, kellertävä, renkaaton",
+                      "odor": "Omaleimainen, hieman hapan tai metallinen"
+                }
+          },
+          "culinaryTip": {
+                "en": "Outstanding mushroom for dehydration. Drying transforms its slightly acidic raw aroma into rich savory umami.",
+                "zh": "芬兰极佳的烘干脱水菌之一！干燥过程会将其略带酸性的原味转化为浓郁醇厚的鲜味物质（Umami）。",
+                "fi": "Erinomainen kuivattuna. Kuivaus tuo esiin upean syvän sienen aromin."
+          },
+          "lookalikeAlert": {
+                "en": "Flesh faintly turns blue when bruised—this is natural and safe. Completely distinct from bitter or toxic species.",
+                "zh": "切开后肉质微变蓝绿是其正常生理反应，完全无毒，切勿惊慌。",
+                "fi": "Liejumaan sinertyminen leikatessa on normaalia."
+          },
+          "whereWhen": {
+                "en": "Extremely abundant across all Southern Finland pine heaths from late July through October.",
+                "zh": "7月下旬至10月在芬兰南部所有的赤松林地极其高产，往往一采便是一大筐。",
+                "fi": "Erittäin yleinen ja satoisa koko Uudellamaalla elo-syyskuussa."
+          },
+          "searchTactics": {
+                "en": "Look in sunny dry pine stands where reindeer lichen grows alongside low blueberry bushes.",
+                "zh": "在赤松林间阳光充足、地衣与矮蓝莓混生的平缓坡地上极易寻找。",
+                "fi": "Etsi jäkäliköistä ja varpikoista mäntyjen alta."
+          },
+          "lookalikes": {
+                "en": "Slippery Jack (S. luteus) has a slimy cap and a ring; Velvet bolete is dry and ringless.",
+                "zh": "褐环乳牛肝菌（Voitatti）盖面极黏且有菌环；斑点乳牛肝菌盖面干燥如毡且无菌环。",
+                "fi": "Voitatilla on limainen lakki ja rengas."
+          },
+          "cookingGuide": {
+                "en": "Slice into 4mm ribbons and dry in a food dehydrator. Grind dried slices into umami mushroom powder for seasoning sauces.",
+                "zh": "切4毫米薄片入烘干机烘干储藏，或打碎成野生纯天然蘑菇味精粉，煮汤调汁香气扑鼻。",
+                "fi": "Viipaloi ja kuivaa. Jauha kuivatut tatit maustejauhoksi kastikkeisiin."
+          },
+          "image": "./images/suillus_variegatus.jpg",
+          "gallery": [
+                {
+                      "file": "./images/suillus_variegatus.jpg",
+                      "caption": {
+                            "en": "Velvet Bolete in natural Finnish forest habitat",
+                            "zh": "斑点乳牛肝菌 在芬兰森林中的自然生境",
+                            "fi": "Kangastatti luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+                }
+          ]
+    },
+{
+          "id": "suillus_bovinus",
+          "latinName": "Suillus bovinus",
+          "family": "boletaceae",
+          "rating": "*",
+          "edibility": "edible",
+          "level": "beginner",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Bovine Bolete",
+                      "local": "Nummitatti",
+                      "alt": "Suillus bovinus"
+                },
+                "zh": {
+                      "primary": "牛乳牛肝菌",
+                      "local": "牛菌 / 黄乳牛肝",
+                      "alt": "Suillus bovinus"
+                },
+                "fi": {
+                      "primary": "Nummitatti",
+                      "local": "Nummitatti",
+                      "alt": "Suillus bovinus"
+                }
+          },
+          "habitatName": {
+                "en": "Poor sandy pine heaths, mossy granite outcrops & pine road verges",
+                "zh": "贫瘠沙质松林、苔藓覆盖的花岗岩露头及松林道旁",
+                "fi": "Karut hiekkakankaat, kalliomänniköt ja polunreunat"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "4–10 cm, pale ochre-buff to clay-yellow, elastic rubbery flesh; slightly sticky when moist",
+                      "underCap": "Wide, compound, angular pores running slightly down stem, grey-yellow to olive-ochre",
+                      "stem": "Slender, same color as cap, no ring",
+                      "odor": "Mild, fruity-acidic"
+                },
+                "zh": {
+                      "cap": "4–10厘米，浅赭黄至黏土黄色，肉质极富弹性犹如橡胶皮，潮湿时略黏",
+                      "underCap": "菌孔粗大、复合、呈不规则大角孔，略微沿菌柄向下延生，橄榄黄色",
+                      "stem": "较纤细，与菌盖同色，无菌环",
+                      "odor": "温和清淡微带果香"
+                },
+                "fi": {
+                      "cap": "4–10 cm, vaalean kellanruskea, nahkamaisen sitkeä, kosteana tahmea",
+                      "underCap": "Pillistö laaja, karkean kulmikas, johteinen, harmaan- tai oliivinkeltainen",
+                      "stem": "Hoikka, lakin värinen, renkaaton",
+                      "odor": "Mieto"
+                }
+          },
+          "culinaryTip": {
+                "en": "Rubbery texture. Turns pinkish-purple when cooked. Best picked young and mixed into mushroom stews.",
+                "zh": "肉质偏橡胶韧性。下锅受热烹煮后肉质会奇特地转为淡粉紫红色！宜采幼菌混炒。",
+                "fi": "Sitkeämaltoinen. Muuttuu kypsennettäessä violetinsävyiseksi. Parhaimmillaan sekasienissä."
+          },
+          "lookalikeAlert": {
+                "en": "Often grows in rings together with the small pink mushroom Gomphidius roseus, which is also edible.",
+                "zh": "常与小巧粉红色的粉红铆钉菇（Gomphidius roseus）共生聚集成圈，两者均可食用。",
+                "fi": "Kasvaa usein yhdessä vaaleanpunaisen punanuljaskan (Gomphidius roseus) kanssa."
+          },
+          "whereWhen": {
+                "en": "Abundant in late August and September on bare sandy pine clearings across Uusimaa.",
+                "zh": "8月下旬至9月在乌西玛大区贫瘠沙地松林步道边缘大量簇生。",
+                "fi": "Elokuusta lokakuulle karuissa männiköissä."
+          },
+          "searchTactics": {
+                "en": "Scan sunny patches where pine roots are exposed along trails in pine heaths.",
+                "zh": "沿松林步道两旁沙质裸露处搜寻成群生长的浅黄色扁平菌盖。",
+                "fi": "Etsi hiekkateiden reunoilta ja männiköiden aukkopaikoilta."
+          },
+          "lookalikes": {
+                "en": "Velvet bolete (S. variegatus) has smaller freckled pores and a velvety dry cap.",
+                "zh": "斑点乳牛肝菌菌孔细小且盖面呈毛毡状。",
+                "fi": "Kangastatilla on hienompi pillistö ja kuiva nukkainen lakki."
+          },
+          "cookingGuide": {
+                "en": "Chop finely, sauté in butter with onions and add to hearty soups.",
+                "zh": "切碎后与洋葱在黄油中慢炒，适于做杂菇馅料或浓汤。",
+                "fi": "Paloittele hienoksi ja paista sipulin kanssa."
+          },
+          "image": "./images/suillus_bovinus.jpg",
+          "gallery": [
+                {
+                      "file": "./images/suillus_bovinus.jpg",
+                      "caption": {
+                            "en": "Bovine Bolete in natural Finnish forest habitat",
+                            "zh": "牛乳牛肝菌 在芬兰森林中的自然生境",
+                            "fi": "Nummitatti luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Jerry Cooper, some rights reserved (CC BY), uploaded by Jerry Cooper"
+                }
+          ]
+    },
+{
+          "id": "suillus_grevillei",
+          "latinName": "Suillus grevillei",
+          "family": "boletaceae",
+          "rating": "**",
+          "edibility": "good",
+          "level": "beginner",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Larch Bolete",
+                      "local": "Lehtikuusentatti",
+                      "alt": "Suillus grevillei"
+                },
+                "zh": {
+                      "primary": "落叶松乳牛肝菌",
+                      "local": "落叶松牛肝菌 / 金黄乳牛肝",
+                      "alt": "Suillus grevillei"
+                },
+                "fi": {
+                      "primary": "Lehtikuusentatti",
+                      "local": "Lehtikuusentatti",
+                      "alt": "Suillus grevillei"
+                }
+          },
+          "habitatName": {
+                "en": "Strictly under European and Siberian Larch (Larix) trees in parks and planted forests",
+                "zh": "特异性专一严格生长于公园、植树区或树木园的落叶松（Larix）树下",
+                "fi": "Ainoastaan lehtikuusten (Larix) seurassa puistoissa ja istutuksissa"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "4–12 cm, brilliant golden-yellow to rich chestnut-orange, very slimy when wet",
+                      "underCap": "Pores bright lemon-yellow, turning brownish when bruised",
+                      "stem": "Solid, golden-yellow above a thick, persistent pale yellow ring",
+                      "odor": "Mild pleasant mushroom aroma"
+                },
+                "zh": {
+                      "cap": "4–12厘米，鲜艳夺目的金黄至红栗橙色，湿润时表面覆有一层极厚黏液胶层",
+                      "underCap": "菌孔鲜柠檬黄色，受压后微转淡褐色",
+                      "stem": "坚实粗壮，在醒目的厚质浅黄菌环上方呈金黄色",
+                      "odor": "温和宜人"
+                },
+                "fi": {
+                      "cap": "4–12 cm, kirkkaankeltainen tai oranssinruskea, kosteana erittäin limainen",
+                      "underCap": "Pillistö kirkkaankeltainen, ruskettuu hieman kosketuksesta",
+                      "stem": "Tukeva, renkaallinen, renkaan yläpuolelta keltainen",
+                      "odor": "Mieto"
+                }
+          },
+          "culinaryTip": {
+                "en": "Peel off the gelatinous cap skin before cooking. Firm tender flesh, lovely golden color on the plate.",
+                "zh": "下锅前务必剥掉菌盖黏皮。肉质鲜嫩柔滑，烹制后呈现诱人的金黄色泽。",
+                "fi": "Poista limakalvo ennen valmistusta. Kaunis keltainen ja maukas ruokasieni."
+          },
+          "lookalikeAlert": {
+                "en": "Strict mycorrhizal partner with Larix trees; cannot be mistaken for poisonous species.",
+                "zh": "严格仅在落叶松树根周围出菇，只要认准落叶松林，绝无任何有毒混淆种风险。",
+                "fi": "Kasvaa vain lehtikuusten alla, joten laji on helppo tunnistaa turvallisesti."
+          },
+          "whereWhen": {
+                "en": "Late August through October under planted larches in Helsinki botanic gardens, parks, and Arboretum sites.",
+                "zh": "8月下旬至10月在赫尔辛基及近郊各类植物园、城市公园栽种的落叶松树下集中出菇。",
+                "fi": "Elo-lokakuussa lehtikuusi-istutuksissa ja puistoissa."
+          },
+          "searchTactics": {
+                "en": "Find larch needles (soft needles in rosettes that turn yellow in autumn) and look right around the base.",
+                "zh": "先辨认落叶松（秋天松针呈簇状簇生且会整体变金黄脱落），在树干周围数米草地搜寻。",
+                "fi": "Etsi puistojen lehtikuusten alta."
+          },
+          "lookalikes": {
+                "en": "Slippery Jack (S. luteus) associates strictly with pines, has chocolate cap and purple-toned ring.",
+                "zh": "褐环乳牛肝菌（Voitatti）严格与赤松共生，盖面为巧克力棕褐色且菌环泛紫白。",
+                "fi": "Voitatti kasvaa männyn alla ja on lakiltaan tummemman ruskea."
+          },
+          "cookingGuide": {
+                "en": "Peel slimy skin, slice and fry in butter with garlic. Delicious in risottos.",
+                "zh": "剥去黏皮后切片，与蒜片在黄油中煎至微黄，拌入意式烩饭风味极佳。",
+                "fi": "Kuori limakalvo ja paista voissa. Erinomainen risottoon."
+          },
+          "image": "./images/suillus_grevillei.jpg",
+          "gallery": [
+                {
+                      "file": "./images/suillus_grevillei.jpg",
+                      "caption": {
+                            "en": "Larch Bolete in natural Finnish forest habitat",
+                            "zh": "落叶松乳牛肝菌 在芬兰森林中的自然生境",
+                            "fi": "Lehtikuusentatti luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Светлана Мещерягина, some rights reserved (CC BY-NC), uploaded by Светлана Мещерягина"
+                }
+          ]
+    },
+{
+          "id": "hydnum_rufescens",
+          "latinName": "Hydnum rufescens",
+          "family": "hydnaceae",
+          "rating": "**",
+          "edibility": "good",
+          "level": "beginner",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Terracotta Hedgehog",
+                      "local": "Rusko-orakas",
+                      "alt": "Hydnum rufescens"
+                },
+                "zh": {
+                      "primary": "红齿菌",
+                      "local": "红褐齿菌 / 赤黄刺菌",
+                      "alt": "Hydnum rufescens"
+                },
+                "fi": {
+                      "primary": "Rusko-orakas",
+                      "local": "Rusko-orakas",
+                      "alt": "Hydnum rufescens"
+                }
+          },
+          "habitatName": {
+                "en": "Coniferous and mixed forests, mossy spruce slopes & pine heaths",
+                "zh": "针叶林与针阔混交林、长满苔藓的云杉斜坡及赤松林地",
+                "fi": "Havumetsät, kuusikot ja kalliomänniköt"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "3–8 cm, warm reddish-orange to terracotta-tan, thinner and more regular than H. repandum",
+                      "underCap": "Dense hanging soft spines (piikit), salmon-cream, brushing off easily; NOT decurrent down stem",
+                      "stem": "Central, slender, pale orange-buff",
+                      "odor": "Delicate fruity-nutty fragrance"
+                },
+                "zh": {
+                      "cap": "3–8厘米，温暖的红橙色至红砖褐色，体型比卷缘齿菌更小且菌盖较薄平展",
+                      "underCap": "密布脆弱柔软的垂悬细菌刺，浅橙肉色，用指尖一拂即落；菌刺不明显沿柄下延",
+                      "stem": "居中，纤细均匀，淡橙米色",
+                      "odor": "淡淡的坚果与清甜果香"
+                },
+                "fi": {
+                      "cap": "3–8 cm, punakellertävä tai oranssinruskea, ohuempi kuin vaaleaorakkaalla",
+                      "underCap": "Pehmeät, lohkeilevat piikit, eivät juuri jatku jalkaan",
+                      "stem": "Keskellä lakkia, hoikempi, vaalea",
+                      "odor": "Mieto, miellyttävä"
+                }
+          },
+          "culinaryTip": {
+                "en": "100% bug-free and zero poisonous lookalikes! Firm, crunchy texture; nutty taste without bitterness.",
+                "zh": "100%绝不生虫！在芬兰森林中绝无任何长有菌刺的有毒蘑菇。口感极爽脆坚实，带坚果清香。",
+                "fi": "Täysin madoton ja 100 % turvallinen ruokasieni. Rapea ja pähkinäinen."
+          },
+          "lookalikeAlert": {
+                "en": "Wood Hedgehog (Hydnum repandum) is much paler (creamy-white), larger, and thicker-fleshed. Both are safe choice edibles.",
+                "zh": "卷缘齿菌（白刺儿菜）体型更大，菌体呈淡乳白色且菌刺向下延伸。两者均为顶级安全美味菌。",
+                "fi": "Vaaleaorakas on kookkaampi ja puhtaan kermanvalkea. Molemmat erinomaisia."
+          },
+          "whereWhen": {
+                "en": "August through October across mossy coniferous woods in Keskuspuisto, Nuuksio, and Sipoonkorpi.",
+                "zh": "8月至10月生于中央公园、Nuuksio及Sipoonkorpi的苔藓针叶林地中，常成群结队生长。",
+                "fi": "Elo-lokakuussa havumetsissä koko pääkaupunkiseudulla."
+          },
+          "searchTactics": {
+                "en": "Look for warm terracotta coins peeking through green feathermoss. Always check underside to confirm spines!",
+                "zh": "在绿色羽状苔藓毯上搜寻类似红橙色硬币般的小圆盖，翻转菌盖确认底下是柔软密集的菌刺！",
+                "fi": "Etsi oranssinruskeita lakkeja sammalikosta. Käännä sieni ja tarkista piikit!"
+          },
+          "lookalikes": {
+                "en": "There are ZERO poisonous mushrooms in Finland with spines underneath the cap.",
+                "zh": "芬兰真菌志中记载的全部菌刺类真菌绝无致命剧毒种！初学者极其安全。",
+                "fi": "Suomessa ei kasva yhtään myrkyllistä orakasta."
+          },
+          "cookingGuide": {
+                "en": "Brush off forest debris. Sauté directly in butter with sea salt and garlic. Retains its wonderful crunch.",
+                "zh": "毛刷扫净，无需焯水，直接入热黄油中与蒜蓉爆炒，口感极其鲜脆弹牙。",
+                "fi": "Puhdista harjalla ja paista voissa valkosipulin kanssa."
+          },
+          "image": "./images/hydnum_rufescens.jpg",
+          "gallery": [
+                {
+                      "file": "./images/hydnum_rufescens.jpg",
+                      "caption": {
+                            "en": "Terracotta Hedgehog in natural Finnish forest habitat",
+                            "zh": "红齿菌 在芬兰森林中的自然生境",
+                            "fi": "Rusko-orakas luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Kari Pihlaviita, some rights reserved (CC BY-NC)"
+                }
+          ]
+    },
+{
+          "id": "albatrellus_confluens",
+          "latinName": "Albatrellus confluens",
+          "family": "polyporaceae",
+          "rating": "*",
+          "edibility": "edible",
+          "level": "intermediate",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Northern Fleshy Polypore",
+                      "local": "Typäskääpä",
+                      "alt": "Albatrellus confluens"
+                },
+                "zh": {
+                      "primary": "融合地花菌",
+                      "local": "聚合多孔菌 / 肉质地花菌",
+                      "alt": "Albatrellus confluens"
+                },
+                "fi": {
+                      "primary": "Typäskääpä",
+                      "local": "Typäskääpä",
+                      "alt": "Albatrellus confluens"
+                }
+          },
+          "habitatName": {
+                "en": "Old-growth spruce heaths, mossy spruce-pine slopes",
+                "zh": "老龄成熟云杉林、长满深厚苔藓的云杉-松树林坡",
+                "fi": "Vanhat kuusikot, paksusammaliset havumetsät"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "5–20 cm, warm apricot-orange to terracotta-buff, overlapping clustered caps grown together",
+                      "underCap": "Tiny white pores, not bruising yellow when cooked (unlike A. ovinus)",
+                      "stem": "Irregular, thick, fused together into a common base",
+                      "odor": "Mild, faintly bitter when old"
+                },
+                "zh": {
+                      "cap": "5–20厘米，温润的杏黄橙色至肉褐橙色，多个菌盖常紧密挤压叠生、融合在一起",
+                      "underCap": "极其微小的白色细孔层；下锅受热油煎时不会变黄绿色（与绵羊地花菌鉴别点）",
+                      "stem": "形态不规则粗壮，数个菌柄常在基部合并相连",
+                      "odor": "清淡，老熟个体微带一丝苦气"
+                },
+                "fi": {
+                      "cap": "5–20 cm, kellertävän oranssi tai nahanruskea, usein useita lakkeja yhteenkasvaneina",
+                      "underCap": "Hyvin pienet valkoiset pillit; ei muutu pannulla keltaiseksi toisin kuin lampaankääpä",
+                      "stem": "Epäsäännöllinen, usein tyvestä yhteen kasvanut",
+                      "odor": "Mieto, vanhana hieman karvas"
+                }
+          },
+          "culinaryTip": {
+                "en": "Harvest only young caps. Older specimens can be slightly bitter. Excellent pickled or parboiled in mixed bakes.",
+                "zh": "建议仅采摘幼嫩菌盖。老菌肉可能略带微苦。适合焯水后做酸甜腌渍，或切薄片烤制混搭菜肴。",
+                "fi": "Käytä vain nuoria yksilöitä. Sopii säilöttäväksi ja sekasieniin."
+          },
+          "lookalikeAlert": {
+                "en": "Sheep Polypore (Albatrellus ovinus) has creamy-white caps and turns distinctly yellow-green when cooked.",
+                "zh": "绵羊地花菌（Lampaankääpä）菌盖整体更白，且在黄油锅中受热后会神奇地转变为明亮黄绿色。",
+                "fi": "Lampaankääpä on vaaleampi ja muuttuu paistettaessa kellanvihreäksi."
+          },
+          "whereWhen": {
+                "en": "August to October in mature mossy coniferous heaths in Nuuksio, Luukki, and Sipoonkorpi.",
+                "zh": "8月至10月在Nuuksio、Luukki及Sipoonkorpi的成熟老龄针叶林中密集簇生。",
+                "fi": "Elo-lokakuussa vanhoissa havumetsissä."
+          },
+          "searchTactics": {
+                "en": "Look for large clustered aprons of fused terracotta caps pushing up thick spruce moss.",
+                "zh": "在厚厚的云杉苔藓层中寻找成簇合并生长、宛如大块橙黄围裙般的丛生地花菌。",
+                "fi": "Etsi suuria yhteenkasvaneita lakkeja kuusikoista."
+          },
+          "lookalikes": {
+                "en": "Albatrellus ovinus is premier choice; both are non-toxic.",
+                "zh": "绵羊地花菌同属无毒，二者皆为安全可食的地面多孔菌。",
+                "fi": "Lampaankääpä on parempi ruokasieni; molemmat myrkyttömiä."
+          },
+          "cookingGuide": {
+                "en": "Parboil for 3 minutes to remove any hint of bitterness, then pickle in spiced vinegar or fry crisp.",
+                "zh": "沸水焯水3分钟可完全去除老菌的一丝微苦，随后捞出沥干做醋渍或配黑胡椒香煎。",
+                "fi": "Kiehautus poistaa mahdollisen karvauden. Säilö etikkaan tai paista."
+          },
+          "image": "./images/albatrellus_confluens.jpg",
+          "gallery": [
+                {
+                      "file": "./images/albatrellus_confluens.jpg",
+                      "caption": {
+                            "en": "Northern Fleshy Polypore in natural Finnish forest habitat",
+                            "zh": "融合地花菌 在芬兰森林中的自然生境",
+                            "fi": "Typäskääpä luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) david-t, some rights reserved (CC BY-NC)"
+                }
+          ]
+    },
+{
+          "id": "laetiporus_sulphureus",
+          "latinName": "Laetiporus sulphureus",
+          "family": "polyporaceae",
+          "rating": "**",
+          "edibility": "good",
+          "level": "intermediate",
+          "months": [
+                6,
+                7,
+                8,
+                9
+          ],
+          "names": {
+                "en": {
+                      "primary": "Chicken of the Woods",
+                      "local": "Rikkikääpä",
+                      "alt": "Laetiporus sulphureus"
+                },
+                "zh": {
+                      "primary": "硫色绚孔菌",
+                      "local": "森林之鸡 / 硫黄多孔菌",
+                      "alt": "Laetiporus sulphureus"
+                },
+                "fi": {
+                      "primary": "Rikkikääpä",
+                      "local": "Rikkikääpä",
+                      "alt": "Laetiporus sulphureus"
+                }
+          },
+          "habitatName": {
+                "en": "Trunks of living or dead deciduous trees, especially ancient English oaks (Quercus robur)",
+                "zh": "阔叶老树树干（特别是古老夏栎/橡树 Quercus robur）及柳树干上",
+                "fi": "Tammien ja jalopuiden rungot lehdoissa ja puistoissa"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "10–40 cm wide brackets, vibrant sulphur-yellow to electric coral-orange, soft and velvety when young",
+                      "underCap": "Vivid sulphur-yellow tiny pore layer",
+                      "stem": "Essentially stemless; attached directly to tree trunk in large overlapping shelves",
+                      "odor": "Pleasant, meaty, mushroomy"
+                },
+                "zh": {
+                      "cap": "10–40厘米，覆瓦状重叠巨型菌阶，呈醒目极艳丽的硫黄色至亮珊瑚橙色，幼时肉质厚软多汁",
+                      "underCap": "纯正鲜亮的硫磺黄色微孔层",
+                      "stem": "几无菌柄，直接成片侧生锚定在橡树树干上",
+                      "odor": "浓郁肉香与新鲜蘑菇气味"
+                },
+                "fi": {
+                      "cap": "10–40 cm, loistavan rikin- tai oranssinkeltainen, nuorena pehmeä ja mehukas",
+                      "underCap": "Rikinkeltaiset pienet pillit",
+                      "stem": "Jalaton, kasvaa suoraan puun rungosta hyllymäisinä ryhminä",
+                      "odor": "Miellyttävä, lihamainen"
+                }
+          },
+          "culinaryTip": {
+                "en": "Harvest ONLY the tender outer 2–3 cm margin of young fleshy brackets. Old parts are tough and chalky. Cook thoroughly.",
+                "zh": "务必仅采割幼嫩多汁菌体最外缘2-3厘米的娇嫩肉边！内部老肉干柴如粉笔。烹调口感神似鲜嫩鸡胸肉！",
+                "fi": "Kerää vain nuorten kääpien pehmeät ulkoreunat (2–3 cm). Kypsennä aina perusteellisesti."
+          },
+          "lookalikeAlert": {
+                "en": "Unmistakable neon-yellow/orange shelves growing on oaks; no dangerous lookalike in Finland.",
+                "zh": "醒目的高明度霓虹黄橙色树干菌阶，在芬兰森林中绝无剧毒类似种。",
+                "fi": "Loistavan keltainen väri tammen rungolla tekee lajista erehtymättömän."
+          },
+          "whereWhen": {
+                "en": "June to September on ancient oak trees in coastal Uusimaa parks and protected deciduous groves (e.g. Tammisaari, Ruissalo, Kaivopuisto).",
+                "zh": "6月至9月生于芬兰南部沿海古老橡树树干上（如赫尔辛基古公园、Tammisaari古树带）。",
+                "fi": "Kesä-syyskuussa tammien rungoilla Etelä-Suomessa."
+          },
+          "searchTactics": {
+                "en": "Look 1–3 meters above ground level on the trunks of massive old oak trees.",
+                "zh": "在巨大古老橡树的主干上距离地面1-3米处平视搜寻，鲜艳金黄色极其夺目。",
+                "fi": "Tarkkaile vanhojen tammien runkoja silmänkorkeudelta."
+          },
+          "lookalikes": {
+                "en": "Other tree brackets are hard, woody, and inedible. None have this bright lemon-sulphur flesh.",
+                "zh": "其他寄生在树干上的多孔菌质地坚硬木质化，无此鲜嫩硫黄色肉质。",
+                "fi": "Muut käävät ovat kovia ja puumaisia."
+          },
+          "cookingGuide": {
+                "en": "Slice tender margins into strips, bread with panko, and deep-fry like chicken nuggets, or stir-fry with ginger and soy sauce.",
+                "zh": "将嫩边切成长条，裹面粉鸡蛋与面包糠炸成香酥“素鸡米花”，或加姜丝大葱热镬快炒，口感滑嫩宛如滑鸡球。",
+                "fi": "Leikkaa suikaleiksi, leivitä ja paista kuin kananugetit. Erinomainen kanan korvike."
+          },
+          "image": "./images/laetiporus_sulphureus.jpg",
+          "gallery": [
+                {
+                      "file": "./images/laetiporus_sulphureus.jpg",
+                      "caption": {
+                            "en": "Chicken of the Woods in natural Finnish forest habitat",
+                            "zh": "硫色绚孔菌 在芬兰森林中的自然生境",
+                            "fi": "Rikkikääpä luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Артём Свиридов, all rights reserved, uploaded by Артём Свиридов"
+                }
+          ]
+    },
+{
+          "id": "lactarius_deterrimus",
+          "latinName": "Lactarius deterrimus",
+          "family": "lactarius_mild",
+          "rating": "**",
+          "edibility": "good",
+          "level": "beginner",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Spruce Milkcap",
+                      "local": "Kuusenleppärousku",
+                      "alt": "Lactarius deterrimus"
+                },
+                "zh": {
+                      "primary": "劣味乳菇",
+                      "local": "云杉红菇 / 云杉松乳菇",
+                      "alt": "Lactarius deterrimus"
+                },
+                "fi": {
+                      "primary": "Kuusenleppärousku",
+                      "local": "Kuusenleppärousku",
+                      "alt": "Lactarius deterrimus"
+                }
+          },
+          "habitatName": {
+                "en": "Norway spruce heaths, young spruce plantations & grassy spruce edges",
+                "zh": "挪威云杉林、幼龄云杉种植地及长草的云杉林缘",
+                "fi": "Kuusikot, kuusentaimikot ja sammaleiset kuusirinteet"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "4–12 cm, carrot-orange with green concentric stains, funnel-shaped when mature",
+                      "underCap": "Gills orange, crowded, bruising slowly deep emerald-green",
+                      "stem": "Hollow, cylindrical, orange, often with dark green spots; lacks deep pit depressions",
+                      "odor": "Fruity and pleasant"
+                },
+                "zh": {
+                      "cap": "4–12厘米，鲜艳胡萝卜橙色，伴有同心环纹，受伤后泛浓绿绣斑，成熟后呈漏斗状",
+                      "underCap": "菌褶橙色，细密延生，划破后流出胡萝卜橙色乳汁，触碰处转墨绿色",
+                      "stem": "空心，橙色，常带暗绿晕斑，但表面无松乳菇那样深陷的麻坑凹陷",
+                      "odor": "清新果香"
+                },
+                "fi": {
+                      "cap": "4–12 cm, oranssi, vihertyvä, lakin reuna pitkään sisäänkiertynyt",
+                      "underCap": "Heltat oranssit, vihertyvät kosketuksesta; oranssi maitiaisneste",
+                      "stem": "Ontto, oranssi, ilman kuoppatäpliä",
+                      "odor": "Miellyttävä, raikas"
+                }
+          },
+          "culinaryTip": {
+                "en": "Sweet orange milk; DOES NOT REQUIRE PARBOILING. Pan-fry directly in butter. Turn emerald-green during handling—this is 100% safe.",
+                "zh": "乳汁甜美甘润，绝对无需焯水！直接入黄油香煎。切口或采摘触碰后转墨绿色属于其天然酚类氧化反应，完全无害安全。",
+                "fi": "Mieto oranssi maitiaisneste; EI VAADI RYÖPPÄYSTÄ. Paista suoraan pannulla voissa."
+          },
+          "lookalikeAlert": {
+                "en": "Saffron Milkcap (L. deliciosus) grows strictly with pine, has pit-spotted stem and milder richer taste.",
+                "zh": "真松乳菇（L. deliciosus）严格与赤松共生，菌柄具有凹陷斑坑，风味更浓纯；两者皆为免焯水的上品乳菇。",
+                "fi": "Männynleppärousku kasvaa männyn alla ja sen jalassa on selkeitä kuoppatäpliä."
+          },
+          "whereWhen": {
+                "en": "August through October wherever Norway spruce grows abundantly across Helsinki Keskuspuisto and Sipoonkorpi.",
+                "zh": "8月至10月在赫尔辛基中央公园、西波国家公园等地的云杉林区极为常见。",
+                "fi": "Elo-lokakuussa hyvin yleinen kuusimetsissä pääkaupunkiseudulla."
+          },
+          "searchTactics": {
+                "en": "Search beneath young spruces on mossy ditch borders. Look for bright orange caps with emerald-green blotches.",
+                "zh": "在小云杉树下的苔藓水沟边搜寻，橙绿斑驳的菌盖极其醒目。",
+                "fi": "Etsi nuorten kuusten alta ja sammaleisilta ojilta."
+          },
+          "lookalikes": {
+                "en": "Lactarius deliciosus is equally good. Sharp acrid milkcaps exude white milk, not orange.",
+                "zh": "有辛辣苦涩毒性的乳菇流出的皆为白色乳汁，绝非鲜亮橙红色！",
+                "fi": "Polttavat ja ryöpättävät rouskut erittävät valkoista maitiaisnestettä."
+          },
+          "cookingGuide": {
+                "en": "Fry whole caps in butter with salt and crushed black pepper. Superb on sourdough toast.",
+                "zh": "整朵菌盖不切，入黄油锅小火慢煎至两面焦黄，撒粗海盐与黑胡椒碎，配酸面包堪称极品北欧秋味。",
+                "fi": "Paista kokonaiset lakit voissa rapeiksi pannulla. Nauti leivän päällä."
+          },
+          "image": "./images/lactarius_deterrimus.jpg",
+          "gallery": [
+                {
+                      "file": "./images/lactarius_deterrimus.jpg",
+                      "caption": {
+                            "en": "Spruce Milkcap in natural Finnish forest habitat",
+                            "zh": "劣味乳菇 在芬兰森林中的自然生境",
+                            "fi": "Kuusenleppärousku luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) John Plischke, some rights reserved (CC BY-NC), uploaded by John Plischke"
+                }
+          ]
+    },
+{
+          "id": "lactarius_volemus",
+          "latinName": "Lactarius volemus",
+          "family": "lactarius_mild",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "intermediate",
+          "months": [
+                7,
+                8,
+                9
+          ],
+          "names": {
+                "en": {
+                      "primary": "Weeping Milkcap",
+                      "local": "Kultarousku",
+                      "alt": "Lactifluus volemus"
+                },
+                "zh": {
+                      "primary": "橙黄乳菇",
+                      "local": "多汁乳菇 / 金黄乳菇",
+                      "alt": "Lactifluus volemus"
+                },
+                "fi": {
+                      "primary": "Kultarousku",
+                      "local": "Kultarousku",
+                      "alt": "Lactarius volemus"
+                }
+          },
+          "habitatName": {
+                "en": "Warm deciduous groves, hazel thickets & oak woodlands in Southern Finland",
+                "zh": "芬兰南部温暖向阳的阔叶林、欧榛丛及夏栎树下",
+                "fi": "Lämpimät lehdot, pähkinälehdot ja tammimetsät"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "6–15 cm, velvety tawny orange to golden apricot, dry, cracking with age",
+                      "underCap": "Cream-ochre gills, exuding copious sticky white milk that stains brown",
+                      "stem": "Solid, dense, velvety, matching cap color",
+                      "odor": "Unmistakable intense aroma of cooked shellfish, crab or herring"
+                },
+                "zh": {
+                      "cap": "6–15厘米，深金黄橙至鹿皮杏黄色，表面干燥呈丝绒感，老后略龟裂",
+                      "underCap": "浅黄米色菌褶，稍经触碰即汹涌流出大量白色黏稠乳汁，乳汁干燥后变为棕褐色",
+                      "stem": "坚实粗硬如实木，与菌盖同色",
+                      "odor": "极其独特的熟煮海蟹、熟龙虾或清蒸海鱼般的浓郁海鲜鲜甜芳香"
+                },
+                "fi": {
+                      "cap": "6–15 cm, samettipintainen, kullanruskea tai oranssinruskea",
+                      "underCap": "Heltat vaaleankellertävät; vuotaa runsaasti valkoista tahmeaa maitiaisnestettä",
+                      "stem": "Tukeva, kova, samettinen, lakin värinen",
+                      "odor": "Omaleimainen, keitettyä rapua tai silliä muistuttava voimakas tuoksu"
+                }
+          },
+          "culinaryTip": {
+                "en": "Rare and prized! NEVER PARBOIL. The shellfish aroma mellows upon pan-searing into a sublime gourmet treat.",
+                "zh": "芬兰难得一见的宝藏野菌！绝对严禁焯水！其海鲜甲壳芳香在黄油煎炸后转化为极致鲜甜的脆嫩享受。",
+                "fi": "Arvostettu herkku! EI SAA RYÖPÄTÄ. Rapumainen tuoksu muuttuu paistettaessa upeaksi aromiksi."
+          },
+          "lookalikeAlert": {
+                "en": "Copious mild white milk and seafood aroma make this completely unmistakable.",
+                "zh": "涌流如注且毫无辛辣苦涩的甜白乳汁、加上独特的清蒸熟蟹香气，使其极具辨识度，绝无误食风险。",
+                "fi": "Juokseva valkoinen mieto maito ja äyriäismäinen tuoksu estävät sekaannukset."
+          },
+          "whereWhen": {
+                "en": "Mid-summer to early autumn in southern coastal microclimates of Uusimaa.",
+                "zh": "盛夏7月至9月上旬，在乌西玛大区南部沿海微气候温暖的阔叶栎林斜坡出菇。",
+                "fi": "Heinä-syyskuussa Uudenmaan eteläisissä lehtometsissä."
+          },
+          "searchTactics": {
+                "en": "Search mossy banks under hazels and oaks. Gently nick a gill: white milk should instantly drip like tears.",
+                "zh": "在欧榛与橡树根下的苔藓坡寻找。指甲轻轻划破菌褶，立刻如泪滴般汹涌渗出乳汁即为真品。",
+                "fi": "Etsi pähkinäpensaiden alta. Viillosta pursuava runsas maito varmistaa lajin."
+          },
+          "lookalikes": {
+                "en": "Acrid red milkcaps (L. rufus) have sharp pointed umbo, peppery burning taste, and grow in pine heaths.",
+                "zh": "松林红乳菇（Kangasrousku）生于松树林，菌盖中央有锐尖突起且乳汁极辛辣。",
+                "fi": "Kangasrousku kasvaa kankailla, on polttavan karvas ja lakin keskellä on terävä nypy."
+          },
+          "cookingGuide": {
+                "en": "Slice thick, fry slowly in butter until golden. Pair with poached fish or seafood chowder.",
+                "zh": "厚切下锅，以优质黄油中小火煎透至表面焦脆，搭配煎鱼或白葡萄酒海鲜浓汤绝妙。",
+                "fi": "Viipaloi ja paista voissa kullankeltaiseksi. Sopii kalaruokien seuraan."
+          },
+          "image": "./images/lactarius_volemus.jpg",
+          "gallery": [
+                {
+                      "file": "./images/lactarius_volemus.jpg",
+                      "caption": {
+                            "en": "Weeping Milkcap in natural Finnish forest habitat",
+                            "zh": "橙黄乳菇 在芬兰森林中的自然生境",
+                            "fi": "Kultarousku luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Trent Roberts, all rights reserved, uploaded by Trent Roberts"
+                }
+          ]
+    },
+{
+          "id": "lactarius_trivialis",
+          "latinName": "Lactarius trivialis",
+          "family": "lactarius_parboil",
+          "rating": "!*",
+          "edibility": "parboil",
+          "level": "advanced",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Northern Milkcap",
+                      "local": "Haaparousku",
+                      "alt": "Lactarius trivialis"
+                },
+                "zh": {
+                      "primary": "灰紫乳菇",
+                      "local": "北欧白杨乳菇 / 圣诞沙拉菇",
+                      "alt": "Lactarius trivialis"
+                },
+                "fi": {
+                      "primary": "Haaparousku",
+                      "local": "Haaparousku",
+                      "alt": "Lactarius trivialis"
+                }
+          },
+          "habitatName": {
+                "en": "Moist spruce-birch heaths, mossy depressions & aspen margins",
+                "zh": "潮湿云杉-白桦混交林、深厚苔藓低洼处及白杨林缘",
+                "fi": "Kosteat kuusikot, korpimetsät ja haavikot"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "7–20 cm, slimy, lead-grey to violet-purple when young, fading to pale buff-tan",
+                      "underCap": "Cream-white gills, exuding white fiery-acrid milk that slowly dries grey-green",
+                      "stem": "Stout, hollow, slimy when wet, pale cream-grey",
+                      "odor": "Faintly fruity, latex is intensely burning peppery"
+                },
+                "zh": {
+                      "cap": "7–20厘米，肥厚巨大，幼时呈铅灰至带紫丁香紫色，湿润时极黏滑，老后褪为浅灰褐色",
+                      "underCap": "乳白色菌褶，分泌极其辛辣刺舌的白色乳汁，乳汁干燥后在菌褶上缓慢氧化成灰绿色斑",
+                      "stem": "粗壮中空，表面微黏，浅灰白相间",
+                      "odor": "微带果香，乳汁火辣灼舌"
+                },
+                "fi": {
+                      "cap": "7–20 cm, nuorena violetinharmaa tai lyijynharmaa, hyvin limainen, vanhana vaaleneva",
+                      "underCap": "Heltat vaaleat; polttavan kirpeä valkoinen maito muuttuu harmaanvihreäksi kuivuessaan",
+                      "stem": "Paksu, ontto, limainen, vaalea",
+                      "odor": "Mieto, mutta maito on polttavan kirpeää"
+                }
+          },
+          "culinaryTip": {
+                "en": "THE #1 TRADITIONAL FINNISH MUSHROOM FOR SALTING. MUST BE PARBOILED FOR 10 MINUTES in ample boiling water, then rinsed thoroughly.",
+                "zh": "芬兰传统圣诞蘑菇色拉（Sienisalaatti）当之无愧的头牌核心菌！必须放入大量沸水中持续焯水滚煮10分钟，捞出冷水冲凉脱毒去辣后盐渍。",
+                "fi": "Suomen suosituin suolasieni perinteiseen sienisalaattiin. VAATII 10 MINUUTIN RYÖPPÄYKSEN runsaassa vedessä."
+          },
+          "lookalikeAlert": {
+                "en": "Pale Northern Milkcap (L. utilis) is equally good after 10 min boiling; Woolly milkcap (L. torminosus) has pink shaggy hairs.",
+                "zh": "浅色白杨乳菇（L. utilis）色泽偏浅黄米色，焯水10分钟后同样绝佳；白桦毛乳菇边缘带浓密粉红羊毛圈。",
+                "fi": "Kalvashaaparousku on vaaleampi mutta yhtä hyvä suolasieni 10 min ryöppäyksen jälkeen."
+          },
+          "whereWhen": {
+                "en": "Massive flushes from mid-August through October across all damp spruce forests in Greater Helsinki.",
+                "zh": "8月中旬至10月在赫尔辛基所有阴湿成熟的云杉苔藓林中迎来暴风雨般的爆发采摘潮。",
+                "fi": "Elo-lokakuussa valtavan runsassatoinen kosteissa kuusikoissa koko Uudellamaalla."
+          },
+          "searchTactics": {
+                "en": "Look in moist feather moss depressions along northern slopes in spruce woods. Often produces giant specimens.",
+                "zh": "在云杉老林背阴北坡、极湿润深厚的绿苔藓凹坑搜寻，常能发现脸盆般巨大的灰紫色肥实菌盖。",
+                "fi": "Etsi paksusammalisista notkoista kuusikoiden pohjoisrinteiltä."
+          },
+          "lookalikes": {
+                "en": "Ugly Milkcap (L. necator) is dark blackish-olive; both require parboiling.",
+                "zh": "墨黑乳菇（L. necator）通体墨黑微泛橄榄色，同需焯水处理。",
+                "fi": "Mustarousku on tumman oliivinmusta ja vaatii 15 min keittämisen."
+          },
+          "cookingGuide": {
+                "en": "Boil in rolling water for 10 min. Drain and rinse. Layer with sea salt in glass jars (suolasienet). For salad, soak out salt, chop, and fold into sour cream with red onions.",
+                "zh": "大锅沸水滚煮10分钟，捞出冷水冲洗沥干。按每公斤蘑菇配100克粗海盐在玻璃坛中压紧层叠盐渍。食用时温水退盐切碎，拌入紫洋葱碎与酸奶油，清爽脆脆。",
+                "fi": "Ryöppää 10 min, huuhtele ja suolaa kerroksittain purkkiin. Valmista perinteinen sienisalaatti kermaviilin ja punasipulin kera."
+          },
+          "image": "./images/lactarius_trivialis.jpg",
+          "gallery": [
+                {
+                      "file": "./images/lactarius_trivialis.jpg",
+                      "caption": {
+                            "en": "Northern Milkcap in natural Finnish forest habitat",
+                            "zh": "灰紫乳菇 在芬兰森林中的自然生境",
+                            "fi": "Haaparousku luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) teehoo, some rights reserved (CC BY-NC-SA)"
+                }
+          ]
+    },
+{
+          "id": "lactarius_utilis",
+          "latinName": "Lactarius utilis",
+          "family": "lactarius_parboil",
+          "rating": "!*",
+          "edibility": "parboil",
+          "level": "advanced",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Pale Northern Milkcap",
+                      "local": "Kalvashaaparousku",
+                      "alt": "Lactarius utilis"
+                },
+                "zh": {
+                      "primary": "浅色白杨乳菇",
+                      "local": "光盖白杨乳菇 / 米黄乳菇",
+                      "alt": "Lactarius utilis"
+                },
+                "fi": {
+                      "primary": "Kalvashaaparousku",
+                      "local": "Kalvashaaparousku",
+                      "alt": "Lactarius utilis"
+                }
+          },
+          "habitatName": {
+                "en": "Birch forests, mixed spruce-birch heaths & grassy woodland margins",
+                "zh": "白桦林、云杉-白桦混交苔藓地及长草森林边缘",
+                "fi": "Koivikot, sekametsät ja laidunmetsät"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "8–18 cm, slimy when wet, pale cream to yellowish-buff, smooth, lacking purple tones",
+                      "underCap": "Cream-white gills with burning acrid white milk",
+                      "stem": "Stout, hollow, pale yellowish-white",
+                      "odor": "Faintly fruity, very sharp latex"
+                },
+                "zh": {
+                      "cap": "8–18厘米，湿润时极滑腻，呈纯净的浅乳白至淡沙黄米色，平滑无灰紫色调",
+                      "underCap": "乳白色细密菌褶，渗出刺痛舌苔的辛辣白乳汁",
+                      "stem": "粗大中空，淡黄色至象牙白",
+                      "odor": "微带果香，汁液极辛辣"
+                },
+                "fi": {
+                      "cap": "8–18 cm, limainen, tasaisen kellertävänvalkoinen tai kermanvaalea, ei violetinsävyjä",
+                      "underCap": "Heltat vaaleat; polttavan kirpeä valkoinen maito",
+                      "stem": "Tukeva, ontto, vaalea",
+                      "odor": "Mieto, maito polttavaa"
+                }
+          },
+          "culinaryTip": {
+                "en": "PARBOIL FOR 10 MINUTES before use. Once parboiled, it possesses the same crisp, fleshy texture as L. trivialis.",
+                "zh": "必须在大量沸水中焯水滚煮10分钟后食用。焯透后肉质与灰紫乳菇一样爽脆丰满，为芬兰顶级传统盐渍原料。",
+                "fi": "Ryöppää 10 minuuttia. Maultaan ja laadultaan täysin haaparouskun veroinen suolasieni."
+          },
+          "lookalikeAlert": {
+                "en": "Can only be confused with L. trivialis (darker purple-grey) or edible mild species. Completely safe after proper boiling.",
+                "zh": "仅可能与灰紫乳菇混淆，规范水煮脱毒后两者皆为安全美味无匹的盐渍佳品。",
+                "fi": "Erottuu haaparouskusta vaaleamman kellertävän värinsä ansiosta."
+          },
+          "whereWhen": {
+                "en": "Late August through October under birch and mixed conifers across Uusimaa.",
+                "zh": "8月下旬至10月生于白桦及混交针叶林下，在乌西玛大区产量极高。",
+                "fi": "Elo-lokakuussa yleinen koivua kasvavissa metsissä."
+          },
+          "searchTactics": {
+                "en": "Scan the edges of sunny birch groves where light illuminates the glossy pale caps in green moss.",
+                "zh": "在向阳桦树林缘观察，光线照耀下其浅色泛光的滑腻菌盖在绿苔中十分显眼。",
+                "fi": "Etsi valoisista koivikoista ja polkujen laiteilta."
+          },
+          "lookalikes": {
+                "en": "L. trivialis is darker violet-grey; both are prepared identically.",
+                "zh": "灰紫乳菇色泽更深泛紫灰，两者烹饪处理方法完全一致。",
+                "fi": "Haaparousku on tummempi; molemmat valmistetaan samoin."
+          },
+          "cookingGuide": {
+                "en": "Parboil in boiling water 10 min, drain, cool in icy water. Salt in jars with 10% coarse sea salt and allspice berries.",
+                "zh": "沸水焯水10分钟捞出，冷水浸凉沥干。按10%海盐比例层叠入坛盐渍，撒数粒多香果提香。",
+                "fi": "Ryöppää 10 min, jäähdytä ja suolaa perinteisesti maustepippurin kera."
+          },
+          "image": "./images/lactarius_utilis.jpg",
+          "gallery": [
+                {
+                      "file": "./images/lactarius_utilis.jpg",
+                      "caption": {
+                            "en": "Pale Northern Milkcap in natural Finnish forest habitat",
+                            "zh": "浅色白杨乳菇 在芬兰森林中的自然生境",
+                            "fi": "Kalvashaaparousku luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) teehoo, some rights reserved (CC BY-NC-SA)"
+                }
+          ]
+    },
+{
+          "id": "lactarius_necator",
+          "latinName": "Lactarius necator",
+          "family": "lactarius_parboil",
+          "rating": "!*",
+          "edibility": "parboil",
+          "level": "advanced",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Ugly Milkcap",
+                      "local": "Mustarousku",
+                      "alt": "Lactarius turpis"
+                },
+                "zh": {
+                      "primary": "丑乳菇",
+                      "local": "墨黑乳菇 / 芬兰黑排毒菇",
+                      "alt": "Lactarius necator"
+                },
+                "fi": {
+                      "primary": "Mustarousku",
+                      "local": "Mustarousku",
+                      "alt": "Lactarius necator"
+                }
+          },
+          "habitatName": {
+                "en": "Moist spruce-birch heaths, mossy trails & shaded ditch edges",
+                "zh": "潮湿云杉-白桦林、长满苔藓的小路及遮阴沟渠边",
+                "fi": "Kosteat kuusikot, sekametsät ja polunvarret"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "6–18 cm, dark blackish-olive to muddy brown, slimy, margin inrolled with shaggy olive-brown wool",
+                      "underCap": "Cream-yellow gills, staining brownish-black when bruised; copious white acrid milk",
+                      "stem": "Stout, slimy, dark olive-brown with sunken pits",
+                      "odor": "Pungent earthy aroma, hot burning latex"
+                },
+                "zh": {
+                      "cap": "6–18厘米，深沉的墨黑橄榄色至泥褐色，极黏滑，菌盖边缘深内卷且覆有粗糙橄榄褐色丛毛",
+                      "underCap": "乳黄白色菌褶，揉搓后迅速泛黑褐色，分泌大量辛辣白乳汁",
+                      "stem": "粗实，湿时黏，暗橄榄棕色，表面常有凹陷暗斑",
+                      "odor": "强烈的森林腐殖土气息，乳汁辛辣灼热"
+                },
+                "fi": {
+                      "cap": "6–18 cm, tumman oliivinvihreä tai mustanruskea, limainen, reuna pitkään sisäänkiertynyt ja karvainen",
+                      "underCap": "Vaaleankellertävät heltat, tummuvat kosketuksesta; valkoinen polttava maitiaisneste",
+                      "stem": "Tukeva, limainen, tumman oliivinruskea",
+                      "odor": "Voimakas maamainen tuoksu, maito polttavan kirpeää"
+                }
+          },
+          "culinaryTip": {
+                "en": "MUST BE PARBOILED FOR 15 MINUTES to neutralize acrid resin and necatorin compound, then rinsed thoroughly in fresh cold water.",
+                "zh": "芬兰传统美食！因含坏死性树脂酸，必须放入大量沸水中开盖持续滚煮至少15分钟，并彻底冷水冲洗去毒。",
+                "fi": "VAATII VÄHINTÄÄN 15 MINUUTIN RYÖPPÄYKSEN runsaassa vedessä ja huolellisen huuhtelun."
+          },
+          "lookalikeAlert": {
+                "en": "Dark olive-black woolly cap and white burning milk make it unmistakable in Finnish woods.",
+                "zh": "其黑绿如墨的菌盖质感与遇伤变黑的菌褶极易认出，在芬兰森林中辨识度极高。",
+                "fi": "Tumma oliivinvihreä väri ja karvareunainen lakki ovat selkeitä tuntomerkkejä."
+          },
+          "whereWhen": {
+                "en": "Late August through October. Very common in moist mixed woods throughout Helsinki and Espoo.",
+                "zh": "8月下旬至10月在赫尔辛基中央公园、埃斯波阴湿混合林中极其多见。",
+                "fi": "Elo-lokakuussa hyvin yleinen Uudenmaan sekametsissä."
+          },
+          "searchTactics": {
+                "en": "Scan muddy footpath margins and damp depressions where fallen birch leaves gather.",
+                "zh": "在泥泞林间小径旁及落满桦树叶的阴湿低洼地搜寻暗黑如泥饼的厚菌盖。",
+                "fi": "Etsi polkujen varsilta kosteista painanteista."
+          },
+          "lookalikes": {
+                "en": "Northern Milkcap (L. trivialis) is violet-grey without the shaggy dark olive woolly rim.",
+                "zh": "灰紫乳菇呈紫灰色且边缘无粗糙黑绿毛须。",
+                "fi": "Haaparousku on lilanharmaa ja sileäreunainen."
+          },
+          "cookingGuide": {
+                "en": "Parboil 15 min, rinse, then cure with salt in crock pots. Meatiest and crunchiest of all salted mushrooms.",
+                "zh": "大滚水焯煮15分钟，冰水反复漂洗沥干，加盐腌渍。其盐渍后的肉质是所有乳菇中最富韧劲脆爽的！",
+                "fi": "Keitä 15 min, huuhtele ja suolaa. Malto on erittäin kiinteää ja rapeaa."
+          },
+          "image": "./images/lactarius_necator.jpg",
+          "gallery": [
+                {
+                      "file": "./images/lactarius_necator.jpg",
+                      "caption": {
+                            "en": "Ugly Milkcap in natural Finnish forest habitat",
+                            "zh": "丑乳菇 在芬兰森林中的自然生境",
+                            "fi": "Mustarousku luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Christian Schwarz, some rights reserved (CC BY-NC), uploaded by Christian Schwarz"
+                }
+          ]
+    },
+{
+          "id": "lactarius_mammosus",
+          "latinName": "Lactarius mammosus",
+          "family": "lactarius_parboil",
+          "rating": "**",
+          "edibility": "good",
+          "level": "intermediate",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Fenugreek Milkcap",
+                      "local": "Kangaspalsamirousku",
+                      "alt": "Lactarius mammosus"
+                },
+                "zh": {
+                      "primary": "香乳菇",
+                      "local": "葫芦巴香乳菇 / 椰香乳菇",
+                      "alt": "Lactarius mammosus"
+                },
+                "fi": {
+                      "primary": "Kangaspalsamirousku",
+                      "local": "Palsamirousku",
+                      "alt": "Lactarius mammosus"
+                }
+          },
+          "habitatName": {
+                "en": "Dry sandy Scots pine heaths & lichen terraces",
+                "zh": "干燥沙质欧洲赤松林地与地衣花岗岩台地",
+                "fi": "Kuivat kangasmetsät, jäkäläkankaat ja kalliomänniköt"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "3–8 cm, dry velvety grey-brown to charcoal-ochre with a sharp central nipple (nypy)",
+                      "underCap": "Cream to pinkish-ochre gills; white latex drying slowly with faint coconut aroma",
+                      "stem": "Slender, grey-brown",
+                      "odor": "Distinct sweet scent of dried coconut, fenugreek, or curry powder when dried"
+                },
+                "zh": {
+                      "cap": "3–8厘米，干燥呈细毛毡绒状，灰褐至暗木炭赭色，菌盖中心具尖锐凸起的小乳突",
+                      "underCap": "乳白至肉粉黄色菌褶，流出白色乳汁，风干时散发迷人的椰香与葫芦巴香",
+                      "stem": "纤细坚实，灰褐色",
+                      "odor": "极为独特的干燥椰子肉、葫芦巴或淡咖喱香料般的芬芳"
+                },
+                "fi": {
+                      "cap": "3–8 cm, kuiva, harmaanruskea, hienonukkainen, keskellä selvä terävä nypy",
+                      "underCap": "Vaaleankellertävät heltat; valkoinen maito",
+                      "stem": "Hoikka, harmaanruskea",
+                      "odor": "Voimakas kookoksen ja currymausteen tuoksu kuivattaessa"
+                }
+          },
+          "culinaryTip": {
+                "en": "Exceptional spice mushroom. Dry and powder to season sauces, stews, and game dishes with its exotic coconut-curry warmth.",
+                "zh": "绝佳的天然野生香料菌！极其适合烘干脱水后研磨成香料粉，为炖肉与野味酱汁带来温暖的椰香复合风味。",
+                "fi": "Erinomainen maustesieni! Kuivaa ja jauha kastikkeiden mausteeksi."
+          },
+          "lookalikeAlert": {
+                "en": "Rufous Milkcap (L. rufus) has a reddish-terracotta cap, searingly hot milk, and lacks coconut perfume.",
+                "zh": "松林红乳菇（Kangasrousku）通体为红陶土色，乳汁极度辛辣灼痛且毫无椰香味。",
+                "fi": "Kangasrousku on punaruskea ja sen maito polttavan tulista ilman kookoksen tuoksua."
+          },
+          "whereWhen": {
+                "en": "Late August through October in dry sandy pine forests across Nuuksio and Porkkala.",
+                "zh": "8月下旬至10月生于Nuuksio及沿海Porkkala的干燥沙质松林中。",
+                "fi": "Elo-lokakuussa kuivilla mäntykankailla."
+          },
+          "searchTactics": {
+                "en": "Search among dry reindeer lichen beneath pines; look for small grey velvety caps with a sharp center point.",
+                "zh": "在赤松下干燥的灰白地衣丛中搜寻带有尖顶小突起的小巧灰褐色毛毡盖。",
+                "fi": "Etsi jäkäliköistä mäntyjen juurelta."
+          },
+          "lookalikes": {
+                "en": "Lactarius rufus is hot red-brown; L. mammosus is dry grey-brown.",
+                "zh": "松林红乳菇呈红褐色；香乳菇呈干燥灰褐色。",
+                "fi": "Kangasrousku on punaisempi ja tulisen makuinen."
+          },
+          "cookingGuide": {
+                "en": "Dehydrate whole at 40°C. Crush between fingers into stews as an aromatic spice.",
+                "zh": "40度整朵脱水烘干储藏，使用时在手指间碾碎洒入炖菜或咖喱中增香。",
+                "fi": "Kuivaa ja käytä mausteena riista- ja liharuokiin."
+          },
+          "image": "./images/lactarius_mammosus.jpg",
+          "gallery": [
+                {
+                      "file": "./images/lactarius_mammosus.jpg",
+                      "caption": {
+                            "en": "Fenugreek Milkcap in natural Finnish forest habitat",
+                            "zh": "香乳菇 在芬兰森林中的自然生境",
+                            "fi": "Kangaspalsamirousku luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+                }
+          ]
+    },
+{
+          "id": "russula_paludosa",
+          "latinName": "Russula paludosa",
+          "family": "russulaceae",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "beginner",
+          "months": [
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Marsh Brittlegill",
+                      "local": "Isohapero",
+                      "alt": "Russula paludosa"
+                },
+                "zh": {
+                      "primary": "沼泽红菇",
+                      "local": "大红菇 / 苹果红菇",
+                      "alt": "Russula paludosa"
+                },
+                "fi": {
+                      "primary": "Isohapero",
+                      "local": "Isohapero",
+                      "alt": "Russula paludosa"
+                }
+          },
+          "habitatName": {
+                "en": "Pine bogs, damp bilberry heaths & mossy peat borders",
+                "zh": "赤松泥炭沼泽、阴湿欧洲越橘（蓝莓）矮丛及泥炭藓林缘",
+                "fi": "Rämeet, korvet, mustikkatyypin kangasmetsät ja suonlaiteet"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "8–20 cm, glossy brilliant apple-red to blood-red, center often yellowish-orange; massive thick flesh",
+                      "underCap": "Cream-white brittle gills, edge near cap rim often delicately flushed with pink",
+                      "stem": "Chunky, solid, snow-white, frequently with an exquisite pastel pink flush",
+                      "odor": "Mild, sweet nutty scent; completely mild pleasant taste"
+                },
+                "zh": {
+                      "cap": "8–20厘米，极其硕大肥厚，呈鲜艳亮丽的熟透苹果红至鲜血红色，中央常带淡橙黄光泽",
+                      "underCap": "乳白色脆硬菌褶，在靠近菌盖边缘处常染有一抹极其迷人的淡粉红色",
+                      "stem": "粗壮坚硬，纯白色菌柄上常常拂过一层淡淡的娇嫩粉红晕彩",
+                      "odor": "清香甘甜，生尝完全温和甜脆，毫无任何辛辣！"
+                },
+                "fi": {
+                      "cap": "8–20 cm, kiiltävän veren- tai omenanpunainen, keskeltä usein kellertävä, suuri ja paksumaltoinen",
+                      "underCap": "Kermanvalkeat mureat heltat, terä usein hennosti punertava",
+                      "stem": "Tukeva, valkoinen, usein kauniin ruusunpunaisen huurteen värjäämä",
+                      "odor": "Mieto ja makeahko; maku täysin mieto ja pähkinäinen"
+                }
+          },
+          "culinaryTip": {
+                "en": "One of Finland’s absolute best gourmet brittlegills! Crisp, sweet, and nutty. Pan-fry directly in butter without boiling.",
+                "zh": "芬兰森林中最顶级美味的红菇之一！肉质清甜脆嫩如坚果，绝对无需焯水，直接入黄油中香煎即可享用无上美味。",
+                "fi": "Yksi parhaista ruokasienistämme! Mieto, rapea ja maukas. Paista suoraan voissa ilman ryöppäystä."
+          },
+          "lookalikeAlert": {
+                "en": "The Sickener (Russula emetica) is small, soft, fragile, and has violently burning peppery taste. Always apply the Russula nibble test!",
+                "zh": "警惕毒红菇（Russula emetica），后者体型瘦小脆弱，菌柄纯白无粉晕，舌尖轻尝有剧烈如辣椒般的灼痛！谨记红菇舌尖尝试法。",
+                "fi": "Myrkyllinen tulihapero (R. emetica) on pehmeä, hento ja polttavan tulisen makuinen."
+          },
+          "whereWhen": {
+                "en": "Abundant from late July through October across damp pine bogs and mossy heaths in Sipoonkorpi and Nuuksio.",
+                "zh": "7月下旬至10月在Sipoonkorpi与Nuuksio的湿润松树沼泽和蓝莓灌木地极高产。",
+                "fi": "Hyvin satoisa heinä-lokakuussa kosteissa mäntymetsissä."
+          },
+          "searchTactics": {
+                "en": "Scan damp moss and blueberry carpets beneath pines for giant, shining scarlet caps that look like polished red apples.",
+                "zh": "在赤松林下湿润的深厚苔藓与蓝莓灌木丛中搜寻宛如遗落红苹果般光彩照人的鲜红巨型菌盖。",
+                "fi": "Etsi suuria omenanpunaisia lakkeja mustikanvarvuista."
+          },
+          "lookalikes": {
+                "en": "Russula emetica is intensely hot-peppery on the tongue. If mild, it is safe.",
+                "zh": "毒红菇舌尖尝有剧烈辣味；沼泽红菇肉质清甜无辣。",
+                "fi": "Tulihaperon maku polttaa välittömästi kielellä."
+          },
+          "cookingGuide": {
+                "en": "Slice thick, pan-sear in butter with chives and a pinch of salt. Excellent added to wild mushroom omelets.",
+                "zh": "切半厘米厚片，以黄油中小火煎透至金黄，撒小葱末与海盐，配入蘑菇烘蛋无比鲜美。",
+                "fi": "Paista viipaleet voissa kullanruskeiksi. Erinomainen munakkaisiin."
+          },
+          "image": "./images/russula_paludosa.jpg",
+          "gallery": [
+                {
+                      "file": "./images/russula_paludosa.jpg",
+                      "caption": {
+                            "en": "Marsh Brittlegill in natural Finnish forest habitat",
+                            "zh": "沼泽红菇 在芬兰森林中的自然生境",
+                            "fi": "Isohapero luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Marco Floriani, some rights reserved (CC BY-NC), uploaded by Marco Floriani"
+                }
+          ]
+    },
+{
+          "id": "russula_claroflava",
+          "latinName": "Russula claroflava",
+          "family": "russulaceae",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "beginner",
+          "months": [
+                7,
+                8,
+                9
+          ],
+          "names": {
+                "en": {
+                      "primary": "Yellow Swamp Brittlegill",
+                      "local": "Keltahapero",
+                      "alt": "Russula claroflava"
+                },
+                "zh": {
+                      "primary": "鲜黄红菇",
+                      "local": "黄红菇 / 沼地黄红菇",
+                      "alt": "Russula claroflava"
+                },
+                "fi": {
+                      "primary": "Keltahapero",
+                      "local": "Keltahapero",
+                      "alt": "Russula claroflava"
+                }
+          },
+          "habitatName": {
+                "en": "Damp birch woods, peat bog borders & mossy willow carrs",
+                "zh": "湿润白桦林、泥炭沼泽边缘及长满苔藓的柳树灌木湿地",
+                "fi": "Kosteat koivikot, soiden reunat ja korpimetsät"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "5–12 cm, brilliant chrome-yellow to egg-yolk yellow, smooth and slightly sticky when moist",
+                      "underCap": "Pale cream gills, slowly turning ash-grey when bruised or with age",
+                      "stem": "Pure white, bruising distinctly lead-grey when handled or cut",
+                      "odor": "Delicate fruity-nutty perfume; completely mild sweet taste"
+                },
+                "zh": {
+                      "cap": "5–12厘米，夺目纯正的铬黄色至鲜蛋黄色，湿润时微黏滑",
+                      "underCap": "浅乳白色脆菌褶，受损或老熟后会缓慢氧化转为明显的灰褐色至铅灰色",
+                      "stem": "纯白色，受擦碰或切开后迅速氧化转为铅灰色",
+                      "odor": "清甜芳香的坚果香气，生尝肉质完全温和甘甜"
+                },
+                "fi": {
+                      "cap": "5–12 cm, loistavan kirkkaankeltainen, himmeänkiiltävä",
+                      "underCap": "Heltat vaaleankeltaiset, muuttuvat vahingoittuneina ja vanhetessaan tuhkanharmaiksi",
+                      "stem": "Valkoinen, harmaantuu voimakkaasti kosketuksesta ja leikattaessa",
+                      "odor": "Mieto, hedelmäinen ja miellyttävä"
+                }
+          },
+          "culinaryTip": {
+                "en": "Top-tier Finnish brittlegill. Very sweet and firm. Flesh turns grey when cooked—this is natural and safe!",
+                "zh": "芬兰公认最顶级可口的红菇之一！甘甜多汁脆爽。受热烹调后菌肉会自然转灰，完全无毒请安心食用。",
+                "fi": "Huippuluokan ruokasieni! Erittäin makea ja rapea. Malto harmaantuu kypsennettäessä."
+          },
+          "lookalikeAlert": {
+                "en": "Brilliant yellow cap coupled with ash-greying flesh and birch mycorrhiza makes this virtually foolproof.",
+                "zh": "明亮铬黄菌盖加上遇伤变灰的菌肉以及白桦共生习性，使其极易确凿鉴别。",
+                "fi": "Kirkas keltainen väri ja malton harmaantuminen tekevät tunnistuksesta helpon."
+          },
+          "whereWhen": {
+                "en": "July through September in wet birch bogs and lakeside mosses across Uusimaa.",
+                "zh": "7月至9月在乌西玛大区湿润的白桦沼泽林及湖畔苔藓丛中大量涌现。",
+                "fi": "Heinä-syyskuussa kosteissa koivikoissa."
+          },
+          "searchTactics": {
+                "en": "Scan wet Sphagnum moss around Downy Birch (Betula pubescens) trunks for pure yellow sunburst caps.",
+                "zh": "在毛白桦树下的泥炭藓湿地巡视宛如一轮轮黄色小太阳般的明艳菌盖。",
+                "fi": "Etsi suokoivujen ympäriltä upottavasta sammalikosta."
+          },
+          "lookalikes": {
+                "en": "Other yellow russulas (e.g. Russula ochroleuca) have peppery/bitter taste and do not turn grey.",
+                "zh": "黄赭红菇（R. ochroleuca）有辣苦味且肉质不变灰。",
+                "fi": "Sinappihapero on polttavan makuinen eikä harmaannu."
+          },
+          "cookingGuide": {
+                "en": "Sauté in butter with fresh dill. Excellent in wild mushroom pies and risottos.",
+                "zh": "黄油热锅翻炒撒新鲜莳萝碎，是制作芬兰传统蘑菇咸派与意大利烩饭的极品好料。",
+                "fi": "Paista voissa ja mausta tillillä. Loistava piirakoihin."
+          },
+          "image": "./images/russula_claroflava.jpg",
+          "gallery": [
+                {
+                      "file": "./images/russula_claroflava.jpg",
+                      "caption": {
+                            "en": "Yellow Swamp Brittlegill in natural Finnish forest habitat",
+                            "zh": "鲜黄红菇 在芬兰森林中的自然生境",
+                            "fi": "Keltahapero luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+                }
+          ]
+    },
+{
+          "id": "russula_aeruginea",
+          "latinName": "Russula aeruginea",
+          "family": "russulaceae",
+          "rating": "**",
+          "edibility": "good",
+          "level": "intermediate",
+          "months": [
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Green Birch Brittlegill",
+                      "local": "Koivunhapero",
+                      "alt": "Russula aeruginea"
+                },
+                "zh": {
+                      "primary": "铜绿红菇",
+                      "local": "绿红菇 / 桦树青红菇",
+                      "alt": "Russula aeruginea"
+                },
+                "fi": {
+                      "primary": "Koivunhapero",
+                      "local": "Koivunhapero",
+                      "alt": "Russula aeruginea"
+                }
+          },
+          "habitatName": {
+                "en": "Birch forests, park lawns, woodland margins with Silver Birch",
+                "zh": "白桦林、城市公园草坪及含有垂枝白桦的森林边缘",
+                "fi": "Koivikot, sekametsät, puistot ja pihojen koivujen alustat"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "5–10 cm, grass-green to olive-grey with yellowish center, smooth, tacky when wet",
+                      "underCap": "Cream to pale ochre brittle gills, often with rusty spots when mature",
+                      "stem": "Pure white, cylindrical, firm, brittle as chalk; NO ring, NO volval cup",
+                      "odor": "Mild, faintly fruity; taste is mild and nutty (occasional mild peppery gills in young specimens)"
+                },
+                "zh": {
+                      "cap": "5–10厘米，青草绿至淡橄榄灰绿色，中央常泛淡黄，潮湿时微黏",
+                      "underCap": "乳白至淡赭黄色脆菌褶，老熟时常带有微小铁锈色斑点",
+                      "stem": "纯白色，圆柱形，如粉笔般一掰即脆断；【绝对无菌环，基部绝对无菌托】",
+                      "odor": "清香温和，生尝肉质清甜带坚果香"
+                },
+                "fi": {
+                      "cap": "5–10 cm, ruohonvihreä tai harmaanvihreä, keskeltä usein kellertävä",
+                      "underCap": "Kermanvalkeat mureat heltat, vanhana usein ruostetäpläiset",
+                      "stem": "Puhtaanvalkoinen, murea kuin liitu; EI rengasta, EI tuppea",
+                      "odor": "Mieto, hedelmäinen; maku mieto pähkinäinen"
+                }
+          },
+          "culinaryTip": {
+                "en": "Delicious nutty edible. Pan-fry in butter. CRITICAL SAFETY: Verify chalk-like brittle flesh, and absolute lack of ring or volva to avoid deadly Amanita!",
+                "zh": "清脆可口的优质食用红菇。下锅黄油香煎极香。生死安全红线：必须确认其菌柄如粉笔脆断无菌丝，且绝对无菌环、无杯状菌托，杜绝混淆剧毒鹅膏！",
+                "fi": "Herkullinen pähkinäinen ruokasieni. TÄRKEÄ TURVAVINKKI: Varmista murea liitumainen rakenne; EI rengasta eikä tuppea!"
+          },
+          "lookalikeAlert": {
+                "en": "NEVER confuse with deadly Death Cap (Amanita phalloides - rare in Finland) or Destroying Angel. Russula flesh snaps cleanly with NO fibers, NO ring, NO cup.",
+                "zh": "严禁混淆有毒鹅膏！红菇肉质一折即像粉笔断裂、绝无纵向纤维拉丝，且茎部绝无活动菌环或脚底菌托包被！",
+                "fi": "Valkokärpässienellä ja kavalakärpässienellä on rengas ja tyvituppi; haperolla ei koskaan."
+          },
+          "whereWhen": {
+                "en": "Common throughout July to October wherever birch trees grow in Southern Finland.",
+                "zh": "7月至10月在芬兰南部白桦树下极为常见，从森林深处到市内公园皆有出菇。",
+                "fi": "Hyvin yleinen koivujen seuralainen heinä-lokakuussa."
+          },
+          "searchTactics": {
+                "en": "Look in short grass beneath birch trees in parks and path clearings for muted greenish caps.",
+                "zh": "在公园和林边短草地白桦树荫下搜寻温润的浅绿或草绿色小菌盖。",
+                "fi": "Etsi matalasta ruohikosta koivujen alta."
+          },
+          "lookalikes": {
+                "en": "Charcoal Burner (R. cyanoxantha) has greasy flexible gills; both are safe choice edibles.",
+                "zh": "变色红菇（R. cyanoxantha）菌褶如丝滑油脂且揉搓不断碎，同属顶级安全美味。",
+                "fi": "Kyyhkyshaperolla on joustavat rasvaiset heltat."
+          },
+          "cookingGuide": {
+                "en": "Pan-fry directly in butter with shallots and parsley for 5–7 minutes until lightly browned.",
+                "zh": "热锅放黄油，加入切片红菇与洋葱末香煎5至7分钟至微泛金黄即可。",
+                "fi": "Paista voissa sipulin ja persiljan kanssa."
+          },
+          "image": "./images/russula_aeruginea.jpg",
+          "gallery": [
+                {
+                      "file": "./images/russula_aeruginea.jpg",
+                      "caption": {
+                            "en": "Green Birch Brittlegill in natural Finnish forest habitat",
+                            "zh": "铜绿红菇 在芬兰森林中的自然生境",
+                            "fi": "Koivunhapero luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+                }
+          ]
+    },
+{
+          "id": "russula_cyanoxantha",
+          "latinName": "Russula cyanoxantha",
+          "family": "russulaceae",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "intermediate",
+          "months": [
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Charcoal Burner",
+                      "local": "Kyyhkyshapero",
+                      "alt": "Russula cyanoxantha"
+                },
+                "zh": {
+                      "primary": "蓝黄红菇",
+                      "local": "变色红菇 / 灰鸽红菇",
+                      "alt": "Russula cyanoxantha"
+                },
+                "fi": {
+                      "primary": "Kyyhkyshapero",
+                      "local": "Kyyhkyshapero",
+                      "alt": "Russula cyanoxantha"
+                }
+          },
+          "habitatName": {
+                "en": "Rich deciduous groves, hazel thickets & oak-birch woodlands",
+                "zh": "富营养阔叶林、欧榛树林及夏栎-白桦混交林地",
+                "fi": "Rehevät lehdot, pähkinäpensaikot ja tammimetsät"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "6–15 cm, marbled iridescent purple, slate-blue, olive-green and violet, shiny",
+                      "underCap": "White gills that are FLEXIBLE AND GREASY to the touch, NOT shattering like other brittlegills!",
+                      "stem": "Pure white, firm, chunky",
+                      "odor": "Pleasant nutty aroma; mild hazelnut taste"
+                },
+                "zh": {
+                      "cap": "6–15厘米，具有如鸽羽般虹彩斑驳的板岩蓝、深紫、橄榄绿与灰褐色渐变色泽，表面油亮",
+                      "underCap": "纯白菌褶具神奇的柔韧与油脂丝滑触感，用手指轻拂绝不破碎破碎（全红菇属独一无二特征！）",
+                      "stem": "纯白色，粗实坚挺",
+                      "odor": "极为宜人的纯正榛果与坚果香气"
+                },
+                "fi": {
+                      "cap": "6–15 cm, monivärinen, teräksenharmaa, lila, vihreänsävyinen tai violetti, kiiltävä",
+                      "underCap": "Valkoiset heltat ovat RASVAISEN JOUSTAVAT EIVÄTKÄ MURENE kosketettaessa!",
+                      "stem": "Puhtaanvalkoinen, tukeva",
+                      "odor": "Pähkinäinen ja erittäin miellyttävä"
+                }
+          },
+          "culinaryTip": {
+                "en": "Considered by European mycologists as the crown jewel of all brittlegills. Firm, tender, and intensely hazelnut-sweet.",
+                "zh": "被全欧洲真菌学家与美食家公认为整个红菇科的无冕之王！肉质弹嫩温润，充满天然榛子甘香。",
+                "fi": "Eurooppalaisten sienestäjien ylistämä haperoiden aatelinen. Erittäin maukas ja kiinteä."
+          },
+          "lookalikeAlert": {
+                "en": "Touch the gills with a finger: if they bend flexibly like soft rubber without crumbling, it is the Charcoal Burner!",
+                "zh": "用手指指腹轻轻抚摸菌褶：如果柔韧顺滑如软橡胶而不折断碎落，即100%是蓝黄红菇！",
+                "fi": "Kokeile helttoja sormella: jos ne joustavat pehmeästi murenematta, kyseessä on kyyhkyshapero!"
+          },
+          "whereWhen": {
+                "en": "Mid-July through October in sheltered southern deciduous pockets across Uusimaa.",
+                "zh": "7月中旬至10月在乌西玛大区向阳背风的富营养阔叶林带出菇。",
+                "fi": "Heinä-lokakuussa lämpimissä lehtimetsissä Etelä-Suomessa."
+          },
+          "searchTactics": {
+                "en": "Search beneath oaks and hazels on leaf-strewn slopes; test the flexible gills on suspicious specimens.",
+                "zh": "在橡树与欧榛落叶覆盖的斜坡搜寻带有灰蓝紫虹彩的油润菌盖，用手指轻按菌褶即可确诊。",
+                "fi": "Etsi tammien ja pähkinäpensaiden alta lehtomaasta."
+          },
+          "lookalikes": {
+                "en": "Other purple/green russulas have brittle shattering gills. No toxic species has flexible gills and no ring.",
+                "zh": "其他红菇菌褶一碰即碎成细渣；有毒鹅膏菌绝无此柔韧油腻褶且具菌环菌托。",
+                "fi": "Muilla haperoilla heltat murenevat heti kosketuksesta."
+          },
+          "cookingGuide": {
+                "en": "Sauté gently in butter with fresh thyme and a touch of sea salt. Sensational in creamy pasta sauces.",
+                "zh": "以优质黄油中小火香煎，加少许百里香与海盐，其柔韧口感与坚果香调拌入意面惊为天人。",
+                "fi": "Paista miedolla lämmöllä voissa. Sopii täydellisesti pastakastikkeisiin."
+          },
+          "image": "./images/russula_cyanoxantha.jpg",
+          "gallery": [
+                {
+                      "file": "./images/russula_cyanoxantha.jpg",
+                      "caption": {
+                            "en": "Charcoal Burner in natural Finnish forest habitat",
+                            "zh": "蓝黄红菇 在芬兰森林中的自然生境",
+                            "fi": "Kyyhkyshapero luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+                }
+          ]
+    },
+{
+          "id": "russula_vesca",
+          "latinName": "Russula vesca",
+          "family": "russulaceae",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "beginner",
+          "months": [
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Bare-Toothed Russula",
+                      "local": "Palterohapero",
+                      "alt": "Russula vesca"
+                },
+                "zh": {
+                      "primary": "萎缩红菇",
+                      "local": "露齿红菇 / 火腿红菇",
+                      "alt": "Russula vesca"
+                },
+                "fi": {
+                      "primary": "Palterohapero",
+                      "local": "Palterohapero",
+                      "alt": "Russula vesca"
+                }
+          },
+          "habitatName": {
+                "en": "Coniferous and mixed forests, birch-pine heaths & oak woods",
+                "zh": "针叶林与混交林、白桦-赤松林地及向阳栎林",
+                "fi": "Kangas- ja sekametsät, koivikot ja männiköt"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "6–11 cm, ham-pink to brownish-flesh-colored; cuticle shrinks back from cap margin exposing a narrow white line of gill teeth",
+                      "underCap": "White, crowded, brittle gills, often with rusty spotting",
+                      "stem": "Firm, tapered at base, pure white",
+                      "odor": "Sweet, nutty flavor like fresh hazelnuts; mild pleasant aroma"
+                },
+                "zh": {
+                      "cap": "6–11厘米，熟火腿粉红至肉褐色；表皮边缘常微微萎缩后退1-2毫米，露出里面如细白牙齿般的菌褶边缘（独门露齿绝技！）",
+                      "underCap": "白色细密脆硬菌褶，老熟时微见细小铁锈色斑点",
+                      "stem": "坚实，基部略渐尖，纯白色",
+                      "odor": "甜润纯正的生榛子果仁香，生嚼甘脆无辛辣"
+                },
+                "fi": {
+                      "cap": "6–11 cm, lihan- tai kinkunpunainen; pintakelmu vetäytyy lakin reunasta paljastaen valkoiset heltanterät",
+                      "underCap": "Valkoiset tiheät heltat, usein ruostetäpläiset",
+                      "stem": "Tukeva, tyveä kohti kapeneva, valkoinen",
+                      "odor": "Mieto, miellyttävä; pähkinäinen maku"
+                }
+          },
+          "culinaryTip": {
+                "en": "Beloved gourmet species nicknamed the 'Ham Mushroom'. Crisp, sweet, and nutty. Direct pan-frying in butter.",
+                "zh": "因其火腿色泽与绝妙风味被欧洲人昵称为“火腿蘑菇”。肉质清甜松脆如坚果，直接黄油香煎无需焯水。",
+                "fi": "Kinkunpunainen huippuherkku. Rapea ja makean pähkinäinen. Paista suoraan pannulla."
+          },
+          "lookalikeAlert": {
+                "en": "Look for the retracted cap margin exposing the white teeth of the gills—this feature is diagnostic.",
+                "zh": "细察菌盖外缘那一圈仿佛“嘴唇后缩露出一排细白牙齿”的菌褶露白特征，是其铁证鉴别标记。",
+                "fi": "Lakin reunan paljaat valkoiset 'hampaat' ovat lajin varma tuntomerkki."
+          },
+          "whereWhen": {
+                "en": "July through October in sunny mixed forests across Helsinki Central Park and Espoo.",
+                "zh": "7月至10月在赫尔辛基中央公园及埃斯波阳光斑驳的针阔混交林普遍生长。",
+                "fi": "Heinä-lokakuussa yleinen koko Uudellamaalla."
+          },
+          "searchTactics": {
+                "en": "Scan forest floor clearings for ham-pink caps, then lift and inspect the margin for the bare white tooth line.",
+                "zh": "在林间开阔平地搜寻火腿粉色的小圆盖，采下后立即在明光下细看菌盖边缘是否微露白齿。",
+                "fi": "Etsi kinkunpunaisia lakkeja ja tarkista lakin reunan paljaat heltat."
+          },
+          "lookalikes": {
+                "en": "Other pinkish russulas do not have the retracted cuticle exposing gill teeth.",
+                "zh": "其他粉红系红菇的表皮均完全包裹至菌盖最外缘，绝不露出白齿。",
+                "fi": "Muilla punaisilla haperoilla kelmu peittää lakin reunan kokonaan."
+          },
+          "cookingGuide": {
+                "en": "Pan-sear in hot butter with sea salt until crisp. Outstanding atop toasted brioche or in risotto.",
+                "zh": "热黄油大火香煎至边缘微焦酥脆，撒海盐铺在烤黄油面包片上，香气直沁心脾。",
+                "fi": "Paista rapeaksi voissa ja tarjoile paahdetun leivän kera."
+          },
+          "image": "./images/russula_vesca.jpg",
+          "gallery": [
+                {
+                      "file": "./images/russula_vesca.jpg",
+                      "caption": {
+                            "en": "Bare-Toothed Russula in natural Finnish forest habitat",
+                            "zh": "萎缩红菇 在芬兰森林中的自然生境",
+                            "fi": "Palterohapero luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+                }
+          ]
+    },
+{
+          "id": "russula_xerampelina",
+          "latinName": "Russula xerampelina",
+          "family": "russulaceae",
+          "rating": "**",
+          "edibility": "good",
+          "level": "intermediate",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Crab Brittlegill",
+                      "local": "Sillihapero",
+                      "alt": "Russula xerampelina"
+                },
+                "zh": {
+                      "primary": "枯焦红菇",
+                      "local": "鲱鱼红菇 / 蟹味红菇",
+                      "alt": "Russula xerampelina"
+                },
+                "fi": {
+                      "primary": "Sillihapero",
+                      "local": "Sillihapero",
+                      "alt": "Russula xerampelina"
+                }
+          },
+          "habitatName": {
+                "en": "Coniferous pine and spruce heaths, mossy bedrock forests",
+                "zh": "针叶松树与云杉林、长满深厚苔藓的花岗岩基岩林地",
+                "fi": "Mäntykankaat, havumetsät ja kalliomänniköt"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "6–13 cm, dark wine-red, purple to brownish-carmine, velvety, dry",
+                      "underCap": "Cream to deep ochre-yellow gills, bruising brownish with age",
+                      "stem": "Stout, pure white or flushed with pinkish-red, bruising distinct rusty-brown when handled",
+                      "odor": "Unmistakable aroma of boiled crab, lobster or salted herring when fresh and cooking"
+                },
+                "zh": {
+                      "cap": "6–13厘米，深沉醇厚的葡萄酒红至紫红暗褐色，表面微带天鹅绒感",
+                      "underCap": "乳白至深黄赭色菌褶，触碰后缓慢氧化转为赭褐色",
+                      "stem": "粗壮，白色或略染淡玫瑰红晕，手揉捏后逐渐变铁锈褐色",
+                      "odor": "极为独特的清蒸大闸蟹、水煮龙虾或熟鲱鱼般的浓郁海鲜鲜甜气息"
+                },
+                "fi": {
+                      "cap": "6–13 cm, tumman viininpunainen tai purppuranruskea, samettinen",
+                      "underCap": "Kellanokkrat mureat heltat, ruskettuvat kosketuksesta",
+                      "stem": "Tukeva, valkoinen tai punertava, ruskettuu kosketuksesta",
+                      "odor": "Voimakas, erehtymätön keitetyn ravun tai sillin tuoksu"
+                }
+          },
+          "culinaryTip": {
+                "en": "Firm and meaty. The crab-like seafood aroma cooks down into a rich, savory seafood bisque depth. Pan-fry directly in butter.",
+                "zh": "肉质紧实耐煮。其类似海鲜甲壳的芳香在下锅翻炒后转化为极其深厚的浓汤鲜味，直接入黄油香煎即可。",
+                "fi": "Kiinteä ja hyvä ruokasieni. Rapumainen tuoksu antaa upean aromin paistettaessa."
+          },
+          "lookalikeAlert": {
+                "en": "Distinct seafood smell, yellow ochre gills, and iron-sulfate reaction (turns olive-green) are diagnostic.",
+                "zh": "独一无二的海鲜煮蟹气味加上深黄色菌褶及受损泛褐的特征，使其绝无误食风险。",
+                "fi": "Sillintuoksu ja lihan ruskettuminen estävät sekaannukset."
+          },
+          "whereWhen": {
+                "en": "August through October across pine heaths in Nuuksio, Luukki, and Porkkala.",
+                "zh": "8月至10月在Nuuksio与Porkkala等地的松针苔藓林中普遍生长。",
+                "fi": "Elo-lokakuussa mäntymetsissä koko rannikkoalueella."
+          },
+          "searchTactics": {
+                "en": "Search beneath pines; confirm identity by checking the distinctive seafood/crab aroma at the gills.",
+                "zh": "在赤松下搜寻深酒红色的菌盖，采下后嗅闻菌褶部位，立时能闻到鲜明的蒸蟹海鲜清香。",
+                "fi": "Etsi mäntyjen alta sammalikosta ja haista heltoista rapumaista tuoksua."
+          },
+          "lookalikes": {
+                "en": "The Sickener (R. emetica) has pure white gills, burns the tongue, and has no seafood smell.",
+                "zh": "毒红菇菌褶纯白，舌尖尝极辛辣，且毫无海鲜香气。",
+                "fi": "Tulihapero on polttavan tulinen ja sillä on valkoiset heltat ilman sillin tuoksua."
+          },
+          "cookingGuide": {
+                "en": "Sauté in butter with leeks and cream to create an authentic forest seafood-style sauce.",
+                "zh": "与大葱碎在黄油中翻炒，淋入少许白葡萄酒与鲜奶油，制成芳香浓郁的仿海鲜野菌白汁。",
+                "fi": "Paista voissa purjon ja kerman kera."
+          },
+          "image": "./images/russula_xerampelina.jpg",
+          "gallery": [
+                {
+                      "file": "./images/russula_xerampelina.jpg",
+                      "caption": {
+                            "en": "Crab Brittlegill in natural Finnish forest habitat",
+                            "zh": "枯焦红菇 在芬兰森林中的自然生境",
+                            "fi": "Sillihapero luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Uwe Winkler, some rights reserved (CC BY-NC), uploaded by Uwe Winkler"
+                }
+          ]
+    },
+{
+          "id": "russula_vinosa",
+          "latinName": "Russula vinosa",
+          "family": "russulaceae",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "intermediate",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Dark-Veined Brittlegill",
+                      "local": "Viinihapero",
+                      "alt": "Russula vinosa"
+                },
+                "zh": {
+                      "primary": "暗紫红菇",
+                      "local": "酒红红菇 / 变灰红菇",
+                      "alt": "Russula vinosa"
+                },
+                "fi": {
+                      "primary": "Viinihapero",
+                      "local": "Viinihapero",
+                      "alt": "Russula vinosa"
+                }
+          },
+          "habitatName": {
+                "en": "Moist old-growth Norway spruce heaths & damp blueberry depressions",
+                "zh": "湿润的老龄挪威云杉林及阴湿蓝莓矮丛苔藓洼地",
+                "fi": "Tuoreet ja kosteat kuusikot, mustikkatyypin kankaat"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "6–12 cm, dark wine-purple to purplish-brown, dry, smooth",
+                      "underCap": "Cream-white brittle gills, turning ash-grey with age or injury",
+                      "stem": "White, turning distinctly ash-grey to slate-grey when cut or handled",
+                      "odor": "Mild pleasant aroma; completely mild, sweet nutty taste"
+                },
+                "zh": {
+                      "cap": "6–12厘米，深沉华丽的葡萄酒紫至深紫褐色，干燥平滑",
+                      "underCap": "乳白至米黄脆菌褶，切开或受压后缓慢转为显著的灰黑石板灰色",
+                      "stem": "粗实，白色底色在采摘挤压或剖开数分钟后显著氧化变灰",
+                      "odor": "清淡悦人，生尝完全温和甘美"
+                },
+                "fi": {
+                      "cap": "6–12 cm, tumman viininpunainen tai purppuranruskea, himmeä",
+                      "underCap": "Kermanvaaleat heltat, harmaantuvat vanhana ja rikkoutuessaan",
+                      "stem": "Tukeva, valkoinen, harmaantuu leikattaessa ja kosketettaessa",
+                      "odor": "Mieto ja miellyttävä; maku täysin mieto"
+                }
+          },
+          "culinaryTip": {
+                "en": "Choice edible mushroom with firm crunchy flesh. Turns grey upon cooking—completely normal and delicious in butter.",
+                "zh": "肉质坚实爽脆的高级食用红菇。受热翻炒后肉质变深灰属天然现象，口感脆甜绝佳。",
+                "fi": "Erinomainen murea ruokasieni. Harmaantuu kypsennettäessä."
+          },
+          "lookalikeAlert": {
+                "en": "Dark wine-purple cap combined with mild taste and strong greying flesh distinguishes it from all toxic lookalikes.",
+                "zh": "暗酒红色的菌盖、温和无辣的口感以及切开后强烈的灰变反应，是其绝无差错的辨识身份证。",
+                "fi": "Tumma viininpunainen väri ja malton harmaantuminen tekevät lajista turvallisen."
+          },
+          "whereWhen": {
+                "en": "August to October in shaded, mossy spruce slopes across Sipoonkorpi, Nuuksio, and Keskuspuisto.",
+                "zh": "8月至10月在西波国家公园、Nuuksio及中央公园北段的阴凉云杉苔藓坡常见。",
+                "fi": "Elo-lokakuussa kosteissa kuusikoissa."
+          },
+          "searchTactics": {
+                "en": "Look in deep feathermoss under mature spruces; verify the greying stem reaction by making a quick fingernail nick.",
+                "zh": "在老云杉下的深厚羽苔中搜寻深酒紫圆盖；用指甲轻掐菌柄基部观察是否泛灰即可确诊。",
+                "fi": "Etsi paksusta seinäsammalikosta kuusten alta."
+          },
+          "lookalikes": {
+                "en": "Russula emetica is bright fire-red, burns like pepper, and does NOT turn grey.",
+                "zh": "毒红菇呈艳亮火红色，极辛辣且肉质永不变灰。",
+                "fi": "Tulihapero on tulisen makuinen eikä harmaannu."
+          },
+          "cookingGuide": {
+                "en": "Pan-sear in hot butter with sea salt, shallots, and fresh parsley for 5 minutes.",
+                "zh": "下热黄油锅加红葱碎与海盐大火翻煎5分钟，脆香扑鼻。",
+                "fi": "Paista voissa sipulin ja persiljan kanssa."
+          },
+          "image": "./images/russula_vinosa.jpg",
+          "gallery": [
+                {
+                      "file": "./images/russula_vinosa.jpg",
+                      "caption": {
+                            "en": "Dark-Veined Brittlegill in natural Finnish forest habitat",
+                            "zh": "暗紫红菇 在芬兰森林中的自然生境",
+                            "fi": "Viinihapero luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Marco Floriani, some rights reserved (CC BY-NC), uploaded by Marco Floriani"
+                }
+          ]
+    },
+{
+          "id": "russula_integra",
+          "latinName": "Russula integra",
+          "family": "russulaceae",
+          "rating": "**",
+          "edibility": "good",
+          "level": "beginner",
+          "months": [
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Entire Brittlegill",
+                      "local": "Mantelihapero",
+                      "alt": "Russula integra"
+                },
+                "zh": {
+                      "primary": "变色红菇群",
+                      "local": "杏仁红菇 / 变色红菇",
+                      "alt": "Russula integra"
+                },
+                "fi": {
+                      "primary": "Mantelihapero",
+                      "local": "Mantelihapero",
+                      "alt": "Russula integra"
+                }
+          },
+          "habitatName": {
+                "en": "Mature spruce forests, coniferous moss heaths & mountain woodlands",
+                "zh": "成熟云杉老林、针叶苔藓林地及高坡林带",
+                "fi": "Vanhat kuusikot ja sammaleiset havumetsät"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "6–13 cm, variable mahogany-red, olive-brown, copper-purple or liver-brown, thick and fleshy",
+                      "underCap": "Broad, deep ochre to egg-yolk yellow brittle gills",
+                      "stem": "Thick, snow-white, solid, brittle as chalk",
+                      "odor": "Mild pleasant aroma with sweet nutty or almond taste"
+                },
+                "zh": {
+                      "cap": "6–13厘米，颜色多变，呈红褐、铜紫、橄榄褐或肝褐色，肉质极厚硬肥硕",
+                      "underCap": "宽厚深黄至蛋黄色的脆菌褶",
+                      "stem": "粗壮坚实，纯白色，粉笔般易脆断",
+                      "odor": "清香，生尝有独特的甜杏仁与坚果清香，完全无辛辣"
+                },
+                "fi": {
+                      "cap": "6–13 cm, väriltään vaihteleva, suklaanruskea, oliivinsävyinen tai kuparinpunainen, paksualtoinen",
+                      "underCap": "Pillistö/heltat voimakkaan keltaiset",
+                      "stem": "Paksu, puhtaanvalkea, liitumainen",
+                      "odor": "Mieto, miellyttävä; pähkinäinen tai mantelinen maku"
+                }
+          },
+          "culinaryTip": {
+                "en": "Firm and substantial. The deep yellow gills reflect high carotenoid content. Delicious pan-fried.",
+                "zh": "肉质肥厚扎实。深黄色的成熟菌褶富含天然类胡萝卜素，风味甘甜，黄油快炒极佳。",
+                "fi": "Kiinteä ja hyvä ruokasieni. Paista voissa pannulla."
+          },
+          "lookalikeAlert": {
+                "en": "Always apply the Russula taste test: any brittlegill that tastes mild and nutty is edible and safe!",
+                "zh": "务必运用芬兰红菇舌尖尝试法则（Haperosääntö）：凡一折即断且生尝清甜不辣者皆为安全食用菌！",
+                "fi": "Haperosääntö pätee: jos sieni maistuu miedolta, se on syötävä."
+          },
+          "whereWhen": {
+                "en": "Late July through October in mossy spruce tracts throughout Uusimaa.",
+                "zh": "7月下旬至10月在乌西玛大区成熟云杉苔藓林中普遍出菇。",
+                "fi": "Heinä-lokakuussa kuusikoissa."
+          },
+          "searchTactics": {
+                "en": "Look for heavy, solid caps in deep spruce feathermoss. Confirm deep yellow gills and mild almond taste.",
+                "zh": "在云杉厚厚苔藓上搜寻沉甸甸的厚肉圆盖，翻转确认其金黄深褶与温和杏仁香。",
+                "fi": "Etsi paksun sammalen seasta kuusten alta."
+          },
+          "lookalikes": {
+                "en": "Peppery toxic russulas taste instantly fiery; this species is completely mild.",
+                "zh": "有毒红菇舌尖一碰即火辣难忍；该种生尝甘甜带杏仁清香。",
+                "fi": "Myrkylliset haperot polttavat heti kielellä."
+          },
+          "cookingGuide": {
+                "en": "Sauté in butter with diced onions and black pepper. Perfect in mixed mushroom pans.",
+                "zh": "入热黄油锅加洋葱碎与黑胡椒慢煎，肉质久炒不塌，在混合野菌煲中口感拔群。",
+                "fi": "Paista voissa ja sipulissa pannulla."
+          },
+          "image": "./images/russula_integra.jpg",
+          "gallery": [
+                {
+                      "file": "./images/russula_integra.jpg",
+                      "caption": {
+                            "en": "Entire Brittlegill in natural Finnish forest habitat",
+                            "zh": "变色红菇群 在芬兰森林中的自然生境",
+                            "fi": "Mantelihapero luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Christian Schwarz, some rights reserved (CC BY-NC), uploaded by Christian Schwarz"
+                }
+          ]
+    },
+{
+          "id": "tricholoma_matsutake",
+          "latinName": "Tricholoma matsutake",
+          "family": "agaric_others",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "intermediate",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Pine Matsutake",
+                      "local": "Männyntuoksuvalmuska",
+                      "alt": "Tricholoma matsutake"
+                },
+                "zh": {
+                      "primary": "松口蘑",
+                      "local": "芬兰野生松茸 / 欧洲松茸",
+                      "alt": "Tricholoma matsutake"
+                },
+                "fi": {
+                      "primary": "Männyntuoksuvalmuska",
+                      "local": "Matsutake",
+                      "alt": "Tricholoma matsutake"
+                }
+          },
+          "habitatName": {
+                "en": "Dry sandy Scots pine heaths, lichen-covered granite outcrop terraces",
+                "zh": "干燥沙质欧洲赤松林、长满地衣的花岗岩岩脊台地",
+                "fi": "Kuivat karut mäntykankaat, kalliomänniköt ja hiekkaiset jäkäliköt"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "6–20 cm, pale buff-brown covered with fibrous brown scales, dry, thick firm flesh",
+                      "underCap": "White crowded gills, slowly developing rusty-brown spots when mature",
+                      "stem": "Very stout, solid, tapering at base, with a persistent fibrous white cottony ring",
+                      "odor": "Extraordinary, intensely aromatic, sweet spicy perfume of cinnamon, cedarwood and autumn earth"
+                },
+                "zh": {
+                      "cap": "6–20厘米，淡黄褐色覆有粗糙的红褐至茶褐色纤维鳞片，干燥，肉质极其肥厚致密坚实",
+                      "underCap": "乳白色细密菌褶，成熟后边缘略带细小锈褐色斑点",
+                      "stem": "极其粗实粗壮如棒槌，基部收尖，具持久棉毛状白色菌环，环下密布深色鳞片",
+                      "odor": "无与伦比、极度浓烈清冽的肉桂、雪松木质香与秋天泥土混合的旷世松茸奇香！"
+                },
+                "fi": {
+                      "cap": "6–20 cm, vaaleanruskea, ruskeiden kuitusuomujen peittämä, erittäin kiinteämaltoinen",
+                      "underCap": "Valkoiset tiheät heltat, vanhana ruskeatäpläiset",
+                      "stem": "Erittäin tukeva, kiinteä, selvä vanumainen valkoinen rengas",
+                      "odor": "Ainutlaatuinen, voimakkaan mausteinen ja hedelmäinen tuoksu (kanelia ja havua)"
+                }
+          },
+          "culinaryTip": {
+                "en": "WORLD-FAMOUS GOURMET TREASURE. Do not overcook! Grill gently over coals or pan-sear in butter to preserve its ethereal spicy perfume.",
+                "zh": "享誉全球的殿堂级野生菌珍馐！严禁重油重酱过火久煮！极宜炭火炭烤、刺身厚切蘸生抽芥末、或以极简黄油微火香煎，尽显其天赐松茸香气。",
+                "fi": "Maailmankuulu gourmet-sieni! Älä kypsennä liikaa. Paahda kevyesti pannulla tai grillissä."
+          },
+          "lookalikeAlert": {
+                "en": "Strictly avoid Deadly Webcap (Cortinarius rubellus), which is smaller, orange-brown with rusty brown spores and NO cinnamon perfume.",
+                "zh": "严禁混淆致命丝膜菌（C. rubellus）！后者体型较小，通体橙红褐色，孢子为铁锈色，且绝无松茸那一抹独特的清甜肉桂雪松香！",
+                "fi": "VARO suippumyrkkyseitikkiä! Seitikit ovat pienempiä, ruosteenruskeaitiöisiä eikä niissä ole matsutaken mausteista tuoksua."
+          },
+          "whereWhen": {
+                "en": "Late August through October on dry, lichen-rich pine heaths across Uusimaa (e.g. Sipoonkorpi rocky crags and Porkkala pine knolls).",
+                "zh": "8月下旬至10月生于乌西玛大区干燥多岩、长满地衣的古老赤松林脊（西波高地岩丘、Porkkala海角松林高坡）。",
+                "fi": "Elo-lokakuussa karuilla mäntykankailla ja kalliomänniköissä."
+          },
+          "searchTactics": {
+                "en": "Look for cracked reindeer lichen and pine needle humps pushing upward around mature Scots pines.",
+                "zh": "在赤松林下细查被顶开龟裂的白色地衣块或拱起的小松针土包，松茸往往深埋土中仅露一抹浅褐菌顶。",
+                "fi": "Etsi jäkälikön ja neulaskerroksen halkeamia ja kohoumia mäntyjen alta."
+          },
+          "lookalikes": {
+                "en": "Tricholoma focale has an orange-red cap and lacks the majestic spicy scent.",
+                "zh": "颈圈口蘑（T. focale）菌盖偏橘红色且毫无此馥郁松茸香气。",
+                "fi": "Kangasrouskulla ja seitikeillä täysin erilainen itiöpöly ja tuoksu."
+          },
+          "cookingGuide": {
+                "en": "Slice into 5mm strips, sear in foaming unsalted butter for 2 minutes on each side. Finish with sea salt flakes and lemon zest.",
+                "zh": "纵切成半厘米厚片，入无盐黄油锅每面轻煎2分钟，出锅撒少许现磨海盐与鲜柠檬皮碎，鲜美至极。",
+                "fi": "Viipaloi ja paista nopeasti voissa. Mausta vain sormisuolalla."
+          },
+          "image": "./images/tricholoma_matsutake.jpg",
+          "gallery": [
+                {
+                      "file": "./images/tricholoma_matsutake.jpg",
+                      "caption": {
+                            "en": "Pine Matsutake in natural Finnish forest habitat",
+                            "zh": "松口蘑 在芬兰森林中的自然生境",
+                            "fi": "Männyntuoksuvalmuska luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+                }
+          ]
+    },
+{
+          "id": "tricholoma_portentosum",
+          "latinName": "Tricholoma portentosum",
+          "family": "agaric_others",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "intermediate",
+          "months": [
+                9,
+                10,
+                11
+          ],
+          "names": {
+                "en": {
+                      "primary": "Charbonnier / Striped Tricholoma",
+                      "local": "Harmaavalmuska",
+                      "alt": "Tricholoma portentosum"
+                },
+                "zh": {
+                      "primary": "灰白口蘑",
+                      "local": "晚秋灰口蘑 / 肥厚口蘑",
+                      "alt": "Tricholoma portentosum"
+                },
+                "fi": {
+                      "primary": "Harmaavalmuska",
+                      "local": "Harmaavalmuska",
+                      "alt": "Tricholoma portentosum"
+                }
+          },
+          "habitatName": {
+                "en": "Sandy Scots pine heaths, mossy pine hollows & lichen bedrock",
+                "zh": "沙质欧洲赤松林、阴湿松针苔藓洼地及地衣基岩边缘",
+                "fi": "Hiekkapohjaiset kangasmetsät ja kalliomänniköt"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "5–12 cm, slate-grey to charcoal with radiating darker streaks and faint yellow-green sheen, tacky when moist",
+                      "underCap": "Broad white gills with distinct pale sulphur-yellow reflections",
+                      "stem": "Solid, white with delicate pale yellow flush; NO ring",
+                      "odor": "Pleasant, distinctive fresh mealy/flour-like fragrance"
+                },
+                "zh": {
+                      "cap": "5–12厘米，石板灰至黑炭灰色，带有优美的深色放射状纵条纹，湿润时微黏并泛淡黄绿色光泽",
+                      "underCap": "宽大纯白菌褶，在光照下透出极其清晰迷人的淡硫黄绿光彩",
+                      "stem": "坚实白嫩，表面常泛一层微弱淡黄晕彩；【无菌环】",
+                      "odor": "极其清新怡人的生面粉与新鲜青草甘甜香气"
+                },
+                "fi": {
+                      "cap": "5–12 cm, tuhkanharmaa, säteittäisviiruinen, kosteana tahmea ja heikosti kellanvihreäkiiltoinen",
+                      "underCap": "Valkoiset heltat, joissa selvä keltainen sävy",
+                      "stem": "Tukeva, valkoinen, usein keltaisen sävyttämä; renkaaton",
+                      "odor": "Miellyttävä, raikkaan jauhomainen tuoksu"
+                }
+          },
+          "culinaryTip": {
+                "en": "Premier late autumn delicacy! Resists frosts and snow flurries. Exceptional sweet, firm flesh that holds its bite.",
+                "zh": "芬兰晚秋至初冬的顶级珍馐！极耐霜冻，甚至落雪后依然傲然挺立。肉质甘脆肥厚，口感久煮不烂。",
+                "fi": "Loppusyksyn huippusieni! Kestää pakkasia. Erittäin kiinteä ja maukas ruokasieni."
+          },
+          "lookalikeAlert": {
+                "en": "Beware toxic grey Tricholoma species (e.g. T. virgatum - has pointed cone cap and bitter peppery taste). Striped cap and yellow sheen are key.",
+                "zh": "注意区分灰口蘑属的有毒近缘种（如尖顶口蘑 T. virgatum，菌盖有锐尖圆锥顶且味辛辣极苦）。放射条纹与淡黄晕是核心鉴别点！",
+                "fi": "Varo myrkyllistä suippuvalmuskaa (T. virgatum), joka on karvaan tulinen ja terävähuippuinen."
+          },
+          "whereWhen": {
+                "en": "September to late November. Fruits after the first light frosts when most other mushrooms have finished.",
+                "zh": "9月中旬一直出菇至11月下旬。在首轮初霜甚至小雪降下后迎来采摘黄金期。",
+                "fi": "Syyskuusta marraskuun lopulle; parhaimmillaan yöpakkasten alettua."
+          },
+          "searchTactics": {
+                "en": "Search beneath pine needle cushions on sandy ridges late in the season when funnel chanterelles peak.",
+                "zh": "深秋晚季在沙质赤松林脊的厚松针毯下搜寻顶出松针的深灰色肥厚菌顶。",
+                "fi": "Etsi hiekkakankailta syksyn myöhäisimpinä viikkoina."
+          },
+          "lookalikes": {
+                "en": "Tricholoma virgatum is intensely acrid/bitter; T. portentosum is completely mild and sweet.",
+                "zh": "尖顶口蘑入口苦辣刺喉；灰白口蘑甘甜如生面粉。",
+                "fi": "Suippuvalmuskan maku on kitkerä ja polttava."
+          },
+          "cookingGuide": {
+                "en": "Sauté in butter with onions or simmer into late autumn game soups and stews. Outstanding firm texture.",
+                "zh": "下热黄油锅与洋葱慢煸，或加入深秋野味牛羊肉汤中炖煮，肉质极其弹脆肥美。",
+                "fi": "Paista voissa tai valmista kermainen sienikeitto."
+          },
+          "image": "./images/tricholoma_portentosum.jpg",
+          "gallery": [
+                {
+                      "file": "./images/tricholoma_portentosum.jpg",
+                      "caption": {
+                            "en": "Charbonnier / Striped Tricholoma in natural Finnish forest habitat",
+                            "zh": "灰白口蘑 在芬兰森林中的自然生境",
+                            "fi": "Harmaavalmuska luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+                }
+          ]
+    },
+{
+          "id": "macrolepiota_procera",
+          "latinName": "Macrolepiota procera",
+          "family": "agaric_others",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "intermediate",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Parasol Mushroom",
+                      "local": "Ukonsieni",
+                      "alt": "Macrolepiota procera"
+                },
+                "zh": {
+                      "primary": "高大环柄菇",
+                      "local": "巨伞菇 / 欧洲大阳伞菇",
+                      "alt": "Macrolepiota procera"
+                },
+                "fi": {
+                      "primary": "Ukonsieni",
+                      "local": "Ukonsieni",
+                      "alt": "Macrolepiota procera"
+                }
+          },
+          "habitatName": {
+                "en": "Sunny forest glades, warm grassy clearings, pastures & edge of deciduous groves",
+                "zh": "阳光充沛的林间空地、温暖向阳的草坡草场及阔叶林边缘",
+                "fi": "Valoisat metsänaukeat, laitumet, lehdot ja lehtimetsien reunat"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "15–30 cm across, gigantic umbrella-like, pale cream covered in large shaggy brown scales with dark center bump",
+                      "underCap": "Broad, crowded, white to pale cream gills free from stem",
+                      "stem": "Very tall (20–40 cm), slender, bulbous base, with brown zigzag snakeskin pattern and thick sliding ring",
+                      "odor": "Delicious sweet, nutty aroma of toasted hazelnuts"
+                },
+                "zh": {
+                      "cap": "15–30厘米，如巨大阳伞般巍峨壮观，浅米色底上密布粗大反卷褐色鳞片，中央具深色凸起",
+                      "underCap": "宽厚密集的雪白至象牙白色菌褶，离生于菌柄",
+                      "stem": "高大修长（20–40厘米），中空木质，表面布满精美如蛇皮般的深褐色之字形花纹，具可上下滑动的厚双层菌环",
+                      "odor": "极其香浓诱人的炒熟榛果坚果芳香"
+                },
+                "fi": {
+                      "cap": "15–30 cm, jättimäinen, vaalea, pinnalla suuria ruskeita suomuja",
+                      "underCap": "Valkoiset, tiheät, jalasta irti olevat heltat",
+                      "stem": "Hyvin pitkä (20–40 cm), marmoroitu käärmeennahkamaisella kuviolla, suuri liikkuva rengas",
+                      "odor": "Pähkinäinen, erittäin miellyttävä"
+                }
+          },
+          "culinaryTip": {
+                "en": "THE SCHNITZEL MUSHROOM! Bread the massive flattened cap with egg and breadcrumbs, pan-fry in butter. Stem is tough and fibrous (discard or dry for powder).",
+                "zh": "天然的巨无霸“森林炸猪排”！取完整巨大菌盖裹鸡蛋液与面包屑，入黄油平底锅整片煎炸至两面金黄酥脆！菌柄木质化较硬，宜丢弃或打粉做香料。",
+                "fi": "Sienimaailman wieninleike! Leivitä koko valtava lakki korppujauhoissa ja paista voissa leikkeenä."
+          },
+          "lookalikeAlert": {
+                "en": "Must have snakeskin-patterned stem and loose sliding ring. Chlorophyllum rhacodes bruises saffron-orange/red when sliced.",
+                "zh": "核心鉴别特征为菌柄上的蛇皮纹路与可上下自由滑动的厚菌环。近缘的糙皮环柄菇切开后菌肉会转藏红橙红色。",
+                "fi": "Käärmeennahkakuvio jalassa ja vapaasti liikkuva rengas varmistavat lajin."
+          },
+          "whereWhen": {
+                "en": "Late August through October in warm, sunny clearings across Southern Finland.",
+                "zh": "8月下旬至10月在芬兰南部温暖向阳的林间大草甸中现身，远望宛如一把把立于草中的遮阳伞。",
+                "fi": "Elo-lokakuussa valoisilla paikoilla Etelä-Suomessa."
+          },
+          "searchTactics": {
+                "en": "Scan sunny pastures and grassy woodland borders from afar—their gigantic height (up to 40 cm) stands out distinctly.",
+                "zh": "在开阔向阳草坡远眺，其高达30-40厘米的巨大伞形身姿在草丛中极易一眼望见。",
+                "fi": "Tarkkaile valoisia aukkoja; sienen valtava koko näkyy kauas."
+          },
+          "lookalikes": {
+                "en": "Chlorophyllum rhacodes (Shaggy Parasol) bruises distinct orange-red when cut and lacks snakeskin pattern on stem.",
+                "zh": "糙皮大环柄菇菌柄平滑无蛇皮纹，且刀割后菌肉会迅速变为胡萝卜红褐色。",
+                "fi": "Akansieni muuttuu leikattaessa oranssinpunaiseksi ja sen jalka on sileämpi."
+          },
+          "cookingGuide": {
+                "en": "Remove stem. Dip whole cap in flour, beaten egg, then seasoned breadcrumbs. Fry in butter over medium heat for 4 minutes per side.",
+                "zh": "去柄，将完整菌盖依次蘸面粉、蛋液与面包屑，放黄油平底锅两面各煎4分钟，撒柠檬汁与海盐，口感外酥里嫩胜似顶级猪排！",
+                "fi": "Poista jalka, leivitä lakki kananmunalla ja korppujauholla ja paista voissa molemmin puolin."
+          },
+          "image": "./images/macrolepiota_procera.jpg",
+          "gallery": [
+                {
+                      "file": "./images/macrolepiota_procera.jpg",
+                      "caption": {
+                            "en": "Parasol Mushroom in natural Finnish forest habitat",
+                            "zh": "高大环柄菇 在芬兰森林中的自然生境",
+                            "fi": "Ukonsieni luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Lucian Clanet, some rights reserved (CC BY), uploaded by Lucian Clanet"
+                }
+          ]
+    },
+{
+          "id": "agaricus_arvensis",
+          "latinName": "Agaricus arvensis",
+          "family": "agaric_others",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "intermediate",
+          "months": [
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Horse Mushroom",
+                      "local": "Peltoherkkusieni",
+                      "alt": "Agaricus arvensis"
+                },
+                "zh": {
+                      "primary": "白林地蘑菇",
+                      "local": "野生白双孢蘑菇 / 大田头菇",
+                      "alt": "Agaricus arvensis"
+                },
+                "fi": {
+                      "primary": "Peltoherkkusieni",
+                      "local": "Peltoherkkusieni",
+                      "alt": "Agaricus arvensis"
+                }
+          },
+          "habitatName": {
+                "en": "Grassy meadows, pastures, sunny forest edges & rich soil paths",
+                "zh": "长草草甸、草场牧地、阳光充足的林缘及腐殖土小径边",
+                "fi": "Laitumet, niityt, puistot ja valoisat metsänreunat"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "8–20 cm, silky white to cream, bruising slowly pale yellow, smooth to finely scaly",
+                      "underCap": "Gills white when young, becoming pink, then rich chocolate-brown at maturity; free from stem",
+                      "stem": "Stout, white with large cogwheel-patterned double ring on underside; bulbous base with NO volva",
+                      "odor": "Delicious, sweet aroma of aniseed and bitter almonds"
+                },
+                "zh": {
+                      "cap": "8–20厘米，丝绢纯白色至象牙乳白，轻擦后微染淡黄，平滑微带细鳞",
+                      "underCap": "菌褶幼时浅灰白，迅速转为娇嫩粉红，老熟后变为深巧克力深褐色，离生于菌柄",
+                      "stem": "粗壮坚挺，纯白，具如齿轮状精美花纹的双层厚下垂菌环；【绝对无袋状菌托】",
+                      "odor": "极其浓郁清冽的八角茴香与苦杏仁甜香"
+                },
+                "fi": {
+                      "cap": "8–20 cm, silkkisen valkoinen, vanhana hieman kellertyvä",
+                      "underCap": "Heltat aluksi vaaleanharmaat, pian vaaleanpunaiset ja vanhana suklaanruskeat",
+                      "stem": "Tukeva, valkoinen, renkaan alapinnalla hammasratasmainen kuvio; EI tuppea",
+                      "odor": "Voimakas, miellyttävä aniksen ja mantelin tuoksu"
+                }
+          },
+          "culinaryTip": {
+                "en": "Premier wild button mushroom! Far richer, meatier, and more aromatic than store-bought white champignons.",
+                "zh": "野生蘑菇中的贵族！香气与肉质醇厚度百倍胜过超市所售的人工双孢白蘑菇，极其鲜美多汁。",
+                "fi": "Huippuluokan herkkusieni! Paljon viljeltyä herkkusientä maukkaampi ja tuoksuvampi."
+          },
+          "lookalikeAlert": {
+                "en": "DEADLY DESTROYING ANGEL (Amanita virosa) has PURE WHITE GILLS at all ages, sack-like VOLVA cup at stem base, and NO anise aroma! Never harvest all-white mushrooms without checking gills and stem base.",
+                "zh": "【生死警戒红线】：致命剧毒毁灭天使（Amanita virosa 白毒伞）的菌褶终生为【纯雪白色】，基部有深埋土中的【袋状菌托】，且【绝无茴香香气】！采摘纯白真菌必须彻查菌褶颜色与菌根！",
+                "fi": "HENGENVAARA: Valkokärpässienellä on aina PUHTAANVALKOISET heltat, tyvituppi eikä aniksen tuoksua!"
+          },
+          "whereWhen": {
+                "en": "July through October in rich open pastures and sunny forest edges across Helsinki and Espoo.",
+                "zh": "7月至10月在肥沃向阳的牧草地、公园边缘及林间开阔草甸大量成圈出菇。",
+                "fi": "Heinä-lokakuussa runsasravinteisilla ruohomailla."
+          },
+          "searchTactics": {
+                "en": "Spot large white domes in open grassy clearings; check underside to confirm pink-to-brown gills and sniff for sweet anise fragrance.",
+                "zh": "在开阔草地搜寻大白馒头般的圆球菌盖；翻转确认菌褶为粉红或巧克力褐色，并凑近嗅闻茴香甜香。",
+                "fi": "Etsi valkoisia palloja ruohikosta ja tarkista helttojen väri sekä aniksen tuoksu."
+          },
+          "lookalikes": {
+                "en": "Agaricus xanthodermus (Yellow Stainer) turns bright chrome-yellow at base instantly and smells foul of carbolic/ink.",
+                "zh": "黄斑蘑菇（有毒）基部切开会立刻泛鲜亮铬黄色，且散发刺鼻墨水石炭酸臭味。",
+                "fi": "Myrkyllinen pyökkipökkösieni kellertyy tyvestä voimakkaasti ja haisee karboolille."
+          },
+          "cookingGuide": {
+                "en": "Sauté in butter with fresh garlic and parsley, or slice into a rich wild mushroom cream soup.",
+                "zh": "以大块黄油配蒜蓉欧芹大火香煎，或切厚片入高汤慢煨成极品白蘑菇浓汤。",
+                "fi": "Paista voissa valkosipulin kanssa tai tee kermainen herkkusienikeitto."
+          },
+          "image": "./images/agaricus_arvensis.jpg",
+          "gallery": [
+                {
+                      "file": "./images/agaricus_arvensis.jpg",
+                      "caption": {
+                            "en": "Horse Mushroom in natural Finnish forest habitat",
+                            "zh": "白林地蘑菇 在芬兰森林中的自然生境",
+                            "fi": "Peltoherkkusieni luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Felipe Hidalgo, some rights reserved (CC BY-NC), uploaded by Felipe Hidalgo"
+                }
+          ]
+    },
+{
+          "id": "agaricus_silvaticus",
+          "latinName": "Agaricus silvaticus",
+          "family": "agaric_others",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "intermediate",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Blushing Wood Mushroom",
+                      "local": "Tapionherkkusieni",
+                      "alt": "Agaricus silvaticus"
+                },
+                "zh": {
+                      "primary": "森林蘑菇",
+                      "local": "红汁林地蘑菇 / 褐鳞双孢蘑",
+                      "alt": "Agaricus silvaticus"
+                },
+                "fi": {
+                      "primary": "Tapionherkkusieni",
+                      "local": "Tapionherkkusieni",
+                      "alt": "Agaricus silvaticus"
+                }
+          },
+          "habitatName": {
+                "en": "Old-growth Norway spruce heaths, thick needle litter & shaded spruce hollows",
+                "zh": "成熟老龄挪威云杉林、厚松针层及背阴云杉洼地",
+                "fi": "Vanhat kuusikot, paksut kuusenneulaskerrokset"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "6–12 cm, pale buff densely covered in reddish-brown fibrous scales",
+                      "underCap": "Free gills, pale pink turning deep chocolate-brown",
+                      "stem": "Slender, white, with a fragile hanging ring; FLESH STAINS BLOOD-RED INSTANTLY when sliced",
+                      "odor": "Mild pleasant mushroom aroma"
+                },
+                "zh": {
+                      "cap": "6–12厘米，淡米黄色底上密密麻麻覆满红褐色细纤维小鳞片",
+                      "underCap": "离生细密菌褶，幼时浅粉色，后转为深沉巧克力棕褐色",
+                      "stem": "修长纯白，具脆弱下垂菌环；【切开后菌肉瞬间转为鲜血红色！】",
+                      "odor": "清新宜人"
+                },
+                "fi": {
+                      "cap": "6–12 cm, vaalealla pohjalla runsaasti ruskeita kuitusuomuja",
+                      "underCap": "Vapaat heltat, vaaleanpunaiset, vanhana suklaanruskeat",
+                      "stem": "Hoikka, valkeahko, hento rengas; MALTO MUUTTUU HETI VERENPUNAISEKSI leikattaessa",
+                      "odor": "Miellyttävä"
+                }
+          },
+          "culinaryTip": {
+                "en": "Superb culinary mushroom with dense meatiness and rich woodsy flavor. Blood-red bruising disappears upon cooking.",
+                "zh": "肉质致密肥嫩的高级食用菌，比普通草地蘑菇更有深沉的森林木质清香。切口血红变色在受热烹煮后会自然消退。",
+                "fi": "Huippumakuinen kuusikon ruokasieni. Punainen väri katoaa kypsennettäessä."
+          },
+          "lookalikeAlert": {
+                "en": "Immediate blood-red flesh reaction combined with brown scaly cap in spruce litter is diagnostic.",
+                "zh": "切开后肉质瞬息万变的血红色反应、加上长在云杉松针中的红褐鳞片，让其极其容易与有毒菌区分。",
+                "fi": "Leikkauspinnan välitön punastuminen on lajin paras tuntomerkki."
+          },
+          "whereWhen": {
+                "en": "August to October in dense Norway spruce forests across Sipoonkorpi and Nuuksio.",
+                "zh": "8月至10月在Sipoonkorpi与Nuuksio幽深阴凉的老云杉林地中成群出菇。",
+                "fi": "Elo-lokakuussa vanhoissa kuusikoissa."
+          },
+          "searchTactics": {
+                "en": "Scan thick needle litter beneath tall spruces. Make a small cut in the stem to witness the instant blood-red flush.",
+                "zh": "在挺拔的云杉林下厚松针层搜寻棕褐色小鳞盖，小刀划开菌柄数秒内见血红即可确信。",
+                "fi": "Etsi kuusien alta neulasmatolta ja tee viilto jalkaan punastumisen toteamiseksi."
+          },
+          "lookalikes": {
+                "en": "Destroying Angel has pure white cap, white gills, and never bruises red.",
+                "zh": "白毒伞纯白菌盖与白菌褶，切开永不变红，且底具菌托。",
+                "fi": "Valkokärpässieni ei koskaan punastu eikä sillä ole suomuja."
+          },
+          "cookingGuide": {
+                "en": "Slice and sauté in butter with shallots and a splash of heavy cream. Magnificent served on warm toast.",
+                "zh": "切片在黄油中慢炒，加洋葱碎与少许奶油，收汁后浇在刚烤热的面包片上鲜香扑鼻。",
+                "fi": "Paista voissa sipulin kera ja lisää kermaa."
+          },
+          "image": "./images/agaricus_silvaticus.jpg",
+          "gallery": [
+                {
+                      "file": "./images/agaricus_silvaticus.jpg",
+                      "caption": {
+                            "en": "Blushing Wood Mushroom in natural Finnish forest habitat",
+                            "zh": "森林蘑菇 在芬兰森林中的自然生境",
+                            "fi": "Tapionherkkusieni luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Felipe Hidalgo, some rights reserved (CC BY-NC), uploaded by Felipe Hidalgo"
+                }
+          ]
+    },
+{
+          "id": "coprinus_comatus",
+          "latinName": "Coprinus comatus",
+          "family": "agaric_others",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "beginner",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Shaggy Mane / Lawyer's Wig",
+                      "local": "Suomumustesieni",
+                      "alt": "Coprinus comatus"
+                },
+                "zh": {
+                      "primary": "毛头鬼伞",
+                      "local": "鸡腿菇 / 墨汁鬼伞幼菌",
+                      "alt": "Coprinus comatus"
+                },
+                "fi": {
+                      "primary": "Suomumustesieni",
+                      "local": "Suomumustesieni",
+                      "alt": "Coprinus comatus"
+                }
+          },
+          "habitatName": {
+                "en": "Rich lawns, roadside verges, parks, compost areas & disturbed ground",
+                "zh": "肥沃草坪、城市路旁绿化带、公园草地、堆肥区及泥土翻耕地",
+                "fi": "Nurmikoilla, pientareilla, puistoissa ja kompostimailla"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "5–15 cm tall, cylindrical to bell-shaped, pure white covered with shaggy woolly scales",
+                      "underCap": "Crowded white gills, rapidly turning pink, then deliquescing into jet-black liquid ink",
+                      "stem": "Tall, hollow, smooth, white with a loose moveable ring",
+                      "odor": "Mild, delicate and pleasant"
+                },
+                "zh": {
+                      "cap": "5–15厘米高，高圆柱形至钟形，纯白色，表面布满蓬松如羽毛般的羊毛状卷曲小鳞片",
+                      "underCap": "细密纯白菌褶，成熟时自菌盖边缘迅速变粉红，随后自溶化为墨黑色的墨水液体",
+                      "stem": "高大修长，中空，纯白，具脆弱易脱落的活动菌环",
+                      "odor": "清新温和甘美"
+                },
+                "fi": {
+                      "cap": "5–15 cm korkea, sylinterimäinen, puhtaanvalkoinen ja villasuomuinen",
+                      "underCap": "Valkoiset tiheät heltat, muuttuvat vaaleanpunaisiksi ja sulavat lopulta mustaksi musteeksi",
+                      "stem": "Hoikka, valkoinen, ontto, pieni liikkuva rengas",
+                      "odor": "Mieto, miellyttävä"
+                }
+          },
+          "culinaryTip": {
+                "en": "TIMING IS CRITICAL! Must be picked when pure white throughout and cooked within 2–3 hours. Once gills turn black and melt into ink, it is inedible.",
+                "zh": "时间就是生命！必须采摘通体纯白如雪、菌盖紧闭的幼菌，并在采回2-3小时内尽快下锅烹制！一旦菌褶开始转黑自溶化水便不可食用。",
+                "fi": "VALMISTA NOPEASTI! Poimi vain puhtaanvalkoisia nuoria yksilöitä ja valmista 2–3 tunnin sisällä ennen kuin heltat sulavat musteeksi."
+          },
+          "lookalikeAlert": {
+                "en": "Coprinopsis atramentaria (Common Ink Cap) is smooth grey and causes severe poisoning when mixed with alcohol. Shaggy mane is pure white and shaggy.",
+                "zh": "注意区别光头墨汁鬼伞（C. atramentaria），后者呈光滑灰褐色，含鬼伞素，与酒精同服会引发剧烈乙醛中毒！毛头鬼伞纯白多鳞，无酒精毒性。",
+                "fi": "Älä sekoita harmaamustesieneen, joka aiheuttaa alkoholin kanssa myrkytyksen. Suomumustesieni on valkoinen ja pörröinen."
+          },
+          "whereWhen": {
+                "en": "Late August through October on lawns and park borders throughout Helsinki and Espoo.",
+                "zh": "8月下旬至10月在赫尔辛基与埃斯波市内肥沃草坪、社区花园绿化带成群破土而出。",
+                "fi": "Elo-lokakuussa hyvin yleinen taajamien nurmikoilla ja puistoissa."
+          },
+          "searchTactics": {
+                "en": "Look for gleaming white cylindrical towers popping up in city lawns overnight after soaking rain.",
+                "zh": "秋雨过后次日清晨，在开阔草坪上巡视如雨后春笋般整齐立起的一尊尊白玉小火箭。",
+                "fi": "Etsi puhtaanvalkoisia 'tötteröitä' nurmikoilta sateen jälkeen."
+          },
+          "lookalikes": {
+                "en": "Coprinopsis atramentaria lacks the shaggy white woolly scales.",
+                "zh": "墨汁鬼伞菌盖呈光秃灰色，无毛茸茸白色鳞片。",
+                "fi": "Harmaamustesieni on sileä ja harmaa."
+          },
+          "cookingGuide": {
+                "en": "Cut in halves lengthwise, pan-fry gently in butter for 3 minutes. Incredibly tender, velvety texture with sweet creaminess.",
+                "zh": "洗净对剖两半，入热黄油平底锅小火慢煎3分钟，口感极其滑爽嫩弹、汁水丰盈如顶级鸡腿肉。",
+                "fi": "Halkaise pituussuunnassa ja paista nopeasti voissa. Upean pehmeä ja mehevä maku."
+          },
+          "image": "./images/coprinus_comatus.jpg",
+          "gallery": [
+                {
+                      "file": "./images/coprinus_comatus.jpg",
+                      "caption": {
+                            "en": "Shaggy Mane / Lawyer's Wig in natural Finnish forest habitat",
+                            "zh": "毛头鬼伞 在芬兰森林中的自然生境",
+                            "fi": "Suomumustesieni luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Tom Norton, some rights reserved (CC BY), uploaded by Tom Norton"
+                }
+          ]
+    },
+{
+          "id": "infundibulicybe_geotropa",
+          "latinName": "Infundibulicybe geotropa",
+          "family": "agaric_others",
+          "rating": "**",
+          "edibility": "good",
+          "level": "intermediate",
+          "months": [
+                9,
+                10,
+                11
+          ],
+          "names": {
+                "en": {
+                      "primary": "Trooping Funnel",
+                      "local": "Jättimalikka",
+                      "alt": "Clitocybe geotropa"
+                },
+                "zh": {
+                      "primary": "地生杯伞",
+                      "local": "大杯伞 / 巨型漏斗菇",
+                      "alt": "Infundibulicybe geotropa"
+                },
+                "fi": {
+                      "primary": "Jättimalikka",
+                      "local": "Jättimalikka",
+                      "alt": "Infundibulicybe geotropa"
+                }
+          },
+          "habitatName": {
+                "en": "Nutrient-rich deciduous woods, hazel groves, grassy clearings & lime-rich spruce slopes",
+                "zh": "富营养阔叶林、欧榛树林、草地林间空地及微碱性云杉林坡",
+                "fi": "Lehdot, pähkinämetsät, rehevät kuusikot ja ruohikkoiset aukeat"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "10–25 cm, giant funnel-shaped, pale buff-cream to apricot-fawn with a distinct central bump (umbo)",
+                      "underCap": "Deeply decurrent cream-white crowded gills running far down stem",
+                      "stem": "Massive, tall, club-shaped base, firm and solid",
+                      "odor": "Exquisite sweet perfume of bitter almonds, marzipan and lavender"
+                },
+                "zh": {
+                      "cap": "10–25厘米，硕大如号角的深漏斗状，浅米黄至杏仁淡褐色，漏斗中心具明显尖脐突起",
+                      "underCap": "深延生、密集的乳白色菌褶，沿菌柄向下延伸很深",
+                      "stem": "粗壮修长，基部膨大，肉质极坚实",
+                      "odor": "极其香浓优雅的苦杏仁、杏仁糖霜（Marzipan）与薰衣草花果芬芳"
+                },
+                "fi": {
+                      "cap": "10–25 cm, suuri ja suppilomainen, vaalean nahankeltainen, keskellä terävä nypy",
+                      "underCap": "Syvään johteiset tiheät vaaleat heltat",
+                      "stem": "Erittäin paksu, tyvestä nuijamainen, kova ja kiinteä",
+                      "odor": "Voimakas, makean mantelimainen tai marsipaania muistuttava tuoksu"
+                }
+          },
+          "culinaryTip": {
+                "en": "Heavy, substantial mushroom. The thick fleshy cap retains its bite and delicate almond perfume when cooked.",
+                "zh": "体型厚硕的硬质食用菌。菌盖肥厚耐煮，熟后仍散发独特的淡雅杏仁清香，适合炖菜与焗烤。",
+                "fi": "Suurikokoinen ja kiinteä ruokasieni. Säilyttää hienon mantelin tuoksunsa kypsennettäessä."
+          },
+          "lookalikeAlert": {
+                "en": "Clouded Agaric (C. nebularis) has smoky-grey cap and unpleasant sour odor; Giant funnel has pale buff cap with central nipple.",
+                "zh": "灰假杯伞（C. nebularis）菌盖呈烟灰色且气味酸冲；地生杯伞为浅暖米黄且中央具尖突。",
+                "fi": "Härmämalikalla on harmaa lakki ilman nypyä ja tunkkainen tuoksu."
+          },
+          "whereWhen": {
+                "en": "Late September through November in warm deciduous and mixed groves across Uusimaa.",
+                "zh": "9月下旬至11月中旬晚秋在乌西玛大区富营养阔叶及混交林地常排成长串或仙女圈出菇。",
+                "fi": "Syys-marraskuussa kalkkipitoisissa rehevissä metsissä."
+          },
+          "searchTactics": {
+                "en": "Look for large troops or massive fairy rings of pale funnels advancing across forest clearings.",
+                "zh": "在林间平缓草坡搜寻成大弧线排开或围成巨大“仙女圈”的浅米色漏斗大菇。",
+                "fi": "Etsi suuria noidankehiä tai rivejä metsäaukeilta."
+          },
+          "lookalikes": {
+                "en": "Smaller white Clitocybe species can be poisonous; this gigantic species (>10 cm) with central umbo is safe.",
+                "zh": "小型白色杯伞有毒，但此类体型超10-20厘米、中央带尖脐的巨型种十分安全。",
+                "fi": "Pienet valkoiset malikat ovat myrkyllisiä; jättimalikka on kookas ja turvallinen."
+          },
+          "cookingGuide": {
+                "en": "Chop the thick cap into strips, braise slowly in olive oil and white wine, or roast with root vegetables.",
+                "zh": "切粗条与根茎类蔬菜同烤，或入橄榄油白葡萄酒中慢火焖烧，香气四溢。",
+                "fi": "Paloittele lakki ja hauduta hitaasti pataruoissa."
+          },
+          "image": "./images/infundibulicybe_geotropa.jpg",
+          "gallery": [
+                {
+                      "file": "./images/infundibulicybe_geotropa.jpg",
+                      "caption": {
+                            "en": "Trooping Funnel in natural Finnish forest habitat",
+                            "zh": "地生杯伞 在芬兰森林中的自然生境",
+                            "fi": "Jättimalikka luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+                }
+          ]
+    },
+{
+          "id": "clitocybe_nebularis",
+          "latinName": "Clitocybe nebularis",
+          "family": "agaric_others",
+          "rating": "!*",
+          "edibility": "parboil",
+          "level": "advanced",
+          "months": [
+                9,
+                10,
+                11
+          ],
+          "names": {
+                "en": {
+                      "primary": "Clouded Agaric",
+                      "local": "Härmämalikka",
+                      "alt": "Clitocybe nebularis"
+                },
+                "zh": {
+                      "primary": "灰假杯伞",
+                      "local": "雾霭杯伞 / 烟云杯伞",
+                      "alt": "Clitocybe nebularis"
+                },
+                "fi": {
+                      "primary": "Härmämalikka",
+                      "local": "Härmämalikka",
+                      "alt": "Clitocybe nebularis"
+                }
+          },
+          "habitatName": {
+                "en": "Coniferous and mixed forests, deep spruce needle litter, leaf piles & parks",
+                "zh": "针叶林与混交林、深厚云杉落针层、落叶堆及城市公园",
+                "fi": "Havumetsät, kuusikot, lehtikasat ja puistot"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "7–20 cm, cloudy ash-grey to smoky-brown, covered with delicate frosty white bloom when young",
+                      "underCap": "Cream-yellow crowded decurrent gills",
+                      "stem": "Stout, club-shaped base, pale greyish-white",
+                      "odor": "Strong, pungent, sweet-sour spicy odor"
+                },
+                "zh": {
+                      "cap": "7–20厘米，烟灰至暗云雾灰色，幼时表面覆有一层精致如白霜般的薄雾粉层",
+                      "underCap": "乳黄白色细密下延菌褶",
+                      "stem": "粗壮，基部膨大如球棒，灰白相间",
+                      "odor": "强烈浓重、酸甜兼具的特殊香料气味"
+                },
+                "fi": {
+                      "cap": "7–20 cm, tuhkanharmaa tai savunruskea, nuorena vaalean härmän peitossa",
+                      "underCap": "Vaaleankellertävät johteiset heltat",
+                      "stem": "Tukeva, tyvestä paksuntunut, harmaanvalkoinen",
+                      "odor": "Voimakas, imelähkön pistävä tuoksu"
+                }
+          },
+          "culinaryTip": {
+                "en": "MUST BE PARBOILED FOR 10 MINUTES in boiling water to eliminate nebularine compound. Some individuals remain sensitive.",
+                "zh": "因含雾霭杯伞素，必须在滚沸大水中沸煮10分钟，彻底沥干弃水后方可烹制。极少数过敏体质人群慎用。",
+                "fi": "VAATII 10 MINUUTIN RYÖPPÄYKSEN. Saattaa aiheuttaa herkimmille vatsavaivoja."
+          },
+          "lookalikeAlert": {
+                "en": "Can be confused with Entoloma sinuatum (poisonous - pink gills when mature). Verify cream-yellow gills and needle habitat.",
+                "zh": "警惕粉褶菌属毒菌（成熟后菌褶转粉红）。灰假杯伞菌褶成熟后为乳黄色，且散发特异酸甜香气。",
+                "fi": "Varo isorusokasta, jonka heltat muuttuvat vanhana vaaleanpunaisiksi."
+          },
+          "whereWhen": {
+                "en": "Abundant late autumn (September through November) forming huge fairy rings across Greater Helsinki.",
+                "zh": "9月中旬至11月在赫尔辛基森林深处常结成数十朵连绵的巨大仙女圈爆发。",
+                "fi": "Hyvin yleinen syys-marraskuussa noidankehinä."
+          },
+          "searchTactics": {
+                "en": "Look in dark spruce woods where deep needle piles are decomposing.",
+                "zh": "在阴暗幽深的云杉老林松针厚积腐烂处成排搜寻。",
+                "fi": "Etsi paksusta neulaskarikkeesta kuusten alta."
+          },
+          "lookalikes": {
+                "en": "Entoloma species have pink spore print; C. nebularis has white/cream spores.",
+                "zh": "有毒粉褶菌孢子印为粉红色；灰假杯伞孢子印为淡乳白至微黄色。",
+                "fi": "Rusokkailla on punainen itiöpöly."
+          },
+          "cookingGuide": {
+                "en": "Parboil 10 min, drain and discard water. Sauté with onions and spices or pickle in vinegar brine.",
+                "zh": "焯水10分钟后捞起洗净，挤干水分，加黑胡椒与洋葱炒食，或制成酸甜醋渍菇。",
+                "fi": "Ryöppää 10 min, kaada vesi pois ja valmista etikkasäilyke tai paista sipulin kera."
+          },
+          "image": "./images/clitocybe_nebularis.jpg",
+          "gallery": [
+                {
+                      "file": "./images/clitocybe_nebularis.jpg",
+                      "caption": {
+                            "en": "Clouded Agaric in natural Finnish forest habitat",
+                            "zh": "灰假杯伞 在芬兰森林中的自然生境",
+                            "fi": "Härmämalikka luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Susana C. Gonçalves, some rights reserved (CC BY-NC), uploaded by Susana C. Gonçalves"
+                }
+          ]
+    },
+{
+          "id": "marasmius_oreades",
+          "latinName": "Marasmius oreades",
+          "family": "agaric_others",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "intermediate",
+          "months": [
+                6,
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Fairy Ring Champignon",
+                      "local": "Nurminahikas",
+                      "alt": "Marasmius oreades"
+                },
+                "zh": {
+                      "primary": "硬柄小皮伞",
+                      "local": "仙女圈小皮伞 / 草地小皮伞",
+                      "alt": "Marasmius oreades"
+                },
+                "fi": {
+                      "primary": "Nurminahikas",
+                      "local": "Nurminahikas",
+                      "alt": "Marasmius oreades"
+                }
+          },
+          "habitatName": {
+                "en": "Grassy lawns, pastures, roadsides & sunny meadow trails",
+                "zh": "向阳短草草坪、草场牧地、林道旁草带及野花草甸",
+                "fi": "Nurmikoilla, laitumilla, teiden pientareilla ja puistoissa"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "2–5 cm, buff-tan to pale leather-brown, bell-shaped then flattening with a prominent broad central bump; hygrophanous",
+                      "underCap": "Widely spaced, free, pale cream to buff thick gills",
+                      "stem": "Very tough, wiry, fibrous, flexible—twists 360 degrees without snapping; NO ring",
+                      "odor": "Delicious intense aroma of cyanic almonds, marzipan, and freshly baked sweet bread"
+                },
+                "zh": {
+                      "cap": "2–5厘米，淡黄褐至皮黄色，平展后中央具一凸起大脐突，潮湿时吸水透光",
+                      "underCap": "极其稀疏宽大、互不黏连的乳白色粗菌褶，与菌柄离生",
+                      "stem": "极其坚韧如铁丝，韧皮纤维丰富，用手指扭转360度依然韧而不折；【无菌环】",
+                      "odor": "极其浓烈迷人的天然苦杏仁糖（Marzipan）与新鲜烘烤甜面包甘香"
+                },
+                "fi": {
+                      "cap": "2–5 cm, vaaleanruskea tai nahankeltainen, keskellä laakea nypy",
+                      "underCap": "Hyvin harvassa olevat, paksut kermanvalkeat heltat",
+                      "stem": "Erittäin sitkeä, kiertämistä kestävä, vaalea, renkaaton",
+                      "odor": "Voimakas, mantelinen ja hedelmäinen tuoksu"
+                }
+          },
+          "culinaryTip": {
+                "en": "A legendary gourmet mushroom prized across Europe. USE CAPS ONLY (stems are tough as wire). Remarkable dried.",
+                "zh": "享誉全欧的传奇野生菌！【仅取菌盖下锅】（菌柄韧如铁丝需剪除）。风干脱水后香味浓缩数十倍，是炖肉做汤的绝品。",
+                "fi": "Euroopassa suuresti arvostettu herkkusieni. KÄYTÄ VAIN LAKIT (jalka on liian sitkeä). Kuivattuna erinomainen."
+          },
+          "lookalikeAlert": {
+                "en": "Tough flexible stem that can be twisted like rope without breaking and widely spaced gills distinguish it from poisonous lawn mushrooms.",
+                "zh": "可如麻绳般扭转不断裂的超坚韧细柄、以及极其稀疏的菌褶，是杜绝草地有毒小伞菌的铁证。",
+                "fi": "Jalan poikkeuksellinen sitkeys ja harvat heltat erottavat sen myrkyllisistä nurmikkosienistä."
+          },
+          "whereWhen": {
+                "en": "June through October forming classic expanding green 'fairy rings' in grassy lawns across Helsinki.",
+                "zh": "6月至10月夏秋之季，在赫尔辛基各大草坪上围绕深绿色的草圈成环成圈密集生长。",
+                "fi": "Kesä-lokakuussa nurmikoilla ja niityillä noidankehinä."
+          },
+          "searchTactics": {
+                "en": "Look for dark green lush grass circles in lawns; test the stem by twisting it around your finger.",
+                "zh": "先寻找草坪上明显比周围深绿茂密的一圈圆形深草带，在圈上寻觅小菇并用手指扭转菌柄验真。",
+                "fi": "Etsi nurmikon tummanvihreitä rengaskasvustoja ja kokeile jalan sitkeyttä kiertämällä."
+          },
+          "lookalikes": {
+                "en": "Poisonous lawn toadstools have fragile brittle stems that snap immediately under tension.",
+                "zh": "有毒的小型草地伞菌菌柄脆弱，轻轻一碰立即折断。",
+                "fi": "Myrkyllisten pienten lajien jalat murtuvat heti taitettaessa."
+          },
+          "cookingGuide": {
+                "en": "Snip caps off with scissors. Sauté in butter for 3 minutes, or dry whole to drop into winter soups for rich aroma.",
+                "zh": "用小剪刀剪下菌盖入热黄油锅微煸3分钟，或整朵晒干密封，冬日煨鸡汤随手撒入一把，香飘满屋。",
+                "fi": "Leikkaa lakit irti ja paista voissa tai kuivaa talven keittoihin."
+          },
+          "image": "./images/marasmius_oreades.jpg",
+          "gallery": [
+                {
+                      "file": "./images/marasmius_oreades.jpg",
+                      "caption": {
+                            "en": "Fairy Ring Champignon in natural Finnish forest habitat",
+                            "zh": "硬柄小皮伞 在芬兰森林中的自然生境",
+                            "fi": "Nurminahikas luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Giorgio Bardelli, some rights reserved (CC BY-NC), uploaded by Giorgio Bardelli"
+                }
+          ]
+    },
+{
+          "id": "armillaria_mellea",
+          "latinName": "Armillaria mellea",
+          "family": "agaric_others",
+          "rating": "!*",
+          "edibility": "parboil",
+          "level": "intermediate",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Honey Mushroom",
+                      "local": "Mesisieni",
+                      "alt": "Armillaria mellea sensu lato"
+                },
+                "zh": {
+                      "primary": "假蜜环菌",
+                      "local": "榛蘑 / 东北小黄蘑",
+                      "alt": "Armillaria mellea"
+                },
+                "fi": {
+                      "primary": "Mesisieni",
+                      "local": "Pohjanmesisieni",
+                      "alt": "Armillaria mellea"
+                }
+          },
+          "habitatName": {
+                "en": "Decaying wood, birch and spruce stumps, buried tree roots",
+                "zh": "白桦及云杉倒木、腐朽老树桩及地下枯树根基部",
+                "fi": "Lahot kannot, puiden tyvet ja juuristot"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "4–12 cm, honey-yellow to ochre-brown, covered with tiny dark fibrous hair-like scales, growing in dense clusters",
+                      "underCap": "Cream-yellow crowded gills, becoming spotted with rust-brown",
+                      "stem": "Fibrous, tough, pale above a distinct cottony white-yellow ring; darker brown below",
+                      "odor": "Pleasant, rich mushroomy aroma"
+                },
+                "zh": {
+                      "cap": "4–12厘米，蜜糖黄至浅黄褐色，中央密生微小暗褐色纤毛状鳞片，通常整丛数十朵簇拥在一起生长",
+                      "underCap": "乳白至淡黄色细密菌褶，老熟时微带锈色斑",
+                      "stem": "纤维质坚实，具明显的棉毛状白色至黄色菌环；菌环下方转深褐色",
+                      "odor": "浓郁鲜爽的典型野生菌香"
+                },
+                "fi": {
+                      "cap": "4–12 cm, hunajankeltainen tai ruskeankellertävä, keskeltä pienten tummien suomujen peitossa, kasvaa tiheinä tuppaina",
+                      "underCap": "Vaaleankellertävät heltat",
+                      "stem": "Sitkeä, tyvestä tummuva, selvä kellertävänvalkoinen rengas",
+                      "odor": "Miellyttävä, vahva sienen tuoksu"
+                }
+          },
+          "culinaryTip": {
+                "en": "FAMOUS CHINESE GOURMET DELICACY (榛蘑). MUST BE PARBOILED FOR 10 MINUTES in boiling water to neutralize stomach-irritating resinous compounds.",
+                "zh": "中国东北名菜【小鸡炖蘑菇】不可替代的灵魂原料——野生榛蘑！生食易引起肠胃不适，必须在沸水中大火焯煮10分钟，洗净沥干后红烧或煨炖。",
+                "fi": "Kuuluisa kiinalainen herkkusieni! VAATII 10 MINUUTIN RYÖPPÄYKSEN vatsavaivojen välttämiseksi."
+          },
+          "lookalikeAlert": {
+                "en": "DEADLY FUNERAL BELL (Galerina marginata) also grows on wood but has NO hairy scales on cap, has silvery fibrils on stem, and has brown spores! Always check white spore print.",
+                "zh": "【生死红线戒律】：剧毒丧钟菇（Galerina marginata）同生于木桩上，但其盖面绝对光秃无毛鳞、孢子为深锈棕色（蜜环菌为纯白孢子）！",
+                "fi": "HENGENVAARA: Myrkkynääpikkä kasvaa myös kannoilla, mutta sillä ei ole karvasuomuja ja sen itiöpöly on ruosteenruskeaa!"
+          },
+          "whereWhen": {
+                "en": "Late August through October. Bursts out in massive clusters on decaying stumps throughout Helsinki forests.",
+                "zh": "8月下旬至10月，一场秋雨后常在赫尔辛基各大森林公园的腐朽树桩上爆发式成丛成簇涌现。",
+                "fi": "Elo-lokakuussa kymmenien sienten tiheinä ryhminä kannoilla."
+          },
+          "searchTactics": {
+                "en": "Check birch and spruce stumps along old logging tracks. Confirm white spore print and hairy scales in center of cap.",
+                "zh": "沿林道巡查枯死的桦树与云杉树桩，确认菌盖中心有暗色毛须且菌柄具下垂菌环。",
+                "fi": "Etsi kantoja ja varmista lakin nukkasuomut sekä valkoinen itiöpöly."
+          },
+          "lookalikes": {
+                "en": "Galerina marginata is deadly, solitary to small groups, smooth cap, brown spores.",
+                "zh": "纹缘盔孢伞（丧钟菇）体型小单生或小丛生，盖面光滑无毛，孢子印为深褐色。",
+                "fi": "Myrkkynääpikkä on tappavan myrkyllinen, ruskeaitiöinen ja sileälakkinen."
+          },
+          "cookingGuide": {
+                "en": "Boil for 10 min, rinse in cold water. Braise with bone-in chicken thighs, ginger, star anise, and soy sauce (classic northeastern chicken-mushroom stew).",
+                "zh": "大火沸煮10分钟捞起冲凉。热锅下鸡腿块煸出鸡油，入葱姜八角冰糖生抽爆炒，下榛蘑与红薯粉条慢煲40分钟，汤汁鲜浓入骨！",
+                "fi": "Ryöppää 10 min. Hauduta kananpojan, inkiväärin ja soijan kanssa kiinalaiseksi kanapadaksi."
+          },
+          "image": "./images/armillaria_mellea.jpg",
+          "gallery": [
+                {
+                      "file": "./images/armillaria_mellea.jpg",
+                      "caption": {
+                            "en": "Honey Mushroom in natural Finnish forest habitat",
+                            "zh": "假蜜环菌 在芬兰森林中的自然生境",
+                            "fi": "Mesisieni luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Nathan Wilson, some rights reserved (CC BY-SA)"
+                }
+          ]
+    },
+{
+          "id": "kuehneromyces_mutabilis",
+          "latinName": "Kuehneromyces mutabilis",
+          "family": "agaric_others",
+          "rating": "***",
+          "edibility": "choice",
+          "level": "advanced",
+          "months": [
+                6,
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Sheathed Woodtuft",
+                      "local": "Koivunkantosieni",
+                      "alt": "Kuehneromyces mutabilis"
+                },
+                "zh": {
+                      "primary": "变色库氏菇",
+                      "local": "毛柄库恩菇 / 桦树平菇",
+                      "alt": "Kuehneromyces mutabilis"
+                },
+                "fi": {
+                      "primary": "Koivunkantosieni",
+                      "local": "Koivunkantosieni",
+                      "alt": "Kuehneromyces mutabilis"
+                }
+          },
+          "habitatName": {
+                "en": "Stumps and dead logs of Silver Birch (Betula pendula)",
+                "zh": "白桦树（Betula pendula）的树桩、倒木及腐朽木段上",
+                "fi": "Lehtipuiden, erityisesti koivujen kannoilla ja maapuilla"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "3–7 cm, two-toned watery cinnamon-brown when wet, drying to pale ochre-yellow from center outward",
+                      "underCap": "Crowded pale cinnamon-brown gills",
+                      "stem": "Slender, hollow, with membranous ring; CRITICAL: densely covered in dark bristly reflexed scales BELOW the ring",
+                      "odor": "Pleasant, spicy, woodsy aroma"
+                },
+                "zh": {
+                      "cap": "3–7厘米，强水浸吸水性，湿润时呈深肉桂色，干燥时自中央向外退成双色淡黄色斑",
+                      "underCap": "细密肉桂浅褐色菌褶",
+                      "stem": "纤细中空，具膜质小菌环；【命脉鉴别点：菌环下方密布粗糙反卷的黑褐色刺状硬鳞片！】",
+                      "odor": "清香微带辛甜木香"
+                },
+                "fi": {
+                      "cap": "3–7 cm, kosteana kaksivärinen, kanelinruskea, kuivuu keskeltä kellertäväksi",
+                      "underCap": "Tiheät, vaalean kanelinruskeat heltat",
+                      "stem": "Hoikka, ontto, renkaallinen; RENKAAN ALAPUOLELLA KARKEITA TUMMANRUSKEITA TÖRRÖTTÄVIÄ SUOMUJA",
+                      "odor": "Miellyttävä, mausteinen"
+                }
+          },
+          "culinaryTip": {
+                "en": "Delicious tender cap. ADVANCED FORAGERS ONLY. Novices must never forage wood-dwelling brown mushrooms to avoid fatal poisoning.",
+                "zh": "菌盖极其滑嫩鲜甜。但【仅限资深专家采摘】！初学者若无法绝对分清菌柄倒生硬刺鳞，严禁采摘木桩上的褐色小菇！",
+                "fi": "Erittäin maukas keittosieni. VAIN KOKENEILLE SIENESTÄJILLE hengenvaarallisen myrkkysekaannuksen takia."
+          },
+          "lookalikeAlert": {
+                "en": "LETHALLY CONFUSED with Funeral Bell (Galerina marginata). Galerina stem is silky-smooth or silver-fibrillose below ring; Kuehneromyces MUST have coarse dark bristly backward-pointing scales.",
+                "zh": "【致命混淆生死抉择】：极易与致死量仅数朵的丧钟菇（Galerina marginata）混淆！丧钟菇菌环下方呈银白丝绢光滑状；变色库氏菇菌环下方【必须】有粗糙如倒刺的黑褐色鳞片！",
+                "fi": "HENGENVAARALLINEN SEKAANNUS: Tappavan myrkyllinen myrkkynääpikkä (Galerina marginata) on jalaltaan vaalean silkkisäikeinen, koivunkantosieni karheasuomuinen!"
+          },
+          "whereWhen": {
+                "en": "June through October in dense clusters on dead birch stumps across Uusimaa.",
+                "zh": "6月至10月在乌西玛大区倒毙的白桦树桩上紧密簇拥生长。",
+                "fi": "Kesä-lokakuussa tiheinä tuppaina koivukannoilla."
+          },
+          "searchTactics": {
+                "en": "Inspect birch stumps in shady moist woods; examine the lower stem with a 10x hand lens for coarse bristly scales.",
+                "zh": "在阴湿林中检查桦木树桩，必须用强光仔细检视每朵菇菌环下方的深色反卷鳞片，有一朵存疑全窝弃用！",
+                "fi": "Tarkasta jokaisen sienen jalka suurennuslasilla renkaan alapuolelta."
+          },
+          "lookalikes": {
+                "en": "Funeral Bell (Galerina marginata) is deadly toxic, has smooth silvery-fibrillose stem below ring.",
+                "zh": "丧钟菇菌环下平滑泛银白丝绢反光，剧毒足以摧毁肝肾。",
+                "fi": "Myrkkynääpikällä ei koskaan ole törröttäviä tummia suomuja."
+          },
+          "cookingGuide": {
+                "en": "Snip caps from tough stems. Sauté in butter or add directly to summer vegetable soups.",
+                "zh": "剪取娇嫩菌盖，入热黄油中翻炒，或加入芬兰传统夏日鲜蔬汤中清甜可口。",
+                "fi": "Käytä vain lakit. Paista voissa tai valmista kesäinen keitto."
+          },
+          "image": "./images/kuehneromyces_mutabilis.jpg",
+          "gallery": [
+                {
+                      "file": "./images/kuehneromyces_mutabilis.jpg",
+                      "caption": {
+                            "en": "Sheathed Woodtuft in natural Finnish forest habitat",
+                            "zh": "变色库氏菇 在芬兰森林中的自然生境",
+                            "fi": "Koivunkantosieni luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Dr. Hans-Günter Wagner, some rights reserved (CC BY-SA)"
+                }
+          ]
+    },
+{
+          "id": "calvatia_gigantea",
+          "latinName": "Calvatia gigantea",
+          "family": "agaric_others",
+          "rating": "**",
+          "edibility": "good",
+          "level": "beginner",
+          "months": [
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Giant Puffball",
+                      "local": "Jättituhkelo",
+                      "alt": "Langermannia gigantea"
+                },
+                "zh": {
+                      "primary": "大马勃",
+                      "local": "巨型马勃 / 森林白皮球",
+                      "alt": "Calvatia gigantea"
+                },
+                "fi": {
+                      "primary": "Jättituhkelo",
+                      "local": "Jättituhkelo",
+                      "alt": "Calvatia gigantea"
+                }
+          },
+          "habitatName": {
+                "en": "Nutrient-rich meadows, pastures, sunny woodland edges & grassy park clearings",
+                "zh": "富营养草甸、草场牧地、阳光充足的林缘及城市公园开阔草坪",
+                "fi": "Rehevät laitumet, niityt, pihat ja lehtimetsien reunat"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "20–60 cm wide, giant spherical to irregular white ball, smooth like soft white leather; NO stem, NO gills",
+                      "underCap": "No underside; enclosed interior (gleba) must be 100% pure solid snow-white throughout like cream cheese",
+                      "stem": "Attached to soil by thin mycelial cord",
+                      "odor": "Mild, pleasant, fresh mushroom aroma"
+                },
+                "zh": {
+                      "cap": "直径20–60厘米，巨大球体宛如白色足球或大皮革抱枕，表面平滑白嫩如婴儿肌肤；无菌柄、无菌褶",
+                      "underCap": "无腹面；切开后内部肉质（产孢体）必须【100%纯洁如雪、如奶油奶酪般紧致实心】",
+                      "stem": "仅靠底部细小菌丝索与泥土相连",
+                      "odor": "清新温和甘美"
+                },
+                "fi": {
+                      "cap": "20–60 cm leveä, jättimäinen valkoinen pallo, nahkamainen pinta; EI jalkaa, EI helttoja",
+                      "underCap": "Sisus (gleba) leikattaessa oltava 100 % puhtaan lumivalkoinen ja tasainen",
+                      "stem": "Kiinnittyy maahan ohuella rihmastojänteellä",
+                      "odor": "Mieto, raikas"
+                }
+          },
+          "culinaryTip": {
+                "en": "Slice like bread into 2cm slabs, dip in beaten egg and breadcrumbs, and fry like French toast! NEVER EAT IF INTERIOR SHOWS ANY YELLOW OR GREEN TINT.",
+                "zh": "像切大面包一样切成2厘米厚片，裹蛋液与面包糠，用黄油煎成法式吐司金黄色！如切开内部有丝毫黄绿褐变，切勿食用！",
+                "fi": "Leikkaa paksuiksi 'leipäviipaleiksi', leivitä kananmunassa ja paista runsaassa voissa. ÄLÄ SYÖ JOS SISUS ON KELLERTÄVÄ."
+          },
+          "lookalikeAlert": {
+                "en": "Must be cut completely in half before cooking: verify pure solid white interior with zero outline of hidden gills or cap.",
+                "zh": "烹调前必须将其从中一剖为二：确认内部100%致密纯白如实心豆腐，绝无隐藏的幼伞菌褶轮廓！",
+                "fi": "Halkaise aina kahtia: sisuksen oltava tasaisen valkoinen ilman helttojen aihioita."
+          },
+          "whereWhen": {
+                "en": "August through October on rich nitrogen-rich soils across Greater Helsinki.",
+                "zh": "8月至10月在富含氮质的草地、公园边缘及牧场草坡上破土耸立。",
+                "fi": "Elo-lokakuussa rehevillä mailla."
+          },
+          "searchTactics": {
+                "en": "Look for what appears to be a lost white soccer ball or sheep sitting in a sunny pasture.",
+                "zh": "远望如同草地上遗落的一颗白色足球或打盹的小绵羊，体型极为硕大醒目。",
+                "fi": "Näkyy kauas nurmikoilta kuin unohdettu jalkapallo."
+          },
+          "lookalikes": {
+                "en": "Immature deadly Amanitas inside egg-stage will reveal miniature cap and gills when sliced in half.",
+                "zh": "未成熟的剧毒鹅膏菌在“蛋期”对剖会清晰显示出内部微型的菌柄与菌盖菌褶雏形；马勃内部完全实心均一。",
+                "fi": "Kärpässienen munavaiheessa näkyy halkaistaessa lakin ja jalan aihio."
+          },
+          "cookingGuide": {
+                "en": "Cut into thick steaks. Dip in egg, dredge in seasoned breadcrumbs, and pan-fry in butter until golden brown and crispy.",
+                "zh": "切成大块素牛排厚度，裹鸡蛋液撒椒盐，热黄油煎至两面金黄外酥里嫩，奶香四溢。",
+                "fi": "Viipaloi 'pihveiksi', leivitä ja paista voissa kullankeltaiseksi."
+          },
+          "image": "./images/calvatia_gigantea.jpg",
+          "gallery": [
+                {
+                      "file": "./images/calvatia_gigantea.jpg",
+                      "caption": {
+                            "en": "Giant Puffball in natural Finnish forest habitat",
+                            "zh": "大马勃 在芬兰森林中的自然生境",
+                            "fi": "Jättituhkelo luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Krystelle Denis, some rights reserved (CC BY-NC), uploaded by Krystelle Denis"
+                }
+          ]
+    },
+{
+          "id": "lycoperdon_perlatum",
+          "latinName": "Lycoperdon perlatum",
+          "family": "agaric_others",
+          "rating": "**",
+          "edibility": "good",
+          "level": "beginner",
+          "months": [
+                7,
+                8,
+                9,
+                10
+          ],
+          "names": {
+                "en": {
+                      "primary": "Common Puffball",
+                      "local": "Nuijakuukunen",
+                      "alt": "Lycoperdon perlatum"
+                },
+                "zh": {
+                      "primary": "网纹马勃",
+                      "local": "珍珠马勃 / 小马勃",
+                      "alt": "Lycoperdon perlatum"
+                },
+                "fi": {
+                      "primary": "Nuijakuukunen",
+                      "local": "Nuijakuukunen",
+                      "alt": "Lycoperdon perlatum"
+                }
+          },
+          "habitatName": {
+                "en": "Spruce and pine heaths, mossy woodland paths & decaying needle humus",
+                "zh": "云杉与松树针叶林、长满青苔的林间小道及针叶腐殖土",
+                "fi": "Havumetsät, polunvarret ja sammaleiset metsämaat"
+          },
+          "morphology": {
+                "en": {
+                      "cap": "3–7 cm tall, inverted pear-shaped to club-shaped, pure white covered with tiny conical warts that rub off easily leaving a net pattern",
+                      "underCap": "Enclosed interior must be pure snowy-white throughout; NO gills",
+                      "stem": "Sterile tapering base beneath the round fertile head",
+                      "odor": "Mild, pleasant mushroom aroma"
+                },
+                "zh": {
+                      "cap": "3–7厘米高，倒梨形至圆球棒槌形，纯白色，表面密布如珍珠般细小的小圆锥刺瘤，轻轻揉搓即脱落并留下网状印痕",
+                      "underCap": "无菌褶；对半切开内部必须呈均一致密的纯雪白色如豆腐脑",
+                      "stem": "下部为不育的渐细柄基",
+                      "odor": "清新柔和"
+                },
+                "fi": {
+                      "cap": "3–7 cm korkea, nuijamainen tai päärynämäinen, valkoinen, pinnalla helposti irtoavia kartiomaisia piikkejä",
+                      "underCap": "Sisus oltava nuorena täysin tasaisen lumivalkoinen; EI helttoja",
+                      "stem": "Tyveä kohti kapeneva steriili jalkaosa",
+                      "odor": "Mieto, miellyttävä"
+                }
+          },
+          "culinaryTip": {
+                "en": "Pick only young specimens that are solid snowy-white inside. Slice in half before cooking; once yellow or brown, discard.",
+                "zh": "必须采摘切开内部完全纯白如雪的鲜嫩幼菌。烹调前逐个对剖确认无误；一旦内部泛黄或变褐即变质不可食用。",
+                "fi": "Kerää vain valkoisia yksilöitä, joiden sisus on täysin lumivalkoinen. Halkaise aina ennen käyttöä."
+          },
+          "lookalikeAlert": {
+                "en": "Always cut every puffball lengthwise to verify that NO hidden gills of deadly Amanita 'eggs' exist inside!",
+                "zh": "采摘所有小型马勃的绝对铁律：下锅前必须逐一纵向剖开，确认内部100%实心，绝无鹅膏菌蛋的菌褶雏形！",
+                "fi": "Tarkista aina halkaisemalla, ettei sisällä ole kärpässienen aihioita."
+          },
+          "whereWhen": {
+                "en": "Abundant from July through October along mossy trails in Keskuspuisto, Nuuksio, and Sipoonkorpi.",
+                "zh": "7月至10月在中央公园、Nuuksio及Sipoonkorpi的苔藓小径两旁极其常见。",
+                "fi": "Hyvin yleinen polkujen varsilla havumetsissä koko Uudellamaalla."
+          },
+          "searchTactics": {
+                "en": "Look for clusters of small white clubs standing out against dark spruce moss along trails.",
+                "zh": "在林道两旁深绿苔藓中搜寻成簇破土的小白球棒，手指抚摸可见珍珠状刺点脱落。",
+                "fi": "Etsi valkoisia nuijamaisia ryhmiä sammalikosta."
+          },
+          "lookalikes": {
+                "en": "Poisonous Earthballs (Scleroderma) have tough yellowish-brown skin and dark purple-black interior right from youth.",
+                "zh": "有毒硬皮地星马勃（Scleroderma）外皮粗糙坚韧泛黄褐，且从幼时起内部即为深紫黑色。",
+                "fi": "Myrkyllinen mukulakuukunen on kova, nahkainen ja sisältä jo nuorena musta."
+          },
+          "cookingGuide": {
+                "en": "Slice in halves, sauté in butter with chopped chives and salt. Tender, delicate, pillowy texture.",
+                "zh": "对半剖开，入热黄油中加香葱末香煎3分钟，口感如棉花糖般轻盈柔滑。",
+                "fi": "Halkaise ja paista voissa ruohosipulin kera."
+          },
+          "image": "./images/lycoperdon_perlatum.jpg",
+          "gallery": [
+                {
+                      "file": "./images/lycoperdon_perlatum.jpg",
+                      "caption": {
+                            "en": "Common Puffball in natural Finnish forest habitat",
+                            "zh": "网纹马勃 在芬兰森林中的自然生境",
+                            "fi": "Nuijakuukunen luonnollisessa kasvuympäristössään"
+                      },
+                      "attribution": "(c) Stephan Pflume, some rights reserved (CC BY-NC), uploaded by Stephan Pflume"
+                }
+          ]
     }
   ],
 

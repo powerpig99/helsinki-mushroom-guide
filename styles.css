@@ -303,6 +303,12 @@ main {
   align-items: center;
 }
 
+.family-filters-row {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border);
+}
+
 .filter-group {
   display: flex;
   flex-wrap: wrap;

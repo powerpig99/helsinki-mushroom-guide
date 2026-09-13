@@ -3,6 +3,7 @@
 
 let currentTab = "catalog";
 let currentLevelFilter = "all";
+let currentFamilyFilter = "all";
 let currentMonthFilter = null;
 let searchQuery = "";
 let currentMushroomId = null;
@@ -405,6 +406,24 @@ function applyLanguage(lang) {
   document.getElementById("filter-level-advanced").textContent = t.advancedLevel;
   document.getElementById("filter-level-deadly").textContent = t.deadlyLevel;
 
+  const labelFam = document.getElementById("label-family-filter");
+  if (labelFam && t.familyFilterLabel) labelFam.textContent = t.familyFilterLabel;
+  const famMap = {
+    "filter-fam-all": t.allFamilies,
+    "filter-fam-chanterelles": t.famChanterelles,
+    "filter-fam-boletes": t.famBoletes,
+    "filter-fam-tooth": t.famTooth,
+    "filter-fam-polypores": t.famPolypores,
+    "filter-fam-milkcaps": t.famMilkcaps,
+    "filter-fam-brittlegills": t.famBrittlegills,
+    "filter-fam-others": t.famOthers,
+    "filter-fam-deadly": t.famDeadly
+  };
+  for (const [btnId, text] of Object.entries(famMap)) {
+    const el = document.getElementById(btnId);
+    if (el && text) el.textContent = text;
+  }
+
   // Months
   const monthNames = I18N.months[lang];
   document.querySelectorAll(".month-btn").forEach(btn => {
@@ -536,12 +555,22 @@ function setupFilters() {
     });
   }
 
-  const levelButtons = document.querySelectorAll(".pill-btn");
+  const levelButtons = document.querySelectorAll(".level-btn");
   levelButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       levelButtons.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       currentLevelFilter = btn.dataset.level;
+      renderCatalog();
+    });
+  });
+
+  const familyButtons = document.querySelectorAll(".family-btn");
+  familyButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      familyButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentFamilyFilter = btn.dataset.family;
       renderCatalog();
     });
   });
@@ -575,6 +604,21 @@ function renderCatalog() {
     if (currentLevelFilter !== "all" && m.level !== currentLevelFilter) {
       return false;
     }
+    if (currentFamilyFilter !== "all") {
+      if (currentFamilyFilter === "milkcaps") {
+        if (m.family !== "milkcaps" && m.family !== "lactarius_mild" && m.family !== "lactarius_parboil") {
+          return false;
+        }
+      } else if (currentFamilyFilter === "deadly_toxic") {
+        if (m.family !== "deadly_toxic" && m.edibility !== "deadly" && m.edibility !== "inedible") {
+          return false;
+        }
+      } else {
+        if (m.family !== currentFamilyFilter) {
+          return false;
+        }
+      }
+    }
     if (currentMonthFilter && !m.months.includes(currentMonthFilter)) {
       return false;
     }
@@ -582,7 +626,7 @@ function renderCatalog() {
       const en = `${m.names.en.primary} ${m.names.en.local} ${m.names.en.alt}`.toLowerCase();
       const zh = `${m.names.zh.primary} ${m.names.zh.local} ${m.names.zh.alt}`.toLowerCase();
       const fi = `${m.names.fi.primary} ${m.names.fi.local} ${m.names.fi.alt}`.toLowerCase();
-      const morph = `${m.morphology[lang]?.underCap} ${m.morphology[lang]?.cap}`.toLowerCase();
+      const morph = `${m.morphology[lang]?.underCap || ""} ${m.morphology[lang]?.cap || ""}`.toLowerCase();
       const haystack = `${m.latinName} ${en} ${zh} ${fi} ${morph}`.toLowerCase();
       if (!haystack.includes(searchQuery)) {
         return false;

@@ -71,7 +71,7 @@
     <div id="view-main">
       <!-- Navigation Tabs -->
       <nav class="nav-tabs">
-        <button id="tab-btn-catalog" class="tab-btn active" data-tab="catalog">🍄 Species Identification (22)</button>
+        <button id="tab-btn-catalog" class="tab-btn active" data-tab="catalog">🍄 Species Identification (63)</button>
         <button id="tab-btn-lookalikes" class="tab-btn" data-tab="lookalikes">⚖️ Lookalike Comparator</button>
         <button id="tab-btn-cooking" class="tab-btn" data-tab="cooking">🍳 Cooking & Prep Guide</button>
         <button id="tab-btn-spots" class="tab-btn" data-tab="spots">🚌 Helsinki HSL Spots</button>
@@ -91,11 +91,26 @@
           <div class="filters-row">
             <div class="filter-group">
               <span id="label-skill-level" class="filter-label">Skill Level:</span>
-              <button id="filter-level-all" class="pill-btn active" data-level="all">All Species</button>
-              <button id="filter-level-beginner" class="pill-btn" data-level="beginner">Beginner-Safe</button>
-              <button id="filter-level-intermediate" class="pill-btn" data-level="intermediate">Intermediate</button>
-              <button id="filter-level-advanced" class="pill-btn" data-level="advanced">Advanced</button>
-              <button id="filter-level-deadly" class="pill-btn" data-level="deadly" style="color: #b91c1c;">Deadly Toxic</button>
+              <button id="filter-level-all" class="pill-btn level-btn active" data-level="all">All Species</button>
+              <button id="filter-level-beginner" class="pill-btn level-btn" data-level="beginner">Beginner-Safe</button>
+              <button id="filter-level-intermediate" class="pill-btn level-btn" data-level="intermediate">Intermediate</button>
+              <button id="filter-level-advanced" class="pill-btn level-btn" data-level="advanced">Advanced</button>
+              <button id="filter-level-deadly" class="pill-btn level-btn" data-level="deadly" style="color: #b91c1c;">Deadly Toxic</button>
+            </div>
+          </div>
+
+          <div class="filters-row family-filters-row">
+            <div class="filter-group">
+              <span id="label-family-filter" class="filter-label">Family / Group:</span>
+              <button id="filter-fam-all" class="pill-btn family-btn active" data-family="all">All Groups (63)</button>
+              <button id="filter-fam-chanterelles" class="pill-btn family-btn" data-family="cantharellaceae">Chanterelles (5)</button>
+              <button id="filter-fam-boletes" class="pill-btn family-btn" data-family="boletaceae">Boletes (13)</button>
+              <button id="filter-fam-tooth" class="pill-btn family-btn" data-family="hydnaceae">Tooth Fungi (2)</button>
+              <button id="filter-fam-polypores" class="pill-btn family-btn" data-family="polyporaceae">Polypores (3)</button>
+              <button id="filter-fam-milkcaps" class="pill-btn family-btn" data-family="milkcaps">Milkcaps (9)</button>
+              <button id="filter-fam-brittlegills" class="pill-btn family-btn" data-family="russulaceae">Brittlegills (10)</button>
+              <button id="filter-fam-others" class="pill-btn family-btn" data-family="agaric_others">Gilled & Others (14)</button>
+              <button id="filter-fam-deadly" class="pill-btn family-btn" data-family="deadly_toxic" style="color: #b91c1c;">Deadly Lookalikes (7)</button>
             </div>
           </div>
 
