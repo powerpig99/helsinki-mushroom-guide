@@ -722,6 +722,20 @@ function renderCatalog() {
           ${m.culinaryTip && m.culinaryTip[lang] ? `<div class="card-tip">🍳 ${m.culinaryTip[lang]}${nameData2 && m.culinaryTip[lang2] ? `<div class="card-secondary-tip" style="color:#78350f; font-size:0.8rem; margin-top:3px;">${m.culinaryTip[lang2]}</div>` : ""}</div>` : ""}
           ${m.lookalikeAlert && m.lookalikeAlert[lang] ? `<div style="background:#fef3c7; color:#92400e; padding:0.5rem; border-radius:6px; font-size:0.8rem; margin-bottom:0.75rem;">🔍 ${m.lookalikeAlert[lang]}${nameData2 && m.lookalikeAlert[lang2] ? `<div style="color:#78350f; font-size:0.78rem; margin-top:2px;">${m.lookalikeAlert[lang2]}</div>` : ""}</div>` : ""}
 
+          ${(() => {
+            const lkIds = (I18N.lookalikeMap && I18N.lookalikeMap[m.id]) ? I18N.lookalikeMap[m.id] : [];
+            const firstLk = lkIds.length > 0 ? I18N.species.find(s => s.id === lkIds[0]) : null;
+            if (!firstLk) return "";
+            return `
+              <div class="card-lookalike-pill" onclick="event.stopPropagation(); navigateToMushroom('${firstLk.id}')" title="${lang === 'zh' ? '点击对比易混淆种' : (lang === 'fi' ? 'Katso näköislaji' : 'Compare with lookalike')}: ${firstLk.names[lang]?.primary}">
+                <span class="card-lk-icon">⚠️</span>
+                <span class="card-lk-label">${lang === 'zh' ? '近缘混淆' : (lang === 'fi' ? 'Näköislaji' : 'Lookalike')}:</span>
+                <span class="card-lk-name">${firstLk.names[lang]?.primary || firstLk.latinName}</span>
+                ${(firstLk.edibility === 'deadly' || firstLk.level === 'deadly') ? '<span class="card-lk-deadly">☠️</span>' : ''}
+              </div>
+            `;
+          })()}
+
           <div class="card-footer">
             <span>${t.refId} ${m.id}</span>
           </div>
@@ -821,6 +835,19 @@ function renderMushroomDetail(speciesId) {
         else if (lk.edibility === "deadly") { lkBadgeClass = "badge-deadly"; lkBadgeText = t.badgeDeadly; }
         else if (lk.edibility === "inedible") { lkBadgeClass = "badge-inedible"; lkBadgeText = t.badgeInedible; }
 
+        let riskBadgeClass = "badge-risk-edible";
+        let riskBadgeText = `✨ ${lang === 'zh' ? '同为可食用近缘种' : (lang === 'fi' ? 'Myös syötävä näköislaji' : 'Edible Sister Species')}`;
+        if (lk.edibility === "deadly" || lk.level === "deadly") {
+          riskBadgeClass = "badge-risk-deadly";
+          riskBadgeText = `🚨 ${lang === 'zh' ? '致命剧毒警报！' : (lang === 'fi' ? 'TAPPAVA VAARA!' : 'DEADLY LOOKALIKE RISK!')}`;
+        } else if (lk.edibility === "inedible") {
+          riskBadgeClass = "badge-risk-inedible";
+          riskBadgeText = `⚠️ ${lang === 'zh' ? '不可食用 / 极苦混淆' : (lang === 'fi' ? 'Kelvoton näköislaji' : 'Inedible / Bitter Lookalike')}`;
+        } else if (lk.edibility === "parboil") {
+          riskBadgeClass = "badge-risk-parboil";
+          riskBadgeText = `♨️ ${lang === 'zh' ? '需水焯去毒后食用' : (lang === 'fi' ? 'Vaatii ryöppäyksen' : 'Must Parboil Before Eating')}`;
+        }
+
         return `
           <a href="#/mushroom/${lk.id}" class="lookalike-interactive-card" onclick="navigateToMushroom('${lk.id}')">
             <div class="lookalike-img-container">
@@ -830,7 +857,7 @@ function renderMushroomDetail(speciesId) {
             </div>
             <div class="lookalike-content">
               <div class="lookalike-tag-header">
-                <span class="lookalike-badge">⚠️ ${lang === 'zh' ? '易混淆物种' : (lang === 'fi' ? 'Näköislaji' : 'Lookalike Species')}</span>
+                <span class="lookalike-badge ${riskBadgeClass}">${riskBadgeText}</span>
               </div>
               <h3 class="lookalike-title">
                 ${lkName.primary}

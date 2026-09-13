@@ -376,5 +376,485 @@
     "attribution": "(c) Stephan Pflume, some rights reserved (CC BY-NC), uploaded by Stephan Pflume",
     "license_code": "cc-by-nc",
     "file": "images/lycoperdon_perlatum.jpg"
+  },
+  "cantharellus_amethysteus_1": {
+    "species": "Cantharellus amethysteus",
+    "attribution": "(c) Vincent Fatton, all rights reserved",
+    "license_code": null,
+    "file": "images/cantharellus_amethysteus_1.jpg"
+  },
+  "cantharellus_amethysteus_2": {
+    "species": "Cantharellus amethysteus",
+    "attribution": "(c) N. Pauker, all rights reserved",
+    "license_code": null,
+    "file": "images/cantharellus_amethysteus_2.jpg"
+  },
+  "boletus_reticulatus_1": {
+    "species": "Boletus reticulatus",
+    "attribution": "(c) Matthias Thomssen, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/boletus_reticulatus_1.jpg"
+  },
+  "boletus_reticulatus_2": {
+    "species": "Boletus reticulatus",
+    "attribution": "(c) Matthias Thomssen, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/boletus_reticulatus_2.jpg"
+  },
+  "leccinum_vulpinum_1": {
+    "species": "Leccinum vulpinum",
+    "attribution": "(c) Emilija Čiužaitė, all rights reserved",
+    "license_code": null,
+    "file": "images/leccinum_vulpinum_1.jpg"
+  },
+  "leccinum_vulpinum_2": {
+    "species": "Leccinum vulpinum",
+    "attribution": "(c) Kira Marchenkova, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/leccinum_vulpinum_2.jpg"
+  },
+  "leccinum_aurantiacum_1": {
+    "species": "Leccinum aurantiacum",
+    "attribution": "(c) Berno Hellauer, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/leccinum_aurantiacum_1.jpg"
+  },
+  "leccinum_aurantiacum_2": {
+    "species": "Leccinum aurantiacum",
+    "attribution": "(c) Susan Elliott, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/leccinum_aurantiacum_2.jpg"
+  },
+  "leccinum_scabrum_1": {
+    "species": "Leccinum scabrum",
+    "attribution": "(c) jmorgado2803, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/leccinum_scabrum_1.jpg"
+  },
+  "leccinum_scabrum_2": {
+    "species": "Leccinum scabrum",
+    "attribution": "(c) kevininne, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/leccinum_scabrum_2.jpg"
+  },
+  "leccinum_variicolor_1": {
+    "species": "Leccinum variicolor",
+    "attribution": "(c) christian-1956, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/leccinum_variicolor_1.jpg"
+  },
+  "leccinum_variicolor_2": {
+    "species": "Leccinum variicolor",
+    "attribution": "(c) Pyry Liedes, some rights reserved (CC BY)",
+    "license_code": "cc-by",
+    "file": "images/leccinum_variicolor_2.jpg"
+  },
+  "suillus_luteus_1": {
+    "species": "Suillus luteus",
+    "attribution": "(c) vahatalo, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/suillus_luteus_1.jpg"
+  },
+  "suillus_luteus_2": {
+    "species": "Suillus luteus",
+    "attribution": "(c) Oldřich Nedvěd, all rights reserved",
+    "license_code": null,
+    "file": "images/suillus_luteus_2.jpg"
+  },
+  "suillus_variegatus_1": {
+    "species": "Suillus variegatus",
+    "attribution": "(c) Petr Harant, some rights reserved (CC BY)",
+    "license_code": "cc-by",
+    "file": "images/suillus_variegatus_1.jpg"
+  },
+  "suillus_variegatus_2": {
+    "species": "Suillus variegatus",
+    "attribution": "(c) Petr Harant, some rights reserved (CC BY)",
+    "license_code": "cc-by",
+    "file": "images/suillus_variegatus_2.jpg"
+  },
+  "suillus_bovinus_1": {
+    "species": "Suillus bovinus",
+    "attribution": "(c) Nataliia Sosnovshchenko, all rights reserved",
+    "license_code": null,
+    "file": "images/suillus_bovinus_1.jpg"
+  },
+  "suillus_bovinus_2": {
+    "species": "Suillus bovinus",
+    "attribution": "(c) Petr Harant, some rights reserved (CC BY)",
+    "license_code": "cc-by",
+    "file": "images/suillus_bovinus_2.jpg"
+  },
+  "suillus_grevillei_1": {
+    "species": "Suillus grevillei",
+    "attribution": "(c) Michal Honskus, some rights reserved (CC BY)",
+    "license_code": "cc-by",
+    "file": "images/suillus_grevillei_1.jpg"
+  },
+  "suillus_grevillei_2": {
+    "species": "Suillus grevillei",
+    "attribution": "(c) irvinditz, all rights reserved",
+    "license_code": null,
+    "file": "images/suillus_grevillei_2.jpg"
+  },
+  "hydnum_rufescens_1": {
+    "species": "Hydnum rufescens",
+    "attribution": "(c) Юлия Гришанова, all rights reserved",
+    "license_code": null,
+    "file": "images/hydnum_rufescens_1.jpg"
+  },
+  "hydnum_rufescens_2": {
+    "species": "Hydnum rufescens",
+    "attribution": "(c) Dace, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/hydnum_rufescens_2.jpg"
+  },
+  "albatrellus_confluens_1": {
+    "species": "Albatrellus confluens",
+    "attribution": "(c) Alex O, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/albatrellus_confluens_1.jpg"
+  },
+  "albatrellus_confluens_2": {
+    "species": "Albatrellus confluens",
+    "attribution": "(c) Emma Richter, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/albatrellus_confluens_2.jpg"
+  },
+  "laetiporus_sulphureus_1": {
+    "species": "Laetiporus sulphureus",
+    "attribution": "(c) plainjane74, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/laetiporus_sulphureus_1.jpg"
+  },
+  "laetiporus_sulphureus_2": {
+    "species": "Laetiporus sulphureus",
+    "attribution": "(c) Sheelagh Halsey, some rights reserved (CC BY)",
+    "license_code": "cc-by",
+    "file": "images/laetiporus_sulphureus_2.jpg"
+  },
+  "lactarius_deterrimus_1": {
+    "species": "Lactarius deterrimus",
+    "attribution": "(c) Florian Adelsberger, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/lactarius_deterrimus_1.jpg"
+  },
+  "lactarius_deterrimus_2": {
+    "species": "Lactarius deterrimus",
+    "attribution": "(c) Vincent Fatton, all rights reserved",
+    "license_code": null,
+    "file": "images/lactarius_deterrimus_2.jpg"
+  },
+  "lactarius_volemus_1": {
+    "species": "Lactifluus volemus",
+    "attribution": "(c) Katia Burelle, all rights reserved",
+    "license_code": null,
+    "file": "images/lactarius_volemus_1.jpg"
+  },
+  "lactarius_volemus_2": {
+    "species": "Lactifluus volemus",
+    "attribution": "(c) Ryoko Fukuyama, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/lactarius_volemus_2.jpg"
+  },
+  "lactarius_trivialis_1": {
+    "species": "Lactarius trivialis",
+    "attribution": "(c) Alexander, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/lactarius_trivialis_1.jpg"
+  },
+  "lactarius_trivialis_2": {
+    "species": "Lactarius trivialis",
+    "attribution": "(c) Ilari Helvamo, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/lactarius_trivialis_2.jpg"
+  },
+  "lactarius_utilis_1": {
+    "species": "Lactarius utilis",
+    "attribution": "(c) antlehto, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/lactarius_utilis_1.jpg"
+  },
+  "lactarius_utilis_2": {
+    "species": "Lactarius utilis",
+    "attribution": "(c) Светлана Нестерова, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/lactarius_utilis_2.jpg"
+  },
+  "lactarius_necator_1": {
+    "species": "Lactarius necator",
+    "attribution": "(c) Анна Иванова, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/lactarius_necator_1.jpg"
+  },
+  "lactarius_necator_2": {
+    "species": "Lactarius necator",
+    "attribution": "(c) Игорь, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/lactarius_necator_2.jpg"
+  },
+  "lactarius_mammosus_1": {
+    "species": "Lactarius mammosus",
+    "attribution": "(c) Peter Nathaniel Boyer, some rights reserved (CC BY)",
+    "license_code": "cc-by",
+    "file": "images/lactarius_mammosus_1.jpg"
+  },
+  "lactarius_mammosus_2": {
+    "species": "Lactarius mammosus",
+    "attribution": "(c) Peter Nathaniel Boyer, some rights reserved (CC BY)",
+    "license_code": "cc-by",
+    "file": "images/lactarius_mammosus_2.jpg"
+  },
+  "russula_paludosa_1": {
+    "species": "Russula paludosa",
+    "attribution": "(c) Sarah Dubois, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_paludosa_1.jpg"
+  },
+  "russula_paludosa_2": {
+    "species": "Russula paludosa",
+    "attribution": "(c) Gustavo Vasquez, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_paludosa_2.jpg"
+  },
+  "russula_claroflava_1": {
+    "species": "Russula claroflava",
+    "attribution": "(c) ari1965, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_claroflava_1.jpg"
+  },
+  "russula_claroflava_2": {
+    "species": "Russula claroflava",
+    "attribution": "(c) Ludo Leclerc, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_claroflava_2.jpg"
+  },
+  "russula_aeruginea_1": {
+    "species": "Russula aeruginea",
+    "attribution": "(c) mihail_lukyanchik, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_aeruginea_1.jpg"
+  },
+  "russula_aeruginea_2": {
+    "species": "Russula aeruginea",
+    "attribution": "(c) lara_privat, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_aeruginea_2.jpg"
+  },
+  "russula_cyanoxantha_1": {
+    "species": "Russula cyanoxantha",
+    "attribution": "(c) kastpaul, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_cyanoxantha_1.jpg"
+  },
+  "russula_cyanoxantha_2": {
+    "species": "Russula cyanoxantha",
+    "attribution": "(c) Theodore, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_cyanoxantha_2.jpg"
+  },
+  "russula_vesca_1": {
+    "species": "Russula vesca",
+    "attribution": "(c) latobriger, all rights reserved",
+    "license_code": null,
+    "file": "images/russula_vesca_1.jpg"
+  },
+  "russula_vesca_2": {
+    "species": "Russula vesca",
+    "attribution": "(c) Bernd Tobler, all rights reserved",
+    "license_code": null,
+    "file": "images/russula_vesca_2.jpg"
+  },
+  "russula_xerampelina_1": {
+    "species": "Russula xerampelina",
+    "attribution": "(c) Sam B., all rights reserved",
+    "license_code": null,
+    "file": "images/russula_xerampelina_1.jpg"
+  },
+  "russula_xerampelina_2": {
+    "species": "Russula xerampelina",
+    "attribution": "(c) Veera Luukkainen, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_xerampelina_2.jpg"
+  },
+  "russula_vinosa_1": {
+    "species": "Russula vinosa",
+    "attribution": "(c) Sergey Tempus, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_vinosa_1.jpg"
+  },
+  "russula_vinosa_2": {
+    "species": "Russula vinosa",
+    "attribution": "(c) Sergey Tempus, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_vinosa_2.jpg"
+  },
+  "russula_integra_1": {
+    "species": "Russula integra",
+    "attribution": "(c) lara_privat, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_integra_1.jpg"
+  },
+  "russula_integra_2": {
+    "species": "Russula integra",
+    "attribution": "(c) Borja Gomez Alvarez, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/russula_integra_2.jpg"
+  },
+  "tricholoma_matsutake_1": {
+    "species": "Tricholoma matsutake",
+    "attribution": "(c) Наталья Коротких, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/tricholoma_matsutake_1.jpg"
+  },
+  "tricholoma_matsutake_2": {
+    "species": "Tricholoma matsutake",
+    "attribution": "(c) Markku Vihava, some rights reserved (CC BY-NC-ND)",
+    "license_code": "cc-by-nc-nd",
+    "file": "images/tricholoma_matsutake_2.jpg"
+  },
+  "tricholoma_portentosum_1": {
+    "species": "Tricholoma portentosum",
+    "attribution": "(c) Adam Gordon, some rights reserved (CC BY-NC-ND)",
+    "license_code": "cc-by-nc-nd",
+    "file": "images/tricholoma_portentosum_1.jpg"
+  },
+  "tricholoma_portentosum_2": {
+    "species": "Tricholoma portentosum",
+    "attribution": "(c) Sabby, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/tricholoma_portentosum_2.jpg"
+  },
+  "macrolepiota_procera_1": {
+    "species": "Macrolepiota procera",
+    "attribution": "(c) Sheelagh Halsey, some rights reserved (CC BY)",
+    "license_code": "cc-by",
+    "file": "images/macrolepiota_procera_1.jpg"
+  },
+  "macrolepiota_procera_2": {
+    "species": "Macrolepiota procera",
+    "attribution": "(c) Chris Malumphy, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/macrolepiota_procera_2.jpg"
+  },
+  "agaricus_arvensis_1": {
+    "species": "Agaricus arvensis",
+    "attribution": "(c) Александр, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/agaricus_arvensis_1.jpg"
+  },
+  "agaricus_arvensis_2": {
+    "species": "Agaricus arvensis",
+    "attribution": "(c) Rene Weigelt, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/agaricus_arvensis_2.jpg"
+  },
+  "agaricus_silvaticus_1": {
+    "species": "Agaricus silvaticus",
+    "attribution": "(c) agrital, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/agaricus_silvaticus_1.jpg"
+  },
+  "agaricus_silvaticus_2": {
+    "species": "Agaricus silvaticus",
+    "attribution": "(c) GuTa, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/agaricus_silvaticus_2.jpg"
+  },
+  "coprinus_comatus_1": {
+    "species": "Coprinus comatus",
+    "attribution": "(c) orim1, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/coprinus_comatus_1.jpg"
+  },
+  "coprinus_comatus_2": {
+    "species": "Coprinus comatus",
+    "attribution": "(c) Bernhard Dickoré, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/coprinus_comatus_2.jpg"
+  },
+  "infundibulicybe_geotropa_1": {
+    "species": "Infundibulicybe geotropa",
+    "attribution": "(c) Tatyana Zarubo, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/infundibulicybe_geotropa_1.jpg"
+  },
+  "infundibulicybe_geotropa_2": {
+    "species": "Infundibulicybe geotropa",
+    "attribution": "(c) Sergey Alexeev, all rights reserved",
+    "license_code": null,
+    "file": "images/infundibulicybe_geotropa_2.jpg"
+  },
+  "clitocybe_nebularis_1": {
+    "species": "Clitocybe nebularis",
+    "attribution": "(c) IVNSTN, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/clitocybe_nebularis_1.jpg"
+  },
+  "clitocybe_nebularis_2": {
+    "species": "Clitocybe nebularis",
+    "attribution": "(c) Cassandra Nyerges, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/clitocybe_nebularis_2.jpg"
+  },
+  "marasmius_oreades_1": {
+    "species": "Marasmius oreades",
+    "attribution": "(c) Beth King, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/marasmius_oreades_1.jpg"
+  },
+  "marasmius_oreades_2": {
+    "species": "Marasmius oreades",
+    "attribution": "(c) Petra Neumanova, all rights reserved",
+    "license_code": null,
+    "file": "images/marasmius_oreades_2.jpg"
+  },
+  "armillaria_mellea_1": {
+    "species": "Armillaria mellea",
+    "attribution": "(c) rudyardpickling, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/armillaria_mellea_1.jpg"
+  },
+  "armillaria_mellea_2": {
+    "species": "Armillaria mellea",
+    "attribution": "(c) jonas_barzdenas, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/armillaria_mellea_2.jpg"
+  },
+  "kuehneromyces_mutabilis_1": {
+    "species": "Kuehneromyces mutabilis",
+    "attribution": "(c) Николай Фещенко, all rights reserved",
+    "license_code": null,
+    "file": "images/kuehneromyces_mutabilis_1.jpg"
+  },
+  "kuehneromyces_mutabilis_2": {
+    "species": "Kuehneromyces mutabilis",
+    "attribution": "(c) Egor_Skiba, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/kuehneromyces_mutabilis_2.jpg"
+  },
+  "calvatia_gigantea_1": {
+    "species": "Calvatia gigantea",
+    "attribution": "(c) Joren van Schie, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/calvatia_gigantea_1.jpg"
+  },
+  "calvatia_gigantea_2": {
+    "species": "Calvatia gigantea",
+    "attribution": "(c) the-creature, some rights reserved (CC BY-NC)",
+    "license_code": "cc-by-nc",
+    "file": "images/calvatia_gigantea_2.jpg"
+  },
+  "lycoperdon_perlatum_1": {
+    "species": "Lycoperdon perlatum",
+    "attribution": "(c) irvinditz, all rights reserved",
+    "license_code": null,
+    "file": "images/lycoperdon_perlatum_1.jpg"
+  },
+  "lycoperdon_perlatum_2": {
+    "species": "Lycoperdon perlatum",
+    "attribution": "(c) Николай Фещенко, all rights reserved",
+    "license_code": null,
+    "file": "images/lycoperdon_perlatum_2.jpg"
   }
 }

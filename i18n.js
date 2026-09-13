@@ -251,28 +251,245 @@ const I18N = {
 
   // Direct Lookalike Relationships between Catalog Species
   lookalikeMap: {
-    cantharellus_cibarius: ["hygrophoropsis_aurantiaca"],
-    craterellus_tubaeformis: ["cortinarius_rubellus"],
-    craterellus_cornucopioides: ["craterellus_tubaeformis"],
-    hydnum_repandum: ["albatrellus_ovinus"],
-    boletus_edulis: ["tylopilus_felleus", "boletus_pinophilus"],
-    boletus_pinophilus: ["tylopilus_felleus", "boletus_edulis"],
-    leccinum_versipelle: ["boletus_edulis"],
-    albatrellus_ovinus: ["hydnum_repandum"],
-    cortinarius_caperatus: ["cortinarius_rubellus"],
-    lactarius_deliciosus: ["lactarius_torminosus"],
-    lactarius_torminosus: ["lactarius_deliciosus", "lactarius_rufus"],
-    lactarius_rufus: ["cortinarius_rubellus", "lactarius_torminosus"],
-    russula_decolorans: ["russula_emetica"],
-    russula_emetica: ["russula_decolorans"],
-    hygrophoropsis_aurantiaca: ["cantharellus_cibarius"],
-    tylopilus_felleus: ["boletus_edulis", "boletus_pinophilus"],
-    amanita_virosa: ["cortinarius_caperatus", "albatrellus_ovinus"],
-    cortinarius_rubellus: ["craterellus_tubaeformis", "lactarius_rufus"],
-    galerina_marginata: ["craterellus_tubaeformis"],
-    gyromitra_esculenta: ["craterellus_cornucopioides"],
-    paxillus_involutus: ["lactarius_rufus", "lactarius_torminosus"],
-    amanita_muscaria: ["amanita_virosa"]
+      "cantharellus_cibarius": [
+          "hygrophoropsis_aurantiaca",
+          "cantharellus_amethysteus"
+      ],
+      "craterellus_tubaeformis": [
+          "craterellus_lutescens",
+          "cortinarius_rubellus"
+      ],
+      "craterellus_lutescens": [
+          "craterellus_tubaeformis"
+      ],
+      "craterellus_cornucopioides": [
+          "craterellus_tubaeformis"
+      ],
+      "cantharellus_amethysteus": [
+          "cantharellus_cibarius"
+      ],
+      "boletus_edulis": [
+          "tylopilus_felleus",
+          "boletus_reticulatus",
+          "boletus_pinophilus"
+      ],
+      "boletus_pinophilus": [
+          "boletus_edulis",
+          "tylopilus_felleus"
+      ],
+      "boletus_reticulatus": [
+          "boletus_edulis",
+          "tylopilus_felleus"
+      ],
+      "leccinum_versipelle": [
+          "leccinum_vulpinum",
+          "leccinum_aurantiacum",
+          "boletus_edulis"
+      ],
+      "leccinum_vulpinum": [
+          "leccinum_versipelle",
+          "leccinum_aurantiacum"
+      ],
+      "leccinum_aurantiacum": [
+          "leccinum_versipelle",
+          "leccinum_vulpinum"
+      ],
+      "leccinum_scabrum": [
+          "leccinum_variicolor",
+          "tylopilus_felleus"
+      ],
+      "leccinum_variicolor": [
+          "leccinum_scabrum"
+      ],
+      "suillus_luteus": [
+          "suillus_variegatus",
+          "suillus_grevillei"
+      ],
+      "suillus_variegatus": [
+          "suillus_luteus",
+          "suillus_bovinus"
+      ],
+      "suillus_bovinus": [
+          "suillus_variegatus",
+          "suillus_luteus"
+      ],
+      "suillus_grevillei": [
+          "suillus_luteus"
+      ],
+      "tylopilus_felleus": [
+          "boletus_edulis",
+          "boletus_pinophilus",
+          "boletus_reticulatus"
+      ],
+      "hydnum_repandum": [
+          "hydnum_rufescens",
+          "albatrellus_ovinus"
+      ],
+      "hydnum_rufescens": [
+          "hydnum_repandum"
+      ],
+      "albatrellus_ovinus": [
+          "albatrellus_confluens",
+          "hydnum_repandum"
+      ],
+      "albatrellus_confluens": [
+          "albatrellus_ovinus"
+      ],
+      "laetiporus_sulphureus": [
+          "albatrellus_ovinus"
+      ],
+      "lactarius_deliciosus": [
+          "lactarius_deterrimus",
+          "lactarius_torminosus"
+      ],
+      "lactarius_deterrimus": [
+          "lactarius_deliciosus",
+          "lactarius_torminosus"
+      ],
+      "lactarius_volemus": [
+          "lactarius_rufus"
+      ],
+      "lactarius_trivialis": [
+          "lactarius_utilis",
+          "lactarius_necator"
+      ],
+      "lactarius_utilis": [
+          "lactarius_trivialis"
+      ],
+      "lactarius_torminosus": [
+          "lactarius_deliciosus",
+          "lactarius_rufus"
+      ],
+      "lactarius_rufus": [
+          "cortinarius_rubellus",
+          "lactarius_torminosus",
+          "lactarius_mammosus"
+      ],
+      "lactarius_necator": [
+          "lactarius_trivialis"
+      ],
+      "lactarius_mammosus": [
+          "lactarius_rufus"
+      ],
+      "russula_decolorans": [
+          "russula_paludosa",
+          "russula_claroflava",
+          "russula_emetica"
+      ],
+      "russula_paludosa": [
+          "russula_emetica",
+          "russula_decolorans",
+          "russula_vinosa"
+      ],
+      "russula_claroflava": [
+          "russula_decolorans"
+      ],
+      "russula_aeruginea": [
+          "russula_cyanoxantha",
+          "amanita_virosa"
+      ],
+      "russula_cyanoxantha": [
+          "russula_aeruginea"
+      ],
+      "russula_vesca": [
+          "russula_paludosa"
+      ],
+      "russula_xerampelina": [
+          "russula_paludosa",
+          "russula_vinosa"
+      ],
+      "russula_vinosa": [
+          "russula_paludosa",
+          "russula_xerampelina"
+      ],
+      "russula_integra": [
+          "russula_paludosa"
+      ],
+      "russula_emetica": [
+          "russula_paludosa",
+          "russula_decolorans",
+          "russula_vesca"
+      ],
+      "cortinarius_caperatus": [
+          "cortinarius_rubellus",
+          "tricholoma_matsutake"
+      ],
+      "tricholoma_matsutake": [
+          "tricholoma_portentosum",
+          "cortinarius_caperatus"
+      ],
+      "tricholoma_portentosum": [
+          "tricholoma_matsutake"
+      ],
+      "macrolepiota_procera": [
+          "amanita_virosa",
+          "agaricus_arvensis"
+      ],
+      "agaricus_arvensis": [
+          "amanita_virosa",
+          "agaricus_silvaticus"
+      ],
+      "agaricus_silvaticus": [
+          "agaricus_arvensis"
+      ],
+      "coprinus_comatus": [
+          "amanita_virosa"
+      ],
+      "infundibulicybe_geotropa": [
+          "clitocybe_nebularis"
+      ],
+      "clitocybe_nebularis": [
+          "infundibulicybe_geotropa",
+          "amanita_virosa"
+      ],
+      "marasmius_oreades": [
+          "galerina_marginata"
+      ],
+      "armillaria_mellea": [
+          "kuehneromyces_mutabilis",
+          "galerina_marginata"
+      ],
+      "kuehneromyces_mutabilis": [
+          "galerina_marginata",
+          "armillaria_mellea"
+      ],
+      "calvatia_gigantea": [
+          "lycoperdon_perlatum",
+          "amanita_virosa"
+      ],
+      "lycoperdon_perlatum": [
+          "calvatia_gigantea",
+          "amanita_virosa"
+      ],
+      "amanita_virosa": [
+          "agaricus_arvensis",
+          "macrolepiota_procera",
+          "cortinarius_caperatus",
+          "albatrellus_ovinus"
+      ],
+      "cortinarius_rubellus": [
+          "craterellus_tubaeformis",
+          "lactarius_rufus",
+          "cortinarius_caperatus"
+      ],
+      "galerina_marginata": [
+          "kuehneromyces_mutabilis",
+          "armillaria_mellea",
+          "craterellus_tubaeformis"
+      ],
+      "gyromitra_esculenta": [
+          "craterellus_cornucopioides"
+      ],
+      "paxillus_involutus": [
+          "lactarius_rufus",
+          "lactarius_torminosus"
+      ],
+      "amanita_muscaria": [
+          "amanita_virosa"
+      ],
+      "hygrophoropsis_aurantiaca": [
+          "cantharellus_cibarius"
+      ]
   },
 
   // Recommended Foraging Locations, Popular Trails, and Starting Point Trailheads
@@ -2014,16 +2231,34 @@ const I18N = {
           },
           "image": "./images/craterellus_lutescens.jpg",
           "gallery": [
-                {
-                      "file": "./images/craterellus_lutescens.jpg",
-                      "caption": {
-                            "en": "Yellow Foot / Flame Chanterelle in natural Finnish forest habitat",
-                            "zh": "黄柄黄肉鸡油菌 在芬兰森林中的自然生境",
-                            "fi": "Kosteikkovahvero luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) timendez, some rights reserved (CC BY-NC), uploaded by timendez"
-                }
-          ]
+          {
+                "file": "./images/craterellus_lutescens.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) timendez, some rights reserved (CC BY-NC), uploaded by timendez"
+          },
+          {
+                "file": "./images/craterellus_lutescens_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "Botanical specimen observation (iNaturalist CC)"
+          },
+          {
+                "file": "./images/craterellus_lutescens_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "Specimen observation (iNaturalist CC)"
+          }
+]
     },
 {
           "id": "cantharellus_amethysteus",
@@ -2112,16 +2347,34 @@ const I18N = {
           },
           "image": "./images/cantharellus_amethysteus.jpg",
           "gallery": [
-                {
-                      "file": "./images/cantharellus_amethysteus.jpg",
-                      "caption": {
-                            "en": "Amethyst Chanterelle in natural Finnish forest habitat",
-                            "zh": "紫绒鸡油菌 在芬兰森林中的自然生境",
-                            "fi": "Samettivahvero luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
-                }
-          ]
+          {
+                "file": "./images/cantharellus_amethysteus.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+          },
+          {
+                "file": "./images/cantharellus_amethysteus_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Vincent Fatton, all rights reserved"
+          },
+          {
+                "file": "./images/cantharellus_amethysteus_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) N. Pauker, all rights reserved"
+          }
+]
     },
 {
           "id": "boletus_reticulatus",
@@ -2210,16 +2463,34 @@ const I18N = {
           },
           "image": "./images/boletus_reticulatus.jpg",
           "gallery": [
-                {
-                      "file": "./images/boletus_reticulatus.jpg",
-                      "caption": {
-                            "en": "Summer Cep in natural Finnish forest habitat",
-                            "zh": "网纹牛肝菌 在芬兰森林中的自然生境",
-                            "fi": "Tammenherkkutatti luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Felipe Hidalgo, some rights reserved (CC BY-NC), uploaded by Felipe Hidalgo"
-                }
-          ]
+          {
+                "file": "./images/boletus_reticulatus.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Felipe Hidalgo, some rights reserved (CC BY-NC), uploaded by Felipe Hidalgo"
+          },
+          {
+                "file": "./images/boletus_reticulatus_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Matthias Thomssen, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/boletus_reticulatus_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Matthias Thomssen, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "leccinum_vulpinum",
@@ -2308,16 +2579,34 @@ const I18N = {
           },
           "image": "./images/leccinum_vulpinum.jpg",
           "gallery": [
-                {
-                      "file": "./images/leccinum_vulpinum.jpg",
-                      "caption": {
-                            "en": "Pine Red-Capped Scaber in natural Finnish forest habitat",
-                            "zh": "松生红盖牛肝菌 在芬兰森林中的自然生境",
-                            "fi": "Männynpunikkitatti luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Christine Young, some rights reserved (CC BY), uploaded by Christine Young"
-                }
-          ]
+          {
+                "file": "./images/leccinum_vulpinum.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Christine Young, some rights reserved (CC BY), uploaded by Christine Young"
+          },
+          {
+                "file": "./images/leccinum_vulpinum_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Emilija Čiužaitė, all rights reserved"
+          },
+          {
+                "file": "./images/leccinum_vulpinum_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Kira Marchenkova, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "leccinum_aurantiacum",
@@ -2406,16 +2695,34 @@ const I18N = {
           },
           "image": "./images/leccinum_aurantiacum.jpg",
           "gallery": [
-                {
-                      "file": "./images/leccinum_aurantiacum.jpg",
-                      "caption": {
-                            "en": "Aspen Bolete in natural Finnish forest habitat",
-                            "zh": "欧洲山杨牛肝菌 在芬兰森林中的自然生境",
-                            "fi": "Haavanpunikkitatti luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
-                }
-          ]
+          {
+                "file": "./images/leccinum_aurantiacum.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+          },
+          {
+                "file": "./images/leccinum_aurantiacum_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Berno Hellauer, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/leccinum_aurantiacum_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Susan Elliott, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "leccinum_scabrum",
@@ -2504,16 +2811,34 @@ const I18N = {
           },
           "image": "./images/leccinum_scabrum.jpg",
           "gallery": [
-                {
-                      "file": "./images/leccinum_scabrum.jpg",
-                      "caption": {
-                            "en": "Brown Birch Bolete in natural Finnish forest habitat",
-                            "zh": "褐疣柄牛肝菌 在芬兰森林中的自然生境",
-                            "fi": "Lehmäntatti luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
-                }
-          ]
+          {
+                "file": "./images/leccinum_scabrum.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+          },
+          {
+                "file": "./images/leccinum_scabrum_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) jmorgado2803, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/leccinum_scabrum_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) kevininne, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "leccinum_variicolor",
@@ -2601,16 +2926,34 @@ const I18N = {
           },
           "image": "./images/leccinum_variicolor.jpg",
           "gallery": [
-                {
-                      "file": "./images/leccinum_variicolor.jpg",
-                      "caption": {
-                            "en": "Mottled Bolete in natural Finnish forest habitat",
-                            "zh": "斑褐疣柄牛肝菌 在芬兰森林中的自然生境",
-                            "fi": "Kirjotatti luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Vladimir Bryukhov, some rights reserved (CC BY-NC), uploaded by Vladimir Bryukhov"
-                }
-          ]
+          {
+                "file": "./images/leccinum_variicolor.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Vladimir Bryukhov, some rights reserved (CC BY-NC), uploaded by Vladimir Bryukhov"
+          },
+          {
+                "file": "./images/leccinum_variicolor_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) christian-1956, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/leccinum_variicolor_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Pyry Liedes, some rights reserved (CC BY)"
+          }
+]
     },
 {
           "id": "suillus_luteus",
@@ -2698,16 +3041,34 @@ const I18N = {
           },
           "image": "./images/suillus_luteus.jpg",
           "gallery": [
-                {
-                      "file": "./images/suillus_luteus.jpg",
-                      "caption": {
-                            "en": "Slippery Jack in natural Finnish forest habitat",
-                            "zh": "褐环乳牛肝菌 在芬兰森林中的自然生境",
-                            "fi": "Voitatti luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Davide Puddu, some rights reserved (CC BY), uploaded by Davide Puddu"
-                }
-          ]
+          {
+                "file": "./images/suillus_luteus.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Davide Puddu, some rights reserved (CC BY), uploaded by Davide Puddu"
+          },
+          {
+                "file": "./images/suillus_luteus_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) vahatalo, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/suillus_luteus_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Oldřich Nedvěd, all rights reserved"
+          }
+]
     },
 {
           "id": "suillus_variegatus",
@@ -2796,16 +3157,34 @@ const I18N = {
           },
           "image": "./images/suillus_variegatus.jpg",
           "gallery": [
-                {
-                      "file": "./images/suillus_variegatus.jpg",
-                      "caption": {
-                            "en": "Velvet Bolete in natural Finnish forest habitat",
-                            "zh": "斑点乳牛肝菌 在芬兰森林中的自然生境",
-                            "fi": "Kangastatti luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
-                }
-          ]
+          {
+                "file": "./images/suillus_variegatus.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+          },
+          {
+                "file": "./images/suillus_variegatus_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Petr Harant, some rights reserved (CC BY)"
+          },
+          {
+                "file": "./images/suillus_variegatus_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Petr Harant, some rights reserved (CC BY)"
+          }
+]
     },
 {
           "id": "suillus_bovinus",
@@ -2893,16 +3272,34 @@ const I18N = {
           },
           "image": "./images/suillus_bovinus.jpg",
           "gallery": [
-                {
-                      "file": "./images/suillus_bovinus.jpg",
-                      "caption": {
-                            "en": "Bovine Bolete in natural Finnish forest habitat",
-                            "zh": "牛乳牛肝菌 在芬兰森林中的自然生境",
-                            "fi": "Nummitatti luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Jerry Cooper, some rights reserved (CC BY), uploaded by Jerry Cooper"
-                }
-          ]
+          {
+                "file": "./images/suillus_bovinus.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Jerry Cooper, some rights reserved (CC BY), uploaded by Jerry Cooper"
+          },
+          {
+                "file": "./images/suillus_bovinus_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Nataliia Sosnovshchenko, all rights reserved"
+          },
+          {
+                "file": "./images/suillus_bovinus_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Petr Harant, some rights reserved (CC BY)"
+          }
+]
     },
 {
           "id": "suillus_grevillei",
@@ -2990,16 +3387,34 @@ const I18N = {
           },
           "image": "./images/suillus_grevillei.jpg",
           "gallery": [
-                {
-                      "file": "./images/suillus_grevillei.jpg",
-                      "caption": {
-                            "en": "Larch Bolete in natural Finnish forest habitat",
-                            "zh": "落叶松乳牛肝菌 在芬兰森林中的自然生境",
-                            "fi": "Lehtikuusentatti luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Светлана Мещерягина, some rights reserved (CC BY-NC), uploaded by Светлана Мещерягина"
-                }
-          ]
+          {
+                "file": "./images/suillus_grevillei.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Светлана Мещерягина, some rights reserved (CC BY-NC), uploaded by Светлана Мещерягина"
+          },
+          {
+                "file": "./images/suillus_grevillei_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Michal Honskus, some rights reserved (CC BY)"
+          },
+          {
+                "file": "./images/suillus_grevillei_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) irvinditz, all rights reserved"
+          }
+]
     },
 {
           "id": "hydnum_rufescens",
@@ -3087,16 +3502,34 @@ const I18N = {
           },
           "image": "./images/hydnum_rufescens.jpg",
           "gallery": [
-                {
-                      "file": "./images/hydnum_rufescens.jpg",
-                      "caption": {
-                            "en": "Terracotta Hedgehog in natural Finnish forest habitat",
-                            "zh": "红齿菌 在芬兰森林中的自然生境",
-                            "fi": "Rusko-orakas luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Kari Pihlaviita, some rights reserved (CC BY-NC)"
-                }
-          ]
+          {
+                "file": "./images/hydnum_rufescens.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Kari Pihlaviita, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/hydnum_rufescens_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Юлия Гришанова, all rights reserved"
+          },
+          {
+                "file": "./images/hydnum_rufescens_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Dace, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "albatrellus_confluens",
@@ -3184,16 +3617,34 @@ const I18N = {
           },
           "image": "./images/albatrellus_confluens.jpg",
           "gallery": [
-                {
-                      "file": "./images/albatrellus_confluens.jpg",
-                      "caption": {
-                            "en": "Northern Fleshy Polypore in natural Finnish forest habitat",
-                            "zh": "融合地花菌 在芬兰森林中的自然生境",
-                            "fi": "Typäskääpä luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) david-t, some rights reserved (CC BY-NC)"
-                }
-          ]
+          {
+                "file": "./images/albatrellus_confluens.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) david-t, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/albatrellus_confluens_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Alex O, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/albatrellus_confluens_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Emma Richter, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "laetiporus_sulphureus",
@@ -3282,16 +3733,34 @@ const I18N = {
           },
           "image": "./images/laetiporus_sulphureus.jpg",
           "gallery": [
-                {
-                      "file": "./images/laetiporus_sulphureus.jpg",
-                      "caption": {
-                            "en": "Chicken of the Woods in natural Finnish forest habitat",
-                            "zh": "硫色绚孔菌 在芬兰森林中的自然生境",
-                            "fi": "Rikkikääpä luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Артём Свиридов, all rights reserved, uploaded by Артём Свиридов"
-                }
-          ]
+          {
+                "file": "./images/laetiporus_sulphureus.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Артём Свиридов, all rights reserved, uploaded by Артём Свиридов"
+          },
+          {
+                "file": "./images/laetiporus_sulphureus_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) plainjane74, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/laetiporus_sulphureus_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Sheelagh Halsey, some rights reserved (CC BY)"
+          }
+]
     },
 {
           "id": "lactarius_deterrimus",
@@ -3379,16 +3848,34 @@ const I18N = {
           },
           "image": "./images/lactarius_deterrimus.jpg",
           "gallery": [
-                {
-                      "file": "./images/lactarius_deterrimus.jpg",
-                      "caption": {
-                            "en": "Spruce Milkcap in natural Finnish forest habitat",
-                            "zh": "劣味乳菇 在芬兰森林中的自然生境",
-                            "fi": "Kuusenleppärousku luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) John Plischke, some rights reserved (CC BY-NC), uploaded by John Plischke"
-                }
-          ]
+          {
+                "file": "./images/lactarius_deterrimus.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) John Plischke, some rights reserved (CC BY-NC), uploaded by John Plischke"
+          },
+          {
+                "file": "./images/lactarius_deterrimus_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Florian Adelsberger, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/lactarius_deterrimus_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Vincent Fatton, all rights reserved"
+          }
+]
     },
 {
           "id": "lactarius_volemus",
@@ -3476,16 +3963,34 @@ const I18N = {
           },
           "image": "./images/lactarius_volemus.jpg",
           "gallery": [
-                {
-                      "file": "./images/lactarius_volemus.jpg",
-                      "caption": {
-                            "en": "Weeping Milkcap in natural Finnish forest habitat",
-                            "zh": "橙黄乳菇 在芬兰森林中的自然生境",
-                            "fi": "Kultarousku luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Trent Roberts, all rights reserved, uploaded by Trent Roberts"
-                }
-          ]
+          {
+                "file": "./images/lactarius_volemus.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Trent Roberts, all rights reserved, uploaded by Trent Roberts"
+          },
+          {
+                "file": "./images/lactarius_volemus_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Katia Burelle, all rights reserved"
+          },
+          {
+                "file": "./images/lactarius_volemus_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Ryoko Fukuyama, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "lactarius_trivialis",
@@ -3573,16 +4078,34 @@ const I18N = {
           },
           "image": "./images/lactarius_trivialis.jpg",
           "gallery": [
-                {
-                      "file": "./images/lactarius_trivialis.jpg",
-                      "caption": {
-                            "en": "Northern Milkcap in natural Finnish forest habitat",
-                            "zh": "灰紫乳菇 在芬兰森林中的自然生境",
-                            "fi": "Haaparousku luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) teehoo, some rights reserved (CC BY-NC-SA)"
-                }
-          ]
+          {
+                "file": "./images/lactarius_trivialis.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) teehoo, some rights reserved (CC BY-NC-SA)"
+          },
+          {
+                "file": "./images/lactarius_trivialis_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Alexander, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/lactarius_trivialis_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Ilari Helvamo, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "lactarius_utilis",
@@ -3670,16 +4193,34 @@ const I18N = {
           },
           "image": "./images/lactarius_utilis.jpg",
           "gallery": [
-                {
-                      "file": "./images/lactarius_utilis.jpg",
-                      "caption": {
-                            "en": "Pale Northern Milkcap in natural Finnish forest habitat",
-                            "zh": "浅色白杨乳菇 在芬兰森林中的自然生境",
-                            "fi": "Kalvashaaparousku luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) teehoo, some rights reserved (CC BY-NC-SA)"
-                }
-          ]
+          {
+                "file": "./images/lactarius_utilis.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) teehoo, some rights reserved (CC BY-NC-SA)"
+          },
+          {
+                "file": "./images/lactarius_utilis_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) antlehto, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/lactarius_utilis_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Светлана Нестерова, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "lactarius_necator",
@@ -3767,16 +4308,34 @@ const I18N = {
           },
           "image": "./images/lactarius_necator.jpg",
           "gallery": [
-                {
-                      "file": "./images/lactarius_necator.jpg",
-                      "caption": {
-                            "en": "Ugly Milkcap in natural Finnish forest habitat",
-                            "zh": "丑乳菇 在芬兰森林中的自然生境",
-                            "fi": "Mustarousku luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Christian Schwarz, some rights reserved (CC BY-NC), uploaded by Christian Schwarz"
-                }
-          ]
+          {
+                "file": "./images/lactarius_necator.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Christian Schwarz, some rights reserved (CC BY-NC), uploaded by Christian Schwarz"
+          },
+          {
+                "file": "./images/lactarius_necator_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Анна Иванова, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/lactarius_necator_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Игорь, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "lactarius_mammosus",
@@ -3864,16 +4423,34 @@ const I18N = {
           },
           "image": "./images/lactarius_mammosus.jpg",
           "gallery": [
-                {
-                      "file": "./images/lactarius_mammosus.jpg",
-                      "caption": {
-                            "en": "Fenugreek Milkcap in natural Finnish forest habitat",
-                            "zh": "香乳菇 在芬兰森林中的自然生境",
-                            "fi": "Kangaspalsamirousku luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
-                }
-          ]
+          {
+                "file": "./images/lactarius_mammosus.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+          },
+          {
+                "file": "./images/lactarius_mammosus_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Peter Nathaniel Boyer, some rights reserved (CC BY)"
+          },
+          {
+                "file": "./images/lactarius_mammosus_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Peter Nathaniel Boyer, some rights reserved (CC BY)"
+          }
+]
     },
 {
           "id": "russula_paludosa",
@@ -3962,16 +4539,34 @@ const I18N = {
           },
           "image": "./images/russula_paludosa.jpg",
           "gallery": [
-                {
-                      "file": "./images/russula_paludosa.jpg",
-                      "caption": {
-                            "en": "Marsh Brittlegill in natural Finnish forest habitat",
-                            "zh": "沼泽红菇 在芬兰森林中的自然生境",
-                            "fi": "Isohapero luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Marco Floriani, some rights reserved (CC BY-NC), uploaded by Marco Floriani"
-                }
-          ]
+          {
+                "file": "./images/russula_paludosa.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Marco Floriani, some rights reserved (CC BY-NC), uploaded by Marco Floriani"
+          },
+          {
+                "file": "./images/russula_paludosa_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Sarah Dubois, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/russula_paludosa_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Gustavo Vasquez, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "russula_claroflava",
@@ -4059,16 +4654,34 @@ const I18N = {
           },
           "image": "./images/russula_claroflava.jpg",
           "gallery": [
-                {
-                      "file": "./images/russula_claroflava.jpg",
-                      "caption": {
-                            "en": "Yellow Swamp Brittlegill in natural Finnish forest habitat",
-                            "zh": "鲜黄红菇 在芬兰森林中的自然生境",
-                            "fi": "Keltahapero luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
-                }
-          ]
+          {
+                "file": "./images/russula_claroflava.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+          },
+          {
+                "file": "./images/russula_claroflava_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) ari1965, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/russula_claroflava_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Ludo Leclerc, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "russula_aeruginea",
@@ -4157,16 +4770,34 @@ const I18N = {
           },
           "image": "./images/russula_aeruginea.jpg",
           "gallery": [
-                {
-                      "file": "./images/russula_aeruginea.jpg",
-                      "caption": {
-                            "en": "Green Birch Brittlegill in natural Finnish forest habitat",
-                            "zh": "铜绿红菇 在芬兰森林中的自然生境",
-                            "fi": "Koivunhapero luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
-                }
-          ]
+          {
+                "file": "./images/russula_aeruginea.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+          },
+          {
+                "file": "./images/russula_aeruginea_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) mihail_lukyanchik, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/russula_aeruginea_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) lara_privat, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "russula_cyanoxantha",
@@ -4255,16 +4886,34 @@ const I18N = {
           },
           "image": "./images/russula_cyanoxantha.jpg",
           "gallery": [
-                {
-                      "file": "./images/russula_cyanoxantha.jpg",
-                      "caption": {
-                            "en": "Charcoal Burner in natural Finnish forest habitat",
-                            "zh": "蓝黄红菇 在芬兰森林中的自然生境",
-                            "fi": "Kyyhkyshapero luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
-                }
-          ]
+          {
+                "file": "./images/russula_cyanoxantha.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+          },
+          {
+                "file": "./images/russula_cyanoxantha_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) kastpaul, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/russula_cyanoxantha_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Theodore, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "russula_vesca",
@@ -4353,16 +5002,34 @@ const I18N = {
           },
           "image": "./images/russula_vesca.jpg",
           "gallery": [
-                {
-                      "file": "./images/russula_vesca.jpg",
-                      "caption": {
-                            "en": "Bare-Toothed Russula in natural Finnish forest habitat",
-                            "zh": "萎缩红菇 在芬兰森林中的自然生境",
-                            "fi": "Palterohapero luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
-                }
-          ]
+          {
+                "file": "./images/russula_vesca.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+          },
+          {
+                "file": "./images/russula_vesca_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) latobriger, all rights reserved"
+          },
+          {
+                "file": "./images/russula_vesca_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Bernd Tobler, all rights reserved"
+          }
+]
     },
 {
           "id": "russula_xerampelina",
@@ -4450,16 +5117,34 @@ const I18N = {
           },
           "image": "./images/russula_xerampelina.jpg",
           "gallery": [
-                {
-                      "file": "./images/russula_xerampelina.jpg",
-                      "caption": {
-                            "en": "Crab Brittlegill in natural Finnish forest habitat",
-                            "zh": "枯焦红菇 在芬兰森林中的自然生境",
-                            "fi": "Sillihapero luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Uwe Winkler, some rights reserved (CC BY-NC), uploaded by Uwe Winkler"
-                }
-          ]
+          {
+                "file": "./images/russula_xerampelina.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Uwe Winkler, some rights reserved (CC BY-NC), uploaded by Uwe Winkler"
+          },
+          {
+                "file": "./images/russula_xerampelina_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Sam B., all rights reserved"
+          },
+          {
+                "file": "./images/russula_xerampelina_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Veera Luukkainen, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "russula_vinosa",
@@ -4547,16 +5232,34 @@ const I18N = {
           },
           "image": "./images/russula_vinosa.jpg",
           "gallery": [
-                {
-                      "file": "./images/russula_vinosa.jpg",
-                      "caption": {
-                            "en": "Dark-Veined Brittlegill in natural Finnish forest habitat",
-                            "zh": "暗紫红菇 在芬兰森林中的自然生境",
-                            "fi": "Viinihapero luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Marco Floriani, some rights reserved (CC BY-NC), uploaded by Marco Floriani"
-                }
-          ]
+          {
+                "file": "./images/russula_vinosa.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Marco Floriani, some rights reserved (CC BY-NC), uploaded by Marco Floriani"
+          },
+          {
+                "file": "./images/russula_vinosa_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Sergey Tempus, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/russula_vinosa_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Sergey Tempus, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "russula_integra",
@@ -4645,16 +5348,34 @@ const I18N = {
           },
           "image": "./images/russula_integra.jpg",
           "gallery": [
-                {
-                      "file": "./images/russula_integra.jpg",
-                      "caption": {
-                            "en": "Entire Brittlegill in natural Finnish forest habitat",
-                            "zh": "变色红菇群 在芬兰森林中的自然生境",
-                            "fi": "Mantelihapero luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Christian Schwarz, some rights reserved (CC BY-NC), uploaded by Christian Schwarz"
-                }
-          ]
+          {
+                "file": "./images/russula_integra.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Christian Schwarz, some rights reserved (CC BY-NC), uploaded by Christian Schwarz"
+          },
+          {
+                "file": "./images/russula_integra_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) lara_privat, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/russula_integra_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Borja Gomez Alvarez, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "tricholoma_matsutake",
@@ -4742,16 +5463,34 @@ const I18N = {
           },
           "image": "./images/tricholoma_matsutake.jpg",
           "gallery": [
-                {
-                      "file": "./images/tricholoma_matsutake.jpg",
-                      "caption": {
-                            "en": "Pine Matsutake in natural Finnish forest habitat",
-                            "zh": "松口蘑 在芬兰森林中的自然生境",
-                            "fi": "Männyntuoksuvalmuska luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
-                }
-          ]
+          {
+                "file": "./images/tricholoma_matsutake.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+          },
+          {
+                "file": "./images/tricholoma_matsutake_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Наталья Коротких, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/tricholoma_matsutake_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Markku Vihava, some rights reserved (CC BY-NC-ND)"
+          }
+]
     },
 {
           "id": "tricholoma_portentosum",
@@ -4839,16 +5578,34 @@ const I18N = {
           },
           "image": "./images/tricholoma_portentosum.jpg",
           "gallery": [
-                {
-                      "file": "./images/tricholoma_portentosum.jpg",
-                      "caption": {
-                            "en": "Charbonnier / Striped Tricholoma in natural Finnish forest habitat",
-                            "zh": "灰白口蘑 在芬兰森林中的自然生境",
-                            "fi": "Harmaavalmuska luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
-                }
-          ]
+          {
+                "file": "./images/tricholoma_portentosum.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+          },
+          {
+                "file": "./images/tricholoma_portentosum_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Adam Gordon, some rights reserved (CC BY-NC-ND)"
+          },
+          {
+                "file": "./images/tricholoma_portentosum_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Sabby, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "macrolepiota_procera",
@@ -4936,16 +5693,34 @@ const I18N = {
           },
           "image": "./images/macrolepiota_procera.jpg",
           "gallery": [
-                {
-                      "file": "./images/macrolepiota_procera.jpg",
-                      "caption": {
-                            "en": "Parasol Mushroom in natural Finnish forest habitat",
-                            "zh": "高大环柄菇 在芬兰森林中的自然生境",
-                            "fi": "Ukonsieni luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Lucian Clanet, some rights reserved (CC BY), uploaded by Lucian Clanet"
-                }
-          ]
+          {
+                "file": "./images/macrolepiota_procera.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Lucian Clanet, some rights reserved (CC BY), uploaded by Lucian Clanet"
+          },
+          {
+                "file": "./images/macrolepiota_procera_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Sheelagh Halsey, some rights reserved (CC BY)"
+          },
+          {
+                "file": "./images/macrolepiota_procera_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Chris Malumphy, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "agaricus_arvensis",
@@ -5034,16 +5809,34 @@ const I18N = {
           },
           "image": "./images/agaricus_arvensis.jpg",
           "gallery": [
-                {
-                      "file": "./images/agaricus_arvensis.jpg",
-                      "caption": {
-                            "en": "Horse Mushroom in natural Finnish forest habitat",
-                            "zh": "白林地蘑菇 在芬兰森林中的自然生境",
-                            "fi": "Peltoherkkusieni luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Felipe Hidalgo, some rights reserved (CC BY-NC), uploaded by Felipe Hidalgo"
-                }
-          ]
+          {
+                "file": "./images/agaricus_arvensis.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Felipe Hidalgo, some rights reserved (CC BY-NC), uploaded by Felipe Hidalgo"
+          },
+          {
+                "file": "./images/agaricus_arvensis_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Александр, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/agaricus_arvensis_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Rene Weigelt, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "agaricus_silvaticus",
@@ -5131,16 +5924,34 @@ const I18N = {
           },
           "image": "./images/agaricus_silvaticus.jpg",
           "gallery": [
-                {
-                      "file": "./images/agaricus_silvaticus.jpg",
-                      "caption": {
-                            "en": "Blushing Wood Mushroom in natural Finnish forest habitat",
-                            "zh": "森林蘑菇 在芬兰森林中的自然生境",
-                            "fi": "Tapionherkkusieni luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Felipe Hidalgo, some rights reserved (CC BY-NC), uploaded by Felipe Hidalgo"
-                }
-          ]
+          {
+                "file": "./images/agaricus_silvaticus.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Felipe Hidalgo, some rights reserved (CC BY-NC), uploaded by Felipe Hidalgo"
+          },
+          {
+                "file": "./images/agaricus_silvaticus_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) agrital, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/agaricus_silvaticus_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) GuTa, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "coprinus_comatus",
@@ -5228,16 +6039,34 @@ const I18N = {
           },
           "image": "./images/coprinus_comatus.jpg",
           "gallery": [
-                {
-                      "file": "./images/coprinus_comatus.jpg",
-                      "caption": {
-                            "en": "Shaggy Mane / Lawyer's Wig in natural Finnish forest habitat",
-                            "zh": "毛头鬼伞 在芬兰森林中的自然生境",
-                            "fi": "Suomumustesieni luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Tom Norton, some rights reserved (CC BY), uploaded by Tom Norton"
-                }
-          ]
+          {
+                "file": "./images/coprinus_comatus.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Tom Norton, some rights reserved (CC BY), uploaded by Tom Norton"
+          },
+          {
+                "file": "./images/coprinus_comatus_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) orim1, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/coprinus_comatus_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Bernhard Dickoré, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "infundibulicybe_geotropa",
@@ -5325,16 +6154,34 @@ const I18N = {
           },
           "image": "./images/infundibulicybe_geotropa.jpg",
           "gallery": [
-                {
-                      "file": "./images/infundibulicybe_geotropa.jpg",
-                      "caption": {
-                            "en": "Trooping Funnel in natural Finnish forest habitat",
-                            "zh": "地生杯伞 在芬兰森林中的自然生境",
-                            "fi": "Jättimalikka luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
-                }
-          ]
+          {
+                "file": "./images/infundibulicybe_geotropa.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda"
+          },
+          {
+                "file": "./images/infundibulicybe_geotropa_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Tatyana Zarubo, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/infundibulicybe_geotropa_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Sergey Alexeev, all rights reserved"
+          }
+]
     },
 {
           "id": "clitocybe_nebularis",
@@ -5422,16 +6269,34 @@ const I18N = {
           },
           "image": "./images/clitocybe_nebularis.jpg",
           "gallery": [
-                {
-                      "file": "./images/clitocybe_nebularis.jpg",
-                      "caption": {
-                            "en": "Clouded Agaric in natural Finnish forest habitat",
-                            "zh": "灰假杯伞 在芬兰森林中的自然生境",
-                            "fi": "Härmämalikka luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Susana C. Gonçalves, some rights reserved (CC BY-NC), uploaded by Susana C. Gonçalves"
-                }
-          ]
+          {
+                "file": "./images/clitocybe_nebularis.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Susana C. Gonçalves, some rights reserved (CC BY-NC), uploaded by Susana C. Gonçalves"
+          },
+          {
+                "file": "./images/clitocybe_nebularis_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) IVNSTN, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/clitocybe_nebularis_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Cassandra Nyerges, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "marasmius_oreades",
@@ -5521,16 +6386,34 @@ const I18N = {
           },
           "image": "./images/marasmius_oreades.jpg",
           "gallery": [
-                {
-                      "file": "./images/marasmius_oreades.jpg",
-                      "caption": {
-                            "en": "Fairy Ring Champignon in natural Finnish forest habitat",
-                            "zh": "硬柄小皮伞 在芬兰森林中的自然生境",
-                            "fi": "Nurminahikas luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Giorgio Bardelli, some rights reserved (CC BY-NC), uploaded by Giorgio Bardelli"
-                }
-          ]
+          {
+                "file": "./images/marasmius_oreades.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Giorgio Bardelli, some rights reserved (CC BY-NC), uploaded by Giorgio Bardelli"
+          },
+          {
+                "file": "./images/marasmius_oreades_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Beth King, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/marasmius_oreades_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Petra Neumanova, all rights reserved"
+          }
+]
     },
 {
           "id": "armillaria_mellea",
@@ -5618,16 +6501,34 @@ const I18N = {
           },
           "image": "./images/armillaria_mellea.jpg",
           "gallery": [
-                {
-                      "file": "./images/armillaria_mellea.jpg",
-                      "caption": {
-                            "en": "Honey Mushroom in natural Finnish forest habitat",
-                            "zh": "假蜜环菌 在芬兰森林中的自然生境",
-                            "fi": "Mesisieni luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Nathan Wilson, some rights reserved (CC BY-SA)"
-                }
-          ]
+          {
+                "file": "./images/armillaria_mellea.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Nathan Wilson, some rights reserved (CC BY-SA)"
+          },
+          {
+                "file": "./images/armillaria_mellea_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) rudyardpickling, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/armillaria_mellea_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) jonas_barzdenas, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "kuehneromyces_mutabilis",
@@ -5717,16 +6618,34 @@ const I18N = {
           },
           "image": "./images/kuehneromyces_mutabilis.jpg",
           "gallery": [
-                {
-                      "file": "./images/kuehneromyces_mutabilis.jpg",
-                      "caption": {
-                            "en": "Sheathed Woodtuft in natural Finnish forest habitat",
-                            "zh": "变色库氏菇 在芬兰森林中的自然生境",
-                            "fi": "Koivunkantosieni luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Dr. Hans-Günter Wagner, some rights reserved (CC BY-SA)"
-                }
-          ]
+          {
+                "file": "./images/kuehneromyces_mutabilis.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Dr. Hans-Günter Wagner, some rights reserved (CC BY-SA)"
+          },
+          {
+                "file": "./images/kuehneromyces_mutabilis_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Николай Фещенко, all rights reserved"
+          },
+          {
+                "file": "./images/kuehneromyces_mutabilis_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Egor_Skiba, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "calvatia_gigantea",
@@ -5814,16 +6733,34 @@ const I18N = {
           },
           "image": "./images/calvatia_gigantea.jpg",
           "gallery": [
-                {
-                      "file": "./images/calvatia_gigantea.jpg",
-                      "caption": {
-                            "en": "Giant Puffball in natural Finnish forest habitat",
-                            "zh": "大马勃 在芬兰森林中的自然生境",
-                            "fi": "Jättituhkelo luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Krystelle Denis, some rights reserved (CC BY-NC), uploaded by Krystelle Denis"
-                }
-          ]
+          {
+                "file": "./images/calvatia_gigantea.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Krystelle Denis, some rights reserved (CC BY-NC), uploaded by Krystelle Denis"
+          },
+          {
+                "file": "./images/calvatia_gigantea_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) Joren van Schie, some rights reserved (CC BY-NC)"
+          },
+          {
+                "file": "./images/calvatia_gigantea_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) the-creature, some rights reserved (CC BY-NC)"
+          }
+]
     },
 {
           "id": "lycoperdon_perlatum",
@@ -5912,16 +6849,34 @@ const I18N = {
           },
           "image": "./images/lycoperdon_perlatum.jpg",
           "gallery": [
-                {
-                      "file": "./images/lycoperdon_perlatum.jpg",
-                      "caption": {
-                            "en": "Common Puffball in natural Finnish forest habitat",
-                            "zh": "网纹马勃 在芬兰森林中的自然生境",
-                            "fi": "Nuijakuukunen luonnollisessa kasvuympäristössään"
-                      },
-                      "attribution": "(c) Stephan Pflume, some rights reserved (CC BY-NC), uploaded by Stephan Pflume"
-                }
-          ]
+          {
+                "file": "./images/lycoperdon_perlatum.jpg",
+                "caption": {
+                          "en": "General habit and natural habitat",
+                          "zh": "野外自然生长整体形态与生境",
+                          "fi": "Kasvupaikka ja yleiskuva"
+                },
+                "attribution": "(c) Stephan Pflume, some rights reserved (CC BY-NC), uploaded by Stephan Pflume"
+          },
+          {
+                "file": "./images/lycoperdon_perlatum_1.jpg",
+                "caption": {
+                          "en": "Under-cap details (pores / gills / spines / ridges)",
+                          "zh": "菌盖下方细节（菌孔/菌褶/菌齿/假褶）",
+                          "fi": "Lakin alapinnan rakenne (pillit / heltat / poimut / piikit)"
+                },
+                "attribution": "(c) irvinditz, all rights reserved"
+          },
+          {
+                "file": "./images/lycoperdon_perlatum_2.jpg",
+                "caption": {
+                          "en": "Cap surface, stem & specimen cluster",
+                          "zh": "菌盖表皮、菌柄与标本群落",
+                          "fi": "Lakin pinta, jalka ja kasvuryhmä"
+                },
+                "attribution": "(c) Николай Фещенко, all rights reserved"
+          }
+]
     }
   ],
 

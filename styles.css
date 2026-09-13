@@ -1554,6 +1554,80 @@ body.viewing-detail main {
   border-radius: 4px;
 }
 
+.badge-risk-deadly {
+  color: #991b1b !important;
+  background: #fee2e2 !important;
+  border: 1px solid #f87171 !important;
+}
+
+.badge-risk-inedible {
+  color: #c2410c !important;
+  background: #ffedd5 !important;
+  border: 1px solid #fdba74 !important;
+}
+
+.badge-risk-edible {
+  color: #166534 !important;
+  background: #dcfce7 !important;
+  border: 1px solid #86efac !important;
+}
+
+.badge-risk-parboil {
+  color: #854d0e !important;
+  background: #fef9c3 !important;
+  border: 1px solid #fde047 !important;
+}
+
+/* Card Lookalike Pill in Catalog Grid */
+.card-lookalike-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.25rem 0.55rem;
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: #334155;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.card-lookalike-pill:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+.card-lk-icon {
+  font-size: 0.85rem;
+}
+
+.card-lk-label {
+  font-weight: 600;
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.card-lk-name {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.card-lk-deadly {
+  color: #b91c1c;
+  font-size: 0.85rem;
+  animation: pulse-warn 2s infinite ease-in-out;
+}
+
+@keyframes pulse-warn {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.15); }
+}
+
 .lookalike-title {
   font-size: 1.15rem;
   font-weight: 800;
