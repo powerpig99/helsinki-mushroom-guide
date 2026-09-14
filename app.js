@@ -1632,6 +1632,40 @@ function renderLookalikes() {
           fi: ["Pillistö: Muuttuu vanhetessa likaisen vaaleanpunaiseksi", "Jalka: Pinnalla erittäin selvä, tummanruskea karkea verkko", "Maku: Polttavan karvas 5 sekunnissa", "Malto: Valkoinen, usein heikosti punertuva"]
         }
       }
+    },
+    {
+      title: {
+        en: "Horse Mushroom (Agaricus) vs. Destroying Angel (Amanita virosa)",
+        zh: "野蘑菇/白蘑菇 vs 致命白毒鹅膏（毁灭天使）",
+        fi: "Peltoherkkusieni vs. Valkokärpässieni"
+      },
+      summary: {
+        en: "FATAL CONFUSION: Destroying Angel is Finland's deadliest mushroom. Never harvest all-white wild mushrooms without checking gill color and the buried volva cup.",
+        zh: "【致命陷阱】白毒鹅膏是芬兰森林头号致命杀手！采摘任何白色野菌必须核验粉/褐菌褶，并探查泥土苔藓中是否有袋状菌托！",
+        fi: "KUOLEMANVAARA: Valkokärpässieni on Suomen myrkyllisin sieni. Älä koskaan poimi valkoisia sieniä tarkistamatta helttain väriä ja tuppea!"
+      },
+      edible: {
+        id: "agaricus_arvensis",
+        name: { en: "Horse Mushroom (Peltoherkkusieni)", zh: "野蘑菇/白蘑菇 (Agaricus arvensis)", fi: "Peltoherkkusieni" },
+        image: "./images/agaricus_arvensis.jpg",
+        status: t.badgeChoice,
+        traits: {
+          en: ["Gills: Greyish-pink turning chocolate brown in age", "Stem base: Slightly bulbous without any loose volva cup", "Aroma: Pleasant aniseed or sweet almond aroma", "Spore print: Rich chocolate purple-brown"],
+          zh: ["菌褶：幼时粉灰，老熟转为【深巧克力紫褐色】", "菌柄基部：微膨大，【绝无袋状或口袋状白色菌托】", "气味：清甜淡雅的茴香或苦杏仁香气", "孢子印：深巧克力紫褐色"],
+          fi: ["Heltat: Harmaanpunertavat, vanhemmiten suklaanruskeat", "Jalan tyvi: Lievästi paksuntunut, EI irrallista tuppea", "Tuoksu: Hieno aniksen tai mantelin tuoksu", "Itiöpöly: Tumman suklaanruskeaa"]
+        }
+      },
+      toxic: {
+        id: "amanita_virosa",
+        name: { en: "Destroying Angel (Valkokärpässieni)", zh: "白毒鹅膏/毁灭天使 (Amanita virosa)", fi: "Valkokärpässieni" },
+        image: "./images/amanita_virosa.jpg",
+        status: t.badgeDeadly,
+        traits: {
+          en: ["Gills: PURE CHALK-WHITE forever, never turning brown", "Stem base: Deeply buried in a loose sack-like white volva cup", "Overall: Pure satiny white cap with ragged stem scales", "Toxicity: AMATOXINS - irreversible liver and kidney necrosis!"],
+          zh: ["菌褶：【终生纯白如粉笔】，老熟也绝不变深色！", "菌柄基部：深埋于苔藓中的【巨大松弛口袋状菌托】", "外观：通体纯白无瑕，菌柄有撕裂棉絮状鳞片", "毒性：鹅膏毒肽！不可逆肝肾坏死，50克足以致命！"],
+          fi: ["Heltat: AINA PUHTAANVALKOISET koko elinkaaren ajan", "Jalan tyvi: Syvällä sammaleessa suuri säkkimäinen tuppi", "Yleisvaikutelma: Täysin vitivalkoinen, jalassa repaleita", "Myrkky: Amatoksiinit tuhoavat maksan peruuttamattomasti!"]
+        }
+      }
     }
   ];
 
@@ -1677,55 +1711,65 @@ function renderLookalikes() {
     </div>
 
     ${pairs.map(pair => `
-      <div class="comparator-card" style="margin-bottom: 2rem;">
+      <div class="comparator-card">
         <div class="comparator-header">
           <div>
-            <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b;">
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b; margin: 0 0 0.35rem 0;">
               ${pair.title[lang]}
               ${lang2 ? `<span style="font-size: 0.95rem; color:#64748b; display:block; margin-top:0.2rem; font-weight:400;">${pair.title[lang2]}</span>` : ""}
             </h3>
-            <div style="margin-top: 0.35rem;">
+            <div>
               ${renderBilingualText(pair.summary, lang, lang2)}
             </div>
           </div>
         </div>
 
-        <div class="comparator-grid">
+        <div class="comparator-pair-grid">
           <!-- Edible Column -->
-          <div class="compare-col edible-col">
-            <span class="compare-badge badge-edible">${pair.edible.status}</span>
-            <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.5rem; color: #166534;">
+          <div class="comparator-item edible">
+            <div>
+              <span class="badge badge-choice">${pair.edible.status}</span>
+            </div>
+            <h4 style="font-size: 1.15rem; font-weight: 700; margin: 0.5rem 0 0; color: #14532d; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')">
               ${pair.edible.name[lang]}
-              ${lang2 ? `<span style="color:#64748b; font-size:0.85rem; display:block; font-weight:400;">${pair.edible.name[lang2]}</span>` : ""}
+              ${lang2 ? `<span style="color:#64748b; font-size:0.85rem; display:block; font-weight:400; margin-top: 2px;">${pair.edible.name[lang2]}</span>` : ""}
             </h4>
-            <div style="height: 180px; border-radius: 6px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')" title="${t.viewDetails}">
-              <img src="${pair.edible.image}" alt="Edible" style="width:100%; height:100%; object-fit: cover;">
+            <div class="comparator-img-wrap" onclick="navigateToMushroom('${pair.edible.id}')" title="${t.viewDetails || 'View details'}">
+              <img src="${pair.edible.image}" alt="${pair.edible.name[lang]}">
             </div>
             <ul class="diff-checklist">
               ${pair.edible.traits[lang].map((tr, idx) => `
-                <li>
-                  ✓ ${tr}
-                  ${lang2 && pair.edible.traits[lang2]?.[idx] ? `<div style="color:#64748b; font-size:0.82rem; padding-left:1.3rem; margin-top:2px;">${pair.edible.traits[lang2][idx]}</div>` : ""}
+                <li style="color: #166534;">
+                  <span style="color: #16a34a; font-weight: 700; flex-shrink: 0;">✓</span>
+                  <div>
+                    <span>${tr}</span>
+                    ${lang2 && pair.edible.traits[lang2]?.[idx] ? `<div style="color:#64748b; font-size:0.82rem; margin-top:2px;">${pair.edible.traits[lang2][idx]}</div>` : ""}
+                  </div>
                 </li>
               `).join("")}
             </ul>
           </div>
 
           <!-- Toxic Column -->
-          <div class="compare-col toxic-col">
-            <span class="compare-badge ${pair.toxic.status === t.badgeDeadly ? 'badge-deadly' : 'badge-inedible'}">${pair.toxic.status}</span>
-            <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.5rem; color: #991b1b;">
+          <div class="comparator-item toxic">
+            <div>
+              <span class="badge ${pair.toxic.status === t.badgeDeadly ? 'badge-deadly' : 'badge-inedible'}">${pair.toxic.status}</span>
+            </div>
+            <h4 style="font-size: 1.15rem; font-weight: 700; margin: 0.5rem 0 0; color: #991b1b; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')">
               ${pair.toxic.name[lang]}
-              ${lang2 ? `<span style="color:#64748b; font-size:0.85rem; display:block; font-weight:400;">${pair.toxic.name[lang2]}</span>` : ""}
+              ${lang2 ? `<span style="color:#64748b; font-size:0.85rem; display:block; font-weight:400; margin-top: 2px;">${pair.toxic.name[lang2]}</span>` : ""}
             </h4>
-            <div style="height: 180px; border-radius: 6px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')" title="${t.viewDetails}">
-              <img src="${pair.toxic.image}" alt="Toxic" style="width:100%; height:100%; object-fit: cover;">
+            <div class="comparator-img-wrap" onclick="navigateToMushroom('${pair.toxic.id}')" title="${t.viewDetails || 'View details'}">
+              <img src="${pair.toxic.image}" alt="${pair.toxic.name[lang]}">
             </div>
             <ul class="diff-checklist">
               ${pair.toxic.traits[lang].map((tr, idx) => `
                 <li style="color: #991b1b;">
-                  ⚠️ ${tr}
-                  ${lang2 && pair.toxic.traits[lang2]?.[idx] ? `<div style="color:#64748b; font-size:0.82rem; padding-left:1.3rem; margin-top:2px;">${pair.toxic.traits[lang2][idx]}</div>` : ""}
+                  <span style="color: #dc2626; font-weight: 700; flex-shrink: 0;">⚠️</span>
+                  <div>
+                    <span>${tr}</span>
+                    ${lang2 && pair.toxic.traits[lang2]?.[idx] ? `<div style="color:#64748b; font-size:0.82rem; margin-top:2px;">${pair.toxic.traits[lang2][idx]}</div>` : ""}
+                  </div>
                 </li>
               `).join("")}
             </ul>

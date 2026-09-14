@@ -813,11 +813,12 @@ main {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
+  margin-bottom: 2rem;
 }
 
 .comparator-header {
   background-color: #f1f5f9;
-  padding: 1rem 1.5rem;
+  padding: 1.15rem 1.5rem;
   border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
@@ -827,39 +828,75 @@ main {
 .comparator-pair-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  divide-x: 1px solid var(--border);
-}
-
-@media (max-width: 768px) {
-  .comparator-pair-grid {
-    grid-template-columns: 1fr;
-    divide-x: 0;
-  }
 }
 
 .comparator-item {
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .comparator-item.edible {
   background-color: #f0fdf4;
+  border-right: 1px solid var(--border);
 }
 
 .comparator-item.toxic {
   background-color: #fef2f2;
 }
 
+.comparator-img-wrap {
+  width: 100%;
+  height: 260px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0.85rem 0 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background-color: #e2e8f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comparator-img-wrap:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.14);
+}
+
+.comparator-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .comparator-pair-grid {
+    grid-template-columns: 1fr;
+  }
+  .comparator-item.edible {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .comparator-img-wrap {
+    height: 220px;
+  }
+}
+
 .diff-checklist {
   list-style: none;
-  margin-top: 1rem;
+  margin-top: 0.75rem;
+  padding: 0;
 }
 
 .diff-checklist li {
-  padding: 0.4rem 0;
+  padding: 0.45rem 0;
   display: flex;
   gap: 0.5rem;
-  font-size: 0.9rem;
+  align-items: flex-start;
+  font-size: 0.88rem;
   border-bottom: 1px dashed rgba(0,0,0,0.08);
+  line-height: 1.45;
 }
 
 /* HSL Transit Spot Finder */
