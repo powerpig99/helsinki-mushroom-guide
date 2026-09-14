@@ -5,19 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Helsinki Wild Mushroom Foraging Guide • 赫尔辛基野生蘑菇采摘指南 • Helsingin Sieniopas</title>
   <meta name="description" content="Trilingual field guide to wild mushroom foraging in Helsinki & Uusimaa. Local species identification, HSL transit spots, dangerous lookalikes, and authentic recipes. Available in English, Chinese (中文), and Finnish (Suomi).">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <link rel="stylesheet" href="styles.css?v=20260911-1035">
+  <meta name="theme-color" content="#1e3a2b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mushroom Guide">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css?v=20260914-1120">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍄</text></svg>">
 </head>
 <body>
+
+  <!-- In-The-Wild Offline Mode Banner -->
+  <aside id="offline-status-banner" class="offline-status-banner" style="display: none;" role="status" aria-live="polite">
+    <div class="offline-banner-content">
+      <span class="offline-icon">📡</span>
+      <span id="offline-banner-text">Offline Field Mode Active: All 50+ species monographs, 40+ recipes, visual comparators, and safety rules are running 100% off-grid from local cache.</span>
+    </div>
+  </aside>
 
   <!-- Header Banner -->
   <header id="site-header">
     <div class="header-container">
       <div class="header-top-bar">
-        <span id="site-badge" class="site-badge">🇫🇮 Helsinki & Uusimaa Mycological Companion</span>
+        <div class="header-badge-group">
+          <span id="site-badge" class="site-badge">🇫🇮 Helsinki & Uusimaa Mycological Companion</span>
+          <button id="btn-forest-cache" class="forest-cache-pill" title="Offline Forest Cache Manager" aria-label="Forest Offline Cache">
+            <span class="cache-pill-icon">🌲</span>
+            <span id="forest-cache-label">Offline Ready</span>
+          </button>
+        </div>
         
         <!-- Language Switcher: Flag Only & Optional Second Comparison Language -->
         <div class="lang-switcher-wrapper" aria-label="Select Language">
@@ -232,9 +249,58 @@
     </div>
   </div>
 
+  <!-- Forest Offline Cache Modal -->
+  <div id="forest-cache-modal" class="gallery-modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="forest-cache-modal-card">
+      <div class="forest-cache-modal-header">
+        <div>
+          <h3 id="cache-modal-title" style="margin: 0; font-size: 1.25rem; font-weight: 800; color: #10b981;">🌲 Forest Offline Field Cache</h3>
+          <p id="cache-modal-subtitle" style="margin: 0.25rem 0 0; font-size: 0.85rem; color: #94a3b8;">Foraging with Zero Cellular Signal across Helsinki & Uusimaa</p>
+        </div>
+        <button id="btn-close-cache-modal" class="gallery-close-btn" aria-label="Close">✕</button>
+      </div>
+      <div class="forest-cache-modal-body">
+        <!-- Core guide status -->
+        <div class="cache-status-box">
+          <div class="cache-status-info">
+            <strong id="cache-core-title">Core App & Field Guide Data</strong>
+            <p id="cache-core-desc">All 50+ species monographs, 40+ recipes, lookalike comparators, and safety rules are permanently cached in your browser.</p>
+          </div>
+          <span id="cache-core-status" class="cache-badge-ok">✓ 100% Offline Ready</span>
+        </div>
+
+        <!-- Photo cache status -->
+        <div class="cache-status-box">
+          <div class="cache-status-info">
+            <strong id="cache-photos-title">Species Reference Photographs</strong>
+            <p id="cache-photos-desc">High-resolution photos for all 50+ species (215 images, ~48 MB). Pre-cache them all so every gallery works deep in the wilderness.</p>
+            <div id="cache-progress-container" class="cache-progress-container" style="display: none;">
+              <div class="cache-progress-bar-bg">
+                <div id="cache-progress-bar-fill" class="cache-progress-bar-fill" style="width: 0%;"></div>
+              </div>
+              <span id="cache-progress-text" class="cache-progress-text">0 / 215 photos cached (0%)</span>
+            </div>
+          </div>
+          <div class="cache-box-actions">
+            <button id="btn-cache-all-photos" class="btn-cache-action primary">
+              <span id="btn-cache-all-photos-text">📥 Pre-cache All 215 Photos</span>
+            </button>
+            <button id="btn-clear-photos-cache" class="btn-cache-action secondary" style="display: none;">
+              <span id="btn-clear-photos-text">🗑️ Clear Photos</span>
+            </button>
+          </div>
+        </div>
+        
+        <p id="cache-all-cached-notice" class="cache-success-message" style="display: none;">
+          ✓ All 215 species photos are saved offline in local storage! You are ready for deep forest foraging.
+        </p>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts: handbook data & i18n database loaded first, followed by reactive controller -->
-  <script src="handbook_data.js?v=20260913-2330"></script>
-  <script src="i18n.js?v=20260913-2330"></script>
-  <script src="app.js?v=20260913-2330"></script>
+  <script src="handbook_data.js?v=20260914-1120"></script>
+  <script src="i18n.js?v=20260914-1120"></script>
+  <script src="app.js?v=20260914-1120"></script>
 </body>
 </html>

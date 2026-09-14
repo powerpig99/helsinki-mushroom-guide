@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupRouter();
   applyLanguage(I18N.currentLang);
   handleRoute();
+  ForestCacheManager.init();
 });
 
 // Setup Language Switcher (Primary L1 & Secondary L2)
@@ -503,9 +504,44 @@ function applyLanguage(lang) {
     renderMushroomDetail(currentMushroomId);
   }
 
-  // If gallery modal is open, re-render its text
-  if (currentGallerySpecies) {
-    updateGalleryView();
+  // Offline banner & Forest Cache Modal texts
+  const offlineBannerText = document.getElementById("offline-banner-text");
+  if (offlineBannerText && t.offlineBannerText) offlineBannerText.textContent = t.offlineBannerText;
+
+  const forestCacheLabel = document.getElementById("forest-cache-label");
+  if (forestCacheLabel) {
+    if (!navigator.onLine) {
+      forestCacheLabel.textContent = t.offlineBadgeOffline || "📡 Off-Grid / Offline";
+    } else if (typeof ForestCacheManager !== 'undefined' && ForestCacheManager.isDownloading) {
+      forestCacheLabel.textContent = t.offlineBadgeDownloading || "⏳ Caching...";
+    } else {
+      forestCacheLabel.textContent = t.offlineBadgeReady || "🌲 Offline Ready";
+    }
+  }
+
+  const cacheModalTitle = document.getElementById("cache-modal-title");
+  if (cacheModalTitle && t.offlineModalTitle) cacheModalTitle.textContent = t.offlineModalTitle;
+  const cacheModalSubtitle = document.getElementById("cache-modal-subtitle");
+  if (cacheModalSubtitle && t.offlineModalSubtitle) cacheModalSubtitle.textContent = t.offlineModalSubtitle;
+  const cacheCoreTitle = document.getElementById("cache-core-title");
+  if (cacheCoreTitle && t.offlineModalCoreTitle) cacheCoreTitle.textContent = t.offlineModalCoreTitle;
+  const cacheCoreDesc = document.getElementById("cache-core-desc");
+  if (cacheCoreDesc && t.offlineModalCoreDesc) cacheCoreDesc.textContent = t.offlineModalCoreDesc;
+  const cacheCoreStatus = document.getElementById("cache-core-status");
+  if (cacheCoreStatus && t.offlineModalCoreStatus) cacheCoreStatus.textContent = t.offlineModalCoreStatus;
+  const cachePhotosTitle = document.getElementById("cache-photos-title");
+  if (cachePhotosTitle && t.offlineModalPhotosTitle) cachePhotosTitle.textContent = t.offlineModalPhotosTitle;
+  const cachePhotosDesc = document.getElementById("cache-photos-desc");
+  if (cachePhotosDesc && t.offlineModalPhotosDesc) cachePhotosDesc.textContent = t.offlineModalPhotosDesc;
+  const btnCacheAllText = document.getElementById("btn-cache-all-photos-text");
+  if (btnCacheAllText && t.offlineBtnCacheAll) btnCacheAllText.textContent = t.offlineBtnCacheAll;
+  const btnClearPhotosText = document.getElementById("btn-clear-photos-text");
+  if (btnClearPhotosText && t.offlineBtnClearCache) btnClearPhotosText.textContent = t.offlineBtnClearCache;
+  const cacheAllNotice = document.getElementById("cache-all-cached-notice");
+  if (cacheAllNotice && t.offlineAllCachedNotice) cacheAllNotice.textContent = t.offlineAllCachedNotice;
+
+  if (typeof ForestCacheManager !== 'undefined' && ForestCacheManager.updateCacheStatusUI) {
+    ForestCacheManager.updateCacheStatusUI();
   }
 }
 
@@ -2602,6 +2638,291 @@ function renderSafety() {
 }
 
 // (Field handbook chapters are now natively integrated into the 6 canonical sections above)
+
+/* ==========================================================================
+   Forest Offline Field Cache Manager & PWA Engine
+   ========================================================================== */
+
+const ForestCacheManager = {
+  CACHE_IMAGE_NAME: 'helsinki-mushroom-images-v1',
+  CACHE_STATIC_NAME: 'helsinki-mushroom-core-v1',
+  totalImages: 213,
+  isDownloading: false,
+
+  async init() {
+    this.setupListeners();
+    this.setupNetworkMonitoring();
+    this.registerServiceWorker();
+    await this.updateCacheStatusUI();
+  },
+
+  registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then((reg) => {
+            console.log('[PWA] Service Worker registered with scope:', reg.scope);
+          })
+          .catch((err) => {
+            console.warn('[PWA] Service Worker registration failed:', err);
+          });
+      });
+    }
+  },
+
+  setupNetworkMonitoring() {
+    const updateNetworkUI = () => {
+      const banner = document.getElementById('offline-status-banner');
+      const pill = document.getElementById('btn-forest-cache');
+      const label = document.getElementById('forest-cache-label');
+      const lang = I18N.currentLang || 'en';
+      const t = I18N.ui[lang] || I18N.ui.en;
+
+      if (!navigator.onLine) {
+        if (banner) banner.style.display = 'block';
+        if (pill) pill.classList.add('offline');
+        if (label) label.textContent = t.offlineBadgeOffline || '📡 Off-Grid / Offline';
+      } else {
+        if (banner) banner.style.display = 'none';
+        if (pill) pill.classList.remove('offline');
+        if (label && !this.isDownloading) label.textContent = t.offlineBadgeReady || '🌲 Offline Ready';
+      }
+    };
+
+    window.addEventListener('online', updateNetworkUI);
+    window.addEventListener('offline', updateNetworkUI);
+    updateNetworkUI();
+  },
+
+  setupListeners() {
+    const btnOpen = document.getElementById('btn-forest-cache');
+    const modal = document.getElementById('forest-cache-modal');
+    const btnClose = document.getElementById('btn-close-cache-modal');
+    const btnDownload = document.getElementById('btn-cache-all-photos');
+    const btnClear = document.getElementById('btn-clear-photos-cache');
+
+    if (btnOpen && modal) {
+      btnOpen.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.openModal();
+      });
+    }
+
+    if (btnClose && modal) {
+      btnClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.closeModal();
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) this.closeModal();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+        this.closeModal();
+      }
+    });
+
+    if (btnDownload) {
+      btnDownload.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.downloadAllPhotos();
+      });
+    }
+
+    if (btnClear) {
+      btnClear.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.clearPhotoCache();
+      });
+    }
+  },
+
+  openModal() {
+    const modal = document.getElementById('forest-cache-modal');
+    if (modal) {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      this.updateCacheStatusUI();
+    }
+  },
+
+  closeModal() {
+    const modal = document.getElementById('forest-cache-modal');
+    if (modal) {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  },
+
+  async getCachedImageUrls() {
+    if (!('caches' in window)) return [];
+    try {
+      const cache = await caches.open(this.CACHE_IMAGE_NAME);
+      const requests = await cache.keys();
+      return requests.map(r => r.url);
+    } catch (e) {
+      return [];
+    }
+  },
+
+  async getImageList() {
+    try {
+      const res = await fetch('images/images_list.json');
+      if (res.ok) {
+        return await res.json();
+      }
+    } catch (e) {}
+    return [];
+  },
+
+  async updateCacheStatusUI() {
+    if (!('caches' in window)) return;
+    try {
+      const cachedUrls = await this.getCachedImageUrls();
+      const count = cachedUrls.length;
+      const total = this.totalImages;
+
+      const progressContainer = document.getElementById('cache-progress-container');
+      const progressBar = document.getElementById('cache-progress-bar-fill');
+      const progressText = document.getElementById('cache-progress-text');
+      const btnDownload = document.getElementById('btn-cache-all-photos');
+      const btnDownloadText = document.getElementById('btn-cache-all-photos-text');
+      const btnClear = document.getElementById('btn-clear-photos-cache');
+      const notice = document.getElementById('cache-all-cached-notice');
+      const lang = I18N.currentLang || 'en';
+      const t = I18N.ui[lang] || I18N.ui.en;
+
+      if (progressContainer) progressContainer.style.display = 'block';
+
+      const pct = Math.min(100, Math.round((count / total) * 100));
+      if (progressBar) progressBar.style.width = `${pct}%`;
+      if (progressText) {
+        progressText.textContent = `${count} / ${total} ${t.offlineProgressCached || 'photos cached'} (${pct}%)`;
+      }
+
+      if (count >= total) {
+        if (notice) notice.style.display = 'block';
+        if (btnDownload) btnDownload.style.display = 'none';
+        if (btnClear) btnClear.style.display = 'inline-block';
+      } else if (count > 0) {
+        if (notice) notice.style.display = 'none';
+        if (btnDownload) {
+          btnDownload.style.display = 'inline-block';
+          if (btnDownloadText) {
+            btnDownloadText.textContent = t.offlineBtnCacheAll || '📥 Pre-cache All 215 Photos';
+          }
+        }
+        if (btnClear) btnClear.style.display = 'inline-block';
+      } else {
+        if (notice) notice.style.display = 'none';
+        if (btnDownload) {
+          btnDownload.style.display = 'inline-block';
+          if (btnDownloadText) {
+            btnDownloadText.textContent = t.offlineBtnCacheAll || '📥 Pre-cache All 215 Photos';
+          }
+        }
+        if (btnClear) btnClear.style.display = 'none';
+      }
+    } catch (e) {
+      console.warn('[PWA] updateCacheStatusUI error:', e);
+    }
+  },
+
+  async downloadAllPhotos() {
+    if (this.isDownloading || !('caches' in window)) return;
+    this.isDownloading = true;
+
+    const pill = document.getElementById('btn-forest-cache');
+    const pillLabel = document.getElementById('forest-cache-label');
+    const btnDownload = document.getElementById('btn-cache-all-photos');
+    const progressBar = document.getElementById('cache-progress-bar-fill');
+    const progressText = document.getElementById('cache-progress-text');
+    const lang = I18N.currentLang || 'en';
+    const t = I18N.ui[lang] || I18N.ui.en;
+
+    if (pill) pill.classList.add('downloading');
+    if (pillLabel) pillLabel.textContent = t.offlineBadgeDownloading || '⏳ Caching...';
+    if (btnDownload) btnDownload.disabled = true;
+
+    try {
+      let imageList = await this.getImageList();
+      if (!imageList || imageList.length === 0) {
+        // Fallback to species images from I18N
+        imageList = [];
+        if (I18N.species) {
+          I18N.species.forEach(sp => {
+            if (sp.image) imageList.push(sp.image);
+            if (sp.gallery) {
+              sp.gallery.forEach(g => {
+                if (g.file) imageList.push(g.file.replace(/^\.\//, ''));
+              });
+            }
+          });
+        }
+        imageList = [...new Set(imageList)];
+      }
+
+      const total = imageList.length || this.totalImages;
+      const cache = await caches.open(this.CACHE_IMAGE_NAME);
+      let loaded = 0;
+
+      // Parallel batch execution with concurrency of 6
+      const concurrency = 6;
+      const queue = [...imageList];
+
+      const worker = async () => {
+        while (queue.length > 0) {
+          const imgUrl = queue.shift();
+          try {
+            const match = await cache.match(imgUrl);
+            if (!match) {
+              const res = await fetch(imgUrl);
+              if (res.ok) {
+                await cache.put(imgUrl, res);
+              }
+            }
+          } catch (err) {
+            console.warn('[PWA] Image cache fetch failed for:', imgUrl, err);
+          }
+          loaded++;
+          const pct = Math.min(100, Math.round((loaded / total) * 100));
+          if (progressBar) progressBar.style.width = `${pct}%`;
+          if (progressText) {
+            progressText.textContent = `${loaded} / ${total} ${t.offlineProgressCached || 'photos cached'} (${pct}%)`;
+          }
+        }
+      };
+
+      const workers = Array.from({ length: concurrency }, () => worker());
+      await Promise.all(workers);
+
+    } catch (err) {
+      console.warn('[PWA] Error during bulk photo caching:', err);
+    } finally {
+      this.isDownloading = false;
+      if (pill) pill.classList.remove('downloading');
+      if (btnDownload) btnDownload.disabled = false;
+      this.setupNetworkMonitoring();
+      await this.updateCacheStatusUI();
+    }
+  },
+
+  async clearPhotoCache() {
+    if (!('caches' in window)) return;
+    try {
+      await caches.delete(this.CACHE_IMAGE_NAME);
+      await this.updateCacheStatusUI();
+    } catch (e) {
+      console.warn('[PWA] Error clearing photo cache:', e);
+    }
+  }
+};
+
 
 
 
