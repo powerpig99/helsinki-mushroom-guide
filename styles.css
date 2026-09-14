@@ -3029,4 +3029,16 @@ body.viewing-detail main {
   .integrated-monograph-title {
     font-size: 1.35rem;
   }
+  .transit-quick-strip {
+    grid-template-columns: 1fr !important;
+  }
 }
+
+/* Transit quick strip styles */
+.transit-quick-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+}
+

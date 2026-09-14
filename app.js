@@ -697,7 +697,7 @@ function renderCatalogMonograph(mode) {
           <span class="reader-readtime">⏱️ ${ch.readTime ? ch.readTime[lang] : ""}</span>
         </div>
       </div>
-      <h1 class="integrated-monograph-title">${ch.icon} ${ch.chapterNum}: ${ch.title[lang]}</h1>
+      <h1 class="integrated-monograph-title">${ch.icon} ${ch.title[lang]}</h1>
       ${lang2 ? `<div class="integrated-monograph-subtitle">${ch.title[lang2]}</div>` : ""}
       <p class="integrated-monograph-desc">${ch.desc[lang]}</p>
       ${renderSpeciesChipsForChapter(ch, lang, t)}
@@ -1476,7 +1476,7 @@ function updateGalleryView() {
 }
 
 // // -------------------------------------------------------------
-// Lookalike Comparator Feature
+// Lookalike Comparator & Deadly Toxin Science (Unified Section)
 // -------------------------------------------------------------
 function renderLookalikes() {
   const container = document.getElementById("lookalike-container");
@@ -1486,25 +1486,59 @@ function renderLookalikes() {
   const lang2 = I18N.secondaryLang;
   const t = I18N.ui[lang] || I18N.ui.en;
 
-  const ch04 = getHandbookChapter("04");
+  const titleMap = {
+    en: "⚖️ Deadly Lookalikes & Toxin Survival Guide",
+    zh: "⚖️ 芬兰致命毒菇识别与毒素避险全景指南",
+    fi: "⚖️ Näköislajien vertailu ja hengenvaaralliset myrkkysienet"
+  };
+  const descMap = {
+    en: "Micro-morphological side-by-side comparators, irreversible toxin biochemistry (Amatoxins, Orellanine 17-day latency, Gyromitrin), and life-saving zero-tolerance identification rules.",
+    zh: "微距形态特征、分叉假褶对比与致命陷阱高精度显微鉴别，深度解析不可逆细胞毒素机理（鹅膏毒肽、17天潜伏期赭红丝膜菌素、鹿花菌素），严格执行零容忍安全采摘法则。",
+    fi: "Tarkat mikroskooppiset ja morfologiset erot rinnakkain, solumyrkkyjen mekanismit ja elintärkeät tunnistussäännöt."
+  };
 
-  const chapterHeaderHtml = ch04 ? `
-    <div class="integrated-monograph-header danger-theme">
-      <div class="integrated-monograph-top-bar">
-        <div class="reader-meta-right">
-          <span class="reader-badge danger">${ch04.badge[lang]}</span>
-          <span class="reader-readtime">⏱️ ${ch04.readTime ? ch04.readTime[lang] : ""}</span>
-        </div>
-      </div>
-      <h1 class="integrated-monograph-title" style="color: #991b1b;">${ch04.icon} ${ch04.chapterNum}: ${ch04.title[lang]}</h1>
-      ${lang2 ? `<div class="integrated-monograph-subtitle">${ch04.title[lang2]}</div>` : ""}
-      <p class="integrated-monograph-desc">${ch04.desc[lang]}</p>
-      ${renderSpeciesChipsForChapter(ch04, lang, t)}
-    </div>
-    <article class="live-reader-body integrated-monograph-body" style="margin-bottom: 2.5rem;">
-      ${ch04.html || ""}
-    </article>
-  ` : "";
+  const toxins = [
+    {
+      name: { en: "Amatoxins (Cyclopeptides)", zh: "鹅膏毒肽 (Amatoxins)", fi: "Amatoksiinit" },
+      source: "Amanita virosa (Destroying Angel / Valkokärpässieni)",
+      latency: { en: "6–24 hours asymptomatic delay", zh: "6–24小时无症状假愈期", fi: "6–24 tunnin viive" },
+      mechanism: {
+        en: "Inhibits RNA polymerase II, halting cellular protein synthesis. Causes irreversible hepatic and renal necrosis. Boiling, frying, or drying does NOT destroy amatoxins.",
+        zh: "强力结合并抑制RNA聚合酶II，彻底阻断细胞蛋白质转录合成。导致不可逆肝细胞坏死与多脏器衰竭。常规烹饪、久煮、高温油炸或烘干均无法降解破坏！",
+        fi: "Estää RNA-polymeraasi II -entsyymiä pysäyttäen proteiinisynteesin. Tuhoaa maksasolut peruuttamattomasti. Keittäminen tai paistaminen EI tuhoa myrkkyä."
+      }
+    },
+    {
+      name: { en: "Orellanine (Bipyridine Toxin)", zh: "奥来毒素 / 赭红丝膜菌素 (Orellanine)", fi: "Orellaniini" },
+      source: "Cortinarius rubellus (Deadly Webcap / Suippumyrkkyseitikki)",
+      latency: { en: "2 to 17 DAYS asymptomatic latency!", zh: "长达 2 至 17 天的漫长潜伏期！", fi: "2–17 VUOROKAUDEN viive!" },
+      mechanism: {
+        en: "Generates reactive oxygen radicals specifically in renal tubular epithelial cells, causing acute interstitial nephritis and permanent renal fibrosis. Victims require lifelong dialysis or kidney transplantation.",
+        zh: "在肾脏近曲小管上皮细胞特异性蓄积并产生氧自由基，导致急性肾小管间质坏死与不可逆肾纤维化。中毒者往往在数周后突发尿毒症，需终生血液透析或换肾救命！",
+        fi: "Kerääntyy munuaisiin aiheuttaen massiivisen ja pysyvän munuaistuhon. Oireet alkavat usein vasta viikkojen kuluttua, jolloin munuaisensiirto on ainoa pelastus."
+      }
+    },
+    {
+      name: { en: "Gyromitrin (Volatile Hydrazine)", zh: "鹿花菌素 (Gyromitrin)", fi: "Gyromitriini" },
+      source: "Gyromitra esculenta (False Morel / Korvasieni)",
+      latency: { en: "2–12 hours", zh: "2–12小时", fi: "2–12 tuntia" },
+      mechanism: {
+        en: "Hydrolyzes in the body into monomethylhydrazine (MMH, volatile rocket fuel). Damages the central nervous system, erythrocytes, and liver. Proper outdoor double parboiling with fresh water is mandatory.",
+        zh: "在体内水解为单甲基肼（火箭推进剂核心成分）。攻击中枢神经系统、红细胞与肝脏。食用前必须在开阔通风处、使用大量沸水至少水煮两次并彻底换水漂洗！",
+        fi: "Hajoaa elimistössä monometyylihydratsiiniksi (rakettipolttoaine). Vaurioittaa hermostoa ja maksaa. Vaatii huolellisen ryöppäyksen runsaassa vedessä ulkotiloissa."
+      }
+    },
+    {
+      name: { en: "Muscarine & Gastrointestinal Toxins", zh: "毒蕈碱与胃肠道剧烈毒素", fi: "Muskariini ja ruoansulatusmyrkyt" },
+      source: "Inocybe, Clitocybe & raw Suillus / Leccinum",
+      latency: { en: "15–120 minutes", zh: "15–120分钟", fi: "15–120 minuuttia" },
+      mechanism: {
+        en: "Stimulates peripheral parasympathetic nervous system (SLUDGE: salivation, lacrimation, urination, defecation, gastrointestinal distress, emesis). Raw boletes cause severe vomiting if not thoroughly cooked.",
+        zh: "刺激副交感神经节后胆碱能受体，引发剧烈流涎、大汗淋漓、瞳孔缩小、恶心呕吐与剧烈腹泻。部分牛肝菌生食或未熟食亦会导致严重胃肠炎，必须充分熟透。",
+        fi: "Kiihdyttää parasympaattista hermostoa aiheuttaen hikoilua, kyynelvuotoa ja rajua oksentelua. Raaoista tateista voi saada pahan vatsanväänteen ilman kypsennystä."
+      }
+    }
+  ];
 
   const pairs = [
     {
@@ -1611,70 +1645,142 @@ function renderLookalikes() {
     }
   ];
 
-  const comparatorsHeaderHtml = `
-    <div class="section-divider-header" style="margin: 2rem 0 1.25rem;">
+  container.innerHTML = `
+    <!-- Section Header Banner -->
+    <div class="integrated-monograph-header danger-theme" style="margin-bottom: 2rem;">
+      <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: #fee2e2; color: #991b1b; font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.65rem; border: 1px solid #f87171;">
+        <span>⚖️ ${t.tabLookalikes || "Deadly Lookalikes"}</span> • <span>Zero Tolerance • 4 Visual Comparators • Toxin Science</span>
+      </div>
+      <h1 class="integrated-monograph-title" style="color: #991b1b; margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
+      ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
+      <p class="integrated-monograph-desc">${descMap[lang] || descMap.en}</p>
+    </div>
+
+    <!-- Emergency Hotline & Golden Rule Strip -->
+    <div style="background: #fff1f2; border: 1px solid #fecdd3; border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h3 style="font-size: 1.1rem; font-weight: 800; color: #9f1239; margin-bottom: 0.25rem;">
+          🚨 ${lang === "zh" ? "芬兰毒物信息中心 24/7 免费急救专线" : (lang === "fi" ? "Myrkytystietokeskus 24h maksuton neuvonta" : "Poison Information Center 24/7 Hotline")}
+        </h3>
+        <p style="font-size: 0.88rem; color: #881337; margin: 0;">
+          ${lang === "zh" ? "全国免费电话：0800 147 111（24小时全天候接听）• 严重急性中毒立即拨打：112" : (lang === "fi" ? "Ilmainen puhelinnumero: 0800 147 111 (avoinna 24/7) • Hätätilanteessa soita 112" : "Toll-free nationwide: 0800 147 111 (open 24/7) • Severe life-threatening emergency: 112")}
+        </p>
+      </div>
+      <div style="display: flex; gap: 0.6rem;">
+        <a href="tel:0800147111" class="emergency-btn" style="background: #e11d48; color: #ffffff; text-decoration: none; font-weight: 700; padding: 0.55rem 1rem; border-radius: 6px;">
+          📞 0800 147 111
+        </a>
+        <a href="tel:112" class="emergency-btn" style="background: #1e293b; color: #ffffff; text-decoration: none; font-weight: 700; padding: 0.55rem 1rem; border-radius: 6px;">
+          🚨 112
+        </a>
+      </div>
+    </div>
+
+    <!-- 1. The 4 Interactive Visual Comparators (Front & Center!) -->
+    <div class="section-divider-header" style="margin-bottom: 1.5rem;">
       <h2 style="font-size: 1.45rem; font-weight: 800; color: #1e293b; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-        <span>⚖️</span> <span>${t.tabLookalikes || "Side-by-Side Visual Lookalike Comparators"}</span>
+        <span>🔍</span> <span>${lang === "zh" ? "4大高危真假混淆微距形态对决（一键直达详情）" : (lang === "fi" ? "4 kriittistä näköislajivertailua" : "4 Critical Side-by-Side Visual Lookalike Comparators")}</span>
       </h2>
       <p style="font-size: 0.92rem; color: #64748b;">
-        ${lang === "zh" ? "微距形态特征、分叉假褶对比与致命陷阱高精度显微鉴别" : (lang === "fi" ? "Tarkat mikroskooppiset ja morfologiset erot rinnakkain" : "Direct side-by-side morphological feature breakdowns and lethal pitfalls")}
+        ${lang === "zh" ? "微距形态特征、钝分叉假褶vs锋利真褶、立体网眼与致命潜伏期特征全方位对比" : (lang === "fi" ? "Tarkat mikroskooppiset ja morfologiset erot rinnakkain, poimut vs. heltat ja jalkojen piirteet" : "Direct side-by-side morphological feature breakdowns, blunt ridges vs knife gills, and stem netting")}
       </p>
     </div>
-  `;
 
-  container.innerHTML = chapterHeaderHtml + comparatorsHeaderHtml + pairs.map(pair => `
-    <div class="comparator-card">
-      <div class="comparator-header">
-        <div>
-          <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b;">
-            ${pair.title[lang]}
-            ${lang2 ? `<span style="font-size: 0.95rem; color:#64748b; display:block; margin-top:0.2rem; font-weight:400;">${pair.title[lang2]}</span>` : ""}
-          </h3>
-          <div style="margin-top: 0.35rem;">
-            ${renderBilingualText(pair.summary, lang, lang2)}
+    ${pairs.map(pair => `
+      <div class="comparator-card" style="margin-bottom: 2rem;">
+        <div class="comparator-header">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b;">
+              ${pair.title[lang]}
+              ${lang2 ? `<span style="font-size: 0.95rem; color:#64748b; display:block; margin-top:0.2rem; font-weight:400;">${pair.title[lang2]}</span>` : ""}
+            </h3>
+            <div style="margin-top: 0.35rem;">
+              ${renderBilingualText(pair.summary, lang, lang2)}
+            </div>
+          </div>
+        </div>
+
+        <div class="comparator-grid">
+          <!-- Edible Column -->
+          <div class="compare-col edible-col">
+            <span class="compare-badge badge-edible">${pair.edible.status}</span>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.5rem; color: #166534;">
+              ${pair.edible.name[lang]}
+              ${lang2 ? `<span style="color:#64748b; font-size:0.85rem; display:block; font-weight:400;">${pair.edible.name[lang2]}</span>` : ""}
+            </h4>
+            <div style="height: 180px; border-radius: 6px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')" title="${t.viewDetails}">
+              <img src="${pair.edible.image}" alt="Edible" style="width:100%; height:100%; object-fit: cover;">
+            </div>
+            <ul class="diff-checklist">
+              ${pair.edible.traits[lang].map((tr, idx) => `
+                <li>
+                  ✓ ${tr}
+                  ${lang2 && pair.edible.traits[lang2]?.[idx] ? `<div style="color:#64748b; font-size:0.82rem; padding-left:1.3rem; margin-top:2px;">${pair.edible.traits[lang2][idx]}</div>` : ""}
+                </li>
+              `).join("")}
+            </ul>
+          </div>
+
+          <!-- Toxic Column -->
+          <div class="compare-col toxic-col">
+            <span class="compare-badge ${pair.toxic.status === t.badgeDeadly ? 'badge-deadly' : 'badge-inedible'}">${pair.toxic.status}</span>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.5rem; color: #991b1b;">
+              ${pair.toxic.name[lang]}
+              ${lang2 ? `<span style="color:#64748b; font-size:0.85rem; display:block; font-weight:400;">${pair.toxic.name[lang2]}</span>` : ""}
+            </h4>
+            <div style="height: 180px; border-radius: 6px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')" title="${t.viewDetails}">
+              <img src="${pair.toxic.image}" alt="Toxic" style="width:100%; height:100%; object-fit: cover;">
+            </div>
+            <ul class="diff-checklist">
+              ${pair.toxic.traits[lang].map((tr, idx) => `
+                <li style="color: #991b1b;">
+                  ⚠️ ${tr}
+                  ${lang2 && pair.toxic.traits[lang2]?.[idx] ? `<div style="color:#64748b; font-size:0.82rem; padding-left:1.3rem; margin-top:2px;">${pair.toxic.traits[lang2][idx]}</div>` : ""}
+                </li>
+              `).join("")}
+            </ul>
           </div>
         </div>
       </div>
-      <div class="comparator-pair-grid">
-        <div class="comparator-item edible">
-          <span class="badge badge-choice">${t.safeBadge}</span>
-          <h4 style="font-size: 1.15rem; font-weight: 700; margin-top: 0.4rem; color: #14532d; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')">
-            ${pair.edible.name[lang]}
-            ${lang2 ? `<span style="font-size:0.85rem; color:#64748b; display:block; font-weight:500;">${pair.edible.name[lang2]}</span>` : ""}
-          </h4>
-          <div style="height: 180px; border-radius: 6px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.edible.id}')" title="${t.viewDetails}">
-            <img src="${pair.edible.image}" alt="Edible" style="width:100%; height:100%; object-fit: cover;">
-          </div>
-          <ul class="diff-checklist">
-            ${pair.edible.traits[lang].map((tr, idx) => `
-              <li style="color: #166534;">
-                ✅ ${tr}
-                ${lang2 && pair.edible.traits[lang2]?.[idx] ? `<div style="color:#64748b; font-size:0.82rem; padding-left:1.3rem; margin-top:2px;">${pair.edible.traits[lang2][idx]}</div>` : ""}
-              </li>
-            `).join("")}
-          </ul>
-        </div>
-        <div class="comparator-item toxic">
-          <span class="badge badge-deadly">${t.dangerBadge}</span>
-          <h4 style="font-size: 1.15rem; font-weight: 700; margin-top: 0.4rem; color: #7f1d1d; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')">
-            ${pair.toxic.name[lang]}
-            ${lang2 ? `<span style="font-size:0.85rem; color:#64748b; display:block; font-weight:500;">${pair.toxic.name[lang2]}</span>` : ""}
-          </h4>
-          <div style="height: 180px; border-radius: 6px; overflow: hidden; margin: 0.75rem 0; cursor:pointer;" onclick="navigateToMushroom('${pair.toxic.id}')" title="${t.viewDetails}">
-            <img src="${pair.toxic.image}" alt="Toxic" style="width:100%; height:100%; object-fit: cover;">
-          </div>
-          <ul class="diff-checklist">
-            ${pair.toxic.traits[lang].map((tr, idx) => `
-              <li style="color: #991b1b;">
-                ⚠️ ${tr}
-                ${lang2 && pair.toxic.traits[lang2]?.[idx] ? `<div style="color:#64748b; font-size:0.82rem; padding-left:1.3rem; margin-top:2px;">${pair.toxic.traits[lang2][idx]}</div>` : ""}
-              </li>
-            `).join("")}
-          </ul>
-        </div>
-      </div>
+    `).join("")}
+
+    <!-- 2. Lethal Toxin Biochemistry & Symptoms Latency -->
+    <div class="section-divider-header" style="margin-bottom: 1.5rem;">
+      <h2 style="font-size: 1.45rem; font-weight: 800; color: #1e3a2b; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+        <span>☠️</span> <span>${lang === "zh" ? "芬兰主要毒素细胞作用机理与超长潜伏期剖析" : (lang === "fi" ? "Sienten myrkkytyypit ja solutason vaikutukset" : "Lethal Toxin Biochemistry & Delayed Symptoms Guide")}</span>
+      </h2>
+      <p style="font-size: 0.92rem; color: #64748b;">
+        ${lang === "zh" ? "牢记不可逆细胞损伤机制：高温水煮对鹅膏毒肽与奥来毒素完全无效！" : (lang === "fi" ? "Opi tuntemaan solumyrkkyjen tuhomekanismit: keittäminen ei auta amatoksiiniin tai orellaniiniin!" : "Understanding the irreversible cellular damage mechanisms: cooking does NOT destroy amatoxins or orellanine!")}
+      </p>
     </div>
-  `).join("");
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
+      ${toxins.map(tox => `
+        <div style="background: #ffffff; border: 1px solid #fecaca; border-left: 4px solid #dc2626; border-radius: var(--radius); padding: 1.25rem; box-shadow: var(--shadow); display: flex; flex-direction: column;">
+          <h3 style="font-size: 1.15rem; font-weight: 800; color: #991b1b; margin-bottom: 0.25rem;">${tox.name[lang] || tox.name.en}</h3>
+          <div style="font-size: 0.84rem; font-weight: 700; color: #475569; margin-bottom: 0.5rem;">🍄 ${tox.source}</div>
+          <div style="background: #fee2e2; color: #991b1b; font-size: 0.82rem; font-weight: 700; padding: 0.35rem 0.65rem; border-radius: 4px; margin-bottom: 0.75rem;">
+            ⏱️ ${tox.latency[lang] || tox.latency.en}
+          </div>
+          <p style="font-size: 0.86rem; color: #334155; line-height: 1.55; margin: 0; flex: 1;">
+            ${tox.mechanism[lang] || tox.mechanism.en}
+          </p>
+        </div>
+      `).join("")}
+    </div>
+
+    <!-- 3. Zero Tolerance Harvesting Protocol -->
+    <div style="background: #fef2f2; border: 1px solid #fca5a5; border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem;">
+      <h3 style="font-size: 1.15rem; font-weight: 800; color: #991b1b; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+        <span>🛡️</span> <span>${lang === "zh" ? "野外防误食“零容忍黄金法则”" : (lang === "fi" ? "Sienestäjän nollatoleranssi ja kultainen sääntö" : "The Zero-Tolerance Golden Rule for Wild Foraging")}</span>
+      </h3>
+      <ol style="padding-left: 1.25rem; font-size: 0.88rem; color: #7f1d1d; line-height: 1.6;">
+        <li><strong>${lang === "zh" ? "100% 确定原则" : (lang === "fi" ? "100 % tunnistusvarmuus" : "100% Certainty")}:</strong> ${lang === "zh" ? "只要有一丝犹豫或与图鉴特征不符，坚决不采、不吃、立即丢弃！" : (lang === "fi" ? "Poimi ja syö vain lajeja, jotka tunnet sataprosenttisen varmasti." : "Only forage and eat species you can identify with 100% certainty. Never guess.")}</li>
+        <li><strong>${lang === "zh" ? "逐朵查验，严防混入" : (lang === "fi" ? "Tarkista jokainen sieni erikseen" : "Check Every Single Specimen")}:</strong> ${lang === "zh" ? "漏斗鸡油菌与赭红丝膜菌经常在同一丛苔藓中混生！清理时必须逐朵核查菌柄是否为空心黄吸管，切勿整把抓进锅中！" : (lang === "fi" ? "Suppilovahvero ja hengenvaarallinen suippumyrkkyseitikki kasvavat sekaisin samoissa sammalikoissa. Tarkista jokainen sieni!" : "Funnel chanterelles and Deadly Webcap grow tangled in the same moss clumps. Inspect every stem individually before cooking!")}</li>
+        <li><strong>${lang === "zh" ? "警惕民间伪科学" : (lang === "fi" ? "Älä usko uskomuksiin" : "Reject False Myths")}:</strong> ${lang === "zh" ? "“生虫的蘑菇无毒”、“大蒜银针变黑才说明有毒”、“煮透就能去毒”均为致命伪科学！白毒鹅膏有虫蛀依然致命，且毒素极度耐高温！" : (lang === "fi" ? "Toukkaisuus, hopealusikan tummuminen tai keittäminen eivät todista sienen myrkyttömyyttä." : "Insects and slugs freely eat lethal destroying angels; silver spoons do NOT test toxicity; and boiling does NOT neutralize amatoxins.")}</li>
+      </ol>
+    </div>
+  `;
 }
 
 // -------------------------------------------------------------
@@ -1757,45 +1863,49 @@ function renderCookingGuide() {
   const guide2 = lang2 ? I18N.cookingGuide[lang2] : null;
   const t = I18N.ui[lang] || I18N.ui.en;
 
-  const ch07 = getHandbookChapter("07");
-  const chZH = getHandbookChapter("zh");
+  const titleMap = {
+    en: "🍳 Culinary Preparation, Preservation Science & Forest Kitchen",
+    zh: "🍳 芬兰野菇保鲜科学、传统风味料理与中餐实战心法",
+    fi: "🍳 Sienien säilöntä, esikäsittely ja perinteiset metsäreseptit"
+  };
+  const descMap = {
+    en: "Dehydration temperature curves, dry-pan sweating (haudutus), milkcap salt-curing (suolasienet), 28 video masterclasses, and authentic Nordic & Chinese recipes.",
+    zh: "低温风干脱水曲线、干锅焖蒸杀青排酸（Haudutus）、乳菇焯水漂烫除苦与分层腌渍（Suolasienet），附28堂中芬视频大课与经典林地食谱。",
+    fi: "Kuivauslämpötilat, sienten haudutus omassa nesteessään, rouskujen ryöppäys ja suolaus, 28 mestarikurssivideota ja perinteiset reseptit."
+  };
 
-  const ch07Html = ch07 ? `
-    <div class="integrated-monograph-header">
-      <div class="integrated-monograph-top-bar">
-        <div class="reader-meta-right">
-          <span class="reader-badge">${ch07.badge[lang]}</span>
-          <span class="reader-readtime">⏱️ ${ch07.readTime ? ch07.readTime[lang] : ""}</span>
-        </div>
-      </div>
-      <h1 class="integrated-monograph-title">${ch07.icon} ${ch07.chapterNum}: ${ch07.title[lang]}</h1>
-      ${lang2 ? `<div class="integrated-monograph-subtitle">${ch07.title[lang2]}</div>` : ""}
-      <p class="integrated-monograph-desc">${ch07.desc[lang]}</p>
-      ${renderSpeciesChipsForChapter(ch07, lang, t)}
-    </div>
-    <article class="live-reader-body integrated-monograph-body" style="margin-bottom: 2.5rem;">
-      ${ch07.html || ""}
-    </article>
-  ` : "";
-
-  const chZHHtml = (chZH && (lang === "zh" || lang2 === "zh")) ? `
-    <div class="integrated-monograph-header" style="background: #fffbf0; border-left: 4px solid #d97706; margin-bottom: 2.5rem;">
-      <div class="integrated-monograph-top-bar">
-        <span class="reader-badge" style="background: #fef3c7; color: #92400e;">${chZH.badge[lang]}</span>
-        <span class="reader-readtime">⏱️ ${chZH.readTime ? chZH.readTime[lang] : ""}</span>
-      </div>
-      <h2 class="integrated-monograph-title" style="color: #92400e; font-size: 1.4rem;">${chZH.icon} ${chZH.title[lang]}</h2>
-      ${lang2 ? `<div class="integrated-monograph-subtitle">${chZH.title[lang2]}</div>` : ""}
-      <p class="integrated-monograph-desc">${chZH.desc[lang]}</p>
-      ${renderSpeciesChipsForChapter(chZH, lang, t)}
-      <article class="live-reader-body integrated-monograph-body" style="margin-top: 1.25rem;">
-        ${chZH.html || ""}
-      </article>
-    </div>
-  ` : "";
+  const chineseMastery = [
+    {
+      icon: "🔥",
+      title: { en: "High-Heat Dry Wok Searing", zh: "猛火干锅煸炒出水法", fi: "Kuivapaahto wokissa" },
+      desc: {
+        en: "Nordic mushrooms hold 90% water. Searing them in a hot, dry wok without oil first evaporates excess liquid. Once squeaking and slightly caramelizing, add rapeseed oil, garlic, and fresh chili.",
+        zh: "芬兰野菌含水量高达90%。切勿起锅直接下油焖炸！先将改刀切片的菌子倒入大火干锅中不断翻炒，逼出大量水气至表面微焦紧致，再淋入菜籽油、大蒜碎与青红椒大火快炒。",
+        fi: "Sienissä on 90 % vettä. Paahda sienet ensin kuivassa kuumassa wokissa ilman öljyä nesteen haihduttamiseksi, ja lisää rypsiöljy ja mausteet vasta sitten."
+      }
+    },
+    {
+      icon: "🥢",
+      title: { en: "Cantonese Steaming with Ginger", zh: "广式葱姜清蒸原味法", fi: "Höyrytys inkiväärillä" },
+      desc: {
+        en: "Supreme for pristine young Porcini (*Boletus edulis*) and Orange Birch Boletes (*Leccinum versipelle*). Slice 5mm thick, arrange on plate with julienned ginger and scallions, steam 6–8 minutes, finish with hot sesame oil and light soy sauce.",
+        zh: "极品幼嫩美味牛肝菌（白牛肝）与桦树牛肝菌（红头牛肝）的最顶级吃法！切5毫米薄片平铺，撒大量姜丝与葱白，大火蒸6-8分钟，淋热花生油激香，浇少许生抽即可享用天然山野之美。",
+        fi: "Loistava tapa valmistaa nuoret herkkutatit: viipaloi ohuelti, höyrytä inkiväärin ja kevätsipulin kanssa 6–8 minuuttia ja viimeistele tilkalla kuumaa seesamiöljyä ja soijaa."
+      }
+    },
+    {
+      icon: "🍲",
+      title: { en: "Yunnan Wild Mushroom Chicken Broth", zh: "滇风野生菌老母鸡煲汤", fi: "Haudutettu sienikanakeitto" },
+      desc: {
+        en: "Combine dried black trumpets, rehydrated porcini, and fresh funnel chanterelles with free-range chicken and wolfberries. Simmer gently for 2 hours for a rich, golden umami soup.",
+        zh: "将泡发的灰包号角菇、美味牛肝菌干片与新鲜漏斗鸡油菌同煲！搭配慢炖老母鸡、红枣与枸杞文火慢炖2小时，汤色金黄澄澈，氨基酸与谷氨酸鲜味充沛，滋补强身。",
+        fi: "Yhdistä kuivatut mustatorvisienet ja herkkutatit tuoreisiin suppilovahveroihin ja kanaan. Hauduta 2 tuntia uskomattoman aromikkaaksi kullankeltaiseksi liemeksi."
+      }
+    }
+  ];
 
   const videoGallerySectionHtml = `
-    <div class="cooking-gallery-section">
+    <div class="cooking-gallery-section" style="margin: 2.5rem 0;">
       <div class="cooking-gallery-header">
         <div>
           <h3 class="cooking-gallery-title">
@@ -1823,24 +1933,34 @@ function renderCookingGuide() {
     </div>
   `;
 
-  container.innerHTML = ch07Html + chZHHtml + `
-    <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
-      <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+  container.innerHTML = `
+    <!-- Section Header Banner -->
+    <div class="integrated-monograph-header" style="margin-bottom: 2rem;">
+      <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: #ecfdf5; color: #047857; font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.65rem; border: 1px solid #a7f3d0;">
+        <span>🍳 ${t.tabCooking || "Cooking & Preservation"}</span> • <span>Preservation Science • 28 Videos • Classic Recipes</span>
+      </div>
+      <h1 class="integrated-monograph-title" style="margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
+      ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
+      <p class="integrated-monograph-desc">${descMap[lang] || descMap.en}</p>
+    </div>
+
+    <!-- 1. Essential Kitchen & Preservation Principles (4 Cards) -->
+    <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
+      <h2 style="font-size: 1.35rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.5rem;">
         ${guide.title}
-        ${guide2 ? `<span style="display:block; font-size: 1.05rem; color:#64748b; margin-top:0.25rem; font-weight:400;">${guide2.title}</span>` : ""}
+        ${guide2 ? `<span style="display:block; font-size: 0.98rem; color:#64748b; margin-top:0.2rem; font-weight:400;">${guide2.title}</span>` : ""}
       </h2>
-      <div style="color: #475569; font-size: 0.95rem; margin-bottom: 1.25rem;">
+      <div style="color: #475569; font-size: 0.92rem; margin-bottom: 1.25rem;">
         <p>${guide.intro}</p>
-        ${guide2 ? `<p style="color: #64748b; font-size: 0.9rem; margin-top: 0.35rem;">${guide2.intro}</p>` : ""}
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
         ${guide.principles.map((p, idx) => `
           <div style="background: #f8fafc; border: 1px solid var(--border); padding: 1rem; border-radius: 6px; display: flex; flex-direction: column;">
             <h4 style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-bottom: 0.35rem;">${p.title}</h4>
-            <p style="font-size: 0.85rem; color: #475569; line-height: 1.5;">${p.content}</p>
+            <p style="font-size: 0.85rem; color: #475569; line-height: 1.5; margin-bottom: 0.5rem;">${p.content}</p>
             ${guide2 && guide2.principles?.[idx] ? `
-              <div style="margin-top: 0.5rem; font-size: 0.82rem; color: #64748b; line-height: 1.45;">
+              <div style="margin-top: 0.4rem; font-size: 0.82rem; color: #64748b; line-height: 1.45;">
                 <strong>${guide2.principles[idx].title}:</strong> ${guide2.principles[idx].content}
               </div>
             ` : ""}
@@ -1857,17 +1977,24 @@ function renderCookingGuide() {
       </div>
     </div>
 
+    <!-- 2. Video Masterclasses Gallery (28 Videos) -->
     ${videoGallerySectionHtml}
 
-    <h3 style="font-size: 1.35rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">
-      🍲 ${lang === "zh" ? "经典食谱制作" : (lang === "fi" ? "Perinteiset Reseptit" : "Featured Field Recipes")}
-      ${guide2 ? `<span style="font-size: 0.95rem; color:#64748b; font-weight:400; margin-left: 0.5rem;">(${lang2 === "zh" ? "经典食谱" : (lang2 === "fi" ? "Reseptit" : "Recipes")})</span>` : ""}
-    </h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+    <!-- 3. Featured Traditional Recipes -->
+    <div class="section-divider-header" style="margin-bottom: 1.25rem;">
+      <h3 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin-bottom: 0.35rem;">
+        🍲 ${lang === "zh" ? "芬兰传统林地风味食谱精选" : (lang === "fi" ? "Perinteiset Reseptit" : "Featured Traditional Nordic Recipes")}
+      </h3>
+      <p style="font-size: 0.9rem; color: #64748b;">
+        ${lang === "zh" ? "包含备料时间、烹调火候、完整食材清单与视频教学演示" : (lang === "fi" ? "Valmistusajat, raaka-aineet, vaiheittaiset ohjeet ja videot" : "Prep times, ingredients, step-by-step instructions, and video walkthroughs")}
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
       ${guide.recipes.map((rcp, idx) => {
         const rcp2 = guide2 && guide2.recipes?.[idx] ? guide2.recipes[idx] : null;
         return `
-        <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column;">
+        <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; display: flex; flex-direction: column; box-shadow: var(--shadow);">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.4rem;">
             <h4 style="font-size: 1.15rem; font-weight: 700; color: #1e3a2b; margin: 0;">
               ${rcp.name}
@@ -1914,6 +2041,28 @@ function renderCookingGuide() {
       `;
       }).join("")}
     </div>
+
+    <!-- 4. Chinese Wild Mushroom Mastery -->
+    <div style="background: #fffbf0; border: 1px solid #fde68a; border-left: 4px solid #d97706; border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
+      <h3 style="font-size: 1.25rem; font-weight: 800; color: #92400e; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
+        <span>🇨🇳</span> <span>${lang === "zh" ? "中餐烹饪实战心法：如何驾驭芬兰野生菌" : (lang === "fi" ? "Kiinalaisen keittiön sienisalaisuudet" : "Chinese Wild Mushroom Culinary Mastery")}</span>
+      </h3>
+      <p style="font-size: 0.88rem; color: #78350f; margin-bottom: 1.25rem;">
+        ${lang === "zh" ? "巧妙融合云南干巴菌/牛肝菌旺火爆炒技法与粤式清蒸原味，释放北欧野生菌极致鲜度" : (lang === "fi" ? "Wok-paahtoa, höyrytystä ja aromaattisia liemiä pohjoisen villisienille" : "Applying high-heat wok searing, ginger steaming, and slow-simmered umami broths to Nordic wild mushrooms")}
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+        ${chineseMastery.map(cm => `
+          <div style="background: #ffffff; border: 1px solid #fef3c7; border-radius: 6px; padding: 1rem; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 0.45rem; margin-bottom: 0.35rem;">
+              <span style="font-size: 1.25rem;">${cm.icon}</span>
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: #92400e; margin: 0;">${cm.title[lang] || cm.title.en}</h4>
+            </div>
+            <p style="font-size: 0.84rem; color: #475569; line-height: 1.55; margin: 0;">${cm.desc[lang] || cm.desc.en}</p>
+          </div>
+        `).join("")}
+      </div>
+    </div>
   `;
 }
 
@@ -1938,7 +2087,7 @@ function renderHabitats() {
           <span class="reader-readtime">⏱️ ${ch03.readTime ? ch03.readTime[lang] : ""}</span>
         </div>
       </div>
-      <h1 class="integrated-monograph-title">${ch03.icon} ${ch03.chapterNum}: ${ch03.title[lang]}</h1>
+      <h1 class="integrated-monograph-title">${ch03.icon} ${ch03.title[lang]}</h1>
       ${lang2 ? `<div class="integrated-monograph-subtitle">${ch03.title[lang2]}</div>` : ""}
       <p class="integrated-monograph-desc">${ch03.desc[lang]}</p>
       ${renderSpeciesChipsForChapter(ch03, lang, t)}
@@ -1952,7 +2101,7 @@ function renderHabitats() {
 }
 
 // -------------------------------------------------------------
-// HSL Transit Spots & Hidden Trails (Chapter 02 Integration)
+// HSL Transit Spots & Hidden Trails (Merged Unified Section)
 // -------------------------------------------------------------
 function renderSpots() {
   const container = document.getElementById("spots-container");
@@ -1962,89 +2111,283 @@ function renderSpots() {
   const lang2 = I18N.secondaryLang;
   const t = I18N.ui[lang] || I18N.ui.en;
 
-  const ch02 = getHandbookChapter("02");
+  const titleMap = {
+    en: "🚌 Helsinki Foraging Spots by HSL Transit & 5 Hidden Wilderness Gems",
+    zh: "🚌 赫尔辛基大区HSL公共交通采蘑菇宝典与5大隐世秘境",
+    fi: "🚌 Helsingin seudun sienipaikat HSL-yhteyksillä ja 5 salaista erämaahelmeä"
+  };
+  const descMap = {
+    en: "Direct commuter trains, trunk buses, and live Google Maps trailhead navigation for Keskuspuisto, Sipoonkorpi, Nuuksio, and Luukki, plus 5 peaceful, low-pressure wilderness gems across the capital region.",
+    zh: "详尽整理搭乘HSL火车与干线公交直达的经典森林采摘点（中央公园、西波国家公园、努克西奥、Luukki），并特别收录5大极少人知的清幽秘境，附起终点定位与Google Maps一键导航。",
+    fi: "Kattava opas julkisen liikenteen sienireiteille Keskuspuistoon, Sipoonkorpeen, Nuuksioon ja Luukkiin sekä 5 rauhalliseen erämaakohteeseen suoralla Google Maps -navigoinnilla."
+  };
 
-  const ch02Html = ch02 ? `
-    <div class="integrated-monograph-header" style="grid-column: 1 / -1; margin-bottom: 1.5rem;">
-      <div class="integrated-monograph-top-bar">
-        <div class="reader-meta-right">
-          <span class="reader-badge">${ch02.badge[lang]}</span>
-          <span class="reader-readtime">⏱️ ${ch02.readTime ? ch02.readTime[lang] : ""}</span>
-        </div>
+  const transitCards = [
+    {
+      icon: "🎫",
+      title: { en: "Zone A–D Ticketing", zh: "ABCD区票务攻略", fi: "Vyöhykeliput (ABCD)" },
+      desc: {
+        en: "Zone AB covers Keskuspuisto & Kuusijärvi trailhead. Zone ABC covers Nuuksio Haukkalampi, Sipoonkorpi, and Luukki. Zone ABCD covers Meiko (Kirkkonummi). Buy tickets easily in the official HSL mobile app.",
+        zh: "AB区覆盖中央公园和Kuusijärvi入口；ABC区覆盖努克西奥Haukkalampi、西波和Luukki；ABCD区覆盖Kirkkonummi的Meiko秘境。建议直接使用HSL App购票。",
+        fi: "AB-lippu kattaa Keskuspuiston ja Kuusijärven. ABC kattaa Nuuksion Haukkalammen, Sipoonkorven ja Luukin. ABCD-lippu tarvitaan Meikoon (Kirkkonummi)."
+      }
+    },
+    {
+      icon: "🚆",
+      title: { en: "Commuter Trains", zh: "通勤近郊火车", fi: "Lähijunat (I, P, K, R, U)" },
+      desc: {
+        en: "I/P ring rail to Malmi/Myyrmäki; K train to Kerava/Korso for Sipoonkorpi feeder buses; U/L/Y trains west along the coastal line to Espoo & Kirkkonummi for Nuuksio and Meiko.",
+        zh: "I/P线环线火车直通万塔；K线直通Kerava/Korso换乘西波接驳公交；U/L/Y线往西沿沿海铁路线直通埃斯波与Kirkkonummi（前往努克西奥与Meiko）。",
+        fi: "I/P-kehäradat, K-juna Korsoon ja Keravalle Sipoonkorven busseihin, U/L/Y-junat länteen Espooseen ja Kirkkonummelle Meikoon."
+      }
+    },
+    {
+      icon: "🚌",
+      title: { en: "Trunk Bus Lines", zh: "干线快速公交", fi: "Runkobussit & Linjat" },
+      desc: {
+        en: "Orange trunk buses 500, 510, 520, 530 provide orbital cross-city connections. Bus 345 from Kalasatama/Elielinaukio goes direct to Luukki, Vaakkoi, and Tremanskärr.",
+        zh: "橙色干线公交500/510/520/530提供高频跨区环线换乘；345路从Kalasatama/火车站直达Luukki、Vaakkoi与Tremanskärr秘境入口。",
+        fi: "Runkolinjat 500, 510, 520, 530 sekä Vihdintien bussi 345 vievät suoraan Luukkiin, Vaakkoihin ja Tremanskärriin."
+      }
+    },
+    {
+      icon: "🚲",
+      title: { en: "Bikes & Gear Rules", zh: "自行车与携篮规定", fi: "Polkupyörät & Varusteet" },
+      desc: {
+        en: "Bicycles travel free on commuter trains and the Metro (avoid weekday peak hours 07:00–09:00 and 15:00–18:00). Bicycles are not allowed on regular buses. Carry mushrooms in rigid wicker baskets.",
+        zh: "近郊火车和地铁允许免费携带自行车（建议避开工作日早晚高峰）；普通公交车不可带单车。采菇请务必携带透气硬质竹篮或板条木筐。",
+        fi: "Polkupyörät kulkevat maksutta lähijunissa ja metrossa (vältä ruuhka-aikoja). Bussiin pyörää ei voi ottaa. Kuljeta sienet ilmavassa korissa."
+      }
+    }
+  ];
+
+  const hiddenGems = [
+    {
+      name: { en: "Meiko Nature Reserve", zh: "Meiko 自然保护区", fi: "Meikon luonnonsuojelualue" },
+      loc: "Kirkkonummi • Zone D",
+      route: {
+        en: "Train U/L to Kirkkonummi station + Bus 907 to Myllykylä or 4 km bike/taxi",
+        zh: "U/L线火车至Kirkkonummi站 + 换乘907路至Myllykylä，或骑行/打车4公里",
+        fi: "U/L-juna Kirkkonummelle + bussi 907 tai 4 km pyöräily/taksi"
+      },
+      highlights: {
+        en: "Pristine, crystal-clear oligotrophic wilderness lakes, ancient quartzite crags, and untouched old-growth pine/spruce heaths. Very low picking pressure compared to Nuuksio.",
+        zh: "极清澈的原始贫营养冰川湖泊群、古老石英岩峭壁与未经砍伐的百年松杉原始林。周末游客仅为努克西奥的零头，极少采摘干扰。",
+        fi: "Kirkasvetiset erämaajärvet, jyrkät kalliomänniköt ja vanhat aarnimetsät. Huomattavasti Nuuksiota rauhallisempi."
+      },
+      species: ["cantharellus_cibarius", "craterellus_tubaeformis", "boletus_edulis", "hydnum_repandum"]
+    },
+    {
+      name: { en: "Tremanskärr Nature Reserve", zh: "Tremanskärr 泥炭沼泽森林", fi: "Tremanskärrin luonnonsuojelualue" },
+      loc: "Northern Espoo • Zone C",
+      route: {
+        en: "Bus 345 from Elielinaukio along Vihdintie to Rinnekoti / Tremanskärr entrance",
+        zh: "火车站广场乘345路沿Vihdintie至Rinnekoti/Tremanskärr入口",
+        fi: "Bussi 345 Elielinaukiolta Vihdintietä Rinnekodin / Tremanskärrin pysäkille"
+      },
+      highlights: {
+        en: "Natural raised peat bog with wooden duckboard trails surrounded by primeval, moss-laden Norway spruce forests. Dense carpet of bilberry and funnel chanterelles in October.",
+        zh: "芬兰南部珍贵的原生态高位泥炭藓沼泽，木栈道穿行其中，外围被高大浓密的云杉原始林环抱。深秋10月苔藓层密布漏斗鸡油菌与齿菌。",
+        fi: "Luonnontilainen keidassuo pitkospuilla, jota ympäröi satumaisen sammaleinen kuusikko. Syksyllä erinomainen suppilovahveropaikka."
+      },
+      species: ["craterellus_tubaeformis", "hydnum_repandum", "lactarius_trivialis", "russula_paludosa"]
+    },
+    {
+      name: { en: "Vaakkoi Wilderness Plateau", zh: "Vaakkoi 荒原森林台地", fi: "Vaakkoin erämaa-alue" },
+      loc: "Northern Espoo • Zone C",
+      route: {
+        en: "Bus 345 to Vaakkoi stop (trailhead directly on Vihdintie)",
+        zh: "乘345路公交在Vaakkoi站下车，起点直接位于Vihdintie路旁",
+        fi: "Bussi 345 Vaakkoin pysäkille (lähtöpaikka suoraan Vihdintien varressa)"
+      },
+      highlights: {
+        en: "Roadless backcountry wilderness between Luukki and Nuuksio. Rugged rocky ridges, natural kettle ponds, and zero commercial facilities. Exceptional bolete and funnel chanterelle habitat.",
+        zh: "位于Luukki与Nuuksio之间的无车道原始荒野台地。地势起伏剧烈，石英岩脊与湿地相嵌，完全无商业设施，是牛肝菌与漏斗鸡油菌绝佳秘境。",
+        fi: "Tieverkoston ulkopuolella oleva kalliometsäalue Luukin ja Nuuksion välissä. Ei kahviloita tai ruuhkia, runsaasti tatteja ja vahveroita."
+      },
+      species: ["boletus_edulis", "boletus_pinophilus", "suillus_variegatus", "craterellus_cornucopioides"]
+    },
+    {
+      name: { en: "Luukki Kettle Lakes & Northern Trails", zh: "Luukki 冰川锅穴湖森林深处", fi: "Luukin erämaajärvet ja pohjoispolut" },
+      loc: "Northern Espoo • Zone C",
+      route: {
+        en: "Bus 345 direct to Luukin kartano; walk north toward Kaitalampi / Halkolampi",
+        zh: "乘345路直达Luukin kartano庄园；避开沙滩向北深入Kaitalampi与Halkolampi森林",
+        fi: "Bussi 345 Luukin kartanolle; suuntaa pohjoiseen Kaitalammelle ja Halkolammelle"
+      },
+      highlights: {
+        en: "While the manor and beach get recreational visitors, the rugged kettle lakes and western esker ridges are rich in pine boletes, trumpet chanterelles, and milkcaps.",
+        zh: "大多数市民只在庄园草坪与湖滨浴场休闲，往北深入森林，冰川锅穴湖泊与松树沙丘地带生机勃勃，松蘑、牛肝菌与黑号角菇产量极高。",
+        fi: "Kartanon uimarannan ulkopuolella avautuvat harjumänniköt ja suppalammet, joiden reunoilta löytyy runsaasti herkkutatteja ja rouskuja."
+      },
+      species: ["boletus_pinophilus", "cantharellus_cibarius", "craterellus_cornucopioides", "lactarius_rufus"]
+    },
+    {
+      name: { en: "Northern Sipoonkorpi / Kuusijärvi to Bisajärvi", zh: "北西波森林（Kuusijärvi 至 Bisajärvi）", fi: "Pohjois-Sipoonkorpi (Kuusijärveltä Bisajärvelle)" },
+      loc: "Vantaa / Sipoo • Zone B/C",
+      route: {
+        en: "Bus 736/739 to Kuusijärvi; hike east along the northern forested trail toward Bisajärvi",
+        zh: "乘736/739路公交至Kuusijärvi；沿北向森林小径向东徒步深入Bisajärvi湖畔",
+        fi: "Bussi 736/739 Kuusijärvelle; vaella itään vanhaa metsäreittiä Bisajärvelle"
+      },
+      highlights: {
+        en: "Far quieter than the southern Kalkkiuunintie entrance. Deep mossy spruce ravines and rocky slopes teeming with hedgehog mushrooms, porcini, and late autumn funnel chanterelles.",
+        zh: "相比南入口Kalkkiuunintie游客稀少很多。幽深的云杉苔藓峡谷与岩石裂隙间，卷缘齿菌、美味牛肝菌和深秋漏斗鸡油菌层出不穷。",
+        fi: "Paljon eteläistä Kalkkiuunintietä rauhallisempi reitti. Syvät sammalkorvet ovat loistavia orakas- ja suppispaikkoja."
+      },
+      species: ["hydnum_repandum", "boletus_edulis", "craterellus_tubaeformis", "cortinarius_caperatus"]
+    }
+  ];
+
+  container.innerHTML = `
+    <!-- Section Header Banner -->
+    <div class="integrated-monograph-header" style="margin-bottom: 2rem;">
+      <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: #ecfdf5; color: #047857; font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.65rem; border: 1px solid #a7f3d0;">
+        <span>🚌 ${t.tabSpots || "Transit Spots & Trails"}</span> • <span>Zone A–D • 6 Core Trailheads • 5 Hidden Gems</span>
       </div>
-      <h1 class="integrated-monograph-title">${ch02.icon} ${ch02.chapterNum}: ${ch02.title[lang]}</h1>
-      ${lang2 ? `<div class="integrated-monograph-subtitle">${ch02.title[lang2]}</div>` : ""}
-      <p class="integrated-monograph-desc">${ch02.desc[lang]}</p>
-      ${renderSpeciesChipsForChapter(ch02, lang, t)}
-      <article class="live-reader-body integrated-monograph-body" style="margin-top: 1.5rem;">
-        ${ch02.html || ""}
-      </article>
+      <h1 class="integrated-monograph-title" style="margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
+      ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
+      <p class="integrated-monograph-desc">${descMap[lang] || descMap.en}</p>
     </div>
-  ` : "";
 
-  const spotsGridHeader = `
-    <div style="grid-column: 1 / -1; margin: 1.5rem 0 1rem;">
-      <h3 style="font-size: 1.4rem; font-weight: 800; color: #1e3a2b; display: flex; align-items: center; gap: 0.5rem;">
-        <span>🚌</span> <span>${t.tabSpots || "HSL Transit Trailheads & Direct Navigation"}</span>
+    <!-- 1. HSL Transit Framework (4 Quick Cards) -->
+    <div class="transit-quick-strip" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 2.25rem;">
+      ${transitCards.map(tc => `
+        <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.15rem; box-shadow: var(--shadow); display: flex; flex-direction: column;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
+            <span style="font-size: 1.35rem;">${tc.icon}</span>
+            <strong style="font-size: 0.95rem; color: #1e3a2b;">${tc.title[lang] || tc.title.en}</strong>
+          </div>
+          <p style="font-size: 0.84rem; color: #475569; line-height: 1.5; margin: 0;">${tc.desc[lang] || tc.desc.en}</p>
+        </div>
+      `).join("")}
+    </div>
+
+    <!-- 2. Prime Trailhead Cards & Live Directions (Front and Center!) -->
+    <div class="section-divider-header" style="margin-bottom: 1.25rem;">
+      <h2 style="font-size: 1.4rem; font-weight: 800; color: #1e3a2b; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+        <span>🥾</span> <span>${lang === "zh" ? "6大主力公共交通直达采摘点与Google Maps一键导航" : (lang === "fi" ? "6 parasta HSL-sienireittiä ja suora navigointi" : "6 Prime Foraging Trailheads & Live Navigation")}</span>
+      </h2>
+      <p style="font-size: 0.9rem; color: #64748b;">
+        ${lang === "zh" ? "含公交直达班次、乘车耗时、推荐徒步路线、起点经纬度定位与实时Google Maps导航" : (lang === "fi" ? "Bussilinjat, matka-ajat, suositellut rengasreitit ja suorat Google Maps -opasteet lähtöpisteille" : "Live transit lines, travel durations, trailhead coordinates, and direct Google Maps directions")}
+      </p>
+    </div>
+
+    <div class="spots-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-bottom: 3rem;">
+      ${I18N.spots.map(s => `
+        <div class="spot-card">
+          <div class="spot-header">
+            <div>
+              <h3 class="spot-title">${s.name[lang]}</h3>
+              ${lang2 ? `<div style="font-size: 0.88rem; color:#64748b; margin-top: 0.15rem; font-weight:400;">${s.name[lang2]}</div>` : ""}
+              <span style="font-size: 0.8rem; color: #64748b;">📍 ${s.municipality}</span>
+            </div>
+            <span class="spot-zone">${s.zone}</span>
+          </div>
+
+          <div class="spot-transit">
+            <p><strong>🚌 HSL:</strong> ${s.transit[lang]}</p>
+            ${lang2 ? `<p style="color: #64748b; font-size: 0.82rem; margin-top: 0.2rem;">${s.transit[lang2]}</p>` : ""}
+            <p style="margin-top: 0.35rem;"><strong>⏱️ Duration:</strong> ~${s.time}</p>
+          </div>
+
+          ${s.popularTrail ? `
+          <div class="spot-trailhead-box">
+            <div class="spot-trailhead-row">
+              <span class="prime-item-label">🥾 ${t.popularTrailLabel || 'Popular Trail'}:</span>
+              <span class="prime-item-value">${s.popularTrail[lang]}</span>
+              ${lang2 ? `<div class="prime-item-secondary">${s.popularTrail[lang2]}</div>` : ""}
+            </div>
+            <div class="spot-trailhead-row" style="margin-top: 0.35rem;">
+              <span class="prime-item-label">📍 ${t.startingPointLabel || 'Starting Point'}:</span>
+              <span class="prime-item-value">${s.startingPoint[lang]}</span>
+              ${lang2 ? `<div class="prime-item-secondary">${s.startingPoint[lang2]}</div>` : ""}
+            </div>
+            <div style="margin-top: 0.6rem;">
+              <a href="${s.mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-location-map" title="${s.startingPoint[lang]}">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+                <span>${t.openMapBtn || 'Directions'}</span>
+              </a>
+            </div>
+          </div>
+          ` : ""}
+
+          <div style="font-size: 0.85rem; color: #334155; margin-bottom: 0.5rem;">
+            <strong>Terrain:</strong> ${s.terrain[lang]}
+            ${lang2 ? `<div style="color: #64748b; font-size: 0.82rem; margin-top: 0.15rem;">${s.terrain[lang2]}</div>` : ""}
+          </div>
+
+          <div style="font-size: 0.85rem; color: #166534; background: #f0fdf4; padding: 0.6rem; border-radius: 6px; margin-bottom: 0.75rem;">
+            <div>💡 <em>${s.tip[lang]}</em></div>
+            ${lang2 ? `<div style="color: #64748b; font-size: 0.82rem; margin-top: 0.25rem;"><em>${s.tip[lang2]}</em></div>` : ""}
+          </div>
+
+          <div style="font-size: 0.8rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Target Species:</div>
+          <div class="spot-species-list">
+            ${s.species.map(sp => `<span class="species-tag">${sp}</span>`).join("")}
+          </div>
+        </div>
+      `).join("")}
+    </div>
+
+    <!-- 3. The 5 Low-Pressure Hidden Wilderness Gems -->
+    <div class="section-divider-header" style="margin-bottom: 1.25rem;">
+      <h2 style="font-size: 1.4rem; font-weight: 800; color: #1e3a2b; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+        <span>🌲</span> <span>${lang === "zh" ? "芬兰森林5大小众少人采摘秘境深度评测" : (lang === "fi" ? "5 hiljaista ja salaista erämaakohdetta" : "5 Low-Pressure 'Hidden Gem' Wilderness Forests")}</span>
+      </h2>
+      <p style="font-size: 0.9rem; color: #64748b;">
+        ${lang === "zh" ? "避开周末拥挤人流！深入未经密集踩踏的原生态清幽林区，坐享丰厚无扰的菌菇收获" : (lang === "fi" ? "Vältä suosituimpien reittien ruuhkat ja nauti koskemattoman metsän antimista rauhassa" : "Escape the weekend crowds: pristine moss carpets, undisturbed mycelial flushes, and tranquil backcountry lakes")}
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
+      ${hiddenGems.map(g => `
+        <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.35rem; box-shadow: var(--shadow); display: flex; flex-direction: column;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #1e3a2b; margin: 0;">${g.name[lang] || g.name.en}</h3>
+              ${lang2 ? `<div style="font-size: 0.88rem; color: #64748b; margin-top: 0.15rem;">${g.name[lang2] || ""}</div>` : ""}
+            </div>
+            <span style="font-size: 0.76rem; font-weight: 700; background: #ecfdf5; color: #047857; padding: 0.2rem 0.55rem; border-radius: 9999px; border: 1px solid #a7f3d0; white-space: nowrap;">
+              ${g.loc}
+            </span>
+          </div>
+
+          <div style="font-size: 0.84rem; color: #334155; background: #f8fafc; padding: 0.6rem 0.75rem; border-radius: 6px; margin: 0.6rem 0 0.85rem; border: 1px solid #e2e8f0;">
+            <strong>🚌 Transit:</strong> ${g.route[lang] || g.route.en}
+          </div>
+
+          <p style="font-size: 0.86rem; color: #475569; line-height: 1.55; margin-bottom: 1rem; flex: 1;">
+            ${g.highlights[lang] || g.highlights.en}
+          </p>
+
+          <div style="border-top: 1px solid #f1f5f9; padding-top: 0.75rem;">
+            <div style="font-size: 0.78rem; font-weight: 700; color: #64748b; margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.04em;">Key Species:</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+              ${g.species.map(spId => {
+                const sp = I18N.species.find(s => s.id === spId);
+                if (!sp) return "";
+                const spName = sp.names[lang]?.primary || sp.latinName;
+                return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">🍄 ${spName}</a>`;
+              }).join("")}
+            </div>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+
+    <!-- 4. Transit Etiquette on HSL -->
+    <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem;">
+      <h3 style="font-size: 1.15rem; font-weight: 800; color: #14532d; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+        <span>🎒</span> <span>${lang === "zh" ? "公共交通采摘乘车礼仪与野外装备指南" : (lang === "fi" ? "Sienestäjän joukkoliikenne-etiketti ja varusteet" : "Public Transit Foraging Etiquette & Field Gear")}</span>
       </h3>
-      <p style="font-size: 0.9rem; color: #64748b;">${lang === "zh" ? "赫尔辛基大区6大主力直达采摘点，含公交班次、起终点定位与Google Maps一键导航" : (lang === "fi" ? "Pääkaupunkiseudun 6 parasta sienireittiä HSL-yhteyksillä ja suoralla Google Maps -navigoinnilla" : "6 prime foraging trailheads with HSL routes, starting points, and live Google Maps directions")}</p>
+      <ul style="padding-left: 1.25rem; font-size: 0.88rem; color: #166534; line-height: 1.6;">
+        <li><strong>${lang === "zh" ? "篮具透气" : (lang === "fi" ? "Hengittävä kori" : "Breathable Baskets")}:</strong> ${lang === "zh" ? "使用硬质竹篮、柳条篮或透气布袋，严禁使用密闭塑料袋，防止蘑菇出汗变质发酸。" : (lang === "fi" ? "Käytä aina ilmavaa sieni- tai pärekoria, älä koskaan muovipussia." : "Always use rigid wicker baskets or canvas totes; never use plastic bags where heat and condensation spoil proteins.")}</li>
+        <li><strong>${lang === "zh" ? "现场初筛" : (lang === "fi" ? "Puhdista metsässä" : "Clean on Site")}:</strong> ${lang === "zh" ? "在森林就地用刷子或小刀清理泥土松针，切除虫蛀泥根，避免松针杂物在公共交通上散落。" : (lang === "fi" ? "Puhdista sienet jo maastossa roskien välttämiseksi liikennevälineissä." : "Brush dirt and pine needles off caps in the woods before boarding buses or trains.")}</li>
+        <li><strong>${lang === "zh" ? "手机电量保护" : (lang === "fi" ? "Pidä varavirta mukana" : "Power Bank")}:</strong> ${lang === "zh" ? "秋季森林低温会加速手机电量流失，务必携带充电宝，确保随时可使用112定位与HSL查车次。" : (lang === "fi" ? "Kylmä syysilma kuluttaa akkua; ota mukaan ladattu varavirtalähde 112- ja HSL-sovelluksia varten." : "Cold autumn air drains phone batteries quickly; carry a portable power bank for emergency 112 GPS and HSL timetable routing.")}</li>
+      </ul>
     </div>
   `;
-
-  container.innerHTML = ch02Html + spotsGridHeader + I18N.spots.map(s => `
-    <div class="spot-card">
-      <div class="spot-header">
-        <div>
-          <h3 class="spot-title">${s.name[lang]}</h3>
-          ${lang2 ? `<div style="font-size: 0.88rem; color:#64748b; margin-top: 0.15rem; font-weight:400;">${s.name[lang2]}</div>` : ""}
-          <span style="font-size: 0.8rem; color: #64748b;">📍 ${s.municipality}</span>
-        </div>
-        <span class="spot-zone">${s.zone}</span>
-      </div>
-
-      <div class="spot-transit">
-        <p><strong>🚌 HSL:</strong> ${s.transit[lang]}</p>
-        ${lang2 ? `<p style="color: #64748b; font-size: 0.82rem; margin-top: 0.2rem;">${s.transit[lang2]}</p>` : ""}
-        <p style="margin-top: 0.35rem;"><strong>⏱️ Duration:</strong> ~${s.time}</p>
-      </div>
-
-      ${s.popularTrail ? `
-      <div class="spot-trailhead-box">
-        <div class="spot-trailhead-row">
-          <span class="prime-item-label">🥾 ${t.popularTrailLabel || 'Popular Trail'}:</span>
-          <span class="prime-item-value">${s.popularTrail[lang]}</span>
-          ${lang2 ? `<div class="prime-item-secondary">${s.popularTrail[lang2]}</div>` : ""}
-        </div>
-        <div class="spot-trailhead-row" style="margin-top: 0.35rem;">
-          <span class="prime-item-label">📍 ${t.startingPointLabel || 'Starting Point'}:</span>
-          <span class="prime-item-value">${s.startingPoint[lang]}</span>
-          ${lang2 ? `<div class="prime-item-secondary">${s.startingPoint[lang2]}</div>` : ""}
-        </div>
-        <div style="margin-top: 0.6rem;">
-          <a href="${s.mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-location-map" title="${s.startingPoint[lang]}">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
-            <span>${t.openMapBtn || 'Directions'}</span>
-          </a>
-        </div>
-      </div>
-      ` : ""}
-
-      <div style="font-size: 0.85rem; color: #334155; margin-bottom: 0.5rem;">
-        <strong>Terrain:</strong> ${s.terrain[lang]}
-        ${lang2 ? `<div style="color: #64748b; font-size: 0.82rem; margin-top: 0.15rem;">${s.terrain[lang2]}</div>` : ""}
-      </div>
-
-      <div style="font-size: 0.85rem; color: #166534; background: #f0fdf4; padding: 0.6rem; border-radius: 6px; margin-bottom: 0.75rem;">
-        <div>💡 <em>${s.tip[lang]}</em></div>
-        ${lang2 ? `<div style="color: #64748b; font-size: 0.82rem; margin-top: 0.25rem;"><em>${s.tip[lang2]}</em></div>` : ""}
-      </div>
-
-      <div style="font-size: 0.8rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Target Species:</div>
-      <div class="spot-species-list">
-        ${s.species.map(sp => `<span class="species-tag">${sp}</span>`).join("")}
-      </div>
-    </div>
-  `).join("");
 }
 
 // -------------------------------------------------------------
@@ -2059,123 +2402,201 @@ function renderSafety() {
   const sg = I18N.safetyGuidelines;
   const t = I18N.ui[lang] || I18N.ui.en;
 
-  const ch01 = getHandbookChapter("01");
+  const titleMap = {
+    en: "🛡️ Legal Rights, Nature Protection & Forest Safety in Finland",
+    zh: "🛡️ 芬兰自然公共权、自然保护区法规与森林安全守则",
+    fi: "🛡️ Jokamiehenoikeudet, luonnonsuojelualueet ja metsäturvallisuus"
+  };
+  const descMap = {
+    en: "Master Everyman's Right (Jokamiehenoikeus), commercial vs personal limits, strict rules in nature reserves, and protective protocols against ticks (punkit) and deer keds (hirvikärpäset). Includes 112 Suomi app setup.",
+    zh: "详尽解析芬兰人人享有的自然公共权（Jokamiehenoikeus）、采摘限额、自然保护区禁区界限，以及防范森林蜱虫（punkit）与鹿蝇（hirvikärpäset）的实地生存指南与112急救配置。",
+    fi: "Kattava opas jokamiehenoikeuksiin, rauhoitettuihin suojelualueisiin ja maastoturvallisuuteen punkkeja sekä hirvikärpäsiä vastaan."
+  };
 
-  const ch01Html = ch01 ? `
-    <div class="integrated-monograph-header">
-      <div class="integrated-monograph-top-bar">
-        <div class="reader-meta-right">
-          <span class="reader-badge">${ch01.badge[lang]}</span>
-          <span class="reader-readtime">⏱️ ${ch01.readTime ? ch01.readTime[lang] : ""}</span>
-        </div>
+  const allowedRules = [
+    {
+      en: "Pick Wild Mushrooms & Berries: Harvest wild edible mushrooms, berries, and uncultivated flowers freely on both state and private land without permits or fees.",
+      zh: "自由采摘野菌与浆果：可在国家公有土地和私人林地上免费采摘野生蘑菇、浆果（蓝莓、越橘、云莓）与野花，无需许可证或缴纳任何税费。",
+      fi: "Sienten ja marjojen poiminta: Saat poimia luonnonmarjoja, sieniä ja kukkia vapaasti myös toisen maalla ilman lupaa."
+    },
+    {
+      en: "Walk, Ski & Cycle: Free pedestrian and cycling right-of-way through natural forests, heaths, wetlands, and frozen waterways.",
+      zh: "自由通行与骑行：拥有徒步、滑雪、骑自行车穿越天然森林、荒原、湿地与冰封水域的法定通行权。",
+      fi: "Liikkuminen: Saat liikkua jalan, hiihtäen ja pyöräillen luonnontilaisilla alueilla."
+    },
+    {
+      en: "Temporary Camping: Pitch a tent for 1–2 nights on open natural terrain, provided you do not cause disturbance or pitch too close to homes.",
+      zh: "短期野营扎帐：可在远离民居的天然开阔地短暂停留露营1-2晚，不得造成喧哗干扰。",
+      fi: "Tilapäinen leiriytyminen: Saat telttailla tilapäisesti (1–2 yötä) riittävän etäällä asumuksista."
+    },
+    {
+      en: "Tax-Free Commercial Sale: In Finland, you can legally sell wild mushrooms you foraged yourself completely tax-free under Income Tax Act § 89.",
+      zh: "免税出售采摘果实：根据芬兰所得税法第89条，个人亲手采摘的野生蘑菇与浆果无论自食还是直接出售，所得收入完全依法免税！",
+      fi: "Veroton myynti: Itse poimittujen luonnonmarjojen ja sienten myyntitulot ovat Suomessa tuloverolain 89 § mukaan verovapaita."
+    }
+  ];
+
+  const prohibitedRules = [
+    {
+      en: "Do NOT Enter Private Yards (Pihapiiri): Stay at least 50–100m away from private homes, summer cottages (mökki), and cultivated fields.",
+      zh: "严禁侵入私人庭院（Pihapiiri）：必须与他人永久住宅、度假木屋（Mökki）和耕地保持至少50-100米距离，避开视线与听觉范围。",
+      fi: "Pihapiirirauha: Älä mene liian lähelle asuttuja taloja, mökkejä tai viljelyksiä (vähintään 50–100 m)."
+    },
+    {
+      en: "Do NOT Harm Living Trees: Never break branches, chop wood, or peel birch bark (tuohi) from living trees without the landowner's explicit permission.",
+      zh: "严禁损伤活体树木：严禁折断树枝、砍伐树木，或擅自剥取活白桦树皮（Tuohi）与钻取树汁，违者属违法毁坏林木罪。",
+      fi: "Elävien puiden vahingoittaminen: Oksien taittaminen, puun kaataminen tai tuohen kiskominen ilman lupaa on kielletty."
+    },
+    {
+      en: "Do NOT Gather Moss or Lichen: Gathering moss (sammal) or reindeer lichen (jäkälä) is strictly prohibited without landowner consent.",
+      zh: "严禁铲采苔藓与地衣：铲取地表苔藓（Sammal）或驯鹿地衣（Jäkälä）破坏脆弱腐殖质层，未经地主书面许可严格禁止。",
+      fi: "Sammalen ja jäkälän keruu: Sammalta tai jäkälää ei saa ottaa ilman maanomistajan lupaa."
+    },
+    {
+      en: "Do NOT Light Open Campfires: Fires on bare ground or rock are illegal except at official municipal / Metsähallitus designated fire pits.",
+      zh: "严禁随意野外生火：裸地或岩石上严禁点燃明火！仅可在国家公园划定的官方营火点生火，森林火险预警期间全境严禁任何明火。",
+      fi: "Tulenteko: Avotulta ei saa tehdä maastoon ilman lupaa paitsi virallisille tulentekopaikoille."
+    }
+  ];
+
+  container.innerHTML = `
+    <!-- Section Header Banner -->
+    <div class="integrated-monograph-header" style="margin-bottom: 2rem;">
+      <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: #ecfdf5; color: #047857; font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.65rem; border: 1px solid #a7f3d0;">
+        <span>🛡️ ${t.tabSafety || "Safety & Guidelines"}</span> • <span>Everyman's Right • Nature Reserves • Ticks & 112</span>
       </div>
-      <h1 class="integrated-monograph-title">${ch01.icon} ${ch01.chapterNum}: ${ch01.title[lang]}</h1>
-      ${lang2 ? `<div class="integrated-monograph-subtitle">${ch01.title[lang2]}</div>` : ""}
-      <p class="integrated-monograph-desc">${ch01.desc[lang]}</p>
-      ${renderSpeciesChipsForChapter(ch01, lang, t)}
+      <h1 class="integrated-monograph-title" style="margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
+      ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
+      <p class="integrated-monograph-desc">${descMap[lang] || descMap.en}</p>
     </div>
-    <article class="live-reader-body integrated-monograph-body" style="margin-bottom: 2rem;">
-      ${ch01.html || ""}
-    </article>
-  ` : "";
 
-  const guidelinesHeader = `
-    <div style="margin: 1.5rem 0 1rem;">
-      <h3 style="font-size: 1.4rem; font-weight: 800; color: #1e3a2b; display: flex; align-items: center; gap: 0.5rem;">
-        <span>🛡️</span> <span>${t.tabSafety || "Everyman's Right & Forest Safety Guidelines"}</span>
+    <!-- 1. Emergency Dialers & 112 Suomi App Strip -->
+    <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h3 style="font-size: 1.1rem; font-weight: 800; color: #166534; margin-bottom: 0.25rem;">
+          🚨 ${lang === "zh" ? "芬兰紧急求助与定位配置" : (lang === "fi" ? "Hätätilanteet ja 112 Suomi -sovellus" : "Emergency Rescue & 112 Suomi GPS App")}
+        </h3>
+        <p style="font-size: 0.88rem; color: #15803d; margin: 0;">
+          ${lang === "zh" ? "全国急救通用电话：112 • 毒物信息咨询中心：0800 147 111 • 手机请提前下载“112 Suomi”软件" : (lang === "fi" ? "Hätänumero: 112 • Myrkytystietokeskus: 0800 147 111 • Lataa puhelimeen 112 Suomi -sovellus" : "General Emergency: 112 • Poison Center: 0800 147 111 • Install official '112 Suomi' app for auto GPS dispatch")}
+        </p>
+      </div>
+      <div style="display: flex; gap: 0.6rem;">
+        <a href="tel:112" class="emergency-btn" style="background: #1e3a2b; color: #ffffff; text-decoration: none; font-weight: 700; padding: 0.55rem 1rem; border-radius: 6px;">
+          🚨 112
+        </a>
+        <a href="tel:0800147111" class="emergency-btn" style="background: #16a34a; color: #ffffff; text-decoration: none; font-weight: 700; padding: 0.55rem 1rem; border-radius: 6px;">
+          📞 0800 147 111
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. Everyman's Right (Allowed vs Prohibited Side-by-Side) -->
+    <div class="section-divider-header" style="margin-bottom: 1.25rem;">
+      <h2 style="font-size: 1.4rem; font-weight: 800; color: #1e3a2b; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+        <span>⚖️</span> <span>${lang === "zh" ? "芬兰自然公共权法定权利与绝对禁区红线" : (lang === "fi" ? "Jokamiehenoikeudet: Sallittu ja kielletty" : "Everyman's Right: Statutory Rights vs. Strict Prohibitions")}</span>
+      </h2>
+      <p style="font-size: 0.9rem; color: #64748b;">
+        ${lang === "zh" ? "宪法习惯法保障的大自然馈赠，采摘者必须严格自律恪守私人领地边界与环境保护责任" : (lang === "fi" ? "Suomen ainutlaatuinen oikeus nauttia luonnosta vastuullisesti ja luontoa kunnioittaen" : "Enjoying the generous Nordic nature responsibly while respecting private property and delicate biomes")}
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
+      <!-- Allowed Card -->
+      <div style="background: #ffffff; border: 1px solid #86efac; border-top: 4px solid #16a34a; border-radius: var(--radius); padding: 1.35rem; box-shadow: var(--shadow);">
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: #15803d; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span>✅</span> <span>${lang === "zh" ? "法律允许（人人享有的法定权利）" : (lang === "fi" ? "Mitä saat tehdä (Sallitut)" : "What You CAN Do (Your Rights)")}</span>
+        </h3>
+        <ul style="padding-left: 1.2rem; font-size: 0.86rem; color: #334155; line-height: 1.55;">
+          ${allowedRules.map(r => `
+            <li style="margin-bottom: 0.65rem;">
+              ${r[lang] || r.en}
+            </li>
+          `).join("")}
+        </ul>
+      </div>
+
+      <!-- Prohibited Card -->
+      <div style="background: #ffffff; border: 1px solid #fca5a5; border-top: 4px solid #dc2626; border-radius: var(--radius); padding: 1.35rem; box-shadow: var(--shadow);">
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: #991b1b; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span>❌</span> <span>${lang === "zh" ? "法律严禁（违法禁止行为）" : (lang === "fi" ? "Mitä et saa tehdä (Kielletyt)" : "What You CANNOT Do (Strictly Forbidden)")}</span>
+        </h3>
+        <ul style="padding-left: 1.2rem; font-size: 0.86rem; color: #334155; line-height: 1.55;">
+          ${prohibitedRules.map(r => `
+            <li style="margin-bottom: 0.65rem;">
+              ${r[lang] || r.en}
+            </li>
+          `).join("")}
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3. Nordic Forest Health: Ticks & Deer Keds -->
+    <div class="section-divider-header" style="margin-bottom: 1.25rem;">
+      <h2 style="font-size: 1.4rem; font-weight: 800; color: #1e3a2b; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+        <span>🐜</span> <span>${lang === "zh" ? "北欧森林害虫防范实操：蜱虫与鹿蝇生存手册" : (lang === "fi" ? "Metsäturvallisuus: Punkit ja hirvikärpäset" : "Nordic Forest Health: Ticks & Deer Keds Defense")}</span>
+      </h2>
+      <p style="font-size: 0.9rem; color: #64748b;">
+        ${lang === "zh" ? "南部海岸林区从4月至深秋活跃。穿戴长靴、浅色长裤与细齿梳子，回家必查皮肤" : (lang === "fi" ? "Suojaudu punkeilta ja hirvikärpäsiltä oikealla pukeutumisella ja päivittäisellä tarkastuksella" : "Active across southern Uusimaa from April to late autumn. Protective socks, smooth fabrics, and nightly skin checks")}
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
+      <!-- Ticks Card -->
+      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.35rem; box-shadow: var(--shadow);">
+        <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
+          <span style="font-size: 1.3rem;">🕷️</span>
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: #1e3a2b; margin: 0;">${lang === "zh" ? "蜱虫 (Punkit / Puutiaiset)" : (lang === "fi" ? "Punkit (Puutiaiset)" : "Ticks (Punkit)")}</h3>
+        </div>
+        <p style="font-size: 0.85rem; color: #475569; line-height: 1.5; margin-bottom: 0.75rem;">
+          ${lang === "zh" ? "携带莱姆病螺旋体（Borrelia）与森林脑炎病毒（TBE）。潜伏于近地低矮灌木和草叶尖端。" : (lang === "fi" ? "Voivat levittää borrelioosia ja puutiaisaivokuumetta (TBE). Viihtyvät aluskasvillisuudessa." : "Carry Borrelia (Lyme) and Tick-Borne Encephalitis (TBE). Wait on low shrubs and grass.")}
+        </p>
+        <ul style="padding-left: 1.15rem; font-size: 0.84rem; color: #334155; line-height: 1.5;">
+          <li><strong>${lang === "zh" ? "防护穿戴" : (lang === "fi" ? "Pukeutuminen" : "Clothing")}:</strong> ${lang === "zh" ? "浅色长裤塞入长袜，穿高帮橡胶靴（Kumisaappaat），喷涂DEET或派卡瑞丁驱虫喷雾。" : (lang === "fi" ? "Vaaleat vaatteet, lahkeet sukkien sisään, kumisaappaat ja punkkikarkote." : "Light-colored trousers tucked into high socks; wear rubber boots and apply DEET repellents.")}</li>
+          <li><strong>${lang === "zh" ? "每日体检" : (lang === "fi" ? "Punkkitarkastus" : "Nightly Check")}:</strong> ${lang === "zh" ? "回家后必须立刻彻底检查腋下、膝后窝、腹股沟、发际线与耳后。" : (lang === "fi" ? "Tarkista iho huolellisesti joka ilta: polvitaipeet, kainalot, hiusraja." : "Thoroughly inspect skin behind knees, armpits, groin, and along the hairline nightly.")}</li>
+          <li><strong>${lang === "zh" ? "科学拔虫" : (lang === "fi" ? "Poisto" : "Removal")}:</strong> ${lang === "zh" ? "使用细尖镊子贴紧皮肤垂直缓慢拔出，切勿旋转挤压虫腹，伤口酒精消毒。" : (lang === "fi" ? "Vedä punkki suoraan ulos pinseteillä kiertämättä ja desinfioi puremakohta." : "Grasp with fine-tipped tweezers close to the skin and pull straight out without twisting or squeezing.")}</li>
+        </ul>
+      </div>
+
+      <!-- Deer Keds Card -->
+      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.35rem; box-shadow: var(--shadow);">
+        <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
+          <span style="font-size: 1.3rem;">🪰</span>
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: #1e3a2b; margin: 0;">${lang === "zh" ? "鹿蝇 (Hirvikärpäset)" : (lang === "fi" ? "Hirvikärpäset" : "Deer Keds (Hirvikärpäset)")}</h3>
+        </div>
+        <p style="font-size: 0.85rem; color: #475569; line-height: 1.5; margin-bottom: 0.75rem;">
+          ${lang === "zh" ? "8月下旬至10月大爆发。飞向体温宿主后立即脱翅，强行钻入头发、胡须与领口爬行叮咬，易引起剧烈红肿痒疹。" : (lang === "fi" ? "Parveilevat elo-lokakuussa. Pudottavat siipensä laskeuduttuaan ja ryömivät hiuksiin." : "Swarm late August to October. Drop wings upon landing and crawl vigorously into hair, beards, and collars.")}
+        </p>
+        <ul style="padding-left: 1.15rem; font-size: 0.84rem; color: #334155; line-height: 1.5;">
+          <li><strong>${lang === "zh" ? "光滑面料" : (lang === "fi" ? "Liukaspintaiset vaatteet" : "Smooth Fabrics")}:</strong> ${lang === "zh" ? "穿紧实光滑的尼龙冲锋衣（严禁抓绒摇粒绒衣物，抓绒是鹿蝇吸附磁铁）。" : (lang === "fi" ? "Käytä liukaspintaista kuoriasua. Vältä fleeceä, johon ne tarttuvat hanakasti." : "Wear smooth synthetic shell jackets; fleece is a magnet for deer keds.")}</li>
+          <li><strong>${lang === "zh" ? "头部防护" : (lang === "fi" ? "Päähine" : "Headwear")}:</strong> ${lang === "zh" ? "佩戴紧口帽子或魔术头巾包裹住全部头发，领口拉链完全拉拢。" : (lang === "fi" ? "Käytä tiukkaa lakkia ja suojaa niska ja kaula huivilla." : "Wear a snug cap or bandana covering all hair; zip collars all the way up.")}</li>
+          <li><strong>${lang === "zh" ? "细齿梳排查" : (lang === "fi" ? "Tiheä kampa" : "Fine Comb")}:</strong> ${lang === "zh" ? "采摘结束上车前，务必用细齿扁梳彻底梳理头发，拍打外衣后再坐车。" : (lang === "fi" ? "Kampaa hiukset tiheällä kammalla ennen autoon tai kotiin menoa." : "Carry a fine-toothed comb to extract them from hair before boarding transit or entering homes.")}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4. Sustainable & Ethical Harvesting -->
+    <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
+      <h3 style="font-size: 1.15rem; font-weight: 800; color: #1e3a2b; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+        <span>🌿</span> <span>${lang === "zh" ? "可持续采摘与苔藓保护伦理" : (lang === "fi" ? "Kestävän ja vastuullisen sienestyksen periaatteet" : "Sustainable & Ethical Harvesting Ethics")}</span>
       </h3>
-    </div>
-  `;
-
-  container.innerHTML = ch01Html + guidelinesHeader + `
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;">
-      <!-- Everyman's Right -->
-      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem;">
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: #1e3a2b; margin-bottom: 0.6rem;">
-          ${sg.everymansRight.title[lang]}
-          ${lang2 ? `<span style="font-size: 0.9rem; color: #64748b; display: block; margin-top: 0.2rem; font-weight: 400;">${sg.everymansRight.title[lang2]}</span>` : ""}
-        </h3>
-        <div style="font-size: 0.88rem; color: #334155; margin-bottom: 0.75rem;">
-          <p>${sg.everymansRight.desc[lang]}</p>
-          ${lang2 ? `<p style="color: #64748b; font-size: 0.82rem; margin-top: 0.2rem;">${sg.everymansRight.desc[lang2]}</p>` : ""}
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 0.85rem;">
+        <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+          <strong style="color: #0f172a; font-size: 0.9rem;">${lang === "zh" ? "切根 vs 轻旋轻拔" : (lang === "fi" ? "Leikkaa tai kierrä" : "Cut vs. Gentle Twist")}:</strong>
+          <p style="color: #475569; font-size: 0.84rem; line-height: 1.5; margin: 0.25rem 0 0;">${lang === "zh" ? "牛肝菌与鸡油菌用小刀贴苔藓切下，或轻轻旋转拔起后现场削去泥根，保护菌丝根基。" : (lang === "fi" ? "Leikkaa veitsellä tai kierrä varovasti irti ja puhdista tyvi maastossa." : "Slice cleanly at moss level or gently twist and pull; neither method harms future mycelial flushes.")}</p>
         </div>
-        <ul style="padding-left: 1.1rem; font-size: 0.82rem; color: #475569; line-height: 1.55;">
-          ${sg.everymansRight.rules.map(r => `
-            <li style="margin-bottom: 0.35rem;">
-              <div>${r[lang]}</div>
-              ${lang2 ? `<div style="color: #64748b; font-size: 0.78rem; margin-top: 1px;">${r[lang2]}</div>` : ""}
-            </li>
-          `).join("")}
-        </ul>
-      </div>
-
-      <!-- Foolproof Five -->
-      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem;">
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: #1e3a2b; margin-bottom: 0.6rem;">
-          ${sg.foolproofFive.title[lang]}
-          ${lang2 ? `<span style="font-size: 0.9rem; color: #64748b; display: block; margin-top: 0.2rem; font-weight: 400;">${sg.foolproofFive.title[lang2]}</span>` : ""}
-        </h3>
-        <div style="font-size: 0.88rem; color: #334155; margin-bottom: 0.75rem;">
-          <p>${sg.foolproofFive.desc[lang]}</p>
-          ${lang2 ? `<p style="color: #64748b; font-size: 0.82rem; margin-top: 0.2rem;">${sg.foolproofFive.desc[lang2]}</p>` : ""}
+        <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+          <strong style="color: #0f172a; font-size: 0.9rem;">${lang === "zh" ? "绝不掀起苔藓毯" : (lang === "fi" ? "Älä revi sammalta" : "Never Tear Up Moss")}:</strong>
+          <p style="color: #475569; font-size: 0.84rem; line-height: 1.5; margin: 0.25rem 0 0;">${lang === "zh" ? "采摘漏斗鸡油菌时严禁成片掀翻苔藓！若有拨动，务必将苔藓压回原位保温保水。" : (lang === "fi" ? "Paina siirretty sammal aina takaisin paikalleen suojaamaan herkkää rihmastoa." : "Never rip up moss blankets. Always press disturbed moss back down to protect moisture-sensitive mycelium.")}</p>
         </div>
-        <ol style="padding-left: 1.1rem; font-size: 0.82rem; color: #475569; line-height: 1.55;">
-          ${sg.foolproofFive.species.map(s => `
-            <li style="margin-bottom: 0.35rem;">
-              <div>${s[lang]}</div>
-              ${lang2 ? `<div style="color: #64748b; font-size: 0.78rem; margin-top: 1px;">${s[lang2]}</div>` : ""}
-            </li>
-          `).join("")}
-        </ol>
-      </div>
-
-      <!-- Forest Safety -->
-      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem;">
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: #1e3a2b; margin-bottom: 0.6rem;">
-          ${sg.forestSafety.title[lang]}
-          ${lang2 ? `<span style="font-size: 0.9rem; color: #64748b; display: block; margin-top: 0.2rem; font-weight: 400;">${sg.forestSafety.title[lang2]}</span>` : ""}
-        </h3>
-        <ul style="padding-left: 1.1rem; font-size: 0.82rem; color: #475569; line-height: 1.55;">
-          ${sg.forestSafety.items.map(it => `
-            <li style="margin-bottom: 0.35rem;">
-              <div>${it[lang]}</div>
-              ${lang2 ? `<div style="color: #64748b; font-size: 0.78rem; margin-top: 1px;">${it[lang2]}</div>` : ""}
-            </li>
-          `).join("")}
-        </ul>
-      </div>
-
-      <!-- Forager's Pro-Tip & Host Trees (Pine vs. Birch) -->
-      ${sg.fieldTips ? `
-      <div style="grid-column: 1 / -1; background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 1.25rem;">
-        <h3 style="font-size: 1.2rem; font-weight: 700; color: #14532d; margin-bottom: 0.6rem;">
-          ${sg.fieldTips.title[lang]}
-          ${lang2 ? `<span style="font-size: 0.95rem; color: #166534; display: block; margin-top: 0.2rem; font-weight: 400;">${sg.fieldTips.title[lang2]}</span>` : ""}
-        </h3>
-        <div style="font-size: 0.9rem; color: #15803d; margin-bottom: 0.85rem; font-weight: 500;">
-          <p>${sg.fieldTips.desc[lang]}</p>
-          ${lang2 ? `<p style="color: #166534; font-size: 0.84rem; margin-top: 0.25rem;">${sg.fieldTips.desc[lang2]}</p>` : ""}
+        <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+          <strong style="color: #0f172a; font-size: 0.9rem;">${lang === "zh" ? "留老菇传播孢子" : (lang === "fi" ? "Jätä vanhat sienet" : "Leave Overripe Specimens")}:</strong>
+          <p style="color: #475569; font-size: 0.84rem; line-height: 1.5; margin: 0.25rem 0 0;">${lang === "zh" ? "软烂、发黑或严重虫蛀的成熟菌体请留在森林，供昆虫小兽食用并释放数十亿孢子繁殖。" : (lang === "fi" ? "Vanhat ja toukkaiset sienet kuuluvat metsään levittämään itiöitä tulevia vuosia varten." : "Spongy, waterlogged, or maggot-eaten mushrooms must stay in the woods to disperse spores for future seasons.")}</p>
         </div>
-
-        <!-- Pine vs Birch Comparative Image -->
-        <div style="margin: 0.75rem 0 1rem;">
-          <img src="${sg.fieldTips.image}" alt="Scots Pine vs Silver Birch" style="width: 100%; max-height: 460px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); display: block;">
-          <div style="font-size: 0.82rem; color: #475569; text-align: center; margin-top: 0.4rem; font-style: italic;">
-            ${sg.fieldTips.imageCaption[lang]}
-            ${lang2 ? ` • ${sg.fieldTips.imageCaption[lang2]}` : ""}
-          </div>
+        <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+          <strong style="color: #0f172a; font-size: 0.9rem;">${lang === "zh" ? "严禁密闭塑料袋" : (lang === "fi" ? "Ei muovipusseja" : "Never Use Plastic Bags")}:</strong>
+          <p style="color: #475569; font-size: 0.84rem; line-height: 1.5; margin: 0.25rem 0 0;">${lang === "zh" ? "塑料袋内高温缺氧会使蘑菇蛋白质急剧发酵自溶，几小时内即可产生有毒代谢物！" : (lang === "fi" ? "Muovipussissa sienet hikoilevat ja pilaantuvat nopeasti jopa myrkyllisiksi." : "In plastic, mushrooms sweat, anaerobic bacteria multiply rapidly, and proteins break down into toxic amines within hours.")}</p>
         </div>
-
-        <ul style="padding-left: 1.1rem; font-size: 0.86rem; color: #1e3a2b; line-height: 1.6;">
-          ${sg.fieldTips.items.map(it => `
-            <li style="margin-bottom: 0.5rem;">
-              <div style="font-weight: 600;">${it[lang]}</div>
-              ${lang2 ? `<div style="color: #475569; font-size: 0.82rem; margin-top: 2px; font-weight: 400;">${it[lang2]}</div>` : ""}
-            </li>
-          `).join("")}
-        </ul>
       </div>
-      ` : ""}
     </div>
   `;
 }
