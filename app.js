@@ -438,12 +438,6 @@ function applyLanguage(lang) {
   const labelMaster = document.getElementById("label-view-master");
   if (labelMaster && t.labelViewMaster) labelMaster.textContent = t.labelViewMaster;
 
-  // Header quick links
-  const headerLinkHandbook = document.getElementById("header-link-handbook");
-  if (headerLinkHandbook && t.headerLinkHandbook) headerLinkHandbook.textContent = t.headerLinkHandbook;
-  const headerLinkSpecies = document.getElementById("header-link-species");
-  if (headerLinkSpecies && t.headerLinkSpecies) headerLinkSpecies.textContent = t.headerLinkSpecies;
-
   // Search Placeholder
   const searchInput = document.getElementById("search-input");
   if (searchInput) {
