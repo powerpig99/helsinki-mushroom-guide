@@ -34,7 +34,17 @@
         </div>
       </div>
 
-      <h1 id="site-title">Helsinki Wild Mushroom Guide</h1>
+      <div class="site-title-row">
+        <h1 id="site-title">Helsinki Wild Mushroom Guide</h1>
+        <div class="site-emergency-actions">
+          <a id="btn-call-poison" href="tel:0800147111" class="btn-emergency-top poison" title="Finnish Poison Information Centre 24/7 (0800 147 111)">
+            <span>📞 0800 147 111</span>
+          </a>
+          <a id="btn-call-112" href="tel:112" class="btn-emergency-top emergency" title="General Emergency Services (112)">
+            <span>🚨 112</span>
+          </a>
+        </div>
+      </div>
       <p id="site-subtitle" class="subtitle">
         A definitive, safety-first field guide for foraging wild mushrooms across the hemiboreal forests of the Helsinki Metropolitan Area — a live record of living the philosophy. Explore the journey on <a href="https://powerpig99.github.io/not-a-toe/" target="_blank" rel="noopener noreferrer" class="blog-subtitle-link">Not a ToE</a>.
       </p>
@@ -46,21 +56,6 @@
         <a id="header-link-species" href="#/catalog" onclick="if (typeof switchCatalogViewMode === 'function') switchCatalogViewMode('safe5');" class="emergency-btn" style="background: rgba(245, 158, 11, 0.2); color: #fde68a; border: 1px solid #f59e0b; font-weight: 600; text-decoration: none;">
           ⭐ Safe Five & 50+ Species Masterclass →
         </a>
-      </div>
-
-      <!-- Emergency Hotline Card -->
-      <div class="emergency-bar">
-        <div class="emergency-info">
-          <div class="emergency-icon">🚨</div>
-          <div class="emergency-text">
-            <strong id="emergency-title">Poisoning Emergency? Call Finnish Poison Information Centre</strong>
-            <span id="emergency-subtitle">Free 24/7 service across Finland: <strong>0800 147 111</strong> • General Emergency: <strong>112</strong></span>
-          </div>
-        </div>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <a id="btn-call-poison" href="tel:0800147111" class="emergency-btn">📞 Call 0800 147 111</a>
-          <a id="btn-call-112" href="tel:112" class="emergency-btn" style="background: #fee2e2; color: #7f1d1d;">🚨 Call 112</a>
-        </div>
       </div>
     </div>
   </header>

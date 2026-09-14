@@ -398,13 +398,20 @@ function applyLanguage(lang) {
   });
 
   // Header & Static Text
-  document.getElementById("site-badge").textContent = t.siteBadge;
-  document.getElementById("site-title").textContent = t.siteTitle;
-  document.getElementById("site-subtitle").innerHTML = t.siteSubtitle;
-  document.getElementById("emergency-title").textContent = t.emergencyTitle;
-  document.getElementById("emergency-subtitle").innerHTML = t.emergencySubtitle;
-  document.getElementById("btn-call-poison").textContent = t.callPoison;
-  document.getElementById("btn-call-112").textContent = t.call112;
+  const siteBadge = document.getElementById("site-badge");
+  if (siteBadge) siteBadge.textContent = t.siteBadge;
+  const siteTitle = document.getElementById("site-title");
+  if (siteTitle) siteTitle.textContent = t.siteTitle;
+  const siteSubtitle = document.getElementById("site-subtitle");
+  if (siteSubtitle) siteSubtitle.innerHTML = t.siteSubtitle;
+  const btnPoison = document.getElementById("btn-call-poison");
+  if (btnPoison) {
+    btnPoison.title = t.callPoison || "Call Poison Info: 0800 147 111";
+  }
+  const btn112 = document.getElementById("btn-call-112");
+  if (btn112) {
+    btn112.title = t.call112 || "Emergency: 112";
+  }
 
   // Tabs (6 Canonical Integrated Sections)
   const tabBtnCatalog = document.getElementById("tab-btn-catalog");
@@ -1677,27 +1684,6 @@ function renderLookalikes() {
       </div>
       <h1 class="integrated-monograph-title" style="color: #991b1b; margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
       ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
-      <p class="integrated-monograph-desc">${descMap[lang] || descMap.en}</p>
-    </div>
-
-    <!-- Emergency Hotline & Golden Rule Strip -->
-    <div style="background: #fff1f2; border: 1px solid #fecdd3; border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-      <div>
-        <h3 style="font-size: 1.1rem; font-weight: 800; color: #9f1239; margin-bottom: 0.25rem;">
-          🚨 ${lang === "zh" ? "芬兰毒物信息中心 24/7 免费急救专线" : (lang === "fi" ? "Myrkytystietokeskus 24h maksuton neuvonta" : "Poison Information Center 24/7 Hotline")}
-        </h3>
-        <p style="font-size: 0.88rem; color: #881337; margin: 0;">
-          ${lang === "zh" ? "全国免费电话：0800 147 111（24小时全天候接听）• 严重急性中毒立即拨打：112" : (lang === "fi" ? "Ilmainen puhelinnumero: 0800 147 111 (avoinna 24/7) • Hätätilanteessa soita 112" : "Toll-free nationwide: 0800 147 111 (open 24/7) • Severe life-threatening emergency: 112")}
-        </p>
-      </div>
-      <div style="display: flex; gap: 0.6rem;">
-        <a href="tel:0800147111" class="emergency-btn" style="background: #e11d48; color: #ffffff; text-decoration: none; font-weight: 700; padding: 0.55rem 1rem; border-radius: 6px;">
-          📞 0800 147 111
-        </a>
-        <a href="tel:112" class="emergency-btn" style="background: #1e293b; color: #ffffff; text-decoration: none; font-weight: 700; padding: 0.55rem 1rem; border-radius: 6px;">
-          🚨 112
-        </a>
-      </div>
     </div>
 
     <!-- 1. The 4 Interactive Visual Comparators (Front & Center!) -->
@@ -2504,27 +2490,7 @@ function renderSafety() {
       <p class="integrated-monograph-desc">${descMap[lang] || descMap.en}</p>
     </div>
 
-    <!-- 1. Emergency Dialers & 112 Suomi App Strip -->
-    <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-      <div>
-        <h3 style="font-size: 1.1rem; font-weight: 800; color: #166534; margin-bottom: 0.25rem;">
-          🚨 ${lang === "zh" ? "芬兰紧急求助与定位配置" : (lang === "fi" ? "Hätätilanteet ja 112 Suomi -sovellus" : "Emergency Rescue & 112 Suomi GPS App")}
-        </h3>
-        <p style="font-size: 0.88rem; color: #15803d; margin: 0;">
-          ${lang === "zh" ? "全国急救通用电话：112 • 毒物信息咨询中心：0800 147 111 • 手机请提前下载“112 Suomi”软件" : (lang === "fi" ? "Hätänumero: 112 • Myrkytystietokeskus: 0800 147 111 • Lataa puhelimeen 112 Suomi -sovellus" : "General Emergency: 112 • Poison Center: 0800 147 111 • Install official '112 Suomi' app for auto GPS dispatch")}
-        </p>
-      </div>
-      <div style="display: flex; gap: 0.6rem;">
-        <a href="tel:112" class="emergency-btn" style="background: #1e3a2b; color: #ffffff; text-decoration: none; font-weight: 700; padding: 0.55rem 1rem; border-radius: 6px;">
-          🚨 112
-        </a>
-        <a href="tel:0800147111" class="emergency-btn" style="background: #16a34a; color: #ffffff; text-decoration: none; font-weight: 700; padding: 0.55rem 1rem; border-radius: 6px;">
-          📞 0800 147 111
-        </a>
-      </div>
-    </div>
-
-    <!-- 2. Everyman's Right (Allowed vs Prohibited Side-by-Side) -->
+    <!-- 1. Everyman's Right (Allowed vs Prohibited Side-by-Side) -->
     <div class="section-divider-header" style="margin-bottom: 1.25rem;">
       <h2 style="font-size: 1.4rem; font-weight: 800; color: #1e3a2b; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
         <span>⚖️</span> <span>${lang === "zh" ? "芬兰自然公共权法定权利与绝对禁区红线" : (lang === "fi" ? "Jokamiehenoikeudet: Sallittu ja kielletty" : "Everyman's Right: Statutory Rights vs. Strict Prohibitions")}</span>
