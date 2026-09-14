@@ -7,7 +7,6 @@ let currentFamilyFilter = "all";
 let currentMonthFilter = null;
 let searchQuery = "";
 let currentMushroomId = null;
-let lastActiveChapterId = null;
 
 // Lightbox Gallery State (modal fallback)
 let currentGallerySpecies = null;
@@ -1094,12 +1093,6 @@ function renderMushroomDetail(speciesId) {
     <!-- Sticky Top Navigation Bar with Flags Only & Optional Second Language -->
     <div class="detail-top-bar">
       <div class="detail-top-bar-left">
-        ${lastActiveChapterId ? `
-        <button class="btn-back-chapter" onclick="navigateToChapter('${lastActiveChapterId}')" title="${t.handbookReturnToChapter || 'Return to Chapter'} ${lastActiveChapterId}">
-          <span>📖</span>
-          <span>${t.handbookReturnToChapter || '← Return to Chapter'} ${lastActiveChapterId}</span>
-        </button>
-        ` : ""}
         <button class="btn-back-catalog" onclick="navigateToCatalog()" aria-label="Back" title="Back to Species Guide">
           <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -1268,9 +1261,6 @@ function renderMushroomDetail(speciesId) {
       </div>
       ${renderCookingVideoCard(sp, lang, lang2, t)}
     </div>
-
-    <!-- SECTION 6: Field Handbook References -->
-    ${renderHandbookReferencesForMushroom(sp, lang, lang2, t)}
 
     <!-- Bottom Navigation Footer with Previous and Next Species -->
     <div class="detail-action-footer">
@@ -2604,47 +2594,6 @@ function renderSafety() {
 // (Field handbook chapters are now natively integrated into the 6 canonical sections above)
 
 
-// -------------------------------------------------------------
-// Field Handbook References in Mushroom Detail
-// -------------------------------------------------------------
-function renderHandbookReferencesForMushroom(sp, lang, lang2, t) {
-  const chapters = (window.HANDBOOK_DATA && HANDBOOK_DATA.chapters) ? HANDBOOK_DATA.chapters : I18N.handbookChapters;
-  if (!chapters || !sp) return "";
 
-  const referencedChapters = chapters.filter(ch => {
-    if (sp.chapters && sp.chapters.includes(ch.id)) return true;
-    if (ch.targetSpecies && ch.targetSpecies.includes(sp.id)) return true;
-    return false;
-  });
-
-  if (referencedChapters.length === 0) return "";
-
-  return `
-    <div class="detail-section-card detail-handbook-refs-card">
-      <h2 class="detail-section-title">${t.handbookReferencesTitle || "📚 Field Handbook References"}</h2>
-      <p style="font-size: 0.88rem; color: #64748b; margin-bottom: 1rem;">
-        ${t.handbookReferencesSubtitle || "In-depth monographs, ecological analyses, and recipes featuring this species:"}
-      </p>
-      <div class="handbook-refs-grid">
-        ${referencedChapters.map(ch => `
-          <div class="handbook-ref-item" onclick="navigateToChapter('${ch.id}')">
-            <div>
-              <div class="handbook-ref-header">
-                <span class="handbook-ref-num">${ch.chapterNum}</span>
-                <span class="handbook-ref-badge">${ch.badge[lang]}</span>
-              </div>
-              <h4 class="handbook-ref-title">${ch.icon} ${ch.title[lang]}</h4>
-              ${lang2 ? `<div class="handbook-ref-subtitle">${ch.title[lang2]}</div>` : ""}
-              <p class="handbook-ref-desc">${ch.desc[lang]}</p>
-            </div>
-            <button class="handbook-ref-btn" onclick="event.stopPropagation(); navigateToChapter('${ch.id}')">
-              ${t.handbookReadInChapter || "Read Chapter →"}
-            </button>
-          </div>
-        `).join("")}
-      </div>
-    </div>
-  `;
-}
 
 

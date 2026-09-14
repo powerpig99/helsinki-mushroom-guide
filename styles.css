@@ -2404,129 +2404,12 @@ body.viewing-detail main {
   background: #991b1b;
 }
 
-/* Mushroom Detail: Field Handbook References */
-.detail-handbook-refs-card {
-  margin-top: 1.5rem;
-}
-
-.handbook-refs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.handbook-ref-item {
-  background: #f8fafc;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.1rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.handbook-ref-item:hover {
-  background: #ffffff;
-  border-color: #10b981;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
-  transform: translateY(-2px);
-}
-
-.handbook-ref-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.4rem;
-}
-
-.handbook-ref-num {
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: #10b981;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.handbook-ref-badge {
-  background: #ecfdf5;
-  color: #047857;
-  border: 1px solid #a7f3d0;
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 0.1rem 0.45rem;
-  border-radius: 9999px;
-}
-
-.handbook-ref-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 0.25rem;
-  line-height: 1.35;
-}
-
-.handbook-ref-subtitle {
-  font-size: 0.82rem;
-  color: #64748b;
-  margin-bottom: 0.45rem;
-}
-
-.handbook-ref-desc {
-  font-size: 0.83rem;
-  color: #475569;
-  line-height: 1.45;
-  margin-bottom: 0.95rem;
-}
-
-.handbook-ref-btn {
-  align-self: flex-start;
-  background: #1e3a2b;
-  color: #ffffff;
-  border: none;
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 0.4rem 0.85rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-
-.handbook-ref-item:hover .handbook-ref-btn {
-  background: #10b981;
-}
-
-.btn-back-chapter {
-  background: #059669;
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  padding: 0.4rem 0.85rem;
-  font-size: 0.84rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  transition: all 0.15s ease;
-}
-
-.btn-back-chapter:hover {
-  background: #047857;
-  transform: translateX(-2px);
-}
-
 @media (max-width: 768px) {
   .live-reader-container {
     padding: 1.5rem 1.15rem;
   }
   .live-reader-title {
     font-size: 1.6rem;
-  }
-  .handbook-refs-grid {
-    grid-template-columns: 1fr;
   }
 }
 
