@@ -7,6 +7,8 @@ let currentFamilyFilter = "all";
 let currentMonthFilter = null;
 let searchQuery = "";
 let currentMushroomId = null;
+let currentTierFilter = null;
+let currentTheme = (typeof localStorage !== "undefined" && localStorage.getItem ? localStorage.getItem("mushroom_theme") : null) || (typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 
 // Lightbox Gallery State (modal fallback)
 let currentGallerySpecies = null;
@@ -25,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     I18N.secondaryLang = null;
   }
 
+  initTheme();
   setupLanguageSwitcher();
   setupTabs();
   setupFilters();
@@ -34,6 +37,28 @@ document.addEventListener("DOMContentLoaded", () => {
   handleRoute();
   ForestCacheManager.init();
 });
+
+
+function initTheme() {
+  if (typeof document === "undefined") return;
+  const htmlEl = document.documentElement;
+  const themeBtn = document.getElementById("theme-toggle-btn");
+  if (htmlEl && htmlEl.setAttribute) htmlEl.setAttribute("data-theme", currentTheme);
+  if (themeBtn) {
+    themeBtn.innerHTML = currentTheme === "dark" ? "☀️" : "🌙";
+    themeBtn.setAttribute("aria-label", currentTheme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+    themeBtn.addEventListener("click", () => {
+      currentTheme = currentTheme === "dark" ? "light" : "dark";
+      if (htmlEl && htmlEl.setAttribute) htmlEl.setAttribute("data-theme", currentTheme);
+      if (typeof localStorage !== "undefined" && localStorage.setItem) {
+        localStorage.setItem("mushroom_theme", currentTheme);
+      }
+      themeBtn.innerHTML = currentTheme === "dark" ? "☀️" : "🌙";
+      themeBtn.setAttribute("aria-label", currentTheme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+    });
+  }
+}
+window.initTheme = initTheme;
 
 // Setup Language Switcher (Primary L1 & Secondary L2)
 function setupLanguageSwitcher() {
@@ -405,6 +430,13 @@ function applyLanguage(lang) {
   if (siteTitle) siteTitle.textContent = t.siteTitle;
   const siteSubtitle = document.getElementById("site-subtitle");
   if (siteSubtitle) siteSubtitle.innerHTML = t.siteSubtitle;
+  const quoteText = document.getElementById("ground-quote-text");
+  if (quoteText && t.quoteNotAToE) quoteText.textContent = t.quoteNotAToE;
+  const quoteLink = document.getElementById("ground-quote-link");
+  if (quoteLink && t.quoteLink) quoteLink.textContent = t.quoteLink;
+  if (typeof currentCatalogViewMode !== "undefined" && (currentCatalogViewMode === "safe5" || currentCatalogViewMode === "intermediate")) {
+    renderTierIntroBanner(currentCatalogViewMode);
+  }
   const btnPoison = document.getElementById("btn-call-poison");
   if (btnPoison) {
     btnPoison.title = t.callPoison || "Call Poison Info: 0800 147 111";
@@ -691,33 +723,154 @@ function switchCatalogViewMode(mode, btn) {
   const controlsPanel = document.getElementById("catalog-controls-panel");
   const mushroomGrid = document.getElementById("mushroom-grid");
   const monographContainer = document.getElementById("catalog-monograph-container");
+  const tierBanner = document.getElementById("tier-intro-banner");
 
   if (currentCatalogViewMode === "grid") {
+    currentTierFilter = null;
+    if (tierBanner) {
+      tierBanner.style.display = "none";
+      tierBanner.innerHTML = "";
+    }
     if (controlsPanel) controlsPanel.style.display = "block";
     if (mushroomGrid) mushroomGrid.style.display = "grid";
     if (monographContainer) monographContainer.style.display = "none";
-  } else {
+    renderCatalog();
+  } else if (currentCatalogViewMode === "safe5") {
+    currentTierFilter = "safe5";
+    if (controlsPanel) controlsPanel.style.display = "none";
+    if (mushroomGrid) mushroomGrid.style.display = "grid";
+    if (monographContainer) monographContainer.style.display = "none";
+    renderTierIntroBanner("safe5");
+    renderCatalog();
+  } else if (currentCatalogViewMode === "intermediate") {
+    currentTierFilter = "intermediate";
+    if (controlsPanel) controlsPanel.style.display = "none";
+    if (mushroomGrid) mushroomGrid.style.display = "grid";
+    if (monographContainer) monographContainer.style.display = "none";
+    renderTierIntroBanner("intermediate");
+    renderCatalog();
+  } else if (currentCatalogViewMode === "master") {
+    currentTierFilter = null;
+    if (tierBanner) {
+      tierBanner.style.display = "none";
+      tierBanner.innerHTML = "";
+    }
     if (controlsPanel) controlsPanel.style.display = "none";
     if (mushroomGrid) mushroomGrid.style.display = "none";
     if (monographContainer) {
       monographContainer.style.display = "block";
-      renderCatalogMonograph(currentCatalogViewMode);
+      renderCatalogMonograph("master");
     }
   }
 }
 window.switchCatalogViewMode = switchCatalogViewMode;
 
+function renderTierIntroBanner(mode) {
+  const banner = document.getElementById("tier-intro-banner");
+  if (!banner) return;
+  const lang = I18N.currentLang;
+  const lang2 = I18N.secondaryLang;
+  const t = I18N.ui[lang] || I18N.ui.en;
+
+  if (mode === "safe5") {
+    banner.className = "tier-intro-banner safe5-theme";
+    banner.style.display = "block";
+    banner.innerHTML = `
+      <div class="tier-intro-header">
+        <div class="tier-badge-row">
+          <span class="tier-badge">⭐ Zero Lethal Lookalikes</span>
+          <span class="tier-count">5 Core Species</span>
+        </div>
+        <h2 class="tier-intro-title">${t.tierIntroSafe5Title || "The Safe Five Beginner Mushrooms"}</h2>
+        ${lang2 && I18N.ui[lang2]?.tierIntroSafe5Title ? `<div class="tier-intro-subtitle">${I18N.ui[lang2].tierIntroSafe5Title}</div>` : ""}
+      </div>
+      <p class="tier-intro-desc">${t.tierIntroSafe5Desc || ""}</p>
+      
+      <div class="tier-features-bar">
+        <span class="tier-feature-pill">✓ False Gills (Poimut)</span>
+        <span class="tier-feature-pill">✓ Under-cap Spines (Oraat)</span>
+        <span class="tier-feature-pill">✓ Hollow Stem Funnel</span>
+        <span class="tier-feature-pill">✓ Spongy Pores (Pillit)</span>
+      </div>
+
+      <div class="tier-actions-bar">
+        <button id="btn-toggle-safe5-monograph" class="tier-action-btn" onclick="toggleTierMonograph('05')">
+          ${t.tierReadMonographBtn || "📖 Open Chapter 05 Monograph"}
+        </button>
+        <button class="tier-action-btn secondary" onclick="switchCatalogViewMode('grid')">
+          ${t.labelViewGrid || "Show All 63 Species"}
+        </button>
+      </div>
+    `;
+  } else if (mode === "intermediate") {
+    banner.className = "tier-intro-banner intermediate-theme";
+    banner.style.display = "block";
+    banner.innerHTML = `
+      <div class="tier-intro-header">
+        <div class="tier-badge-row">
+          <span class="tier-badge warning">🧺 Preparation & Ring Discipline</span>
+          <span class="tier-count">Intermediate & Advanced</span>
+        </div>
+        <h2 class="tier-intro-title">${t.tierIntroIntermediateTitle || "Intermediate Gourmet Species"}</h2>
+        ${lang2 && I18N.ui[lang2]?.tierIntroIntermediateTitle ? `<div class="tier-intro-subtitle">${I18N.ui[lang2].tierIntroIntermediateTitle}</div>` : ""}
+      </div>
+      <p class="tier-intro-desc">${t.tierIntroIntermediateDesc || ""}</p>
+      
+      <div class="tier-features-bar">
+        <span class="tier-feature-pill">⚠️ Parboiling Acrid Milkcaps (Ryöppäys)</span>
+        <span class="tier-feature-pill">⚠️ Bolete Sticky Pellicle Peeling</span>
+        <span class="tier-feature-pill">⚠️ Annulus Ring vs Volva Verification</span>
+      </div>
+
+      <div class="tier-actions-bar">
+        <button id="btn-toggle-intermediate-monograph" class="tier-action-btn" onclick="toggleTierMonograph('06')">
+          ${t.tierReadMonographBtn || "📖 Open Chapter 06 Monograph"}
+        </button>
+        <button class="tier-action-btn secondary" onclick="switchCatalogViewMode('grid')">
+          ${t.labelViewGrid || "Show All 63 Species"}
+        </button>
+      </div>
+    `;
+  } else {
+    banner.style.display = "none";
+    banner.innerHTML = "";
+  }
+}
+window.renderTierIntroBanner = renderTierIntroBanner;
+
+function toggleTierMonograph(chId) {
+  const container = document.getElementById("catalog-monograph-container");
+  if (!container) return;
+  const lang = I18N.currentLang;
+  const t = I18N.ui[lang] || I18N.ui.en;
+
+  if (container.style.display === "block" && container.dataset.activeCh === chId) {
+    container.style.display = "none";
+    container.dataset.activeCh = "";
+  } else {
+    container.style.display = "block";
+    container.dataset.activeCh = chId;
+    renderCatalogMonographForChapter(chId);
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+window.toggleTierMonograph = toggleTierMonograph;
+
 function renderCatalogMonograph(mode) {
+  let chId = "05";
+  if (mode === "intermediate") chId = "06";
+  else if (mode === "master") chId = "08";
+  renderCatalogMonographForChapter(chId);
+}
+window.renderCatalogMonograph = renderCatalogMonograph;
+
+function renderCatalogMonographForChapter(chId) {
   const container = document.getElementById("catalog-monograph-container");
   if (!container) return;
 
   const lang = I18N.currentLang;
   const lang2 = I18N.secondaryLang;
   const t = I18N.ui[lang] || I18N.ui.en;
-
-  let chId = "05";
-  if (mode === "intermediate") chId = "06";
-  else if (mode === "master") chId = "08";
 
   const ch = getHandbookChapter(chId);
   if (!ch) return;
@@ -747,12 +900,13 @@ function renderCatalogMonograph(mode) {
       <button class="btn-back-to-grid" onclick="switchCatalogViewMode('grid'); window.scrollTo({ top: 0, behavior: 'smooth' });">
         ${t.btnBackToGrid || "← Return to Interactive Field Grid (63)"}
       </button>
-      <button class="reader-pager-btn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+      <button class="reader-pager-btn" onclick="container.scrollIntoView({ behavior: 'smooth', block: 'start' })">
         ${t.handbookTopBtn || "↑ Top"}
       </button>
     </div>
   `;
 }
+window.renderCatalogMonographForChapter = renderCatalogMonographForChapter;
 
 function showMushroomDetail(id) {
   currentMushroomId = id;
@@ -851,6 +1005,38 @@ function renderCatalog() {
   const t = I18N.ui[lang];
 
   const filtered = I18N.species.filter(m => {
+    if (currentTierFilter === "safe5") {
+      const safe5Ids = [
+        "cantharellus_cibarius",
+        "cantharellus_amethysteus",
+        "craterellus_tubaeformis",
+        "hydnum_repandum",
+        "hydnum_rufescens",
+        "craterellus_cornucopioides",
+        "boletus_edulis",
+        "boletus_pinophilus"
+      ];
+      return safe5Ids.includes(m.id);
+    }
+    if (currentTierFilter === "intermediate") {
+      const intermediateTargetIds = [
+        "cortinarius_caperatus",
+        "macrolepiota_procera",
+        "leccinum_versipelle",
+        "leccinum_scabrum",
+        "suillus_luteus",
+        "suillus_variegatus",
+        "lactarius_torminosus",
+        "lactarius_rufus",
+        "lactarius_trivialis",
+        "russula_decolorans",
+        "russula_paludosa",
+        "russula_aeruginea",
+        "albatrellus_ovinus"
+      ];
+      if (intermediateTargetIds.includes(m.id)) return true;
+      return (m.level === "intermediate" || m.level === "advanced") && m.edibility !== "deadly" && m.edibility !== "inedible";
+    }
     if (currentLevelFilter !== "all" && m.level !== currentLevelFilter) {
       return false;
     }

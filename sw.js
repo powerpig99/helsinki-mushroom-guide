@@ -3,7 +3,7 @@
  * Comprehensive Offline Foraging & PWA Caching Engine
  */
 
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_STATIC_NAME = `helsinki-mushroom-core-${CACHE_VERSION}`;
 const CACHE_IMAGE_NAME = `helsinki-mushroom-images-${CACHE_VERSION}`;
 
