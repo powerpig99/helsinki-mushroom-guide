@@ -2035,3 +2035,224 @@ button, input, select, textarea {
     justify-content: flex-start;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+   Synchronized Spot, Comparator & Guide Card Elements
+   -------------------------------------------------------------------------- */
+.spot-card,
+.transit-spot-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.spot-card:hover,
+.transit-spot-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.spot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.spot-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 0;
+}
+
+.spot-zone,
+.zone-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  white-space: nowrap;
+}
+
+.spot-transit {
+  font-size: 0.88rem;
+  color: var(--fg);
+  margin-bottom: 0.85rem;
+  line-height: 1.5;
+}
+
+.spot-trailhead-box {
+  background: var(--card-hover);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.spot-trailhead-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-size: 0.84rem;
+}
+
+.prime-item-label {
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.prime-item-value {
+  color: var(--fg);
+}
+
+.prime-item-secondary {
+  width: 100%;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-left: 1.2rem;
+}
+
+.btn-location-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.btn-location-map:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.spot-species-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.species-tag {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: var(--card-hover);
+  border: 1px solid var(--card-border);
+  color: var(--muted);
+}
+
+.btn-recipe-video,
+.btn-video-link-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid var(--danger-border);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.btn-recipe-video:hover,
+.btn-video-link-sm:hover {
+  background: var(--danger);
+  color: #ffffff;
+}
+
+.comparator-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.comparator-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--card-border);
+  background: color-mix(in srgb, var(--fg) 2%, transparent);
+}
+
+.comparator-pair-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--card-border);
+}
+
+@media (max-width: 768px) {
+  .comparator-pair-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.comparator-item {
+  padding: 1.5rem;
+  background: var(--card-bg);
+}
+
+.comparator-item.edible {
+  background: color-mix(in srgb, var(--success) 5%, var(--card-bg));
+  border-top: 3px solid var(--success);
+}
+
+.comparator-item.toxic {
+  background: color-mix(in srgb, var(--danger) 5%, var(--card-bg));
+  border-top: 3px solid var(--danger);
+}
+
+.comparator-img-wrap {
+  margin: 0.75rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+  max-height: 220px;
+  cursor: pointer;
+  border: 1px solid var(--card-border);
+}
+
+.comparator-img-wrap img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.diff-checklist {
+  list-style: none;
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.diff-checklist li {
+  padding: 0.4rem 0;
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  border-bottom: 1px dashed var(--rule);
+  color: var(--fg);
+}
