@@ -603,9 +603,14 @@ function normalizeChapterId(chId) {
 let currentCatalogViewMode = "grid";
 
 function getHandbookChapter(chId) {
-  const chapters = (window.HANDBOOK_DATA && HANDBOOK_DATA.chapters) ? HANDBOOK_DATA.chapters : I18N.handbookChapters;
-  if (!chapters) return null;
-  return chapters.find(c => c.id === chId) || null;
+  const normId = normalizeChapterId(chId);
+  const data = (typeof HANDBOOK_DATA !== 'undefined' && HANDBOOK_DATA && HANDBOOK_DATA.chapters)
+    ? HANDBOOK_DATA.chapters
+    : ((typeof window !== 'undefined' && window.HANDBOOK_DATA && window.HANDBOOK_DATA.chapters)
+        ? window.HANDBOOK_DATA.chapters
+        : (typeof I18N !== 'undefined' && I18N.handbookChapters ? I18N.handbookChapters : []));
+  if (!data || data.length === 0) return null;
+  return data.find(c => c.id === normId || c.id === chId) || null;
 }
 
 function renderSpeciesChipsForChapter(ch, lang, t) {
@@ -2318,6 +2323,25 @@ function renderCookingGuide() {
 // -------------------------------------------------------------
 // Forest Habitats, Trees & Seasons (Chapter 03 Integration)
 // -------------------------------------------------------------
+// -------------------------------------------------------------
+// Forest Habitats, Trees & Seasons (Chapter 03 Integration)
+// -------------------------------------------------------------
+window.toggleChapter03Reader = function() {
+  const drawer = document.getElementById("ch03-full-monograph-drawer");
+  const btn = document.getElementById("btn-toggle-ch03-reader");
+  if (!drawer) return;
+  const isHidden = drawer.style.display === "none";
+  drawer.style.display = isHidden ? "block" : "none";
+  if (btn) {
+    const lang = I18N.currentLang;
+    if (isHidden) {
+      btn.innerHTML = lang === "zh" ? "📖 收起手册第三章完整长文 ↑" : (lang === "fi" ? "📖 Piilota luvun 03 koko teksti ↑" : "📖 Collapse Full Chapter 03 Monograph ↑");
+    } else {
+      btn.innerHTML = lang === "zh" ? "📖 展开阅读手册第三章完整长文 (Unabridged) ↓" : (lang === "fi" ? "📖 Lue luvun 03 koko teksti (Lyhentämätön) ↓" : "📖 Expand Full Chapter 03 Monograph (Unabridged) ↓");
+    }
+  }
+};
+
 function renderHabitats() {
   const container = document.getElementById("habitats-container");
   if (!container) return;
@@ -2328,25 +2352,368 @@ function renderHabitats() {
 
   const ch03 = getHandbookChapter("03");
 
-  const ch03Html = ch03 ? `
-    <div class="integrated-monograph-header">
-      <div class="integrated-monograph-top-bar">
-        <div class="reader-meta-right">
-          <span class="reader-badge">${ch03.badge[lang]}</span>
-          <span class="reader-readtime">⏱️ ${ch03.readTime ? ch03.readTime[lang] : ""}</span>
+  const titleMap = {
+    en: "🌲 Finnish Forest Ecology, Seasonal Calendar & Tree Host Diagnostics",
+    zh: "🌲 芬兰典型森林生境生态、逐月物候日历与树种菌根辨识实战",
+    fi: "🌲 Suomen metsätyypit, satokalenteri ja puulajien tunnistusopas"
+  };
+  const descMap = {
+    en: "Master Cajander's 4 forest site types (lehto, tuore kangas, kuiva kangas, korpi), month-by-month fruiting phenology from May to November, the 3-tree field identification matrix (Birch vs Pine vs Spruce), and the field solution to the Chanterelle Dilemma.",
+    zh: "系统掌握Cajander四大森林林型生境（阔叶草本林、湿润云杉苔藓林、干燥松树苔原、湿地沼泽）、5至11月逐月物候出菇日历、三大主力共生树种辨识微距图鉴与秋季寻菇破解心法。",
+    fi: "Opi tuntemaan Cajanderin metsätyypit (lehto, tuore kangas, kuiva kangas, korpi/räme), kuukausittainen satokalenteri toukokuusta marraskuuhun, kolmen pääpuulajin tunnistus sekä kantarellin maastoekologia."
+  };
+
+  const habitatSites = [
+    {
+      icon: "🌿",
+      name: { en: "Lehto (Herb-Rich Deciduous Groves)", zh: "Lehto（富营养阔叶草本林）", fi: "Lehto (Jalot lehtimetsät)" },
+      badge: { en: "Neutral Humus • Filtered Sunlight", zh: "中性腐殖土 • 斑驳光影", fi: "Multamaa • Suodattunut valo" },
+      soil: {
+        en: "Nutrient-dense, damp humus, alkaline to neutral pH. Filtered sunlight beneath lush broadleaved canopies.",
+        zh: "富营养深厚腐殖土，微酸至中性pH值，阔叶高树冠下斑驳漫射光与温和湿润微气候。",
+        fi: "Ravinteikas, kostea multamaa, neutraali pH. Lehvästön suodattama pehmeä valo."
+      },
+      trees: {
+        en: "Silver birch, European hazel, aspen, pedunculate oak, bird cherry.",
+        zh: "白桦、欧洲榛、欧洲山杨、夏栎、稠李。",
+        fi: "Rauduskoivu, pähkinäpensas, haapa, tammi, tuomi."
+      },
+      locations: {
+        en: "Keskuspuisto (Maunula hazel groves), Petikko (Vantaa), Tammisto nature reserve.",
+        zh: "中央公园Maunula受保护榛树林、万塔Petikko阔叶谷地、Tammisto自然保护区边界。",
+        fi: "Keskuspuiston Maunula, Vantaan Petikko, Tammiston tammi- ja pähkinälehdot."
+      },
+      species: ["craterellus_cornucopioides", "boletus_reticulatus", "russula_cyanoxantha"]
+    },
+    {
+      icon: "🌲",
+      name: { en: "Tuore kangas (Mesic Spruce-Blueberry Heath)", zh: "Tuore kangas（湿润云杉苔藓林 • 首都圈主力）", fi: "Tuore kangas (Mustikkatyypin kuusikko)" },
+      badge: { en: "The Capital Region's Motherlode • Deep Feathermoss", zh: "首都圈主力林型 • 深厚赤茎藓毯", fi: "Pääkaupunkiseudun aarreaitta • Seinäsammal" },
+      soil: {
+        en: "Acidic podzol, thick moisture-retentive carpet of red-stemmed feathermoss (Pleurozium) and stair-step moss (Hylocomium), carpeted in bilberry (mustikka).",
+        zh: "典型酸性格林灰壤，地表覆盖厚实蓄水的赤茎藓与塔藓绿毯，广泛伴生茂密欧洲越橘（蓝莓）。",
+        fi: "Hapan podsolimaa, paksu kostea seinäsammal- ja metsäkerrossammalmatto, mustikanvarvusto."
+      },
+      trees: {
+        en: "Norway spruce (Picea abies), mixed with scattered birch. Heavy shade, cool damp microclimate.",
+        zh: "挪威云杉（Picea abies）纯林或混生少量白桦。林下浓荫蔽日，维持清凉湿润微气候。",
+        fi: "Kuusi (Picea abies), seassa koivua. Varjoisa ja viileän kostea mikroilmasto."
+      },
+      locations: {
+        en: "Sipoonkorpi ravines, Nuuksio lake plateaus, Luukki, Pitkäkoski old-growth.",
+        zh: "西波国家公园幽深峡谷、努克西奥湖区阶地、Luukki原始林、Pitkäkoski古云杉林。",
+        fi: "Sipoonkorven notkot, Nuuksion järviylänkö, Luukin aarnimetsät, Pitkäkoski."
+      },
+      species: ["boletus_edulis", "craterellus_tubaeformis", "hydnum_repandum", "cortinarius_caperatus"],
+      warning: {
+        en: "⚠️ LETHAL CAUTION: This exact feathermoss layer is also home to the lethal Destroying Angel (Amanita virosa) and Deadly Webcap (Cortinarius rubellus)!",
+        zh: "⚠️ 致命警示：该湿润云杉苔藓层同时也是致命剧毒白毒鹅膏（Amanita virosa）与赭红丝膜菌（Cortinarius rubellus）的原生共生家园！",
+        fi: "⚠️ VAARA: Tämä sama kuusikon sammalikko on myös hengenvaarallisen valkokärpässienen ja suippumyrkkyseitikin elinympäristö!"
+      }
+    },
+    {
+      icon: "🪵",
+      name: { en: "Kuiva kangas (Sub-xeric Pine-Lingonberry Heath)", zh: "Kuiva kangas（干燥松树苔原地 • 越橘石楠林）", fi: "Kuiva kangas (Männikkö & kankaat)" },
+      badge: { en: "Coarse Sand & Moraine • Open Sunlit Canopy", zh: "粗砂冰碛土 • 高挑开阔阳生林", fi: "Hiekkamaa • Valoisa männikkö" },
+      soil: {
+        en: "Coarse sand, gravelly glacial moraine, rapid drainage, bright open sunlit canopy. Lichens and lingonberry dominate.",
+        zh: "粗砂质冰碛土、花岗岩石砾，排水极快，高挑通透的松树冠层透光度极高，地衣与红豆越橘铺垫。",
+        fi: "Karkea hiekkamaa, moreeni, nopea kuivuminen, valoisa ja avara mäntymetsä jäkälämattoineen."
+      },
+      trees: {
+        en: "Scots pine (Pinus sylvestris), lingonberry, heather, silvery reindeer lichens (Cladonia).",
+        zh: "欧洲赤松（Pinus sylvestris）、红豆越橘、石楠、银灰色驯鹿地衣毯。",
+        fi: "Mänty (Pinus sylvestris), puolukka, kanerva, harmaat poronjäkälämatot."
+      },
+      locations: {
+        en: "Uutela coastal cliffs, Salmi & Iso-Parikas moraine ridges, rocky plateaus of Nuuksio.",
+        zh: "Uutela海滨峭壁、Salmi与Iso-Parikas冰碛山脊、努克西奥岩丘高地。",
+        fi: "Uutelan rantakalliot, Salmen ja Iso-Parikkaan harjut, Nuuksion kalliomänniköt."
+      },
+      species: ["boletus_pinophilus", "lactarius_deliciosus", "lactarius_rufus", "suillus_variegatus"]
+    },
+    {
+      icon: "💧",
+      name: { en: "Korpi & Räme (Spruce Mires & Peatland Bogs)", zh: "Korpi 与 Räme（云杉沼泽与泥炭湿地）", fi: "Korpi ja Räme (Suometsät & keidassuot)" },
+      badge: { en: "Waterlogged Peat • Spongy Sphagnum Pillows", zh: "常年积水深厚泥炭 • 泥炭藓海绵垫", fi: "Kosteat turvemaat • Rahkasammal" },
+      soil: {
+        en: "Waterlogged peat, perpetual dampness, spongy Sphagnum moss hummocks, low nutrient availability.",
+        zh: "常年积水深厚泥炭层，极度潮湿多孔的泥炭藓（Sphagnum）海绵沼泽垫，低pH值与少矿物质。",
+        fi: "Turvekerros, jatkuva kosteus, upottavat rahkasammalmättäät."
+      },
+      trees: {
+        en: "Stunted pine, downy birch (Betula pubescens), bog bilberry (juolukka), Labrador tea.",
+        zh: "矮化赤松、毛白桦（Betula pubescens）、笃斯越橘、喇叭茶灌木。",
+        fi: "Käppyrämännyt, hieskoivu, juolukka, suopursu."
+      },
+      locations: {
+        en: "Tremanskärr nature reserve, Sipoonkorpi bog fringes, Nuuksio peat basins.",
+        zh: "Tremanskärr高位泥炭沼泽、西波森林湿地边缘、努克西奥沼泽低地。",
+        fi: "Tremanskärrin keidassuo, Sipoonkorven suojuotit, Nuuksion rämeet."
+      },
+      species: ["leccinum_versipelle", "russula_paludosa", "lactarius_trivialis"]
+    }
+  ];
+
+  const phenologyCalendar = [
+    {
+      period: "🌸 05–06 • Spring / Kevät",
+      title: { en: "Spring Anomaly: False Morel", zh: "早春反常期：春鹿花菌", fi: "Kevät: Korvasieni" },
+      desc: {
+        en: "Fruiting in sandy disturbed pine soil and logging tracks. Contains volatile gyromitrin; requires mandatory double-parboiling.",
+        zh: "在受压实的砂质松树土壤与林业拖拉机车辙中萌发。含有挥发性剧毒鹿花菌素，需严格遵循两次通风彻底水煮去毒。",
+        fi: "Hiekkapohjaiset männiköt, hakkuualueet ja ajourat. Sisältää gyromitriinia; vaatii ehdottoman ryöppäyksen."
+      },
+      species: ["gyromitra_esculenta"]
+    },
+    {
+      period: "☀️ 07 • Midsummer / Keskikesä",
+      title: { en: "Midsummer Awakening: Golden Chanterelles", zh: "盛夏觉醒：金黄鸡油菌与早生牛肝菌", fi: "Keskikesä: Keltavahvero ja varhaistatit" },
+      desc: {
+        en: "Warm summer rains trigger early flushes of Golden Chanterelles along exposed forest paths, sunny bedrock crevices, and ditch banks.",
+        zh: "温热夏雨促使金黄鸡油菌沿林间压实小径、朝阳岩石裂隙与排水渠边缘萌发；白桦牛肝菌陆续现身。",
+        fi: "Lämpimät sateet herättävät kantarellit polunvarsille, kallioperän halkeamiin ja aurinkoisille rinteille."
+      },
+      species: ["cantharellus_cibarius", "leccinum_scabrum"]
+    },
+    {
+      period: "⚡ 08 • The Grand Flush / Elokuu",
+      title: { en: "The Grand Flush: King Boletes & Russulas", zh: "黄金爆发期：美味牛肝菌与红菇狂欢", fi: "Elokuu: Herkkutattien suursato ja haperot" },
+      desc: {
+        en: "Warm nights (>12°C) combined with thunderstorms produce massive Porcini flushes lasting 2–3 weeks. Harvest young before maggots strike.",
+        zh: "连续温热夜温（>12°C）叠加晚夏暴雷雨，引爆维持2-3周的美味牛肝菌狂欢。必须趁早采摘未被菇蝇蛀空的坚实幼体。",
+        fi: "Lämpimät yöt ja ukkossateet laukaisevat herkkutattien massiivisen sadon. Poimi nuorena ennen toukkaisuutta."
+      },
+      species: ["boletus_edulis", "lactarius_deliciosus", "russula_paludosa"]
+    },
+    {
+      period: "👑 09 • The Golden Peak / Syyskuu",
+      title: { en: "The Golden Peak: 50+ Species Concurrently", zh: "真菌巅峰月：50余种珍馐群芳争艳", fi: "Syyskuu: Sienikauden huipennus (50+ lajia)" },
+      desc: {
+        en: "The undisputed crown month of Finnish mycology: Wood Hedgehogs, Black Trumpets, Sheep Polypores, Gypsy Mushrooms, and all traditional salting milkcaps.",
+        zh: "芬兰采菇无可争议的黄金皇冠之月：卷缘齿菌、黑号角菇、白地花菌、鸡冠丝膜菌与全套传统腌渍乳菇铺满林地。",
+        fi: "Sienikauden ehdoton huippu: vaaleaorakkaat, mustatorvisienet, lampaankäävät, kehnäsienet ja suolasienirouskut."
+      },
+      species: ["hydnum_repandum", "craterellus_cornucopioides", "albatrellus_ovinus", "cortinarius_caperatus"]
+    },
+    {
+      period: "❄️ 10–11 • Late Autumn / Loppusyksy",
+      title: { en: "Frost-Resistant Bounty: Funnel Chanterelles", zh: "深秋抗霜期：漏斗鸡油菌无尽地毯", fi: "Loka–marraskuu: Suppilovahveron valtakausi" },
+      desc: {
+        en: "Funnel Chanterelles thrive down to freezing (-4°C). Can be harvested frozen solid on the moss; culinary texture remains flawless until heavy snow.",
+        zh: "耐受深秋初霜（0°C至-4°C），即使在苔藓上冻成冰棒也能采回家缓慢解冻，口感鲜美丝毫不损，采摘期持续至大雪封山。",
+        fi: "Suppilovahvero kestää pakkasyöt ja voidaan poimia jopa umpijäässä. Kausi jatkuu pysyvään lumeen asti."
+      },
+      species: ["craterellus_tubaeformis"]
+    }
+  ];
+
+  container.innerHTML = `
+    <!-- Section Header Banner -->
+    <div class="integrated-monograph-header" style="margin-bottom: 2rem;">
+      <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent-soft); color: var(--accent); font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.65rem; border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);">
+        <span>🌲 ${t.tabHabitats || "Habitats, Trees & Seasons"}</span> • <span>Cajander Forest Types • Seasonal Calendar • 3-Tree Diagnostics</span>
+      </div>
+      <h1 class="integrated-monograph-title" style="margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
+      ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
+      <p class="integrated-monograph-desc">${descMap[lang] || descMap.en}</p>
+      ${ch03 ? renderSpeciesChipsForChapter(ch03, lang, t) : ""}
+    </div>
+
+    <!-- 1. The 4 Cajander Forest Site Types -->
+    <div class="section-divider-header" style="margin-bottom: 1.25rem;">
+      <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--fg); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+        <span>🌿</span> <span>${lang === "zh" ? "芬兰4大典型森林林型生境与共生菌根分类（Cajander分类法）" : (lang === "fi" ? "4 Suomen päämetsätyyppiä ja sienilajit (Cajanderin luokittelu)" : "The 4 Main Finnish Forest Site Types & Mycorrhizal Partners")}</span>
+      </h2>
+      <p style="font-size: 0.9rem; color: var(--muted);">
+        ${lang === "zh" ? "芬兰植物学家通过林下地表植被严格划分林型，不同土壤、光照与树种孕育截然不同的真菌群落" : (lang === "fi" ? "Aluskasvillisuus ja puusto määrittävät maaperän kosteuden ja sienirihmastojen elämän" : "Understory indicator vegetation and host canopy dictate soil moisture, acidity, and root-symbiotic flushes")}
+      </p>
+    </div>
+
+    <div class="habitat-site-grid">
+      ${habitatSites.map(site => `
+        <div class="habitat-site-card">
+          <div class="habitat-site-header">
+            <div style="display: flex; align-items: center; gap: 0.45rem;">
+              <span style="font-size: 1.35rem;">${site.icon}</span>
+              <h3 class="habitat-site-title">${site.name[lang] || site.name.en}</h3>
+            </div>
+            <span class="habitat-badge">${site.badge[lang] || site.badge.en}</span>
+          </div>
+
+          <div class="habitat-prop-block">
+            <div><span class="habitat-prop-label">🌍 Soil & Light:</span> ${site.soil[lang] || site.soil.en}</div>
+          </div>
+
+          <div class="habitat-prop-block">
+            <div><span class="habitat-prop-label">🌲 Host Trees:</span> ${site.trees[lang] || site.trees.en}</div>
+          </div>
+
+          <div style="font-size: 0.84rem; color: var(--muted); margin-bottom: 0.85rem;">
+            <strong>📍 Prime Locations:</strong> ${site.locations[lang] || site.locations.en}
+          </div>
+
+          ${site.warning ? `
+            <div style="font-size: 0.82rem; color: var(--danger); background: var(--danger-soft); border: 1px solid var(--danger-border); padding: 0.55rem 0.75rem; border-radius: 6px; margin-bottom: 0.85rem; line-height: 1.45;">
+              ${site.warning[lang] || site.warning.en}
+            </div>
+          ` : ""}
+
+          <div style="margin-top: auto; border-top: 1px solid var(--rule); padding-top: 0.75rem;">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.04em;">Key Symbionts:</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+              ${site.species.map(spId => {
+                const sp = I18N.species.find(s => s.id === spId);
+                if (!sp) return "";
+                const spName = sp.names[lang]?.primary || sp.latinName;
+                return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">🍄 ${spName}</a>`;
+              }).join("")}
+            </div>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+
+    <!-- 2. Month-by-Month Foraging Calendar -->
+    <div class="section-divider-header" style="margin-bottom: 1.25rem;">
+      <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--fg); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+        <span>📅</span> <span>${lang === "zh" ? "芬兰南部野生菌逐月物候出菇日历（5月至11月）" : (lang === "fi" ? "Etelä-Suomen sienikalenteri kuukausittain (toukokuu–marraskuu)" : "Southern Finland Month-by-Month Foraging Calendar")}</span>
+      </h2>
+      <p style="font-size: 0.9rem; color: var(--muted);">
+        ${lang === "zh" ? "把握气温、昼长与降雨周期：从早春鹿花菌到盛夏牛肝菌暴发，再到耐霜深秋漏斗鸡油菌" : (lang === "fi" ? "Lämpötila, valojakso ja sateet ohjaavat lajien satoaikoja keväästä ensilumiin" : "Temperature, day length, and rainfall cycles dictating flushes from spring morels to late frost chanterelles")}
+      </p>
+    </div>
+
+    <div class="phenology-grid">
+      ${phenologyCalendar.map(cal => `
+        <div class="phenology-card">
+          <span class="phenology-month-tag">${cal.period}</span>
+          <h3 class="phenology-month-title">${cal.title[lang] || cal.title.en}</h3>
+          <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.55; margin-bottom: 0.85rem; flex: 1;">
+            ${cal.desc[lang] || cal.desc.en}
+          </p>
+          <div style="border-top: 1px solid var(--rule); padding-top: 0.65rem;">
+            <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+              ${cal.species.map(spId => {
+                const sp = I18N.species.find(s => s.id === spId);
+                if (!sp) return "";
+                const spName = sp.names[lang]?.primary || sp.latinName;
+                return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">🍄 ${spName}</a>`;
+              }).join("")}
+            </div>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+
+    <!-- 3. The Chanterelle Dilemma & 3-Tree Field Diagnostics -->
+    <div class="chanterelle-dilemma-card">
+      <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--fg); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.45rem;">
+        <span>🧐</span> <span>${lang === "zh" ? "鸡油菌寻菇之谜：为什么满山遍野是漏斗鸡油菌，却难觅金黄鸡油菌？" : (lang === "fi" ? "Kantarellin mysteeri: Miksi suppilovahveroita on kaikkialla mutta kantarelleja ei?" : "The Chanterelle Dilemma: Why Heaps of Funnels but No Golden Chanterelles?")}</span>
+      </h2>
+      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.25rem;">
+        ${lang === "zh" ? "“是不是因为真鸡油菌太显眼，早被别人捡光了？”这是每位秋季采菇者最常有的疑惑。真实根源在于物候时钟、微生境分异与共生树种差异：" : (lang === "fi" ? "Onko syynä poimintapaine vai jokin muu? Syynä ovat satokauden vaihe, metsän kosteus ja puulajit:" : "Is it human picking pressure or biology? The true answers lie in seasonality, micro-habitat divergence, and tree mycorrhiza:")}
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+        <div style="background: var(--card-hover); border: 1px solid var(--card-border); border-radius: 6px; padding: 1rem;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--fg); margin: 0 0 0.35rem;">⏱️ ${lang === "zh" ? "1. 物候周期分异" : (lang === "fi" ? "1. Satokauden ajoitus" : "1. Calendar Phase")}</h4>
+          <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
+            ${lang === "zh" ? "漏斗鸡油菌是晚秋主力（9月中旬至11月达到峰值），嗜好低温潮湿；金黄鸡油菌主汛期在7月至8月盛夏，进入深秋后仅有零星残余。" : (lang === "fi" ? "Suppilovahvero on myöhäissyksyn sieni (huippu syys-marraskuussa). Keltavahveron pääsato valmistuu jo heinä-elokuussa." : "Funnel chanterelles peak late (Sept–Nov) in cold rain; Golden chanterelles peak in warm midsummer (July–Aug) and taper off in late autumn.")}
+          </p>
+        </div>
+
+        <div style="background: var(--card-hover); border: 1px solid var(--card-border); border-radius: 6px; padding: 1rem;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--fg); margin: 0 0 0.35rem;">🌲 ${lang === "zh" ? "2. 森林“房间”与微生境" : (lang === "fi" ? "2. Metsätyyppi ja valo" : "2. Micro-Habitat Divergence")}</h4>
+          <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
+            ${lang === "zh" ? "满地漏斗鸡油菌说明你身处深邃阴暗、极度潮湿的厚苔藓纯云杉林（Kuusikko）；而金黄鸡油菌需要更多日照与温暖，偏爱白桦与松树根系交界处。" : (lang === "fi" ? "Suppikset viihtyvät pimeässä ja kosteassa sammalkuusikossa. Kantarelli vaatii valoa, lämpöä ja koivun tai männyn juuristoa." : "If you are surrounded by funnels, you are standing in dark, damp spruce feathermoss. Golden chanterelles demand warmth, sunlight, and birch/pine roots.")}
+          </p>
+        </div>
+
+        <div style="background: var(--card-hover); border: 1px solid var(--card-border); border-radius: 6px; padding: 1rem;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--fg); margin: 0 0 0.35rem;">👀 ${lang === "zh" ? "3. 辨识度与周末人流" : (lang === "fi" ? "3. Näkyvyys ja poiminta" : "3. Visibility & Human Pressure")}</h4>
+          <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
+            ${lang === "zh" ? "金黄鸡油菌通体亮黄，休闲步道旁一眼便见，周末极易被游客采净；漏斗鸡油菌菌盖呈迷彩色，与落叶苔藓完美融为一体，路人常踩过而浑然不觉。" : (lang === "fi" ? "Kantarellin kirkas keltainen väri erottuu kauas ja polunvarret kerätään tyhjiksi. Suppiksen ruskea lakki maastoutuu täydellisesti." : "Golden chanterelles are brilliant yellow and stripped bare on tourist paths; brown funnel chanterelles are natural camouflage and walked over by hundreds.")}
+          </p>
         </div>
       </div>
-      <h1 class="integrated-monograph-title">${ch03.icon} ${ch03.title[lang]}</h1>
-      ${lang2 ? `<div class="integrated-monograph-subtitle">${ch03.title[lang2]}</div>` : ""}
-      <p class="integrated-monograph-desc">${ch03.desc[lang]}</p>
-      ${renderSpeciesChipsForChapter(ch03, lang, t)}
-    </div>
-    <article class="live-reader-body integrated-monograph-body">
-      ${ch03.html || ""}
-    </article>
-  ` : "";
 
-  container.innerHTML = ch03Html;
+      <!-- 3-Tree Field Diagnostics -->
+      <div class="tree-diagnostic-container">
+        <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--fg); margin: 0 0 0.35rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span>🌳</span> <span>${lang === "zh" ? "芬兰三大主力树种辨识微距图鉴（白桦 vs 赤松 vs 云杉）" : (lang === "fi" ? "Kolme pääpuulajia: Rauduskoivu, Mänty ja Kuusi" : "The Big Three Tree Diagnostics: Silver Birch vs. Scots Pine vs. Norway Spruce")}</span>
+        </h3>
+        <p style="font-size: 0.88rem; color: var(--muted); margin: 0 0 1rem;">
+          ${lang === "zh" ? "看树采菇是北欧采蘑菇最高效的本领：白桦生真鸡油与牛肝，赤松出松蘑与松乳菇，云杉下铺满漏斗鸡油菌与齿菌。" : (lang === "fi" ? "Puuston tunnistaminen on sienestäjän tärkein taito: eri puut elävät symbioosissa eri sienilajien kanssa." : "Reading the canopy is the ultimate foraging skill: birch yields golden chanterelles, pine yields boletes and milkcaps, spruce yields funnels and hedgehogs.")}
+        </p>
+
+        <img src="images/birch_pine_spruce.jpg" alt="Silver Birch, Scots Pine, Norway Spruce in Finnish forest" class="habitats-tree-img" loading="lazy" />
+        <div class="habitats-img-caption">
+          ${lang === "zh" ? "芬兰森林三大主角（从左至右）：白桦 (Betula pendula) • 欧洲赤松 (Pinus sylvestris) • 挪威云杉 (Picea abies)" : (lang === "fi" ? "Suomen metsien pääpuulajit: Rauduskoivu (vas.) • Mänty (kesk.) • Kuusi (oik.)" : "The Big Three Forest Trees of Finland: Silver Birch (left) • Scots Pine (center) • Norway Spruce (right)")}
+        </div>
+
+        <div class="tree-cols-grid">
+          <!-- Birch -->
+          <div class="tree-col-card">
+            <h4 class="tree-col-title">🌿 ${lang === "zh" ? "白桦" : (lang === "fi" ? "Rauduskoivu" : "Silver Birch")}</h4>
+            <div class="tree-col-latin">Betula pendula • Koivu</div>
+            <div class="tree-feature-row"><strong>Bark:</strong> Chalk-white papery peeling bark with black horizontal lenticels; deep dark diamond fissures at trunk base.</div>
+            <div class="tree-feature-row"><strong>Canopy:</strong> Broadleaf: triangular serrated leaves, radiant golden yellow in autumn. Dappled sunlit floor.</div>
+            <div class="tree-feature-row"><strong>Floor:</strong> Light moss, grass hummocks, fallen birch leaves. Rich humus with good warmth.</div>
+            <div class="tree-feature-row"><strong>Fungi:</strong> <strong>Golden Chanterelle</strong>, King Bolete, Orange Birch Bolete, Brown Birch Scaber Stalk.</div>
+          </div>
+
+          <!-- Pine -->
+          <div class="tree-col-card">
+            <h4 class="tree-col-title">🪵 ${lang === "zh" ? "欧洲赤松" : (lang === "fi" ? "Mänty" : "Scots Pine")}</h4>
+            <div class="tree-col-latin">Pinus sylvestris • Mänty</div>
+            <div class="tree-feature-row"><strong>Bark:</strong> Two-toned trunk: flaky cinnamon-orange bark on top 2/3; dark grey-brown thick scaly plates at base.</div>
+            <div class="tree-feature-row"><strong>Canopy:</strong> Conifer: needles grow in pairs (clusters of 2). High sparse airy crown, bright dry forest floor.</div>
+            <div class="tree-feature-row"><strong>Floor:</strong> Sandy moraine, silvery reindeer lichens, lingonberry, heather. Rapid drainage.</div>
+            <div class="tree-feature-row"><strong>Fungi:</strong> <strong>Pine Bolete</strong> (*männynherkkutatti*), Saffron Milkcap, Rufous Milkcap, Velvet Bolete.</div>
+          </div>
+
+          <!-- Spruce -->
+          <div class="tree-col-card">
+            <h4 class="tree-col-title">🌲 ${lang === "zh" ? "挪威云杉" : (lang === "fi" ? "Kuusi" : "Norway Spruce")}</h4>
+            <div class="tree-col-latin">Picea abies • Kuusi</div>
+            <div class="tree-feature-row"><strong>Bark:</strong> Uniform dark reddish-brown to grey-brown scaly bark extending the entire trunk height.</div>
+            <div class="tree-feature-row"><strong>Canopy:</strong> Conifer: short sharp needles growing singly around twigs. Dense conical heavy shade.</div>
+            <div class="tree-feature-row"><strong>Floor:</strong> Deep feathermoss sponge (*Pleurozium*, *Hylocomium*), bilberry bushes (*mustikka*). Constant moisture.</div>
+            <div class="tree-feature-row"><strong>Fungi:</strong> <strong>Funnel Chanterelle</strong>, Wood Hedgehog, Porcini, and lethal <strong>Deadly Webcap</strong>.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Autumn Tactics for Golden Chanterelles -->
+      <div style="background: var(--card-hover); border: 1px solid var(--card-border); border-radius: 8px; padding: 1.25rem;">
+        <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--fg); margin: 0 0 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span>🎯</span> <span>${lang === "zh" ? "深秋采摘金黄鸡油菌实操心法（4大转场绝招）" : (lang === "fi" ? "4 vinkkiä syyskantarellien löytämiseen" : "4 Field Tactics to Find Golden Chanterelles in Autumn")}</span>
+        </h3>
+        <ol style="padding-left: 1.2rem; font-size: 0.86rem; color: var(--fg); line-height: 1.6; margin: 0;">
+          <li><strong>${lang === "zh" ? "走出幽暗云杉林" : (lang === "fi" ? "Siirry pois pimeästä kuusikosta" : "Exit Dark Spruce Woods")}:</strong> ${lang === "zh" ? "从密不透风的云杉峡谷向外走，转向白桦疏林带、农田林缘与向阳的西南坡面，寻找深秋阳光尚能烘暖的土地。" : (lang === "fi" ? "Hakeudu kuusikosta koivikkoon, pellonreunoihin tai valoisiin etelärinteisiin." : "Walk out of deep spruce hollows into birch stands, forest margins, and sunny west/south-facing slopes.")}</li>
+          <li><strong>${lang === "zh" ? "沿土路与石脊巡查" : (lang === "fi" ? "Seuraa polkuja ja kallionreunoja" : "Follow Paths & Rock Rims")}:</strong> ${lang === "zh" ? "重点巡视受压实的林道边际、拖拉机土路车辙，以及花岗岩岩丘（kallio）与白桦松树交接的苔藓缝隙。" : (lang === "fi" ? "Tarkista tallatut polunvarret, metsäautotiet ja kalliomännikön reunamat." : "Inspect compressed edges of walking tracks, dirt roads, and granite rock ledges meeting birch and pine.")}</li>
+          <li><strong>${lang === "zh" ? "寻找苔藓落叶微突起" : (lang === "fi" ? "Etsi sammalmättäiden kohoumia" : "Search Moss Hummocks")}:</strong> ${lang === "zh" ? "深秋真鸡油菌常半埋在白桦黄叶与苔藓底下。注意地表微隆的圆形凸起，轻轻拨开落叶，底下往往藏着胖乎乎的鹅黄幼菇。" : (lang === "fi" ? "Syksyllä kantarellit kasvavat usein lehtien alla piilossa; nosta varovasti sammalmättäitä." : "In late autumn, golden chanterelles fruit semi-submerged beneath birch leaves. Look for rounded bumps in the moss.")}</li>
+          <li><strong>${lang === "zh" ? "妥善保存GPS定位点" : (lang === "fi" ? "Merkitse paikka kartalle" : "Save Your GPS Pin")}:</strong> ${lang === "zh" ? "鸡油菌菌丝极其长寿稳定，一旦发现一处群落，往后数十年每年都会在同一处持续萌发。随手在地图打下坐标！" : (lang === "fi" ? "Keltavahveron rihmasto elää vuosikymmeniä samalla paikalla: tallenna koordinaatit tulevia vuosia varten." : "Chanterelle mycelium is perennial and long-lived. A patch will fruit in the exact same spot for decades.")}</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 4. Complete Handbook Chapter 03 Unabridged Monograph -->
+    ${ch03 ? `
+      <div style="margin-top: 2.5rem; text-align: center;">
+        <button id="btn-toggle-ch03-reader" class="btn-toggle-monograph" onclick="toggleChapter03Reader()">
+          📖 ${lang === "zh" ? "展开阅读手册第三章完整长文 (Unabridged) ↓" : (lang === "fi" ? "📖 Lue luvun 03 koko teksti (Lyhentämätön) ↓" : "📖 Expand Full Chapter 03 Monograph (Unabridged) ↓")}
+        </button>
+      </div>
+
+      <div id="ch03-full-monograph-drawer" style="display: none; margin-top: 1.5rem;">
+        <article class="live-reader-body integrated-monograph-body">
+          ${ch03.html || ""}
+        </article>
+      </div>
+    ` : ""}
+  `;
 }
 
 // -------------------------------------------------------------

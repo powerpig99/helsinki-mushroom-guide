@@ -371,6 +371,12 @@ const HANDBOOK_DATA = {
 ]
 };
 
+if (typeof window !== "undefined") {
+  window.HANDBOOK_DATA = HANDBOOK_DATA;
+}
+if (typeof global !== "undefined") {
+  global.HANDBOOK_DATA = HANDBOOK_DATA;
+}
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { HANDBOOK_DATA };
 }
