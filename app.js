@@ -532,6 +532,20 @@ function applyLanguage(lang) {
   if (labelQuickTags && t.quickTagsLabel) {
     labelQuickTags.textContent = t.quickTagsLabel;
   }
+  const labelMoreFilters = document.getElementById("label-more-filters");
+  const filterDrawer = document.getElementById("catalog-filter-drawer");
+  const isDrawerOpen = filterDrawer && filterDrawer.style.display !== "none";
+  if (labelMoreFilters) {
+    labelMoreFilters.textContent = isDrawerOpen ? (t.btnHideFilters || "Close ▴") : (t.btnMoreFilters || "Filters ▾");
+  }
+  const btnResetFilters = document.getElementById("btn-reset-filters");
+  if (btnResetFilters && t.btnResetFilters) {
+    btnResetFilters.textContent = t.btnResetFilters;
+  }
+  const btnCompareToggle = document.getElementById("btn-toggle-compare");
+  if (btnCompareToggle && t.btnCompareToggle) {
+    btnCompareToggle.title = t.btnCompareToggle;
+  }
 
   // Filter Labels
   document.getElementById("label-skill-level").textContent = t.skillLevelLabel;
@@ -1011,12 +1025,103 @@ function setupTabs() {
   });
 }
 
+// Filter and Drawer State Utilities
+function updateActiveFiltersUI() {
+  let count = 0;
+  if (currentLevelFilter && currentLevelFilter !== "all") count++;
+  if (currentFamilyFilter && currentFamilyFilter !== "all") count++;
+  if (currentMonthFilter !== null) count++;
+
+  const badge = document.getElementById("active-filters-badge");
+  const resetBtn = document.getElementById("btn-reset-filters");
+  const toggleBtn = document.getElementById("btn-toggle-filters");
+
+  if (badge) {
+    badge.textContent = count;
+    badge.style.display = count > 0 ? "inline-flex" : "none";
+  }
+  if (resetBtn) {
+    resetBtn.style.display = (count > 0 || searchQuery) ? "inline-block" : "none";
+  }
+  if (toggleBtn) {
+    toggleBtn.classList.toggle("has-active", count > 0);
+  }
+}
+window.updateActiveFiltersUI = updateActiveFiltersUI;
+
+function toggleCatalogFilters() {
+  const drawer = document.getElementById("catalog-filter-drawer");
+  const label = document.getElementById("label-more-filters");
+  const lang = I18N.currentLang || "en";
+  const t = I18N.ui[lang] || I18N.ui.en;
+
+  if (!drawer) return;
+  const isHidden = drawer.style.display === "none" || !drawer.style.display;
+  drawer.style.display = isHidden ? "flex" : "none";
+  if (label) {
+    label.textContent = isHidden ? (t.btnHideFilters || "Close ▴") : (t.btnMoreFilters || "Filters ▾");
+  }
+}
+window.toggleCatalogFilters = toggleCatalogFilters;
+
+function resetAllCatalogFilters() {
+  currentFamilyFilter = "all";
+  currentLevelFilter = "all";
+  currentTierFilter = null;
+  currentMonthFilter = null;
+  searchQuery = "";
+
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) searchInput.value = "";
+  const clearBtn = document.getElementById("search-clear-btn");
+  if (clearBtn) clearBtn.style.display = "none";
+
+  document.querySelectorAll(".level-btn").forEach(b => b.classList.toggle("active", b.dataset.level === "all"));
+  document.querySelectorAll(".family-btn").forEach(b => b.classList.toggle("active", b.dataset.family === "all"));
+  document.querySelectorAll(".month-btn").forEach(b => b.classList.remove("active"));
+  document.querySelectorAll(".view-mode-btn").forEach(b => b.classList.toggle("active", b.dataset.mode === "grid"));
+  const tierBanner = document.getElementById("tier-intro-banner");
+  if (tierBanner) tierBanner.style.display = "none";
+
+  updateActiveFiltersUI();
+  renderCatalog();
+}
+window.resetAllCatalogFilters = resetAllCatalogFilters;
+
+function clearCatalogSearch() {
+  searchQuery = "";
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) {
+    searchInput.value = "";
+    searchInput.focus();
+  }
+  const clearBtn = document.getElementById("search-clear-btn");
+  if (clearBtn) clearBtn.style.display = "none";
+  updateActiveFiltersUI();
+  renderCatalog();
+}
+window.clearCatalogSearch = clearCatalogSearch;
+
+function toggleCompareLanguage() {
+  const row = document.getElementById("secondary-lang-row");
+  const btn = document.getElementById("btn-toggle-compare");
+  if (!row) return;
+  const isHidden = row.style.display === "none" || !row.style.display;
+  row.style.display = isHidden ? "inline-flex" : "none";
+  if (btn) btn.classList.toggle("active", isHidden);
+}
+window.toggleCompareLanguage = toggleCompareLanguage;
+
 // Setup Filters
 function setupFilters() {
   const searchInput = document.getElementById("search-input");
+  const searchClearBtn = document.getElementById("search-clear-btn");
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
+      if (searchClearBtn) {
+        searchClearBtn.style.display = searchQuery ? "block" : "none";
+      }
       if (searchQuery) {
         // Reset category/tier/level/month filters so global search searches all 63 species
         currentFamilyFilter = "all";
@@ -1031,6 +1136,7 @@ function setupFilters() {
         const tierBanner = document.getElementById("tier-intro-banner");
         if (tierBanner) tierBanner.style.display = "none";
       }
+      updateActiveFiltersUI();
       renderCatalog();
     });
   }
@@ -1041,6 +1147,7 @@ function setupFilters() {
       levelButtons.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       currentLevelFilter = btn.dataset.level;
+      updateActiveFiltersUI();
       renderCatalog();
     });
   });
@@ -1051,6 +1158,7 @@ function setupFilters() {
       familyButtons.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       currentFamilyFilter = btn.dataset.family;
+      updateActiveFiltersUI();
       renderCatalog();
     });
   });
@@ -1067,6 +1175,7 @@ function setupFilters() {
         btn.classList.add("active");
         currentMonthFilter = month;
       }
+      updateActiveFiltersUI();
       renderCatalog();
     });
   });

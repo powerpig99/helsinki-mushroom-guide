@@ -52,14 +52,15 @@
         <!-- Trilingual Language Switcher (Primary & Comparison) -->
         <div class="lang-switcher-wrapper" aria-label="Select Language">
           <div class="lang-row primary-lang-row" aria-label="Primary Language">
-            <button class="lang-btn active" data-lang="en" title="English">🇬🇧 EN</button>
-            <button class="lang-btn" data-lang="zh" title="中文">🇨🇳 中文</button>
-            <button class="lang-btn" data-lang="fi" title="Suomi">🇫🇮 FI</button>
+            <button class="lang-btn active" data-lang="en" title="English">EN</button>
+            <button class="lang-btn" data-lang="zh" title="中文">中文</button>
+            <button class="lang-btn" data-lang="fi" title="Suomi">FI</button>
           </div>
-          <div class="lang-row secondary-lang-row" aria-label="Secondary Language (Optional)">
-            <button class="lang-btn secondary-btn disabled-lang" data-lang2="en" title="Compare English">🇬🇧 EN</button>
-            <button class="lang-btn secondary-btn" data-lang2="zh" title="与中文对照">🇨🇳 中文</button>
-            <button class="lang-btn secondary-btn" data-lang2="fi" title="Vertaa suomeksi">🇫🇮 FI</button>
+          <button id="btn-toggle-compare" class="compare-toggle-btn" type="button" title="Toggle comparison language" onclick="toggleCompareLanguage()">±</button>
+          <div class="lang-row secondary-lang-row" id="secondary-lang-row" aria-label="Secondary Language (Optional)" style="display: none;">
+            <button class="lang-btn secondary-btn disabled-lang" data-lang2="en" title="Compare English">EN</button>
+            <button class="lang-btn secondary-btn" data-lang2="zh" title="与中文对照">中文</button>
+            <button class="lang-btn secondary-btn" data-lang2="fi" title="Vertaa suomeksi">FI</button>
           </div>
         </div>
 
@@ -88,12 +89,12 @@
       <div id="view-main">
         <!-- Navigation Tabs (Clean Minimalist Tab Bar) -->
         <nav class="nav-tabs" role="tablist">
-          <button id="tab-btn-catalog" class="tab-btn active" data-tab="catalog">🍄 Species Catalog (63)</button>
-          <button id="tab-btn-lookalikes" class="tab-btn" data-tab="lookalikes">⚖️ Deadly Lookalikes & Toxins</button>
-          <button id="tab-btn-habitats" class="tab-btn" data-tab="habitats">🌲 Habitats, Trees & Seasons</button>
-          <button id="tab-btn-spots" class="tab-btn" data-tab="spots">🚌 Transit Spots & Hidden Trails</button>
-          <button id="tab-btn-cooking" class="tab-btn" data-tab="cooking">🍳 Culinary & Preservation</button>
-          <button id="tab-btn-safety" class="tab-btn" data-tab="safety">🛡️ Safety & Everyman's Right</button>
+          <button id="tab-btn-catalog" class="tab-btn active" data-tab="catalog">🍄 Species (63)</button>
+          <button id="tab-btn-lookalikes" class="tab-btn" data-tab="lookalikes">⚖️ Lookalikes</button>
+          <button id="tab-btn-habitats" class="tab-btn" data-tab="habitats">🌲 Habitats & Seasons</button>
+          <button id="tab-btn-spots" class="tab-btn" data-tab="spots">🚌 Transit & Trails</button>
+          <button id="tab-btn-cooking" class="tab-btn" data-tab="cooking">🍳 Cooking & Recipes</button>
+          <button id="tab-btn-safety" class="tab-btn" data-tab="safety">🛡️ Safety & Rights</button>
         </nav>
 
         <!-- TAB 1: Mushroom Catalog & Master Index -->
@@ -104,13 +105,13 @@
               <span>🌟</span> <span id="label-view-grid">All 63 Species</span>
             </button>
             <button class="view-mode-btn" data-mode="safe5" onclick="switchCatalogViewMode('safe5', this)">
-              <span>⭐</span> <span id="label-view-safe5">The Safe Five Masterclass</span>
+              <span>⭐</span> <span id="label-view-safe5">Safe Five</span>
             </button>
             <button class="view-mode-btn" data-mode="intermediate" onclick="switchCatalogViewMode('intermediate', this)">
-              <span>🧺</span> <span id="label-view-intermediate">Intermediate Gourmet</span>
+              <span>🧺</span> <span id="label-view-intermediate">Intermediate</span>
             </button>
             <button class="view-mode-btn" data-mode="master" onclick="switchCatalogViewMode('master', this)">
-              <span>📚</span> <span id="label-view-master">Full Monographs</span>
+              <span>📚</span> <span id="label-view-master">Monographs</span>
             </button>
           </div>
 
@@ -122,6 +123,7 @@
             <div class="search-box">
               <span class="search-icon">🔍</span>
               <input type="text" id="search-input" placeholder="Search by Finnish, Latin, English, Chinese, or traits (e.g. spines, pores)...">
+              <button type="button" id="search-clear-btn" class="search-clear-btn" style="display: none;" onclick="clearCatalogSearch()" title="Clear search">✕</button>
             </div>
 
             <!-- Quick Access / Popular Highlights -->
@@ -135,42 +137,57 @@
               <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('amanita_virosa')" title="Valkokärpässieni / 白毒鹅膏" style="color: var(--danger);">⚠️ Valkokärpässieni</button>
             </div>
 
-            <div class="filters-row">
-              <div class="filter-group">
-                <span id="label-skill-level" class="filter-label">Skill Level:</span>
-                <button id="filter-level-all" class="pill-btn level-btn active" data-level="all">All Species</button>
-                <button id="filter-level-beginner" class="pill-btn level-btn" data-level="beginner">Beginner-Safe</button>
-                <button id="filter-level-intermediate" class="pill-btn level-btn" data-level="intermediate">Intermediate</button>
-                <button id="filter-level-advanced" class="pill-btn level-btn" data-level="advanced">Advanced</button>
-                <button id="filter-level-deadly" class="pill-btn level-btn" data-level="deadly" style="color: var(--danger);">Deadly Toxic</button>
-              </div>
+            <!-- Filter Drawer Toggle Bar -->
+            <div class="filters-toggle-bar">
+              <button type="button" id="btn-toggle-filters" class="filters-toggle-btn" onclick="toggleCatalogFilters()">
+                <span class="filter-toggle-icon">⚙️</span>
+                <span id="label-more-filters">Filters ▾</span>
+                <span id="active-filters-badge" class="active-filters-badge" style="display: none;">0</span>
+              </button>
+              <button type="button" id="btn-reset-filters" class="filters-reset-btn" onclick="resetAllCatalogFilters()" style="display: none;">
+                Reset
+              </button>
             </div>
 
-            <div class="filters-row family-filters-row">
-              <div class="filter-group">
-                <span id="label-family-filter" class="filter-label">Family / Group:</span>
-                <button id="filter-fam-all" class="pill-btn family-btn active" data-family="all">All Groups (63)</button>
-                <button id="filter-fam-chanterelles" class="pill-btn family-btn" data-family="cantharellaceae">Chanterelles (5)</button>
-                <button id="filter-fam-boletes" class="pill-btn family-btn" data-family="boletaceae">Boletes (13)</button>
-                <button id="filter-fam-tooth" class="pill-btn family-btn" data-family="hydnaceae">Tooth Fungi (2)</button>
-                <button id="filter-fam-polypores" class="pill-btn family-btn" data-family="polyporaceae">Polypores (3)</button>
-                <button id="filter-fam-milkcaps" class="pill-btn family-btn" data-family="milkcaps">Milkcaps (9)</button>
-                <button id="filter-fam-brittlegills" class="pill-btn family-btn" data-family="russulaceae">Brittlegills (10)</button>
-                <button id="filter-fam-others" class="pill-btn family-btn" data-family="agaric_others">Gilled & Others (14)</button>
-                <button id="filter-fam-deadly" class="pill-btn family-btn" data-family="deadly_toxic" style="color: var(--danger);">Deadly Lookalikes (7)</button>
+            <!-- Collapsible Detailed Filters Drawer -->
+            <div id="catalog-filter-drawer" class="catalog-filter-drawer" style="display: none;">
+              <div class="filters-row">
+                <div class="filter-group">
+                  <span id="label-skill-level" class="filter-label">Skill Level:</span>
+                  <button id="filter-level-all" class="pill-btn level-btn active" data-level="all">All Species</button>
+                  <button id="filter-level-beginner" class="pill-btn level-btn" data-level="beginner">Beginner-Safe</button>
+                  <button id="filter-level-intermediate" class="pill-btn level-btn" data-level="intermediate">Intermediate</button>
+                  <button id="filter-level-advanced" class="pill-btn level-btn" data-level="advanced">Advanced</button>
+                  <button id="filter-level-deadly" class="pill-btn level-btn" data-level="deadly" style="color: var(--danger);">Deadly Toxic</button>
+                </div>
               </div>
-            </div>
 
-            <!-- Season Month Selector -->
-            <div class="season-bar">
-              <span id="label-month-filter" class="filter-label" style="align-self: center; margin-right: 0.5rem;">Fruiting Month:</span>
-              <button class="month-btn" data-month="5">May</button>
-              <button class="month-btn" data-month="6">Jun</button>
-              <button class="month-btn" data-month="7">Jul</button>
-              <button class="month-btn" data-month="8">Aug</button>
-              <button class="month-btn" data-month="9">Sep</button>
-              <button class="month-btn" data-month="10">Oct</button>
-              <button class="month-btn" data-month="11">Nov</button>
+              <div class="filters-row family-filters-row">
+                <div class="filter-group">
+                  <span id="label-family-filter" class="filter-label">Family / Group:</span>
+                  <button id="filter-fam-all" class="pill-btn family-btn active" data-family="all">All Groups (63)</button>
+                  <button id="filter-fam-chanterelles" class="pill-btn family-btn" data-family="cantharellaceae">Chanterelles (5)</button>
+                  <button id="filter-fam-boletes" class="pill-btn family-btn" data-family="boletaceae">Boletes (13)</button>
+                  <button id="filter-fam-tooth" class="pill-btn family-btn" data-family="hydnaceae">Tooth Fungi (2)</button>
+                  <button id="filter-fam-polypores" class="pill-btn family-btn" data-family="polyporaceae">Polypores (3)</button>
+                  <button id="filter-fam-milkcaps" class="pill-btn family-btn" data-family="milkcaps">Milkcaps (9)</button>
+                  <button id="filter-fam-brittlegills" class="pill-btn family-btn" data-family="russulaceae">Brittlegills (10)</button>
+                  <button id="filter-fam-others" class="pill-btn family-btn" data-family="agaric_others">Gilled & Others (14)</button>
+                  <button id="filter-fam-deadly" class="pill-btn family-btn" data-family="deadly_toxic" style="color: var(--danger);">Deadly Lookalikes (7)</button>
+                </div>
+              </div>
+
+              <!-- Season Month Selector -->
+              <div class="season-bar">
+                <span id="label-month-filter" class="filter-label" style="align-self: center; margin-right: 0.5rem;">Fruiting Month:</span>
+                <button class="month-btn" data-month="5">May</button>
+                <button class="month-btn" data-month="6">Jun</button>
+                <button class="month-btn" data-month="7">Jul</button>
+                <button class="month-btn" data-month="8">Aug</button>
+                <button class="month-btn" data-month="9">Sep</button>
+                <button class="month-btn" data-month="10">Oct</button>
+                <button class="month-btn" data-month="11">Nov</button>
+              </div>
             </div>
           </div>
 
