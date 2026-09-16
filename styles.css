@@ -625,6 +625,55 @@ button, input, select, textarea {
   border-color: var(--accent);
 }
 
+.search-quick-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: -0.35rem;
+  margin-bottom: 1.1rem;
+  font-size: 0.82rem;
+}
+
+.quick-tags-label {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-right: 0.25rem;
+}
+
+.quick-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.65rem;
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  color: var(--fg);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  line-height: 1.2;
+}
+
+.quick-tag-chip:hover {
+  background: var(--card-hover);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.quick-tag-chip.highlight {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
 .filters-row {
   display: flex;
   flex-wrap: wrap;

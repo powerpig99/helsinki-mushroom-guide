@@ -124,6 +124,17 @@
               <input type="text" id="search-input" placeholder="Search by Finnish, Latin, English, Chinese, or traits (e.g. spines, pores)...">
             </div>
 
+            <!-- Quick Access / Popular Highlights -->
+            <div class="search-quick-tags" id="search-quick-tags">
+              <span class="quick-tags-label" id="label-quick-tags">Popular:</span>
+              <button type="button" class="quick-tag-chip highlight" onclick="navigateToMushroom('tricholoma_matsutake')" title="Tuoksuvalmuska / 松茸 (松口蘑)">👑 松茸 Matsutake</button>
+              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('cantharellus_cibarius')" title="Kantarelli / 鸡油菌">🍄 Kantarelli</button>
+              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('boletus_edulis')" title="Herkkutatti / 美味牛肝菌">🌲 Herkkutatti</button>
+              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('craterellus_tubaeformis')" title="Suppilovahvero / 漏斗鸡油菌">🍂 Suppilovahvero</button>
+              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('craterellus_cornucopioides')" title="Mustatorvisieni / 黑号角菇">🖤 Mustatorvisieni</button>
+              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('amanita_virosa')" title="Valkokärpässieni / 白毒鹅膏" style="color: var(--danger);">⚠️ Valkokärpässieni</button>
+            </div>
+
             <div class="filters-row">
               <div class="filter-group">
                 <span id="label-skill-level" class="filter-label">Skill Level:</span>

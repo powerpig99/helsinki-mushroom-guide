@@ -71,6 +71,7 @@ const I18N = {
       headerLinkHandbook: "🌲 Forest Habitats & Tree Identification →",
       headerLinkSpecies: "⭐ Safe Five & 50+ Species Masterclass →",
       searchPlaceholder: "Search by Finnish, Latin, English, Chinese, or traits (e.g. spines, pores)...",
+      quickTagsLabel: "Popular:",
       skillLevelLabel: "Skill Level:",
       monthFilterLabel: "Fruiting Month:",
       allLevels: "All Species",
@@ -217,6 +218,7 @@ const I18N = {
       headerLinkHandbook: "🌲 森林生境与松/杉/白桦树种图鉴 →",
       headerLinkSpecies: "⭐ 安全五大菌与50+分类大典 →",
       searchPlaceholder: "输入中文（如鸡油菌）、芬兰语、学名、特征（如菌刺、菌孔）搜索...",
+      quickTagsLabel: "热门直达:",
       skillLevelLabel: "采摘难度:",
       monthFilterLabel: "出菇月份:",
       allLevels: "全部物种",
@@ -364,6 +366,7 @@ const I18N = {
       headerLinkHandbook: "🌲 Metsätyypit ja puiden tunnistus →",
       headerLinkSpecies: "⭐ Varma Viisikko & 50+ lajin suurluettelo →",
       searchPlaceholder: "Hae suomalaisella tai tieteellisellä nimellä, piirteillä (esim. heltat, pillit)...",
+      quickTagsLabel: "Suosikit:",
       skillLevelLabel: "Taitotaso:",
       monthFilterLabel: "Satokuukausi:",
       allLevels: "Kaikki lajit",
@@ -624,7 +627,8 @@ const I18N = {
       ],
       "tricholoma_matsutake": [
           "tricholoma_portentosum",
-          "cortinarius_caperatus"
+          "cortinarius_caperatus",
+          "cortinarius_rubellus"
       ],
       "tricholoma_portentosum": [
           "tricholoma_matsutake"
@@ -678,7 +682,8 @@ const I18N = {
       "cortinarius_rubellus": [
           "craterellus_tubaeformis",
           "lactarius_rufus",
-          "cortinarius_caperatus"
+          "cortinarius_caperatus",
+          "tricholoma_matsutake"
       ],
       "galerina_marginata": [
           "kuehneromyces_mutabilis",
@@ -5652,17 +5657,17 @@ const I18N = {
           "names": {
                 "en": {
                       "primary": "Pine Matsutake",
-                      "local": "Tuoksuvalmuska",
+                      "local": "Tuoksuvalmuska / Matsutake",
                       "alt": "Tricholoma matsutake"
                 },
                 "zh": {
-                      "primary": "松口蘑",
-                      "local": "芬兰野生松茸 / 香口蘑",
+                      "primary": "松茸 (松口蘑)",
+                      "local": "芬兰野生松茸 / 香口蘑 (Tuoksuvalmuska)",
                       "alt": "Tricholoma matsutake"
                 },
                 "fi": {
-                      "primary": "Tuoksuvalmuska",
-                      "local": "Männyntuoksuvalmuska / Matsutake",
+                      "primary": "Tuoksuvalmuska (Matsutake)",
+                      "local": "Männyntuoksuvalmuska",
                       "alt": "Tricholoma matsutake"
                 }
           },

@@ -523,10 +523,14 @@ function applyLanguage(lang) {
   const labelMaster = document.getElementById("label-view-master");
   if (labelMaster && t.labelViewMaster) labelMaster.textContent = t.labelViewMaster;
 
-  // Search Placeholder
+  // Search Placeholder & Quick Tags
   const searchInput = document.getElementById("search-input");
   if (searchInput) {
     searchInput.placeholder = t.searchPlaceholder;
+  }
+  const labelQuickTags = document.getElementById("label-quick-tags");
+  if (labelQuickTags && t.quickTagsLabel) {
+    labelQuickTags.textContent = t.quickTagsLabel;
   }
 
   // Filter Labels
@@ -1013,6 +1017,20 @@ function setupFilters() {
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
+      if (searchQuery) {
+        // Reset category/tier/level/month filters so global search searches all 63 species
+        currentFamilyFilter = "all";
+        currentLevelFilter = "all";
+        currentTierFilter = null;
+        currentMonthFilter = null;
+        
+        document.querySelectorAll(".level-btn").forEach(b => b.classList.toggle("active", b.dataset.level === "all"));
+        document.querySelectorAll(".family-btn").forEach(b => b.classList.toggle("active", b.dataset.family === "all"));
+        document.querySelectorAll(".month-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".view-mode-btn").forEach(b => b.classList.toggle("active", b.dataset.mode === "grid"));
+        const tierBanner = document.getElementById("tier-intro-banner");
+        if (tierBanner) tierBanner.style.display = "none";
+      }
       renderCatalog();
     });
   }
@@ -1090,7 +1108,8 @@ function renderCatalog() {
         "russula_decolorans",
         "russula_paludosa",
         "russula_aeruginea",
-        "albatrellus_ovinus"
+        "albatrellus_ovinus",
+        "tricholoma_matsutake"
       ];
       if (intermediateTargetIds.includes(m.id)) return true;
       return (m.level === "intermediate" || m.level === "advanced") && m.edibility !== "deadly" && m.edibility !== "inedible";
@@ -1117,11 +1136,14 @@ function renderCatalog() {
       return false;
     }
     if (searchQuery) {
-      const en = `${m.names.en.primary} ${m.names.en.local} ${m.names.en.alt}`.toLowerCase();
-      const zh = `${m.names.zh.primary} ${m.names.zh.local} ${m.names.zh.alt}`.toLowerCase();
-      const fi = `${m.names.fi.primary} ${m.names.fi.local} ${m.names.fi.alt}`.toLowerCase();
-      const morph = `${m.morphology[lang]?.underCap || ""} ${m.morphology[lang]?.cap || ""}`.toLowerCase();
-      const haystack = `${m.latinName} ${en} ${zh} ${fi} ${morph}`.toLowerCase();
+      const en = `${m.names?.en?.primary || ""} ${m.names?.en?.local || ""} ${m.names?.en?.alt || ""}`.toLowerCase();
+      const zh = `${m.names?.zh?.primary || ""} ${m.names?.zh?.local || ""} ${m.names?.zh?.alt || ""}`.toLowerCase();
+      const fi = `${m.names?.fi?.primary || ""} ${m.names?.fi?.local || ""} ${m.names?.fi?.alt || ""}`.toLowerCase();
+      const morph = `${m.morphology?.[lang]?.underCap || ""} ${m.morphology?.[lang]?.cap || ""} ${m.morphology?.[lang]?.odor || ""}`.toLowerCase();
+      const cul = (m.culinaryTip && m.culinaryTip[lang]) || "";
+      const hab = (m.habitatName && m.habitatName[lang]) || "";
+      const notes = (m.culturalNotes && (m.culturalNotes.zh + " " + m.culturalNotes.en + " " + m.culturalNotes.fi)) || "";
+      const haystack = `${m.id} ${m.latinName} ${en} ${zh} ${fi} ${morph} ${cul} ${hab} ${notes}`.toLowerCase();
       if (!haystack.includes(searchQuery)) {
         return false;
       }
@@ -1960,6 +1982,70 @@ function renderLookalikes() {
           fi: ["Heltat: AINA PUHTAANVALKOISET koko elinkaaren ajan", "Jalan tyvi: Syvällä sammaleessa suuri säkkimäinen tuppi", "Yleisvaikutelma: Täysin vitivalkoinen, jalassa repaleita", "Myrkky: Amatoksiinit tuhoavat maksan peruuttamattomasti!"]
         }
       }
+    },
+    {
+      title: {
+        en: "Pine Matsutake vs. Booted Knight & Deadly Webcap",
+        zh: "芬兰野生松茸 vs 锈褐口蘑 (假松茸) 与 致命丝膜菌",
+        fi: "Tuoksuvalmuska vs. Ruskovalmuska ja Suippumyrkkyseitikki"
+      },
+      summary: {
+        en: "Gourmet gold vs. bitter lookalike & lethal toxin. True Matsutake features a firm white scaly stem with an unmistakable cinnamon-sweet perfume. Booted Knight lacks spicy cinnamon fragrance, and Deadly Webcap contains lethal orellanine.",
+        zh: "顶级珍馐 vs 苦涩劣质与致命肾毒素。正品芬兰松茸具极度坚实肉质、棉毛菌环及无可替代的肉桂甜香与雪松香气；锈褐口蘑缺乏肉桂异香且味涩；致命丝膜菌菌肉锈黄带尖顶，含致命奥来毒素！",
+        fi: "Huippugourmet vs. kitkerä näköislaji ja hengenvaarallinen myrkkysieni. Oikean tuoksuvalmuskan tunnistaa huumaavasta kanelimaisesta tuoksusta ja tukevasta valko-ruskeasta renkaallisesta jalasta."
+      },
+      edible: {
+        id: "tricholoma_matsutake",
+        name: { en: "Pine Matsutake (Tuoksuvalmuska)", zh: "芬兰野生松茸 (Tricholoma matsutake)", fi: "Tuoksuvalmuska (Matsutake)" },
+        image: "./images/tricholoma_matsutake.jpg",
+        status: t.badgeChoice,
+        traits: {
+          en: [
+            "Aroma: Intense, unmistakable sweet perfume of cinnamon, cedarwood, fresh pine resin, and crisp autumn earth",
+            "Cap & Stem: Buff to reddish-brown fibrous scales; very stout solid stem with persistent white cottony ring",
+            "Gills: White to pale cream, crowded, slowly developing rusty-brown spots when mature",
+            "Flesh: Extraordinarily dense, firm, and heavy, never spongy"
+          ],
+          zh: [
+            "气味铁证：极度浓郁独特的复合甜香，将肉桂香、松脂香与雪松木质香融为一体，无可替代",
+            "菌盖与菌柄：密被红褐粗糙纤维鳞片；极其粗壮如棒槌的实心菌柄，具明显白色棉毛状菌环",
+            "菌褶：细密乳白至浅乳黄，老熟边缘常现细小锈褐色斑点",
+            "肉质：极其肥厚紧实致密坚硬，手感沉重如石"
+          ],
+          fi: [
+            "Tuoksu: Huumaavan voimakas makean mausteinen tuoksu, jossa yhdistyvät kaneli, havupuu ja pihka",
+            "Lakki ja jalka: Kuitusuomuinen, erittäin tukeva jalka selkeällä vanumaisella renkaalla",
+            "Heltat: Valkoiset tai kermanvaaleat, vanhana ruskeatäpläiset",
+            "Malto: Erittäin kiinteä, kova ja paksu"
+          ]
+        }
+      },
+      toxic: {
+        id: "cortinarius_rubellus",
+        name: { en: "Deadly Webcap & Booted Knight", zh: "致命丝膜菌 (Cortinarius rubellus) & 锈褐口蘑", fi: "Suippumyrkkyseitikki & Ruskovalmuska" },
+        image: "./images/cortinarius_rubellus.jpg",
+        status: t.badgeDeadly,
+        traits: {
+          en: [
+            "Deadly Webcap: Rusty copper-brown conical cap with a sharp pointed umbo; stem has yellow zigzag bands; lethal orellanine destroys kidneys!",
+            "Booted Knight (T. focale): Bright orange-reddish cap; mealy/flour-like or bland odor lacking the cinnamon fragrance",
+            "Spore Print & Gills: Rusty brown spores on Webcap gills vs. pure white spore print of Matsutake",
+            "Shared Habitat: Both grow in dry sandy pine forests sharing identical terrain with Matsutake!"
+          ],
+          zh: [
+            "致命丝膜菌：锈红至肉桂褐色，顶端具极尖锐锥状突起，柄具黄色之字形蛛网蛇纹，含奥来毒素彻底破坏肾脏！",
+            "锈褐口蘑 (假松茸)：橙红褐色菌盖，生面粉味或微土味，完全缺乏松茸高贵浓烈的肉桂甜香",
+            "孢子与菌褶：丝膜菌为深锈褐色孢子印；松茸为纯白色孢子印与乳白菌褶",
+            "生境重叠隐患：皆生于干燥沙质松林（Kuiva kangas），与松茸地盘完全重叠，严防混采！"
+          ],
+          fi: [
+            "Suippumyrkkyseitikki: Kettumaisen ruosteenruskea terävällä huipulla, keltaisia siksak-vöitä jalassa, orellaniini tuhoaa munuaiset!",
+            "Ruskovalmuska: Oranssinpunaruskea lakki, jauhomainen tuoksu, ei koskaan kanelimainen",
+            "Itiöpöly: Seitikeillä ruosteenruskea vs. valmuskoilla puhtaanvalkoinen",
+            "Yhteinen elinympäristö: Kasvavat karuilla hiekkamäntykankailla samoissa paikoissa kuin tuoksuvalmuska!"
+          ]
+        }
+      }
     }
   ];
 
@@ -1967,16 +2053,16 @@ function renderLookalikes() {
     <!-- Section Header Banner -->
     <div class="integrated-monograph-header danger-theme" style="margin-bottom: 2rem;">
       <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: var(--danger-soft); color: var(--danger); font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.65rem; border: 1px solid var(--danger-border);">
-        <span>⚖️ ${t.tabLookalikes || "Deadly Lookalikes"}</span> • <span>Zero Tolerance • 4 Visual Comparators • Toxin Science</span>
+        <span>⚖️ ${t.tabLookalikes || "Deadly Lookalikes"}</span> • <span>Zero Tolerance • 5 Visual Comparators • Toxin Science</span>
       </div>
       <h1 class="integrated-monograph-title" style="color: var(--danger); margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
       ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
     </div>
 
-    <!-- 1. The 4 Interactive Visual Comparators (Front & Center!) -->
+    <!-- 1. The 5 Interactive Visual Comparators (Front & Center!) -->
     <div class="section-divider-header" style="margin-bottom: 1.5rem;">
       <h2 style="font-size: 1.45rem; font-weight: 800; color: var(--fg); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-        <span>🔍</span> <span>${lang === "zh" ? "4大高危真假混淆微距形态对决（一键直达详情）" : (lang === "fi" ? "4 kriittistä näköislajivertailua" : "4 Critical Side-by-Side Visual Lookalike Comparators")}</span>
+        <span>🔍</span> <span>${lang === "zh" ? "5大高危真假混淆微距形态对决（一键直达详情）" : (lang === "fi" ? "5 kriittistä näköislajivertailua" : "5 Critical Side-by-Side Visual Lookalike Comparators")}</span>
       </h2>
       <p style="font-size: 0.92rem; color: var(--muted);">
         ${lang === "zh" ? "微距形态特征、钝分叉假褶vs锋利真褶、立体网眼与致命潜伏期特征全方位对比" : (lang === "fi" ? "Tarkat mikroskooppiset ja morfologiset erot rinnakkain, poimut vs. heltat ja jalkojen piirteet" : "Direct side-by-side morphological feature breakdowns, blunt ridges vs knife gills, and stem netting")}
@@ -3257,6 +3343,36 @@ function renderSafety() {
           <strong style="color: var(--fg); font-size: 0.9rem;">${lang === "zh" ? "严禁密闭塑料袋" : (lang === "fi" ? "Ei muovipusseja" : "Never Use Plastic Bags")}:</strong>
           <p style="color: var(--muted); font-size: 0.84rem; line-height: 1.5; margin: 0.25rem 0 0;">${lang === "zh" ? "塑料袋内高温缺氧会使蘑菇蛋白质急剧发酵自溶，几小时内即可产生有毒代谢物！" : (lang === "fi" ? "Muovipussissa sienet hikoilevat ja pilaantuvat nopeasti jopa myrkyllisiksi." : "In plastic, mushrooms sweat, anaerobic bacteria multiply rapidly, and proteins break down into toxic amines within hours.")}</p>
         </div>
+      </div>
+    </div>
+
+    <!-- 5. Featured Case Study: Everyman's Right & Finnish Matsutake (Tuoksuvalmuska / 松茸) -->
+    <div style="background: var(--card-bg); border: 1px solid var(--accent); border-left: 5px solid var(--accent); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 1.5rem;">👑</span>
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--fg); margin: 0;">
+              ${lang === "zh" ? "特别专题：芬兰松茸 (Tuoksuvalmuska) 与自然公共权的商业传奇" : (lang === "fi" ? "Erityistapaus: Tuoksuvalmuska ja jokamiehenoikeus" : "Special Feature: Finnish Pine Matsutake & Everyman's Right")}
+            </h3>
+            <span style="font-size: 0.8rem; color: var(--accent); font-weight: 600;">Tricholoma matsutake • 2007 Kauppasieni • §89 Tuloverolaki</span>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="navigateToMushroom('tricholoma_matsutake')" style="border-color: var(--accent); color: var(--accent); font-weight: 600; font-size: 0.82rem; padding: 0.4rem 0.85rem; border-radius: 9999px; cursor: pointer;">
+          ${lang === "zh" ? "🍄 打开松茸全景专著 →" : (lang === "fi" ? "🍄 Avaa tuoksuvalmuskan monografia →" : "🍄 Open Pine Matsutake Monograph →")}
+        </button>
+      </div>
+      <p style="font-size: 0.88rem; color: var(--fg); line-height: 1.6; margin-bottom: 0.75rem;">
+        ${lang === "zh" 
+          ? "芬兰不仅拥有纯正的日本同种野生松茸（学名 <em>Tricholoma matsutake</em>，直译“香口蘑”），更是北欧最重要的松茸产地之一。芬兰于 2007 年将其正式列入国家推荐商业交易食用菌名录（Kauppasieni）。得益于芬兰自然公共权与所得税法第 89 条，采摘者无论在公有林还是私人松林采摘数百公斤松茸，自食与出售所得均依法免税！" 
+          : (lang === "fi" 
+            ? "Suomi on yksi Pohjois-Euroopan merkittävimmistä tuoksuvalmuskan (<em>Tricholoma matsutake</em>) esiintymisalueista. DNA-tutkimukset vahvistivat sen olevan sama huippuarvostettu laji kuin Japanin matsutake. Vuonna 2007 se lisättiin viralliseksi kauppasieneksi. Jokamiehenoikeuden ja tuloverolain 89 § nojalla poimiminen ja myynti on täysin verovapaata!" 
+            : "Finland is one of Northern Europe's premier habitats for wild Matsutake (<em>Tricholoma matsutake</em> / Tuoksuvalmuska). DNA research confirmed it is genetically identical to prestigious East Asian Matsutake. Added to Finland's official commercial edible mushrooms (Kauppasieni) in 2007, foraging and selling your harvest is completely tax-free under Everyman's Right.")}
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8rem; color: var(--muted);">
+        <span style="background: var(--card-hover); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--rule);">🌲 ${lang === "zh" ? "生境：干燥沙质赤松疏林 (Kuiva kangas)" : (lang === "fi" ? "Kasvupaikka: Karut mäntykankaat" : "Habitat: Dry sandy Scots pine heaths")}</span>
+        <span style="background: var(--card-hover); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--rule);">📅 ${lang === "zh" ? "盛产期：7月底至10月初 (盛产8-9月)" : (lang === "fi" ? "Satoaika: Heinä–lokakuu" : "Season: Late July to October")}</span>
+        <span style="background: var(--card-hover); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--rule);">👃 ${lang === "zh" ? "特征：浓郁肉桂复合甜香与棉毛菌环" : (lang === "fi" ? "Tunnusmerkki: Huumaava kanelin tuoksu" : "Hallmark: Sweet spicy cinnamon aroma")}</span>
       </div>
     </div>
   `;
