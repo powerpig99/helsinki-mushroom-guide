@@ -36,10 +36,11 @@ Finnish foresters and botanists classify forests using the **Cajander site type 
   - **DEADLY WARNING**: This exact habitat is also where the lethal **Destroying Angel** (*Amanita virosa*) and **Deadly Webcap** (*Cortinarius rubellus*) grow!
 
 ### C. *Kuiva kangas* (Sub-xeric Pine-Lingonberry Heath - *Vaccinium* type)
-- **Soil & Light**: Coarse sand, gravelly glacial moraine, rapid drainage, bright open canopy.
+- **Soil & Light**: Coarse sand, gravelly glacial moraine, thin humus layer, rapid drainage, bright open canopy.
 - **Canopy & Undergrowth**: Scots pine (*Pinus sylvestris*), lingonberry (*Vaccinium vitis-idaea* / *puolukka*), heather (*Calluna vulgaris*), and silvery reindeer lichens (*Cladonia* / *jäkälä*).
-- **Where to find**: Uutela coastal ridges, Salmen ulkoilualue, rocky ridges of Nuuksio.
+- **Where to find**: Uutela coastal ridges, Salmen ulkoilualue & Iso-Parikas, rocky ridges of Nuuksio, and vast pine heaths of Northern Finland (Lapland, Kainuu, North Ostrobothnia).
 - **Signature Mushrooms**:
+  - **Pine Matsutake** (*Tricholoma matsutake* / *tuoksuvalmuska* / 松口蘑): **The King of Northern Pine Heaths.** DNA-proven identical to Japanese Matsutake; Finnish *kauppasieni* since 2007. Fruits deep in sandy, lichen-carpeted pine stands with thin humus. Distinct sweet cinnamon-resin fragrance.
   - **Pine Bolete** (*Boletus pinophilus* / *männynherkkutatti*): Heavy mahogany-capped bolete with deep reddish reticulation.
   - **Rufous Milkcap** (*Lactarius rufus* / *kangasrousku*): Conical terracotta cap; quintessential Finnish salting mushroom.
   - **Slippery Jack & Velvet Bolete** (*Suillus luteus* / *voitatti*, *Suillus variegatus* / *kangastatti*).
@@ -80,11 +81,12 @@ May        Jun        Jul        Aug        Sep        Oct        Nov
   - Early boletes (*Leccinum*, *Suillus*).
 - **Forager Tip**: Inspect south-facing hillsides where sunlight warmed the forest floor first.
 
-### August: The Grand Flush (The Boletes & Russulas)
+### August: The Grand Flush (The Boletes, Russulas & Matsutake)
 - **Prime Conditions**: Warm nights (>12°C) combined with heavy late-summer thunderstorms.
 - **Targets**:
   - **King Bolete / Porcini** (*Boletus edulis*): Massive flush lasting 2–3 weeks. Must be harvested early before fungus gnats lay eggs in the spongy pores.
   - **Brittlegills (*Haperot*)**: Yellow brittlegill (*keltahapero*), copper brittlegill (*kangashapero*).
+  - **Pine Matsutake** (*Tricholoma matsutake* / *tuoksuvalmuska* / 松口蘑): Begins fruiting on dry lichen pine heaths; harvest window runs through September.
   - **Saffron Milkcap** (*Lactarius deliciosus* / *männynleppärousku*): Orange-milked delicacy under young pines.
 
 ### September: The Golden Peak of Mycology
@@ -92,9 +94,19 @@ May        Jun        Jul        Aug        Sep        Oct        Nov
 - **Targets**:
   - **Hedgehog Mushroom** (*Hydnum repandum*): Spines under the cap; firm, bug-free white meat.
   - **Black Trumpet** (*Craterellus cornucopioides*): The "black truffle of the north".
+  - **Pine Matsutake** (*Tricholoma matsutake* / *tuoksuvalmuska* / 松口蘑): Golden season on sandy lichen ridges.
   - **Salting Milkcaps**: Woolly milkcap (*karvarousku*), Northern milkcap (*haaparousku*), Rufous milkcap (*kangasrousku*).
   - **Gypsy Mushroom** (*Cortinarius caperatus* / *kehnäsieni*).
   - **Sheep Polypore** (*Albatrellus ovinus* / *lampaankääpä*).
+
+> [!NOTE]
+> **Finnish Matsutake (*Tricholoma matsutake* / *tuoksuvalmuska* / 芬兰野生松茸)**
+> - **DNA Identity & Taxonomy**: Molecular DNA sequencing confirmed that the Nordic pine matsutake (formerly called *Tricholoma nauseosum* in Europe) is genetically identical to the famed Japanese Matsutake (**Tricholoma matsutake**). In Finnish, it is known as *tuoksuvalmuska* ("fragrant tricholoma").
+> - **Distribution & Ecology**: Nationwide across Finland, but far more common and bountiful in the north (Lapland, Kainuu, North Ostrobothnia). Obligate mycorrhizal partner with Scots pine (*Pinus sylvestris*) in dry, sandy, lichen-carpeted heaths (*kuiva kangas*) with thin humus; occasionally with spruce.
+> - **Season & Year-to-Year Fluctuation**: Fruits from late July to early October, peaking in August and September. Annual yield fluctuates wildly: bumper years yield massive piles of mushrooms (e.g. Lapland's legendary 2007 mega-flush where single guides picked ~1 ton), whereas off-years yield very few.
+> - **Commercial Status & History**: Traditional Finnish foraging culture favoured chanterelles, porcini, brittlegills, and salting milkcaps while avoiding "brown agarics". In 2007, Evira officially designated matsutake as a statutory commercial edible mushroom (*kauppasieni*), establishing commercial buying depots and export channels.
+> - **Everyman's Right (*Jokamiehenoikeus*)**: Under Finnish law, everyone (including foreign visitors) may freely forage wild mushrooms across public and private forests without a permit, and all personal income from selling wild foraged edible mushrooms is **100% tax-free**!
+> - **Identification Benchmark**: The non-negotiable field test is its intense, intoxicating perfume of sweet cinnamon, pine resin, and fresh autumn earth. Distinguish strictly from the Booted Knight (*Tricholoma focale* / *ruskovalmuska*), which has an orange-reddish cap and a mealy/flour-like or bland smell.
 
 ### October – Mid-November: The Late Frost-Resistant Season
 - **Weather**: Night frosts begin (0°C to -4°C), deciduous leaves drop, forest quietens.

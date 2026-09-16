@@ -122,6 +122,46 @@ function renderBilingualText(obj, lang1, lang2) {
   `;
 }
 
+// Markdown Paragraph & Header Formatting Helper
+function formatMarkdownParagraphs(text) {
+  if (!text) return "";
+  const paragraphs = text.split(/\n\n+/);
+  return paragraphs.map(para => {
+    let p = para.trim();
+    if (!p) return "";
+    if (p.startsWith("### ")) {
+      return `<h3 style="font-size: 1.05rem; font-weight: 800; color: var(--fg); margin: 1.25rem 0 0.45rem 0; display: flex; align-items: center; gap: 0.4rem;">${p.replace(/^###\s*/, "")}</h3>`;
+    }
+    if (p.startsWith("## ")) {
+      return `<h3 style="font-size: 1.15rem; font-weight: 800; color: var(--fg); margin: 1.35rem 0 0.5rem 0;">${p.replace(/^##\s*/, "")}</h3>`;
+    }
+    // Bold and italic formatting
+    p = p.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+         .replace(/\*(.+?)\*/g, '<em>$1</em>');
+    return `<p style="margin-bottom: 0.85rem; line-height: 1.68; font-size: 0.92rem; color: var(--fg);">${p}</p>`;
+  }).join("");
+}
+
+// Render Rich Bilingual Markdown Monograph Block
+function renderBilingualMarkdown(obj, lang1, lang2) {
+  if (!obj) return "";
+  const text1 = typeof obj === "string" ? obj : (obj[lang1] || obj.en || "");
+  const formatted1 = formatMarkdownParagraphs(text1);
+  if (!lang2 || lang1 === lang2) {
+    return `<div class="bilingual-text">${formatted1}</div>`;
+  }
+  const text2 = typeof obj === "string" ? obj : (obj[lang2] || obj.en || "");
+  const formatted2 = formatMarkdownParagraphs(text2);
+
+  return `
+    <div class="bilingual-container">
+      <div class="bilingual-primary">${formatted1}</div>
+      <div class="bilingual-secondary">${formatted2}</div>
+    </div>
+  `;
+}
+
+
 // Foraging Spot Google Maps Patterns (Compound & specific phrases listed first)
 const FORAGING_SPOT_PATTERNS = [
   { pattern: /Salmi & Iso-Parikas/g, url: "https://www.google.com/maps/search/?api=1&query=Salmen+ulkoilualue+Vihti" },
@@ -1450,6 +1490,19 @@ function renderMushroomDetail(speciesId) {
       </div>
     </div>
 
+    ${sp.culturalNotes ? `
+    <!-- OPTIONAL SECTION: Ecological, Cultural & Foraging Tradition Monograph -->
+    <div class="detail-section-card">
+      <h2 class="detail-section-title">
+        <span>🌲</span>
+        <span>${lang === 'zh' ? '松茸深度档案：生态分布、分类地位与北欧采摘习俗' : (lang === 'fi' ? 'Lajiprofiili: Ekologia, historia ja keruuperinne' : 'Species Dossier: Ecology, History & Nordic Foraging Tradition')}</span>
+      </h2>
+      <div class="detail-section-body" style="line-height: 1.65;">
+        ${renderBilingualMarkdown(sp.culturalNotes, lang, lang2)}
+      </div>
+    </div>
+    ` : ""}
+
     <!-- SECTION 3: Field Diagnostic Anatomy Checklist -->
     <div class="detail-section-card">
       <h2 class="detail-section-title">${t.anatomyTitle}</h2>
@@ -2416,21 +2469,21 @@ function renderHabitats() {
       name: { en: "Kuiva kangas (Sub-xeric Pine-Lingonberry Heath)", zh: "Kuiva kangas（干燥松树苔原地 • 越橘石楠林）", fi: "Kuiva kangas (Männikkö & kankaat)" },
       badge: { en: "Coarse Sand & Moraine • Open Sunlit Canopy", zh: "粗砂冰碛土 • 高挑开阔阳生林", fi: "Hiekkamaa • Valoisa männikkö" },
       soil: {
-        en: "Coarse sand, gravelly glacial moraine, rapid drainage, bright open sunlit canopy. Lichens and lingonberry dominate.",
-        zh: "粗砂质冰碛土、花岗岩石砾，排水极快，高挑通透的松树冠层透光度极高，地衣与红豆越橘铺垫。",
-        fi: "Karkea hiekkamaa, moreeni, nopea kuivuminen, valoisa ja avara mäntymetsä jäkälämattoineen."
+        en: "Coarse sand, gravelly glacial moraine, thin humus layer, rapid drainage, bright open sunlit canopy. Lichens and lingonberry dominate.",
+        zh: "粗砂质冰碛土、花岗岩石砾与薄腐殖质沙土，排水极快，高挑通透的松树冠层透光度极高，地衣与红豆越橘铺垫。",
+        fi: "Karkea hiekkamaa, moreeni, ohut humuskerros, nopea kuivuminen, valoisa ja avara mäntymetsä jäkälämattoineen."
       },
       trees: {
-        en: "Scots pine (Pinus sylvestris), lingonberry, heather, silvery reindeer lichens (Cladonia).",
-        zh: "欧洲赤松（Pinus sylvestris）、红豆越橘、石楠、银灰色驯鹿地衣毯。",
-        fi: "Mänty (Pinus sylvestris), puolukka, kanerva, harmaat poronjäkälämatot."
+        en: "Scots pine (Pinus sylvestris), lingonberry, heather, silvery reindeer lichens (Cladonia); prime habitat for King Boletes and Nordic Matsutake (tuoksuvalmuska).",
+        zh: "欧洲赤松（Pinus sylvestris）、红豆越橘、石楠、银灰色驯鹿地衣毯；松树牛肝菌与北欧野生松茸（tuoksuvalmuska / 香口蘑）的核心家园。",
+        fi: "Mänty (Pinus sylvestris), puolukka, kanerva, harmaat poronjäkälämatot; männynherkkutatin ja tuoksuvalmuskan (matsutake) paras elinympäristö."
       },
       locations: {
-        en: "Uutela coastal cliffs, Salmi & Iso-Parikas moraine ridges, rocky plateaus of Nuuksio.",
-        zh: "Uutela海滨峭壁、Salmi与Iso-Parikas冰碛山脊、努克西奥岩丘高地。",
-        fi: "Uutelan rantakalliot, Salmen ja Iso-Parikkaan harjut, Nuuksion kalliomänniköt."
+        en: "Uutela coastal cliffs, Salmi & Iso-Parikas moraine ridges, rocky plateaus of Nuuksio, and vast northern pine heaths of Lapland and Kainuu.",
+        zh: "Uutela海滨峭壁、Salmi与Iso-Parikas冰碛山脊、努克西奥岩丘高地，以及拉普兰和凯努广袤的北欧赤松沙质台地。",
+        fi: "Uutelan rantakalliot, Salmen ja Iso-Parikkaan harjut, Nuuksion kalliomänniköt sekä Kainuun ja Lapin laajat mäntykankaat."
       },
-      species: ["boletus_pinophilus", "lactarius_deliciosus", "lactarius_rufus", "suillus_variegatus"]
+      species: ["boletus_pinophilus", "lactarius_deliciosus", "lactarius_rufus", "suillus_variegatus", "tricholoma_matsutake"]
     },
     {
       icon: "💧",
@@ -2478,23 +2531,23 @@ function renderHabitats() {
     },
     {
       period: "⚡ 08 • The Grand Flush / Elokuu",
-      title: { en: "The Grand Flush: King Boletes & Russulas", zh: "黄金爆发期：美味牛肝菌与红菇狂欢", fi: "Elokuu: Herkkutattien suursato ja haperot" },
+      title: { en: "The Grand Flush: King Boletes, Russulas & Matsutake", zh: "黄金爆发期：美味牛肝菌、红菇与野生松茸盛宴", fi: "Elokuu: Herkkutattien suursato, haperot ja tuoksuvalmuska" },
       desc: {
-        en: "Warm nights (>12°C) combined with thunderstorms produce massive Porcini flushes lasting 2–3 weeks. Harvest young before maggots strike.",
-        zh: "连续温热夜温（>12°C）叠加晚夏暴雷雨，引爆维持2-3周的美味牛肝菌狂欢。必须趁早采摘未被菇蝇蛀空的坚实幼体。",
-        fi: "Lämpimät yöt ja ukkossateet laukaisevat herkkutattien massiivisen sadon. Poimi nuorena ennen toukkaisuutta."
+        en: "Warm nights (>12°C) combined with thunderstorms produce massive Porcini flushes lasting 2–3 weeks. On dry sandy pine heaths, prized Nordic Matsutake (tuoksuvalmuska) begins its main fruiting flush.",
+        zh: "连续温热夜温（>12°C）叠加晚夏暴雷雨，引爆美味牛肝菌狂欢。而在干燥沙质赤松林中，备受尊崇的北欧野生松茸（tuoksuvalmuska / 香口蘑）亦迎来核心出菇主汛期。",
+        fi: "Lämpimät yöt ja ukkossateet laukaisevat herkkutattien massiivisen sadon. Karuilla mäntykankailla alkaa arvostetun tuoksuvalmuskan (matsutake) paras satokausi."
       },
-      species: ["boletus_edulis", "lactarius_deliciosus", "russula_paludosa"]
+      species: ["boletus_edulis", "boletus_pinophilus", "tricholoma_matsutake", "lactarius_deliciosus", "russula_paludosa"]
     },
     {
       period: "👑 09 • The Golden Peak / Syyskuu",
       title: { en: "The Golden Peak: 50+ Species Concurrently", zh: "真菌巅峰月：50余种珍馐群芳争艳", fi: "Syyskuu: Sienikauden huipennus (50+ lajia)" },
       desc: {
-        en: "The undisputed crown month of Finnish mycology: Wood Hedgehogs, Black Trumpets, Sheep Polypores, Gypsy Mushrooms, and all traditional salting milkcaps.",
-        zh: "芬兰采菇无可争议的黄金皇冠之月：卷缘齿菌、黑号角菇、白地花菌、鸡冠丝膜菌与全套传统腌渍乳菇铺满林地。",
-        fi: "Sienikauden ehdoton huippu: vaaleaorakkaat, mustatorvisienet, lampaankäävät, kehnäsienet ja suolasienirouskut."
+        en: "The undisputed crown month of Finnish mycology: Wood Hedgehogs, Black Trumpets, Sheep Polypores, Gypsy Mushrooms, Nordic Pine Matsutake, and all traditional salting milkcaps.",
+        zh: "芬兰采菇无可争议的黄金皇冠之月：卷缘齿菌、黑号角菇、白地花菌、吉普赛菇、北欧野生松茸与全套传统腌渍乳菇铺满林地。",
+        fi: "Sienikauden ehdoton huippu: vaaleaorakkaat, mustatorvisienet, lampaankäävät, kehnäsienet, tuoksuvalmuska ja suolasienirouskut."
       },
-      species: ["hydnum_repandum", "craterellus_cornucopioides", "albatrellus_ovinus", "cortinarius_caperatus"]
+      species: ["hydnum_repandum", "craterellus_cornucopioides", "albatrellus_ovinus", "cortinarius_caperatus", "tricholoma_matsutake"]
     },
     {
       period: "❄️ 10–11 • Late Autumn / Loppusyksy",
@@ -2670,7 +2723,7 @@ function renderHabitats() {
             <div class="tree-feature-row"><strong>Bark:</strong> Two-toned trunk: flaky cinnamon-orange bark on top 2/3; dark grey-brown thick scaly plates at base.</div>
             <div class="tree-feature-row"><strong>Canopy:</strong> Conifer: needles grow in pairs (clusters of 2). High sparse airy crown, bright dry forest floor.</div>
             <div class="tree-feature-row"><strong>Floor:</strong> Sandy moraine, silvery reindeer lichens, lingonberry, heather. Rapid drainage.</div>
-            <div class="tree-feature-row"><strong>Fungi:</strong> <strong>Pine Bolete</strong> (*männynherkkutatti*), Saffron Milkcap, Rufous Milkcap, Velvet Bolete.</div>
+            <div class="tree-feature-row"><strong>Fungi:</strong> <strong>Pine Bolete</strong> (*männynherkkutatti*), <strong>Pine Matsutake</strong> (*tuoksuvalmuska* / 松口蘑), Saffron Milkcap, Rufous Milkcap, Velvet Bolete.</div>
           </div>
 
           <!-- Spruce -->

@@ -163,3 +163,28 @@ The traditional Nordic technique for preserving acrid milkcaps (*Lactarius tormi
 6. Bring to a gentle boil, then reduce heat and simmer for 10 minutes.
 7. Lower the heat and add the cream and the cubes of smoked cheese (*Koskenlaskija*). Whisk gently over low heat until the cheese has completely melted into the velvety soup.
 8. Season with fresh black pepper and salt to taste. Ladle into warm bowls and garnish with extra whole sautéed funnel chanterelles and thyme sprigs. Serve with crusty sourdough or dark archipelago bread (*saaristolaisleipä*).
+
+---
+
+### 4. Pan-Seared Nordic Pine Matsutake (*Voissa paistettu tuoksuvalmuska*)
+*World-renowned culinary treasure. In Finland, pine matsutake (*tuoksuvalmuska*) fruits on dry sandy lichen heaths. Keep preparation minimal to celebrate its ethereal spicy-cinnamon perfume.*
+
+![Pine Matsutake](../images/tricholoma_matsutake.jpg)
+
+- **Prep time**: 5 min
+- **Cooking time**: 4 min
+- **Yield**: 2–4 servings
+
+#### Ingredients
+- 250 g fresh, firm Pine Matsutake (*Tricholoma matsutake*), brushed clean with a soft mushroom brush and sandy base trimmed
+- 2 tbsp unsalted Finnish butter
+- Flaky sea salt (*sormisuola*)
+- Lemon wedge or a few drops of light Japanese soy sauce
+
+#### Instructions
+1. Slice the cleaned matsutake vertically into 5–8 mm thick planks.
+2. Heat a cast-iron skillet over medium-high heat until hot. Melt the butter until foaming.
+3. Lay the matsutake slices flat in the skillet. Sear for 2 minutes without disturbing until the undersides turn light golden and the room fills with an extraordinary spicy cinnamon-pine aroma.
+4. Flip and sear the other side for 1.5 to 2 minutes.
+5. Transfer immediately to warm plates. Finish with a sprinkle of flaky sea salt and a squeeze of fresh lemon juice or a dash of light soy sauce. Enjoy immediately with steamed rice or crusty sourdough.
+

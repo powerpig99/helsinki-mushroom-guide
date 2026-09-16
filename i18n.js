@@ -5644,6 +5644,7 @@ const I18N = {
           "edibility": "choice",
           "level": "intermediate",
           "months": [
+                7,
                 8,
                 9,
                 10
@@ -5651,74 +5652,79 @@ const I18N = {
           "names": {
                 "en": {
                       "primary": "Pine Matsutake",
-                      "local": "Männyntuoksuvalmuska",
+                      "local": "Tuoksuvalmuska",
                       "alt": "Tricholoma matsutake"
                 },
                 "zh": {
                       "primary": "松口蘑",
-                      "local": "芬兰野生松茸 / 欧洲松茸",
+                      "local": "芬兰野生松茸 / 香口蘑",
                       "alt": "Tricholoma matsutake"
                 },
                 "fi": {
-                      "primary": "Männyntuoksuvalmuska",
-                      "local": "Matsutake",
+                      "primary": "Tuoksuvalmuska",
+                      "local": "Männyntuoksuvalmuska / Matsutake",
                       "alt": "Tricholoma matsutake"
                 }
           },
           "habitatName": {
-                "en": "Dry sandy Scots pine heaths, lichen-covered granite outcrop terraces",
-                "zh": "干燥沙质欧洲赤松林、长满地衣的花岗岩岩脊台地",
-                "fi": "Kuivat karut mäntykankaat, kalliomänniköt ja hiekkaiset jäkäliköt"
+                "en": "Dry sandy Scots pine heaths (Kuiva kangas) with reindeer lichens & thin humus, occasionally with spruce. Widespread across Finland, especially abundant in Lapland, Kainuu, and North Ostrobothnia.",
+                "zh": "干燥、沙质、地衣密布且腐殖质薄的疏林欧洲赤松林（Kuiva kangas），偶尔伴生云杉。芬兰全国皆产，北部拉普兰、凯努及北博滕产量尤丰。",
+                "fi": "Karuilla hiekkapohjaisilla ja jäkälärikkailla mäntykankailla (Kuiva kangas) ohuella humuksella, toisinaan kuusikoissa. Koko maassa, erityisen runsas Lapissa, Kainuussa ja Pohjois-Pohjanmaalla."
           },
           "morphology": {
                 "en": {
-                      "cap": "6–20 cm, pale buff-brown covered with fibrous brown scales, dry, thick firm flesh",
-                      "underCap": "White crowded gills, slowly developing rusty-brown spots when mature",
-                      "stem": "Very stout, solid, tapering at base, with a persistent fibrous white cottony ring",
-                      "odor": "Extraordinary, intensely aromatic, sweet spicy perfume of cinnamon, cedarwood and autumn earth"
+                      "cap": "6–20 cm, pale buff to reddish-brown covered with fibrous brown scales, dry, thick and extraordinarily dense, firm flesh",
+                      "underCap": "White to pale cream crowded gills, slowly developing reddish-brown spots when mature",
+                      "stem": "Very stout, solid, tapering at base, with a persistent fibrous white cottony ring; densely brown-scaly below ring",
+                      "odor": "The defining hallmark: an intensely aromatic, unmistakable sweet-spicy perfume of cinnamon, cedarwood, fresh pine resin, and crisp autumn earth"
                 },
                 "zh": {
-                      "cap": "6–20厘米，淡黄褐色覆有粗糙的红褐至茶褐色纤维鳞片，干燥，肉质极其肥厚致密坚实",
-                      "underCap": "乳白色细密菌褶，成熟后边缘略带细小锈褐色斑点",
-                      "stem": "极其粗实粗壮如棒槌，基部收尖，具持久棉毛状白色菌环，环下密布深色鳞片",
-                      "odor": "无与伦比、极度浓烈清冽的肉桂、雪松木质香与秋天泥土混合的旷世松茸奇香！"
+                      "cap": "6–20厘米，淡茶褐色至黄褐色覆有粗糙的红褐至深褐色纤维状鳞片，干燥，肉质极其肥厚致密坚实",
+                      "underCap": "乳白至浅乳黄色细密菌褶，成熟老化后边缘常带细小锈褐色斑点",
+                      "stem": "极其粗实粗壮如棒槌，基部渐收尖，具持久棉毛状白色菌环，环下密布深色鳞片，内部致密实心",
+                      "odor": "最重要的决定性辨识铁证：极度浓郁独特的复合甜香，将肉桂香、松脂香与雪松木质香及清冽泥土香融为一体，无可替代！"
                 },
                 "fi": {
-                      "cap": "6–20 cm, vaaleanruskea, ruskeiden kuitusuomujen peittämä, erittäin kiinteämaltoinen",
-                      "underCap": "Valkoiset tiheät heltat, vanhana ruskeatäpläiset",
-                      "stem": "Erittäin tukeva, kiinteä, selvä vanumainen valkoinen rengas",
-                      "odor": "Ainutlaatuinen, voimakkaan mausteinen ja hedelmäinen tuoksu (kanelia ja havua)"
+                      "cap": "6–20 cm, vaaleanruskea, ruskeiden kuitusuomujen peittämä, erittäin kiinteä- ja paksulamaltoinen",
+                      "underCap": "Valkoiset tai kermanvaaleat tiheät heltat, vanhana ruskeatäpläiset",
+                      "stem": "Erittäin tukeva, kiinteä, tyveä kohti suippeneva, selvä vanumainen valkoinen rengas, renkaan alta ruskeasuomuinen",
+                      "odor": "Tärkein tuntomerkki: huumaavan voimakas, ainutlaatuinen makean mausteinen tuoksu, jossa yhdistyvät kaneli, havupuu, pihka ja syksyinen metsämaa"
                 }
           },
           "culinaryTip": {
-                "en": "WORLD-FAMOUS GOURMET TREASURE. Do not overcook! Grill gently over coals or pan-sear in butter to preserve its ethereal spicy perfume.",
-                "zh": "享誉全球的殿堂级野生菌珍馐！严禁重油重酱过火久煮！极宜炭火炭烤、刺身厚切蘸生抽芥末、或以极简黄油微火香煎，尽显其天赐松茸香气。",
-                "fi": "Maailmankuulu gourmet-sieni! Älä kypsennä liikaa. Paahda kevyesti pannulla tai grillissä."
+                "en": "WORLD-FAMOUS GOURMET TREASURE. Do not overcook or drown in heavy sauces! Gently charcoal-grill, pan-sear briefly in clarified butter, or prepare Matsutake rice (Matsutake gohan) to fully unleash its intoxicating spicy perfume.",
+                "zh": "享誉全球的殿堂级野生菌珍馐！严禁重油重酱或过火久煮！极宜炭火炭烤、刺身厚切蘸生抽芥末、或以极简黄油微火香煎，亦可煲制松茸饭（Matsutake Gohan）与松茸清汤，尽显天赐松茸香。",
+                "fi": "Maailmankuulu gourmet-aarre! Älä peitä voimakkailla mausteilla tai kypsennä liikaa. Paahda kevyesti hiilloksella tai paista pikaisesti voissa pannulla."
           },
           "lookalikeAlert": {
-                "en": "Strictly avoid Deadly Webcap (Cortinarius rubellus), which is smaller, orange-brown with rusty brown spores and NO cinnamon perfume.",
-                "zh": "严禁混淆致命丝膜菌（C. rubellus）！后者体型较小，通体橙红褐色，孢子为铁锈色，且绝无松茸那一抹独特的清甜肉桂雪松香！",
-                "fi": "VARO suippumyrkkyseitikkiä! Seitikit ovat pienempiä, ruosteenruskeaitiöisiä eikä niissä ole matsutaken mausteista tuoksua."
+                "en": "BEWARE LOOKALIKES: Booted Knight (Tricholoma focale / ruskovalmuska) has an orange-reddish cap and a mealy/flour-like or bland smell lacking the cinnamon perfume. Also strictly avoid Deadly Webcap (Cortinarius rubellus), which has a pointed copper umbo, rusty spores, and causes fatal kidney destruction.",
+                "zh": "【辨识与注意】：外形上极易与红褐色口蘑/颈圈口蘑（Tricholoma focale / 芬兰语 ruskovalmuska）混淆，后者菌盖偏红且气味是生面粉味或无明显甜香。同时严禁混淆致命丝膜菌（C. rubellus）！初学者务必通过浓郁甜香肉桂松脂气味确证！",
+                "fi": "VARO EREHDYKSIÄ: Ruskovalmuska (Tricholoma focale) on punertavalakkinen ja sen tuoksu on jauhomainen tai mieto, ilman kanelia. Varo myös hengenvaarallista suippumyrkkyseitikkiä (terävä lakki, ruosteitiöt). Varmista laji aina huumaavan tuoksun avulla!"
           },
           "whereWhen": {
-                "en": "Late August through October on dry, lichen-rich pine heaths across Uusimaa (e.g. Sipoonkorpi rocky crags and Porkkala pine knolls).",
-                "zh": "8月下旬至10月生于乌西玛大区干燥多岩、长满地衣的古老赤松林脊（西波高地岩丘、Porkkala海角松林高坡）。",
-                "fi": "Elo-lokakuussa karuilla mäntykankailla ja kalliomänniköissä."
+                "en": "Late July to early October, peaking in August–September. Distributed throughout Finland, but far more common and bountiful in the north (Lapland, Kainuu, North Ostrobothnia). Mycorrhizal primarily with Scots pine on dry, sandy, lichen-heavy heaths with thin humus; occasionally with spruce. Annual yields fluctuate wildly: bumper years produce piles of mushrooms (e.g. Lapland's legendary 2007 mega-flush where guides harvested ~1 ton), whereas off-years yield almost none. In Southern Finland, check dry lichen-clad pine knolls and rocky ridges (e.g. Sipoonkorpi granite crests and Salmi moraine plateaus). Permitted under Everyman's Right (Jokamiehenoikeus) across both public and private lands, and foraging income is 100% tax-free!",
+                "zh": "出菇期自7月底延续至10月初，盛产期在8–9月。全国均有分布，北部（拉普兰、凯努、北博滕）更常见、产量更大。主要与欧洲赤松共生，长在干燥、沙质、地衣多、腐殖质薄的疏林松林里，有时也与云杉一起出现。产量年际波动极大：有的年份能采到成堆，有的年份几乎不见（2007年拉普兰是著名大年，有向导声称一季采到约1吨）。芬兰南部亦见于西波高地岩丘、Porkkala海角及Salmi冰碛脊松林。受“每个人的权利”（Jokamiehenoikeus）保护，所有人均可在公共及私人林地免费自由采摘，且采售野生菌收入全免税！",
+                "fi": "Satoaika heinäkuun lopusta lokakuun alkuun, runsaimmillaan elo-syyskuussa. Esiintyy koko maassa, mutta selvästi yleisempi ja satoisampi Pohjois-Suomessa (Lappi, Kainuu, Pohjois-Pohjanmaa). Kasvaa männyn juurisienenä kuivilla, karuilla, hiekkaisilla ja jäkälärikkailla kankailla, joissa on ohut humuskerros; toisinaan kuusikoissa. Vuosisadot vaihtelevat valtavasti: huippuvuosina satoa on runsaasti (kuten Lapissa 2007 jolloin opas poimi jopa tonnin), huonoina vuosina tuskin lainkaan. Etelä-Suomessa kalliomänniköissä ja harjuilla. Jokaisenoikeudella vapaasti ja verovapaasti poimittavissa!"
           },
           "searchTactics": {
-                "en": "Look for cracked reindeer lichen and pine needle humps pushing upward around mature Scots pines.",
-                "zh": "在赤松林下细查被顶开龟裂的白色地衣块或拱起的小松针土包，松茸往往深埋土中仅露一抹浅褐菌顶。",
-                "fi": "Etsi jäkälikön ja neulaskerroksen halkeamia ja kohoumia mäntyjen alta."
+                "en": "Search dry, lichen-carpeted Scots pine ridges for telltale hummocks and cracked reindeer lichen mats where fruiting bodies push up through thin sand and needles. Matsutake often fruit deeply embedded in the soil, showing only a small brown cap sliver. Kneel and smell the ground: the intense sweet cinnamon-pine resin aroma frequently gives away buried buttons before your eyes do.",
+                "zh": "在干燥、地衣铺垫的赤松岩脊沙地上寻找微隆的土包与被顶开龟裂的地衣毯，松茸常深埋于沙质薄腐殖质中仅露一抹茶褐菌盖圆弧。初学者可俯身贴近地面嗅闻：那股极其浓烈的清甜肉桂松脂香气往往比眼睛更早发现深埋未出的珍馐！",
+                "fi": "Kävele hitaasti karuilla mäntykankailla ja etsi halkeilleita jäkälämattoja ja neulaskerroksen kohoumia mäntyjen alta. Sieni kasvaa usein syvällä hiekassa vain lakin huippu näkyvillä. Haista maata: voimakas kanelimainen maustetuoksu paljastaa piiloutuneet itiöemät."
           },
           "lookalikes": {
-                "en": "Tricholoma focale has an orange-red cap and lacks the majestic spicy scent.",
-                "zh": "颈圈口蘑（T. focale）菌盖偏橘红色且毫无此馥郁松茸香气。",
-                "fi": "Kangasrouskulla ja seitikeillä täysin erilainen itiöpöly ja tuoksu."
+                "en": "Beware lookalikes: Booted Knight (Tricholoma focale / ruskovalmuska) shares similar pine heath habitat and features a ring on the stem, but has a brighter orange-reddish cap and smells merely of raw flour or is bland, lacking Matsutake's intoxicating sweet cinnamon perfume. Also watch out for Deadly Webcap (Cortinarius rubellus), which has a pointed copper cap, rusty spores, and causes fatal kidney destruction. Foragers must ALWAYS verify by the unmistakable sweet cinnamon-resin fragrance!",
+                "zh": "【辨识与注意】：外形上容易和一些毒或不可食的口蘑混淆，最典型的是红褐色口蘑/颈圈口蘑（Tricholoma focale / 芬兰语 ruskovalmuska），后者菌柄亦有菌环，但菌盖偏红且气味是生面粉味或无明显甜香。辨识松茸最重要的特征是其极其浓郁独特的甜香、肉桂香与松脂香混合香气。建议初学者务必在熟悉气味和形态后再采食，或向当地专业向导请教。同时严防致命丝膜菌（C. rubellus）。",
+                "fi": "TÄRKEÄ ERONTEKO: Ruskovalmuska (Tricholoma focale) kasvaa samanlaisilla mäntykankailla ja silläkin on rengas jalassa, mutta sen lakki on selvästi oranssinpunertava ja tuoksu on jauhomainen tai mieto – siitä puuttuu täysin tuoksuvalmuskan makean mausteinen kanelintuoksu. Varo myös hengenvaarallista suippumyrkkyseitikkiä (terävä lakki, ruosteitiöt). Varmista laji aina voimakkaan tuoksun perusteella!"
+          },
+          "culturalNotes": {
+                "en": "### 1. Nordic Matsutake & Japan Connection\nFinland is one of Northern Europe's prime Matsutake habitats. Scientific research and molecular DNA sequencing confirmed that the Nordic pine matsutake is genetically identical to the famed Japanese Matsutake (**Tricholoma matsutake**, previously called *T. nauseosum* in Europe). Because Finnish specimens match Japanese matsutake in aroma, morphology, and DNA, they became a prized export to Japan. In 2007, Evira (Finnish Food Authority) officially added Matsutake to Finland's statutory commercial edible mushroom list (*kauppasieni*), legally enabling commercial gathering, purchasing stations, and culinary wholesale.\n\n### 2. Nordic Foraging Traditions & Evolution\nHistorically, Finns were indifferent to matsutake; traditional foraging culture focused almost exclusively on chanterelles, porcini, brittlegills, and salting milkcaps, often avoiding unfamiliar brown agarics. In recent years, driven by international culinary recognition, Finnish media, and Japanese gourmet appreciation, Northern Finland has developed specialized guided foraging tours and commercial collection centers. Yields fluctuate dramatically year-to-year: 2007 was a legendary bumper year in Lapland, where single professional guides reported harvesting up to a ton of prime matsutake.\n\n### 3. Everyman's Right (Jokamiehenoikeus) & Tax-Free Status\nUnder Finland's ancient Everyman's Right (*Jokamiehenoikeus*), all persons—including international travelers and tourists—have the legal right to roam freely and harvest wild mushrooms in any public or private forest without a permit or fee. Furthermore, income earned from picking and selling wild edible mushrooms is 100% tax-free under Finnish law! The only restrictions are to maintain respectful distance from private residential yards and homes, and to refrain from picking in strict nature reserves (*luonnonpuisto*).\n\n### 4. Identification Safeguards\nThe defining identification rule is Matsutake's unmistakable, intoxicating sweet-spicy perfume of cinnamon and pine resin. Novices should never forage solely by cap color; confirm with scent, and consult local guides or mycological societies when in doubt.",
+                "zh": "### 1. 芬兰松茸的真实身份与中日渊源\n芬兰不仅有松茸，而且是北欧最重要的产地之一！芬兰松茸的学名就是与日本松茸完全同一物种的 **Tricholoma matsutake**（芬兰语叫 tuoksuvalmuska，直译“香口蘑”）。过去欧洲植物学界曾将其定名为 *Tricholoma nauseosum*，后来分子生物学与 DNA 测序最终确认其与东亚松茸在遗传学上属于同一物种。北欧产松茸在外形、香味和质地上极为接近日本货，DNA 高度一致，因此一度被作为对日出口的重要替代货源。2007 年芬兰官方将其正式列入法定可商业交易食用菌名单（kauppasieni），不仅可以自采自食，还可以合法进行商业收购、餐厅直供与销售。\n\n### 2. 采摘习俗、产量大年与商业采收\n芬兰人传统上对松茸并不热情，本地人采蘑菇偏爱金黄鸡油菌、美味牛肝菌、大红菇以及腌渍乳菇等，老一辈往往对“褐色伞菌”避而远之。近些年来，随着国际美食界推崇、媒体报道以及日本市场知名度提升，北芬兰（拉普兰、凯努、北博滕）逐渐兴起了松茸商业收购与专业向导带团采收。松茸产量年际波动极大：有的年份漫山成堆，有的年份几乎不见。2007 年拉普兰是著名的大年，有当地向导声称一季采到约 1 吨高等级松茸！\n\n### 3. “每个人的权利”（Jokamiehenoikeus）与免税法案\n芬兰实行“每个人的权利”（Jokamiehenoikeus）：包括外国游客在内的所有人，均可以在公共和私人森林里自由采摘野生蘑菇，无需许可证。更为优厚的是，依据芬兰税法，个人采摘野生食用菌自食或直接出售所获得的收入**百分之百免税**！采摘者只需遵守文明规范：不在私人住宅庭院和国家严格自然保护区（luonnonpuisto）采摘即可。\n\n### 4. 辨识铁律：唯香气不可替代\n松茸有极其浓郁独特的复合香气（甜香、肉桂香与新鲜松脂香混合），这是最关键的辨识特征。外形上容易和一些毒或不可食的口蘑（如红褐色口蘑 Tricholoma focale / 芬兰语 ruskovalmuska）混淆，后者菌盖偏红且气味是生面粉味或无明显甜香。建议初学者务必在熟悉气味和形态后再采食，或向当地专业向导请教。",
+                "fi": "### 1. Tuoksuvalmuska ja suhde Japanin matsutakeen\nSuomi on tuoksuvalmuskan (Tricholoma matsutake) tärkeimpiä esiintymisalueita Pohjois-Euroopassa. Sieni tunnettiin aiemmin Euroopassa nimellä *T. nauseosum*, mutta DNA-tutkimukset vahvistivat sen olevan täysin sama laji kuin Japanissa arvostettu keisarillinen matsutake. Tuoksunsa, ulkonäkönsä ja perimänsä vuoksi Suomen matsutakea on viety Japaniin herkkusuille. Vuonna 2007 Evira lisäsi tuoksuvalmuskan virallisten kauppasienten luetteloon, joten sitä saa kerätä, ostaa ja myydä laillisesti.\n\n### 2. Keruuperinne ja satovaihtelut\nSuomessa tuoksuvalmuskaa ei perinteisesti hyödynnetty, sillä suomalaiset ovat suosineet kantarelleja, herkkutatteja, rouskuja ja haperoita välttäen ruskeita helttasieniä. Viime vuosikymmeninä lajin arvostus on kasvanut huimasti, ja Pohjois-Suomessa järjestetään jopa opastettuja matsutake-retkiä. Vuosisadot vaihtelevat valtavasti: huippuvuotena 2007 Lapista kerättiin arviolta tonneittain huippusieniä, kun taas huonoina vuosina sato jää vähäiseksi.\n\n### 3. Jokaisenoikeudet ja verovapaus\nSuomen jokaisenoikeuksien nojalla kuka tahansa – myös ulkomaalaiset matkailijat – saa vapaasti poimia sieniä sekä valtion että yksityisten mailla ilman lupaa. Lisäksi luonnonvaraisten sienten keräämisestä ja myymisestä saatu tulo on Suomessa täysin verovapaata! Muista ainoastaan kunnioittaa kotirauhaa pihapiireissä äläkä kerää luonnonpuistoissa.\n\n### 4. Tunnistaminen: Huumaava tuoksu on valtti\nTuoksuvalmuskan paras ja luotettavin tuntomerkki on sen voimakas, makean mausteinen kanelin ja havupuiden tuoksu. Älä sekoita jauhonhajuiseen ruskovalmuskaan (T. focale) tai suippumyrkkyseitikkiin!"
           },
           "cookingGuide": {
-                "en": "Slice into 5mm strips, sear in foaming unsalted butter for 2 minutes on each side. Finish with sea salt flakes and lemon zest.",
-                "zh": "纵切成半厘米厚片，入无盐黄油锅每面轻煎2分钟，出锅撒少许现磨海盐与鲜柠檬皮碎，鲜美至极。",
-                "fi": "Viipaloi ja paista nopeasti voissa. Mausta vain sormisuolalla."
+                "en": "Slice into 5–8 mm thick pieces. Sear in foaming unsalted butter for 2 minutes on each side over medium-high heat, or grill gently over charcoal. Season simply with sea salt flakes and a drop of fresh lemon juice or light soy sauce. Do not overpower with heavy herbs or garlic.",
+                "zh": "纵切成 5–8 毫米厚片，入无盐黄油锅以中大火每面轻煎 2 分钟，或置于炭火上温和炙烤。出锅只需撒少许现磨海盐、挤数滴柠檬汁或蘸优质淡口生抽即可。切忌加入大蒜、洋葱或浓烈香料掩盖天赐香气。",
+                "fi": "Viipaloi 5–8 mm paksuisiksi paloiksi ja paista nopeasti vaahtoavassa voissa pannulla (2 min per puoli) tai paahda hiilloksella. Mausta vain sormisuolalla ja tilkalla sitruunamehua tai soijaa."
           },
           "image": "./images/tricholoma_matsutake.jpg",
           "gallery": [
