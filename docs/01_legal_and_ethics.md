@@ -53,11 +53,30 @@ From late August through October, deer keds emerge in dense numbers in pine and 
 - **Behavior**: They fly toward warm hosts, drop their wings immediately upon landing, and crawl vigorously into hair, beards, and under collars. While they do not transmit diseases to humans, their bites can produce itchy, inflamed, long-lasting welts.
 - **Defense**: Wear smooth, tightly woven synthetic fabrics (fleece is a magnet for them), a tight-fitting cap or bandana covering all hair, and tuck your shirt into your trousers. Carry a fine-toothed comb to extract them from your hair before getting into your car or stepping onto public transit.
 
-### Navigation & Lost-Person Prevention
+### Navigation, Mobile Apps & Lost-Person Prevention
 Finnish spruce forests can be deceptively dense, flat, and uniform; disorientation can occur quickly once you stray 50 meters from a trail.
+
 1. **Download the Official "112 Suomi" App**: Mandatory for anyone venturing into Finnish forests. If you call emergency services through this app, your exact satellite GPS coordinates are automatically transmitted to the Finnish Emergency Response Centre Agency (*Hätäkeskuslaitos*).
-2. **Offline Topographic Maps**: Install **Karttaselain** or download offline areas in **Google Maps** / **Gaia GPS** / **Maanmittauslaitos Karttapaikka**.
-3. **Power Bank**: Cold autumn weather drastically accelerates smartphone battery drain. Always pack an external battery pack and charging cable.
+2. **iNaturalist (Crowdsourced Mycology Identification & Biodiversity Mapping)**:
+   - **Why Use It**: Recommended by mycology educator Aaron Hilliard (*Mushroom Wonderland*). iNaturalist connects your smartphone camera to computer vision AI trained on millions of observations and a global network of expert mycologists who peer-review your sightings to **Research Grade**.
+   - **Download & Installation**:
+     - [Download for iOS (Apple App Store)](https://apps.apple.com/app/inaturalist/id421397028)
+     - [Download for Android (Google Play Store)](https://play.google.com/store/apps/details?id=org.inaturalist.android)
+     - [Web Portal (inaturalist.org)](https://www.inaturalist.org)
+     - *Companion Tool*: **Seek by iNaturalist** provides instant live-camera scanning without an account.
+   - **Installation & Setup Checklist**:
+     1. *Install*: Download free from the App Store or Google Play.
+     2. *Account*: Create a free account to sync observations and communicate with Finnish identifiers.
+     3. *Location Permissions*: Grant high-precision GPS access so observations are georeferenced automatically.
+   - **The 4-Photo Field Photography Protocol**:
+     For reliable fungal identification, never upload a single blurry top-down shot! Always photograph 4 angles:
+     1. *Cap & Tree Habitat*: Wide-angle in-situ view showing cap color and adjacent symbiotic trees (Norway spruce, Scots pine, silver birch).
+     2. *Underside Hymenium*: Close-up in focus showing true knife-edge gills (*heltat*), blunt false ridges (*poimut*), spongy pores (*pillit*), or downward spines (*oraat*).
+     3. *Stem & Base*: Unearth the full stem base carefully before trimming to check for a volva cup or ring (*rengas*).
+     4. *Longitudinal Cross-Section*: Slice lengthwise from cap to stem base to verify flesh color, staining reactions upon air exposure, and whether the stem is hollow or solid.
+   - **Golden Safety Rule**: Computer vision suggestions are educational hypotheses, **never an edible certification**. Never eat any mushroom based solely on an app recommendation.
+3. **Offline Topographic Maps**: Install **Karttaselain** or download offline areas in **Google Maps** / **Gaia GPS** / **Maanmittauslaitos Karttapaikka**.
+4. **Power Bank**: Cold autumn weather drastically accelerates smartphone battery drain. Always pack an external battery pack and charging cable.
 
 ---
 

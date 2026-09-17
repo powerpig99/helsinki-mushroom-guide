@@ -902,6 +902,9 @@ function renderTierIntroBanner(mode) {
             <a href="https://www.youtube.com/@mushroomwonderland1" target="_blank" rel="noopener noreferrer" class="tier-channel-btn" title="Open YouTube Channel">
               <span>${t.visitChannelBtn || "Visit Channel ↗"}</span>
             </a>
+            <button type="button" class="tier-channel-btn" onclick="switchNavTab('safety'); setTimeout(() => { const el = document.getElementById('inaturalist-app-guide'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, 150);" title="View iNaturalist installation guide">
+              <span>📱 iNaturalist Guide ▾</span>
+            </button>
           </div>
         </div>
       </div>
@@ -3601,6 +3604,73 @@ function renderSafety() {
             </button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- 7. Essential Field Companion Apps: iNaturalist & 112 Suomi -->
+    <div id="inaturalist-app-guide" style="background: var(--card-bg); border: 1px solid var(--accent); border-left: 5px solid var(--accent); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem;">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 0.35rem; background: var(--accent-soft); color: var(--accent); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 9999px; margin-bottom: 0.4rem;">
+            <span>📱 Community Science & Field AI</span> • <span>Recommended by Aaron Hilliard</span>
+          </div>
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--fg); margin: 0;">
+            ${t.inaturalistTitle || "iNaturalist: Community Science & Mushroom Identification"}
+          </h3>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <a href="https://apps.apple.com/app/inaturalist/id421397028" target="_blank" rel="noopener noreferrer" class="tier-channel-btn" style="color: var(--fg); font-weight: 700;" title="Download on iOS App Store">
+            ${t.appStoreIos || "🍏 iOS App Store"} ↗
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=org.inaturalist.android" target="_blank" rel="noopener noreferrer" class="tier-channel-btn" style="color: var(--fg); font-weight: 700;" title="Download on Google Play">
+            ${t.playStoreAndroid || "🤖 Google Play"} ↗
+          </a>
+          <a href="https://www.inaturalist.org" target="_blank" rel="noopener noreferrer" class="tier-channel-btn" title="Open iNaturalist Web Portal">
+            ${t.webPortal || "🌐 inaturalist.org"} ↗
+          </a>
+        </div>
+      </div>
+
+      <p style="font-size: 0.9rem; color: var(--fg); line-height: 1.6; margin-bottom: 1.25rem;">
+        ${t.inaturalistDesc || ""}
+      </p>
+
+      <!-- Step-by-Step Installation & Setup Guide -->
+      <h4 style="font-size: 1rem; font-weight: 800; color: var(--fg); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.35rem;">
+        <span>📋</span> <span>${t.inaturalistInstallGuide || "Installation & Field Setup Guide"}</span>
+      </h4>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.85rem; margin-bottom: 1.25rem;">
+        <div style="background: var(--card-hover); padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid var(--card-border);">
+          <div style="font-size: 0.82rem; font-weight: 800; color: var(--accent); margin-bottom: 0.25rem;">STEP 1 • INSTALL</div>
+          <p style="font-size: 0.82rem; color: var(--fg); line-height: 1.45; margin: 0;">${t.step1Install || ""}</p>
+        </div>
+        <div style="background: var(--card-hover); padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid var(--card-border);">
+          <div style="font-size: 0.82rem; font-weight: 800; color: var(--accent); margin-bottom: 0.25rem;">STEP 2 • ACCOUNT</div>
+          <p style="font-size: 0.82rem; color: var(--fg); line-height: 1.45; margin: 0;">${t.step2Account || ""}</p>
+        </div>
+        <div style="background: var(--card-hover); padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid var(--card-border);">
+          <div style="font-size: 0.82rem; font-weight: 800; color: var(--accent); margin-bottom: 0.25rem;">STEP 3 • PERMISSIONS</div>
+          <p style="font-size: 0.82rem; color: var(--fg); line-height: 1.45; margin: 0;">${t.step3Permissions || ""}</p>
+        </div>
+        <div style="background: var(--card-hover); padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid var(--card-border);">
+          <div style="font-size: 0.82rem; font-weight: 800; color: var(--accent); margin-bottom: 0.25rem;">STEP 4 • 4-PHOTO PROTOCOL</div>
+          <p style="font-size: 0.82rem; color: var(--fg); line-height: 1.45; margin: 0;">${t.step4PhotoProtocol || ""}</p>
+        </div>
+      </div>
+
+      <!-- Warning & Safety Banner -->
+      <div style="background: color-mix(in srgb, var(--danger) 8%, var(--card-bg)); border: 1px solid var(--danger-border); border-radius: 6px; padding: 0.85rem 1rem; font-size: 0.85rem; color: var(--fg); line-height: 1.55; display: flex; align-items: flex-start; gap: 0.5rem;">
+        <span>🛡️</span>
+        <span>${t.inaturalistWarning || ""}</span>
+      </div>
+
+      <!-- Seek Companion Note -->
+      <div style="margin-top: 0.85rem; font-size: 0.8rem; color: var(--muted); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+        <span>💡 <strong>${t.seekAppName || "Seek by iNaturalist"}</strong>: ${t.seekAppDesc || ""}</span>
+        <a href="https://www.inaturalist.org/pages/seek_app" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">
+          ${lang === 'zh' ? '了解 Seek 极速版 →' : (lang === 'fi' ? 'Lue lisää Seek-sovelluksesta →' : 'Learn about Seek →')}
+        </a>
       </div>
     </div>
   `;
