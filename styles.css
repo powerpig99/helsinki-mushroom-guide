@@ -570,6 +570,177 @@ button, input, select, textarea {
   color: var(--muted);
 }
 
+.tier-video-card {
+  display: flex;
+  gap: 1.25rem;
+  background: var(--card-hover);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  align-items: stretch;
+}
+
+@media (max-width: 680px) {
+  .tier-video-card {
+    flex-direction: column;
+  }
+}
+
+.tier-video-thumb-link {
+  position: relative;
+  width: 180px;
+  min-width: 180px;
+  height: 110px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000000;
+  display: block;
+  text-decoration: none;
+}
+
+@media (max-width: 680px) {
+  .tier-video-thumb-link {
+    width: 100%;
+    min-width: 100%;
+    height: 160px;
+  }
+}
+
+.tier-video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.tier-video-thumb-link:hover .tier-video-thumb {
+  transform: scale(1.04);
+  opacity: 1;
+}
+
+.tier-video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  background: rgba(220, 38, 38, 0.9);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.tier-video-thumb-link:hover .tier-video-play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.tier-video-duration {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.tier-video-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.tier-video-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+
+.tier-video-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.tier-channel-link {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.tier-channel-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.tier-video-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem 0;
+  line-height: 1.35;
+}
+
+.tier-video-title a {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.tier-video-title a:hover {
+  color: var(--accent);
+}
+
+.tier-video-desc {
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0 0 0.75rem 0;
+}
+
+.tier-video-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.tier-channel-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.tier-channel-btn:hover {
+  color: var(--fg);
+  border-color: var(--rule);
+}
+
 .tier-actions-bar {
   display: flex;
   align-items: center;
@@ -1573,6 +1744,78 @@ button, input, select, textarea {
 /* --------------------------------------------------------------------------
    Culinary, Preservation & Video Masterclasses (Tab 5)
    -------------------------------------------------------------------------- */
+.inherited-cooking-notice {
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+}
+
+.inherited-notice-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.inherited-notice-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.inherited-notice-text {
+  color: var(--fg);
+}
+
+.inherited-species-link {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.cooking-gallery-section {
+  margin: 2.5rem 0;
+}
+
+.cooking-gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.gallery-filter-btn {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.gallery-filter-btn:hover {
+  color: var(--fg);
+  border-color: var(--rule);
+}
+
+.gallery-filter-btn.active {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
 .cooking-gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -1587,6 +1830,154 @@ button, input, select, textarea {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.cooking-gallery-thumb-wrap {
+  position: relative;
+  height: 180px;
+  background: #000000;
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.cooking-gallery-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.cooking-gallery-thumb-wrap:hover .cooking-gallery-thumb {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+.cooking-gallery-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px;
+  height: 46px;
+  background: rgba(220, 38, 38, 0.9);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.cooking-gallery-thumb-wrap:hover .cooking-gallery-play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: #dc2626;
+}
+
+.cooking-gallery-duration {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.cooking-gallery-badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.cooking-gallery-badge.nordic {
+  background: rgba(14, 165, 233, 0.9);
+  color: #ffffff;
+}
+
+.cooking-gallery-badge.chinese {
+  background: rgba(220, 38, 38, 0.9);
+  color: #ffffff;
+}
+
+.cooking-gallery-badge.foraging {
+  background: rgba(16, 185, 129, 0.9);
+  color: #ffffff;
+}
+
+.cooking-gallery-info {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cooking-gallery-creator {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.gallery-creator-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.gallery-creator-link:hover {
+  text-decoration: underline;
+}
+
+.cooking-gallery-card-subtitle {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: -0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.cooking-gallery-card-desc {
+  font-size: 0.86rem;
+  color: var(--fg);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.cooking-gallery-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+.gallery-channel-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+}
+
+.gallery-channel-pill:hover {
+  background: var(--accent);
+  color: #ffffff;
 }
 
 .cooking-gallery-card-header {

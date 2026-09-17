@@ -33,7 +33,8 @@
 
 > [!TIP]
 > **大师视频演示**：  
-> [▶️ 实操视频：芬兰传统自身汁液慢焖出水法 (Haudutus omassa liemessä)](https://www.youtube.com/watch?v=RQd0Mli8SZc)
+> [▶️ 实操视频：芬兰传统自身汁液慢焖出水法 (Haudutus omassa liemessä)](https://www.youtube.com/watch?v=RQd0Mli8SZc)  
+> [▶️ 新手大课：野生蘑菇野采初学者入门指南与干煸出水技法 (Mushroom Wonderland)](https://www.youtube.com/watch?v=xoptBgrLlg0)
 
 ---
 

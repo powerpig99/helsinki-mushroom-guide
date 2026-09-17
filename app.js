@@ -869,6 +869,43 @@ function renderTierIntroBanner(mode) {
         <span class="tier-feature-pill">✓ Spongy Pores (Pillit)</span>
       </div>
 
+      <!-- Featured Beginner Video & Channel Recommendation -->
+      <div class="tier-video-card">
+        <a href="https://www.youtube.com/watch?v=xoptBgrLlg0" target="_blank" rel="noopener noreferrer" class="tier-video-thumb-link" title="${t.beginnerVideoTitle || "Beginners Guide to Wild Mushroom Foraging"}">
+          <img src="https://img.youtube.com/vi/xoptBgrLlg0/mqdefault.jpg" alt="${t.beginnerVideoTitle || "Beginners Guide to Wild Mushroom Foraging"}" class="tier-video-thumb" loading="lazy" />
+          <div class="tier-video-play-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="tier-video-duration">⏱️ 24:13</span>
+        </a>
+        <div class="tier-video-info">
+          <div class="tier-video-badge-row">
+            <span class="tier-video-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color: #dc2626;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              ${t.beginnerMasterclassBadge || "Recommended Beginner Masterclass"}
+            </span>
+            <a href="https://www.youtube.com/@mushroomwonderland1" target="_blank" rel="noopener noreferrer" class="tier-channel-link" title="Mushroom Wonderland YouTube Channel">
+              📺 <strong>Mushroom Wonderland</strong> ↗
+            </a>
+          </div>
+          <h4 class="tier-video-title">
+            <a href="https://www.youtube.com/watch?v=xoptBgrLlg0" target="_blank" rel="noopener noreferrer">
+              ${t.beginnerVideoTitle || "Beginners Guide to Wild Mushroom Foraging (2024)"}
+            </a>
+          </h4>
+          <p class="tier-video-desc">${t.beginnerVideoDesc || ""}</p>
+          <div class="tier-video-actions">
+            <a href="https://www.youtube.com/watch?v=xoptBgrLlg0" target="_blank" rel="noopener noreferrer" class="btn-video-link btn-video-link-sm" title="${t.watchVideoBtn || "Watch on YouTube"}">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="color: #dc2626;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <span>${t.watchVideoBtn || "Watch Video"} (24m)</span>
+            </a>
+            <a href="https://www.youtube.com/@mushroomwonderland1" target="_blank" rel="noopener noreferrer" class="tier-channel-btn" title="Open YouTube Channel">
+              <span>${t.visitChannelBtn || "Visit Channel ↗"}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div class="tier-actions-bar">
         <button id="btn-toggle-safe5-monograph" class="tier-action-btn" onclick="toggleTierMonograph('05')">
           ${t.tierReadMonographBtn || "📖 Open Chapter 05 Monograph"}
@@ -2301,21 +2338,24 @@ function renderCookingGalleryCards(catalog, lang, lang2, t) {
     const spName = sp ? (sp.names[lang]?.primary || sp.latinName) : "";
     const catClasses = (v.categories || []).join(" ");
     const isChinese = v.tradition === 'zh';
+    const isForaging = v.tradition === 'foraging';
 
     return `
       <div class="cooking-gallery-card" data-categories="${catClasses}">
-        <div class="cooking-gallery-thumb-wrap">
+        <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="cooking-gallery-thumb-wrap" title="${title}">
           <img src="https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg" alt="${title}" class="cooking-gallery-thumb" loading="lazy" />
           <div class="cooking-gallery-play-btn" title="${title}">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           </div>
           <span class="cooking-gallery-duration">⏱️ ${v.duration}</span>
-          <span class="cooking-gallery-badge ${isChinese ? 'chinese' : 'nordic'}">
-            ${isChinese ? '🇨🇳 中华大师课' : '🇫🇮 Suomi / Nordic'}
+          <span class="cooking-gallery-badge ${isChinese ? 'chinese' : (isForaging ? 'foraging' : 'nordic')}">
+            ${isChinese ? '🇨🇳 中华大师课' : (isForaging ? (lang === 'zh' ? '🌱 初学入门野采' : (lang === 'fi' ? '🌱 Aloittelijan opas' : '🌱 Foraging Masterclass')) : '🇫🇮 Suomi / Nordic')}
           </span>
-        </div>
+        </a>
         <div class="cooking-gallery-info">
-          <div class="cooking-gallery-creator">👨‍🍳 ${v.creator}</div>
+          <div class="cooking-gallery-creator">
+            👨‍🍳 ${v.channelUrl ? `<a href="${v.channelUrl}" target="_blank" rel="noopener noreferrer" class="gallery-creator-link" title="${v.creator}">${v.creator} ↗</a>` : v.creator}
+          </div>
           <h4 class="cooking-gallery-card-title">${title}</h4>
           ${title2 ? `<div class="cooking-gallery-card-subtitle">${title2}</div>` : ""}
           <p class="cooking-gallery-card-desc">${desc}</p>
@@ -2325,7 +2365,11 @@ function renderCookingGalleryCards(catalog, lang, lang2, t) {
                 <img src="${sp.image}" alt="${spName}" class="gallery-chip-thumb" />
                 <span>${spName}</span>
               </a>
-            ` : `<div></div>`}
+            ` : (v.channelUrl ? `
+              <a href="${v.channelUrl}" target="_blank" rel="noopener noreferrer" class="gallery-channel-pill" title="Mushroom Wonderland YouTube Channel">
+                <span>📺 ${t.channelLabel || "Channel"}</span>
+              </a>
+            ` : `<div></div>`)}
             <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="btn-video-link btn-video-link-sm" title="${title}">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="color: #dc2626;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
               <span>${t.watchVideoBtn || "Watch on YouTube"}</span>
@@ -2371,9 +2415,9 @@ function renderCookingGuide() {
     fi: "🍳 Sienien säilöntä, esikäsittely ja perinteiset metsäreseptit"
   };
   const descMap = {
-    en: "Dehydration temperature curves, dry-pan sweating (haudutus), milkcap salt-curing (suolasienet), 28 video masterclasses, and authentic Nordic & Chinese recipes.",
-    zh: "低温风干脱水曲线、干锅焖蒸杀青排酸（Haudutus）、乳菇焯水漂烫除苦与分层腌渍（Suolasienet），附28堂中芬视频大课与经典林地食谱。",
-    fi: "Kuivauslämpötilat, sienten haudutus omassa nesteessään, rouskujen ryöppäys ja suolaus, 28 mestarikurssivideota ja perinteiset reseptit."
+    en: "Dehydration temperature curves, dry-pan sweating (haudutus), milkcap salt-curing (suolasienet), 29 video masterclasses, and authentic Nordic & Chinese recipes.",
+    zh: "低温风干脱水曲线、干锅焖蒸杀青排酸（Haudutus）、乳菇焯水漂烫除苦与分层腌渍（Suolasienet），附29堂中芬视频大课与经典林地食谱。",
+    fi: "Kuivauslämpötilat, sienten haudutus omassa nesteessään, rouskujen ryöppäys ja suolaus, 29 mestarikurssivideota ja perinteiset reseptit."
   };
 
   const chineseMastery = [
@@ -2420,7 +2464,8 @@ function renderCookingGuide() {
       </div>
 
       <div class="cooking-gallery-filters" id="cooking-gallery-filters">
-        <button class="gallery-filter-btn active" onclick="filterCookingVideos('all', this)">${t.videoFilterAll || "All Masterclasses (28)"}</button>
+        <button class="gallery-filter-btn active" onclick="filterCookingVideos('all', this)">${t.videoFilterAll || "All Masterclasses (29)"}</button>
+        <button class="gallery-filter-btn" onclick="filterCookingVideos('beginner', this)">${t.videoFilterBeginner || "🌱 Beginners & Foraging"}</button>
         <button class="gallery-filter-btn" onclick="filterCookingVideos('finnish', this)">${t.videoFilterFinnish || "🇫🇮 Finnish & Martat"}</button>
         <button class="gallery-filter-btn" onclick="filterCookingVideos('chinese', this)">${t.videoFilterChinese || "🇨🇳 Chinese Masterclasses"}</button>
         <button class="gallery-filter-btn" onclick="filterCookingVideos('chanterelle', this)">${t.videoFilterChanterelle || "Chanterelles & Trumpets"}</button>
@@ -2439,7 +2484,7 @@ function renderCookingGuide() {
     <!-- Section Header Banner -->
     <div class="integrated-monograph-header" style="margin-bottom: 2rem;">
       <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent-soft); color: var(--accent); font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.65rem; border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);">
-        <span>🍳 ${t.tabCooking || "Cooking & Preservation"}</span> • <span>Preservation Science • 28 Videos • Classic Recipes</span>
+        <span>🍳 ${t.tabCooking || "Cooking & Preservation"}</span> • <span>Preservation Science • 29 Videos • Classic Recipes</span>
       </div>
       <h1 class="integrated-monograph-title" style="margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
       ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
@@ -2479,7 +2524,7 @@ function renderCookingGuide() {
       </div>
     </div>
 
-    <!-- 2. Video Masterclasses Gallery (28 Videos) -->
+    <!-- 2. Video Masterclasses Gallery (29 Videos) -->
     ${videoGallerySectionHtml}
 
     <!-- 3. Featured Traditional Recipes -->
@@ -3482,6 +3527,80 @@ function renderSafety() {
         <span style="background: var(--card-hover); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--rule);">🌲 ${lang === "zh" ? "生境：干燥沙质赤松疏林 (Kuiva kangas)" : (lang === "fi" ? "Kasvupaikka: Karut mäntykankaat" : "Habitat: Dry sandy Scots pine heaths")}</span>
         <span style="background: var(--card-hover); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--rule);">📅 ${lang === "zh" ? "盛产期：7月底至10月初 (盛产8-9月)" : (lang === "fi" ? "Satoaika: Heinä–lokakuu" : "Season: Late July to October")}</span>
         <span style="background: var(--card-hover); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--rule);">👃 ${lang === "zh" ? "特征：浓郁肉桂复合甜香与棉毛菌环" : (lang === "fi" ? "Tunnusmerkki: Huumaava kanelin tuoksu" : "Hallmark: Sweet spicy cinnamon aroma")}</span>
+      </div>
+    </div>
+
+    <!-- 6. Recommended Field Video Education & Channels -->
+    <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
+      <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--fg); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+        <span>📺</span> <span>${lang === "zh" ? "权威野采学习频道与视频课程推荐" : (lang === "fi" ? "Suositellut opetusvideot ja YouTube-kanavat" : "Recommended Educational Channels & Field Video Guides")}</span>
+      </h3>
+      <p style="font-size: 0.88rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem;">
+        ${lang === "zh" 
+          ? "严选高质量真菌学教育与北欧权威家政组织视频资源，涵盖新手装备、菌根树种识别、焯水去毒与烹饪技法。" 
+          : (lang === "fi" 
+            ? "Valikoidut korkeatasoiset sienikanavat ja oppaat: välineet, puiden symbioosi, ryöppäys ja ruoanvalmistus." 
+            : "Carefully curated mycology educator channels and Finnish household guides covering field gear, tree mycorrhiza, parboiling, and safe cooking.")}
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+        <!-- Mushroom Wonderland Card -->
+        <div style="background: var(--card-hover); border: 1px solid var(--card-border); border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem;">
+              <span style="font-size: 0.76rem; font-weight: 700; color: var(--accent); background: var(--accent-soft); padding: 0.15rem 0.5rem; border-radius: 9999px;">
+                ${lang === "zh" ? "🌱 新手入门野采首选" : (lang === "fi" ? "🌱 Paras aloittelijoille" : "🌱 Premier Beginner Guide")}
+              </span>
+              <span style="font-size: 0.78rem; color: var(--muted);">⏱️ 24:13</span>
+            </div>
+            <h4 style="font-size: 0.96rem; font-weight: 800; color: var(--fg); margin: 0 0 0.35rem 0;">
+              Mushroom Wonderland (Aaron Hilliard)
+            </h4>
+            <p style="font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin: 0 0 0.75rem 0;">
+              ${lang === "zh" 
+                ? "“野生蘑菇野采初学完全入门指南”主讲人 Aaron Hilliard（美国奥林匹克学院真菌学教师）。详讲透气编织竹篮释放孢子原理、菌刀现场毛刷清理、云杉/赤松菌根树木共生、100%确定防毒原则与干锅慢煸出水法。" 
+                : (lang === "fi" 
+                  ? "Sienikouluttaja Aaron Hilliardin opas: poimintakori itiöiden leviämiseen, veitsi ja harja, puiden symbioosi, 100 % tunnistusvarmuus ja kuivapaistotekniikka." 
+                  : "Educator Aaron Hilliard’s 'Beginners Guide to Wild Mushroom Foraging 2024'. Covers rigid baskets for spore dispersal, knife cleaning, spruce/pine mycorrhizal symbiosis, and dry sautéing.")}
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <a href="https://www.youtube.com/watch?v=xoptBgrLlg0" target="_blank" rel="noopener noreferrer" class="btn-video-link btn-video-link-sm" style="flex: 1; justify-content: center;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="color: #dc2626;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <span>${lang === "zh" ? "观看新手大课" : (lang === "fi" ? "Katso video" : "Watch Video")} (24m)</span>
+            </a>
+            <a href="https://www.youtube.com/@mushroomwonderland1" target="_blank" rel="noopener noreferrer" class="tier-channel-btn" style="flex: 1; justify-content: center; text-align: center;">
+              <span>${lang === "zh" ? "访问频道 ↗" : (lang === "fi" ? "Kanava ↗" : "Visit Channel ↗")}</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Martat Card -->
+        <div style="background: var(--card-hover); border: 1px solid var(--card-border); border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem;">
+              <span style="font-size: 0.76rem; font-weight: 700; color: #0284c7; background: rgba(2, 132, 199, 0.12); padding: 0.15rem 0.5rem; border-radius: 9999px;">
+                ${lang === "zh" ? "🇫🇮 芬兰本土家政与烹饪" : (lang === "fi" ? "🇫🇮 Perinteinen Martat" : "🇫🇮 Finnish Kitchen Heritage")}
+              </span>
+              <span style="font-size: 0.78rem; color: var(--muted);">Martat</span>
+            </div>
+            <h4 style="font-size: 0.96rem; font-weight: 800; color: var(--fg); margin: 0 0 0.35rem 0;">
+              Martat (Marttaliitto)
+            </h4>
+            <p style="font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin: 0 0 0.75rem 0;">
+              ${lang === "zh" 
+                ? "芬兰百年家政联合会官方指南。经典示范苦味乳菇科学沸水焯水脱毒（Ryöppäys）、分层盐渍越冬（Suolasienet）与传统奶油鸡油菌浓汤制作。" 
+                : (lang === "fi" 
+                  ? "Marttojen viralliset sienioppaat: kirpeiden rouskujen ryöppäys, suolasienten valmistus ja perinteiset sieniruoat." 
+                  : "Finland's premier household organization demonstrating correct parboiling of acrid milkcaps (ryöppäys), traditional salt-curing, and classic chanterelle sauces.")}
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button type="button" class="btn-video-link btn-video-link-sm" onclick="switchNavTab('cooking'); filterCookingVideos('finnish');" style="flex: 1; justify-content: center; cursor: pointer;">
+              <span>${lang === "zh" ? "查看全部29部视频教程" : (lang === "fi" ? "Avaa 29 opetusvideota" : "Browse All 29 Videos")} →</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   `;

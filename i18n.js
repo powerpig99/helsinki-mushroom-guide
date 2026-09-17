@@ -128,7 +128,13 @@ const I18N = {
       chineseRecipesTitle: "Top Chinese Culinary Recipes (中华名菜)",
       videoMasterclassesTitle: "🎥 Video Masterclasses & Forest Kitchen Guides",
       videoMasterclassesDesc: "Authentic video tutorials from Finnish Martat experts and Chinese masterchefs, covering forest-to-table techniques, parboiling, and preservation.",
-      videoFilterAll: "All Masterclasses (28)",
+      videoFilterAll: "All Masterclasses (29)",
+      videoFilterBeginner: "🌱 Beginners & Foraging",
+      beginnerMasterclassBadge: "Recommended Beginner Masterclass",
+      beginnerVideoTitle: "Beginners Guide to Wild Mushroom Foraging (2024)",
+      beginnerVideoDesc: "Master the fundamentals of wild mushroom foraging with mycology educator Aaron Hilliard: essential field gear (rigid baskets & knives), tree symbiosis, 100% ID certainty, and dry sautéing.",
+      visitChannelBtn: "Visit Mushroom Wonderland ↗",
+      channelLabel: "Channel",
       videoFilterFinnish: "🇫🇮 Finnish & Martat",
       videoFilterChinese: "🇨🇳 Chinese Masterclasses",
       videoFilterChanterelle: "Chanterelles & Trumpets",
@@ -279,7 +285,13 @@ const I18N = {
       chineseRecipesTitle: "中华经典名菜烹饪教学",
       videoMasterclassesTitle: "🎥 视频烹饪大师课与森林厨房精选",
       videoMasterclassesDesc: "精选芬兰本土Martat权威家政真菌处理、北欧传统料理与中华特级厨师野菌镬气名菜实操视频，林间到餐桌全流程演示。",
-      videoFilterAll: "全部大师课 (28)",
+      videoFilterAll: "全部大师课与视频 (29)",
+      videoFilterBeginner: "🌱 初学入门与野采",
+      beginnerMasterclassBadge: "推荐入门大师课与频道",
+      beginnerVideoTitle: "野生蘑菇野采初学完全入门指南（2024）",
+      beginnerVideoDesc: "真菌学教育家 Aaron Hilliard 精讲野采入门必修课：采摘装备准备（透气竹篮与菌刀）、树木菌根共生识别（云杉/赤松/桦木）、100%确定防误食铁律，以及经典干锅煸炒出水法（Dry Sautéing）。",
+      visitChannelBtn: "访问 Mushroom Wonderland 频道 ↗",
+      channelLabel: "油管频道",
       videoFilterFinnish: "🇫🇮 芬兰传统与处理",
       videoFilterChinese: "🇨🇳 中华厨艺名菜",
       videoFilterChanterelle: "鸡油菌与号角菇",
@@ -431,7 +443,13 @@ const I18N = {
       chineseRecipesTitle: "Perinteiset kiinalaiset reseptit",
       videoMasterclassesTitle: "🎥 Ruoanvalmistusvideot ja Metsäkeittiö",
       videoMasterclassesDesc: "Aitoja video-oppaita Marttojen perinteisistä sienikäsittelyistä, säilönnästä ja kiinalaisten keittiömestareiden villisieniresepteistä.",
-      videoFilterAll: "Kaikki videot (28)",
+      videoFilterAll: "Kaikki videot (29)",
+      videoFilterBeginner: "🌱 Aloittelijat & keräys",
+      beginnerMasterclassBadge: "Suositeltu alkeisvideo ja kanava",
+      beginnerVideoTitle: "Aloittelijan opas luonnonsienten poimintaan (2024)",
+      beginnerVideoDesc: "Sienikouluttaja Aaron Hilliardin asiantunteva alkeisopas: oikeat poimintavälineet (ilmava kori ja veitsi), puiden ja sienten symbioosi, 100 % tunnistusvarmuus ja kuivapaistomenetelmä.",
+      visitChannelBtn: "Siirry Mushroom Wonderland -kanavalle ↗",
+      channelLabel: "Kanava",
       videoFilterFinnish: "🇫🇮 Suomalainen & Martat",
       videoFilterChinese: "🇨🇳 Kiinalainen keittiö",
       videoFilterChanterelle: "Vahverot & torvisienet",
@@ -8110,8 +8128,33 @@ const I18N = {
   "lycoperdon_perlatum": "cantharellus_cibarius"
 },
 
-  // Canonical Video Masterclasses & Tutorials Catalog (28 curated videos)
+  // Canonical Video Masterclasses & Tutorials Catalog (29 curated videos)
   culinaryVideoCatalog: [
+  {
+    "id": "mushroom_wonderland_beginner_foraging",
+    "url": "https://www.youtube.com/watch?v=xoptBgrLlg0",
+    "videoId": "xoptBgrLlg0",
+    "tradition": "foraging",
+    "categories": [
+      "beginner",
+      "foraging",
+      "basics"
+    ],
+    "speciesId": null,
+    "creator": "Mushroom Wonderland (Aaron Hilliard)",
+    "channelUrl": "https://www.youtube.com/@mushroomwonderland1",
+    "duration": "24:13",
+    "title": {
+      "en": "Beginners Guide to Wild Mushroom Foraging (2024)",
+      "zh": "野生蘑菇野采初学者完全入门指南（2024）",
+      "fi": "Aloittelijan opas luonnonsienten poimintaan (2024)"
+    },
+    "desc": {
+      "en": "Foundational field masterclass by mycology educator Aaron Hilliard: rigid basket & knife gear, tree mycorrhizal symbiosis, 100% positive ID certainty, and dry sautéing.",
+      "zh": "真菌学教育家 Aaron Hilliard 精讲野采入门课：透气竹篮与菌刀、树木菌根共生关系、100%确定防误食铁律，以及经典无油干锅煸水法（Dry Sautéing）。",
+      "fi": "Sienikouluttaja Aaron Hilliardin asiantunteva alkeiskurssi: ilmava poimintakori ja veitsi, puiden ja sienten symbioosi, 100 % tunnistusvarmuus ja kuivapaistomenetelmä."
+    }
+  },
   {
     "id": "haudutus_omassa_liemessa",
     "url": "https://www.youtube.com/watch?v=RQd0Mli8SZc",

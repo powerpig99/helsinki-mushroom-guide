@@ -2,6 +2,10 @@
 
 If you are new to foraging in Finland, start exclusively with these five species. Each has **unmistakable macroscopic characteristics** (false gills, hollow funnels, ventral spines, or sponge-like pores) and **no deadly lookalikes** when following simple verification rules.
 
+> [▶️ Beginner Masterclass: Beginners Guide to Wild Mushroom Foraging 2024](https://www.youtube.com/watch?v=xoptBgrLlg0)  
+> **Channel**: [Mushroom Wonderland (Aaron Hilliard)](https://www.youtube.com/@mushroomwonderland1) (Duration: 24:13)  
+> *Essential field orientation for beginners: why rigid baskets are crucial for spore dispersal, proper mushroom knife handling and field cleaning, tree mycorrhizal symbiosis (spruce, pine, birch), 100% positive identification rules, and the fundamental "dry sautéing" technique.*
+
 ---
 
 ## 1. Golden Chanterelle (*Cantharellus cibarius* / *Keltavahvero* / *Kantarelli*)
