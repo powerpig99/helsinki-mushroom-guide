@@ -1385,7 +1385,7 @@ function renderCatalog() {
 
           ${m.warning && m.warning[lang] ? `<div class="card-alert">⚠️ ${m.warning[lang]}${nameData2 && m.warning[lang2] ? `<div class="card-secondary-alert" style="color:var(--danger); font-size:0.8rem; margin-top:3px;">${m.warning[lang2]}</div>` : ""}</div>` : ""}
           ${m.culinaryTip && m.culinaryTip[lang] ? `<div class="card-tip">🍳 ${m.culinaryTip[lang]}${nameData2 && m.culinaryTip[lang2] ? `<div class="card-secondary-tip" style="color:var(--warning); font-size:0.8rem; margin-top:3px;">${m.culinaryTip[lang2]}</div>` : ""}</div>` : ""}
-          ${m.lookalikeAlert && m.lookalikeAlert[lang] ? `<div style="background:var(--warning-soft); color:var(--warning); border:1px solid var(--warning-border); padding:0.5rem; border-radius:6px; font-size:0.8rem; margin-bottom:0.75rem;">🔍 ${m.lookalikeAlert[lang]}${nameData2 && m.lookalikeAlert[lang2] ? `<div style="color:var(--muted); font-size:0.78rem; margin-top:2px;">${m.lookalikeAlert[lang2]}</div>` : ""}</div>` : ""}
+          ${m.lookalikeAlert && m.lookalikeAlert[lang] ? `<div class="card-lookalike-alert">🔍 ${m.lookalikeAlert[lang]}${nameData2 && m.lookalikeAlert[lang2] ? `<div class="card-secondary-lk-alert">${m.lookalikeAlert[lang2]}</div>` : ""}</div>` : ""}
 
           ${(() => {
             const lkIds = (I18N.lookalikeMap && I18N.lookalikeMap[m.id]) ? I18N.lookalikeMap[m.id] : [];
@@ -1402,7 +1402,8 @@ function renderCatalog() {
           })()}
 
           <div class="card-footer">
-            <span>${t.refId} ${m.id}</span>
+            <span class="card-ref-id">${t.refId} ${m.id}</span>
+            <span class="card-view-cue">${t.viewDetails}</span>
           </div>
         </div>
       </a>
