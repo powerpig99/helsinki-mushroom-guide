@@ -132,7 +132,7 @@ const MUSHROOMS = [
     latinName: "Amanita virosa",
     englishName: "Destroying Angel",
     swedishName: "Vit flugsvamp",
-    rating: "☠️☠️☠️",
+    rating: "☠☠☠",
     edibility: "deadly",
     level: "deadly",
     habitat: "spruce",
@@ -153,7 +153,7 @@ const MUSHROOMS = [
     latinName: "Cortinarius rubellus",
     englishName: "Deadly Webcap",
     swedishName: "Toppig giftspindling",
-    rating: "☠️☠️☠️",
+    rating: "☠☠☠",
     edibility: "deadly",
     level: "deadly",
     habitat: "spruce",
@@ -174,7 +174,7 @@ const MUSHROOMS = [
     latinName: "Galerina marginata",
     englishName: "Funeral Bell",
     swedishName: "Gifthätting",
-    rating: "☠️☠️☠️",
+    rating: "☠☠☠",
     edibility: "deadly",
     level: "deadly",
     habitat: "spruce",
@@ -216,7 +216,7 @@ const MUSHROOMS = [
     latinName: "Paxillus involutus",
     englishName: "Brown Rollrim",
     swedishName: "Pluggskivling",
-    rating: "☠️☠️",
+    rating: "☠☠",
     edibility: "deadly",
     level: "deadly",
     habitat: "spruce",
@@ -317,7 +317,7 @@ const MUSHROOMS = [
     latinName: "Russula emetica",
     englishName: "The Sickener",
     swedishName: "Giftkremla",
-    rating: "☠️",
+    rating: "☠",
     edibility: "inedible",
     level: "intermediate",
     habitat: "spruce",
@@ -438,7 +438,7 @@ const MUSHROOMS = [
     latinName: "Amanita muscaria",
     englishName: "Fly Agaric",
     swedishName: "Röd flugsvamp",
-    rating: "☠️",
+    rating: "☠",
     edibility: "deadly",
     level: "deadly",
     habitat: "spruce",
@@ -502,7 +502,7 @@ const LOOKALIKE_PAIRS = [
       name: "Deadly Webcap (Suippumyrkkyseitikki)",
       sci: "Cortinarius rubellus",
       image: "../images/cortinarius_rubellus.jpg",
-      status: "DEADLY POISONOUS (☠️☠️☠️)",
+      status: "DEADLY POISONOUS (☠☠☠)",
       traits: [
         "Cap: Conical with sharp pointed nipple (umbo)",
         "Stem: SOLID cinnamon stem with yellow zigzag bands",
@@ -558,7 +558,7 @@ const LOOKALIKE_PAIRS = [
       name: "The Sickener (Tulipunahapero)",
       sci: "Russula emetica",
       image: "../images/russula_emetica.jpg",
-      status: "Toxic Gastrointestinal Irritant (☠️)",
+      status: "Toxic Gastrointestinal Irritant (☠)",
       traits: [
         "Cap: Flaming cherry/scarlet red, shiny skin",
         "Stem: Pure snow white, unchanging",
@@ -764,7 +764,7 @@ function renderCatalog() {
           </div>
 
           <div class="meta-row">
-            <span class="meta-tag" style="background:#e0f2fe; color:#0369a1;">📍 ${m.habitatName}</span>
+            <span class="meta-tag" style="background:#e0f2fe; color:#0369a1;">${m.habitatName}</span>
             <div style="display:flex; gap:0.25rem;">${monthTags}</div>
           </div>
 
@@ -787,8 +787,8 @@ function renderCatalog() {
             </div>
           </div>
 
-          ${m.warning ? `<div class="card-alert">⚠️ ${m.warning}</div>` : ""}
-          ${m.culinaryTip ? `<div class="card-tip">🍳 ${m.culinaryTip}</div>` : ""}
+          ${m.warning ? `<div class="card-alert">${m.warning}</div>` : ""}
+          ${m.culinaryTip ? `<div class="card-tip">${m.culinaryTip}</div>` : ""}
 
           <div class="card-footer">
             <span>Skill: <strong>${m.level.toUpperCase()}</strong></span>
@@ -826,7 +826,7 @@ function renderLookalikes() {
             <img src="${pair.edible.image}" alt="${pair.edible.name}" style="width:100%; height:100%; object-fit: cover;">
           </div>
           <ul class="diff-checklist">
-            ${pair.edible.traits.map(t => `<li style="color: #166534;">✅ ${t}</li>`).join("")}
+            ${pair.edible.traits.map(t => `<li style="color: #166534;">✓ ${t}</li>`).join("")}
           </ul>
         </div>
 
@@ -843,7 +843,7 @@ function renderLookalikes() {
             <img src="${pair.toxic.image}" alt="${pair.toxic.name}" style="width:100%; height:100%; object-fit: cover;">
           </div>
           <ul class="diff-checklist">
-            ${pair.toxic.traits.map(t => `<li style="color: #991b1b;">⚠️ ${t}</li>`).join("")}
+            ${pair.toxic.traits.map(t => `<li style="color: #991b1b;">${t}</li>`).join("")}
           </ul>
         </div>
       </div>
@@ -860,14 +860,14 @@ function renderSpots() {
       <div class="spot-header">
         <div>
           <h3 class="spot-title">${s.name}</h3>
-          <span style="font-size: 0.8rem; color: #64748b;">📍 ${s.municipality}</span>
+          <span style="font-size: 0.8rem; color: #64748b;">${s.municipality}</span>
         </div>
         <span class="spot-zone">${s.zone}</span>
       </div>
 
       <div class="spot-transit">
-        <p><strong>🚌 HSL Connection:</strong> ${s.transit}</p>
-        <p style="margin-top: 0.35rem;"><strong>⏱️ Duration:</strong> ~${s.time} from Central Railway Station</p>
+        <p><strong>HSL Connection:</strong> ${s.transit}</p>
+        <p style="margin-top: 0.35rem;"><strong>Duration:</strong> ~${s.time} from Central Railway Station</p>
       </div>
 
       <div style="font-size: 0.85rem; color: #334155; margin-bottom: 0.5rem;">
@@ -875,7 +875,7 @@ function renderSpots() {
       </div>
 
       <div style="font-size: 0.85rem; color: #166534; background: #f0fdf4; padding: 0.5rem; border-radius: 6px; margin-bottom: 0.75rem;">
-        💡 <em>${s.tip}</em>
+        <em>${s.tip}</em>
       </div>
 
       <div style="font-size: 0.8rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Target Species:</div>

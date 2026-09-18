@@ -10,7 +10,7 @@ const I18N = {
   // UI Strings
   ui: {
     en: {
-      siteBadge: "🇫🇮 Helsinki & Uusimaa Mycological Companion",
+      siteBadge: "Helsinki & Uusimaa Mycological Companion",
       siteTitle: "Helsinki Wild Mushroom Guide",
       siteSubtitle: "A definitive, safety-first field guide for foraging wild mushrooms across the hemiboreal forests of the Helsinki Metropolitan Area — a live record of living the philosophy. Explore the journey on <a href=\"https://powerpig99.github.io/not-a-toe/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"blog-subtitle-link\">Not a ToE</a>.",
       emergencyTitle: "Poisoning Emergency? Call Finnish Poison Information Centre",
@@ -148,8 +148,8 @@ const I18N = {
       webPortal: "Web Portal (inaturalist.org)",
       seekAppName: "Seek by iNaturalist",
       seekAppDesc: "Instant, account-free live camera identification by the same organization.",
-      videoFilterFinnish: "🇫🇮 Finnish & Martat",
-      videoFilterChinese: "🇨🇳 Chinese Masterclasses",
+      videoFilterFinnish: "Finnish & Martat",
+      videoFilterChinese: "Chinese Masterclasses",
       videoFilterChanterelle: "Chanterelles & Trumpets",
       videoFilterBolete: "Boletes & Porcini",
       videoFilterMilkcap: "Milkcaps & Salting",
@@ -180,7 +180,7 @@ const I18N = {
       offlineCloseBtn: "Close"
     },
     zh: {
-      siteBadge: "🇫🇮 芬兰赫尔辛基与乌西玛大区野生真菌野外手册",
+      siteBadge: "芬兰赫尔辛基与乌西玛大区野生真菌野外手册",
       siteTitle: "赫尔辛基野生蘑菇采摘与鉴别指南",
       siteSubtitle: "专为大赫尔辛基地区森林生态定制的权威安全野生真菌采摘指南 —— 践行生活哲学的鲜活实录。阅读更多哲学实录请访问博客：<a href=\"https://powerpig99.github.io/not-a-toe/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"blog-subtitle-link\">Not a ToE</a>。",
       emergencyTitle: "疑似蘑菇中毒？立即致电芬兰中毒信息中心",
@@ -277,7 +277,7 @@ const I18N = {
       badgeGood: "优质食用 (**)",
       badgeEdible: "普通食用 (*)",
       badgeParboil: "必须焯水去毒 (!)",
-      badgeDeadly: "致命剧毒 (☠)",
+      badgeDeadly: "致命剧毒",
       badgeInedible: "不可食用/极苦",
       backToCatalog: "← Back",
       whereWhenTitle: "采摘时令与地点（赫尔辛基及近郊）",
@@ -318,8 +318,8 @@ const I18N = {
       webPortal: "网页端 (inaturalist.org)",
       seekAppName: "Seek by iNaturalist",
       seekAppDesc: "无需注册、即时镜头识别的轻量版孪生应用。",
-      videoFilterFinnish: "🇫🇮 芬兰传统与处理",
-      videoFilterChinese: "🇨🇳 中华厨艺名菜",
+      videoFilterFinnish: "芬兰传统与处理",
+      videoFilterChinese: "中华厨艺名菜",
       videoFilterChanterelle: "鸡油菌与号角菇",
       videoFilterBolete: "牛肝菌家族",
       videoFilterMilkcap: "乳菇焯水与盐渍",
@@ -351,7 +351,7 @@ const I18N = {
       offlineActionStatusBtn: "离线缓存"
     },
     fi: {
-      siteBadge: "🇫🇮 Helsingin ja Uudenmaan sienestäjän maasto-opas",
+      siteBadge: "Helsingin ja Uudenmaan sienestäjän maasto-opas",
       siteTitle: "Helsingin Paikallinen Sieniopas",
       siteSubtitle: "Kattava ja turvallisuuslähtöinen opas villisienestykseen pääkaupunkiseudun metsissä — elävää filosofiaa käytännön tekoina. Tutustu matkaan blogissa <a href=\"https://powerpig99.github.io/not-a-toe/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"blog-subtitle-link\">Not a ToE</a>.",
       emergencyTitle: "Epäiletkö sienimyrkytystä? Soita Myrkytystietokeskukseen",
@@ -489,8 +489,8 @@ const I18N = {
       webPortal: "Verkkopalvelu (inaturalist.org)",
       seekAppName: "Seek by iNaturalist",
       seekAppDesc: "Kevyempi, ilman käyttäjätiliä toimiva reaaliaikainen kamerasovellus.",
-      videoFilterFinnish: "🇫🇮 Suomalainen & Martat",
-      videoFilterChinese: "🇨🇳 Kiinalainen keittiö",
+      videoFilterFinnish: "Suomalainen & Martat",
+      videoFilterChinese: "Kiinalainen keittiö",
       videoFilterChanterelle: "Vahverot & torvisienet",
       videoFilterBolete: "Tatit & herkkutatit",
       videoFilterMilkcap: "Rouskut & suolaus",
@@ -7792,9 +7792,9 @@ const I18N = {
   safetyGuidelines: {
     everymansRight: {
       title: {
-        en: "⚖ Everyman’s Right (Jokamiehenoikeus)",
-        zh: "⚖ 芬兰自然公共权 (Jokamiehenoikeus)",
-        fi: "⚖ Jokamiehenoikeus Suomessa"
+        en: "Everyman’s Right (Jokamiehenoikeus)",
+        zh: "芬兰自然公共权 (Jokamiehenoikeus)",
+        fi: "Jokamiehenoikeus Suomessa"
       },
       desc: {
         en: "In Finland, you have the statutory legal right to forage wild mushrooms and berries on public and private land without permits or fees.",
@@ -7826,9 +7826,9 @@ const I18N = {
     },
     foolproofFive: {
       title: {
-        en: "🛡 The \"Foolproof Five\" Rules",
-        zh: "🛡 新手“五大安全金菇”法则",
-        fi: "🛡 Aloittelijan Varmat Viisi"
+        en: "The \"Foolproof Five\" Rules",
+        zh: "新手“五大安全金菇”法则",
+        fi: "Aloittelijan Varmat Viisi"
       },
       desc: {
         en: "Beginners in Finnish forests should strictly restrict their harvest to these 5 unmistakable species:",
@@ -7864,9 +7864,9 @@ const I18N = {
     },
     forestSafety: {
       title: {
-        en: "🌲 Forest Safety: Ticks & Navigation",
-        zh: "🌲 森林防虫与自救指南",
-        fi: "🌲 Metsän Turvallisuus"
+        en: "Forest Safety: Ticks & Navigation",
+        zh: "森林防虫与自救指南",
+        fi: "Metsän Turvallisuus"
       },
       items: [
         {
@@ -7893,9 +7893,9 @@ const I18N = {
     },
     fieldTips: {
       title: {
-        en: "🌲 Forager's Pro-Tip: The Chanterelle Dilemma & Host Trees",
-        zh: "🌲 寻菇秘笈：为何9月满地漏斗菇却难寻鸡油菌？（树种生态与隐秘点）",
-        fi: "🌲 Sienestäjän Pro-Vinkki: Kantarelli vs. Suppilovahvero & Isäntäpuut"
+        en: "Forager's Pro-Tip: The Chanterelle Dilemma & Host Trees",
+        zh: "寻菇秘笈：为何9月满地漏斗菇却难寻鸡油菌？（树种生态与隐秘点）",
+        fi: "Sienestäjän Pro-Vinkki: Kantarelli vs. Suppilovahvero & Isäntäpuut"
       },
       desc: {
         en: "Finding heaps of Funnel Chanterelles (Suppilovahvero) but zero Golden Chanterelles (Kantarelli) in September? It's not because someone picked them earlier today—it is driven by seasonality, forest room (spruce vs birch/pine), and tree mycorrhiza!",
@@ -7933,7 +7933,7 @@ const I18N = {
     {
       id: "01",
       chapterNum: "Chapter 01",
-      icon: "⚖",
+      icon: "",
       title: {
         en: "Legal Rights, Nature Protection & Forest Safety",
         zh: "芬兰自然公共权、自然保护区法规与森林安全守则",
@@ -7954,7 +7954,7 @@ const I18N = {
     {
       id: "02",
       chapterNum: "Chapter 02",
-      icon: "🚌",
+      icon: "",
       title: {
         en: "Helsinki Foraging Spots by HSL Transit (Zone A–D)",
         zh: "赫尔辛基大区HSL公共交通采蘑菇宝典（含5大小众秘境）",
@@ -7975,7 +7975,7 @@ const I18N = {
     {
       id: "03",
       chapterNum: "Chapter 03",
-      icon: "📅",
+      icon: "",
       title: {
         en: "Seasonal Calendar, Habitats & The Chanterelle Dilemma",
         zh: "物候出菇日历、树种生境生态与金黄鸡油菌寻菇秘法",
@@ -7996,7 +7996,7 @@ const I18N = {
     {
       id: "04",
       chapterNum: "Chapter 04",
-      icon: "☠",
+      icon: "",
       title: {
         en: "Deadly & Toxic Species Survival Manual",
         zh: "芬兰致命剧毒与危险有毒真菌生死鉴别避险手册",
@@ -8017,7 +8017,7 @@ const I18N = {
     {
       id: "05",
       chapterNum: "Chapter 05",
-      icon: "🍄",
+      icon: "",
       title: {
         en: "The \"Safe Five\" Beginner Species",
         zh: "新手绝对安全采摘“安全五剑客”（零混淆美味菌）",
@@ -8038,7 +8038,7 @@ const I18N = {
     {
       id: "06",
       chapterNum: "Chapter 06",
-      icon: "🧺",
+      icon: "",
       title: {
         en: "Intermediate & Advanced Gourmet Species",
         zh: "进阶与资深老饕野菌指南（乳菇焯水、红菇折断与牛肝菌）",
@@ -8059,7 +8059,7 @@ const I18N = {
     {
       id: "07",
       chapterNum: "Chapter 07",
-      icon: "🍳",
+      icon: "",
       title: {
         en: "Preservation & Authentic Finnish Recipes",
         zh: "芬兰传统野菌储藏法（烘干/盐渍/冷冻）与正统北欧料理",
@@ -8080,7 +8080,7 @@ const I18N = {
     {
       id: "08",
       chapterNum: "Chapter 08",
-      icon: "📋",
+      icon: "",
       title: {
         en: "Master Index: 50+ Wild Edible Mushrooms of Finland",
         zh: "全景大典：芬兰50+种野生食用菌分类全书（八大家族分类图鉴）",
@@ -8101,7 +8101,7 @@ const I18N = {
     {
       id: "zh",
       chapterNum: "Special Guide",
-      icon: "🇨🇳",
+      icon: "",
       title: {
         en: "Chinese Wild Mushroom Culinary Mastery & Cross-Culture Recipes",
         zh: "中华野菌烹饪处理心法与中西融合经典名菜食谱",

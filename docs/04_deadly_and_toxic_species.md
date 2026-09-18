@@ -14,7 +14,7 @@ Finland is home to several **deadly poisonous mushrooms** that contain toxins re
 ---
 
 ## 1. Destroying Angel (*Amanita virosa* / *Valkokärpässieni*)
-**Status**: ☠️☠️☠️ **DEADLY POISONOUS (Tappavan myrkyllinen)**
+**Status**: **DEADLY POISONOUS (Tappavan myrkyllinen)**
 
 ![Amanita virosa - Destroying Angel](../images/amanita_virosa.jpg)
 *(c) Scientific field observation - Pure white fruiting body with sack-like volva at stem base*
@@ -46,7 +46,7 @@ Finland is home to several **deadly poisonous mushrooms** that contain toxins re
 ---
 
 ## 2. Deadly Webcap (*Cortinarius rubellus* / *Suippumyrkkyseitikki*)
-**Status**: ☠️☠️☠️ **DEADLY POISONOUS (Tappavan myrkyllinen)**
+**Status**: **DEADLY POISONOUS (Tappavan myrkyllinen)**
 
 ![Cortinarius rubellus - Deadly Webcap](../images/cortinarius_rubellus.jpg)
 *(c) Scientific field observation - Cinnamon-brown conical cap with distinct pointed umbo*
@@ -76,7 +76,7 @@ Finland is home to several **deadly poisonous mushrooms** that contain toxins re
 ---
 
 ## 3. Funeral Bell (*Galerina marginata* / *Myrkkynääpikkä*)
-**Status**: ☠️☠️☠️ **DEADLY POISONOUS (Tappavan myrkyllinen)**
+**Status**: **DEADLY POISONOUS (Tappavan myrkyllinen)**
 
 ![Galerina marginata - Funeral Bell](../images/galerina_marginata.jpg)
 *(c) Scientific field observation - Small brown wood-rotting mushroom with stem ring*
@@ -97,7 +97,7 @@ Finland is home to several **deadly poisonous mushrooms** that contain toxins re
 ---
 
 ## 4. False Morel (*Gyromitra esculenta* / *Korvasieni*)
-**Status**: ☠️☠️☠️ **DEADLY TOXIC RAW / TRADITIONAL FINNISH DELICACY**
+**Status**: **DEADLY TOXIC RAW / TRADITIONAL FINNISH DELICACY**
 
 ![Gyromitra esculenta - False Morel](../images/gyromitra_esculenta.jpg)
 *(c) Scientific field observation - Brain-like convoluted red-brown cap*
@@ -119,7 +119,7 @@ Finland is home to several **deadly poisonous mushrooms** that contain toxins re
 ---
 
 ## 5. Brown Rollrim (*Paxillus involutus* / *Pulkkosieni*)
-**Status**: ☠️☠️ **TOXIC / CHRONIC IMMUNOLOGICAL DANGER**
+**Status**: **TOXIC / CHRONIC IMMUNOLOGICAL DANGER**
 
 ![Paxillus involutus - Brown Rollrim](../images/paxillus_involutus.jpg)
 *(c) Scientific field observation - Distinctly in-rolled velvet cap margin and bruising gills*

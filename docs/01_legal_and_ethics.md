@@ -93,5 +93,5 @@ Finnish spruce forests can be deceptively dense, flat, and uniform; disorientati
 4. **Never Use Plastic Bags**:
    - Collect solely in rigid baskets, wooden crates, or breathable canvas bags. In plastic, mushrooms sweat, anaerobic bacteria multiply rapidly, and proteins break down into gastrointestinal toxins within hours. Furthermore, woven baskets allow millions of microscopic spores to sift through the weave and disperse across the forest floor as you walk—seeding future seasons.
 
-> [▶️ Watch Field Video: Ethical Foraging, Gear & Spore Dispersal (Mushroom Wonderland)](https://www.youtube.com/watch?v=xoptBgrLlg0)  
+> [Watch Field Video: Ethical Foraging, Gear & Spore Dispersal (Mushroom Wonderland)](https://www.youtube.com/watch?v=xoptBgrLlg0)  
 > *Mycology educator Aaron Hilliard explains the biomechanics of rigid baskets, brush-knives, and respecting the forest mycelial network.*

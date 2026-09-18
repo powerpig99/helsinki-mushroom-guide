@@ -35,7 +35,7 @@ The genus *Russula* contains dozens of species in Finland. Luckily, you do not n
 ---
 
 ### Toxic / Inedible Lookalike: The Sickener (*Russula emetica* / *Tulipunahapero*)
-**Status**: ☠️ **TOXIC / GASTROINTESTINAL IRRITANT**
+**Status**: **TOXIC / GASTROINTESTINAL IRRITANT**
 
 ![Russula emetica - The Sickener](../images/russula_emetica.jpg)
 *(c) Scientific field observation - Bright scarlet-red cap, snow-white gills, violently burning taste*

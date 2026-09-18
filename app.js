@@ -43,9 +43,11 @@ function initTheme() {
   if (typeof document === "undefined") return;
   const htmlEl = document.documentElement;
   const themeBtn = document.getElementById("theme-toggle-btn");
+  const sunIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+  const moonIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
   if (htmlEl && htmlEl.setAttribute) htmlEl.setAttribute("data-theme", currentTheme);
   if (themeBtn) {
-    themeBtn.innerHTML = currentTheme === "dark" ? "☀️" : "🌙";
+    themeBtn.innerHTML = currentTheme === "dark" ? sunIcon : moonIcon;
     themeBtn.setAttribute("aria-label", currentTheme === "dark" ? "Switch to light mode" : "Switch to dark mode");
     themeBtn.addEventListener("click", () => {
       currentTheme = currentTheme === "dark" ? "light" : "dark";
@@ -53,7 +55,7 @@ function initTheme() {
       if (typeof localStorage !== "undefined" && localStorage.setItem) {
         localStorage.setItem("mushroom_theme", currentTheme);
       }
-      themeBtn.innerHTML = currentTheme === "dark" ? "☀️" : "🌙";
+      themeBtn.innerHTML = currentTheme === "dark" ? sunIcon : moonIcon;
       themeBtn.setAttribute("aria-label", currentTheme === "dark" ? "Switch to light mode" : "Switch to dark mode");
     });
   }
@@ -334,7 +336,7 @@ function renderPrimeLocationCard(sp, lang, lang2, t) {
       <div class="prime-location-header">
         <div class="prime-location-area-box">
           <div class="prime-location-badge">${t.primeLocationTitle || "Prime Foraging Trailhead"}</div>
-          <div class="prime-location-area">📍 ${loc.areaName[lang] || loc.areaName.en}</div>
+          <div class="prime-location-area">${loc.areaName[lang] || loc.areaName.en}</div>
           ${lang2 && loc.areaName[lang2] ? `<div class="prime-location-area-secondary">${loc.areaName[lang2]}</div>` : ""}
         </div>
         <a href="${loc.mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-location-map" title="${loc.startingPoint[lang] || loc.startingPoint.en}">
@@ -406,7 +408,7 @@ function renderCookingVideoCard(sp, lang, lang2, t) {
             ${rTitle2 ? `<div class="chinese-recipe-title-sub">${rTitle2}</div>` : ""}
             <div class="chinese-recipe-meta">
               <span class="chinese-recipe-author">${r.creator}</span>
-              <span class="chinese-recipe-duration">⏱️ ${r.duration}</span>
+              <span class="chinese-recipe-duration">${r.duration}</span>
             </div>
           </div>
           <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="btn-video-link btn-video-link-sm" title="${rTitle}">
@@ -876,7 +878,7 @@ function renderTierIntroBanner(mode) {
           <div class="tier-video-play-btn">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           </div>
-          <span class="tier-video-duration">⏱️ 24:13</span>
+          <span class="tier-video-duration">24:13</span>
         </a>
         <div class="tier-video-info">
           <div class="tier-video-badge-row">
@@ -885,7 +887,7 @@ function renderTierIntroBanner(mode) {
               ${t.beginnerMasterclassBadge || "Recommended Beginner Masterclass"}
             </span>
             <a href="https://www.youtube.com/@mushroomwonderland1" target="_blank" rel="noopener noreferrer" class="tier-channel-link" title="Mushroom Wonderland YouTube Channel">
-              📺 <strong>Mushroom Wonderland</strong> ↗
+              <strong>Mushroom Wonderland</strong> ↗
             </a>
           </div>
           <h4 class="tier-video-title">
@@ -903,7 +905,7 @@ function renderTierIntroBanner(mode) {
               <span>${t.visitChannelBtn || "Visit Channel ↗"}</span>
             </a>
             <button type="button" class="tier-channel-btn" onclick="switchNavTab('safety'); setTimeout(() => { const el = document.getElementById('inaturalist-app-guide'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, 150);" title="View iNaturalist installation guide">
-              <span>📱 iNaturalist Guide ▾</span>
+              <span>iNaturalist Guide ▾</span>
             </button>
           </div>
         </div>
@@ -911,7 +913,7 @@ function renderTierIntroBanner(mode) {
 
       <div class="tier-actions-bar">
         <button id="btn-toggle-safe5-monograph" class="tier-action-btn" onclick="toggleTierMonograph('05')">
-          ${t.tierReadMonographBtn || "📖 Open Chapter 05 Monograph"}
+          ${t.tierReadMonographBtn || "Open Chapter 05 Monograph"}
         </button>
         <button class="tier-action-btn secondary" onclick="switchCatalogViewMode('grid')">
           ${t.labelViewGrid || "Show All 63 Species"}
@@ -924,7 +926,7 @@ function renderTierIntroBanner(mode) {
     banner.innerHTML = `
       <div class="tier-intro-header">
         <div class="tier-badge-row">
-          <span class="tier-badge warning">🧺 Preparation & Ring Discipline</span>
+          <span class="tier-badge warning">Preparation & Ring Discipline</span>
           <span class="tier-count">Intermediate & Advanced</span>
         </div>
         <h2 class="tier-intro-title">${t.tierIntroIntermediateTitle || "Intermediate Gourmet Species"}</h2>
@@ -933,14 +935,14 @@ function renderTierIntroBanner(mode) {
       <p class="tier-intro-desc">${t.tierIntroIntermediateDesc || ""}</p>
       
       <div class="tier-features-bar">
-        <span class="tier-feature-pill">⚠️ Parboiling Acrid Milkcaps (Ryöppäys)</span>
-        <span class="tier-feature-pill">⚠️ Bolete Sticky Pellicle Peeling</span>
-        <span class="tier-feature-pill">⚠️ Annulus Ring vs Volva Verification</span>
+        <span class="tier-feature-pill">Parboiling Acrid Milkcaps (Ryöppäys)</span>
+        <span class="tier-feature-pill">Bolete Sticky Pellicle Peeling</span>
+        <span class="tier-feature-pill">Annulus Ring vs Volva Verification</span>
       </div>
 
       <div class="tier-actions-bar">
         <button id="btn-toggle-intermediate-monograph" class="tier-action-btn" onclick="toggleTierMonograph('06')">
-          ${t.tierReadMonographBtn || "📖 Open Chapter 06 Monograph"}
+          ${t.tierReadMonographBtn || "Open Chapter 06 Monograph"}
         </button>
         <button class="tier-action-btn secondary" onclick="switchCatalogViewMode('grid')">
           ${t.labelViewGrid || "Show All 63 Species"}
@@ -999,10 +1001,10 @@ function renderCatalogMonographForChapter(chId) {
         </button>
         <div class="reader-meta-right">
           <span class="reader-badge">${ch.badge[lang]}</span>
-          <span class="reader-readtime">⏱️ ${ch.readTime ? ch.readTime[lang] : ""}</span>
+          <span class="reader-readtime">${ch.readTime ? ch.readTime[lang] : ""}</span>
         </div>
       </div>
-      <h1 class="integrated-monograph-title">${ch.icon} ${ch.title[lang]}</h1>
+      <h1 class="integrated-monograph-title">${ch.title[lang]}</h1>
       ${lang2 ? `<div class="integrated-monograph-subtitle">${ch.title[lang2]}</div>` : ""}
       <p class="integrated-monograph-desc">${ch.desc[lang]}</p>
       ${renderSpeciesChipsForChapter(ch, lang, t)}
@@ -1466,7 +1468,7 @@ function renderMushroomDetail(speciesId) {
 
   // Danger alert section if deadly or poisonous
   const isDeadly = sp.level === "deadly" || sp.edibility === "deadly";
-  const isInedibleOrToxic = isDeadly || sp.edibility === "inedible" || (sp.rating && sp.rating.includes("☠️"));
+  const isInedibleOrToxic = isDeadly || sp.edibility === "inedible" || (sp.rating && sp.rating.includes("☠"));
 
   const dangerBannerHtml = isInedibleOrToxic ? `
     <div class="detail-danger-card">
@@ -1555,14 +1557,14 @@ function renderMushroomDetail(speciesId) {
         </button>
         <div class="lang-switcher-wrapper detail-lang-wrapper" aria-label="Select Language">
           <div class="lang-row primary-lang-row">
-            <button class="lang-btn ${lang === 'en' ? 'active' : ''}" onclick="switchAppLanguage('en')" title="English">🇬🇧</button>
-            <button class="lang-btn ${lang === 'zh' ? 'active' : ''}" onclick="switchAppLanguage('zh')" title="中文">🇨🇳</button>
-            <button class="lang-btn ${lang === 'fi' ? 'active' : ''}" onclick="switchAppLanguage('fi')" title="Suomi">🇫🇮</button>
+            <button class="lang-btn ${lang === 'en' ? 'active' : ''}" onclick="switchAppLanguage('en')" title="English">EN</button>
+            <button class="lang-btn ${lang === 'zh' ? 'active' : ''}" onclick="switchAppLanguage('zh')" title="中文">中文</button>
+            <button class="lang-btn ${lang === 'fi' ? 'active' : ''}" onclick="switchAppLanguage('fi')" title="Suomi">FI</button>
           </div>
           <div class="lang-row secondary-lang-row">
-            <button class="lang-btn secondary-btn ${lang2 === 'en' ? 'active-secondary' : ''} ${lang === 'en' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('en')" title="Compare English (Click to toggle)">🇬🇧</button>
-            <button class="lang-btn secondary-btn ${lang2 === 'zh' ? 'active-secondary' : ''} ${lang === 'zh' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('zh')" title="与中文对照 (点击开启/取消)">🇨🇳</button>
-            <button class="lang-btn secondary-btn ${lang2 === 'fi' ? 'active-secondary' : ''} ${lang === 'fi' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('fi')" title="Vertaa suomeksi (Klikkaa päälle/pois)">🇫🇮</button>
+            <button class="lang-btn secondary-btn ${lang2 === 'en' ? 'active-secondary' : ''} ${lang === 'en' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('en')" title="Compare English (Click to toggle)">EN</button>
+            <button class="lang-btn secondary-btn ${lang2 === 'zh' ? 'active-secondary' : ''} ${lang === 'zh' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('zh')" title="与中文对照 (点击开启/取消)">中文</button>
+            <button class="lang-btn secondary-btn ${lang2 === 'fi' ? 'active-secondary' : ''} ${lang === 'fi' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('fi')" title="Vertaa suomeksi (Klikkaa päälle/pois)">FI</button>
           </div>
         </div>
       </div>
@@ -1913,7 +1915,7 @@ function updateGalleryView() {
     const capText = (currentPhoto.caption && currentPhoto.caption[lang]) 
       ? currentPhoto.caption[lang] 
       : (currentPhoto.caption?.en || "Botanical detail");
-    captionEl.textContent = `🔍 ${capText}`;
+    captionEl.textContent = capText;
   }
 
   if (attrEl) {
@@ -2211,7 +2213,7 @@ function renderLookalikes() {
     <!-- 1. The 5 Interactive Visual Comparators (Front & Center!) -->
     <div class="section-divider-header" style="margin-bottom: 1.5rem;">
       <h2 style="font-size: 1.45rem; font-weight: 800; color: var(--fg); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-        <span>🔍</span> <span>${lang === "zh" ? "5大高危真假混淆微距形态对决（一键直达详情）" : (lang === "fi" ? "5 kriittistä näköislajivertailua" : "5 Critical Side-by-Side Visual Lookalike Comparators")}</span>
+        <span>${lang === "zh" ? "5大高危真假混淆微距形态对决（一键直达详情）" : (lang === "fi" ? "5 kriittistä näköislajivertailua" : "5 Critical Side-by-Side Visual Lookalike Comparators")}</span>
       </h2>
       <p style="font-size: 0.92rem; color: var(--muted);">
         ${lang === "zh" ? "微距形态特征、钝分叉假褶vs锋利真褶、立体网眼与致命潜伏期特征全方位对比" : (lang === "fi" ? "Tarkat mikroskooppiset ja morfologiset erot rinnakkain, poimut vs. heltat ja jalkojen piirteet" : "Direct side-by-side morphological feature breakdowns, blunt ridges vs knife gills, and stem netting")}
@@ -2273,7 +2275,7 @@ function renderLookalikes() {
             <ul class="diff-checklist">
               ${pair.toxic.traits[lang].map((tr, idx) => `
                 <li style="color: var(--fg);">
-                  <span style="color: var(--danger); font-weight: 700; flex-shrink: 0;">⚠️</span>
+                  <span style="color: var(--danger); font-weight: 700; flex-shrink: 0;">✕</span>
                   <div>
                     <span>${tr}</span>
                     ${lang2 && pair.toxic.traits[lang2]?.[idx] ? `<div style="color:var(--muted); font-size:0.82rem; margin-top:2px;">${pair.toxic.traits[lang2][idx]}</div>` : ""}
@@ -2289,7 +2291,7 @@ function renderLookalikes() {
     <!-- 2. Lethal Toxin Biochemistry & Symptoms Latency -->
     <div class="section-divider-header" style="margin-bottom: 1.5rem;">
       <h2 style="font-size: 1.45rem; font-weight: 800; color: var(--fg); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-        <span>☠️</span> <span>${lang === "zh" ? "芬兰主要毒素细胞作用机理与超长潜伏期剖析" : (lang === "fi" ? "Sienten myrkkytyypit ja solutason vaikutukset" : "Lethal Toxin Biochemistry & Delayed Symptoms Guide")}</span>
+        <span>${lang === "zh" ? "芬兰主要毒素细胞作用机理与超长潜伏期剖析" : (lang === "fi" ? "Sienten myrkkytyypit ja solutason vaikutukset" : "Lethal Toxin Biochemistry & Delayed Symptoms Guide")}</span>
       </h2>
       <p style="font-size: 0.92rem; color: var(--muted);">
         ${lang === "zh" ? "牢记不可逆细胞损伤机制：高温水煮对鹅膏毒肽与奥来毒素完全无效！" : (lang === "fi" ? "Opi tuntemaan solumyrkkyjen tuhomekanismit: keittäminen ei auta amatoksiiniin tai orellaniiniin!" : "Understanding the irreversible cellular damage mechanisms: cooking does NOT destroy amatoxins or orellanine!")}
@@ -2302,7 +2304,7 @@ function renderLookalikes() {
           <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--danger); margin-bottom: 0.25rem;">${tox.name[lang] || tox.name.en}</h3>
           <div style="font-size: 0.84rem; font-weight: 700; color: var(--muted); margin-bottom: 0.5rem;">${tox.source}</div>
           <div style="background: var(--danger-soft); color: var(--danger); border: 1px solid var(--danger-border); font-size: 0.82rem; font-weight: 700; padding: 0.35rem 0.65rem; border-radius: 4px; margin-bottom: 0.75rem;">
-            ⏱️ ${tox.latency[lang] || tox.latency.en}
+            ${tox.latency[lang] || tox.latency.en}
           </div>
           <p style="font-size: 0.86rem; color: var(--fg); line-height: 1.55; margin: 0; flex: 1;">
             ${tox.mechanism[lang] || tox.mechanism.en}
@@ -2350,9 +2352,9 @@ function renderCookingGalleryCards(catalog, lang, lang2, t) {
           <div class="cooking-gallery-play-btn" title="${title}">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           </div>
-          <span class="cooking-gallery-duration">⏱️ ${v.duration}</span>
+          <span class="cooking-gallery-duration">${v.duration}</span>
           <span class="cooking-gallery-badge ${isChinese ? 'chinese' : (isForaging ? 'foraging' : 'nordic')}">
-            ${isChinese ? '🇨🇳 中华大师课' : (isForaging ? (lang === 'zh' ? '🌱 初学入门野采' : (lang === 'fi' ? '🌱 Aloittelijan opas' : '🌱 Foraging Masterclass')) : '🇫🇮 Suomi / Nordic')}
+            ${isChinese ? (lang === 'zh' ? '中华大师课' : 'Chinese Masterclass') : (isForaging ? (lang === 'zh' ? '初学入门野采' : (lang === 'fi' ? 'Aloittelijan opas' : 'Foraging Masterclass')) : 'Suomi / Nordic')}
           </span>
         </a>
         <div class="cooking-gallery-info">
@@ -2370,7 +2372,7 @@ function renderCookingGalleryCards(catalog, lang, lang2, t) {
               </a>
             ` : (v.channelUrl ? `
               <a href="${v.channelUrl}" target="_blank" rel="noopener noreferrer" class="gallery-channel-pill" title="Mushroom Wonderland YouTube Channel">
-                <span>📺 ${t.channelLabel || "Channel"}</span>
+                <span>${t.channelLabel || "Channel"}</span>
               </a>
             ` : `<div></div>`)}
             <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="btn-video-link btn-video-link-sm" title="${title}">
@@ -2425,7 +2427,7 @@ function renderCookingGuide() {
 
   const chineseMastery = [
     {
-      icon: "🔥",
+      icon: "",
       title: { en: "High-Heat Dry Wok Searing", zh: "猛火干锅煸炒出水法", fi: "Kuivapaahto wokissa" },
       desc: {
         en: "Nordic mushrooms hold 90% water. Searing them in a hot, dry wok without oil first evaporates excess liquid. Once squeaking and slightly caramelizing, add rapeseed oil, garlic, and fresh chili.",
@@ -2434,7 +2436,7 @@ function renderCookingGuide() {
       }
     },
     {
-      icon: "🥢",
+      icon: "",
       title: { en: "Cantonese Steaming with Ginger", zh: "广式葱姜清蒸原味法", fi: "Höyrytys inkiväärillä" },
       desc: {
         en: "Supreme for pristine young Porcini (*Boletus edulis*) and Orange Birch Boletes (*Leccinum versipelle*). Slice 5mm thick, arrange on plate with julienned ginger and scallions, steam 6–8 minutes, finish with hot sesame oil and light soy sauce.",
@@ -2443,7 +2445,7 @@ function renderCookingGuide() {
       }
     },
     {
-      icon: "🍲",
+      icon: "",
       title: { en: "Yunnan Wild Mushroom Chicken Broth", zh: "滇风野生菌老母鸡煲汤", fi: "Haudutettu sienikanakeitto" },
       desc: {
         en: "Combine dried black trumpets, rehydrated porcini, and fresh funnel chanterelles with free-range chicken and wolfberries. Simmer gently for 2 hours for a rich, golden umami soup.",
@@ -2458,7 +2460,7 @@ function renderCookingGuide() {
       <div class="cooking-gallery-header">
         <div>
           <h3 class="cooking-gallery-title">
-            ${t.videoMasterclassesTitle || "🎥 Video Masterclasses & Forest Kitchen Guides"}
+            ${t.videoMasterclassesTitle || "Video Masterclasses & Forest Kitchen Guides"}
           </h3>
           <p class="cooking-gallery-desc">
             ${t.videoMasterclassesDesc || "Authentic video tutorials from Finnish Martat experts and Chinese masterchefs, covering forest-to-table techniques, parboiling, and preservation."}
@@ -2468,9 +2470,9 @@ function renderCookingGuide() {
 
       <div class="cooking-gallery-filters" id="cooking-gallery-filters">
         <button class="gallery-filter-btn active" onclick="filterCookingVideos('all', this)">${t.videoFilterAll || "All Masterclasses (29)"}</button>
-        <button class="gallery-filter-btn" onclick="filterCookingVideos('beginner', this)">${t.videoFilterBeginner || "🌱 Beginners & Foraging"}</button>
-        <button class="gallery-filter-btn" onclick="filterCookingVideos('finnish', this)">${t.videoFilterFinnish || "🇫🇮 Finnish & Martat"}</button>
-        <button class="gallery-filter-btn" onclick="filterCookingVideos('chinese', this)">${t.videoFilterChinese || "🇨🇳 Chinese Masterclasses"}</button>
+        <button class="gallery-filter-btn" onclick="filterCookingVideos('beginner', this)">${t.videoFilterBeginner || "Beginners & Foraging"}</button>
+        <button class="gallery-filter-btn" onclick="filterCookingVideos('finnish', this)">${t.videoFilterFinnish || "Finnish & Martat"}</button>
+        <button class="gallery-filter-btn" onclick="filterCookingVideos('chinese', this)">${t.videoFilterChinese || "Chinese Masterclasses"}</button>
         <button class="gallery-filter-btn" onclick="filterCookingVideos('chanterelle', this)">${t.videoFilterChanterelle || "Chanterelles & Trumpets"}</button>
         <button class="gallery-filter-btn" onclick="filterCookingVideos('bolete', this)">${t.videoFilterBolete || "Boletes & Porcini"}</button>
         <button class="gallery-filter-btn" onclick="filterCookingVideos('milkcap', this)">${t.videoFilterMilkcap || "Milkcaps & Salting"}</button>
@@ -2533,7 +2535,7 @@ function renderCookingGuide() {
     <!-- 3. Featured Traditional Recipes -->
     <div class="section-divider-header" style="margin-bottom: 1.25rem;">
       <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--fg); margin-bottom: 0.35rem;">
-        🍲 ${lang === "zh" ? "芬兰传统林地风味食谱精选" : (lang === "fi" ? "Perinteiset Reseptit" : "Featured Traditional Nordic Recipes")}
+        ${lang === "zh" ? "芬兰传统林地风味食谱精选" : (lang === "fi" ? "Perinteiset Reseptit" : "Featured Traditional Nordic Recipes")}
       </h3>
       <p style="font-size: 0.9rem; color: var(--muted);">
         ${lang === "zh" ? "包含备料时间、烹调火候、完整食材清单与视频教学演示" : (lang === "fi" ? "Valmistusajat, raaka-aineet, vaiheittaiset ohjeet ja videot" : "Prep times, ingredients, step-by-step instructions, and video walkthroughs")}
@@ -2559,9 +2561,9 @@ function renderCookingGuide() {
           </div>
           
           <div style="display: flex; gap: 0.75rem; font-size: 0.82rem; color: var(--muted); margin-bottom: 0.85rem; background: var(--card-hover); border: 1px solid var(--card-border); padding: 0.4rem 0.6rem; border-radius: 4px; flex-wrap: wrap;">
-            <span>⏱️ <strong>${t.prepTime}</strong> ${rcp.prep}</span>
-            <span>🔥 <strong>${t.cookTime}</strong> ${rcp.cook}</span>
-            <span>🍽️ <strong>${t.servings}</strong> ${rcp.servings}</span>
+            <span><strong>${t.prepTime}</strong> ${rcp.prep}</span>
+            <span><strong>${t.cookTime}</strong> ${rcp.cook}</span>
+            <span><strong>${t.servings}</strong> ${rcp.servings}</span>
           </div>
 
           <div style="margin-bottom: 0.85rem;">
@@ -2595,7 +2597,7 @@ function renderCookingGuide() {
     <!-- 4. Chinese Wild Mushroom Mastery -->
     <div style="background: color-mix(in srgb, var(--warning) 6%, var(--card-bg)); border: 1px solid var(--warning-border); border-left: 4px solid var(--warning); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
       <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--warning); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
-        <span>🇨🇳</span> <span>${lang === "zh" ? "中餐烹饪实战心法：如何驾驭芬兰野生菌" : (lang === "fi" ? "Kiinalaisen keittiön sienisalaisuudet" : "Chinese Wild Mushroom Culinary Mastery")}</span>
+        <span>${lang === "zh" ? "中餐烹饪实战心法：如何驾驭芬兰野生菌" : (lang === "fi" ? "Kiinalaisen keittiön sienisalaisuudet" : "Chinese Wild Mushroom Culinary Mastery")}</span>
       </h3>
       <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 1.25rem;">
         ${lang === "zh" ? "巧妙融合云南干巴菌/牛肝菌旺火爆炒技法与粤式清蒸原味，释放北欧野生菌极致鲜度" : (lang === "fi" ? "Wok-paahtoa, höyrytystä ja aromaattisia liemiä pohjoisen villisienille" : "Applying high-heat wok searing, ginger steaming, and slow-simmered umami broths to Nordic wild mushrooms")}
@@ -2605,7 +2607,6 @@ function renderCookingGuide() {
         ${chineseMastery.map(cm => `
           <div style="background: var(--card-bg); border: 1px solid var(--warning-border); border-radius: 6px; padding: 1rem; display: flex; flex-direction: column;">
             <div style="display: flex; align-items: center; gap: 0.45rem; margin-bottom: 0.35rem;">
-              <span style="font-size: 1.25rem;">${cm.icon}</span>
               <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--warning); margin: 0;">${cm.title[lang] || cm.title.en}</h4>
             </div>
             <p style="font-size: 0.84rem; color: var(--muted); line-height: 1.55; margin: 0;">${cm.desc[lang] || cm.desc.en}</p>
@@ -2631,9 +2632,9 @@ window.toggleChapter03Reader = function() {
   if (btn) {
     const lang = I18N.currentLang;
     if (isHidden) {
-      btn.innerHTML = lang === "zh" ? "📖 收起手册第三章完整长文 ↑" : (lang === "fi" ? "📖 Piilota luvun 03 koko teksti ↑" : "📖 Collapse Full Chapter 03 Monograph ↑");
+      btn.innerHTML = lang === "zh" ? "收起手册第三章完整长文 ↑" : (lang === "fi" ? "Piilota luvun 03 koko teksti ↑" : "Collapse Full Chapter 03 Monograph ↑");
     } else {
-      btn.innerHTML = lang === "zh" ? "📖 展开阅读手册第三章完整长文 (Unabridged) ↓" : (lang === "fi" ? "📖 Lue luvun 03 koko teksti (Lyhentämätön) ↓" : "📖 Expand Full Chapter 03 Monograph (Unabridged) ↓");
+      btn.innerHTML = lang === "zh" ? "展开阅读手册第三章完整长文 (Unabridged) ↓" : (lang === "fi" ? "Lue luvun 03 koko teksti (Lyhentämätön) ↓" : "Expand Full Chapter 03 Monograph (Unabridged) ↓");
     }
   }
 };
@@ -2661,7 +2662,7 @@ function renderHabitats() {
 
   const habitatSites = [
     {
-      icon: "🌿",
+      icon: "",
       name: { en: "Lehto (Herb-Rich Deciduous Groves)", zh: "Lehto（富营养阔叶草本林）", fi: "Lehto (Jalot lehtimetsät)" },
       badge: { en: "Neutral Humus • Filtered Sunlight", zh: "中性腐殖土 • 斑驳光影", fi: "Multamaa • Suodattunut valo" },
       soil: {
@@ -2682,7 +2683,7 @@ function renderHabitats() {
       species: ["craterellus_cornucopioides", "boletus_reticulatus", "russula_cyanoxantha"]
     },
     {
-      icon: "🌲",
+      icon: "",
       name: { en: "Tuore kangas (Mesic Spruce-Blueberry Heath)", zh: "Tuore kangas（湿润云杉苔藓林 • 首都圈主力）", fi: "Tuore kangas (Mustikkatyypin kuusikko)" },
       badge: { en: "The Capital Region's Motherlode • Deep Feathermoss", zh: "首都圈主力林型 • 深厚赤茎藓毯", fi: "Pääkaupunkiseudun aarreaitta • Seinäsammal" },
       soil: {
@@ -2702,13 +2703,13 @@ function renderHabitats() {
       },
       species: ["boletus_edulis", "craterellus_tubaeformis", "hydnum_repandum", "cortinarius_caperatus"],
       warning: {
-        en: "⚠️ LETHAL CAUTION: This exact feathermoss layer is also home to the lethal Destroying Angel (Amanita virosa) and Deadly Webcap (Cortinarius rubellus)!",
-        zh: "⚠️ 致命警示：该湿润云杉苔藓层同时也是致命剧毒白毒鹅膏（Amanita virosa）与赭红丝膜菌（Cortinarius rubellus）的原生共生家园！",
-        fi: "⚠️ VAARA: Tämä sama kuusikon sammalikko on myös hengenvaarallisen valkokärpässienen ja suippumyrkkyseitikin elinympäristö!"
+        en: "LETHAL CAUTION: This exact feathermoss layer is also home to the lethal Destroying Angel (Amanita virosa) and Deadly Webcap (Cortinarius rubellus)!",
+        zh: "致命警示：该湿润云杉苔藓层同时也是致命剧毒白毒鹅膏（Amanita virosa）与赭红丝膜菌（Cortinarius rubellus）的原生共生家园！",
+        fi: "VAARA: Tämä sama kuusikon sammalikko on myös hengenvaarallisen valkokärpässienen ja suippumyrkkyseitikin elinympäristö!"
       }
     },
     {
-      icon: "🪵",
+      icon: "",
       name: { en: "Kuiva kangas (Sub-xeric Pine-Lingonberry Heath)", zh: "Kuiva kangas（干燥松树苔原地 • 越橘石楠林）", fi: "Kuiva kangas (Männikkö & kankaat)" },
       badge: { en: "Coarse Sand & Moraine • Open Sunlit Canopy", zh: "粗砂冰碛土 • 高挑开阔阳生林", fi: "Hiekkamaa • Valoisa männikkö" },
       soil: {
@@ -2729,7 +2730,7 @@ function renderHabitats() {
       species: ["boletus_pinophilus", "lactarius_deliciosus", "lactarius_rufus", "suillus_variegatus", "tricholoma_matsutake"]
     },
     {
-      icon: "💧",
+      icon: "",
       name: { en: "Korpi & Räme (Spruce Mires & Peatland Bogs)", zh: "Korpi 与 Räme（云杉沼泽与泥炭湿地）", fi: "Korpi ja Räme (Suometsät & keidassuot)" },
       badge: { en: "Waterlogged Peat • Spongy Sphagnum Pillows", zh: "常年积水深厚泥炭 • 泥炭藓海绵垫", fi: "Kosteat turvemaat • Rahkasammal" },
       soil: {
@@ -2753,7 +2754,7 @@ function renderHabitats() {
 
   const phenologyCalendar = [
     {
-      period: "🌸 05–06 • Spring / Kevät",
+      period: "05–06 • Spring / Kevät",
       title: { en: "Spring Anomaly: False Morel", zh: "早春反常期：春鹿花菌", fi: "Kevät: Korvasieni" },
       desc: {
         en: "Fruiting in sandy disturbed pine soil and logging tracks. Contains volatile gyromitrin; requires mandatory double-parboiling.",
@@ -2763,7 +2764,7 @@ function renderHabitats() {
       species: ["gyromitra_esculenta"]
     },
     {
-      period: "☀️ 07 • Midsummer / Keskikesä",
+      period: "07 • Midsummer / Keskikesä",
       title: { en: "Midsummer Awakening: Golden Chanterelles", zh: "盛夏觉醒：金黄鸡油菌与早生牛肝菌", fi: "Keskikesä: Keltavahvero ja varhaistatit" },
       desc: {
         en: "Warm summer rains trigger early flushes of Golden Chanterelles along exposed forest paths, sunny bedrock crevices, and ditch banks.",
@@ -2773,7 +2774,7 @@ function renderHabitats() {
       species: ["cantharellus_cibarius", "leccinum_scabrum"]
     },
     {
-      period: "⚡ 08 • The Grand Flush / Elokuu",
+      period: "08 • The Grand Flush / Elokuu",
       title: { en: "The Grand Flush: King Boletes, Russulas & Matsutake", zh: "黄金爆发期：美味牛肝菌、红菇与野生松茸盛宴", fi: "Elokuu: Herkkutattien suursato, haperot ja tuoksuvalmuska" },
       desc: {
         en: "Warm nights (>12°C) combined with thunderstorms produce massive Porcini flushes lasting 2–3 weeks. On dry sandy pine heaths, prized Nordic Matsutake (tuoksuvalmuska) begins its main fruiting flush.",
@@ -2783,7 +2784,7 @@ function renderHabitats() {
       species: ["boletus_edulis", "boletus_pinophilus", "tricholoma_matsutake", "lactarius_deliciosus", "russula_paludosa"]
     },
     {
-      period: "👑 09 • The Golden Peak / Syyskuu",
+      period: "09 • The Golden Peak / Syyskuu",
       title: { en: "The Golden Peak: 50+ Species Concurrently", zh: "真菌巅峰月：50余种珍馐群芳争艳", fi: "Syyskuu: Sienikauden huipennus (50+ lajia)" },
       desc: {
         en: "The undisputed crown month of Finnish mycology: Wood Hedgehogs, Black Trumpets, Sheep Polypores, Gypsy Mushrooms, Nordic Pine Matsutake, and all traditional salting milkcaps.",
@@ -2793,7 +2794,7 @@ function renderHabitats() {
       species: ["hydnum_repandum", "craterellus_cornucopioides", "albatrellus_ovinus", "cortinarius_caperatus", "tricholoma_matsutake"]
     },
     {
-      period: "❄️ 10–11 • Late Autumn / Loppusyksy",
+      period: "10–11 • Late Autumn / Loppusyksy",
       title: { en: "Frost-Resistant Bounty: Funnel Chanterelles", zh: "深秋抗霜期：漏斗鸡油菌无尽地毯", fi: "Loka–marraskuu: Suppilovahveron valtakausi" },
       desc: {
         en: "Funnel Chanterelles thrive down to freezing (-4°C). Can be harvested frozen solid on the moss; culinary texture remains flawless until heavy snow.",
@@ -2819,7 +2820,7 @@ function renderHabitats() {
     <!-- 1. The 4 Cajander Forest Site Types -->
     <div class="section-divider-header" style="margin-bottom: 1.25rem;">
       <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--fg); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-        <span>🌿</span> <span>${lang === "zh" ? "芬兰4大典型森林林型生境与共生菌根分类（Cajander分类法）" : (lang === "fi" ? "4 Suomen päämetsätyyppiä ja sienilajit (Cajanderin luokittelu)" : "The 4 Main Finnish Forest Site Types & Mycorrhizal Partners")}</span>
+        <span>${lang === "zh" ? "芬兰4大典型森林林型生境与共生菌根分类（Cajander分类法）" : (lang === "fi" ? "4 Suomen päämetsätyyppiä ja sienilajit (Cajanderin luokittelu)" : "The 4 Main Finnish Forest Site Types & Mycorrhizal Partners")}</span>
       </h2>
       <p style="font-size: 0.9rem; color: var(--muted);">
         ${lang === "zh" ? "芬兰植物学家通过林下地表植被严格划分林型，不同土壤、光照与树种孕育截然不同的真菌群落" : (lang === "fi" ? "Aluskasvillisuus ja puusto määrittävät maaperän kosteuden ja sienirihmastojen elämän" : "Understory indicator vegetation and host canopy dictate soil moisture, acidity, and root-symbiotic flushes")}
@@ -2831,14 +2832,13 @@ function renderHabitats() {
         <div class="habitat-site-card">
           <div class="habitat-site-header">
             <div style="display: flex; align-items: center; gap: 0.45rem;">
-              <span style="font-size: 1.35rem;">${site.icon}</span>
               <h3 class="habitat-site-title">${site.name[lang] || site.name.en}</h3>
             </div>
             <span class="habitat-badge">${site.badge[lang] || site.badge.en}</span>
           </div>
 
           <div class="habitat-prop-block">
-            <div><span class="habitat-prop-label">🌍 Soil & Light:</span> ${site.soil[lang] || site.soil.en}</div>
+            <div><span class="habitat-prop-label">Soil & Light:</span> ${site.soil[lang] || site.soil.en}</div>
           </div>
 
           <div class="habitat-prop-block">
@@ -2913,7 +2913,7 @@ function renderHabitats() {
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
         <div style="background: var(--card-hover); border: 1px solid var(--card-border); border-radius: 6px; padding: 1rem;">
-          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--fg); margin: 0 0 0.35rem;">⏱️ ${lang === "zh" ? "1. 物候周期分异" : (lang === "fi" ? "1. Satokauden ajoitus" : "1. Calendar Phase")}</h4>
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--fg); margin: 0 0 0.35rem;">${lang === "zh" ? "1. 物候周期分异" : (lang === "fi" ? "1. Satokauden ajoitus" : "1. Calendar Phase")}</h4>
           <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
             ${lang === "zh" ? "漏斗鸡油菌是晚秋主力（9月中旬至11月达到峰值），嗜好低温潮湿；金黄鸡油菌主汛期在7月至8月盛夏，进入深秋后仅有零星残余。" : (lang === "fi" ? "Suppilovahvero on myöhäissyksyn sieni (huippu syys-marraskuussa). Keltavahveron pääsato valmistuu jo heinä-elokuussa." : "Funnel chanterelles peak late (Sept–Nov) in cold rain; Golden chanterelles peak in warm midsummer (July–Aug) and taper off in late autumn.")}
           </p>
@@ -2961,7 +2961,7 @@ function renderHabitats() {
 
           <!-- Pine -->
           <div class="tree-col-card">
-            <h4 class="tree-col-title">🪵 ${lang === "zh" ? "欧洲赤松" : (lang === "fi" ? "Mänty" : "Scots Pine")}</h4>
+            <h4 class="tree-col-title">${lang === "zh" ? "欧洲赤松" : (lang === "fi" ? "Mänty" : "Scots Pine")}</h4>
             <div class="tree-col-latin">Pinus sylvestris • Mänty</div>
             <div class="tree-feature-row"><strong>Bark:</strong> Two-toned trunk: flaky cinnamon-orange bark on top 2/3; dark grey-brown thick scaly plates at base.</div>
             <div class="tree-feature-row"><strong>Canopy:</strong> Conifer: needles grow in pairs (clusters of 2). High sparse airy crown, bright dry forest floor.</div>
@@ -2999,7 +2999,7 @@ function renderHabitats() {
     ${ch03 ? `
       <div style="margin-top: 2.5rem; text-align: center;">
         <button id="btn-toggle-ch03-reader" class="btn-toggle-monograph" onclick="toggleChapter03Reader()">
-          ${lang === "zh" ? "展开阅读手册第三章完整长文 (Unabridged) ↓" : (lang === "fi" ? "📖 Lue luvun 03 koko teksti (Lyhentämätön) ↓" : "📖 Expand Full Chapter 03 Monograph (Unabridged) ↓")}
+          ${lang === "zh" ? "展开阅读手册第三章完整长文 (Unabridged) ↓" : (lang === "fi" ? "Lue luvun 03 koko teksti (Lyhentämätön) ↓" : "Expand Full Chapter 03 Monograph (Unabridged) ↓")}
         </button>
       </div>
 
@@ -3036,7 +3036,7 @@ function renderSpots() {
 
   const transitCards = [
     {
-      icon: "🎫",
+      icon: "",
       title: { en: "Zone A–D Ticketing", zh: "ABCD区票务攻略", fi: "Vyöhykeliput (ABCD)" },
       desc: {
         en: "Zone AB covers Keskuspuisto & Kuusijärvi trailhead. Zone ABC covers Nuuksio Haukkalampi, Sipoonkorpi, and Luukki. Zone ABCD covers Meiko (Kirkkonummi). Buy tickets easily in the official HSL mobile app.",
@@ -3045,7 +3045,7 @@ function renderSpots() {
       }
     },
     {
-      icon: "🚆",
+      icon: "",
       title: { en: "Commuter Trains", zh: "通勤近郊火车", fi: "Lähijunat (I, P, K, R, U)" },
       desc: {
         en: "I/P ring rail to Malmi/Myyrmäki; K train to Kerava/Korso for Sipoonkorpi feeder buses; U/L/Y trains west along the coastal line to Espoo & Kirkkonummi for Nuuksio and Meiko.",
@@ -3054,7 +3054,7 @@ function renderSpots() {
       }
     },
     {
-      icon: "🚌",
+      icon: "",
       title: { en: "Trunk Bus Lines", zh: "干线快速公交", fi: "Runkobussit & Linjat" },
       desc: {
         en: "Orange trunk buses 500, 510, 520, 530 provide orbital cross-city connections. Bus 345 from Kalasatama/Elielinaukio goes direct to Luukki, Vaakkoi, and Tremanskärr.",
@@ -3063,7 +3063,7 @@ function renderSpots() {
       }
     },
     {
-      icon: "🚲",
+      icon: "",
       title: { en: "Bikes & Gear Rules", zh: "自行车与携篮规定", fi: "Polkupyörät & Varusteet" },
       desc: {
         en: "Bicycles travel free on commuter trains and the Metro (avoid weekday peak hours 07:00–09:00 and 15:00–18:00). Bicycles are not allowed on regular buses. Carry mushrooms in rigid wicker baskets.",
@@ -3172,7 +3172,6 @@ function renderSpots() {
       ${transitCards.map(tc => `
         <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 1.15rem; box-shadow: var(--shadow); display: flex; flex-direction: column;">
           <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
-            <span style="font-size: 1.35rem;">${tc.icon}</span>
             <strong style="font-size: 0.95rem; color: var(--fg);">${tc.title[lang] || tc.title.en}</strong>
           </div>
           <p style="font-size: 0.84rem; color: var(--muted); line-height: 1.5; margin: 0;">${tc.desc[lang] || tc.desc.en}</p>
@@ -3205,7 +3204,7 @@ function renderSpots() {
           <div class="spot-transit">
             <p><strong>HSL:</strong> ${s.transit[lang]}</p>
             ${lang2 ? `<p style="color: var(--muted); font-size: 0.82rem; margin-top: 0.2rem;">${s.transit[lang2]}</p>` : ""}
-            <p style="margin-top: 0.35rem;"><strong>⏱️ Duration:</strong> ~${s.time}</p>
+            <p style="margin-top: 0.35rem;"><strong>Duration:</strong> ~${s.time}</p>
           </div>
 
           ${s.popularTrail ? `
@@ -3464,7 +3463,6 @@ function renderSafety() {
       <!-- Deer Keds Card -->
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 1.35rem; box-shadow: var(--shadow);">
         <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
-          <span style="font-size: 1.3rem;">🪰</span>
           <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--fg); margin: 0;">${lang === "zh" ? "鹿蝇 (Hirvikärpäset)" : (lang === "fi" ? "Hirvikärpäset" : "Deer Keds (Hirvikärpäset)")}</h3>
         </div>
         <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem;">
@@ -3554,7 +3552,7 @@ function renderSafety() {
               <span style="font-size: 0.76rem; font-weight: 700; color: var(--accent); background: var(--accent-soft); padding: 0.15rem 0.5rem; border-radius: 9999px;">
                 ${lang === "zh" ? "新手入门野采首选" : (lang === "fi" ? "Paras aloittelijoille" : "Premier Beginner Guide")}
               </span>
-              <span style="font-size: 0.78rem; color: var(--muted);">⏱️ 24:13</span>
+              <span style="font-size: 0.78rem; color: var(--muted);">24:13</span>
             </div>
             <h4 style="font-size: 0.96rem; font-weight: 800; color: var(--fg); margin: 0 0 0.35rem 0;">
               Mushroom Wonderland (Aaron Hilliard)
@@ -3583,7 +3581,7 @@ function renderSafety() {
           <div>
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem;">
               <span style="font-size: 0.76rem; font-weight: 700; color: #0284c7; background: rgba(2, 132, 199, 0.12); padding: 0.15rem 0.5rem; border-radius: 9999px;">
-                ${lang === "zh" ? "🇫🇮 芬兰本土家政与烹饪" : (lang === "fi" ? "🇫🇮 Perinteinen Martat" : "🇫🇮 Finnish Kitchen Heritage")}
+                ${lang === "zh" ? "芬兰本土家政与烹饪" : (lang === "fi" ? "Perinteinen Martat" : "Finnish Kitchen Heritage")}
               </span>
               <span style="font-size: 0.78rem; color: var(--muted);">Martat</span>
             </div>

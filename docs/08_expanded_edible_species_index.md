@@ -5,7 +5,7 @@ Finland’s pristine taiga and hemiboreal forests host **over 50 commercially ap
 
 ---
 
-## 🧭 How to Read the Edibility Codes
+## How to Read the Edibility Codes
 
 - `***` **Choice Gourmet (*Erinomainen*)**: Premier culinary mushroom; pan-fry directly in butter with no pre-boiling needed.
 - `**` **Good Edible (*Hyvä*)**: Flavorful, firm edible mushroom; excellent in stews, soups, pies, or dried.

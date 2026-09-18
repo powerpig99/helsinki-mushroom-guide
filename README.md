@@ -5,7 +5,7 @@ A comprehensive, trilingual field companion (**English** | **中文** | **Suomi*
 
 ---
 
-## 🌐 Trilingual Web Application
+## Trilingual Web Application
 
 The interactive digital field companion is deployable for **free** on GitHub Pages, Cloudflare Pages, or Vercel, and runs with zero dependencies.
 
@@ -15,7 +15,7 @@ The interactive digital field companion is deployable for **free** on GitHub Pag
 
 ---
 
-## 🚨 Emergency Contacts (Finland)
+## Emergency Contacts (Finland)
 
 > [!CAUTION]
 > **IF YOU SUSPECT MUSHROOM POISONING:**
@@ -27,9 +27,9 @@ The interactive digital field companion is deployable for **free** on GitHub Pag
 
 ---
 
-## 📚 Handbook Chapters & Manuals
+## Handbook Chapters & Manuals
 
-> 🌐 **Live Web Version**: Read this complete handbook online at [**powerpig99.github.io/helsinki-mushroom-guide**](https://powerpig99.github.io/helsinki-mushroom-guide/) or browse the [**Full Overview Webpage**](overview.html).
+> **Live Web Version**: Read this complete handbook online at [**powerpig99.github.io/helsinki-mushroom-guide**](https://powerpig99.github.io/helsinki-mushroom-guide/) or browse the [**Full Overview Webpage**](overview.html).
 
 | Section | Document Webpage | Raw Source | Key Topics Covered |
 | :--- | :--- | :--- | :--- |
@@ -46,7 +46,7 @@ The interactive digital field companion is deployable for **free** on GitHub Pag
 
 ---
 
-## 🚀 Quick Start Local Testing
+## Quick Start Local Testing
 
 Run a local web server to test on your computer or mobile device on the same local network:
 
@@ -58,7 +58,7 @@ Open [http://localhost:8000](http://localhost:8000) in your browser.
 
 ---
 
-## 🧭 Philosophy & Context
+## Philosophy & Context
 
 This project is a continuous living record and practical application of the first-person philosophy explored in [Not a ToE](https://powerpig99.github.io/not-a-toe/) — embodying the shift from analytical modeling to direct, active agency in everyday life.
 
