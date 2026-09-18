@@ -77,7 +77,10 @@ const nameVariants = {
   'lycoperdon perlatum': 'lycoperdon_perlatum',
   'hygrophoropsis aurantiaca': 'hygrophoropsis_aurantiaca',
   'tylopilus felleus': 'tylopilus_felleus',
-  'amanita muscaria': 'amanita_muscaria'
+  'amanita muscaria': 'amanita_muscaria',
+  'ganoderma lucidum': 'ganoderma_lucidum',
+  'lakkakääpä': 'ganoderma_lucidum',
+  'lakkakaapa': 'ganoderma_lucidum'
 };
 
 const chapterTargetHash = {
@@ -89,6 +92,7 @@ const chapterTargetHash = {
   '06': '#/catalog',
   '07': '#/cooking',
   '08': '#/catalog',
+  '09': '#/mushroom/ganoderma_lucidum',
   'zh': '#/cooking'
 };
 
@@ -318,6 +322,34 @@ const chapters = [
     targetSpecies: ["cantharellus_cibarius", "craterellus_tubaeformis", "hydnum_repandum", "craterellus_cornucopioides", "boletus_edulis", "boletus_pinophilus", "boletus_reticulatus", "lactarius_deliciosus", "tricholoma_matsutake", "macrolepiota_procera", "armillaria_mellea", "coprinus_comatus"]
   },
   {
+    id: "09",
+    slug: "09_reishi_in_helsinki",
+    file: "09_reishi_in_helsinki.md",
+    chapterNum: "Chapter 09",
+    icon: "",
+    title: {
+      en: "Wild Reishi in Helsinki: Occurrence, Wetland Habitats, Host Trees & Lookalike Defense",
+      zh: "赫尔辛基野生灵芝全息指南：湿地生境、三大宿主树种与拟假芝混淆防线",
+      fi: "Lakkakääpä Helsingin seudulla: Esiintyminen, tervaleppäkorvet ja näköislajit"
+    },
+    badge: {
+      en: "Medicinal & Ecology",
+      zh: "药用真菌与生态",
+      fi: "Lääkekäävät ja ekologia"
+    },
+    readTime: {
+      en: "10 min read",
+      zh: "10 分钟阅读",
+      fi: "10 min lukuaika"
+    },
+    desc: {
+      en: "Comprehensive guide to finding and identifying wild Reishi (Ganoderma lucidum / lakkakääpä) in Southern Finland: coastal black alder swamp carrs (tervaleppäkorpi), 3-tree host diagnostics (Alder vs Aspen vs Birch), foolproof defense against red-belted conk (Fomitopsis pinicola), verified video masterclasses, and Everyman's right regulations.",
+      zh: "芬兰南部与赫尔辛基野生灵芝（Ganoderma lucidum / lakkakääpä）全息指南：海岸带赤杨沼泽（tervaleppäkorpi）湿地生境、三大宿主树种（桤木/山杨/白桦）实地诊断、与极常见松生拟层孔菌（红带拟层孔菌）之生死鉴别矩阵、双重萃取工艺与自然公共权采摘法规。",
+      fi: "Perusteellinen opas lakkakäävän (Ganoderma lucidum) tunnistamiseen ja ekologiaan Uudellamaalla: tervaleppäkorvet, isäntäpuut, erot kantokääpään ja lattakääpään sekä jokamiehenoikeudet."
+    },
+    targetSpecies: ["ganoderma_lucidum"]
+  },
+  {
     id: "zh",
     slug: "cooking_and_recipes_zh",
     file: "cooking_and_recipes_zh.md",
@@ -437,6 +469,8 @@ function parseMarkdown(md, isLiveApp = false) {
       '07_preservation_and_recipes.html': '07',
       '08_expanded_edible_species_index.md': '08',
       '08_expanded_edible_species_index.html': '08',
+      '09_reishi_in_helsinki.md': '09',
+      '09_reishi_in_helsinki.html': '09',
       'cooking_and_recipes_zh.md': 'zh',
       'cooking_and_recipes_zh.html': 'zh'
     };

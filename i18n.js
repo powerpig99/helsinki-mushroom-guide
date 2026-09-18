@@ -25,7 +25,7 @@ const I18N = {
       tierIntroIntermediateDesc: "Expand your basket with species requiring culinary preparation (parboiling acrid milkcaps to remove peppery toxins, peeling slimy bolete pellicles) or rigorous morphological validation (checking veil rings vs volva).",
       tierReadMonographBtn: "Read Full Handbook Monograph →",
       tierHideMonographBtn: "✕ Close Monograph",
-      tabCatalog: "Species (63)",
+      tabCatalog: "Species (64)",
       tabLookalikes: "Lookalikes",
       tabHabitats: "Habitats & Seasons",
       tabSpots: "Transit & Trails",
@@ -35,7 +35,7 @@ const I18N = {
       btnHideFilters: "Close ▴",
       btnResetFilters: "Reset",
       btnCompareToggle: "± Compare",
-      labelViewGrid: "All 63 Species",
+      labelViewGrid: "All 64 Species",
       labelViewSafe5: "Safe Five",
       labelViewIntermediate: "Intermediate",
       labelViewMaster: "Monographs",
@@ -84,11 +84,11 @@ const I18N = {
       advancedLevel: "Advanced",
       deadlyLevel: "Deadly Toxic",
       familyFilterLabel: "Family / Group:",
-      allFamilies: "All Groups (63)",
+      allFamilies: "All Groups (64)",
       famChanterelles: "Chanterelles (5)",
       famBoletes: "Boletes (13)",
       famTooth: "Tooth Fungi (2)",
-      famPolypores: "Polypores (3)",
+      famPolypores: "Polypores (4)",
       famMilkcaps: "Milkcaps (9)",
       famBrittlegills: "Brittlegills (10)",
       famOthers: "Gilled & Others (14)",
@@ -109,6 +109,7 @@ const I18N = {
       badgeParboil: "Must Parboil (!)",
       badgeDeadly: "DEADLY TOXIC",
       badgeInedible: "Inedible",
+      badgeMedicinal: "Medicinal / Adaptogen",
       backToCatalog: "← Back",
       whereWhenTitle: "When & Where to Find (Helsinki & Uusimaa)",
       searchTacticsTitle: "Search Tactics & Eye Training",
@@ -195,7 +196,7 @@ const I18N = {
       tierIntroIntermediateDesc: "超越五大基础菌：需要掌握科学水煮焯水脱毒工艺的松乳菇/白乳菇、黏皮牛肝菌去皮处理，以及必须严格区分菌环与菌托的环柄菇和锦绣蜡伞等进阶高风味真菌。",
       tierReadMonographBtn: "阅读手册完整专论 →",
       tierHideMonographBtn: "✕ 收起专论",
-      tabCatalog: "物种图鉴 (63)",
+      tabCatalog: "物种图鉴 (64)",
       tabLookalikes: "毒菇混淆",
       tabHabitats: "生境物候",
       tabSpots: "路线秘境",
@@ -205,7 +206,7 @@ const I18N = {
       btnHideFilters: "收起 ▴",
       btnResetFilters: "重置",
       btnCompareToggle: "± 对照",
-      labelViewGrid: "全部 63 种",
+      labelViewGrid: "全部 64 种",
       labelViewSafe5: "安全五大菌",
       labelViewIntermediate: "进阶美味",
       labelViewMaster: "完整大典",
@@ -254,11 +255,11 @@ const I18N = {
       advancedLevel: "资深/需处理",
       deadlyLevel: "致命剧毒",
       familyFilterLabel: "分类家族:",
-      allFamilies: "全部类别 (63种)",
+      allFamilies: "全部类别 (64种)",
       famChanterelles: "鸡油菌与号角菇 (5)",
       famBoletes: "牛肝菌类 (13)",
       famTooth: "齿菌类 (2)",
-      famPolypores: "多孔菌与地花菌 (3)",
+      famPolypores: "多孔菌与地花菌 (4)",
       famMilkcaps: "乳菇类 (9)",
       famBrittlegills: "红菇类 (10)",
       famOthers: "伞菌与马勃 (14)",
@@ -279,6 +280,7 @@ const I18N = {
       badgeParboil: "必须焯水去毒 (!)",
       badgeDeadly: "致命剧毒",
       badgeInedible: "不可食用/极苦",
+      badgeMedicinal: "名贵药用真菌",
       backToCatalog: "← Back",
       whereWhenTitle: "采摘时令与地点（赫尔辛基及近郊）",
       searchTacticsTitle: "森林实战寻菇技巧与眼力训练",
@@ -366,7 +368,7 @@ const I18N = {
       tierIntroIntermediateDesc: "Laajenna sienitietämystäsi: ryöpättävät rouskut, nahanpoistoa vaativat tatit sekä lajit, joiden tunnistamisessa vaaditaan rengas- ja tuppituntomerkkien varmaa hallintaa.",
       tierReadMonographBtn: "Lue koko käsikirjan luku →",
       tierHideMonographBtn: "✕ Sulje monografia",
-      tabCatalog: "Lajit (63)",
+      tabCatalog: "Lajit (64)",
       tabLookalikes: "Näköislajit",
       tabHabitats: "Elinympäristöt",
       tabSpots: "Reitit & paikat",
@@ -376,7 +378,7 @@ const I18N = {
       btnHideFilters: "Sulje ▴",
       btnResetFilters: "Nollaa",
       btnCompareToggle: "± Vertaa",
-      labelViewGrid: "Kaikki 63 lajia",
+      labelViewGrid: "Kaikki 64 lajia",
       labelViewSafe5: "Varma Viisikko",
       labelViewIntermediate: "Kokeneemmalle",
       labelViewMaster: "Monografiat",
@@ -425,7 +427,7 @@ const I18N = {
       advancedLevel: "Vaatii esikäsittelyn",
       deadlyLevel: "Tappavan myrkyllinen",
       familyFilterLabel: "Heimo ja ryhmä:",
-      allFamilies: "Kaikki lajit (63)",
+      allFamilies: "Kaikki lajit (64)",
       famChanterelles: "Vahverot (5)",
       famBoletes: "Tatit (13)",
       famTooth: "Orakkaat (2)",
@@ -618,6 +620,7 @@ const I18N = {
       "laetiporus_sulphureus": [
           "albatrellus_ovinus"
       ],
+      "ganoderma_lucidum": [],
       "lactarius_deliciosus": [
           "lactarius_deterrimus",
           "lactarius_torminosus"
@@ -7228,6 +7231,110 @@ const I18N = {
                 "attribution": "(c) Николай Фещенко, all rights reserved"
           }
 ]
+    }    ,
+    {
+      id: "ganoderma_lucidum",
+      chapters: ["09"],
+      latinName: "Ganoderma lucidum",
+      family: "polyporaceae",
+      whereWhen: {
+        en: "August to October. Rare in Finland (< 5% find probability). Strictly confined to humid, waterlogged deciduous wetlands, floodplains, and coastal black alder swamp carrs (tervaleppäkorpi) across Uusimaa and the Helsinki coastal strip (e.g. Vanhankaupunginlahti, Sipoonkorpi Byabäcken river valley, Meiko). Saprobic or parasitic on decaying stumps, roots, and fallen logs of black alder, aspen, and birch.",
+        zh: "8月至10月出菇。在芬兰野外较为罕见（偶遇概率<5%）。严格局限于大赫尔辛基及乌西玛大区温润潮湿的沿海带红桤木/黑桤木沼泽（Tervaleppäkorpi）、水岸泛滥湿地与庇荫深谷（如老城湾自然保护区外缘、西波国家公园Byabäcken河谷、Meiko湖畔）。作为木腐菌或微弱寄生菌，生长在倒伏积水的黑桤木、欧洲山杨或白桦树桩及苔藓倒木上。",
+        fi: "Elo-lokakuussa. Suomessa luonnonvaraisena harvinainen (< 5 % löytötodennäköisyys). Esiintyy Uudenmaan ja rannikon rehevissä tervaleppäkorvissa, kosteikoissa ja jokilaaksoissa (mm. Vanhankaupunginlahden reuna-alueet, Sipoonkorven Byabäcken, Meiko). Kasvaa lahottajasienenä tervalepän, haavan ja koivun kannoilla, maapuilla ja tyvillä."
+      },
+      searchTactics: {
+        en: "Scan the mossy bases and half-submerged root flares of ancient black alder trees in flooded swamp groves. Look for a glossy, varnished, kidney- or fan-shaped cap glowing rich chestnut-red, amber, or mahogany, equipped with a distinct lateral woody stalk. The active growing margin is bright creamy-yellow or white.",
+        zh: "重点搜寻被深色茶色湿地死水浸润的古老黑桤木根基与倒伏苔藓树干。寻找具有强烈天然漆器光泽、肾形或扇形展开的红褐色至深栗色菌盖，其外缘具鲜明乳白至黄色生长带，且几乎总长有一根显著坚硬的侧生暗红黑漆光长柄。",
+        fi: "Tarkkaile kosteikkojen tervaleppien juurakoita ja sammaloituneita maapuita. Etsi upeaa, lakkakiiltoista munuaismäistä tai viuhkamaista punaruskeaa lakkia, jossa on selvä sivuttainen puumainen jalka ja vaalea kasvureunus."
+      },
+      lookalikes: {
+        en: "Crucial Lookalike Defense: Red-belted Conk (Fomitopsis pinicola / Kantokääpä) is ubiquitous on conifer stumps; it is thick, hoof-shaped, perennial, stemless, and has an orange-red resinous margin. Artist's Conk (Ganoderma applanatum / Lattakääpä) is wide, flat, stemless, and matte cocoa-brown without lacquer, instantly bruising dark brown when scratched.",
+        zh: "最关键混淆种防线：松生拟层孔菌/红带拟层孔菌（Fomitopsis pinicola / Kantokääpä）极普遍生长于针叶树桩上，呈厚蹄状多孔，无菌柄，仅边缘带树脂光泽橙红带；树舌灵芝（Ganoderma applanatum / Lattakääpä）呈无柄扁平宽大托盘状，表面完全无漆光且覆满暗褐可可色粉尘，白腹面刮划立刻变深褐。",
+        fi: "Tärkeimmät näköislajit: Kantokääpä (Fomitopsis pinicola) on erittäin yleinen havu- ja sekametsissä, kaviomainen, jalaton, monivuotinen ja sen reunassa on punaoranssi vyöhyke. Lattakääpä (Ganoderma applanatum) on laakea, jalaton ja himmeänharmaa/ruskea ilman lakkapintaa, ja sen valkoinen alapinta tummuu naarmutettaessa."
+      },
+      cookingGuide: {
+        en: "Inedible as culinary food due to its rigid, corky woody consistency. Highly prized as premier medicinal adaptogen. Must be extracted: 1) Hot Water Decoction: Simmer thin slices for 2-4 hours to extract water-soluble immune-modulating beta-glucans. 2) Alcohol Tincture: Macerate in 60-80% spirit for 4-6 weeks for bitter triterpenes (ganoderic acids). Combine both for a full-spectrum dual-extract.",
+        zh: "肉质如木质软木塞般坚硬，无法作为普通菜肴咀嚼食用。为顶级名贵药用真菌。科学提取法：1）慢炖水煎法：切薄片小火煨煮2-4小时，萃取水溶性免疫调节多糖（β-葡聚糖）；2）乙醇浸提法：浸泡于60-80度有机烈酒中4-6周，萃取苦味灵芝三萜与灵芝酸。将两者合并即成经典全谱双重提取物。",
+        fi: "Ei sovellu ruokasieneksi puumaisen sitkeän rakenteensa vuoksi. Arvostettu lääkinnällinen sieni. Valmistus: 1) Vesiuutto: Hauduta ohuita siivuja miedolla lämmöllä 2–4 tuntia veteen liukenevien beetaglukaanien vapauttamiseksi. 2) Alkoholouutto: Uuta 60–80 % vahvassa alkoholissa 4–6 viikkoa triterpeenien eristämiseksi. Yhdistä kaksoisuutteeksi."
+      },
+      image: "./images/ganoderma_lucidum.jpg",
+      gallery: [
+        {
+          file: "./images/ganoderma_lucidum.jpg",
+          caption: {
+            en: "True Reishi fruiting body on decaying hardwood in wetland",
+            zh: "野生灵芝红褐色漆亮菌盖与侧生硬柄特写",
+            fi: "Lakkakäävän kiiltävä lakkapintainen itiöemä lahopuulla"
+          },
+          attribution: "Wikimedia Commons (CC BY-SA)"
+        },
+        {
+          file: "./images/ganoderma_lucidum_1.jpg",
+          caption: {
+            en: "Under-cap microscopic white pore surface and margin",
+            zh: "菌盖腹面紧密微孔层与乳白增厚边缘",
+            fi: "Lakin alapinnan tiheä valkoinen pillistö ja kasvureuna"
+          },
+          attribution: "Wikimedia Commons (CC BY-SA)"
+        },
+        {
+          file: "./images/ganoderma_lucidum_2.jpg",
+          caption: {
+            en: "Lookalike comparison: Reishi vs Red-belted Conk vs Artist's Conk",
+            zh: "三大菌形态辨识图：真灵芝 vs 松生拟层孔菌 vs 树舌灵芝",
+            fi: "Tuntomerkkien vertailu: Lakkakääpä, kantokääpä ja lattakääpä"
+          },
+          attribution: "Field Guide Comparative Plate"
+        },
+        {
+          file: "./images/ganoderma_lucidum_3.jpg",
+          caption: {
+            en: "Prime Nordic coastal black alder swamp habitat (tervaleppäkorpi)",
+            zh: "芬兰海岸带原生黑桤木湿地沼泽（Tervaleppäkorpi）生境",
+            fi: "Etelä-Suomen rannikon tervaleppäkorven tyypillinen suoekosysteemi"
+          },
+          attribution: "Finnish Wetland Biotope Documentation"
+        }
+      ],
+      rating: "***",
+      edibility: "medicinal",
+      level: "advanced",
+      months: [8, 9, 10],
+      names: {
+        en: { primary: "Reishi / Lingzhi", local: "Lakkakääpä", alt: "Lacquered Bracket" },
+        zh: { primary: "赤芝 / 灵芝", local: "漆亮柄多孔菌", alt: "Ganoderma lucidum" },
+        fi: { primary: "Lakkakääpä", local: "Reishi", alt: "Ganoderma lucidum" }
+      },
+      habitatName: {
+        en: "Coastal black alder swamp carrs (tervaleppäkorpi) & flooded deciduous wetlands",
+        zh: "海岸带黑桤木沼泽湿地（Tervaleppäkorpi）、水岸阔叶湿地及避风深谷倒木",
+        fi: "Tervaleppäkorvet, kosteat lehtometsät ja tulvarannat"
+      },
+      morphology: {
+        en: {
+          cap: "5–20 cm, kidney-shaped or flabelliform, coated in an intense glossy red-amber lacquer, zoned with concentric ripples",
+          underCap: "Dense, minute white to buff pores (4–5 per mm), turning pale brownish where handled",
+          stem: "Prominent lateral or eccentric woody stalk, glossy reddish-black, irregular and lacquered",
+          odor: "Pleasantly earthy, faintly sweet and mushroomy; intensely bitter taste"
+        },
+        zh: {
+          cap: "5–20厘米，肾形或扇形展开，通体覆盖如红宝石或琥珀般清亮的硬质光亮天然漆层，具同心环状棱纹",
+          underCap: "腹面密布肉眼极微小的乳白至淡皮黄色圆形管孔（每毫米4-5个），刮擦后泛淡褐色",
+          stem: "明显侧生或偏生坚硬木质柄，漆黑或紫红黑发亮，表面不平微弯曲",
+          odor: "清雅怡人的泥土菌香，微带坚果甜气；舌尝极苦（特征性灵芝酸苦味）"
+        },
+        fi: {
+          cap: "5–20 cm, munuaismainen tai viuhkamainen, voimakkaan kiiltävän lakkapinnan peittämä, vyöhykkeinen",
+          underCap: "Erittäin hieno, tiheä valkoinen tai kermanvaalea pillistö (4–5 pilliä/mm), tummuu hieman kosketuksesta",
+          stem: "Tuntomerkkinä usein pitkä, sivuttainen, epäsäännöllinen ja kiiltävän mustanpunainen jalka",
+          odor: "Miellyttävä sienen ja metsämaan tuoksu; maultaan erittäin karvas"
+        }
+      },
+      culinaryTip: {
+        en: "Non-culinary due to wooden texture. Slice fresh thinly with a heavy knife or cleaver before drying; dried whole conks become as hard as ironwood!",
+        zh: "严禁直接当菜炒食（硬如实心硬木）。采回后务必在其新鲜柔韧时立即用砍骨重刀切成薄片后烘干；若整朵风干，坚硬如铁难以切割！",
+        fi: "Ei ruoaksi puumaisen rakenteen takia. Viipaloi ohuiksi siivuiksi tuoreena ennen kuivaamista, sillä kuivuttuaan itiöemä kovettuu kivikovaksi!"
+      }
     }
   ],
 
@@ -8097,6 +8204,27 @@ const I18N = {
         fi: "Täydellinen 54 luonnonvaraisen ruokasienen mestariluettelo ryhmiteltynä 8 heimoon, sisältäen ruoka-arvot, isäntäpuut ja keskeiset maastotuntomerkit."
       },
       url: "docs/08_expanded_edible_species_index.html"
+    },
+    {
+      id: "09",
+      chapterNum: "Chapter 09",
+      icon: "",
+      title: {
+        en: "Wild Reishi in Helsinki: Wetland Habitats, Host Trees & Lookalike Defense",
+        zh: "赫尔辛基野生灵芝全息指南：湿地生境、三大宿主树种与拟假芝混淆防线",
+        fi: "Lakkakääpä Helsingin seudulla: Esiintyminen, tervaleppäkorvet ja näköislajit"
+      },
+      badge: {
+        en: "Medicinal & Ecology",
+        zh: "药用真菌与生态",
+        fi: "Lääkekäävät & ekologia"
+      },
+      desc: {
+        en: "Comprehensive guide to finding and identifying wild Reishi (Ganoderma lucidum / lakkakääpä) in Southern Finland: coastal black alder swamp carrs (tervaleppäkorpi), 3-tree host diagnostics (Alder vs Aspen vs Birch), foolproof defense against red-belted conk (Fomitopsis pinicola), verified video masterclasses, and Everyman's right regulations.",
+        zh: "芬兰南部与赫尔辛基野生灵芝（Ganoderma lucidum / lakkakääpä）全息指南：海岸带赤杨沼泽（tervaleppäkorpi）湿地生境、三大宿主树种（桤木/山杨/白桦）实地诊断、与极常见松生拟层孔菌（红带拟层孔菌）之生死鉴别矩阵、双重萃取工艺与自然公共权采摘法规。",
+        fi: "Perusteellinen opas lakkakäävän (Ganoderma lucidum) tunnistamiseen ja ekologiaan Uudellamaalla: tervaleppäkorvet, isäntäpuut, erot kantokääpään ja lattakääpään sekä jokamiehenoikeudet."
+      },
+      url: "docs/09_reishi_in_helsinki.html"
     },
     {
       id: "zh",

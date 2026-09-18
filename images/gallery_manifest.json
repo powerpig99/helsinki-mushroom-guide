@@ -834,5 +834,43 @@
       },
       "attribution": "(c) cactusdan, all rights reserved"
     }
+  ],
+  "ganoderma_lucidum": [
+    {
+      "file": "./images/ganoderma_lucidum.jpg",
+      "caption": {
+        "en": "True Reishi fruiting body on decaying hardwood in wetland",
+        "zh": "野生灵芝红褐色漆亮菌盖与侧生硬柄特写",
+        "fi": "Lakkakäävän kiiltävä lakkapintainen itiöemä lahopuulla"
+      },
+      "attribution": "Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "file": "./images/ganoderma_lucidum_1.jpg",
+      "caption": {
+        "en": "Under-cap microscopic white pore surface and margin",
+        "zh": "菌盖腹面紧密微孔层与乳白增厚边缘",
+        "fi": "Lakin alapinnan tiheä valkoinen pillistö ja kasvureuna"
+      },
+      "attribution": "Wikimedia Commons (CC BY-SA)"
+    },
+    {
+      "file": "./images/ganoderma_lucidum_2.jpg",
+      "caption": {
+        "en": "Lookalike comparison: Reishi vs Red-belted Conk vs Artist's Conk",
+        "zh": "三大菌形态辨识图：真灵芝 vs 松生拟层孔菌 vs 树舌灵芝",
+        "fi": "Tuntomerkkien vertailu: Lakkakääpä, kantokääpä ja lattakääpä"
+      },
+      "attribution": "Field Guide Comparative Plate"
+    },
+    {
+      "file": "./images/ganoderma_lucidum_3.jpg",
+      "caption": {
+        "en": "Prime Nordic coastal black alder swamp habitat (tervaleppäkorpi)",
+        "zh": "芬兰海岸带原生黑桤木湿地沼泽（Tervaleppäkorpi）生境",
+        "fi": "Etelä-Suomen rannikon tervaleppäkorven tyypillinen suoekosysteemi"
+      },
+      "attribution": "Finnish Wetland Biotope Documentation"
+    }
   ]
 }

@@ -775,6 +775,9 @@ function navigateToChapter(chId) {
     window.location.hash = "#/catalog";
     switchTabDirectly("catalog");
     switchCatalogViewMode("master");
+  } else if (clean === "09") {
+    window.location.hash = "#/mushroom/ganoderma_lucidum";
+    showMushroomDetail("ganoderma_lucidum");
   } else {
     window.location.hash = "#/catalog";
     switchTabDirectly("catalog");
@@ -1323,6 +1326,7 @@ function renderCatalog() {
     else if (m.edibility === "parboil") { badgeClass = "badge-parboil"; badgeText = t.badgeParboil; }
     else if (m.edibility === "deadly") { badgeClass = "badge-deadly"; badgeText = t.badgeDeadly; }
     else if (m.edibility === "inedible") { badgeClass = "badge-inedible"; badgeText = t.badgeInedible; }
+    else if (m.edibility === "medicinal") { badgeClass = "badge-medicinal"; badgeText = t.badgeMedicinal || "Medicinal"; }
 
     const monthTags = m.months.map(num => {
       const idx = num - 5;
@@ -1443,6 +1447,7 @@ function renderMushroomDetail(speciesId) {
   else if (sp.edibility === "parboil") { badgeClass = "badge-parboil"; badgeText = t.badgeParboil; }
   else if (sp.edibility === "deadly") { badgeClass = "badge-deadly"; badgeText = t.badgeDeadly; }
   else if (sp.edibility === "inedible") { badgeClass = "badge-inedible"; badgeText = t.badgeInedible; }
+  else if (sp.edibility === "medicinal") { badgeClass = "badge-medicinal"; badgeText = t.badgeMedicinal || "Medicinal"; }
 
   // Skill level label determination
   let levelText = t.beginnerLevel;

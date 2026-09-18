@@ -1306,6 +1306,7 @@ a:focus-visible {
 .badge-parboil  { background-color: rgba(217, 119, 6, 0.92); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); }
 .badge-deadly   { background-color: rgba(220, 38, 38, 0.92); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); }
 .badge-inedible { background-color: rgba(107, 114, 128, 0.92); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); }
+.badge-medicinal { background-color: rgba(124, 58, 237, 0.92); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); }
 
 .star-rating {
   position: absolute;
