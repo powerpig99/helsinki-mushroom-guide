@@ -1589,18 +1589,6 @@ a:focus-visible {
   max-width: 280px;
 }
 
-.detail-lang-wrapper {
-  display: inline-flex;
-  gap: 6px;
-}
-
-.detail-lang-wrapper .lang-row {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  padding: 2px;
-  border-radius: var(--radius-full);
-}
-
 .bilingual-container {
   display: grid;
   grid-template-columns: 1fr 1fr;

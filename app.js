@@ -1545,7 +1545,7 @@ function renderMushroomDetail(speciesId) {
 
   // Render Full Field Guide Detail Layout
   container.innerHTML = `
-    <!-- Sticky Top Navigation Bar with Flags Only & Optional Second Language -->
+    <!-- Detail Top Bar with Back Button & Edibility Badge -->
     <div class="detail-top-bar">
       <div class="detail-top-bar-left">
         <button class="btn-back-catalog" onclick="navigateToCatalog()" aria-label="Back" title="Back to Species Guide">
@@ -1555,18 +1555,6 @@ function renderMushroomDetail(speciesId) {
           </svg>
           <span class="btn-back-label">Back</span>
         </button>
-        <div class="lang-switcher-wrapper detail-lang-wrapper" aria-label="Select Language">
-          <div class="lang-row primary-lang-row">
-            <button class="lang-btn ${lang === 'en' ? 'active' : ''}" onclick="switchAppLanguage('en')" title="English">EN</button>
-            <button class="lang-btn ${lang === 'zh' ? 'active' : ''}" onclick="switchAppLanguage('zh')" title="中文">中文</button>
-            <button class="lang-btn ${lang === 'fi' ? 'active' : ''}" onclick="switchAppLanguage('fi')" title="Suomi">FI</button>
-          </div>
-          <div class="lang-row secondary-lang-row">
-            <button class="lang-btn secondary-btn ${lang2 === 'en' ? 'active-secondary' : ''} ${lang === 'en' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('en')" title="Compare English (Click to toggle)">EN</button>
-            <button class="lang-btn secondary-btn ${lang2 === 'zh' ? 'active-secondary' : ''} ${lang === 'zh' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('zh')" title="与中文对照 (点击开启/取消)">中文</button>
-            <button class="lang-btn secondary-btn ${lang2 === 'fi' ? 'active-secondary' : ''} ${lang === 'fi' ? 'disabled-lang' : ''}" onclick="toggleSecondaryLanguage('fi')" title="Vertaa suomeksi (Klikkaa päälle/pois)">FI</button>
-          </div>
-        </div>
       </div>
       <div class="detail-badge-group">
         <span class="badge ${badgeClass}">${badgeText}</span>
