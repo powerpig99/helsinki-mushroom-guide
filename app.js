@@ -405,7 +405,7 @@ function renderCookingVideoCard(sp, lang, lang2, t) {
             <div class="chinese-recipe-title">${rTitle}</div>
             ${rTitle2 ? `<div class="chinese-recipe-title-sub">${rTitle2}</div>` : ""}
             <div class="chinese-recipe-meta">
-              <span class="chinese-recipe-author">👨‍🍳 ${r.creator}</span>
+              <span class="chinese-recipe-author">${r.creator}</span>
               <span class="chinese-recipe-duration">⏱️ ${r.duration}</span>
             </div>
           </div>
@@ -608,11 +608,11 @@ function applyLanguage(lang) {
   const forestCacheLabel = document.getElementById("forest-cache-label");
   if (forestCacheLabel) {
     if (!navigator.onLine) {
-      forestCacheLabel.textContent = t.offlineBadgeOffline || "📡 Off-Grid / Offline";
+      forestCacheLabel.textContent = t.offlineBadgeOffline || "Off-Grid / Offline";
     } else if (typeof ForestCacheManager !== 'undefined' && ForestCacheManager.isDownloading) {
       forestCacheLabel.textContent = t.offlineBadgeDownloading || "⏳ Caching...";
     } else {
-      forestCacheLabel.textContent = t.offlineBadgeReady || "🌲 Offline Ready";
+      forestCacheLabel.textContent = t.offlineBadgeReady || "Offline Ready";
     }
   }
 
@@ -680,7 +680,7 @@ function renderSpeciesChipsForChapter(ch, lang, t) {
         const sp = I18N.species.find(s => s.id === spId);
         if (!sp) return "";
         const spName = sp.names[lang]?.primary || sp.latinName;
-        return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">🍄 ${spName}</a>`;
+        return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">${spName}</a>`;
       }).join("")}
     </div>
   `;
@@ -1356,7 +1356,7 @@ function renderCatalog() {
           </div>
 
           <div class="meta-row">
-            <span class="meta-tag" style="background:var(--card-hover); color:var(--muted); border:1px solid var(--card-border);">📍 ${m.habitatName[lang]}${nameData2 ? ` / ${m.habitatName[lang2]}` : ""}</span>
+            <span class="meta-tag" style="background:var(--card-hover); color:var(--muted); border:1px solid var(--card-border);">${m.habitatName[lang]}${nameData2 ? ` / ${m.habitatName[lang2]}` : ""}</span>
             <div style="display:flex; gap:0.25rem;">${monthTags}</div>
           </div>
 
@@ -1383,9 +1383,9 @@ function renderCatalog() {
             </div>
           </div>
 
-          ${m.warning && m.warning[lang] ? `<div class="card-alert">⚠️ ${m.warning[lang]}${nameData2 && m.warning[lang2] ? `<div class="card-secondary-alert" style="color:var(--danger); font-size:0.8rem; margin-top:3px;">${m.warning[lang2]}</div>` : ""}</div>` : ""}
-          ${m.culinaryTip && m.culinaryTip[lang] ? `<div class="card-tip">🍳 ${m.culinaryTip[lang]}${nameData2 && m.culinaryTip[lang2] ? `<div class="card-secondary-tip" style="color:var(--warning); font-size:0.8rem; margin-top:3px;">${m.culinaryTip[lang2]}</div>` : ""}</div>` : ""}
-          ${m.lookalikeAlert && m.lookalikeAlert[lang] ? `<div class="card-lookalike-alert">🔍 ${m.lookalikeAlert[lang]}${nameData2 && m.lookalikeAlert[lang2] ? `<div class="card-secondary-lk-alert">${m.lookalikeAlert[lang2]}</div>` : ""}</div>` : ""}
+          ${m.warning && m.warning[lang] ? `<div class="card-alert">${m.warning[lang]}${nameData2 && m.warning[lang2] ? `<div class="card-secondary-alert" style="color:var(--danger); font-size:0.8rem; margin-top:3px;">${m.warning[lang2]}</div>` : ""}</div>` : ""}
+          ${m.culinaryTip && m.culinaryTip[lang] ? `<div class="card-tip">${m.culinaryTip[lang]}${nameData2 && m.culinaryTip[lang2] ? `<div class="card-secondary-tip" style="color:var(--warning); font-size:0.8rem; margin-top:3px;">${m.culinaryTip[lang2]}</div>` : ""}</div>` : ""}
+          ${m.lookalikeAlert && m.lookalikeAlert[lang] ? `<div class="card-lookalike-alert">${m.lookalikeAlert[lang]}${nameData2 && m.lookalikeAlert[lang2] ? `<div class="card-secondary-lk-alert">${m.lookalikeAlert[lang2]}</div>` : ""}</div>` : ""}
 
           ${(() => {
             const lkIds = (I18N.lookalikeMap && I18N.lookalikeMap[m.id]) ? I18N.lookalikeMap[m.id] : [];
@@ -1393,10 +1393,10 @@ function renderCatalog() {
             if (!firstLk) return "";
             return `
               <div class="card-lookalike-pill" onclick="event.stopPropagation(); navigateToMushroom('${firstLk.id}')" title="${lang === 'zh' ? '点击对比易混淆种' : (lang === 'fi' ? 'Katso näköislaji' : 'Compare with lookalike')}: ${firstLk.names[lang]?.primary}">
-                <span class="card-lk-icon">⚠️</span>
+                
                 <span class="card-lk-label">${lang === 'zh' ? '近缘混淆' : (lang === 'fi' ? 'Näköislaji' : 'Lookalike')}:</span>
                 <span class="card-lk-name">${firstLk.names[lang]?.primary || firstLk.latinName}</span>
-                ${(firstLk.edibility === 'deadly' || firstLk.level === 'deadly') ? '<span class="card-lk-deadly">☠️</span>' : ''}
+                ${(firstLk.edibility === 'deadly' || firstLk.level === 'deadly') ? `<span class="card-lk-deadly">${lang === "zh" ? "剧毒" : (lang === "fi" ? "Myrkyllinen" : "Deadly")}</span>` : ''}
               </div>
             `;
           })()}
@@ -1471,15 +1471,15 @@ function renderMushroomDetail(speciesId) {
   const dangerBannerHtml = isInedibleOrToxic ? `
     <div class="detail-danger-card">
       <div class="detail-danger-title">
-        <span>🚨 ${isDeadly ? (lang === 'zh' ? '【致命剧毒！严禁采食】' : (lang === 'fi' ? 'TAPPAVAN MYRKYLLINEN' : 'DEADLY TOXIC SPECIMEN')) : (lang === 'zh' ? '【不可食用 / 极苦或有毒】' : (lang === 'fi' ? 'EI SYÖTÄVÄ / MYRKYLLINEN' : 'INEDIBLE / TOXIC'))}</span>
+        <span>${isDeadly ? (lang === 'zh' ? '【致命剧毒！严禁采食】' : (lang === 'fi' ? 'TAPPAVAN MYRKYLLINEN' : 'DEADLY TOXIC SPECIMEN')) : (lang === 'zh' ? '【不可食用 / 极苦或有毒】' : (lang === 'fi' ? 'EI SYÖTÄVÄ / MYRKYLLINEN' : 'INEDIBLE / TOXIC'))}</span>
         ${nameData2 ? `<span style="font-size:0.85rem; font-weight:700; color:var(--danger); margin-left:0.5rem;">(${isDeadly ? (lang2 === 'zh' ? '【致命剧毒】' : (lang2 === 'fi' ? 'TAPPAVAN MYRKYLLINEN' : 'DEADLY TOXIC')) : (lang2 === 'zh' ? '【不可食用】' : (lang2 === 'fi' ? 'EI SYÖTÄVÄ' : 'INEDIBLE'))})</span>` : ""}
       </div>
       <div style="margin-bottom: 1rem;">
         ${renderBilingualText(sp.warning, lang, lang2)}
       </div>
       <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-        <a href="tel:0800147111" class="emergency-btn" style="background:#dc2626; color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; font-weight:700; padding:0.6rem 1.2rem; border-radius:8px;">📞 芬兰中毒中心 / Poison Center: 0800 147 111</a>
-        <a href="tel:112" class="emergency-btn" style="background:#7f1d1d; color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; font-weight:700; padding:0.6rem 1.2rem; border-radius:8px;">🚨 紧急急救 / Emergency: 112</a>
+        <a href="tel:0800147111" class="emergency-btn" style="background:#dc2626; color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; font-weight:700; padding:0.6rem 1.2rem; border-radius:8px;">芬兰中毒中心 / Poison Center: 0800 147 111</a>
+        <a href="tel:112" class="emergency-btn" style="background:#7f1d1d; color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; font-weight:700; padding:0.6rem 1.2rem; border-radius:8px;">紧急急救 / Emergency: 112</a>
       </div>
     </div>
   ` : "";
@@ -1502,16 +1502,16 @@ function renderMushroomDetail(speciesId) {
         else if (lk.edibility === "inedible") { lkBadgeClass = "badge-inedible"; lkBadgeText = t.badgeInedible; }
 
         let riskBadgeClass = "badge-risk-edible";
-        let riskBadgeText = `✨ ${lang === 'zh' ? '同为可食用近缘种' : (lang === 'fi' ? 'Myös syötävä näköislaji' : 'Edible Sister Species')}`;
+        let riskBadgeText = `${lang === 'zh' ? '同为可食用近缘种' : (lang === 'fi' ? 'Myös syötävä näköislaji' : 'Edible Sister Species')}`;
         if (lk.edibility === "deadly" || lk.level === "deadly") {
           riskBadgeClass = "badge-risk-deadly";
-          riskBadgeText = `🚨 ${lang === 'zh' ? '致命剧毒警报！' : (lang === 'fi' ? 'TAPPAVA VAARA!' : 'DEADLY LOOKALIKE RISK!')}`;
+          riskBadgeText = `${lang === 'zh' ? '致命剧毒警报！' : (lang === 'fi' ? 'TAPPAVA VAARA!' : 'DEADLY LOOKALIKE RISK!')}`;
         } else if (lk.edibility === "inedible") {
           riskBadgeClass = "badge-risk-inedible";
-          riskBadgeText = `⚠️ ${lang === 'zh' ? '不可食用 / 极苦混淆' : (lang === 'fi' ? 'Kelvoton näköislaji' : 'Inedible / Bitter Lookalike')}`;
+          riskBadgeText = `${lang === 'zh' ? '不可食用 / 极苦混淆' : (lang === 'fi' ? 'Kelvoton näköislaji' : 'Inedible / Bitter Lookalike')}`;
         } else if (lk.edibility === "parboil") {
           riskBadgeClass = "badge-risk-parboil";
-          riskBadgeText = `♨️ ${lang === 'zh' ? '需水焯去毒后食用' : (lang === 'fi' ? 'Vaatii ryöppäyksen' : 'Must Parboil Before Eating')}`;
+          riskBadgeText = `${lang === 'zh' ? '需水焯去毒后食用' : (lang === 'fi' ? 'Vaatii ryöppäyksen' : 'Must Parboil Before Eating')}`;
         }
 
         return `
@@ -1631,16 +1631,16 @@ function renderMushroomDetail(speciesId) {
 
       <div class="detail-meta-bar">
         <div>
-          <strong>📍 ${lang === 'zh' ? '生境类型' : (lang === 'fi' ? 'Elinympäristö' : 'Habitat')}:</strong> 
+          <strong>${lang === 'zh' ? '生境类型' : (lang === 'fi' ? 'Elinympäristö' : 'Habitat')}:</strong> 
           ${sp.habitatName[lang]}
           ${nameData2 ? ` / <span style="color:var(--muted);">${sp.habitatName[lang2]}</span>` : ""}
         </div>
         <div style="display:flex; align-items:center; gap:0.35rem;">
-          <strong>📅 ${lang === 'zh' ? '出菇月份' : (lang === 'fi' ? 'Satosenssi' : 'Fruiting Season')}:</strong>
+          <strong>${lang === 'zh' ? '出菇月份' : (lang === 'fi' ? 'Satosenssi' : 'Fruiting Season')}:</strong>
           <div style="display:flex; gap:0.25rem;">${monthTags}</div>
         </div>
-        <div><strong>🎯 ${t.skillLevelLabel}</strong> ${levelText}</div>
-        <div><strong>🆔 ${t.refId}</strong> ${sp.id}</div>
+        <div><strong>${t.skillLevelLabel}</strong> ${levelText}</div>
+        <div><strong>${t.refId}</strong> ${sp.id}</div>
       </div>
     </div>
 
@@ -1666,7 +1666,6 @@ function renderMushroomDetail(speciesId) {
     <!-- OPTIONAL SECTION: Ecological, Cultural & Foraging Tradition Monograph -->
     <div class="detail-section-card">
       <h2 class="detail-section-title">
-        <span>🌲</span>
         <span>${lang === 'zh' ? '松茸深度档案：生态分布、分类地位与北欧采摘习俗' : (lang === 'fi' ? 'Lajiprofiili: Ekologia, historia ja keruuperinne' : 'Species Dossier: Ecology, History & Nordic Foraging Tradition')}</span>
       </h2>
       <div class="detail-section-body" style="line-height: 1.65;">
@@ -1943,9 +1942,9 @@ function renderLookalikes() {
   const t = I18N.ui[lang] || I18N.ui.en;
 
   const titleMap = {
-    en: "⚖️ Deadly Lookalikes & Toxin Survival Guide",
-    zh: "⚖️ 芬兰致命毒菇识别与毒素避险全景指南",
-    fi: "⚖️ Näköislajien vertailu ja hengenvaaralliset myrkkysienet"
+    en: "Deadly Lookalikes & Toxin Survival Guide",
+    zh: "芬兰致命毒菇识别与毒素避险全景指南",
+    fi: "Näköislajien vertailu ja hengenvaaralliset myrkkysienet"
   };
   const descMap = {
     en: "Micro-morphological side-by-side comparators, irreversible toxin biochemistry (Amatoxins, Orellanine 17-day latency, Gyromitrin), and life-saving zero-tolerance identification rules.",
@@ -2203,7 +2202,7 @@ function renderLookalikes() {
     <!-- Section Header Banner -->
     <div class="integrated-monograph-header danger-theme" style="margin-bottom: 2rem;">
       <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: var(--danger-soft); color: var(--danger); font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.65rem; border: 1px solid var(--danger-border);">
-        <span>⚖️ ${t.tabLookalikes || "Deadly Lookalikes"}</span> • <span>Zero Tolerance • 5 Visual Comparators • Toxin Science</span>
+        <span>${t.tabLookalikes || "Deadly Lookalikes"}</span> • <span>Zero Tolerance • 5 Visual Comparators • Toxin Science</span>
       </div>
       <h1 class="integrated-monograph-title" style="color: var(--danger); margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
       ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
@@ -2301,7 +2300,7 @@ function renderLookalikes() {
       ${toxins.map(tox => `
         <div style="background: var(--card-bg); border: 1px solid var(--danger-border); border-left: 4px solid var(--danger); border-radius: var(--radius); padding: 1.25rem; box-shadow: var(--shadow); display: flex; flex-direction: column;">
           <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--danger); margin-bottom: 0.25rem;">${tox.name[lang] || tox.name.en}</h3>
-          <div style="font-size: 0.84rem; font-weight: 700; color: var(--muted); margin-bottom: 0.5rem;">🍄 ${tox.source}</div>
+          <div style="font-size: 0.84rem; font-weight: 700; color: var(--muted); margin-bottom: 0.5rem;">${tox.source}</div>
           <div style="background: var(--danger-soft); color: var(--danger); border: 1px solid var(--danger-border); font-size: 0.82rem; font-weight: 700; padding: 0.35rem 0.65rem; border-radius: 4px; margin-bottom: 0.75rem;">
             ⏱️ ${tox.latency[lang] || tox.latency.en}
           </div>
@@ -2315,7 +2314,7 @@ function renderLookalikes() {
     <!-- 3. Zero Tolerance Harvesting Protocol -->
     <div style="background: color-mix(in srgb, var(--danger) 6%, var(--card-bg)); border: 1px solid var(--danger-border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem;">
       <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--danger); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
-        <span>🛡️</span> <span>${lang === "zh" ? "野外防误食“零容忍黄金法则”" : (lang === "fi" ? "Sienestäjän nollatoleranssi ja kultainen sääntö" : "The Zero-Tolerance Golden Rule for Wild Foraging")}</span>
+        <span>${lang === "zh" ? "野外防误食“零容忍黄金法则”" : (lang === "fi" ? "Sienestäjän nollatoleranssi ja kultainen sääntö" : "The Zero-Tolerance Golden Rule for Wild Foraging")}</span>
       </h3>
       <ol style="padding-left: 1.25rem; font-size: 0.88rem; color: var(--fg); line-height: 1.6;">
         <li><strong>${lang === "zh" ? "100% 确定原则" : (lang === "fi" ? "100 % tunnistusvarmuus" : "100% Certainty")}:</strong> ${lang === "zh" ? "只要有一丝犹豫或与图鉴特征不符，坚决不采、不吃、立即丢弃！" : (lang === "fi" ? "Poimi ja syö vain lajeja, jotka tunnet sataprosenttisen varmasti." : "Only forage and eat species you can identify with 100% certainty. Never guess.")}</li>
@@ -2358,7 +2357,7 @@ function renderCookingGalleryCards(catalog, lang, lang2, t) {
         </a>
         <div class="cooking-gallery-info">
           <div class="cooking-gallery-creator">
-            👨‍🍳 ${v.channelUrl ? `<a href="${v.channelUrl}" target="_blank" rel="noopener noreferrer" class="gallery-creator-link" title="${v.creator}">${v.creator} ↗</a>` : v.creator}
+            ${v.channelUrl ? `<a href="${v.channelUrl}" target="_blank" rel="noopener noreferrer" class="gallery-creator-link" title="${v.creator}">${v.creator} ↗</a>` : v.creator}
           </div>
           <h4 class="cooking-gallery-card-title">${title}</h4>
           ${title2 ? `<div class="cooking-gallery-card-subtitle">${title2}</div>` : ""}
@@ -2414,9 +2413,9 @@ function renderCookingGuide() {
   const t = I18N.ui[lang] || I18N.ui.en;
 
   const titleMap = {
-    en: "🍳 Culinary Preparation, Preservation Science & Forest Kitchen",
-    zh: "🍳 芬兰野菇保鲜科学、传统风味料理与中餐实战心法",
-    fi: "🍳 Sienien säilöntä, esikäsittely ja perinteiset metsäreseptit"
+    en: "Culinary Preparation, Preservation Science & Forest Kitchen",
+    zh: "芬兰野菇保鲜科学、传统风味料理与中餐实战心法",
+    fi: "Sienien säilöntä, esikäsittely ja perinteiset metsäreseptit"
   };
   const descMap = {
     en: "Dehydration temperature curves, dry-pan sweating (haudutus), milkcap salt-curing (suolasienet), 29 video masterclasses, and authentic Nordic & Chinese recipes.",
@@ -2488,7 +2487,7 @@ function renderCookingGuide() {
     <!-- Section Header Banner -->
     <div class="integrated-monograph-header" style="margin-bottom: 2rem;">
       <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent-soft); color: var(--accent); font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.65rem; border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);">
-        <span>🍳 ${t.tabCooking || "Cooking & Preservation"}</span> • <span>Preservation Science • 29 Videos • Classic Recipes</span>
+        <span>${t.tabCooking || "Cooking & Preservation"}</span> • <span>Preservation Science • 29 Videos • Classic Recipes</span>
       </div>
       <h1 class="integrated-monograph-title" style="margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
       ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
@@ -2650,9 +2649,9 @@ function renderHabitats() {
   const ch03 = getHandbookChapter("03");
 
   const titleMap = {
-    en: "🌲 Finnish Forest Ecology, Seasonal Calendar & Tree Host Diagnostics",
-    zh: "🌲 芬兰典型森林生境生态、逐月物候日历与树种菌根辨识实战",
-    fi: "🌲 Suomen metsätyypit, satokalenteri ja puulajien tunnistusopas"
+    en: "Finnish Forest Ecology, Seasonal Calendar & Tree Host Diagnostics",
+    zh: "芬兰典型森林生境生态、逐月物候日历与树种菌根辨识实战",
+    fi: "Suomen metsätyypit, satokalenteri ja puulajien tunnistusopas"
   };
   const descMap = {
     en: "Master Cajander's 4 forest site types (lehto, tuore kangas, kuiva kangas, korpi), month-by-month fruiting phenology from May to November, the 3-tree field identification matrix (Birch vs Pine vs Spruce), and the field solution to the Chanterelle Dilemma.",
@@ -2809,7 +2808,7 @@ function renderHabitats() {
     <!-- Section Header Banner -->
     <div class="integrated-monograph-header" style="margin-bottom: 2rem;">
       <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent-soft); color: var(--accent); font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.65rem; border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);">
-        <span>🌲 ${t.tabHabitats || "Habitats, Trees & Seasons"}</span> • <span>Cajander Forest Types • Seasonal Calendar • 3-Tree Diagnostics</span>
+        <span>${t.tabHabitats || "Habitats, Trees & Seasons"}</span> • <span>Cajander Forest Types • Seasonal Calendar • 3-Tree Diagnostics</span>
       </div>
       <h1 class="integrated-monograph-title" style="margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
       ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
@@ -2843,11 +2842,11 @@ function renderHabitats() {
           </div>
 
           <div class="habitat-prop-block">
-            <div><span class="habitat-prop-label">🌲 Host Trees:</span> ${site.trees[lang] || site.trees.en}</div>
+            <div><span class="habitat-prop-label">Host Trees:</span> ${site.trees[lang] || site.trees.en}</div>
           </div>
 
           <div style="font-size: 0.84rem; color: var(--muted); margin-bottom: 0.85rem;">
-            <strong>📍 Prime Locations:</strong> ${site.locations[lang] || site.locations.en}
+            <strong>Prime Locations:</strong> ${site.locations[lang] || site.locations.en}
           </div>
 
           ${site.warning ? `
@@ -2863,7 +2862,7 @@ function renderHabitats() {
                 const sp = I18N.species.find(s => s.id === spId);
                 if (!sp) return "";
                 const spName = sp.names[lang]?.primary || sp.latinName;
-                return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">🍄 ${spName}</a>`;
+                return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">${spName}</a>`;
               }).join("")}
             </div>
           </div>
@@ -2874,7 +2873,7 @@ function renderHabitats() {
     <!-- 2. Month-by-Month Foraging Calendar -->
     <div class="section-divider-header" style="margin-bottom: 1.25rem;">
       <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--fg); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-        <span>📅</span> <span>${lang === "zh" ? "芬兰南部野生菌逐月物候出菇日历（5月至11月）" : (lang === "fi" ? "Etelä-Suomen sienikalenteri kuukausittain (toukokuu–marraskuu)" : "Southern Finland Month-by-Month Foraging Calendar")}</span>
+        <span>${lang === "zh" ? "芬兰南部野生菌逐月物候出菇日历（5月至11月）" : (lang === "fi" ? "Etelä-Suomen sienikalenteri kuukausittain (toukokuu–marraskuu)" : "Southern Finland Month-by-Month Foraging Calendar")}</span>
       </h2>
       <p style="font-size: 0.9rem; color: var(--muted);">
         ${lang === "zh" ? "把握气温、昼长与降雨周期：从早春鹿花菌到盛夏牛肝菌暴发，再到耐霜深秋漏斗鸡油菌" : (lang === "fi" ? "Lämpötila, valojakso ja sateet ohjaavat lajien satoaikoja keväästä ensilumiin" : "Temperature, day length, and rainfall cycles dictating flushes from spring morels to late frost chanterelles")}
@@ -2895,7 +2894,7 @@ function renderHabitats() {
                 const sp = I18N.species.find(s => s.id === spId);
                 if (!sp) return "";
                 const spName = sp.names[lang]?.primary || sp.latinName;
-                return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">🍄 ${spName}</a>`;
+                return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">${spName}</a>`;
               }).join("")}
             </div>
           </div>
@@ -2906,7 +2905,7 @@ function renderHabitats() {
     <!-- 3. The Chanterelle Dilemma & 3-Tree Field Diagnostics -->
     <div class="chanterelle-dilemma-card">
       <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--fg); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.45rem;">
-        <span>🧐</span> <span>${lang === "zh" ? "鸡油菌寻菇之谜：为什么满山遍野是漏斗鸡油菌，却难觅金黄鸡油菌？" : (lang === "fi" ? "Kantarellin mysteeri: Miksi suppilovahveroita on kaikkialla mutta kantarelleja ei?" : "The Chanterelle Dilemma: Why Heaps of Funnels but No Golden Chanterelles?")}</span>
+        <span>${lang === "zh" ? "鸡油菌寻菇之谜：为什么满山遍野是漏斗鸡油菌，却难觅金黄鸡油菌？" : (lang === "fi" ? "Kantarellin mysteeri: Miksi suppilovahveroita on kaikkialla mutta kantarelleja ei?" : "The Chanterelle Dilemma: Why Heaps of Funnels but No Golden Chanterelles?")}</span>
       </h2>
       <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.25rem;">
         ${lang === "zh" ? "“是不是因为真鸡油菌太显眼，早被别人捡光了？”这是每位秋季采菇者最常有的疑惑。真实根源在于物候时钟、微生境分异与共生树种差异：" : (lang === "fi" ? "Onko syynä poimintapaine vai jokin muu? Syynä ovat satokauden vaihe, metsän kosteus ja puulajit:" : "Is it human picking pressure or biology? The true answers lie in seasonality, micro-habitat divergence, and tree mycorrhiza:")}
@@ -2921,14 +2920,14 @@ function renderHabitats() {
         </div>
 
         <div style="background: var(--card-hover); border: 1px solid var(--card-border); border-radius: 6px; padding: 1rem;">
-          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--fg); margin: 0 0 0.35rem;">🌲 ${lang === "zh" ? "2. 森林“房间”与微生境" : (lang === "fi" ? "2. Metsätyyppi ja valo" : "2. Micro-Habitat Divergence")}</h4>
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--fg); margin: 0 0 0.35rem;">${lang === "zh" ? "2. 森林“房间”与微生境" : (lang === "fi" ? "2. Metsätyyppi ja valo" : "2. Micro-Habitat Divergence")}</h4>
           <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
             ${lang === "zh" ? "满地漏斗鸡油菌说明你身处深邃阴暗、极度潮湿的厚苔藓纯云杉林（Kuusikko）；而金黄鸡油菌需要更多日照与温暖，偏爱白桦与松树根系交界处。" : (lang === "fi" ? "Suppikset viihtyvät pimeässä ja kosteassa sammalkuusikossa. Kantarelli vaatii valoa, lämpöä ja koivun tai männyn juuristoa." : "If you are surrounded by funnels, you are standing in dark, damp spruce feathermoss. Golden chanterelles demand warmth, sunlight, and birch/pine roots.")}
           </p>
         </div>
 
         <div style="background: var(--card-hover); border: 1px solid var(--card-border); border-radius: 6px; padding: 1rem;">
-          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--fg); margin: 0 0 0.35rem;">👀 ${lang === "zh" ? "3. 辨识度与周末人流" : (lang === "fi" ? "3. Näkyvyys ja poiminta" : "3. Visibility & Human Pressure")}</h4>
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--fg); margin: 0 0 0.35rem;">${lang === "zh" ? "3. 辨识度与周末人流" : (lang === "fi" ? "3. Näkyvyys ja poiminta" : "3. Visibility & Human Pressure")}</h4>
           <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
             ${lang === "zh" ? "金黄鸡油菌通体亮黄，休闲步道旁一眼便见，周末极易被游客采净；漏斗鸡油菌菌盖呈迷彩色，与落叶苔藓完美融为一体，路人常踩过而浑然不觉。" : (lang === "fi" ? "Kantarellin kirkas keltainen väri erottuu kauas ja polunvarret kerätään tyhjiksi. Suppiksen ruskea lakki maastoutuu täydellisesti." : "Golden chanterelles are brilliant yellow and stripped bare on tourist paths; brown funnel chanterelles are natural camouflage and walked over by hundreds.")}
           </p>
@@ -2938,7 +2937,7 @@ function renderHabitats() {
       <!-- 3-Tree Field Diagnostics -->
       <div class="tree-diagnostic-container">
         <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--fg); margin: 0 0 0.35rem; display: flex; align-items: center; gap: 0.4rem;">
-          <span>🌳</span> <span>${lang === "zh" ? "芬兰三大主力树种辨识微距图鉴（白桦 vs 赤松 vs 云杉）" : (lang === "fi" ? "Kolme pääpuulajia: Rauduskoivu, Mänty ja Kuusi" : "The Big Three Tree Diagnostics: Silver Birch vs. Scots Pine vs. Norway Spruce")}</span>
+          <span>${lang === "zh" ? "芬兰三大主力树种辨识微距图鉴（白桦 vs 赤松 vs 云杉）" : (lang === "fi" ? "Kolme pääpuulajia: Rauduskoivu, Mänty ja Kuusi" : "The Big Three Tree Diagnostics: Silver Birch vs. Scots Pine vs. Norway Spruce")}</span>
         </h3>
         <p style="font-size: 0.88rem; color: var(--muted); margin: 0 0 1rem;">
           ${lang === "zh" ? "看树采菇是北欧采蘑菇最高效的本领：白桦生真鸡油与牛肝，赤松出松蘑与松乳菇，云杉下铺满漏斗鸡油菌与齿菌。" : (lang === "fi" ? "Puuston tunnistaminen on sienestäjän tärkein taito: eri puut elävät symbioosissa eri sienilajien kanssa." : "Reading the canopy is the ultimate foraging skill: birch yields golden chanterelles, pine yields boletes and milkcaps, spruce yields funnels and hedgehogs.")}
@@ -2952,7 +2951,7 @@ function renderHabitats() {
         <div class="tree-cols-grid">
           <!-- Birch -->
           <div class="tree-col-card">
-            <h4 class="tree-col-title">🌿 ${lang === "zh" ? "白桦" : (lang === "fi" ? "Rauduskoivu" : "Silver Birch")}</h4>
+            <h4 class="tree-col-title">${lang === "zh" ? "白桦" : (lang === "fi" ? "Rauduskoivu" : "Silver Birch")}</h4>
             <div class="tree-col-latin">Betula pendula • Koivu</div>
             <div class="tree-feature-row"><strong>Bark:</strong> Chalk-white papery peeling bark with black horizontal lenticels; deep dark diamond fissures at trunk base.</div>
             <div class="tree-feature-row"><strong>Canopy:</strong> Broadleaf: triangular serrated leaves, radiant golden yellow in autumn. Dappled sunlit floor.</div>
@@ -2972,7 +2971,7 @@ function renderHabitats() {
 
           <!-- Spruce -->
           <div class="tree-col-card">
-            <h4 class="tree-col-title">🌲 ${lang === "zh" ? "挪威云杉" : (lang === "fi" ? "Kuusi" : "Norway Spruce")}</h4>
+            <h4 class="tree-col-title">${lang === "zh" ? "挪威云杉" : (lang === "fi" ? "Kuusi" : "Norway Spruce")}</h4>
             <div class="tree-col-latin">Picea abies • Kuusi</div>
             <div class="tree-feature-row"><strong>Bark:</strong> Uniform dark reddish-brown to grey-brown scaly bark extending the entire trunk height.</div>
             <div class="tree-feature-row"><strong>Canopy:</strong> Conifer: short sharp needles growing singly around twigs. Dense conical heavy shade.</div>
@@ -2985,7 +2984,7 @@ function renderHabitats() {
       <!-- 4 Autumn Tactics for Golden Chanterelles -->
       <div style="background: var(--card-hover); border: 1px solid var(--card-border); border-radius: 8px; padding: 1.25rem;">
         <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--fg); margin: 0 0 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
-          <span>🎯</span> <span>${lang === "zh" ? "深秋采摘金黄鸡油菌实操心法（4大转场绝招）" : (lang === "fi" ? "4 vinkkiä syyskantarellien löytämiseen" : "4 Field Tactics to Find Golden Chanterelles in Autumn")}</span>
+          <span>${lang === "zh" ? "深秋采摘金黄鸡油菌实操心法（4大转场绝招）" : (lang === "fi" ? "4 vinkkiä syyskantarellien löytämiseen" : "4 Field Tactics to Find Golden Chanterelles in Autumn")}</span>
         </h3>
         <ol style="padding-left: 1.2rem; font-size: 0.86rem; color: var(--fg); line-height: 1.6; margin: 0;">
           <li><strong>${lang === "zh" ? "走出幽暗云杉林" : (lang === "fi" ? "Siirry pois pimeästä kuusikosta" : "Exit Dark Spruce Woods")}:</strong> ${lang === "zh" ? "从密不透风的云杉峡谷向外走，转向白桦疏林带、农田林缘与向阳的西南坡面，寻找深秋阳光尚能烘暖的土地。" : (lang === "fi" ? "Hakeudu kuusikosta koivikkoon, pellonreunoihin tai valoisiin etelärinteisiin." : "Walk out of deep spruce hollows into birch stands, forest margins, and sunny west/south-facing slopes.")}</li>
@@ -3000,7 +2999,7 @@ function renderHabitats() {
     ${ch03 ? `
       <div style="margin-top: 2.5rem; text-align: center;">
         <button id="btn-toggle-ch03-reader" class="btn-toggle-monograph" onclick="toggleChapter03Reader()">
-          📖 ${lang === "zh" ? "展开阅读手册第三章完整长文 (Unabridged) ↓" : (lang === "fi" ? "📖 Lue luvun 03 koko teksti (Lyhentämätön) ↓" : "📖 Expand Full Chapter 03 Monograph (Unabridged) ↓")}
+          ${lang === "zh" ? "展开阅读手册第三章完整长文 (Unabridged) ↓" : (lang === "fi" ? "📖 Lue luvun 03 koko teksti (Lyhentämätön) ↓" : "📖 Expand Full Chapter 03 Monograph (Unabridged) ↓")}
         </button>
       </div>
 
@@ -3025,9 +3024,9 @@ function renderSpots() {
   const t = I18N.ui[lang] || I18N.ui.en;
 
   const titleMap = {
-    en: "🚌 Helsinki Foraging Spots by HSL Transit & 5 Hidden Wilderness Gems",
-    zh: "🚌 赫尔辛基大区HSL公共交通采蘑菇宝典与5大隐世秘境",
-    fi: "🚌 Helsingin seudun sienipaikat HSL-yhteyksillä ja 5 salaista erämaahelmeä"
+    en: "Helsinki Foraging Spots by HSL Transit & 5 Hidden Wilderness Gems",
+    zh: "赫尔辛基大区HSL公共交通采蘑菇宝典与5大隐世秘境",
+    fi: "Helsingin seudun sienipaikat HSL-yhteyksillä ja 5 salaista erämaahelmeä"
   };
   const descMap = {
     en: "Direct commuter trains, trunk buses, and live Google Maps trailhead navigation for Keskuspuisto, Sipoonkorpi, Nuuksio, and Luukki, plus 5 peaceful, low-pressure wilderness gems across the capital region.",
@@ -3161,7 +3160,7 @@ function renderSpots() {
     <!-- Section Header Banner -->
     <div class="integrated-monograph-header" style="margin-bottom: 2rem;">
       <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent-soft); color: var(--accent); font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.65rem; border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);">
-        <span>🚌 ${t.tabSpots || "Transit Spots & Trails"}</span> • <span>Zone A–D • 6 Core Trailheads • 5 Hidden Gems</span>
+        <span>${t.tabSpots || "Transit Spots & Trails"}</span> • <span>Zone A–D • 6 Core Trailheads • 5 Hidden Gems</span>
       </div>
       <h1 class="integrated-monograph-title" style="margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
       ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
@@ -3184,7 +3183,7 @@ function renderSpots() {
     <!-- 2. Prime Trailhead Cards & Live Directions (Front and Center!) -->
     <div class="section-divider-header" style="margin-bottom: 1.25rem;">
       <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--fg); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-        <span>🥾</span> <span>${lang === "zh" ? "6大主力公共交通直达采摘点与Google Maps一键导航" : (lang === "fi" ? "6 parasta HSL-sienireittiä ja suora navigointi" : "6 Prime Foraging Trailheads & Live Navigation")}</span>
+        <span>${lang === "zh" ? "6大主力公共交通直达采摘点与Google Maps一键导航" : (lang === "fi" ? "6 parasta HSL-sienireittiä ja suora navigointi" : "6 Prime Foraging Trailheads & Live Navigation")}</span>
       </h2>
       <p style="font-size: 0.9rem; color: var(--muted);">
         ${lang === "zh" ? "含公交直达班次、乘车耗时、推荐徒步路线、起点经纬度定位与实时Google Maps导航" : (lang === "fi" ? "Bussilinjat, matka-ajat, suositellut rengasreitit ja suorat Google Maps -opasteet lähtöpisteille" : "Live transit lines, travel durations, trailhead coordinates, and direct Google Maps directions")}
@@ -3198,13 +3197,13 @@ function renderSpots() {
             <div>
               <h3 class="spot-title">${s.name[lang]}</h3>
               ${lang2 ? `<div style="font-size: 0.88rem; color:var(--muted); margin-top: 0.15rem; font-weight:400;">${s.name[lang2]}</div>` : ""}
-              <span style="font-size: 0.8rem; color: var(--muted);">📍 ${s.municipality}</span>
+              <span style="font-size: 0.8rem; color: var(--muted);">${s.municipality}</span>
             </div>
             <span class="spot-zone">${s.zone}</span>
           </div>
 
           <div class="spot-transit">
-            <p><strong>🚌 HSL:</strong> ${s.transit[lang]}</p>
+            <p><strong>HSL:</strong> ${s.transit[lang]}</p>
             ${lang2 ? `<p style="color: var(--muted); font-size: 0.82rem; margin-top: 0.2rem;">${s.transit[lang2]}</p>` : ""}
             <p style="margin-top: 0.35rem;"><strong>⏱️ Duration:</strong> ~${s.time}</p>
           </div>
@@ -3212,12 +3211,12 @@ function renderSpots() {
           ${s.popularTrail ? `
           <div class="spot-trailhead-box">
             <div class="spot-trailhead-row">
-              <span class="prime-item-label">🥾 ${t.popularTrailLabel || 'Popular Trail'}:</span>
+              <span class="prime-item-label">${t.popularTrailLabel || 'Popular Trail'}:</span>
               <span class="prime-item-value">${s.popularTrail[lang]}</span>
               ${lang2 ? `<div class="prime-item-secondary">${s.popularTrail[lang2]}</div>` : ""}
             </div>
             <div class="spot-trailhead-row" style="margin-top: 0.35rem;">
-              <span class="prime-item-label">📍 ${t.startingPointLabel || 'Starting Point'}:</span>
+              <span class="prime-item-label">${t.startingPointLabel || 'Starting Point'}:</span>
               <span class="prime-item-value">${s.startingPoint[lang]}</span>
               ${lang2 ? `<div class="prime-item-secondary">${s.startingPoint[lang2]}</div>` : ""}
             </div>
@@ -3236,7 +3235,7 @@ function renderSpots() {
           </div>
 
           <div style="font-size: 0.85rem; color: var(--fg); background: var(--accent-soft); border: 1px solid var(--card-border); padding: 0.6rem; border-radius: 6px; margin-bottom: 0.75rem;">
-            <div>💡 <em>${s.tip[lang]}</em></div>
+            <div><em>${s.tip[lang]}</em></div>
             ${lang2 ? `<div style="color: var(--muted); font-size: 0.82rem; margin-top: 0.25rem;"><em>${s.tip[lang2]}</em></div>` : ""}
           </div>
 
@@ -3251,7 +3250,7 @@ function renderSpots() {
     <!-- 3. The 5 Low-Pressure Hidden Wilderness Gems -->
     <div class="section-divider-header" style="margin-bottom: 1.25rem;">
       <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--fg); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-        <span>🌲</span> <span>${lang === "zh" ? "芬兰森林5大小众少人采摘秘境深度评测" : (lang === "fi" ? "5 hiljaista ja salaista erämaakohdetta" : "5 Low-Pressure 'Hidden Gem' Wilderness Forests")}</span>
+        <span>${lang === "zh" ? "芬兰森林5大小众少人采摘秘境深度评测" : (lang === "fi" ? "5 hiljaista ja salaista erämaakohdetta" : "5 Low-Pressure 'Hidden Gem' Wilderness Forests")}</span>
       </h2>
       <p style="font-size: 0.9rem; color: var(--muted);">
         ${lang === "zh" ? "避开周末拥挤人流！深入未经密集踩踏的原生态清幽林区，坐享丰厚无扰的菌菇收获" : (lang === "fi" ? "Vältä suosituimpien reittien ruuhkat ja nauti koskemattoman metsän antimista rauhassa" : "Escape the weekend crowds: pristine moss carpets, undisturbed mycelial flushes, and tranquil backcountry lakes")}
@@ -3272,7 +3271,7 @@ function renderSpots() {
           </div>
 
           <div style="font-size: 0.84rem; color: var(--fg); background: var(--card-hover); padding: 0.6rem 0.75rem; border-radius: 6px; margin: 0.6rem 0 0.85rem; border: 1px solid var(--card-border);">
-            <strong>🚌 Transit:</strong> ${g.route[lang] || g.route.en}
+            <strong>Transit:</strong> ${g.route[lang] || g.route.en}
           </div>
 
           <p style="font-size: 0.86rem; color: var(--muted); line-height: 1.55; margin-bottom: 1rem; flex: 1;">
@@ -3286,7 +3285,7 @@ function renderSpots() {
                 const sp = I18N.species.find(s => s.id === spId);
                 if (!sp) return "";
                 const spName = sp.names[lang]?.primary || sp.latinName;
-                return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">🍄 ${spName}</a>`;
+                return `<a href="#/mushroom/${sp.id}" class="inline-species-chip" onclick="navigateToMushroom('${sp.id}'); return false;">${spName}</a>`;
               }).join("")}
             </div>
             ${g.mapUrl ? `
@@ -3304,7 +3303,7 @@ function renderSpots() {
     <!-- 4. Transit Etiquette on HSL -->
     <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem;">
       <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
-        <span>🎒</span> <span>${lang === "zh" ? "公共交通采摘乘车礼仪与野外装备指南" : (lang === "fi" ? "Sienestäjän joukkoliikenne-etiketti ja varusteet" : "Public Transit Foraging Etiquette & Field Gear")}</span>
+        <span>${lang === "zh" ? "公共交通采摘乘车礼仪与野外装备指南" : (lang === "fi" ? "Sienestäjän joukkoliikenne-etiketti ja varusteet" : "Public Transit Foraging Etiquette & Field Gear")}</span>
       </h3>
       <ul style="padding-left: 1.25rem; font-size: 0.88rem; color: var(--fg); line-height: 1.6;">
         <li><strong>${lang === "zh" ? "篮具透气" : (lang === "fi" ? "Hengittävä kori" : "Breathable Baskets")}:</strong> ${lang === "zh" ? "使用硬质竹篮、柳条篮或透气布袋，严禁使用密闭塑料袋，防止蘑菇出汗变质发酸。" : (lang === "fi" ? "Käytä aina ilmavaa sieni- tai pärekoria, älä koskaan muovipussia." : "Always use rigid wicker baskets or canvas totes; never use plastic bags where heat and condensation spoil proteins.")}</li>
@@ -3328,9 +3327,9 @@ function renderSafety() {
   const t = I18N.ui[lang] || I18N.ui.en;
 
   const titleMap = {
-    en: "🛡️ Legal Rights, Nature Protection & Forest Safety in Finland",
-    zh: "🛡️ 芬兰自然公共权、自然保护区法规与森林安全守则",
-    fi: "🛡️ Jokamiehenoikeudet, luonnonsuojelualueet ja metsäturvallisuus"
+    en: "Legal Rights, Nature Protection & Forest Safety in Finland",
+    zh: "芬兰自然公共权、自然保护区法规与森林安全守则",
+    fi: "Jokamiehenoikeudet, luonnonsuojelualueet ja metsäturvallisuus"
   };
   const descMap = {
     en: "Master Everyman's Right (Jokamiehenoikeus), commercial vs personal limits, strict rules in nature reserves, and protective protocols against ticks (punkit) and deer keds (hirvikärpäset). Includes 112 Suomi app setup.",
@@ -3388,7 +3387,7 @@ function renderSafety() {
     <!-- Section Header Banner -->
     <div class="integrated-monograph-header" style="margin-bottom: 2rem;">
       <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent-soft); color: var(--accent); font-size: 0.78rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; margin-bottom: 0.65rem; border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);">
-        <span>🛡️ ${t.tabSafety || "Safety & Guidelines"}</span> • <span>Everyman's Right • Nature Reserves • Ticks & 112</span>
+        <span>${t.tabSafety || "Safety & Guidelines"}</span> • <span>Everyman's Right • Nature Reserves • Ticks & 112</span>
       </div>
       <h1 class="integrated-monograph-title" style="margin-bottom: 0.4rem;">${titleMap[lang] || titleMap.en}</h1>
       ${lang2 ? `<div class="integrated-monograph-subtitle">${titleMap[lang2] || ""}</div>` : ""}
@@ -3398,7 +3397,7 @@ function renderSafety() {
     <!-- 1. Everyman's Right (Allowed vs Prohibited Side-by-Side) -->
     <div class="section-divider-header" style="margin-bottom: 1.25rem;">
       <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--fg); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-        <span>⚖️</span> <span>${lang === "zh" ? "芬兰自然公共权法定权利与绝对禁区红线" : (lang === "fi" ? "Jokamiehenoikeudet: Sallittu ja kielletty" : "Everyman's Right: Statutory Rights vs. Strict Prohibitions")}</span>
+        <span>${lang === "zh" ? "芬兰自然公共权法定权利与绝对禁区红线" : (lang === "fi" ? "Jokamiehenoikeudet: Sallittu ja kielletty" : "Everyman's Right: Statutory Rights vs. Strict Prohibitions")}</span>
       </h2>
       <p style="font-size: 0.9rem; color: var(--muted);">
         ${lang === "zh" ? "宪法习惯法保障的大自然馈赠，采摘者必须严格自律恪守私人领地边界与环境保护责任" : (lang === "fi" ? "Suomen ainutlaatuinen oikeus nauttia luonnosta vastuullisesti ja luontoa kunnioittaen" : "Enjoying the generous Nordic nature responsibly while respecting private property and delicate biomes")}
@@ -3409,7 +3408,7 @@ function renderSafety() {
       <!-- Allowed Card -->
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-top: 4px solid var(--accent); border-radius: var(--radius); padding: 1.35rem; box-shadow: var(--shadow);">
         <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
-          <span>✅</span> <span>${lang === "zh" ? "法律允许（人人享有的法定权利）" : (lang === "fi" ? "Mitä saat tehdä (Sallitut)" : "What You CAN Do (Your Rights)")}</span>
+          <span>${lang === "zh" ? "法律允许（人人享有的法定权利）" : (lang === "fi" ? "Mitä saat tehdä (Sallitut)" : "What You CAN Do (Your Rights)")}</span>
         </h3>
         <ul style="padding-left: 1.2rem; font-size: 0.86rem; color: var(--fg); line-height: 1.55;">
           ${allowedRules.map(r => `
@@ -3423,7 +3422,7 @@ function renderSafety() {
       <!-- Prohibited Card -->
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-top: 4px solid var(--danger); border-radius: var(--radius); padding: 1.35rem; box-shadow: var(--shadow);">
         <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--danger); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
-          <span>❌</span> <span>${lang === "zh" ? "法律严禁（违法禁止行为）" : (lang === "fi" ? "Mitä et saa tehdä (Kielletyt)" : "What You CANNOT Do (Strictly Forbidden)")}</span>
+          <span>${lang === "zh" ? "法律严禁（违法禁止行为）" : (lang === "fi" ? "Mitä et saa tehdä (Kielletyt)" : "What You CANNOT Do (Strictly Forbidden)")}</span>
         </h3>
         <ul style="padding-left: 1.2rem; font-size: 0.86rem; color: var(--fg); line-height: 1.55;">
           ${prohibitedRules.map(r => `
@@ -3438,7 +3437,7 @@ function renderSafety() {
     <!-- 3. Nordic Forest Health: Ticks & Deer Keds -->
     <div class="section-divider-header" style="margin-bottom: 1.25rem;">
       <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--fg); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-        <span>🐜</span> <span>${lang === "zh" ? "北欧森林害虫防范实操：蜱虫与鹿蝇生存手册" : (lang === "fi" ? "Metsäturvallisuus: Punkit ja hirvikärpäset" : "Nordic Forest Health: Ticks & Deer Keds Defense")}</span>
+        <span>${lang === "zh" ? "北欧森林害虫防范实操：蜱虫与鹿蝇生存手册" : (lang === "fi" ? "Metsäturvallisuus: Punkit ja hirvikärpäset" : "Nordic Forest Health: Ticks & Deer Keds Defense")}</span>
       </h2>
       <p style="font-size: 0.9rem; color: var(--muted);">
         ${lang === "zh" ? "南部海岸林区从4月至深秋活跃。穿戴长靴、浅色长裤与细齿梳子，回家必查皮肤" : (lang === "fi" ? "Suojaudu punkeilta ja hirvikärpäsiltä oikealla pukeutumisella ja päivittäisellä tarkastuksella" : "Active across southern Uusimaa from April to late autumn. Protective socks, smooth fabrics, and nightly skin checks")}
@@ -3449,7 +3448,7 @@ function renderSafety() {
       <!-- Ticks Card -->
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 1.35rem; box-shadow: var(--shadow);">
         <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
-          <span style="font-size: 1.3rem;">🕷️</span>
+          
           <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--fg); margin: 0;">${lang === "zh" ? "蜱虫 (Punkit / Puutiaiset)" : (lang === "fi" ? "Punkit (Puutiaiset)" : "Ticks (Punkit)")}</h3>
         </div>
         <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem;">
@@ -3482,7 +3481,7 @@ function renderSafety() {
     <!-- 4. Sustainable & Ethical Harvesting -->
     <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
       <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--fg); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
-        <span>🌿</span> <span>${lang === "zh" ? "可持续采摘与苔藓保护伦理" : (lang === "fi" ? "Kestävän ja vastuullisen sienestyksen periaatteet" : "Sustainable & Ethical Harvesting Ethics")}</span>
+        <span>${lang === "zh" ? "可持续采摘与苔藓保护伦理" : (lang === "fi" ? "Kestävän ja vastuullisen sienestyksen periaatteet" : "Sustainable & Ethical Harvesting Ethics")}</span>
       </h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 0.85rem;">
         <div style="background: var(--card-hover); padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid var(--card-border);">
@@ -3508,7 +3507,7 @@ function renderSafety() {
     <div style="background: var(--card-bg); border: 1px solid var(--accent); border-left: 5px solid var(--accent); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
       <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
         <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <span style="font-size: 1.5rem;">👑</span>
+          
           <div>
             <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--fg); margin: 0;">
               ${lang === "zh" ? "特别专题：芬兰松茸 (Tuoksuvalmuska) 与自然公共权的商业传奇" : (lang === "fi" ? "Erityistapaus: Tuoksuvalmuska ja jokamiehenoikeus" : "Special Feature: Finnish Pine Matsutake & Everyman's Right")}
@@ -3517,7 +3516,7 @@ function renderSafety() {
           </div>
         </div>
         <button type="button" class="btn btn-secondary" onclick="navigateToMushroom('tricholoma_matsutake')" style="border-color: var(--accent); color: var(--accent); font-weight: 600; font-size: 0.82rem; padding: 0.4rem 0.85rem; border-radius: 9999px; cursor: pointer;">
-          ${lang === "zh" ? "🍄 打开松茸全景专著 →" : (lang === "fi" ? "🍄 Avaa tuoksuvalmuskan monografia →" : "🍄 Open Pine Matsutake Monograph →")}
+          ${lang === "zh" ? "打开松茸全景专著 →" : (lang === "fi" ? "Avaa tuoksuvalmuskan monografia →" : "Open Pine Matsutake Monograph →")}
         </button>
       </div>
       <p style="font-size: 0.88rem; color: var(--fg); line-height: 1.6; margin-bottom: 0.75rem;">
@@ -3528,16 +3527,16 @@ function renderSafety() {
             : "Finland is one of Northern Europe's premier habitats for wild Matsutake (<em>Tricholoma matsutake</em> / Tuoksuvalmuska). DNA research confirmed it is genetically identical to prestigious East Asian Matsutake. Added to Finland's official commercial edible mushrooms (Kauppasieni) in 2007, foraging and selling your harvest is completely tax-free under Everyman's Right.")}
       </p>
       <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8rem; color: var(--muted);">
-        <span style="background: var(--card-hover); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--rule);">🌲 ${lang === "zh" ? "生境：干燥沙质赤松疏林 (Kuiva kangas)" : (lang === "fi" ? "Kasvupaikka: Karut mäntykankaat" : "Habitat: Dry sandy Scots pine heaths")}</span>
-        <span style="background: var(--card-hover); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--rule);">📅 ${lang === "zh" ? "盛产期：7月底至10月初 (盛产8-9月)" : (lang === "fi" ? "Satoaika: Heinä–lokakuu" : "Season: Late July to October")}</span>
-        <span style="background: var(--card-hover); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--rule);">👃 ${lang === "zh" ? "特征：浓郁肉桂复合甜香与棉毛菌环" : (lang === "fi" ? "Tunnusmerkki: Huumaava kanelin tuoksu" : "Hallmark: Sweet spicy cinnamon aroma")}</span>
+        <span style="background: var(--card-hover); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--rule);">${lang === "zh" ? "生境：干燥沙质赤松疏林 (Kuiva kangas)" : (lang === "fi" ? "Kasvupaikka: Karut mäntykankaat" : "Habitat: Dry sandy Scots pine heaths")}</span>
+        <span style="background: var(--card-hover); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--rule);">${lang === "zh" ? "盛产期：7月底至10月初 (盛产8-9月)" : (lang === "fi" ? "Satoaika: Heinä–lokakuu" : "Season: Late July to October")}</span>
+        <span style="background: var(--card-hover); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--rule);">${lang === "zh" ? "特征：浓郁肉桂复合甜香与棉毛菌环" : (lang === "fi" ? "Tunnusmerkki: Huumaava kanelin tuoksu" : "Hallmark: Sweet spicy cinnamon aroma")}</span>
       </div>
     </div>
 
     <!-- 6. Recommended Field Video Education & Channels -->
     <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
       <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--fg); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
-        <span>📺</span> <span>${lang === "zh" ? "权威野采学习频道与视频课程推荐" : (lang === "fi" ? "Suositellut opetusvideot ja YouTube-kanavat" : "Recommended Educational Channels & Field Video Guides")}</span>
+        <span>${lang === "zh" ? "权威野采学习频道与视频课程推荐" : (lang === "fi" ? "Suositellut opetusvideot ja YouTube-kanavat" : "Recommended Educational Channels & Field Video Guides")}</span>
       </h3>
       <p style="font-size: 0.88rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem;">
         ${lang === "zh" 
@@ -3553,7 +3552,7 @@ function renderSafety() {
           <div>
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem;">
               <span style="font-size: 0.76rem; font-weight: 700; color: var(--accent); background: var(--accent-soft); padding: 0.15rem 0.5rem; border-radius: 9999px;">
-                ${lang === "zh" ? "🌱 新手入门野采首选" : (lang === "fi" ? "🌱 Paras aloittelijoille" : "🌱 Premier Beginner Guide")}
+                ${lang === "zh" ? "新手入门野采首选" : (lang === "fi" ? "Paras aloittelijoille" : "Premier Beginner Guide")}
               </span>
               <span style="font-size: 0.78rem; color: var(--muted);">⏱️ 24:13</span>
             </div>
@@ -3613,7 +3612,7 @@ function renderSafety() {
       <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem;">
         <div>
           <div style="display: inline-flex; align-items: center; gap: 0.35rem; background: var(--accent-soft); color: var(--accent); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 9999px; margin-bottom: 0.4rem;">
-            <span>📱 Community Science & Field AI</span> • <span>Recommended by Aaron Hilliard</span>
+            <span>Community Science & Field AI</span> • <span>Recommended by Aaron Hilliard</span>
           </div>
           <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--fg); margin: 0;">
             ${t.inaturalistTitle || "iNaturalist: Community Science & Mushroom Identification"}
@@ -3621,13 +3620,13 @@ function renderSafety() {
         </div>
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
           <a href="https://apps.apple.com/app/inaturalist/id421397028" target="_blank" rel="noopener noreferrer" class="tier-channel-btn" style="color: var(--fg); font-weight: 700;" title="Download on iOS App Store">
-            ${t.appStoreIos || "🍏 iOS App Store"} ↗
+            ${t.appStoreIos || "iOS App Store"} ↗
           </a>
           <a href="https://play.google.com/store/apps/details?id=org.inaturalist.android" target="_blank" rel="noopener noreferrer" class="tier-channel-btn" style="color: var(--fg); font-weight: 700;" title="Download on Google Play">
-            ${t.playStoreAndroid || "🤖 Google Play"} ↗
+            ${t.playStoreAndroid || "Google Play"} ↗
           </a>
           <a href="https://www.inaturalist.org" target="_blank" rel="noopener noreferrer" class="tier-channel-btn" title="Open iNaturalist Web Portal">
-            ${t.webPortal || "🌐 inaturalist.org"} ↗
+            ${t.webPortal || "inaturalist.org"} ↗
           </a>
         </div>
       </div>
@@ -3638,7 +3637,7 @@ function renderSafety() {
 
       <!-- Step-by-Step Installation & Setup Guide -->
       <h4 style="font-size: 1rem; font-weight: 800; color: var(--fg); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.35rem;">
-        <span>📋</span> <span>${t.inaturalistInstallGuide || "Installation & Field Setup Guide"}</span>
+        <span>${t.inaturalistInstallGuide || "Installation & Field Setup Guide"}</span>
       </h4>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.85rem; margin-bottom: 1.25rem;">
@@ -3662,13 +3661,13 @@ function renderSafety() {
 
       <!-- Warning & Safety Banner -->
       <div style="background: color-mix(in srgb, var(--danger) 8%, var(--card-bg)); border: 1px solid var(--danger-border); border-radius: 6px; padding: 0.85rem 1rem; font-size: 0.85rem; color: var(--fg); line-height: 1.55; display: flex; align-items: flex-start; gap: 0.5rem;">
-        <span>🛡️</span>
+        
         <span>${t.inaturalistWarning || ""}</span>
       </div>
 
       <!-- Seek Companion Note -->
       <div style="margin-top: 0.85rem; font-size: 0.8rem; color: var(--muted); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-        <span>💡 <strong>${t.seekAppName || "Seek by iNaturalist"}</strong>: ${t.seekAppDesc || ""}</span>
+        <span><strong>${t.seekAppName || "Seek by iNaturalist"}</strong>: ${t.seekAppDesc || ""}</span>
         <a href="https://www.inaturalist.org/pages/seek_app" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">
           ${lang === 'zh' ? '了解 Seek 极速版 →' : (lang === 'fi' ? 'Lue lisää Seek-sovelluksesta →' : 'Learn about Seek →')}
         </a>
@@ -3721,11 +3720,11 @@ const ForestCacheManager = {
       if (!navigator.onLine) {
         if (banner) banner.style.display = 'block';
         if (pill) pill.classList.add('offline');
-        if (label) label.textContent = t.offlineBadgeOffline || '📡 Off-Grid / Offline';
+        if (label) label.textContent = t.offlineBadgeOffline || 'Off-Grid / Offline';
       } else {
         if (banner) banner.style.display = 'none';
         if (pill) pill.classList.remove('offline');
-        if (label && !this.isDownloading) label.textContent = t.offlineBadgeReady || '🌲 Offline Ready';
+        if (label && !this.isDownloading) label.textContent = t.offlineBadgeReady || 'Offline Ready';
       }
     };
 
@@ -3854,7 +3853,7 @@ const ForestCacheManager = {
         if (btnDownload) {
           btnDownload.style.display = 'inline-block';
           if (btnDownloadText) {
-            btnDownloadText.textContent = t.offlineBtnCacheAll || '📥 Pre-cache All 215 Photos';
+            btnDownloadText.textContent = t.offlineBtnCacheAll || 'Pre-cache All 215 Photos';
           }
         }
         if (btnClear) btnClear.style.display = 'inline-block';
@@ -3863,7 +3862,7 @@ const ForestCacheManager = {
         if (btnDownload) {
           btnDownload.style.display = 'inline-block';
           if (btnDownloadText) {
-            btnDownloadText.textContent = t.offlineBtnCacheAll || '📥 Pre-cache All 215 Photos';
+            btnDownloadText.textContent = t.offlineBtnCacheAll || 'Pre-cache All 215 Photos';
           }
         }
         if (btnClear) btnClear.style.display = 'none';

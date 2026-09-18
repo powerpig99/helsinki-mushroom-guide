@@ -16,11 +16,12 @@
 </head>
 <body>
 
-  <!-- In-The-Wild Offline Mode Banner -->
-  <aside id="offline-status-banner" class="offline-status-banner" style="display: none;" role="status" aria-live="polite">
+  <!-- In-The-Wild  <!-- Offline Status Banner -->
+  <aside id="offline-status-banner" class="offline-status-banner" aria-live="polite" style="display: none;">
     <div class="offline-banner-content">
-      <span class="offline-icon">📡</span>
-      <span id="offline-banner-text">Offline Field Mode Active: All 50+ species monographs, 40+ recipes, visual comparators, and safety rules are running 100% off-grid from local cache.</span>
+      <span class="offline-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg></span>
+      <span id="offline-banner-text">Offline Field Mode: Running from local cache</span>
+      <button id="btn-open-forest-cache" class="offline-cache-btn">Cache</button>
     </div>
   </aside>
 
@@ -29,11 +30,11 @@
     <nav class="top-nav" aria-label="Site Navigation">
       <div class="brand-group">
         <a href="#/catalog" class="brand-badge">
-          <span class="brand-icon">🍄</span>
+          <span class="brand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C7 2 3 7 3 12c0 1.5 1.5 2 3 2h12c1.5 0 3-.5 3-2 0-5-4-10-9-10z"/><path d="M10 14v7a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-7"/></svg></span>
           <span id="site-badge" class="brand-title">Helsinki Wild Mushroom Guide</span>
         </a>
         <button id="btn-forest-cache" class="forest-cache-pill" title="Offline Forest Cache Manager" aria-label="Forest Offline Cache">
-          <span class="cache-pill-icon">🌲</span>
+          <span class="cache-pill-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
           <span id="forest-cache-label">Offline Ready</span>
         </button>
       </div>
@@ -42,10 +43,10 @@
         <!-- Emergency Calling Quick Actions -->
         <div class="emergency-dials">
           <a id="btn-call-poison" href="tel:0800147111" class="dial-pill poison" title="Finnish Poison Information Centre 24/7 (0800 147 111)">
-            📞 0800 147 111
+            0800 147 111
           </a>
           <a id="btn-call-112" href="tel:112" class="dial-pill emergency" title="General Emergency (112)">
-            🚨 112
+            112
           </a>
         </div>
 
@@ -65,7 +66,7 @@
         </div>
 
         <!-- Theme Toggle -->
-        <button id="theme-toggle-btn" class="theme-btn" title="Toggle Theme" aria-label="Toggle Theme">☀️</button>
+        <button id="theme-toggle-btn" class="theme-btn" title="Toggle Theme" aria-label="Toggle Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button>
       </div>
     </nav>
 
@@ -89,12 +90,12 @@
       <div id="view-main">
         <!-- Navigation Tabs (Clean Minimalist Tab Bar) -->
         <nav class="nav-tabs" role="tablist">
-          <button id="tab-btn-catalog" class="tab-btn active" data-tab="catalog">🍄 Species (63)</button>
-          <button id="tab-btn-lookalikes" class="tab-btn" data-tab="lookalikes">⚖️ Lookalikes</button>
-          <button id="tab-btn-habitats" class="tab-btn" data-tab="habitats">🌲 Habitats & Seasons</button>
-          <button id="tab-btn-spots" class="tab-btn" data-tab="spots">🚌 Transit & Trails</button>
-          <button id="tab-btn-cooking" class="tab-btn" data-tab="cooking">🍳 Cooking & Recipes</button>
-          <button id="tab-btn-safety" class="tab-btn" data-tab="safety">🛡️ Safety & Rights</button>
+          <button id="tab-btn-catalog" class="tab-btn active" data-tab="catalog">Species (63)</button>
+          <button id="tab-btn-lookalikes" class="tab-btn" data-tab="lookalikes">Lookalikes</button>
+          <button id="tab-btn-habitats" class="tab-btn" data-tab="habitats">Habitats & Seasons</button>
+          <button id="tab-btn-spots" class="tab-btn" data-tab="spots">Transit & Trails</button>
+          <button id="tab-btn-cooking" class="tab-btn" data-tab="cooking">Cooking & Recipes</button>
+          <button id="tab-btn-safety" class="tab-btn" data-tab="safety">Safety & Rights</button>
         </nav>
 
         <!-- TAB 1: Mushroom Catalog & Master Index -->
@@ -102,16 +103,16 @@
           <!-- Curated Tier Switcher Pills -->
           <div class="view-mode-bar" id="catalog-view-mode-bar">
             <button class="view-mode-btn active" data-mode="grid" onclick="switchCatalogViewMode('grid', this)">
-              <span>🌟</span> <span id="label-view-grid">All 63 Species</span>
+              <span id="label-view-grid">All 63 Species</span>
             </button>
             <button class="view-mode-btn" data-mode="safe5" onclick="switchCatalogViewMode('safe5', this)">
-              <span>⭐</span> <span id="label-view-safe5">Safe Five</span>
+              <span id="label-view-safe5">Safe Five</span>
             </button>
             <button class="view-mode-btn" data-mode="intermediate" onclick="switchCatalogViewMode('intermediate', this)">
-              <span>🧺</span> <span id="label-view-intermediate">Intermediate</span>
+              <span id="label-view-intermediate">Intermediate</span>
             </button>
             <button class="view-mode-btn" data-mode="master" onclick="switchCatalogViewMode('master', this)">
-              <span>📚</span> <span id="label-view-master">Monographs</span>
+              <span id="label-view-master">Monographs</span>
             </button>
           </div>
 
@@ -121,7 +122,7 @@
           <!-- Search & Filters Panel -->
           <div id="catalog-controls-panel" class="controls-panel">
             <div class="search-box">
-              <span class="search-icon">🔍</span>
+              <span class="search-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
               <input type="text" id="search-input" placeholder="Search by Finnish, Latin, English, Chinese, or traits (e.g. spines, pores)...">
               <button type="button" id="search-clear-btn" class="search-clear-btn" style="display: none;" onclick="clearCatalogSearch()" title="Clear search">✕</button>
             </div>
@@ -129,18 +130,18 @@
             <!-- Quick Access / Popular Highlights -->
             <div class="search-quick-tags" id="search-quick-tags">
               <span class="quick-tags-label" id="label-quick-tags">Popular:</span>
-              <button type="button" class="quick-tag-chip highlight" onclick="navigateToMushroom('tricholoma_matsutake')" title="Tuoksuvalmuska / 松茸 (松口蘑)">👑 松茸 Matsutake</button>
-              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('cantharellus_cibarius')" title="Kantarelli / 鸡油菌">🍄 Kantarelli</button>
-              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('boletus_edulis')" title="Herkkutatti / 美味牛肝菌">🌲 Herkkutatti</button>
-              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('craterellus_tubaeformis')" title="Suppilovahvero / 漏斗鸡油菌">🍂 Suppilovahvero</button>
-              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('craterellus_cornucopioides')" title="Mustatorvisieni / 黑号角菇">🖤 Mustatorvisieni</button>
-              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('amanita_virosa')" title="Valkokärpässieni / 白毒鹅膏" style="color: var(--danger);">⚠️ Valkokärpässieni</button>
+              <button type="button" class="quick-tag-chip highlight" onclick="navigateToMushroom('tricholoma_matsutake')" title="Tuoksuvalmuska / 松茸 (松口蘑)">松茸 Matsutake</button>
+              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('cantharellus_cibarius')" title="Kantarelli / 鸡油菌">Kantarelli</button>
+              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('boletus_edulis')" title="Herkkutatti / 美味牛肝菌">Herkkutatti</button>
+              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('craterellus_tubaeformis')" title="Suppilovahvero / 漏斗鸡油菌">Suppilovahvero</button>
+              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('craterellus_cornucopioides')" title="Mustatorvisieni / 黑号角菇">Mustatorvisieni</button>
+              <button type="button" class="quick-tag-chip" onclick="navigateToMushroom('amanita_virosa')" title="Valkokärpässieni / 白毒鹅膏" style="color: var(--danger);">Valkokärpässieni</button>
             </div>
 
             <!-- Filter Drawer Toggle Bar -->
             <div class="filters-toggle-bar">
               <button type="button" id="btn-toggle-filters" class="filters-toggle-btn" onclick="toggleCatalogFilters()">
-                <span class="filter-toggle-icon">⚙️</span>
+                <span class="filter-toggle-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg></span>
                 <span id="label-more-filters">Filters ▾</span>
                 <span id="active-filters-badge" class="active-filters-badge" style="display: none;">0</span>
               </button>
@@ -248,11 +249,11 @@
     <footer class="site-footer">
       <h3 class="footer-ecosystem-title">Living Field Guides & Philosophy Ecosystem</h3>
       <ul class="footer-links">
-        <li>🌌 <a href="https://powerpig99.github.io/not-a-toe/" target="_blank" rel="noopener"><strong>Not a ToE (Author Blog)</strong> — First-person living philosophy & ontological clarity</a></li>
-        <li>🎣 <a href="https://powerpig99.github.io/fishing-in-finland/" target="_blank" rel="noopener"><strong>Fishing in Finland</strong> — Angling, lure fishing, regulations & spots</a></li>
-        <li>🌲 <a href="https://powerpig99.github.io/hunting-in-finland/" target="_blank" rel="noopener"><strong>Hunting in Finland</strong> — Game management, exams, public forests & clubs</a></li>
-        <li>🎹 <a href="https://powerpig99.github.io/adult-piano-guide/" target="_blank" rel="noopener"><strong>The Adult Piano Companion</strong> — Deliberate practice architectures</a></li>
-        <li>📑 <a href="overview.html"><strong>Documentation Overview</strong> — Architecture & Handbook Index</a></li>
+        <li><a href="https://powerpig99.github.io/not-a-toe/" target="_blank" rel="noopener"><strong>Not a ToE (Author Blog)</strong> — First-person living philosophy & ontological clarity</a></li>
+        <li><a href="https://powerpig99.github.io/fishing-in-finland/" target="_blank" rel="noopener"><strong>Fishing in Finland</strong> — Angling, lure fishing, regulations & spots</a></li>
+        <li><a href="https://powerpig99.github.io/hunting-in-finland/" target="_blank" rel="noopener"><strong>Hunting in Finland</strong> — Game management, exams, public forests & clubs</a></li>
+        <li><a href="https://powerpig99.github.io/adult-piano-guide/" target="_blank" rel="noopener"><strong>The Adult Piano Companion</strong> — Deliberate practice architectures</a></li>
+        <li><a href="overview.html"><strong>Documentation Overview</strong> — Architecture & Handbook Index</a></li>
       </ul>
       <div class="footer-meta">
         <p id="footer-note">Helsinki Mushroom Foraging Companion • Built for local biodiversity and safe foraging in Uusimaa.</p>
@@ -295,7 +296,7 @@
     <div class="forest-cache-modal-card">
       <div class="forest-cache-modal-header">
         <div>
-          <h3 id="cache-modal-title" style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--accent);">🌲 Forest Offline Field Cache</h3>
+          <h3 id="cache-modal-title" style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--accent);">Forest Offline Field Cache</h3>
           <p id="cache-modal-subtitle" style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--muted);">Foraging with Zero Cellular Signal across Helsinki & Uusimaa</p>
         </div>
         <button id="btn-close-cache-modal" class="gallery-close-btn" aria-label="Close">✕</button>
@@ -324,10 +325,10 @@
           </div>
           <div class="cache-box-actions">
             <button id="btn-cache-all-photos" class="btn-cache-action primary">
-              <span id="btn-cache-all-photos-text">📥 Pre-cache All 215 Photos</span>
+              <span id="btn-cache-all-photos-text">Pre-cache All 215 Photos</span>
             </button>
             <button id="btn-clear-photos-cache" class="btn-cache-action secondary" style="display: none;">
-              <span id="btn-clear-photos-text">🗑️ Clear Photos</span>
+              <span id="btn-clear-photos-text">Clear Photos</span>
             </button>
           </div>
         </div>

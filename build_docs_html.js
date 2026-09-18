@@ -98,7 +98,7 @@ const chapters = [
     slug: "01_legal_and_ethics",
     file: "01_legal_and_ethics.md",
     chapterNum: "Chapter 01",
-    icon: "⚖️",
+    icon: "",
     title: {
       en: "Legal Rights, Nature Protection & Forest Safety",
       zh: "芬兰自然公共权、自然保护区法规与森林安全守则",
@@ -126,7 +126,7 @@ const chapters = [
     slug: "02_helsinki_transit_spots_guide",
     file: "02_helsinki_transit_spots_guide.md",
     chapterNum: "Chapter 02",
-    icon: "🚌",
+    icon: "",
     title: {
       en: "Helsinki Foraging Spots by HSL Transit (Zone A–D)",
       zh: "赫尔辛基大区HSL公共交通采蘑菇宝典（含5大小众秘境）",
@@ -138,14 +138,14 @@ const chapters = [
       fi: "Reitit ja kartat"
     },
     readTime: {
-      en: "12 min read",
-      zh: "12 分钟阅读",
-      fi: "12 min lukuaika"
+      en: "8 min read",
+      zh: "8 分钟阅读",
+      fi: "8 min lukuaika"
     },
     desc: {
-      en: "Step-by-step public transit routes, trailheads, and Google Maps links for Keskuspuisto, Sipoonkorpi, Nuuksio, Luukki, plus 5 low-pressure hidden gems: Meiko (Kirkkonummi), Tremanskärr, Northern Sipoonkorpi, Salmi, and Vestra.",
-      zh: "详尽整理可搭乘HSL公交/火车直达的经典森林采摘点（中央公园、西波国家公园、努克西奥、Luukki），并特别收录5大小众少人采摘的森林秘境（Meiko、Tremanskärr、北西波等），附起点导航与行车时刻。",
-      fi: "Tarkat julkisen liikenteen reitit, lähtöpisteet ja Google Maps -linkit Keskuspuistoon, Sipoonkorpeen, Nuuksioon, Luukkiin sekä 5 rauhalliseen erämaakohteeseen."
+      en: "Direct train, metro, and bus lines from Helsinki Central Railway Station (Rautatieasema) to 6 core trailheads (Nuuksio Haukkalampi/Kattila, Sipoonkorpi Kuusijärvi/Bakunkärr, Luukki, Tremanskärr, Meiko, and Salmi wilderness). Includes GPS coordinates, HSL zone guide, and detailed offline navigation routes.",
+      zh: "从赫尔辛基中央火车站出发，乘坐芬兰国铁通勤列车、地铁及直达公交抵达6大核心林区（努克西奥、西波国家公园、鲁基、特雷曼湿地、梅科野湖及萨尔米极深林区）的精确交通班次与徒步起点指南。",
+      fi: "HSL-joukkoliikenneyhteydet Helsingin keskustasta kuudelle parhaalle sienialueelle (Nuuksio, Sipoonkorpi, Luukki, Tremanskärr, Meiko ja Salmi)."
     },
     targetSpecies: ["cantharellus_cibarius", "craterellus_tubaeformis", "craterellus_cornucopioides", "boletus_edulis", "boletus_pinophilus", "boletus_reticulatus", "hydnum_repandum", "lactarius_rufus", "lactarius_deliciosus", "leccinum_versipelle", "russula_paludosa", "cortinarius_caperatus", "albatrellus_ovinus"]
   },
@@ -154,7 +154,7 @@ const chapters = [
     slug: "03_seasonal_calendar_and_habitats",
     file: "03_seasonal_calendar_and_habitats.md",
     chapterNum: "Chapter 03",
-    icon: "📅",
+    icon: "",
     title: {
       en: "Seasonal Calendar, Habitats & The Chanterelle Dilemma",
       zh: "物候出菇日历、树种生境生态与金黄鸡油菌寻菇秘法",
@@ -182,7 +182,7 @@ const chapters = [
     slug: "04_deadly_and_toxic_species",
     file: "04_deadly_and_toxic_species.md",
     chapterNum: "Chapter 04",
-    icon: "☠️",
+    icon: "",
     title: {
       en: "Deadly & Toxic Species Survival Manual",
       zh: "芬兰致命剧毒与危险有毒真菌生死鉴别避险手册",
@@ -210,7 +210,7 @@ const chapters = [
     slug: "05_beginner_safe_species",
     file: "05_beginner_safe_species.md",
     chapterNum: "Chapter 05",
-    icon: "🍄",
+    icon: "",
     title: {
       en: "The \"Safe Five\" Beginner Species",
       zh: "新手绝对安全采摘“安全五剑客”（零混淆美味菌）",
@@ -238,7 +238,7 @@ const chapters = [
     slug: "06_intermediate_and_advanced",
     file: "06_intermediate_and_advanced.md",
     chapterNum: "Chapter 06",
-    icon: "🧺",
+    icon: "",
     title: {
       en: "Intermediate & Advanced Gourmet Species",
       zh: "进阶与资深老饕野菌指南（乳菇焯水、红菇折断与牛肝菌）",
@@ -266,7 +266,7 @@ const chapters = [
     slug: "07_preservation_and_recipes",
     file: "07_preservation_and_recipes.md",
     chapterNum: "Chapter 07",
-    icon: "🍳",
+    icon: "",
     title: {
       en: "Preservation & Authentic Finnish Recipes",
       zh: "芬兰传统野菌储藏法（烘干/盐渍/冷冻）与正统北欧料理",
@@ -294,7 +294,7 @@ const chapters = [
     slug: "08_expanded_edible_species_index",
     file: "08_expanded_edible_species_index.md",
     chapterNum: "Chapter 08",
-    icon: "📋",
+    icon: "",
     title: {
       en: "Master Index: 50+ Wild Edible Mushrooms of Finland",
       zh: "全景大典：芬兰50+种野生食用菌分类全书（八大家族分类图鉴）",
@@ -322,7 +322,7 @@ const chapters = [
     slug: "cooking_and_recipes_zh",
     file: "cooking_and_recipes_zh.md",
     chapterNum: "Special Guide",
-    icon: "🇨🇳",
+    icon: "",
     title: {
       en: "Chinese Wild Mushroom Culinary Mastery & Cross-Culture Recipes",
       zh: "中华野菌烹饪处理心法与中西融合经典名菜食谱",
@@ -413,9 +413,9 @@ function parseMarkdown(md, isLiveApp = false) {
     if (mushroomMatch) {
       const spId = mushroomMatch[1];
       if (isLiveApp) {
-        return `<a href="#/mushroom/${spId}" class="inline-species-chip" onclick="if(window.navigateToMushroom){window.navigateToMushroom('${spId}');return false;}"><span class="chip-icon">🍄</span> <span class="chip-title">${text}</span></a>`;
+        return `<a href="#/mushroom/${spId}" class="inline-species-chip" onclick="if(window.navigateToMushroom){window.navigateToMushroom('${spId}');return false;}"><span class="chip-title">${text}</span></a>`;
       } else {
-        return `<a href="../index.html#/mushroom/${spId}" class="inline-species-chip" title="View identification guide"><span class="chip-icon">🍄</span> <span class="chip-title">${text}</span></a>`;
+        return `<a href="../index.html#/mushroom/${spId}" class="inline-species-chip" title="View identification guide"><span class="chip-title">${text}</span></a>`;
       }
     }
 
@@ -531,14 +531,15 @@ function parseMarkdown(md, isLiveApp = false) {
   });
 
   // 16. In-text species auto-linking for <em>Latin Name</em> that are NOT already in an <a> tag
-  html = html.replace(/<em>([^<]+)<\/em>/g, (match, innerText) => {
+  html = html.replace(/(<a\b[^>]*>[\s\S]*?<\/a>)|<em>([^<]+)<\/em>/gi, (match, anchor, innerText) => {
+    if (anchor) return anchor;
     const cleanName = innerText.trim().toLowerCase();
     const spId = nameVariants[cleanName] || speciesMap[cleanName];
     if (spId) {
       if (isLiveApp) {
-        return `<a href="#/mushroom/${spId}" class="inline-species-chip" onclick="if(window.navigateToMushroom){window.navigateToMushroom('${spId}');return false;}" title="View identification guide"><span class="chip-icon">🍄</span> <span class="chip-title"><em>${innerText}</em></span></a>`;
+        return `<a href="#/mushroom/${spId}" class="inline-species-chip" onclick="if(window.navigateToMushroom){window.navigateToMushroom('${spId}');return false;}" title="View identification guide"><span class="chip-title"><em>${innerText}</em></span></a>`;
       } else {
-        return `<a href="../index.html#/mushroom/${spId}" class="inline-species-chip" title="View identification guide in live app"><span class="chip-icon">🍄</span> <span class="chip-title"><em>${innerText}</em></span></a>`;
+        return `<a href="../index.html#/mushroom/${spId}" class="inline-species-chip" title="View identification guide in live app"><span class="chip-title"><em>${innerText}</em></span></a>`;
       }
     }
     return match;
@@ -583,7 +584,7 @@ chapters.forEach((ch, idx) => {
   // Generate static HTML for docs/
   const optionsHtml = chapters.map(c => `
     <option value="${c.file.replace(/\.md$/, '.html')}" ${c.file === ch.file ? 'selected' : ''}>
-      ${c.icon} ${c.title.en}
+      ${c.chapterNum}: ${c.title.en}
     </option>
   `).join('');
 
@@ -929,7 +930,7 @@ chapters.forEach((ch, idx) => {
   <!-- Sticky Live App Banner -->
   <aside class="doc-live-banner" aria-label="Interactive Version Available">
     <div class="doc-live-banner-inner">
-      <span class="banner-badge">✨ Live Interactive App</span>
+      <span class="banner-badge">Live Interactive App</span>
       <span class="banner-text">This monograph is fully integrated into our interactive Field Handbook with 3-photo botanical galleries, transit trailheads, and species cross-linking.</span>
       <a href="../index.html${chapterTargetHash[ch.id] || '#/catalog'}" class="banner-cta">Open in Live App →</a>
     </div>
@@ -938,10 +939,10 @@ chapters.forEach((ch, idx) => {
   <!-- Sticky Header Bar -->
   <header class="doc-sticky-header">
     <div class="doc-nav-left">
-      <a href="../index.html${chapterTargetHash[ch.id] || '#/catalog'}" class="doc-btn-back">🍄 Live App Section</a>
-      <a href="../index.html#/catalog" class="doc-btn-back">🍄 63 Species Catalog</a>
-      <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
-      <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
+      <a href="../index.html${chapterTargetHash[ch.id] || '#/catalog'}" class="doc-btn-back">Live App Section</a>
+      <a href="../index.html#/catalog" class="doc-btn-back">63 Species Catalog</a>
+      <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">Blog</a>
+      <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">Hunting Guide</a>
       <select class="doc-select" onchange="if(this.value) window.location.href=this.value" aria-label="Jump to Chapter">
         ${optionsHtml}
       </select>
@@ -961,20 +962,20 @@ chapters.forEach((ch, idx) => {
       <!-- Navigation Footer -->
       <footer class="doc-footer-nav">
         <div>
-          ${prevCh ? `<a href="${prevCh.file.replace(/\.md$/, '.html')}" class="doc-nav-btn">← ${prevCh.icon} Prev Chapter</a>` : `<a href="../index.html#/catalog" class="doc-nav-btn">← Main Catalog</a>`}
+          ${prevCh ? `<a href="${prevCh.file.replace(/\.md$/, '.html')}" class="doc-nav-btn">← Prev: ${prevCh.chapterNum}</a>` : `<a href="../index.html#/catalog" class="doc-nav-btn">← Main Catalog</a>`}
         </div>
         <div>
           <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="doc-nav-btn" style="cursor:pointer;">↑ Top</button>
         </div>
         <div>
-          ${nextCh ? `<a href="${nextCh.file.replace(/\.md$/, '.html')}" class="doc-nav-btn primary">${nextCh.icon} Next Chapter →</a>` : `<a href="../index.html#/catalog" class="doc-nav-btn primary">Complete Guide ✓</a>`}
+          ${nextCh ? `<a href="${nextCh.file.replace(/\.md$/, '.html')}" class="doc-nav-btn primary">Next: ${nextCh.chapterNum} →</a>` : `<a href="../index.html#/catalog" class="doc-nav-btn primary">Complete Guide ✓</a>`}
         </div>
       </footer>
     </article>
   </main>
 
   <footer style="background:#182e22; color:rgba(255,255,255,0.7); text-align:center; padding:2rem 1rem; font-size:0.88rem;">
-    <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
+    <p><strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
     <p style="margin-top:0.5rem;">
       <a href="../index.html" style="color:#a7f3d0;">Home Portal</a> • 
       <a href="../index.html${chapterTargetHash[ch.id] || '#/catalog'}" style="color:#a7f3d0;">Live App Section</a> • 
@@ -1202,7 +1203,7 @@ if (fs.existsSync(readmePath)) {
   <!-- Sticky Live App Banner -->
   <aside class="doc-live-banner" aria-label="Interactive Version Available">
     <div class="doc-live-banner-inner">
-      <span class="banner-badge">✨ Live Interactive App</span>
+      <span class="banner-badge">Live Interactive App</span>
       <span class="banner-text">Explore the Helsinki Mushroom Guide with live 3-photo botanical galleries, HSL transit filters & field handbook.</span>
       <a href="index.html#/catalog" class="banner-cta">Open Live Interactive App →</a>
     </div>
@@ -1210,10 +1211,10 @@ if (fs.existsSync(readmePath)) {
 
   <header class="doc-sticky-header">
     <div class="doc-nav-left">
-      <a href="index.html#/catalog" class="doc-btn-back">🍄 Live App Catalog</a>
-      <a href="index.html#/habitats" class="doc-btn-back">🌲 Habitats & Trees</a>
-      <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">🌌 Blog</a>
-      <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">🌲 Hunting Guide</a>
+      <a href="index.html#/catalog" class="doc-btn-back">Live App Catalog</a>
+      <a href="index.html#/habitats" class="doc-btn-back">Habitats & Trees</a>
+      <a href="https://powerpig99.github.io/not-a-toe/" class="doc-btn-back" target="_blank" rel="noopener" title="Author Blog (Not a ToE)">Blog</a>
+      <a href="https://powerpig99.github.io/hunting-in-finland/" class="doc-btn-back" target="_blank" rel="noopener" title="Companion Guide: Hunting in Finland">Hunting Guide</a>
     </div>
     <div>
       <a href="README.md" class="doc-btn-back" target="_blank" style="background:rgba(255,255,255,0.08); font-weight:normal; font-size:0.8rem;">📄 Raw README.md</a>
@@ -1229,7 +1230,7 @@ if (fs.existsSync(readmePath)) {
   </main>
 
   <footer style="background:#182e22; color:rgba(255,255,255,0.7); text-align:center; padding:2rem 1rem; font-size:0.88rem;">
-    <p>🍄 <strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
+    <p><strong>The Definitive Guide to Mushroom Foraging in Helsinki & Uusimaa</strong></p>
     <p style="margin-top:0.5rem;">
       <a href="index.html" style="color:#a7f3d0;">Home Portal</a> • 
       <a href="https://powerpig99.github.io/not-a-toe/" style="color:#a7f3d0;" target="_blank" rel="noopener">Not a ToE Blog</a> • 
